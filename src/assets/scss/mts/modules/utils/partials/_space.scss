@@ -1,0 +1,39 @@
+/**
+ * Based on the design guidelines:
+ * Spacing between elements is usually 5px, 10px, 15px or multiples of 15px
+ * 
+ * These classes use the $space-class-values array in _variables partial to generate utility classes for each value.
+ * Current possible space values: 5, 10, 15, 20, 30, 45
+ * 
+ *
+ * t = top
+ * b = bottom
+ * y = top & bottom
+ */
+ 
+ &-space-xauto {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+@each $value in $space-class-values {
+  &-space-t#{$value} {
+    margin-top: #{$value}px !important;
+  }
+
+  &-space-b#{$value} {
+    margin-bottom: #{$value}px !important;
+  }
+  
+  &-space-y#{$value} {
+    margin-top: #{$value}px !important;
+    margin-bottom: #{$value}px !important;
+  }
+   
+  &-tablet-space-b#{$value} {
+    margin-bottom: #{$value}px !important;
+    @include media(desktop){
+      margin-bottom: $space*2!important;
+    } 
+  }
+}

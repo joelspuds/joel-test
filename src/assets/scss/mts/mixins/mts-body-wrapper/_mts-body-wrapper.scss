@@ -1,0 +1,9 @@
+@mixin mtsBodyWrapper {
+  .mts-body-wrapper  {  
+    box-sizing: border-box;
+    * {
+       box-sizing: inherit;
+    }
+    @content;
+  }
+}

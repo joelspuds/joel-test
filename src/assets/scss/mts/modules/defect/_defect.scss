@@ -1,0 +1,202 @@
+.defect {
+  @include core-16;
+  position: relative;
+  border-top: 1px solid $grey-2;
+  padding: 15px;
+  background-color: $white;
+  transition: background-color .4s ease-in-out;
+
+  &__is-dangerous { 
+    color: $mellow-red;
+    font-weight: 700;
+    display: block;
+  }
+
+  &__mark-repaired {
+    margin-bottom: 6px;
+  }
+
+  &__marked-undo  {
+    display: none; 
+  }
+
+  &.has-success {
+    background-color: mix($white, $green, 85%);
+
+    .defect__mark-repaired { display: none; }
+    .defect__marked-undo { display: block; }
+  }
+
+  &__inner {
+    @include media(tablet) {
+      padding-left: 45px;
+    }
+  }
+
+  &__title {
+    @include bold-16;
+    display: block;
+
+    @include media(desktop) {
+      margin-right: 195px;
+      max-width: 75%;
+    }
+  }
+
+  &__meta {
+    display: block;
+    padding-top: 5px;
+    margin: 0;
+
+    @include media(tablet) {
+      margin-right: 195px;
+    }
+  }
+
+  &__reference {
+    display: block;
+    padding-top: 5px;
+    margin: 0;
+    color: $secondary-text-colour;
+
+    a {
+      &[rel="external"]:after {
+        background-position: right 3px;
+      }
+    }
+  }
+
+  &__marked-defect {
+    background-color: $grey-1;
+  }
+
+  &__marked-undo {
+    span {
+      @include bold-16;
+      display: block;
+      color: $green;
+      margin-bottom: 10px;
+      &:before {
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-image: url('../images/icons/icon-tick.png');
+        width: 27px;
+        height: 27px;
+        display: inline-block;
+        position: relative;
+        content: '';
+        vertical-align: middle;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  // Actions for editing or removing defects (summary view}
+  &__edit { 
+    padding: 5px 0; 
+    font-size: 19px;  
+      &-item { 
+        display: inline-block;
+        a {
+          padding: 5px;
+        }
+        &:first-child {
+          a { 
+            padding-left: 0;
+          }
+        }
+      }
+    @include media(desktop) {
+      position: absolute;
+      font-size: 16px; 
+      right: 15px;
+      top: 10px;
+      padding-bottom: 5px;
+      text-align: right;
+      li { 
+        > a {
+          padding: 3px;
+        }
+      } 
+    }
+  }
+
+  &__change-error {
+    @include core-14(); 
+    display: none; 
+    position: relative;
+    line-height: 12px;
+    text-align: right;
+    color: $red; 
+  }
+
+  // Actions for adding defects (list view)
+  &__add {
+    margin-top: 10px;
+    @include media(tablet) {
+      position: absolute;
+      right: 0;
+      margin-top: 0;
+      top: 15px;
+    }
+
+    li {
+      display: inline;
+      & + li {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  // Positional values of added defect
+  &__positions {
+    @extend %contain-floats;
+    color: $secondary-text-colour;
+    padding: 6px 0;
+
+    li { 
+      display: block;
+      width: 100%; 
+
+      @include media(tablet) {
+        display: inline-block;
+        width: 30%;
+      }
+    }
+    &-value { 
+      @include media(desktop) { 
+        display: inline;
+      }
+
+      @include media(false, 900px) {
+        display: block;
+      }
+
+      @include media(false, 740px) {
+        display: inline;
+      }
+
+      @include media(false, 445px) {
+        display: block;
+      }
+    }
+  }
+
+  &__comment {
+    min-height: 45px;
+    padding-right: 100px;
+
+    @include media(false, 445px) {  
+      min-height: 0;   
+      padding-right: 0;   
+    }
+  }
+
+  .defect-results & {
+    padding-left: 0;
+
+    &:last-child {
+      border-bottom: 1px solid $grey-2;
+    }
+  }
+}

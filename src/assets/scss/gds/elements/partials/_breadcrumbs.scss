@@ -1,0 +1,10 @@
+// Breadcrumbs
+// ==========================================================================
+
+.breadcrumbs {
+  @include breadcrumbs;
+
+  &--muted {
+    color: $grey-1;
+  }
+}

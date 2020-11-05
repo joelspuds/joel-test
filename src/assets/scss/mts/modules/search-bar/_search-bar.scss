@@ -1,0 +1,104 @@
+.search-bar {
+  width: 100%;
+  position: relative;
+
+  &__label {
+    @include bold-19;
+    padding-bottom: 5px;
+    display: block;
+  }
+
+
+
+  &__control-group {
+    @include box-sizing(border-box);
+    display: inline-block; 
+    position: relative;
+    width: 100%; 
+
+    &--three-quarters {
+      @include media(775px) {
+        max-width: 75%;
+      }
+    }
+    
+  }
+
+ 
+
+  &__search-input {
+    @include box-sizing(border-box);
+    @include border-radius(0);
+    line-height: $search-line-height;
+    padding: $search-padding;
+    height: 42px;
+    background-color: $white;
+    width: 65%;
+    width: calc(100% - 204px); 
+    border: 1px solid $border-colour;
+    &[type='search'] {
+      @include box-sizing(border-box);
+      appearance: none;
+    }
+  
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+
+    &--darken-border {
+      border-width: 2px;
+      border-color: $mot-border;
+    }
+    @include media(mobile){
+      width: 100%;
+      margin-bottom: 4px;
+    }
+  }
+
+  &__search-submit {
+    @include button();  
+    font-weight: 700;  
+    height: 40px;
+    margin: 0; 
+    width: 200px;
+    float: right;
+    // Edited padding due to fixed height
+    padding: em(10) em(15) em(7) em(15);
+    
+    @include media(mobile){
+      width: 100%;
+    }
+  }
+
+  &__secondary-action {
+    color: $secondary-text-colour;
+    line-height: $search-line-height;
+    
+    padding-left: 0;
+    display: block;
+  
+    @include media(775px) {
+      display: inline-block;
+      max-width: 33.333%;
+      padding-left: 5px;
+      vertical-align: text-bottom;
+    }
+  }
+
+  &__search-voice {
+    display: none;
+    border: 0;
+    background-color: transparent;
+    font-size: 14px;
+    padding: 0;
+    text-decoration: underline;
+    color: $govuk-blue;
+    margin: 10px 0;
+    cursor: pointer;
+
+    &--is-supported {
+      display: block;
+    }
+  }
+}
+

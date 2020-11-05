@@ -1,0 +1,28 @@
+.styleguide-library{
+  padding: 30px 0;
+
+  &__right {
+    width: calc( 100% - 250px );
+    float: right;
+    min-height: 100%;
+
+    img {
+      max-width: 100%;
+    }
+
+    > h1  {
+      margin: 0 0 30px 0;
+    }
+
+    @media(max-width: 800px) {
+      width: 100%;
+      float: initial;
+    }
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}

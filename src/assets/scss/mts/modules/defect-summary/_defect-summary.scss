@@ -1,0 +1,139 @@
+.defect-summary {
+  @extend %contain-floats;
+  @include core-16;
+  background-color: #e7e7e7;
+  border: 1px solid $grey-2;
+  margin-bottom: $gutter-half/2;
+  
+  @include media(tablet) {
+    margin-bottom: $gutter-half
+  }
+  
+  .button {
+    margin-bottom: 0;
+  }
+  
+  // Optional totals for browse, search and list views
+  &__total {
+    position: relative;
+    padding: $gutter-half; 
+    float: left;
+    width: 100%;
+    @include media(tablet) {
+      padding: 17px 15px 10px;
+    }
+
+    &-heading { 
+      font-weight: 700;
+      font-size: 19px;
+      padding-bottom: 14px;
+      @include media(desktop) {  
+        font-size: 16px;
+        float: left; 
+        padding-bottom: 0;
+      }
+    }
+
+    ul { 
+      @include media(desktop) { 
+        padding-left: $gutter/2;
+        display: inline;
+        float: left;
+      }
+      li {
+        display: block;
+        float: left;
+        width: 50%;
+        font-size: 16px;
+        margin-right: 0;
+        @media (max-width: 480px){
+          margin-bottom: 14px;
+        }
+        @include media(smallTablet){
+          margin-right: 12px;
+          width: auto;
+        }
+        @include media(tablet){
+          margin-right: 16px;
+        }
+        @include media(desktop) {
+          max-width: 130px; 
+        }
+      }
+    }
+
+    &--eu {
+      span[class^="badge"] {
+        position: relative;
+        top: -2px;
+        min-width: 24px;
+        padding: 4px 2px;
+      }
+    }
+  }
+
+  &__heading,
+  &__heading--small {
+    @include bold-24;
+    border-top: 1px solid $grey-2;
+    padding: 12px 15px;
+    background-color: #f1f1f1;
+    clear: both;
+
+    &-type {
+      padding-left: 10px;
+    }
+
+    .badge--warn,
+    .badge--info,
+    .badge--alert {
+      margin: 0;
+    }
+  }
+
+  &__heading--small {
+    @include bold-19;
+  }
+
+  &__toggle {
+    font-weight: 700;
+    font-size: 19px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    display: none;
+    @include media(desktop){
+      font-size: 16px;
+    }
+
+    .js-enabled & {
+      display: block;
+    }
+
+    .lte-ie8 & {
+      display: none;
+    }
+  }
+
+  &__footer {
+    text-align: center;
+
+    .js-enabled & {
+      border-top: 1px solid $grey-2;
+      padding: 10px 15px;
+    }
+
+    a {
+      font-weight: 700;
+      display: none;
+
+      .js-enabled & {
+        display: inline-block;
+      }
+
+      .lte-ie8 & {
+        display: none;
+      }
+    }
+  }
+}

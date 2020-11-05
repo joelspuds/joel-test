@@ -1,0 +1,62 @@
+.dvsa-banner {
+  color: $white;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 30px;
+  word-wrap: break-word;
+
+  // Default
+  background-color: $light-blue;
+
+  a {
+    &:link, &:visited, &:hover, &:active {
+      color: #fff;
+    }
+  }
+
+  // Modifiers
+  &--error {
+    background-color: $red;
+  }
+
+  &--confirmation {
+    background-color: $turquoise;
+  }
+
+  &--info {
+    background: $govuk-blue;
+  }
+
+  &--content {
+    margin-top: $gutter * 2;
+  }
+  
+  &--thin {
+    padding: 8px;
+  }
+  
+  &--information {
+    text-align: left;
+    background: $hero-colour;
+  }
+
+  &--content {
+    text-align: left;
+    background: $hero-colour;
+  }
+
+  // Elements
+  &__heading {
+    @include bold-24;
+    margin-bottom: 0;
+
+    &-large {
+      @include bold-36;
+      display: block;
+    }
+  }
+
+  &__secondary-text {
+    margin-bottom: 0;
+  }
+}

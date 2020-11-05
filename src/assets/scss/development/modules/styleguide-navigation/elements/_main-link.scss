@@ -1,0 +1,10 @@
+&__main-link {
+  display: none;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 15px;
+
+  &:hover {
+    background: #eee;
+  }
+}
