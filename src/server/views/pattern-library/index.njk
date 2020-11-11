@@ -1,0 +1,98 @@
+
+{% extends 'layouts/default.layout.njk' %}
+
+{% set pageTitle = 'Design System' %}
+
+{% block content %}
+
+    {{ components.pageHeading('Pattern library kitchen sink') }}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnOneThird() %}
+
+            {#{% include "/src/govuk-frontend/src/govuk/components/back-link/template.njk" %}#}
+
+            {{ components.heading(text='Accordion', tag='h2', size='medium') }}
+            {{ components.paragraph('<a href="https://design-system.service.gov.uk/components/accordion/" class="govuk-link">Options</a>') }}
+            {{ components.govukAccordion({
+                id: 'exampleAccordion',
+                headingLevel:3,
+                items : [
+                    {
+                        heading: {
+                            text: "Accordion item one"
+                        },
+                        content: {
+                            html: "<p class='govuk-body'>test content</p>"
+                        }
+                    },
+                    {
+                        heading: {
+                            text: "Accordion item two"
+                        },
+                        content: {
+                            html: "<p class='govuk-body'>test content</p>"
+                        }
+                    }
+                ]
+                 }) | prism }}
+
+
+            {{ components.heading(text='Back link', tag='h2', size='medium') }}
+            {{ components.govukBackLink({href:'/some/path',text:'Back link text'}) | prism }}
+
+            {{ components.heading(text='Breabcrumbs', tag='h2', size='medium') }}
+            {{ components.govukBreadcrumbs({
+                href:'/some/path',
+                text:'Back link text',
+                items: [
+                    {
+                        href: '#',
+                        text: 'Test item one'
+                    },
+                    {
+                        href: '#',
+                        text: 'Test item two'
+                    },
+                    {
+                        text: 'Last item'
+                    }
+                ]
+            })
+            | prism }}
+
+            {{ components.heading(text='Butons', tag='h2', size='medium') }}
+            {{ components.govukButton({
+                text: 'Save and continue'
+            })
+            | prism }}
+            {{ components.govukButton({
+                text: 'This is a fancy link',
+                href: '#'
+            })
+            | prism }}
+            {{ components.govukButton({
+                isStartButton: true,
+                text: 'Start something',
+                href: '#'
+            })
+            | prism }}
+            {{ components.govukButton({
+                disabled: true,
+                text: 'Disabled button'
+            })
+            | prism }}
+
+        {%- endcall %}
+
+        {% call components.columnOneThird() %}
+
+           {# {{ components.heading(text='Prototypes', tag='h2', size='medium', url='/prototypes') }}
+            {{ components.paragraph(text='All of DVSA prototypes and user journeys.') }}#}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}

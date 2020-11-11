@@ -1,6 +1,17 @@
-{% macro heading(text='', secondary=false, tag='h1', size='large', url=false, extraClass) %}
+{% macro heading(text='', secondary=false, tag='h1', size, url=false, extraClass) %}
+
+  {% if size == 'large' %}
+    {% set sizeValue = 'l' %}
+  {% elif size == 'medium' %}
+    {% set sizeValue = 'm' %}
+  {% elif size == 'small' %}
+    {% set sizeValue = 's' %}
+  {% else %}
+    {% set sizeValue = 'xl' %}
+  {% endif %}
+
   {% if text %}
-    <{{ tag }} class="heading {{ 'heading--' + size if size }} {{ extraClass if extraClass }} heading-{{ size }}">
+    <{{ tag }} class="govuk-heading-{{ sizeValue }} {{ extraClass if extraClass }}">
       {% if secondary %}
         <span class="heading__secondary">{{ secondary }}</span>
       {% endif %}

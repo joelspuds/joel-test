@@ -7,7 +7,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 /**
  * Constants
- * 
+ *
  * @author Tameem Safi <t.safi@kainos.com>
  * @since 1.2.0
  */
@@ -18,18 +18,18 @@ const config = {
     fonts: path.resolve('src', 'assets', 'fonts'),
     images: path.resolve('src', 'assets', 'img'),
     misc: path.resolve('src', 'assets', 'misc'),
-    mtsPublicAssets: path.join(os.homedir(), 'MOTDEV', 'mot', 'mot-web-frontend', 'public', 'assets'),
+    /*mtsPublicAssets: path.join(os.homedir(), 'MOTDEV', 'mot', 'mot-web-frontend', 'public', 'assets'),
     mothPublicAssets: path.join(os.homedir(), 'MOTDEV', 'moth-application', 'PhpWebUI', 'public', 'assets'),
     manuals3456Assets: path.join(os.homedir(), 'MOTDEV', 'mot-manuals-transformer', 'manuals', 'class3457', 'assets'),
-    manuals12Assets: path.join(os.homedir(), 'MOTDEV', 'mot-manuals-transformer', 'manuals', 'class12', 'assets'),
+    manuals12Assets: path.join(os.homedir(), 'MOTDEV', 'mot-manuals-transformer', 'manuals', 'class12', 'assets'),*/
   }
 };
 
 /**
  * Checks environment variable to see if we are in production mode
- * 
- * @returns {Boolean} true if we are in production and false otherwise 
- * 
+ *
+ * @returns {Boolean} true if we are in production and false otherwise
+ *
  * @author Tameem Safi <t.safi@kainos.com>
  * @since 1.2.0
  */
@@ -39,9 +39,9 @@ const isProduction = () => {
 
 /**
  * Get the extract text plugin loader settings based on environment
- * 
+ *
  * @returns A webpack loader array
- * 
+ *
  * @author Tameem Safi <t.safi@kainos.com>
  * @since 1.2.0
  */
@@ -93,9 +93,9 @@ const getExtractTextPluginLoaders = () => {
 
 /**
  * Get settings for copying files
- * 
+ *
  * @returns array containing all settings
- * 
+ *
  * @author Tameem Safi <t.safi@kainos.com>
  * @since 1.2.2
  */
@@ -121,6 +121,21 @@ const getCopyWebpackPluginSettings = () => {
   ];
 
   // Check environment variable
+
+  // to copy public assets to mts
+  if(process.env.COPY_GOVUK_NJK) {
+    copyWebpackPluginSettings.push(new CopyWebpackPlugin([
+      {
+        context: path.resolve('./src/govuk-frontend/src/govuk/components'),
+        // context: './src/govuk-frontend/src/govuk/components',
+        from: '**/*.njk',
+        to: path.resolve('./src/server/views/macros/new-gds'),
+        force: true,
+      }
+    ]));
+  }
+
+
   // to copy public assets to mts
   if(process.env.COPY_TO_MTS) {
     copyWebpackPluginSettings.push(new CopyWebpackPlugin([
@@ -174,7 +189,7 @@ const getCopyWebpackPluginSettings = () => {
 
 /**
  * Webpack configuration
- * 
+ *
  * @author Tameem Safi <t.safi@kainos.com>
  * @since 1.2.0
  */
