@@ -1,0 +1,22 @@
+.sticky-nav {
+
+  &--fixed {
+    @include desktop {
+      position: fixed;
+      top: 10px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 4px;
+  }
+
+  &__link {
+
+    &--active {
+      color: govuk-colour("black")!important;
+      background-color: govuk-colour("light-grey");
+      text-decoration: none;
+    }
+  }
+}

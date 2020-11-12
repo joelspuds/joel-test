@@ -1,0 +1,159 @@
+.header {
+  overflow:visible;
+  z-index: 10!important;
+}
+
+main {
+  z-index: 1!important;
+}
+
+.lift-z {
+ z-index:100;
+}
+
+.user-header {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  a {
+    text-decoration: none;
+  }
+
+  &__list {
+  // ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+  }
+
+  .user-header__switch {
+  // li {
+    color: govuk-colour("black");
+    background: ufs-colour("ukri-blue");
+    display: block;
+    float: left;
+    padding: 7px 24px 8px 10px;
+    position: relative;
+    text-decoration: none;
+
+    &:after {
+      display: block;
+      position: absolute;
+      right: 8px;
+      top: 11px;
+      font-size: 12px;
+      content:"\25BC";
+      color: govuk-colour("white");
+    }
+
+    &:hover,
+    &:focus {
+      background-color: govuk-colour("white");
+
+      &:after {
+        color: govuk-colour("black");
+      }
+    }
+
+    &--only {
+      padding-right: 10px;
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  // li a {
+  &__control {
+    color: #fff;
+  }
+
+  li:hover,
+  li:focus-within {
+    background-color: govuk-colour("white");
+    color: govuk-colour("black");
+    cursor: pointer;
+
+    a {
+      background-color: govuk-colour("white");
+      color: govuk-colour("black");
+    }
+  }
+
+  li:focus-within a {
+    outline: none;
+  }
+
+  &__dropdown {
+  // ul li ul {
+    background: govuk-colour("yellow");
+    visibility: hidden;
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    margin-top: 6px;
+    left: 0;
+    display: none;
+
+    li {
+      background: ufs-colour("ukri-blue");
+      padding: 7px 10px 8px 10px;
+
+      a {
+        background-color: transparent;
+        color: govuk-colour("white");
+
+        &:hover,
+        &:focus {
+          background-color: transparent;
+          color: govuk-colour("white");
+        }
+      }
+
+      &:hover,
+      &:hover {
+        background-color: govuk-colour("yellow");
+
+        a {
+          background-color: transparent;
+          color: govuk-colour("black");
+        }
+      }
+    }
+  }
+
+  ul li:hover > ul,
+  ul li:focus-within > ul,
+  ul li ul:hover,
+  ul li ul:focus {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+
+    a {
+      background-color: transparent;
+      color: govuk-colour("white");
+    }
+  }
+
+  &__dropdown {
+    li:hover,
+    li:focus {
+      a {
+        color: govuk-colour("black")!important;
+      }
+    }
+
+    a:hover,
+    a:focus {
+     color: govuk-colour("black")!important;
+    }
+  }
+
+  ul li ul li {
+    clear: both;
+    width: 100%;
+  }
+}

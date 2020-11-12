@@ -1,0 +1,20 @@
+.cookie-banner {
+  background-color: govuk-colour("light-grey");
+  width: 100%;
+  padding-top: 20px;
+
+  &__wrapper {
+    margin-bottom: 0!important;
+  }
+
+  &__button {
+    margin-bottom: 10px;
+    margin-right: 30px;
+    max-width: 320px;
+  }
+}
+
+.js-enabled .cookie-hidden { display: none!important }
+.cookie-banner__button { display: none; }
+.js-enabled .cookie-banner__button { display: block; }
+.js-enabled .cookie-banner__link { display: none; }

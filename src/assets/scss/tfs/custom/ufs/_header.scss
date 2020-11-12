@@ -1,0 +1,84 @@
+.ufs-header {
+  width: 100%;
+  background-color: #fff;
+  padding:10px 0;
+
+  &__main {
+    position: relative;
+    margin: 0 15px;
+    min-height: 61px;
+  }
+
+  &__logo {
+    width: 208px;
+    height: 61px;
+    float: left;
+  }
+
+  &__logo-wrapper {
+    padding-bottom: 0;
+  }
+
+  &__proposition {
+    font-size: 36px;
+    font-size: 2.25rem;
+    line-height: 1.11111;
+    font-weight: 300;
+    color: govuk-colour("white");
+    float: left;
+    margin: 15px 0 0 40px;
+    width: 258px;
+
+    @include touch {
+      float: right;
+      text-align: right;
+    }
+  }
+
+  &__menu {
+    text-align: right;
+    margin-top: 10px;
+    @extend %govuk-body-s;
+
+    @include desktop {
+      float: right;
+      width: 300px;
+      margin-left: 40px;
+      margin-top: 10px;
+    }
+
+    @include touch {
+      float: none;
+      clear: both;
+      text-align: right;
+    }
+  }
+
+  &__menu-link{
+
+    @include desktop {
+      display: block;
+    }
+
+    @include touch {
+      display: inline-block;
+      &:last-of-type {
+        border-left: 1px solid ufs-colour("midnight");
+        margin-left: 10px;
+        padding-left: 13px;
+      }
+    }
+  }
+
+  &__link {
+    @extend %govuk-body-s;
+    color: govuk-colour("white");
+  }
+}
+
+.header--admin {
+  .ufs-header__proposition,
+  .ufs-header__link {
+    color: ufs-colour("midnight");
+  }
+}

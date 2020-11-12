@@ -1,0 +1,174 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set pageTitle = 'Molecules' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/', text:'Back to prototypes'}] %}
+{% set isAdminUser = true %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Molecules', caption='Custom components in lieu of a pattern library') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+                {{ components.captionHeading(text='Custom Funding Service molecules', size='m') }}
+
+                <ul class="govuk-list--bullet govuk-body">
+                    <li>
+                        <a href="/prototypes/molecules/404" class="govuk-link">404 error page</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/503" class="govuk-link">503 error page</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/alerts" class="govuk-link">Alerts, aka, system messages</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/applicants" class="govuk-link">Applicants</a>
+                    </li>
+                    <li>
+                        Application items<br>
+                        <a href="/prototypes/molecules/application-items" class="govuk-link">Application items</a>
+                        <br><a href="/prototypes/molecules/application-items-icons" class="govuk-link">Application items icons placement</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/auto-ping" class="govuk-link">Auto ping, keep testing session alive!</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/buttons" class="govuk-link">Buttons</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/details-summary" class="govuk-link">Details/summary toggle box</a>
+                    </li>
+                    <li>
+                        Emails:<br>
+                        <a href="/prototypes/emails/" class="govuk-link">Email test</a>
+                        <br>
+                        <a href="/prototypes/emails/email-rte" class="govuk-link">Email test with RTE</a>
+                        <br>
+                        <a href="/prototypes/register-v1/email-exists" class="govuk-link">Email exists, registration journey</a>
+                        <br>
+                        <a href="/prototypes/register-v1/email-reset" class="govuk-link">Email reset password, registration journey</a>
+                        <br>
+                        <a href="/prototypes/register-v1/email-reset-done" class="govuk-link">Email reset done, registration journey</a>
+                        <br>
+                        <a href="/prototypes/register-v1/email-verify" class="govuk-link">Email verify, registration journey</a>
+                        <br>
+                        <a href="/prototypes/register-v1/email-verify" class="govuk-link">Email all the formatting, registration journey</a>
+                        <br>
+                        <a href="/prototypes/register-v1/email-with-url" class="govuk-link">Email exposed URL</a>
+                        <br>
+                        <a href="/prototypes/register-v1/email-button-and-url" class="govuk-link">Email with button <em>and</em> exposed URL</a>
+                        <br>
+                        <a href="/prototypes/emails/post-submissions-email" class="govuk-link">Post-submission email</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/404" class="govuk-link">Error page - 404</a>
+                        <br>
+                        <a href="/prototypes/molecules/503" class="govuk-link">Error page - 503</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/external-users" class="govuk-link">External user furniture</a> including Beta banner, contact info (and external/signed-in top nav)
+                    </li>
+                    <li>
+                        Lists, search results, filters etc:<br>
+                        <a href="/prototypes/molecules/filters" class="govuk-link">Filters (and internal/signed-in top nav)</a>
+                        <br>
+                        <a href="/prototypes/molecules/lister" class="govuk-link">Lister</a>
+                        <br><a href="/prototypes/molecules/lister-big" class="govuk-link">Big lister</a>
+                        <br><a href="/prototypes/molecules/mega-data" class="govuk-link">MEGA DATA</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/mark-as-complete" class="govuk-link">Mark as complete</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/new-header" class="govuk-link">New header</a>
+                    </li>
+                    <li>
+                        Overview and dashboard related:<br>
+                        <a href="/prototypes/molecules/overview" class="govuk-link">Overview tables in lieu of dashboard</a>
+                        <br>
+                        <a href="/prototypes/molecules/user-dashboard" class="govuk-link">User dashboard</a>
+                        <br>
+                        <a href="/prototypes/molecules/user-dashboard-filters" class="govuk-link">User dashboard with filters</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/pagination" class="govuk-link">Pagination</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/progress-bars" class="govuk-link">Progress bars</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/resources-and-costs" class="govuk-link">Resources and costs calculator</a>
+                    </li>
+                    <li>
+                        Rich text editors:<br>
+                        <a href="/prototypes/molecules/rte" class="govuk-link">Basic</a><br>
+                        <a href="/prototypes/molecules/rte-simple" class="govuk-link">Simple</a><br>
+                        <a href="/prototypes/molecules/rte-complex" class="govuk-link">Complex, with tables, mathML, images etc</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/tables" class="govuk-link">Tables</a>
+                        <br>
+                        <a href="/prototypes/molecules/responsive-tables" class="govuk-link">Responsive tables</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/tabs" class="govuk-link">Tabs (proper, in-page tabs!)</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/tasks" class="govuk-link">Task menu in header</a>
+                    </li>
+                    <li>
+                        Tiles:<br>
+                        <a href="/prototypes/molecules/tiles" class="govuk-link">Tiles v1</a>
+                        <br>
+                        <a href="/prototypes/molecules/tiles-v2" class="govuk-link">Tiles v2</a>
+                        <br>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/timeline" class="govuk-link">Timeline</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/molecules/times-dates" class="govuk-link">Times and dates input with drop downs</a>
+                    </li>
+                </ul>
+
+                {{ components.captionHeading(text='Layouts', size='m') }}
+
+                <ul class="govuk-list--bullet govuk-body">
+                    <li>Fairly generic single col: <a href="/prototypes/molecules/layout-single" class="govuk-link">Single col</a></li>
+                    <li>Main col and right-hand sidebar: <a href="/prototypes/molecules/layout-split-7-4" class="govuk-link">Split 7/4</a></li>
+                    <li>Main col with nested 50/50 split and right-hand sidebar: <a href="/prototypes/molecules/layout-split-7-4-with-nested" class="govuk-link">Split 7/4 with 50/50 nested</a></li>
+                    <li>Mega wide: <a href="/prototypes/molecules/layout-true-full" class="govuk-link">True full-width</a></li>
+                    <li>Search results and lists: <a href="/prototypes/molecules/layout-split-1-3" class="govuk-link">Split 1/3</a></li>
+                    <li>Search results and lists: <a href="/prototypes/molecules/layout-split-1-3-fixed-flex" class="govuk-link">Split 1/3 with stretch main</a></li>
+                    <li>Search results and lists: <a href="/prototypes/molecules/layout-mega-table" class="govuk-link">Single stretch main with MEGA TABLE</a></li>
+                    <li>Column switcheroo: <a href="/prototypes/molecules/layout-split-3-1-pulled" class="govuk-link">Split 3/1 but RH col is pulled right although 1st in DOM</a></li>
+                </ul>
+            {%- endcall %}
+
+            {#{% call components.bulmaColumnAny(size='column is-4') %}
+                <div class="govuk-related-items govuk-related-items--flush">
+
+                    <h2 class="govuk-heading-xs u-space-y5">OPP-47101</h2>
+                    <p class="govuk-body-s u-space-b5">Really long title for this exciting new opportunity</p>
+                    <ul class="govuk-list u-space-t10">
+                        <li><a href="/prototypes/opportunity-v2/create?mode=edit" class="govuk-link govuk-body--s sub-button">Edit Opportunity name</a></li>
+                    </ul>
+                </div>
+            {%- endcall %}#}
+        {%- endcall %}
+    </section>
+
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set pageTitle = 'Complex RTE' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set allCouncils = allCouncils %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set isAdminUser = true %}
+{% set showMathJAXscripts = true %}
+
+{% set exampleHTML = exampleHTML if exampleHTML %}
+{% set convertedHTML = convertedHTML if convertedHTML %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-half') %}
+
+            {{ components.captionHeading(text='Complex RTE') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.form(action='#', method='POST',name='tinyMCETestSimple') %}
+
+            {% call components.bulmaRow(extraClass='u-space-b30') %}
+
+                {% call components.bulmaColumnAny(size='column is-8') %}
+
+                    <h2 class="govuk-heading-m">Input some content</h2>
+                    <noscript>
+                        {{ components.alerts(text='Because your JavaScript is not enabled, this content appears unformatted. To use rich-text editing, enable JavaScript in the advanced section of your device or browser’s security settings. If you have not disabled it yourself, then try refreshing the page in a few minutes.', type='danger')}}
+                    </noscript>
+                    {{ components.textarea(options=selectOptions, label='Enter your case for support', labelBold=true, name='htmlTest', hint='', group=true, rows='12', size='', value=exampleHTML, extraClass='', visuallyHidden=true, id='tinyMCEInput') }}
+                    <p>
+                        <span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite"></span>
+                    </p>
+                {%- endcall %}
+
+                {% call components.bulmaColumnAny(size='column is-4') %}
+                    <h2 class="govuk-heading-m">Loaded HTML</h2>
+                    <textarea id="codeOutput" class="govuk-textarea" rows="28" style="font-family:Courier, mono; font-size:14px">{{ convertedHTML }}</textarea>
+                    <span id="wordCount2" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 100 words remaining</span>
+                {%- endcall %}
+
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+                    {% call components.formGroup() %}
+                        {{ components.button(text='Save and reload', extraClass="application-controls__submit")}}
+                    {%- endcall %}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+    <section class="section">
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='column is-9') %}
+                <h2 class="govuk-heading-l">Rendered HTML in block</h2>
+                <div class="tiny-spoof">
+                    {{ exampleHTML }}
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+    </section>
+{% endblock %}
+
+{% block bodyScripts %}
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({
+        selector: '#tinyMCEInput',
+        height: 500,
+        external_plugins: {
+          'tiny_mce_wiris' : '/javascripts/@wiris/mathtype-tinymce4/plugin.min.js'
+        },
+        plugins: [
+          'advlist autolink lists link image   preview anchor',
+          'media table paste tinydrive code imagetools wordcount'
+        ],
+        toolbar: 'formatselect | bold italic | bullist numlist | align | indent outdent | link | image pastetext | table | tiny_mce_wiris_formulaEditor',
+        content_css: [
+          '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+          '/stylesheets/tinymce.css'
+        ],
+        menubar: false,
+      });
+    </script>
+    <script>
+      ;(function(){
+        let wordcounter = document.getElementById('codeOutput');
+        let counteroutputFoot = document.getElementById('wordCount2');
+        let words;
+        const limit = 50;
+
+        function countemwords(){
+          words = (wordcounter.value == '')? 0 : wordcounter.value.split(' ').length;
+          let remainder = limit - words;
+          counteroutputFoot.innerHTML = 'You have ' + words + ' words';
+
+        }
+        wordcounter.addEventListener('input', function(e){
+          countemwords()
+        }, false);
+        document.addEventListener("DOMContentLoaded", function(event) {
+          countemwords()
+        }, false);
+        window.addEventListener("load", function(event) {
+          countemwords();
+        }, false)
+      })();
+    </script>
+{% endblock %}

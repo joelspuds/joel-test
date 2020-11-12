@@ -1,0 +1,150 @@
+<header class="new-header {% if navType == 'admin' %} new-header--admin {% else %} new-header--external {% endif %}" role="banner">
+  <div class="container new-header__top">
+    <div class="columns">
+      <div class="column {#column-one-quarter#}">
+        <a href="#" class="new-header__brand" title="UKRI Funding Service homepage" aria-label="Return to UKRI Funding Service homepage">
+          <img src="/images/ufs/ukri_logo_new.svg" alt="UKRI logo">
+        </a>
+
+        {% if not loggedOut %}
+          <button class="mobile-menu" type="button" aria-controls="mobile-nav" aria-expanded="false">Menu <span>&#9660;</span></button>
+        {% endif %}
+
+        {% if not showExternalFurniture %}
+
+          {% if not loggedOut %}
+            {% if navType == 'admin' %}
+              <nav class="new-header__nav new-header__nav--touch-hide">
+                <ul class="new-header__nav-list">
+                  <li class="new-header__nav-item"><a href="/prototypes/dashboard/" class="new-header__nav-link">Home</a></li>
+                  <li class="new-header__nav-item"><a href="/prototypes/opportunity/" class="new-header__nav-link {% if activeNavItem == 'opportunities' %} new-header__nav-link--active {% endif %}">Opportunities</a>
+                  <li class="new-header__nav-item"><a href="#" class="new-header__nav-link {% if activeNavItem == 'awards' %} new-header__nav-link--active {% endif %}">Awards</a></li>
+                  {#<li class="new-header__nav-item"><a href="#" class="new-header__nav-link">Outcomes</a></li>#}
+                  {#<li class="new-header__nav-item"><a href="#" class="new-header__nav-link">Reporting</a></li>#}
+                  <li class="new-header__nav-item"><a href="#" class="new-header__nav-link">Users and organisations</a></li>
+                  <li class="new-header__nav-item new-header__nav-item--user">
+                   {# <span class="new-header__nav-text">Arden Pimenta</span>
+                    <a href="#" class="new-header__nav-link">Your profile</a>#}
+                    <a href="#" class="new-header__nav-link">Sign out</a>
+                  </li>
+                </ul>
+              </nav>
+            {% else %}
+              <nav class="new-header__nav new-header__nav--touch-hide">
+                <ul class="new-header__nav-list">
+                  <li class="new-header__nav-item"><a href="/prototypes/dashboard/" class="new-header__nav-link">Home</a></li>
+                  <li class="new-header__nav-item"><a href="#" class="new-header__nav-link {% if activeNavItem == 'applications' %} new-header__nav-link--active {% endif %}">Applications</a></li>
+                  <li class="new-header__nav-item new-header__nav-item--user">
+                    {#<span class="new-header__nav-text">Prof. Lady Joanne Potwash-McDoelingtonworth BSc MSc PhD MBE</span>
+                    <a href="#" class="new-header__nav-link">Your profile</a>#}
+                    <a href="#" class="new-header__nav-link">Sign out</a>
+                  </li>
+                </ul>
+              </nav>
+            {% endif %}
+          {% endif %}
+
+        {% else %}
+          <nav class="new-header__nav new-header__nav--touch-hide">
+            <ul class="new-header__nav-list">
+              <li class="new-header__nav-item"><a href="#" class="new-header__nav-link">Apply for funding</a></li>
+              <li class="new-header__nav-item"><a href="#" class="new-header__nav-link {% if activeNavItem == 'applications' %} new-header__nav-link--active {% endif %}">Who we fund</a></li>
+              <li class="new-header__nav-item"><a href="#" class="new-header__nav-link">How we work</a></li>
+              <li class="new-header__nav-item"><a href="#" class="new-header__nav-link">News</a></li>
+              <li class="new-header__nav-item"><a href="#" class="new-header__nav-link">About us</a></li>
+              <li class="new-header__nav-item"><a href="#" class="new-header__nav-link">Our councils</a></li>
+            </ul>
+          </nav>
+
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% if not showExternalFurniture %}
+
+  <div class="new-header__bar">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <span class="new-header__service">Funding Service</span>
+          {% if not loggedOut %}
+            {% if navType == 'admin' %}
+              <div class="user-header">
+                <div class="user-header__user">
+                  <ul class="user-header__list">
+                    <li class="user-header__switch user-header__switch--only">
+                      <a href="#?signout=true" class="user-header__control">Sign out</a>
+                    </li>
+                    {#<li class="user-header__switch">
+                      <a href="#" class="user-header__control">Arden Pimenta</a>
+                      <ul class="user-header__dropdown">
+                        <li><a href="#">Your profile</a></li>
+                        <li><a href="#">Sign out</a></li>
+                      </ul>
+                    </li>#}
+                    {#<li class="user-header__switch">
+                      <a href="#" class="user-header__control">Organisations</a>
+                      <ul class="user-header__dropdown">
+                        <li><a href="#">UKRI</a></li>
+                        <li><a href="#">EPSRC</a></li>
+                      </ul>
+                    </li>#}
+                  </ul>
+                </div>
+              </div>
+            {% else %}
+              <div class="user-header">
+                <div class="user-header__user">
+                  <ul class="user-header__list">
+                    <li class="user-header__switch user-header__switch--only">
+                      <a href="#?signout=true" class="user-header__control">Sign out</a>
+                    </li>
+                    {#<li class="user-header__switch">
+                    <li class="user-header__switch user-header__switch--only">
+                      <a href="#?signout=true" class="user-header__control">Sign out</a>
+                      <a href="#" class="user-header__control">Prof. #}{#Lady#}{# Joanne Potwash-McDoelingtonworth #}{#BSc MSc PhD MBE#}{#</a>
+                      <ul class="user-header__dropdown">
+                        <li><a href="#">Your profile</a></li>
+                        <li><a href="#">Sign out</a></li>
+                      </ul>
+                    </li>
+                    {#<li class="user-header__switch">
+                      <a href="#" class="user-header__control">Organisations</a>
+                      <ul class="user-header__dropdown">
+                        <li><a href="#">University of Bath</a></li>
+                        <li><a href="#">Bristol Univeristy</a></li>
+                      </ul>
+                    </li>#}
+                  </ul>
+                </div>
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endif %}
+</header>
+
+{% if not loggedOut %}
+<script>
+  window.onload = function(){
+    // let topNavSwitcher = document.getElementsByClassName('new-header__nav');
+    let topNavMenu = document.getElementsByClassName('new-header__nav')[0];
+    document.querySelector('.mobile-menu').onclick = function(){
+      // topNavMenu.classList.toggle('new-header__nav--touch-hide');
+      // this.setAttribute('aria-expanded', 'true');
+      if(topNavMenu.classList.contains('new-header__nav--touch-hide')) {
+        topNavMenu.classList.remove('new-header__nav--touch-hide');
+        this.setAttribute('aria-expanded', true);
+      } else {
+        topNavMenu.classList.add('new-header__nav--touch-hide');
+        this.setAttribute('aria-expanded', false);
+      }
+    };
+  };
+</script>
+{% endif %}

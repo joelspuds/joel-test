@@ -1,0 +1,83 @@
+{#
+> container
+    > columns
+        > column
+#}
+
+{# extraClass = is-fluid | not-fluid  #}
+{% macro bulmaContainer(extraClass, customID)%}
+    <div class="container {{ extraClass }}">{{ caller() }}</div>
+{% endmacro %}
+
+{# Cols maintained on/restricted to certain viewports, range: is-mobile | is-desktop  #}
+{% macro bulmaColumns(range='', extraClass, customID) %}
+    <div class="columns {{ range }} {{ extraClass }}" {% if customID %}id="{{ customID }}"{% endif %}>{{ caller() }}</div>
+{% endmacro %}
+
+{% macro bulmaRow(extraClass, customID, columnsID)%}
+    <div class="container {{ extraClass }}" {% if customID %}id="{{ customID }}"{% endif %}>
+        <div class="columns" {% if columnsID %}id="{{ columnsID }}"{% endif %}>{{ caller() }}</div>
+    </div>
+{% endmacro %}
+
+{#{% macro bulmaColumns(extraClass, customID)%}
+    <div class="columns {{ extraClass }}">{{ caller() }}</div>
+{% endmacro %}#}
+
+{% macro bulmaColumn(extraClass, customID)%}
+    <div class="column {{ extraClass }}" {% if customID %}id="{{ customID }}"{% endif %}>{{ caller() }}</div>
+{% endmacro %}
+
+{% macro bulmaColumnOneQuarter(extraClass, customID)%}
+    <div class="column is-one-quarter {{ extraClass }} {% if customID %}id="{{ customID }}"{% endif %}">{{ caller() }}</div>
+{% endmacro %}
+
+{% macro bulmaColumnOneThird(extraClass, customID)%}
+    <div class="column is-one-third {{ extraClass }} {% if customID %}id="{{ customID }}"{% endif %}">{{ caller() }}</div>
+{% endmacro %}
+
+{% macro bulmaColumnOneHalf(extraClass, customID)%}
+    <div class="column is-half {{ extraClass }}" {% if customID %}id="{{ customID }}"{% endif %}>{{ caller() }}</div>
+{% endmacro %}
+
+{% macro bulmaColumnTwoThirds(extraClass, customID)%}
+    <div class="column is-two-thirds {{ extraClass }}" {% if customID %}id="{{ customID }}"{% endif %}>{{ caller() }}</div>
+{% endmacro %}
+
+{% macro bulmaColumnThreeQuarters(extraClass, customID)%}
+    <div class="column is-three-quarters {{ extraClass }}" {% if customID %}id="{{ customID }}"{% endif %}>{{ caller() }}</div>
+{% endmacro %}
+
+{% macro bulmaColumnFull(extraClass, customID)%}
+    <div class="column is-full {{ extraClass }}" {% if customID %}id="{{ customID }}"{% endif %}>{{ caller() }}</div>
+{% endmacro %}
+
+{% macro bulmaColumnOneFifth(extraClass, customID)%}
+    <div class="column is-one-fifth {{ extraClass }}" {% if customID %}id="{{ customID }}"{% endif %}>{{ caller() }}</div>
+{% endmacro %}
+
+{% macro bulmaColumnTwoFifths(extraClass, customID)%}
+    <div class="column is-two-fifths {{ extraClass }}" {% if customID %}id="{{ customID }}"{% endif %}>{{ caller() }}</div>
+{% endmacro %}
+
+{% macro bulmaColumnThreeFifths(extraClass, customID)%}
+    <div class="column is-three-fifths {{ extraClass }}" {% if customID %}id="{{ customID }}"{% endif %}>{{ caller() }}</div>
+{% endmacro %}
+
+{% macro bulmaColumnFourFifths(extraClass, customID)%}
+    <div class="column is-four-fifths {{ extraClass }}" {% if customID %}id="{{ customID }}"{% endif %}>{{ caller() }}</div>
+{% endmacro %}
+
+{# size:
+    is-1 | is-2 | is-3 | is-4 | is-5 is-6 | is-7 | is-8 | is-9 | is-10 | is-11 | is-12
+    is-one-quarter | is-one-third etc etc
+    only takes the space is needs: is-narrow | is-narrow-mobile | .is-narrow-tablet | .is-narrow-touch | .is-narrow-desktop | .is-narrow-widescreen | .is-narrow-fullhd
+
+#}
+
+{% macro bulmaColumnAny(size='', extraClass, customID, role)%}
+    <div class="column {{ size }} {{ extraClass }}" {% if customID %}id="{{ customID }}"{% endif %} {% if role %}role="{{ role }}"{% endif %}>{{ caller() }}</div>
+{% endmacro %}
+
+
+

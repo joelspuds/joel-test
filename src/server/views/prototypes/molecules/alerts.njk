@@ -1,0 +1,84 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set pageTitle = 'Alerts' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set allCouncils = allCouncils %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set isAdminUser = true %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Alerts (or "system messages")') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-8') %}
+
+                {{ components.captionHeading(text='Normal', tag='h2', size='s') }}
+
+                {{ components.alerts(text='This contains some important information')  }}
+
+                {{ components.captionHeading(text='Alert with a title', tag='h2', size='m') }}
+
+                {{ components.alerts(text='This contains some important information', title='This is really important') }}
+
+                {{ components.captionHeading(text='Success alert', tag='h2', size='m') }}
+
+                {{ components.alerts(text='You have successfully updated your application', type='success') }}
+
+                {{ components.captionHeading(text='Info alert', tag='h2', size='m') }}
+
+                {{ components.alerts(text='This is a preview of your application', type='info')  }}
+
+                {{ components.captionHeading(text='Danger alert', tag='h2', size='m') }}
+
+                {{ components.alerts(text='There was an error updating your informaton. Try again later. This is actually a really long message to wrap onto multiple lines.', type='danger')  }}
+
+                {{ components.captionHeading(text='Warning alert', tag='h2', size='m') }}
+
+                {{ components.alerts(text='The effect of your action could be disasterous, are you sure you want to continue?', type='warning')  }}
+
+                {{ components.captionHeading(text='Monochrome info', tag='h2', size='m') }}
+
+                {{ components.alerts(text='This is something you should be aware of before proceeding', type='mono')  }}
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+    </section>
+
+{% endblock %}
+
+{% block bodyScripts %}
+    {#<script>
+      function toggleVisibility(_this, id, className) {
+        // event.preventDefault();
+        let toggleSwitch = _this;
+        let toggleItem = document.getElementById(id);
+        if (hasClass(toggleItem, className)) {
+          toggleSwitch.classList.add('filter__title--closed');
+          toggleItem.classList.remove(className);
+          toggleSwitch.setAttribute('aria-expanded', true);
+        }
+        else  {
+          toggleSwitch.classList.remove('filter__title--closed');
+          toggleItem.classList.add(className);
+          toggleSwitch.setAttribute('aria-expanded', false);
+        }
+        // return false;
+      }
+      function hasClass(target, className) {
+        return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+      }
+    </script>#}
+{% endblock %}

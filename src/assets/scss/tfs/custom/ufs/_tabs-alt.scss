@@ -1,0 +1,51 @@
+.tabs-alt {
+  border-bottom: 1px solid $govuk-border-colour;
+  margin-bottom: govuk-spacing(3);
+  padding-left: 0;
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 20px;
+  }
+
+  &__item {
+    position: relative;
+    margin-right: 5px;
+    margin-bottom: 0;
+    margin-left: 0;
+    float: left;
+    width: 200px;
+    text-align: center;
+  }
+
+  &__link {
+    display: block;
+    margin-bottom: 0px;
+    height: 42px;
+    padding: 10px 10px;
+    color: govuk-colour("black")!important;
+    @include govuk-font($size: 19);
+    background-color: govuk-colour("light-grey");
+
+    &--active {
+      background-color: govuk-colour("white");
+      border: 1px solid $govuk-border-colour;
+      border-bottom: 0;
+    }
+
+    &:hover {
+      // color: lime;
+      color: $govuk-link-hover-colour!important;
+    }
+
+    &:focus {
+      color: #0b0c0c;
+      background-color: #ffdd00;
+      -webkit-box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+      box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+      text-decoration: none;
+    }
+  }
+}

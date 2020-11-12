@@ -1,0 +1,13 @@
+
+
+.pull-right-desktop {
+  @include govuk-media-query($from: desktop) {
+    float: right;
+  }
+}
+
+.padding-left-desktop-30 {
+  @include govuk-media-query($from: desktop) {
+    padding-left: 30px;
+  }
+}

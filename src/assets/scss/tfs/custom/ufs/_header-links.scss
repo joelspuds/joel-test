@@ -1,0 +1,129 @@
+.top-links {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  flex-flow: column;
+  min-height: 39px;
+  background-color: ufs-colour("ukri-blue");
+
+  &__nav {
+    @include desktop {
+      display: flex;
+      -webkit-box-align: stretch;
+      align-items: stretch;
+      flex-flow: row wrap;
+      flex: 1 1 0%;
+    }
+
+    @include touch {
+      width: 100%;
+    }
+  }
+
+  &__link {
+    color: govuk-colour("white");
+    line-height: 1.2em;
+    padding: 10px 12px;
+    text-decoration: none;
+    display: block;
+
+    @include desktop {
+      background-size: contain; // lower corner only
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      vertical-align: middle;
+      flex-flow: row wrap;
+      border-right: 1px solid rgb(153, 153, 153);
+    }
+
+    &--active {
+      background-color: govuk-colour("white")!important;
+      color: govuk-colour("black")!important;
+      text-decoration: none!important;
+    }
+
+    &:focus {
+      border-color: #fd0;
+      outline: 3px solid transparent;
+      -webkit-box-shadow: inset 0 0 0 1px #fd0;
+      box-shadow: inset 0 0 0 1px #fd0;
+    }
+
+    &--mobile-hidden {
+      // handled separately at the bottom of the page as too complex to compile class here with .js-enabled
+    }
+  }
+
+  a {
+    color: govuk-colour("white");
+
+    @include touch {
+      display: block;
+    }
+
+    &:hover {
+      background-color: govuk-colour("white");
+      color: govuk-colour("black");
+      text-decoration: none;
+
+      &:after {
+        color: govuk-colour("black");
+      }
+    }
+  }
+
+  &__menu {
+    display: none !important;
+    position: relative;
+    color: govuk-colour("white");
+    line-height: 1.2em;
+    padding: 10px 19px;
+    text-decoration: none;
+
+    @include desktop {
+      display: none;
+    }
+
+    &:after {
+      display: block;
+      position: absolute;
+      left: 65px;
+      top: 11px;
+      font-size: 12px;
+      content:"\25BC";
+      color: govuk-colour("white");
+    }
+
+    &--open {
+      &:after {
+        content:"\25B2";
+      }
+    }
+
+    &:hover {
+      &--open {
+        &:after {
+          color: govuk-colour("black");
+        }
+      }
+    }
+  }
+}
+
+.js-enabled {
+  .top-links__link--mobile-hidden {
+    @include touch {
+      display: none !important;
+    }
+  }
+
+  .top-links__menu {
+    @include touch {
+      display: block !important;
+    }
+  }
+}

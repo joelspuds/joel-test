@@ -1,0 +1,172 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = '' %}
+{% set pageTitle = 'User dashboard' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set allCouncils = allCouncils %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set isAdminUser = false %}
+{% set appData = appData if appData %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='User dashboard') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {#<section class="section" id="tabsNav">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full #}{#is-9-desktop is-9-widescreen#}{#') %}
+
+                <ul class="govuk-tabs__list" role="tablist">
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected" role="presentation">
+                        <a class="govuk-tabs__tab" href="#" id="tab1" role="tab" aria-controls="bristol" aria-selected="true" tabindex="0">University of Bristol</a>
+                    </li>
+                    <li class="govuk-tabs__list-item" role="presentation">
+                        <a class="govuk-tabs__tab" href="#" id="tab2" role="tab" aria-controls="cardiff" aria-selected="false" tabindex="-1">Cardiff University</a>
+                    </li>
+                    <li class="govuk-tabs__list-item" role="presentation">
+                        <a class="govuk-tabs__tab" href="#" id="tab3" role="tab" aria-controls="cardiff" aria-selected="false" tabindex="-1">Bath Spa University</a>
+                    </li>
+                    <li class="govuk-tabs__list-item" role="presentation">
+                        <a class="govuk-tabs__tab" href="#" id="tab4" role="tab" aria-controls="cardiff" aria-selected="false" tabindex="-1">Llanfairpwllgwyngyll University</a>
+                    </li>
+                    <li class="govuk-tabs__list-item" role="presentation">
+                        <a class="govuk-tabs__tab" href="#" id="tab5" role="tab" aria-controls="cardiff" aria-selected="false" tabindex="-1">SOAS</a>
+                    </li>
+                </ul>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>#}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full {#is-9-desktop is-9-widescreen#}') %}
+
+                {{ components.captionHeading(text='In progress', tag='h2', size='m') }}
+
+                <ul class="overview-items overview-items--plain">
+
+                    {% for item in appData %}
+
+                        <li class="overview-item {% if item.active != true %} overview-item--inactive {% endif %}">
+                            <div class="columns">
+                                <div class="column is-8">
+                                    <h3 class="overview-item__title">
+                                        <a href="#" class="govuk-link">{{ item.name }}</a>
+                                    </h3>
+                                    <ul class="overview-item__meta-list">
+                                        {#<li class="overview-item__meta-item" ><strong>Opportunity: </strong><a href="#" class="govuk-link">OPP{{ range(000, 999) | random }}: {{ item.oppName }}</a><br></li>#}
+                                        <li class="overview-item__meta-item" ><strong>Opportunity: </strong>OPP{{ range(000, 999) | random }}: {{ item.oppName }}<br></li>
+                                        <li class="overview-item__meta-item" ><strong>Application reference:</strong> AWA{{ item.id }}<br></li>
+                                        <li class="overview-item__meta-item" ><strong>Organisation:</strong> {{ item.org }}</li>
+                                    </ul>
+                                </div>
+                                <div class="column is-2">
+                                    {% if item.hoursLeft  %}
+                                        <div class="u-align-setup-vertical u-align-center">
+                                            <div class="u-align-cell">
+                                                <span class="overview-item__meta overview-item__meta--danger">
+                                                    <strong><span class="govuk-!-font-size-24">{{ item.hoursLeft }}</span>
+                                                    <br>hours left</strong>
+                                                    <br>
+                                                    <span class="govuk-body-s">
+                                                        {{ item.progressMessage }}
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if item.daysLeft and item.imminent %}
+                                        <div class="u-align-setup-vertical u-align-center">
+                                            <div class="u-align-cell">
+                                                <span class="overview-item__meta overview-item__meta--danger">
+                                                    <strong><span class="govuk-!-font-size-24">{{ item.daysLeft }}</span>
+                                                    <br>days left</strong>
+                                                    <br>
+                                                    <span class="govuk-body-s">{{ item.progressMessage }}</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if item.daysLeft and not item.imminent %}
+                                        <div class="u-align-setup-vertical u-align-center">
+                                            <div class="u-align-cell">
+                                                <span class="overview-item__meta">
+                                                    <strong><span class="govuk-!-font-size-24">{{ item.daysLeft }}</span>
+                                                    <br>days left</strong>
+                                                    <br>
+                                                    <span class="govuk-body-s">{{ item.progressMessage }}</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if not item.active %}
+                                        <div class="u-align-setup-vertical u-align-center">
+                                            <div class="u-align-cell">
+                                                <span class="overview-item__meta">
+                                                    <strong>{{ item.finalMessage }}</strong>
+                                                    <br>
+                                                    <span class="govuk-body-s">{{ item.progressMessage }}</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    {%  endif %}
+                                </div>
+                                <div class="column is-2">
+                                    <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                        <div class="u-align-cell">
+                                            <strong>{{ item.status }}</strong>
+                                            {% if item.completeness %}
+                                            <span class="meta"><br>{{ item.completeness }}</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    {% endfor %}
+                </ul>
+            {%- endcall %}
+        {%- endcall %}
+
+
+    </section>
+
+{% endblock %}
+
+{% block bodyScripts %}
+   {# <script>
+      function toggleVisibility(_this, id, className) {
+        // event.preventDefault();
+        let toggleSwitch = _this;
+        let toggleItem = document.getElementById(id);
+        if (hasClass(toggleItem, className)) {
+          toggleSwitch.classList.add('filter__title--closed');
+          toggleItem.classList.remove(className);
+          toggleSwitch.setAttribute('aria-expanded', true);
+        }
+        else  {
+          toggleSwitch.classList.remove('filter__title--closed');
+          toggleItem.classList.add(className);
+          toggleSwitch.setAttribute('aria-expanded', false);
+        }
+        // return false;
+      }
+      function hasClass(target, className) {
+        return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+      }
+    </script>#}
+{% endblock %}

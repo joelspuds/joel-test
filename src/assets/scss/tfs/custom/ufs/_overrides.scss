@@ -1,0 +1,248 @@
+
+.govuk-template__body--wide {
+
+  .ufs-header__main,
+  .govuk-width-container,
+  .top-links__nav {
+    max-width: 1380px;
+  }
+}
+
+.govuk-table__cell--action {
+  text-align: right;
+
+  a {
+    display: inline-block;
+    margin-top: 10px;
+  }
+}
+
+.govuk-related-items {
+  border-top-width: 5px;
+}
+
+.govuk-form-group--inline-right {
+
+  @include govuk-media-query($from: tablet) {
+    text-align: right;
+
+    .govuk-label {
+      display: inline-block;
+    }
+
+    .govuk-input {
+      display: inline-block;
+    }
+  }
+}
+
+.govuk-form-group--inline-left{
+
+  @include govuk-media-query($from: tablet) {
+
+    .govuk-label {
+      display: inline-block;
+      float: left;
+      margin-right: 10px;
+      line-height: 40px;
+    }
+  }
+}
+
+.govuk-checkboxes__label::before {
+  background: govuk-colour("white");
+}
+
+.govuk-checkboxes__label::after {
+  top: 10px;
+  left: 9px;
+  width: 24px;
+  height: 15px;
+}
+
+.govuk-error-summary__list {
+  a {
+    text-decoration: underline;
+  }
+}
+
+.section {
+  padding-top: 0;
+
+  @include touch {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.column > .section,
+.column form > .section,
+.section--nested {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.select-iterator {
+
+  .govuk-button {
+    margin-bottom: 0;
+
+    @include touch {
+      width: auto;
+    }
+  }
+}
+
+.govuk-checkboxes--small .govuk-checkboxes__label::after {
+  top: 15px;
+  left: 6px;
+  width: 12px;
+  height: 7px;
+}
+
+.govuk-skip-link:active,
+.govuk-skip-link:focus {
+  display: block;
+  min-height: 40px;
+  box-sizing: border-box;
+}
+
+a.govuk-link:focus {
+  color: govuk-colour("black");
+}
+
+.govuk-details {
+
+  &--contact {
+    .govuk-details__summary {
+      // background-color: lime;
+
+      padding-left: 0;
+
+      &:before {
+        border: 0;
+      }
+
+      &:focus {
+        .govuk-details__plain {
+          /*background-color: govuk-colour("white");
+          box-shadow: none;*/
+        }
+      }
+    }
+
+    &[open] {
+      .govuk-details__summary {
+        &:before {
+          border: 0;
+        }
+      }
+    }
+
+    .govuk-details__plain {
+      color: govuk-colour("black")
+    }
+  }
+}
+
+// bulma reset reset
+table td:not([align]), table th:not([align]) {
+  text-align: unset;
+}
+
+.govuk-table__header--numeric,
+.govuk-table__cell--numeric {
+  text-align: right!important;
+}
+
+.govuk-back-link {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.govuk-table__cell--middle {
+  vertical-align: middle;
+}
+
+.govuk-table__cell--borderless {
+  border-style: none;
+}
+
+.govuk-list--alpha {
+  list-style-type: lower-alpha;
+  padding-left: 20px;
+}
+
+.govuk-list--Alpha {
+  list-style-type: upper-alpha;
+  padding-left: 20px;
+}
+
+.govuk-textarea:disabled,
+.govuk-input:disabled {
+  border-color: govuk-colour("mid-grey");
+}
+
+.govuk-button--s {
+  padding: 4px 6px 3px;
+  @include govuk-font($size: 16);
+}
+
+html {
+  background-color: govuk-colour("black");
+}
+body {
+  background-color: govuk-colour("white");
+}
+
+.container.is-fluid {
+  @include touch {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.ufs-tabs {
+  padding: 0!important;
+  border: 0!important;
+}
+
+// Cursor bug on disabled button flashing the "wrong" cursor as mouse moves into hit area
+.govuk-button--disabled,
+.govuk-button[disabled="disabled"],
+.govuk-button[disabled] {
+  cursor: default;
+}
+
+/*a.govuk-button--secondary {
+  background-color: #dbdad9;
+  @extend button.govuk-button--secondary;
+}*/
+
+
+td.u-align-right {
+  text-align: right!important;
+}
+
+.cell-max-35 {
+
+  @include widescreen {
+    width:40%;
+  }
+
+  @include desktop {
+    width: 35%;
+  }
+}
+
+.cell-max-25 {
+
+  @include widescreen {
+    width:35%;
+  }
+
+  @include desktop {
+    width: 25%;
+  }
+}
+

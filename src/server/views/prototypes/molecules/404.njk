@@ -1,0 +1,47 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'NOTadmin' %}
+{% set pageTitle = 'Page not found' + GLOBAL_TAG_TITLE_SUFFIX %}
+{#{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}#}
+{% set isAdminUser = false %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Page not found') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-8') %}
+
+                <p class="govuk-body govuk-!-font-size-24">If you entered a web address please check it was correct.</p>
+
+                <p class="govuk-body">
+                    <a href="/" class="govuk-link">Return to your UKRI Funding Service account</a>.
+                </p>
+
+                <p class="govuk-body">
+                    <a href="" class="govuk-link">View all UKRI Funding Service Opportunities</a>.
+                </p>
+
+            {%- endcall %}
+
+        {%- endcall %}
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    {#<script>
+    </script>#}
+{% endblock %}

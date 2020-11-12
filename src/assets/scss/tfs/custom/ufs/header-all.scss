@@ -1,0 +1,19 @@
+.header {
+  background-color: ufs-colour("jade");
+  background-image: url("/images/ufs/green-contours.svg");
+  background-repeat: no-repeat;
+  background-size: 580px auto;
+
+  header {
+    padding-top: 20px;
+  }
+
+  @include touch {
+    // padding-right: 8px;
+  }
+
+  &--admin {
+    background-color: ufs-colour("sand");
+    background-image: url("/images/ufs/orange-contours.svg");
+  }
+}

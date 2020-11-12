@@ -1,0 +1,41 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{#{% set navType = 'admin' %}#}
+{% set createOpportunityError = createOpportunityError if createOpportunityError %}
+{% set createOpportunityErrorMessage = createOpportunityErrorMessage if createOpportunityErrorMessage %}
+{% set opportunityName = opportunityName if opportunityName %}
+{% set createOpportunityErrorMessageInputLevel = createOpportunityErrorMessageInputLevel if createOpportunityErrorMessageInputLevel %}
+{#{% set isAdminUser = true %}#}
+{%  set loggedOut = false %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set pageTitle = 'External user elements' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='External user elements') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+
+           <p class="govuk-body">Page showing furniture/elements for external users</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>User profile/orgs menu, above in right-hand end of nav bar</li>
+                <li>Beta banner (scroll down)</li>
+                <li>Contact info (scroll down)</li>
+            </ul>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+
