@@ -1,0 +1,213 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set pageTitle = 'Application preview' + GLOBAL_TAG_TITLE_SUFFIX %}
+{#{% set showSmoothScrollscripts = true %}#}
+{% set showStickyNavscripts = true %}
+
+{% set projectName = projectName if projectName %}
+
+{% set listItems = [
+    { text: '1. Details and summary', url: '#details' },
+    { text: '2. Personal eligibility', url: '#applicant' },
+    { text: '3. Topic eligibility', url: '#area' },
+    { text: '4. Your current research activity', url: '#current' },
+    { text: '5. Your research history', url: '#history' },
+    { text: '6. Write a review', url: '#review' }
+] %}
+}
+
+{% set detailsInput = detailsInput if detailsInput %}
+{% set eligibilityInput = eligibilityInput if eligibilityInput %}
+{% set programmeTopic = programmeTopic if programmeTopic %}
+{% set widerEffect = widerEffect if widerEffect %}
+{% set researchExperience = researchExperience if researchExperience %}
+{% set writeReview = writeReview if writeReview %}
+{% set readOnly = readOnly if readOnly %}
+{% set actionText = 'View ' if readOnly else 'Edit <span aria-hidden="true">this section</span>'%}
+{#{% set backLinkContents =  [{url:'/prototypes/application-v2/', text:'Back to application'}] %}#}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Application preview', caption=projectName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item ">
+                        <a class="govuk-tabs__tab" href="/prototypes/application-v2/">Write application</a>
+                    </li>
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#">Read application</a>
+                    </li>
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='u-space-b30') %}
+
+        {% call components.bulmaColumnAny(size='is-3') %}
+            <nav class="sticky-nav">
+                {{ components.linkHeading(text='Contents', tag='h2', size='s')}}
+                {{ components.list(items=listItems, parentClass='sticky-nav')}}
+                <a href="#" class="govuk-link js-only print-link print-link--tabs" id="printThis" onclick="window.print();return false;">Print this page</a>
+            </nav>
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-9', customID='main-content') %}
+
+            {{ components.alerts(text='This is how assessors will see your proposal.', type='info')}}
+
+            {{ components.linkHeading(text=projectName, tag='h2', size='l', extraClass='serif') }}
+
+            {#{{ components.linkHeading(text='1. Details and summary', tag='h2', size='m', extraClass='serif', id='details', additionalLinkText=actionText, additionalLinkTextHidden=' Details and summary', additionalLinkurl='/prototypes/application-v2/details') }}#}
+            <h2 class="govuk-heading-m serif govuk-heading--link" id="details">
+               1. Details and summary
+               <span class="govuk-heading_additional-link govuk-heading-m">
+                   <a href="/prototypes/application-v2/details" class="govuk-link">Edit <span class="govuk-visually-hidden"> Details and summary</span>
+                   </a>
+                </span>
+            </h2>
+
+            <div class="serif u-space-b30">
+            {% if detailsInput %}
+                {{ detailsInput }}
+            {% else %}
+                <p class='govuk-body-s meta'>No content has been added for this section yet.</p>
+            {% endif %}
+            </div>
+
+            {#<div class="u-align-right">
+                <a href="#main-content" class="govuk-link">Top of page</a>
+            </div>
+            {{ components.divider() }}#}
+
+            {{ components.linkHeading(text='2. Personal eligibility', tag='h2', size='m', extraClass='serif', id='applicant', additionalLinkText=actionText, additionalLinkTextHidden=' Personal eligibility', additionalLinkurl='/prototypes/application-v2/eligibility-applicant') }}
+            {#<h2 class="govuk-heading-m serif govuk-heading--link" id="details">
+                2. Personal eligibility
+                <span class="govuk-heading_additional-link govuk-heading-m">
+                   <a href="/prototypes/application-v2/details" class="govuk-link">Edit <span class="govuk-visually-hidden"> Personal eligibility</span>
+                   </a>
+                </span>
+            </h2>#}
+
+            <div class="serif u-space-b30">
+                {% if eligibilityInput %}
+                    {{ eligibilityInput }}
+                {% else %}
+                    <p class='govuk-body-s meta' >No content has been added for this section yet.</p>
+                {% endif %}
+            </div>
+
+            {#<div class="u-align-right">
+                <a href="#main-content" class="govuk-link">Top of page</a>
+            </div>
+            {{ components.divider() }}#}
+
+            {{ components.linkHeading(text='3. Topic eligibility', tag='h2', size='m', extraClass='serif', id='area', additionalLinkText=actionText, additionalLinkTextHidden=' eligibility - research area', additionalLinkurl='/prototypes/application-v2/eligibility-research-area') }}
+
+            <div class="serif u-space-b30">
+                {% if programmeTopic %}
+                    {{ programmeTopic }}
+                {% else %}
+                    <p class='govuk-body-s meta'>No content has been added for this section yet.</p>
+                {% endif %}
+            </div>
+
+            {#<div class="u-align-right">
+                <a href="#main-content" class="govuk-link">Top of page</a>
+            </div>
+            {{ components.divider() }}#}
+
+            {{ components.linkHeading(text='4. Your current research activity', tag='h2', size='m', extraClass='serif', id='current', additionalLinkText=actionText, additionalLinkTextHidden=' Your current research activity', additionalLinkurl='/prototypes/application-v2/current-research-activity') }}
+
+            <div class="serif u-space-b30">
+                {% if widerEffect %}
+                    {{ widerEffect}}
+                {% else %}
+                    <p class='govuk-body-s meta'>No content has been added for this section yet.</p>
+                {% endif %}
+            </div>
+
+           {# <div class="u-align-right">
+                <a href="#main-content" class="govuk-link">Top of page</a>
+            </div>
+            {{ components.divider() }}#}
+
+            {{ components.linkHeading(text='5. Your research history', tag='h2', size='m', extraClass='serif', id='history', additionalLinkText=actionText, additionalLinkTextHidden=' Your research history', additionalLinkurl='/prototypes/application-v2/research-history') }}
+
+            <div class="serif u-space-b30">
+                {% if researchExperience %}
+                    {{ researchExperience }}
+                {% else %}
+                    <p class='govuk-body-s meta'>No content has been added for this section yet.</p>
+                {% endif %}
+            </div>
+
+           {# <div class="u-align-right">
+                <a href="#main-content" class="govuk-link">Top of page</a>
+            </div>
+            {{ components.divider() }}#}
+
+            {{ components.linkHeading(text='6. Write a review', tag='h2', size='m', extraClass='serif', id='review', additionalLinkText=actionText, additionalLinkTextHidden=' Write a review', additionalLinkurl='/prototypes/application-v2/review') }}
+
+            <div class="serif u-space-b30">
+                {% if writeReview %}
+                    {{ writeReview }}
+                {% else %}
+                    <p class='govuk-body-s meta'>No content has been added for this section yet.</p>
+                {% endif %}
+            </div>
+
+            <div class="u-align-right">
+                <a href="#main-content" class="govuk-link">Top of page</a>
+            </div>
+            {#{{ components.divider() }}#}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script type="text/javascript">
+      /* smooth-scroll.js v1.3.1 */
+      /*
+      n=0,
+      r=500,
+      i=15,
+      */
+      (function(e,t){
+        "use strict";
+        var n=0,
+          r=250,
+          i=15,
+          s=document.getElementsByTagName("a"),
+          o;
+        for(var u=0;u<s.length;u++){
+          o=s[u].attributes.href===t?null:s[u].attributes.href.nodeValue.toString();
+          if(o!==null&&o.length>1&&o.indexOf("#")!=-1){
+            s[u].onclick=function(){
+              var n,s=this.attributes.href.nodeValue.toString(),o=s.substr(0,s.indexOf("#")),u=s.substr(s.indexOf("#")+1);if(n=document.getElementById(u)){var l=(r-r%i)/i,c=f(),h=(a(n)-c)/l;if(e.history&&typeof e.history.pushState=="function")e.history.pushState({},t,o+"#"+u);for(var p=1;p<=l;p++){(function(){var t=h*p;setTimeout(function(){e.scrollTo(0,t+c)},i*p)})()}return false}}}}var a=function(e){var r=n*-1;while(e.offsetParent!=t&&e.offsetParent!=null){r+=e.offsetTop+(e.clientTop!=null?e.clientTop:0);e=e.offsetParent}return r};var f=function(){return e.pageYOffset!==t?e.pageYOffset:document.documentElement.scrollTop!==t?document.documentElement.scrollTop:document.body.scrollTop}})(window)
+    </script>
+
+
+   <script>
+      Zepto(function($){
+        $(window).on('load', function() {
+          console.log('window loaded');
+          $('.govuk-tabs__tab').attr('tabindex', '');
+        });
+      });
+    </script>
+
+{% endblock %}
+
+
+
+

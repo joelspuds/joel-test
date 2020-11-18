@@ -1,0 +1,108 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{#{% set navType = 'admin' %}#}
+{% set createOpportunityError = createOpportunityError if createOpportunityError %}
+{% set createOpportunityErrorMessage = createOpportunityErrorMessage if createOpportunityErrorMessage %}
+{% set opportunityName = opportunityName if opportunityName %}
+{% set createOpportunityErrorMessageInputLevel = createOpportunityErrorMessageInputLevel if createOpportunityErrorMessageInputLevel %}
+{#{% set isAdminUser = true %}#}
+{% set allOrgs = allOrgs if allOrgs %}
+{% set organisationNameError = organisationNameError if organisationNameError %}
+{%  set loggedOut = true %}
+{% set backLinkContents =  [{url:'/prototypes/register-v1/start', text:'Back'}] %}
+
+{% set pageTitle = 'Select your organisation' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+     {% if organisationNameError %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+                    <h2 class="govuk-error-summary__title" id="error-summary-title">There is a problem</h2>
+                    <div class="govuk-error-summary__body">
+                        <ul class="govuk-list govuk-error-summary__list">
+                            <li>
+                                <a href="#organisation">You have not entered a name that is registered with the UKRI Funding Service</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {% endif %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Select your organisation', caption='Apply to AHRC New Generation Thinkers scheme') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='/prototypes/register-v1/organisation', method='POST', name='selectOrganisation') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+
+                {#<p class="govuk-body">Only bodies registered with the UKRI Funding Service can apply for this Opportunity.</p>#}
+
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-visually-hidden">Add the relevant organisation</legend>
+
+                    <div class="govuk-form-group {% if organisationNameError %} govuk-form-group--error {% endif %}">
+                        <label class="govuk-label govuk-label--s" for="organisation">Start entering, then select, your organisation's name</label>
+                        <span class="govuk-hint">This will be the lead organisation for your application. Only organisations registered with the UKRI Funding Service can apply for this Opportunity.</span>
+                        {% if organisationNameError %}
+                            <span id="organisation-error" class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> You must enter an organisation that is registered with the UKRI Funding Service
+                            </span>
+                        {% endif %}
+                        <select name="organisation" class="govuk-select {% if organisationNameError %} govuk-select--error {% endif %} control" id="organisation">
+                            <option></option>
+                            {% for item in allOrgs %}
+                                <option value="{{ item.name }}">{{ item.name }}</option>
+                            {% endfor %}
+                        </select>
+
+                    </div>
+
+                </fieldset>
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen') %}
+
+                {% call components.formGroup() %}
+                    {{ components.button(text='Continue', extraClass="application-controls__submit")}}
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %} {# end form #}
+    {% include '../../layouts/partials/user-contact.njk' %}
+{% endblock %}
+{% block bodyScripts %}
+    <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+      var selectEl = document.querySelector('#organisation');
+      accessibleAutocomplete.enhanceSelectElement({
+        autoselect: true,
+        defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+        minLength: 1,
+        selectElement: selectEl
+      });
+    </script>
+{% endblock %}
+
+

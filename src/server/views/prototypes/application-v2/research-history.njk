@@ -1,0 +1,140 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set pageTitle = 'Your research history' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set projectName = projectName if projectName %}
+{% set researchExperience = researchExperience if researchExperience %}
+{% set backLinkContents =  [{url:'/prototypes/application-v2/', text:'Back to application'}] %}
+{% set researchExperienceIsComplete = researchExperienceIsComplete if researchExperienceIsComplete %}
+{% set readOnly = readOnly if readOnly %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Your research history', caption=projectName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% if readOnly %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                {{ components.alerts(text='You are in read-only view and nothing can be edited', type='info')}}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {% endif %}
+
+    {% call components.form(action='/prototypes/application-v2/research-history', method='POST',name='formResearchExperience') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+                    <div class="govuk-form-group ">
+                        <label class="govuk-label govuk-label--s govuk-!-font-weight-bold" for="researchExperience">List the academic institutions where you have been based, the years you were there and the research you undertook</label>
+                        <details class="govuk-details u-space-t20" data-module="govuk-details" role="group">
+                            <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                <span class="govuk-details__summary-text">What you should include in your answer</span>
+                            </summary>
+                            <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                <p class="govuk-body">Include all the academic institutions for whom you have carried out research. Start with the most recent; describe what you did and how you did it, providing any interesting outcomes.<br><br>
+                                    The assessors are particularly looking for:
+                                    <br><br>&bull; a breadth of research interest
+                                    <br><br>&bull; high standards of scholarship.
+                                </p>
+
+                            </div>
+                        </details>
+                        <textarea class="govuk-textarea govuk-js-character-count" name="researchExperience" id="researchExperience" rows="18" {% if readOnly %} disabled {% endif %}>{{ researchExperience }}</textarea>
+                        <p><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 250 words remaining</span></p>
+                    </div>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                {% call components.formGroup() %}
+                    <div class="application-item">
+                        <div class="application-item__contents">
+                            <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                    <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                </legend>
+                                <div class="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if researchExperienceIsComplete %} checked{% endif %} {% if readOnly %} disabled {% endif %}>
+                                        <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                {% call components.formGroup() %}
+                    <div class="application-controls govuk-clearfix">
+                        {% if readOnly %}
+                            <a href="http://localhost:3002/prototypes/application-v2/" class="govuk-link">Return to application</a>
+                        {% else %}
+                            {{ components.button(text='Save and return', extraClass="application-controls__submit")}}
+                        {% endif %}
+                    </div>
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+      ;(function(){
+        let wordcounter = document.getElementById('researchExperience');
+        let counteroutputFoot = document.getElementById('wordCount');
+        let words;
+        const limit = 250;
+
+        function countemwords(){
+          words = (wordcounter.value == '')? 0 : wordcounter.value.split(' ').length;
+          let remainder = limit - words;
+          if (words < limit) {
+            wordcounter.classList.remove('govuk-textarea--error');
+            counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+          } else {
+            let overCount = words - limit;
+            wordcounter.classList.add('govuk-textarea--error');
+            counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+          }
+        }
+        wordcounter.addEventListener('input', function(e){
+          countemwords()
+        }, false);
+        document.addEventListener("DOMContentLoaded", function(event) {
+          countemwords()
+        }, false);
+        window.addEventListener("load", function(event) {
+          countemwords();
+        }, false)
+      })();
+    </script>
+{% endblock %}

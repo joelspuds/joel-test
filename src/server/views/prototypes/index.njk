@@ -3,17 +3,37 @@
 {% set pageTitle = 'Prototypes Index' %}
 
 {% set listItemsWIP = [
-  { text: 'Item one', url: '#' },
+  { text: 'Molecules & layouts', url: '/prototypes/molecules' },
+  { text: 'Resources and costs', url: '/prototypes/molecules/resources-and-costs' },
+  { text: 'Resources and costs with error', url: '/prototypes/molecules/resources-and-costs-errors' },
+  { text: 'Resources and costs with all erroring', url: '/prototypes/molecules/resources-and-costs-errorall' }
   ] %}
 
-  {% set listItemsFinal = [
-  { text: 'Item two', url: '#' },
+  {% set listItemsInternal = [
+  { text: 'Create Opportunity v3', url: '/prototypes/opportunity-v3' },
+  { text: 'Create Opportunity v3 (clear session)', url: '/prototypes/opportunity-v3?clearSession=true' }
+  ] %}
+
+ {% set listItemsExternal = [
+   { text: 'Application', url: '/prototypes/application-v2' },
+   { text: 'Apply for opportunity as user', url: '/prototypes/example-journey/application/project-listings' },
+   { text: 'Register/signin', url: '/prototypes/register-v1/' }
+ ] %}
+{% set listItemsGeneric = [
+  { text: 'Dashboard', url: '/prototypes/application-v2' }
+] %}
+
+{% set listItemsStories = [
+  { text: 'FSB-106', url: '/prototypes/stories/fsb-106' },
+  { text: 'FSB-740', url: '/prototypes/stories/fsb-740' },
+  { text: 'FSB-2730', url: '/prototypes/stories/fsb-2730' },
+  { text: 'FSB-3036', url: '/prototypes/stories/fsb-3036' },
+  { text: 'FSB-3124', url: '/prototypes/stories/fsb-3124-applicants' }
 ] %}
 
 {% block content %}
 
   {{ components.pageHeading('Prototypes', ' Front-End') }}
-  {{ components.paragraph(text="Prototypes", lead='true', limitWidth=true)}}
 
   {% call components.gridRow() %}
 
@@ -21,15 +41,39 @@
 
       {{ components.heading(text='Work in progress', tag='h3', size='medium') }}
 
+      {{ components.alerts(text='Some of these may be updated with the new GDS partials!', type='warning') }}
+
       {{ components.list(items=listItemsWIP, type='bullet')}}
 
     {%- endcall %}
 
     {% call components.columnHalf() %}
 
-      {{ components.heading(text='Production ready', tag='h3', size='medium') }}
+      {{ components.heading(text='Journeys', tag='h3', size='medium') }}
 
-      {{ components.list(items=listItemsFinal, type='bullet')}}
+      {{ components.heading(text='Internal', tag='h4', size='small') }}
+
+      {{ components.list(items=listItemsInternal, type='bullet')}}
+
+      {{ components.heading(text='External', tag='h4', size='small') }}
+
+      {{ components.list(items=listItemsExternal, type='bullet')}}
+
+      {{ components.heading(text='Generic', tag='h4', size='small') }}
+
+      {{ components.list(items=listItemsGeneric, type='bullet')}}
+
+    {%- endcall %}
+
+  {%- endcall %}
+
+  {% call components.gridRow() %}
+
+    {% call components.columnHalf() %}
+
+      {{ components.heading(text='Stories', tag='h3', size='medium') }}
+
+      {{ components.list(items=listItemsStories, type='bullet')}}
 
     {%- endcall %}
 

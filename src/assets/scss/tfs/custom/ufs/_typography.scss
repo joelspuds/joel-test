@@ -59,7 +59,6 @@ h1.govuk-heading-xl {
 }
 
 .ufs-body-wrapper {
-
   .form-label {
     font-weight: 700;
   }
@@ -108,4 +107,9 @@ body.ufs .govuk-heading_additional-link a span {
 .error-text {
   color: govuk-colour("red");
   @include govuk-font($size:19, $weight: bold);
+}
+
+.heading--divider {
+  border-bottom: 1px solid govuk-colour("mid-grey");
+  padding-bottom: 10px;
 }

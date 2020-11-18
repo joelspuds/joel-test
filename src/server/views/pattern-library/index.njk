@@ -9,11 +9,11 @@
 
     {% call components.gridRow() %}
 
-        {% call components.columnOneThird() %}
+        {% call components.columnFull() %}
 
             {#{% include "/src/govuk-frontend/src/govuk/components/back-link/template.njk" %}#}
 
-            {{ components.heading(text='Accordion', tag='h2', size='medium') }}
+            {{ components.heading(text='Accordion', tag='h2', size='medium', extraClass='heading--divider') }}
             {{ components.paragraph('<a href="https://design-system.service.gov.uk/components/accordion/" class="govuk-link">Options</a>') }}
             {{ components.govukAccordion({
                 id: 'exampleAccordion',
@@ -39,10 +39,10 @@
                  }) | prism }}
 
 
-            {{ components.heading(text='Back link', tag='h2', size='medium') }}
+            {{ components.heading(text='Back link', tag='h2', size='medium', extraClass='heading--divider') }}
             {{ components.govukBackLink({href:'/some/path',text:'Back link text'}) | prism }}
 
-            {{ components.heading(text='Breabcrumbs', tag='h2', size='medium') }}
+            {{ components.heading(text='Breabcrumbs', tag='h2', size='medium', extraClass='heading--divider') }}
             {{ components.govukBreadcrumbs({
                 href:'/some/path',
                 text:'Back link text',
@@ -62,7 +62,7 @@
             })
             | prism }}
 
-            {{ components.heading(text='Butons', tag='h2', size='medium') }}
+            {{ components.heading(text='Buttons', tag='h2', size='medium', extraClass='heading--divider') }}
             {{ components.govukButton({
                 text: 'Save and continue'
             })
@@ -83,6 +83,157 @@
                 text: 'Disabled button'
             })
             | prism }}
+
+            {{ components.heading(text='Character count', tag='h2', size='medium', extraClass='heading--divider') }}
+
+            {{ components.govukCharacterCount({
+                name: "with-hint",
+                id: "with-hint",
+                maxlength: 200,
+                label: {
+                    text: "Can you provide more detail?"
+                },
+                hint: {
+                    text: "Do not include personal or financial information like your National Insurance number or credit card details."
+                }
+            }) | prism }}
+
+            {{ components.heading(text='Checkboxes', tag='h2', size='medium', extraClass='heading--divider') }}
+
+            {#{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+            {% from "govuk/components/input/macro.njk" import govukInput %}#}
+            {% set emailHtml %}
+                {{ components.govukInput({
+                    id: "contact-by-email",
+                    name: "contact-by-email",
+                    type: "email",
+                    spellcheck: false,
+                    classes: "govuk-!-width-one-third",
+                    label: {
+                        text: "Email address"
+                    }
+                }) }}
+            {% endset -%}
+
+            {% set phoneHtml %}
+                {{ components.govukInput({
+                    id: "contact-by-phone",
+                    name: "contact-by-phone",
+                    type: "tel",
+                    classes: "govuk-!-width-one-third",
+                    label: {
+                        text: "Phone number"
+                    }
+                }) }}
+            {% endset -%}
+
+            {% set textHtml %}
+                {{ components.govukInput({
+                    id: "contact-by-text",
+                    name: "contact-by-text",
+                    type: "tel",
+                    classes: "govuk-!-width-one-third",
+                    label: {
+                        text: "Mobile phone number"
+                    }
+                }) }}
+            {% endset -%}
+
+            {{ components.govukCheckboxes({
+                idPrefix: "contact",
+                name: "contact",
+                fieldset: {
+                    legend: {
+                        text: "How would you like to be contacted?",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--l"
+                    }
+                },
+                hint: {
+                    text: "Select all options that are relevant to you."
+                },
+                items: [
+                    {
+                        value: "email",
+                        text: "Email",
+                        conditional: {
+                        html: emailHtml
+                    }
+                    },
+                    {
+                        value: "phone",
+                        text: "Phone",
+                        conditional: {
+                        html: phoneHtml
+                    }
+                    },
+                    {
+                        value: "text message",
+                        text: "Text message",
+                        conditional: {
+                        html: textHtml
+                    }
+                    }
+                ]
+            }) }}
+
+            {{ components.heading(text='Date input', tag='h2', size='medium', extraClass='heading--divider') }}
+            {{ components.govukDateInput({
+                id: "passport-issued",
+                namePrefix: "passport-issued",
+                fieldset: {
+                    legend: {
+                        text: "When was your passport issued?",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--l"
+                    }
+                },
+                hint: {
+                    text: "For example, 12 11 2007"
+                }
+            }) }}
+
+            {{ components.heading(text='Details summary', tag='h2', size='medium', extraClass='heading--divider') }}
+            {{ components.govukDetails({
+                summaryText: "Help with nationality",
+                text: "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post."
+            }) }}
+
+            {{ components.heading(text='Error message', tag='h2', size='medium', extraClass='heading--divider') }}
+            {{ components.govukDateInput({
+                fieldset: {
+                    legend: {
+                        text: "When was your passport issued?",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--l"
+                    }
+                },
+                hint: {
+                    text: "For example, 12 11 2007"
+                },
+                errorMessage: {
+                    text: "The date your passport was issued must be in the past"
+                },
+                id: "passport-issued",
+                namePrefix: "passport-issued",
+                items: [
+                    {
+                        classes: "govuk-input--width-2 govuk-input--error",
+                        name: "day",
+                        value: "6"
+                    },
+                    {
+                        classes: "govuk-input--width-2 govuk-input--error",
+                        name: "month",
+                        value: "3"
+                    },
+                    {
+                        classes: "govuk-input--width-4 govuk-input--error",
+                        name: "year",
+                        value: "2076"
+                    }
+                ]
+            }) }}
 
         {%- endcall %}
 

@@ -4,44 +4,45 @@
 
 //  Break this lot down into it's parts so we can remove later
 // @import '../../govuk-frontend/src/govuk/all';
-
 // @import "../../govuk-frontend/src/govuk/base";
-@import "../../govuk-frontend/src/govuk/settings/all";
-@import "../../govuk-frontend/src/govuk/tools/all";
-@import "../../govuk-frontend/src/govuk/helpers/all";
 
-/*@import "../../govuk-frontend/src/govuk/core/all";*/
-@import "../../govuk-frontend/src/govuk/core/links";
-@import "../../govuk-frontend/src/govuk/core/lists";
-@import "../../govuk-frontend/src/govuk/core/template";
-@import "../../govuk-frontend/src/govuk/core/typography";
-@import "../../govuk-frontend/src/govuk/core/section-break";
-@import "../../govuk-frontend/src/govuk/core/global-styles";
+  /* USING LOCAL */
+  @import "../../govuk-frontend/src/govuk/settings/all";
+  @import "../../govuk-frontend/src/govuk/tools/all";
+  @import "../../govuk-frontend/src/govuk/helpers/all";
 
-/*@import "../../govuk-frontend/src/govuk/objects/all";*/
-@import "../../govuk-frontend/src/govuk/objects/form-group";
-@import "../../govuk-frontend/src/govuk/objects/grid";
-@import "../../govuk-frontend/src/govuk/objects/main-wrapper";
-@import "../../govuk-frontend/src/govuk/objects/width-container";
+  /*@import "../../govuk-frontend/src/govuk/core/all";*/
+  @import "../../govuk-frontend/src/govuk/core/links";
+  @import "../../govuk-frontend/src/govuk/core/lists";
+  @import "../../govuk-frontend/src/govuk/core/template";
+  @import "../../govuk-frontend/src/govuk/core/typography";
+  @import "../../govuk-frontend/src/govuk/core/section-break";
+  @import "../../govuk-frontend/src/govuk/core/global-styles";
 
-/* leave as is */
-@import "../../govuk-frontend/src/govuk/components/all";
+  /*@import "../../govuk-frontend/src/govuk/objects/all";*/
+  @import "../../govuk-frontend/src/govuk/objects/form-group";
+  @import "../../govuk-frontend/src/govuk/objects/grid";
+  @import "../../govuk-frontend/src/govuk/objects/main-wrapper";
+  @import "../../govuk-frontend/src/govuk/objects/width-container";
 
-/* leave as is */
-@import "../../govuk-frontend/src/govuk/utilities/all";
+  /* leave as is */
+  @import "../../govuk-frontend/src/govuk/components/all";
 
-/*@import "../../govuk-frontend/src/govuk/overrides/all";*/
-@import "../../govuk-frontend/src/govuk/overrides/display";
-@import "../../govuk-frontend/src/govuk/overrides/spacing";
-@import "../../govuk-frontend/src/govuk/overrides/typography";
-@import "../../govuk-frontend/src/govuk/overrides/width";
+  /* leave as is */
+  @import "../../govuk-frontend/src/govuk/utilities/all";
+
+  /*@import "../../govuk-frontend/src/govuk/overrides/all";*/
+  @import "../../govuk-frontend/src/govuk/overrides/display";
+  @import "../../govuk-frontend/src/govuk/overrides/spacing";
+  @import "../../govuk-frontend/src/govuk/overrides/typography";
+  @import "../../govuk-frontend/src/govuk/overrides/width";
+
 
 /* ***************************************
   New TFS stuff
 *************************************** */
 
 @import 'tfs/tfs';
-
 
 /*
 // GOVUK Elements

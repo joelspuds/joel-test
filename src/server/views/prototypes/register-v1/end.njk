@@ -1,0 +1,39 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set opportunityName = opportunityName if opportunityName %}
+{% set emailAddress = emailAddress if emailAddress %}
+{%  set loggedOut = true %}
+
+{% set pageTitle = 'Account created' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/register-v1/signin', text:'Back to sign in'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen') %}
+            {{ components.captionHeading(text='Check your email') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+
+            <p class="govuk-body">We have sent a link to <strong>jane.mcdoe@somersetuniversity.ac.uk</strong> to verify this email address.
+                Select this link to sign into your UKRI Funding Service account and start your application for <strong>'New Generation Thinkers scheme'</strong>. If you can't see the email in your inbox, check your junk folder.</p>
+            <p class="govuk-body"><a href="#" class="govuk-link">Resend email</a></p>
+
+
+
+            <p class="govuk-body">[<a href="/prototypes/register-v1/signin?confirmedEmail=true" class="govuk-link">Continue to sign in as if you had confirmed email</a>]</p>
+
+
+        {%- endcall %}
+
+    {%- endcall %}
+    {% include '../../layouts/partials/user-contact.njk' %}
+{% endblock %}
+{% block bodyScripts %}
+    {#<script></script>#}
+{% endblock %}
+
+

@@ -19,11 +19,12 @@
 
     {% include './partials/no-js-fallback.njk' %}
     {{ components.govukSkipLink({href:'#mainContent', html:'Skip to main content'}) }}
-    {#{% include './partials/cookie-message.njk' %}#}
+    {% include './partials/cookie-message.njk' %}
     {% include './partials/header.njk' %}
 
+    <div class="govuk-width-container">
     {% block bodyContentWrapper %}{% endblock %}
-
+    </div>
     {% include './partials/footer.njk' %}
     {% include './partials/body-scripts.njk' %}
 

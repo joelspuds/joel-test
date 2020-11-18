@@ -1,0 +1,189 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set pageTitle = APPLICATION_OVERVIEW_TITLE_TAG + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set storedSpeakerNotes = storedSpeakerNotes if storedSpeakerNotes %}
+{% set projectName = projectName if projectName %}
+{% set projectDetails = projectDetails if projectDetails %}
+{% set hasBeenUpdated = hasBeenUpdated if hasBeenUpdated %}
+{% set projectDetailsIsComplete = projectDetailsIsComplete if projectDetailsIsComplete %}
+{% set eligibilityInputComplete = eligibilityInputComplete if eligibilityInputComplete %}
+{% set widerEffectIsComplete = widerEffectIsComplete if widerEffectIsComplete %}
+{% set researchExperienceIsComplete = researchExperienceIsComplete if researchExperienceIsComplete %}
+{% set progressPercentage = progressPercentage if progressPercentage %}
+{% set reverseProgressPercentage = reverseProgressPercentage if reverseProgressPercentage %}
+{#{% set backLinkContents =  [{url:'/prototypes/application-v2/opportunity', text:'Back to Opportunity'}] %}#}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text=APPLICATION_OVERVIEW_TITLE_TAG, caption=projectName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% if hasBeenUpdated %}
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                {{ components.alerts(text='You have successfully updated your application', type='success')}}
+
+            {%- endcall %}
+
+        {%- endcall %}
+    {% endif %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#">Write application</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/application-v2/view">Read application</a>
+                    </li>
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+         {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+             <div class="application-item {% if projectDetailsIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny application-item--skinny-last">
+                 <div class="application-item__contents govuk-clearfix">
+                     <div class="application-item__left">{{ components.link(text='1. Details and summary', url='/prototypes/application-v2/details')}}</div>
+                     <div class="application-item__right">
+                         {% if projectDetailsIsComplete %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                         {% else %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                         {% endif %}
+                     </div>
+                 </div>
+             </div>
+
+             <div class="application-item {% if eligibilityInputComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny application-item--skinny-last">
+                 <div class="application-item__contents govuk-clearfix">
+                     <div class="application-item__left">{{ components.link(text='2. Personal eligibility', url='/prototypes/application-v2/eligibility-applicant')}}</div>
+                     <div class="application-item__right">
+                         {% if eligibilityInputComplete %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                         {% else %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                         {% endif %}
+                     </div>
+                 </div>
+             </div>
+
+             <div class="application-item {% if programmeTopicIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny application-item--skinny-last">
+                 <div class="application-item__contents govuk-clearfix">
+                     <div class="application-item__left">{{ components.link(text='3. Topic eligibility', url='/prototypes/application-v2/eligibility-research-area')}}</div>
+                     <div class="application-item__right">
+                         {% if programmeTopicIsComplete %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                         {% else %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                         {% endif %}
+                     </div>
+                 </div>
+             </div>
+
+             <div class="application-item {% if widerEffectIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny application-item--skinny-last">
+                 <div class="application-item__contents govuk-clearfix">
+                     <div class="application-item__left">{{ components.link(text='4. Your current research activity', url='/prototypes/application-v2/current-research-activity')}}</div>
+                     <div class="application-item__right">
+                         {% if widerEffectIsComplete %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                         {% else %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                         {% endif %}
+                     </div>
+                 </div>
+             </div>
+
+             <div class="application-item {% if researchExperienceIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny application-item--skinny-last">
+                 <div class="application-item__contents govuk-clearfix">
+                     <div class="application-item__left">{{ components.link(text='5. Your research history', url='/prototypes/application-v2/research-history')}}</div>
+                     <div class="application-item__right">
+                         {% if researchExperienceIsComplete %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                         {% else %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                         {% endif %}
+                     </div>
+                 </div>
+             </div>
+
+             <div class="application-item {% if writeReviewIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny application-item--skinny-last">
+                 <div class="application-item__contents govuk-clearfix">
+                     <div class="application-item__left">{{ components.link(text='6. Write a review', url='/prototypes/application-v2/review')}}</div>
+                     <div class="application-item__right">{##}
+                         {% if writeReviewIsComplete %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                         {% else %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                         {% endif %}
+                     </div>
+                 </div>
+             </div>
+
+            <div class="application-controls govuk-clearfix">
+                <p class="govuk-body">Submitting will send your application to UKRI. You will not be able to make changes to your application or resubmit after this point.</p>
+                {% call components.form(action='/prototypes/application-v2/', method='POST',name='submitApplication') %}
+                <button type="submit" class="govuk-button application-controls__submit" name="submitButton" {% if progressPercentage != 100 %}disabled{% endif %}>Submit</button>
+                {%- endcall %}
+            </div>
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
+
+            <div class="progress-meter">
+                <div class="progress-meter__text progress-meter__text--back" role="progress-bar" aria-valuenow="27%"><span class="govuk-visually-hidden">Your application is</span> {{ progressPercentage }}% complete</div>
+                <div class="progress-meter__clipper" aria-hidden="true" style="clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%); -webkit-clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%)">
+                    {% if progressPercentage == 100 %}
+                        <div class="progress-meter__text progress-meter__text--front"><strong>Ready to submit</strong></div>
+                    {% else %}
+                        <div class="progress-meter__text progress-meter__text--front">{{ progressPercentage }}% complete</div>
+                    {% endif %}
+
+                </div>
+            </div>
+            <div class="application-data">
+                <dl class="application-data__list">
+                    <dt class="application-data__key">Funding Opportunity:</dt>
+                    <dd class="application-data__value">OPP334: New Generation Thinkers 2020</dd>
+
+                    <dt class="application-data__key">Application reference:</dt>
+                    <dd class="application-data__value">APP00171</dd>
+
+                    <dt class="application-data__key">Application deadline:</dt>
+                    <dd class="application-data__value">Tuesday 8 October 2020, 4:00pm
+                        <br><span class="danger-text">You have x days until deadline</span>
+                    </dd>
+
+                    <dt class="application-data__key">Funder:</dt>
+                    <dd class="application-data__value">AHRC</dd>
+                </dl>
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+      Zepto(function($){
+        $(window).on('load', function() {
+          console.log('window loaded');
+          $('.govuk-tabs__tab').attr('tabindex', '');
+        });
+      });
+    </script>
+{% endblock %}
+

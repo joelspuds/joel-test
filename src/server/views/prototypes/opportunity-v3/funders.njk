@@ -1,0 +1,148 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+
+{% set pageTitle = ADD_FUNDERS_TO_OPPORTUNITY_TITLE_TAG + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set opportunityName = opportunityName %}
+{% set opportunityID = opportunityID %}
+{% set allCouncils = allCouncils %}
+{% set funderslist = funderslist %}
+{% set fundersError = fundersError if fundersError %}
+{% set fundersIsComplete = fundersIsComplete if fundersIsComplete %}
+{% set othersChecked = othersChecked if othersChecked %}
+{% set fundersOther = fundersOther if fundersOther %}
+{% set otherFundingBody = otherFundingBody if otherFundingBody %}
+{% set useAltSaveMethod = useAltSaveMethod if useAltSaveMethod %}
+
+{% set isAdminUser = true %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.backLink(text='Back to Opportunity set-up', url='/prototypes/opportunity-v3/setup') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% if fundersError %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+                    <h2 class="govuk-error-summary__title" id="error-summary-title">
+                        There is a problem
+                    </h2>
+                    <div class="govuk-error-summary__body">
+                        <ul class="govuk-list govuk-error-summary__list">
+                            <li>
+                                <a href="#fundersError">You have not selected a funder for your Opportunity</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {% endif %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Funders', caption=opportunityID + ': ' + opportunityName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='/prototypes/opportunity-v3/funders', method='POST',name='manageFunders') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-two-thirds', customID='main-content') %}
+
+                <details class="govuk-details u-space-b10" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">Guidance for selecting funders</span>
+                    </summary>
+                    <div class="govuk-details__text">Select all the individual bodies who are contributing. If this is a UKRI-wide Opportunity, select that only and no individual bodies. If you need to add an external funder or contributing body, select ‘Add contributor’. At this stage, a lead funder does not need to be set.</div>
+                </details>
+
+                <div class="govuk-form-group {% if fundersError %} govuk-form-group--error {% endif %}">
+                    <fieldset class="govuk-fieldset" aria-describedby="funders-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            <h2 class="govuk-fieldset__heading"   {% if fundersError %}id="fundersError" {% endif %}>{{ ADD_FUNDERS_TO_OPPORTUNITY_NAME_LABEL }}</h2>
+                        </legend>
+                        <span id="funders-hint" class="govuk-hint">{{ ADD_FUNDERS_TO_OPPORTUNITY_NAME_HINT }}</span>
+
+                        {% if fundersError %}
+                        <span class="govuk-error-message">
+                            <span class="govuk-visually-hidden">Error:</span>Select one or more funders for this Opportunity
+                        </span>
+                        {% endif %}
+                        <div class="govuk-checkboxes">
+
+                            {% for item in allCouncils %}
+
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="council_{{ item.index }}" name="funders" type="checkbox" value="{{ item.value }}"
+                                    {% for match in funderslist %}
+                                        {# DIRTY DIRTY DIRTY #}
+                                        {% if (match == item.name) or (match == item.short) %}
+                                            checked
+                                        {% endif %}
+                                    {% endfor %}
+                                    >
+                                    <label class="govuk-label govuk-checkboxes__label" for="council_{{ item.index }}">
+                                        {% if item.short %}
+                                            {{ item.short }},
+                                        {% endif %}
+                                        {{ item.name }}
+                                    </label>
+                                </div>
+
+                            {% endfor %}
+
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input govuk-checkboxes__input--toggle" id="council_other" name="fundersOther" type="checkbox" value="other" {% if othersChecked %} checked {% endif %} aria-controls="otherFunderInput" aria-expanded="false" {% if fundersOther %} checked {% endif %}>
+                                <label class="govuk-label govuk-checkboxes__label progressive-disclosure" for="council_other">Add contributor</label>
+                            </div>
+                            <div class="govuk-checkboxes__conditional {% if not fundersOther %} govuk-checkboxes__conditional--hidden {% endif %}" id="otherFunderInput">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="otherFundingBody">Enter contributing body</label>
+                                    <input class="govuk-input govuk-!-width-one-third" id="otherFundingBody" name="otherFundingBody" type="text" value="{{ otherFundingBody }}">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% if useAltSaveMethod === true %}
+            {% include '../../layouts/partials/save-as-draft.njk' %}
+        {% else %}
+            {% include '../../layouts/partials/save-as-complete.njk' %}
+        {% endif %}
+
+       {%- endcall %} {# end form #}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+      Zepto(function($){
+        $('.govuk-checkboxes__input--toggle').on('change', function() {
+          let targetID = $(this).attr('aria-controls');
+          let hiddenClass = 'govuk-checkboxes__conditional--hidden';
+          if($('#' + targetID).hasClass(hiddenClass) ){
+            $('#' + targetID).removeClass(hiddenClass);
+            $(this).attr('aria-expanded', true);
+          } else {
+            $('#' + targetID).addClass(hiddenClass);
+            $(this).attr('aria-expanded', false);
+          }
+        }).on('load');
+      });
+    </script>
+{% endblock %}

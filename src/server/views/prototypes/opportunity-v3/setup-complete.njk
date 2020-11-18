@@ -1,0 +1,96 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set pageTitle = 'Opportunity workflow' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set opportunityName = opportunityName %}
+{% set opportunityID = opportunityID %}
+{% set fundersList = fundersList %}
+{% set isAdminUser = true %}
+{% set fundersIsComplete = fundersIsComplete if fundersIsComplete %}
+{% set workFlowItemAdded = workFlowItemAdded if workFlowItemAdded %}
+
+{% set openingDate = openingDate if openingDate %}
+{% set openingTime = openingTime if openingTime %}
+{% set closingDate = closingDate if closingDate %}
+{% set closingTime = closingTime if closingTime %}
+{% set openingTimeMeridian = openingTimeMeridian if openingTimeMeridian %}
+{% set closingTimeMeridian = closingTimeMeridian if closingTimeMeridian %}
+{% set openDay = openDay if openDay %}
+{% set closingDay = closingDay if closingDay %}
+{% set setupComplete = setupComplete if setupComplete %}
+
+{% set openingDateTidyAsString = openingDateTidyAsString if openingDateTidyAsString %}
+{% set closingDateTidyAsString = closingDateTidyAsString if closingDateTidyAsString %}
+
+{% block content %}
+
+    {#{% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.backLink(text=BACK_TO_OPPORTUNITY_DASHBOARD_LINK, url='/prototypes/opportunity-v3/') }}
+        {%- endcall %}
+    {%- endcall %}#}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full u-space-t30') %}
+
+            {{ components.captionHeading(text='Opportunity workflow', caption=opportunityID + ': ' + opportunityName) }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-8', customID='main-content') %}
+
+            <section class="section" id="workflow">
+
+                {{ components.captionHeading(text='Ready to open for applications', tag='h2', size='m', extraClass='') }}
+
+                <p class="govuk-body-l">Opens tomorrow at 9:00am</p>
+
+                <div class="application-items">
+                    <div class="application-item application-item--workflow u-space-b30">
+                        <div class="application-item__contents govuk-clearfix">
+                            <div class="application-item__left">Applications</div>
+                            <div class="application-item__right">
+                                <span class="application-item__meta">
+                                   Opening date:<br>
+                                    <strong> {{ openingDateTidyAsString }}</strong><br>
+                                    Closing date:<br>
+                                    <strong> {{ closingDateTidyAsString }}</strong>
+                                </span>
+                                {#<span class="application-item__control">{{ components.link(text="Remove", url='?removeItem=true') }} </span>#}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-3 is-offset-1') %}
+
+            <div class="govuk-related-items govuk-related-items--flush">
+
+                <h2 class="govuk-heading-xs u-space-y5">
+                    <span class="govuk-visually-hidden">Opportunity reference: </span> {{opportunityID}}
+                </h2>
+                <p class="govuk-body-s u-space-b5">{{ opportunityName }}</p>
+
+                {{ components.captionHeading(text='Funders', tag='h2', size='xs', extraClass='u-space-y5') }}
+                {% if fundersList %}
+                    <span>{{ fundersList[0] }}</span>
+                    {% if fundersList[1]%}, <span>{{ fundersList[1] }}</span>{% endif %}
+                    {% if fundersList[2]%}, <span>{{ fundersList[2] }}</span>{% endif %}
+                    {% if fundersList[4]%}, <span>{{ fundersList[3] }}</span>{% endif %}
+                    {% if fundersList[5]%}, <span>{{ fundersList[4] }}</span>{% endif %}
+                {% endif %}
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}

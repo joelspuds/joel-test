@@ -1,8 +1,9 @@
 {% extends './base.layout.njk' %}
 
 {% block bodyContentWrapper %}
-<main id="content" {{ 'class="' + mainContainerClass + '"' if mainContainerClass }}>
-  {% include './partials/phase-banner.njk' %}
+{% include './partials/phase-banner.njk' %}
+<main id="content" class="govuk-main-wrapper {{ mainContainerClass if mainContainerClass }}">
+
   {% include './partials/breadcrumbs.njk' %}
 
   {#{% filter prismFullpage %}#}

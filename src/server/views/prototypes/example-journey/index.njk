@@ -1,0 +1,80 @@
+{% extends 'layouts/default.layout.njk' %}
+
+{% set pageTitle = 'Example journeys' %}
+{% set listItemsConcepts = [
+    { text: 'Introducer pre-score TinyMCE', url: '/prototypes/example-journey/introducer' },
+    { text: 'Case for support with TinyMCE, image upload and Maths', url: '/prototypes/example-journey/application/' },
+    { text: 'Case for support with PDF', url: '/prototypes/example-journey/embedded-pdf/' },
+    { text: 'Scrolling with sticky nav', url: '/prototypes/example-journey/application/view-static/' },
+    { text: 'Cut and paste into spreadsheet', url: '/prototypes/example-journey/application/spreadsheet/' }
+] %}
+
+{% set listItemsInternalJourneys = [
+    { text: 'Create new opportunity (v1 PoC)', url: '/prototypes/opportunity/' },
+    { text: 'Create new opportunity (v2 minimal pilot) Jan 2020', url: '/prototypes/opportunity-v2/' },
+    { text: 'Create new opportunity (v2 minimal pilot) CLEAR SESSION', url: '/prototypes/opportunity-v2?clearSession=true' },
+    { text: 'Create new opportunity (v3 minimal pilot) Feb 2020', url: '/prototypes/opportunity-v3/' },
+    { text: 'Create new opportunity (v3 minimal pilot) CLEAR SESSION', url: '/prototypes/opportunity-v3?clearSession=true' },
+    { text: 'Admin dashboard (fairly empty atm!)', url: '/prototypes/dashboard/' }
+] %}
+
+{% set listItemsExternalJourneys = [
+    { text: 'Apply for opportunity as user', url: '/prototypes/example-journey/application/project-listings' },
+    { text: 'Register/signin', url: '/prototypes/register-v1/' }
+] %}
+
+{% set listItemsMolecules = [
+    { text: 'Molecules index', url: '/prototypes/molecules/' }
+] %}
+
+{% block content %}
+
+  {% call components.gridRow() %}
+
+    {% call components.columnHalf() %}
+
+        {{ components.captionHeading(text='Concepts', tag='h2', size='m') }}
+
+        {{ components.list(items=listItemsConcepts, type='bullet')}}
+
+    {%- endcall %}
+
+  {%- endcall %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnHalf() %}
+
+            {{ components.captionHeading(text='Internal journeys', tag='h2', size='m') }}
+
+            {{ components.list(items=listItemsInternalJourneys, type='bullet')}}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+  {% call components.gridRow() %}
+
+      {% call components.columnHalf() %}
+
+        {{ components.captionHeading(text='External journeys', tag='h2', size='m') }}
+
+        {{ components.list(items=listItemsExternalJourneys, type='bullet')}}
+
+      {%- endcall %}
+
+  {%- endcall %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnHalf() %}
+
+            {{ components.captionHeading(text='Molecules', tag='h2', size='m') }}
+
+            {{ components.list(items=listItemsMolecules, type='bullet')}}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}

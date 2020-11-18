@@ -1,0 +1,144 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set pageTitle = 'Personal eligibility' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set projectName = projectName if projectName %}
+{% set eligibilityInput = eligibilityInput if eligibilityInput %}
+{% set applicantIsComplete = applicantIsComplete if applicantIsComplete %}
+{% set readOnly = readOnly if readOnly %}
+
+{% set backLinkContents =  [{url:'/prototypes/application-v2/', text:'Back to application'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Personal eligibility', caption=projectName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% if readOnly %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                {{ components.alerts(text='You are in read-only view and nothing can be edited', type='info')}}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {% endif %}
+
+    {% call components.form(action='/prototypes/application-v2/eligibility-applicant', method='POST',name='formProjectTeam') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+                    <div class="govuk-form-group ">
+                        <label class="govuk-label govuk-label--s govuk-!-font-weight-bold" for="eligibilityInput">You need to be a UK resident, aged 18 or over and must select one of the eligibility criteria listed below.</label>
+                        <details class="govuk-details u-space-t20" data-module="govuk-details" role="group">
+                            <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                <span class="govuk-details__summary-text">Eligibility categories</span>
+                            </summary>
+                            <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                <p class="govuk-body">
+                                    Select which of the three categories below describes you best, then enter 'A', 'B' or 'C' in the space provided. Briefly add a description of your current situation and how this meets your selected criteria.
+                                    <br><br>
+                                    A. a current PhD student who has made considerable progress on your research, for example within one year of submission, or
+                                    <br><br>
+                                    B. within eight years of the award of your PhD, excluding any period of career break such as parental leave, caring responsibilities or health reasons, or
+                                    <br><br>
+                                    C. within six years of your first academic appointment, excluding any period of career break such as parental leave, caring responsibilities or health reasons. This must be a paid contract of employment, either full-time or part-time, which lists research and/or teaching as the primary function, including research assistantships.
+                                </p>
+                            </div>
+                        </details>
+                        <textarea class="govuk-textarea govuk-js-character-count" name="eligibilityInput" id="eligibilityInput" rows="18" {% if readOnly %} disabled {% endif %}>{{ eligibilityInput }}</textarea>
+                        <p><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 100 words remaining</span></p>
+                    </div>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                {% call components.formGroup() %}
+                    <div class="application-item">
+                        <div class="application-item__contents">
+                            <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                    <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                </legend>
+                                <div class="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if applicantIsComplete %} checked{% endif %} {% if readOnly %} disabled {% endif %}>
+                                        <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                {% call components.formGroup() %}
+                    <div class="application-controls govuk-clearfix">
+                        {% if readOnly %}
+                            <a href="http://localhost:3002/prototypes/application-v2/" class="govuk-link">Return to application</a>
+                        {% else %}
+                            {{ components.button(text='Save and return', extraClass="application-controls__submit")}}
+                        {% endif %}
+                    </div>
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+{% block bodyScripts %}
+      <script>
+      ;(function(){
+        let wordcounter = document.getElementById('eligibilityInput');
+        let counteroutputFoot = document.getElementById('wordCount');
+        let words;
+        const limit = 70;
+
+        function countemwords(){
+          words = (wordcounter.value == '')? 0 : wordcounter.value.split(' ').length;
+          let remainder = limit - words;
+          if (words < limit) {
+            wordcounter.classList.remove('govuk-textarea--error');
+            counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+          } else {
+            let overCount = words - limit;
+            wordcounter.classList.add('govuk-textarea--error');
+            counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+          }
+        }
+        wordcounter.addEventListener('input', function(e){
+          countemwords()
+        }, false);
+        document.addEventListener("DOMContentLoaded", function(event) {
+          countemwords()
+        }, false);
+        window.addEventListener("load", function(event) {
+          countemwords();
+        }, false)
+      })();
+    </script>
+{% endblock %}

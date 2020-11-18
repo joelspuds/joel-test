@@ -1,0 +1,44 @@
+<!-- TinyMCE  Scripts -->
+<script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+{#<script src="https://cdn.tiny.cloud/1/v7z2bafjecbl5b73zt5zzcdvn1l15v8po9mel2q3ebhwo01f/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>#}
+
+<script>
+
+  // joel.01 API key
+  // phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor
+
+  // nlsn API key
+  // l2nqkzkytjj1cdcih5cik090v6f75o1pa04irfeow06n7idc
+
+  /*
+  * plugins: [
+      'advlist autolink lists link image charmap print preview anchor',
+      'searchreplace visualblocks code fullscreen',
+      'insertdatetime media table paste tinydrive code imagetools wordcount powerpaste'
+    ],
+  * */
+
+  tinymce.init({
+    selector: 'textarea',
+    height: 600,
+    menubar: false,
+    tinydrive_dropbox_app_key: 'socw0soabe8fvpv',
+    tinydrive_token_provider: '/prototypes/jwt',
+    powerpaste_allow_local_images: true,
+    external_plugins: {
+      // 'tiny_mce_wiris' : 'http://localhost:3002/javascripts/@wiris/mathtype-tinymce4/plugin.min.js'
+      'tiny_mce_wiris' : '/javascripts/@wiris/mathtype-tinymce4/plugin.min.js'
+    },
+    plugins: [
+      'advlist autolink lists link image charmap print preview anchor',
+      'searchreplace visualblocks code fullscreen',
+      'insertdatetime media table tinydrive code imagetools wordcount powerpaste'
+    ],
+    toolbar: 'formatselect | bold italic | bullist numlist | image pastetext | tiny_mce_wiris_formulaEditor',
+    content_css: [
+      '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+      '/stylesheets/tinymce.css'
+    ]
+  });
+
+</script>
