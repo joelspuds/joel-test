@@ -3,7 +3,7 @@
     <{{ 'ol' if type == 'number' else 'ul' }} {{ 'class="govuk-list govuk-list--' + type + '"' if type else 'class="govuk-list"' }}>
       {% for item in items %}
       <li>
-        {% if item.url %}<a href="{{ item.url }}" {{ 'class="' + item.class + '"' if item.class }}>{{ item.text }}</a>{% else %}{{ item.text }}{% endif %}
+        {% if item.url %}<a href="{{ item.url }}" class="govuk-link govuk-link--no-visited-state {{ item.class if item.class }}">{{ item.text }}</a>{% else %}{{ item.text }}{% endif %}
       </li>
       {% endfor %}
     </{{ 'ol' if type == 'number' else 'ul' }}>

@@ -1,0 +1,91 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set pageTitle = 'Data test' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Data test', caption=projectName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='formAddApplicant') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                {% call components.bulmaRow() %}
+
+                    {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+
+                        <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
+                            <label class="govuk-label govuk-label--s" for="firstName" id="firstNameLabel">First name
+                                {% if firstNameError %}
+                                    <span class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> You must enter a first name
+                            </span>
+                                {% endif %}
+                            </label>
+                            <input class="govuk-input govuk-input--width-20 {% if firstNameError %}govuk-input--error{% endif %}" id="firstName" type="text" name="firstName" value="{{ firstName }}">
+                        </div>
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+                {% call components.bulmaRow() %}
+
+                    {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen') %}
+
+                        <div class="govuk-form-group {% if lastNameError %}govuk-form-group--error{% endif %}">
+                            <label class="govuk-label govuk-label--s" for="lastName" id="lastNameLabel">Last name
+                                {% if lastNameError %}
+                                    <span class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> You must enter a last name
+                            </span>
+                                {% endif %}
+                            </label>
+                            <input class="govuk-input govuk-input--width-20 {% if lastNameError %}govuk-input--error{% endif %}" id="lastName" type="text" name="lastName" value="{{ lastName }}">
+                        </div>
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="application-controls govuk-clearfix">
+                    {{ components.button(text='Save data', extraClass="application-controls__submit")}}
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+   {# <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        var selectEl = document.querySelector('#organisation');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 1,
+            selectElement: selectEl
+        });
+    </script>#}
+{% endblock %}
+
+

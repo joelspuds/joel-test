@@ -189,7 +189,8 @@ table td:not([align]), table th:not([align]) {
 }
 
 html {
-  background-color: govuk-colour("black");
+  // background-color: govuk-colour("black");
+  background-color: ufs-colour("midnight");
 }
 body {
   background-color: govuk-colour("white");
@@ -244,5 +245,9 @@ td.u-align-right {
   @include desktop {
     width: 25%;
   }
+}
+// to mimic .govuk-link--no-visited-state
+.govuk-link:visited {
+  color: govuk-colour("blue")!important;
 }
 

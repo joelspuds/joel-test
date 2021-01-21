@@ -7,3 +7,11 @@
 @import './custom/custom-with-bulma';
 // @import './modules/modules';
 
+// @media only screen and (max-width: 768px)  {
+$mobile-spacing: 12px;
+@media only screen and (max-width: 1024px)  {
+  .columns {
+    padding-left: $mobile-spacing;
+    padding-right: $mobile-spacing;
+  }
+}

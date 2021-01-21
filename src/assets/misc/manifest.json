@@ -1,10 +1,10 @@
 {
-  "name": "DVSA MOT",
-  "short_name": "DVSA MOT",
+  "name": "Innovate UK - The Funding Service",
+  "short_name": "TFS",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#0b0c0c",
-  "description": "Check your MOT.",
+  "description": "Apply for research funding form Innovate UK",
   "icons": [
     {
       "src": "/images/apple-touch-icon-180x180.png?0.22.1",

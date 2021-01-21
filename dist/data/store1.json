@@ -1,0 +1,9 @@
+{"test": {
+  "var1": "on",
+  "person1": {
+    "firstName": "Bob",
+    "lastName": "Smith",
+    "email": "ewwer@werwer.com",
+    "value": 500
+  }
+}}

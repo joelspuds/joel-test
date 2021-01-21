@@ -1,0 +1,69 @@
+/* ***************************************
+  All of GDS
+*************************************** */
+
+//  Break this lot down into it's parts so we can remove later
+// @import '../../govuk-frontend/src/govuk/all';
+// @import "../../govuk-frontend/src/govuk/base";
+
+
+
+  /* USING LOCAL */
+  @import "../../govuk-frontend/src/govuk/settings/all";
+  @import "../../govuk-frontend/src/govuk/tools/all";
+  @import "../../govuk-frontend/src/govuk/helpers/all";
+
+  /*@import "../../govuk-frontend/src/govuk/core/all";*/
+  @import "../../govuk-frontend/src/govuk/core/links";
+  @import "../../govuk-frontend/src/govuk/core/lists";
+  @import "../../govuk-frontend/src/govuk/core/template";
+  @import "../../govuk-frontend/src/govuk/core/typography";
+  @import "../../govuk-frontend/src/govuk/core/section-break";
+  @import "../../govuk-frontend/src/govuk/core/global-styles";
+
+  /*@import "../../govuk-frontend/src/govuk/objects/all";*/
+  @import "../../govuk-frontend/src/govuk/objects/form-group";
+  @import "../../govuk-frontend/src/govuk/objects/grid";
+  @import "../../govuk-frontend/src/govuk/objects/main-wrapper";
+  @import "../../govuk-frontend/src/govuk/objects/width-container";
+
+  /* leave as is */
+  @import "../../govuk-frontend/src/govuk/components/all";
+
+  /* leave as is */
+  @import "../../govuk-frontend/src/govuk/utilities/all";
+
+  /*@import "../../govuk-frontend/src/govuk/overrides/all";*/
+  @import "../../govuk-frontend/src/govuk/overrides/display";
+  @import "../../govuk-frontend/src/govuk/overrides/spacing";
+  @import "../../govuk-frontend/src/govuk/overrides/typography";
+  @import "../../govuk-frontend/src/govuk/overrides/width";
+
+
+/* ***************************************
+  New TFS stuff
+*************************************** */
+
+@import 'tfs/tfs';
+
+/*
+// GOVUK Elements
+@import 'gds/gds';
+
+// GOVUK front end
+@import 'govuk-frontend/govuk-frontend';
+
+// Mixins
+@import 'mixins/mixins';
+
+// Variables
+@import 'variables';
+
+// Old MTS Comoponents
+@import 'mts/mts';
+
+// Custom Modules
+@import 'modules/modules';
+
+// Custom Themes
+@import 'theme/theme';*/

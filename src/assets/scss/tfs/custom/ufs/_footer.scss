@@ -1,6 +1,14 @@
 .ufs-footer {
-  background-color: govuk-colour("black");
+  // background-color: govuk-colour("black");
+  background-color: ufs-colour("midnight");
   color: govuk-colour("white")!important;
+
+  // to match UKRI site
+  /*background-image: url('/images/ufs/all-councils-horizontal-stack.png');
+  background-position: left bottom;
+  background-repeat: repeat-x;*/
+ //  padding: 50px 0 35px 0;
+  padding-bottom: 40px;
 
   * {
     color: govuk-colour("white");
@@ -35,6 +43,17 @@
   .govuk-footer__section-break {
     height: 1px;
     border-bottom: 1px solid govuk-colour("white");
+  }
+
+  &__branding {
+    width:100%;
+    height: 40px;
+    background-image: url('/images/ufs/all-councils-horizontal-stack.png');
+    background-position: left bottom;
+    background-repeat: repeat-x;
+    /*position: fixed;
+    left: 0;
+    bottom: 0;*/
   }
 }
 

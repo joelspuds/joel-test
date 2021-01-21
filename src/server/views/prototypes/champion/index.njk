@@ -1,0 +1,30 @@
+
+{% extends 'layouts/default.layout.njk' %}
+
+{% set pageTitle = 'Onboarding and users' %}
+
+{% block content %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnFull() %}
+
+            {{ components.pageHeading(heading='Champion') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnTwoThirds() %}
+
+            <p class="govuk-body">
+                <a href="/prototypes/champion/email" class="govuk-link">Re-send email</a>
+            </p>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}

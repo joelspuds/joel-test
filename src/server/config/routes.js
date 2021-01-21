@@ -262,6 +262,21 @@ router.post('/prototypes/awards', demosController.awardStartPost);
 router.get('/prototypes/awards/create', demosController.createAwardGet);
 router.post('/prototypes/awards/create', demosController.createAwardPost);
 
+/* *************************************************************** *
+
+  MMO stuff
+
+* *************************************************************** */
+// router.get('/prototypes/champion', demosController.mmoIndexGet);
+// router.post('/prototypes/champion', demosController.mmoIndexPost);
+router.get('/prototypes/champion/confirm', demosController.mmoConfirmGet);
+router.post('/prototypes/champion/confirm', demosController.mmoConfirmPost);
+router.get('/prototypes/champion/create-password', demosController.mmoCreatePasswordGet);
+router.post('/prototypes/champion/create-password', demosController.mmoCreatePasswordPost);
+router.get('/prototypes/champion/data-test', demosController.mmoDataTestGet);
+router.post('/prototypes/champion/data-test', demosController.mmoDataTestPost);
+router.get('/prototypes/champion/data-display', demosController.mmoDataTestDisplayGet);
+
 // Create route from view path
 router.get('*', miscController.viewFileRoute);
 export const allRoutes = router;

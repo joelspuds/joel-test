@@ -1,0 +1,32 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set pageTitle = 'Data test' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set dataStore = dataStore if dataStore %}
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Data test', caption=projectName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+           <p class="govuk-body">
+               First name: {{ firstName }}
+               <br>
+               Last name: {{ lastName }}
+           </p>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+{% endblock %}

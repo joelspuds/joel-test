@@ -1,0 +1,110 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'NOTadmin' %}
+{% set pageTitle = 'APP414: Secrets from the gaps in archaeological history' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/champion/applications-1', text:'Back to applications'}] %}
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+{% set showManageUsers = true %}
+{% set activeNavItem = 'applications' %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Application', caption='APP414: Secrets from the gaps in archaeological history ') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#">Application info</a>
+                    </li>
+                    <li class="govuk-tabs__list-item ">
+                        <a class="govuk-tabs__tab" href="/prototypes/champion/application">Read application</a>
+                    </li>
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow(extraClass='u-space-b30') %}
+
+            {% call components.bulmaColumnAny(size='is-8', customID='main-content') %}
+                <div class="application-data">
+                    <dl class="application-data__list">
+                        <dt class="application-data__key">Application reference:</dt>
+                        <dd class="application-data__value">APP414</dd>
+                        <dt class="application-data__key">Application title:</dt>
+                        <dd class="application-data__value">Comedy in Romanticism</dd>
+                        <dt class="application-data__key">Applicant:</dt>
+                        <dd class="application-data__value">Prof. Jane Doe</dd>
+                        <dt class="application-data__key">Email:</dt>
+                        <dd class="application-data__value">jane.doe@bath.ac.uk</dd>
+                        <dt class="application-data__key">Organisation:</dt>
+                        <dd class="application-data__value">Bath Univeristy</dd>
+                    </dl>
+                </div>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='is-4 if-offset-1') %}
+
+                <div class="govuk-related-items govuk-related-items--flush">
+                    <div class="application-data">
+                        <dl class="application-data__list">
+                            <dt class="application-data__key">Status:</dt>
+                            <dd class="application-data__value">Submitted 3:30pm 12 August 2020</dd>
+                        </dl>
+                    </div>
+                    <ul class="govuk-list u-space-t10">
+                        <li><a href="#" class="govuk-link sub-button ">Re-open application</a></li>
+                    </ul>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    <script type="text/javascript">
+        /* smooth-scroll.js v1.3.1 */
+        /*
+        n=0,
+        r=500,
+        i=15,
+        */
+        (function(e,t){
+            "use strict";
+            var n=0,
+                r=250,
+                i=15,
+                s=document.getElementsByTagName("a"),
+                o;
+            for(var u=0;u<s.length;u++){o=s[u].attributes.href===t?null:s[u].attributes.href.nodeValue.toString();if(o!==null&&o.length>1&&o.indexOf("#")!=-1){s[u].onclick=function(){var n,s=this.attributes.href.nodeValue.toString(),o=s.substr(0,s.indexOf("#")),u=s.substr(s.indexOf("#")+1);if(n=document.getElementById(u)){var l=(r-r%i)/i,c=f(),h=(a(n)-c)/l;if(e.history&&typeof e.history.pushState=="function")e.history.pushState({},t,o+"#"+u);for(var p=1;p<=l;p++){(function(){var t=h*p;setTimeout(function(){e.scrollTo(0,t+c)},i*p)})()}return false}}}}var a=function(e){var r=n*-1;while(e.offsetParent!=t&&e.offsetParent!=null){r+=e.offsetTop+(e.clientTop!=null?e.clientTop:0);e=e.offsetParent}return r};var f=function(){return e.pageYOffset!==t?e.pageYOffset:document.documentElement.scrollTop!==t?document.documentElement.scrollTop:document.body.scrollTop}})(window)
+    </script>
+
+
+    <script>
+        Zepto(function($){
+            $(window).on('load', function() {
+                console.log('window loaded');
+                $('.govuk-tabs__tab').attr('tabindex', '');
+            });
+        });
+    </script>
+{% endblock %}

@@ -4,6 +4,12 @@
         > column
 #}
 
+{% macro paragraphWrapper(extraClass, customID)%}
+    <p class="govuk-body {{ extraClass }}" {% if customID %}id="{{ customID }}"{% endif %}>
+        {{ caller() }}
+    </p>
+{% endmacro %}
+
 {# extraClass = is-fluid | not-fluid  #}
 {% macro bulmaContainer(extraClass, customID)%}
     <div class="container {{ extraClass }}">{{ caller() }}</div>

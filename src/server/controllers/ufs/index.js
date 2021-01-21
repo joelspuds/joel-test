@@ -14,3 +14,4 @@ export * from './emailsController';
 export * from './applicationController-v2';
 export * from './variousController';
 export * from './awardsController';
+export * from './mmoController';

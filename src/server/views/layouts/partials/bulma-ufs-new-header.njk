@@ -32,8 +32,11 @@
             {% else %}
               <nav class="new-header__nav new-header__nav--touch-hide">
                 <ul class="new-header__nav-list">
-                  <li class="new-header__nav-item"><a href="/prototypes/dashboard/" class="new-header__nav-link">Home</a></li>
+                  <li class="new-header__nav-item"><a href="/prototypes/champion/home" class="new-header__nav-link">Home</a></li>
                   <li class="new-header__nav-item"><a href="#" class="new-header__nav-link {% if activeNavItem == 'applications' %} new-header__nav-link--active {% endif %}">Applications</a></li>
+                  {% if showManageUsers %}
+                    <li class="new-header__nav-item"><a href="#" class="new-header__nav-link {% if activeNavItem == 'manageUsers' %} new-header__nav-link--active {% endif %}">Manage users</a></li>
+                  {% endif %}
                   <li class="new-header__nav-item new-header__nav-item--user">
                     {#<span class="new-header__nav-text">Prof. Lady Joanne Potwash-McDoelingtonworth BSc MSc PhD MBE</span>
                     <a href="#" class="new-header__nav-link">Your profile</a>#}

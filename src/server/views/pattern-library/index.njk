@@ -200,6 +200,14 @@
             }) }}
 
             {{ components.heading(text='Error message', tag='h2', size='medium', extraClass='heading--divider') }}
+
+            {{ components.govukErrorMessage(
+                {
+                 text: 'There is an error'
+                }
+            ) }}
+
+            {{ components.heading(text='Error message', tag='h2', size='medium', extraClass='heading--divider') }}
             {{ components.govukDateInput({
                 fieldset: {
                     legend: {
@@ -214,7 +222,7 @@
                 errorMessage: {
                     text: "The date your passport was issued must be in the past"
                 },
-                id: "passport-issued",
+                id: "passport-issued-2",
                 namePrefix: "passport-issued",
                 items: [
                     {
@@ -233,6 +241,40 @@
                         value: "2076"
                     }
                 ]
+            }) }}
+
+            {{ components.heading(text='Link', tag='h2', size='medium', extraClass='heading--divider') }}
+
+            {% call components.paragraphWrapper() %}
+                <a href="#" class="govuk-link govuk-link--no-visited-state">This is a link</a>
+            {% endcall %}
+
+            {{ components.heading(text='Notification', tag='h2', size='medium', extraClass='heading--divider') }}
+            {{ components.govukNotificationBanner(
+               {
+                   titleHtml: 'This is a notification',
+                    html: 'You have done something fundamentally wrong and need to address if forthwith.'
+               }
+            ) }}
+
+            {{ components.govukNotificationBanner(
+                {
+                    titleHtml: 'This is a notification about success',
+                    html: 'You have done something correct and we\'re letting you kow that',
+                    type: 'success'
+                }
+            ) }}
+
+            {{ components.heading(text='Panel', tag='h2', size='medium', extraClass='heading--divider') }}
+
+            {{ components.govukPanel({
+                text: 'This is some text'
+            }) }}
+
+            {{ components.heading(text='Warning text', tag='h2', size='medium', extraClass='heading--divider') }}
+
+            {{ components.govukWarningText({
+                text: 'This is a warning'
             }) }}
 
         {%- endcall %}
