@@ -9,15 +9,29 @@
         {%- endcall %}
     {%- endcall %}
 
+    {% if isComplete %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                {{ components.alerts(text='This has been marked as complete', type='info')}}
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
+
     {% call components.bulmaRow() %}
 
         {% call components.bulmaColumnAny(size='is-full') %}
 
            <p class="govuk-body">
-               First name: {{ firstName }}
-               <br>
-               Last name: {{ lastName }}
+               <strong>First name:</strong> {{ firstName if firstName else 'none entered' }}
            </p>
+
+            <p class="govuk-body">
+                <strong>Last name:</strong> {{ lastName if lastName else 'none entered' }}
+            </p>
+
+            <p class="govuk-body">
+                <strong>Is marked complete:</strong>  {{ 'true' if isComplete else 'false' }}
+            </p>
 
         {%- endcall %}
 

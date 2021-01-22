@@ -133,6 +133,7 @@ function mmoDataTestPost(req, res) {
   fs.writeFile(dataFileJSON, JSON.stringify(req.body), err => {
     if (err) return console.error(err);
     console.log('Data stored!');
+    console.log(req.body);
   });
 
   req.session.firstName = firstName;
@@ -153,10 +154,12 @@ function mmoDataTestDisplayGet(req, res) {
 
   let firstName = actualJSONData.firstName;
   let lastName = actualJSONData.lastName;
+  let isComplete = actualJSONData.isComplete;
 
   viewData = {
     firstName,
-    lastName
+    lastName,
+    isComplete
   };
 
   return res.render('prototypes/champion/data-display', viewData);
