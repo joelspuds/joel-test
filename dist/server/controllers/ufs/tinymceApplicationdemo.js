@@ -23,7 +23,7 @@ exports.ethicalSocietalPost = ethicalSocietalPost;
 // suggested learning full list GET
 // This is the fuller version with
 
-const cheerio = require('cheerio');
+// const cheerio = require('cheerio');
 let caseForSupportData = require('./case-for-support-2');
 const untitledProjectName = 'Untitled project';
 let generalData = require('./data');

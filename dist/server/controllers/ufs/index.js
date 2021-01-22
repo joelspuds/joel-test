@@ -16,18 +16,6 @@ Object.keys(_tinymcedemo).forEach(function (key) {
   });
 });
 
-var _tinymceApplicationdemo = require('./tinymceApplicationdemo');
-
-Object.keys(_tinymceApplicationdemo).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _tinymceApplicationdemo[key];
-    }
-  });
-});
-
 var _uploadStuff = require('./uploadStuff');
 
 Object.keys(_uploadStuff).forEach(function (key) {
