@@ -1,0 +1,22 @@
+{% macro notifications(text='You need to set the text paramter in the nunjucks macro.', type, title, linkText, linkURL, secondaryText ) %}
+    <div class="govuk-notification-banner {% if type=='success' %} govuk-notification-banner--success{% endif %}" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        {% if title %}
+        <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                {{ title }}
+            </h2>
+        </div>
+        {% endif %}
+        <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+                {{ text }}
+                {% if linkURL %}
+                <a class="govuk-notification-banner__link" href="{{ linkURL }}">{{ linkText }}</a>
+                {% endif %}
+            </p>
+            {% if secondaryText %}
+                <p class="govuk-body"> {{ secondaryText }} </p>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
