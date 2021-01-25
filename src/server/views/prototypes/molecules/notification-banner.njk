@@ -31,6 +31,10 @@
 
                 {{ components.notifications(title='Important information', text='This box contains some important information that you should read.', linkText='View application', linkURL='#')  }}
 
+                {{ components.captionHeading(text='Normal, passing HTML to text.', tag='h2', size='s') }}
+
+                {{ components.notifications(title='Important information', text='This box contains some important information <a class="govuk-notification-banner__link" href="#">and this link in the text</a> that you should read and maybe click on.', secondaryText='This information will prevent you making a mistake later on hopefully.')  }}
+
                 {{ components.captionHeading(text='No title, and no link', tag='h2', size='s') }}
 
                 {{ components.notifications(text='This is also pretty important.')  }}
