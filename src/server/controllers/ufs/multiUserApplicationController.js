@@ -74,6 +74,11 @@ export function appV3tinyMCEApplicationIndexGet(req, res) {
   justificationIsComplete = data[0].justificationIsComplete;
   projectName = data[0].projectName;
 
+  let hasBeenSubmitted = data[0].hasBeenSubmitted;
+  if (hasBeenSubmitted === 'true') {
+    return res.redirect('/prototypes/multi-user-application/submitted');
+  }
+
   let incrementValue = 20;
   let progressPercentage = 0;
   let reverseProgressPercentage = 0;
@@ -135,7 +140,13 @@ export function appV3tinyMCEApplicationIndexPost(req, res) {
   const { submitButton } = req.body;
   console.log('button action = ' + submitButton);
 
-  let userType = req.session.userType;
+  let tempSubmitButton = submitButton;
+  let hasBeenSubmitted;
+
+  if (submitButton === 'submitToUKRI') {
+    tempSubmitButton = 'startShare';
+    hasBeenSubmitted = 'true';
+  }
 
   const fs = require('fs');
   const dataFileJSON = './temp-store.json';
@@ -145,8 +156,9 @@ export function appV3tinyMCEApplicationIndexPost(req, res) {
     } else {
       // parse JSON string to JSON object
       const databases = JSON.parse(data);
-      databases[0].applicationStatus = submitButton;
-      // console.log(databases);
+      // databases[0].applicationStatus = submitButton;
+      databases[0].applicationStatus = tempSubmitButton;
+      databases[0].hasBeenSubmitted = hasBeenSubmitted;
       // write new data back to the file
       fs.writeFile(dataFileJSON, JSON.stringify(databases, null, 2), err => {
         if (err) {
@@ -248,15 +260,19 @@ export function appV3AdminViewGet(req, res) {
 export function appV3DetailsGet(req, res) {
   let viewData, readOnly;
 
-  let projectNameDB, detailsInputDB, detailsIsComplete;
+  let projectNameDB, detailsInputDB, detailsIsComplete, applicationStatus;
   const fs = require('fs');
   const dataFileJSON = './temp-store.json';
   let data = JSON.parse(fs.readFileSync(dataFileJSON, 'utf8'));
   projectNameDB = data[0].projectName;
   detailsInputDB = data[0].detailsInput;
   detailsIsComplete = data[0].detailsIsComplete;
+  applicationStatus = data[0].applicationStatus;
   let userType = req.session.userType;
   if (userType === 'office') {
+    readOnly = true;
+  }
+  if (applicationStatus === 'startShare') {
     readOnly = true;
   }
 
@@ -312,7 +328,7 @@ export function appV3DetailsPost(req, res) {
 //
 // ************************************************************************
 export function appV3ApplicantsGet(req, res) {
-  let viewData, projectName, applicantsIsComplete;
+  let viewData, projectName, applicantsIsComplete, applicationStatus;
 
   let readOnly = req.session.readOnly;
   let userType = req.session.userType;
@@ -325,6 +341,11 @@ export function appV3ApplicantsGet(req, res) {
   let data = JSON.parse(fs.readFileSync(dataFileJSON, 'utf8'));
   projectName = data[0].projectName;
   applicantsIsComplete = data[0].applicantsIsComplete;
+  applicationStatus = data[0].applicationStatus;
+
+  if (applicationStatus === 'startShare') {
+    readOnly = true;
+  }
 
   viewData = {
     applicantsIsComplete,
@@ -369,7 +390,7 @@ export function appV3ApplicantsPost(req, res) {
 //
 // ************************************************************************
 export function appV3JustificationGet(req, res) {
-  let viewData, projectName, justificationIsComplete;
+  let viewData, projectName, justificationIsComplete, applicationStatus;
 
   let readOnly = req.session.readOnly;
   let userType = req.session.userType;
@@ -382,6 +403,11 @@ export function appV3JustificationGet(req, res) {
   let data = JSON.parse(fs.readFileSync(dataFileJSON, 'utf8'));
   projectName = data[0].projectName;
   justificationIsComplete = data[0].justificationIsComplete;
+  applicationStatus = data[0].applicationStatus;
+
+  if (applicationStatus === 'startShare') {
+    readOnly = true;
+  }
 
   viewData = {
     justificationIsComplete,
@@ -441,187 +467,11 @@ export function appV3SubmittedGet(req, res) {
 
 // ************************************************************************
 //
-//        Eligibility - research area
-//
-// ************************************************************************
-/*export function appV3EligibilityResearchAreaGet(req, res) {
-  let viewData, programmeTopic;
-
-  let projectName = req.session.storedProjectName;
-  if (!projectName) {
-    projectName = untitledProjectName;
-  }
-
-  let programmeTopicIsComplete = req.session.programmeTopicIsComplete;
-  programmeTopic = req.session.programmeTopic;
-  let readOnly = req.session.readOnly;
-
-  viewData = {
-    projectName,
-    programmeTopic,
-    programmeTopicIsComplete,
-    readOnly,
-  };
-
-  return res.render('prototypes/multi-user-application/eligibility-research-area', viewData);
-}
-
-export function appV3EligibilityResearchAreaPost(req, res) {
-  const { programmeTopic, isComplete } = req.body;
-
-  req.session.programmeTopic = programmeTopic;
-  req.session.hasBeenUpdated = true;
-
-  console.log('programmeTopic = ' + programmeTopic);
-
-  if (isComplete == 'on') {
-    req.session.programmeTopicIsComplete = true;
-  } else {
-    req.session.programmeTopicIsComplete = null;
-  }
-
-  return res.redirect('/prototypes/multi-user-application/');
-}*/
-// ************************************************************************
-//
-//        Current research activity
-//        Your research and its wider effect
-//
-// ************************************************************************
-/*
-export function appV3CurrentResearchActivityGet(req, res) {
-  let viewData, widerEffect, widerEffectIsComplete;
-
-  let projectName = req.session.storedProjectName;
-  if (!projectName) {
-    projectName = untitledProjectName;
-  }
-
-  widerEffect = req.session.widerEffect;
-  widerEffectIsComplete = req.session.widerEffectIsComplete;
-
-  let readOnly = req.session.readOnly;
-
-  viewData = {
-    projectName,
-    widerEffect,
-    widerEffectIsComplete,
-    readOnly,
-  };
-
-  return res.render('prototypes/multi-user-application/current-research-activity', viewData);
-}
-
-export function appV3CurrentResearchActivityPost(req, res) {
-  const { widerEffect, isComplete } = req.body;
-
-  req.session.widerEffect = widerEffect;
-  req.session.hasBeenUpdated = true;
-
-  console.log('widerEffect = ' + widerEffect);
-
-  if (isComplete == 'on') {
-    req.session.widerEffectIsComplete = true;
-  } else {
-    req.session.widerEffectIsComplete = null;
-  }
-
-  return res.redirect('/prototypes/multi-user-application/');
-}
-*/
-
-// ************************************************************************
-//
-//        Research history
-//        Your research experience
-//
-// ************************************************************************
-/*export function appV3ResearchHistoryGet(req, res) {
-  let viewData, researchExperience;
-
-  let projectName = req.session.storedProjectName;
-  if (!projectName) {
-    projectName = untitledProjectName;
-  }
-
-  let readOnly = req.session.readOnly;
-
-  researchExperience = req.session.researchExperience;
-  let researchExperienceIsComplete = req.session.researchExperienceIsComplete;
-  viewData = {
-    projectName,
-    researchExperience,
-    researchExperienceIsComplete,
-    readOnly,
-  };
-
-  return res.render('prototypes/multi-user-application/research-history', viewData);
-}
-
-export function appV3ResearchHistoryPost(req, res) {
-  const { researchExperience, isComplete } = req.body;
-
-  req.session.researchExperience = researchExperience;
-  req.session.hasBeenUpdated = true;
-
-  if (isComplete == 'on') {
-    req.session.researchExperienceIsComplete = true;
-  } else {
-    req.session.researchExperienceIsComplete = null;
-  }
-
-  return res.redirect('/prototypes/multi-user-application/');
-}*/
-// ************************************************************************
-//
-//        Write a review
-//
-// ************************************************************************
-/*export function appV3ReviewGet(req, res) {
-  let viewData, writeReview;
-
-  let projectName = req.session.storedProjectName;
-  if (!projectName) {
-    projectName = untitledProjectName;
-  }
-
-  let readOnly = req.session.readOnly;
-
-  writeReview = req.session.writeReview;
-  let writeReviewIsComplete = req.session.writeReviewIsComplete;
-
-  viewData = {
-    projectName,
-    writeReview,
-    writeReviewIsComplete,
-    readOnly,
-  };
-
-  return res.render('prototypes/multi-user-application/review', viewData);
-}
-
-export function appV3ReviewPost(req, res) {
-  const { writeReview, isComplete } = req.body;
-
-  req.session.writeReview = writeReview;
-  req.session.hasBeenUpdated = true;
-
-  if (isComplete == 'on') {
-    req.session.writeReviewIsComplete = true;
-  } else {
-    req.session.writeReviewIsComplete = null;
-  }
-
-  return res.redirect('/prototypes/multi-user-application/');
-}*/
-
-// ************************************************************************
-//
 //        CASE FOR SUPPORT
 //
 // ************************************************************************
 export function appV3caseForSupportGet(req, res) {
-  let viewData, caseForSupportNotes, caseForSupportIsComplete, projectName;
+  let viewData, caseForSupportNotes, caseForSupportIsComplete, projectName, applicationStatus;
 
   // let caseForSupportNotes;
   const fs = require('fs');
@@ -630,10 +480,15 @@ export function appV3caseForSupportGet(req, res) {
   caseForSupportNotes = data[0].caseForSupportNotes;
   caseForSupportIsComplete = data[0].caseForSupportIsComplete;
   projectName = data[0].projectName;
+  applicationStatus = data[0].applicationStatus;
 
   let readOnly;
   let userType = req.session.userType;
   if (userType === 'office') {
+    readOnly = true;
+  }
+
+  if (applicationStatus === 'startShare') {
     readOnly = true;
   }
 
@@ -673,27 +528,22 @@ export function appV3caseForSupportPost(req, res) {
     }
   });
 
-  /*if (isComplete == 'on') {
-    req.session.caseForSupportIsComplete = true;
-  } else {
-    req.session.caseForSupportIsComplete = null;
-  }
-
-  req.session.caseForSupportNotes = caseForSupportNotes;
-  req.session.caseHasBeenUpdated = true;
-  req.session.hasBeenUpdated = true;*/
-
   return res.redirect('/prototypes/multi-user-application/');
 }
 // ************************************************************************
 //
 //        Resources and costs
-//        appV3ResourcesAndCostsGet
-//        appV3ResourcesAndCostsPost
 //
 // ************************************************************************
 export function appV3ResourcesAndCostsGet(req, res) {
-  let viewData, directlyIncurredCost, directlyAllocatedCost, indirectCost, exceptionCost, projectName, resourcesAndCostsIsComplete;
+  let viewData,
+    directlyIncurredCost,
+    directlyAllocatedCost,
+    indirectCost,
+    exceptionCost,
+    projectName,
+    resourcesAndCostsIsComplete,
+    applicationStatus;
 
   // let caseForSupportNotes;
   const fs = require('fs');
@@ -705,10 +555,14 @@ export function appV3ResourcesAndCostsGet(req, res) {
   indirectCost = data[0].indirectCost;
   exceptionCost = data[0].exceptionCost;
   resourcesAndCostsIsComplete = data[0].resourcesAndCostsIsComplete;
+  applicationStatus = data[0].applicationStatus;
 
   let readOnly;
   let userType = req.session.userType;
   if (userType === 'office') {
+    readOnly = true;
+  }
+  if (applicationStatus === 'startShare') {
     readOnly = true;
   }
 
@@ -762,6 +616,7 @@ export function appV3ResourcesAndCostsPost(req, res) {
 //        Add applicant
 //
 // ************************************************************************
+/*
 export function appV3AddApplicantGet(req, res) {
   let viewData;
 
@@ -791,12 +646,14 @@ export function appV3AddApplicantPost(req, res) {
 
   return res.redirect('/prototypes/multi-user-application/add-applicant');
 }
+*/
 
 // ************************************************************************
 //
 //        Prefill with data!
 //
 // ************************************************************************
+/*
 export function appV3PopulateDataGet(req, res) {
   let viewData;
 
@@ -832,3 +689,4 @@ export function appV3PopulateDataGet(req, res) {
 
   return res.render('prototypes/multi-user-application/populate-data', viewData);
 }
+*/

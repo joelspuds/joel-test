@@ -49,6 +49,7 @@ export function multiUsersPost(req, res) {
         databases[0].detailsIsComplete = null;
         databases[0].applicantsIsComplete = null;
         databases[0].justificationIsComplete = null;
+        databases[0].hasBeenSubmitted = null;
         fs.writeFile(dataFileJSON, JSON.stringify(databases, null, 2), err => {
           if (err) {
             console.log(`Error writing file: ${err}`);

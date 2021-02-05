@@ -1,5 +1,5 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
-{% set pageTitle = 'Applicants' + ' - UKRI Funding service' %}
+{% set pageTitle = 'Co-applicants' + ' - UKRI Funding service' %}
 {% set projectName = projectName if projectName %}
 {% set eligibilityInput = eligibilityInput if eligibilityInput %}
 {% set applicantsIsComplete = applicantsIsComplete if applicantsIsComplete %}
@@ -11,7 +11,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Applicants', caption=projectName) }}
+            {{ components.captionHeading(text='Co-applicants', caption=projectName) }}
         {%- endcall %}
     {%- endcall %}
 
@@ -33,7 +33,7 @@
 
         {% call components.bulmaRow() %}
 
-            {% call components.bulmaColumnAny(size='is-full') %}
+            {% call components.bulmaColumnAny(size='is-8') %}
 
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
                     <div class="govuk-form-group ">
@@ -50,7 +50,7 @@
                                 </p>
                             </div>
                         </details>
-                        <textarea class="govuk-textarea govuk-js-character-count" name="eligibilityInput" id="eligibilityInput" rows="18" {% if readOnly %} disabled {% endif %}>You do not have to enter anything here for the purposes of this research session.</textarea>
+                        <textarea class="govuk-textarea govuk-js-character-count" name="eligibilityInput" id="eligibilityInput" rows="8" {% if readOnly %} disabled {% endif %}>You do not have to enter anything here for the purposes of this research session.</textarea>
                         <p><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 100 words remaining</span></p>
                     </div>
                 </div>

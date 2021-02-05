@@ -20,9 +20,6 @@ exports.appV3caseForSupportGet = appV3caseForSupportGet;
 exports.appV3caseForSupportPost = appV3caseForSupportPost;
 exports.appV3ResourcesAndCostsGet = appV3ResourcesAndCostsGet;
 exports.appV3ResourcesAndCostsPost = appV3ResourcesAndCostsPost;
-exports.appV3AddApplicantGet = appV3AddApplicantGet;
-exports.appV3AddApplicantPost = appV3AddApplicantPost;
-exports.appV3PopulateDataGet = appV3PopulateDataGet;
 
 var _createOpportunityV = require('./createOpportunity-v3');
 
@@ -98,6 +95,11 @@ function appV3tinyMCEApplicationIndexGet(req, res) {
   justificationIsComplete = data[0].justificationIsComplete;
   projectName = data[0].projectName;
 
+  let hasBeenSubmitted = data[0].hasBeenSubmitted;
+  if (hasBeenSubmitted === 'true') {
+    return res.redirect('/prototypes/multi-user-application/submitted');
+  }
+
   let incrementValue = 20;
   let progressPercentage = 0;
   let reverseProgressPercentage = 0;
@@ -159,7 +161,13 @@ function appV3tinyMCEApplicationIndexPost(req, res) {
   const { submitButton } = req.body;
   console.log('button action = ' + submitButton);
 
-  let userType = req.session.userType;
+  let tempSubmitButton = submitButton;
+  let hasBeenSubmitted;
+
+  if (submitButton === 'submitToUKRI') {
+    tempSubmitButton = 'startShare';
+    hasBeenSubmitted = 'true';
+  }
 
   const fs = require('fs');
   const dataFileJSON = './temp-store.json';
@@ -169,8 +177,9 @@ function appV3tinyMCEApplicationIndexPost(req, res) {
     } else {
       // parse JSON string to JSON object
       const databases = JSON.parse(data);
-      databases[0].applicationStatus = submitButton;
-      // console.log(databases);
+      // databases[0].applicationStatus = submitButton;
+      databases[0].applicationStatus = tempSubmitButton;
+      databases[0].hasBeenSubmitted = hasBeenSubmitted;
       // write new data back to the file
       fs.writeFile(dataFileJSON, JSON.stringify(databases, null, 2), err => {
         if (err) {
@@ -182,6 +191,7 @@ function appV3tinyMCEApplicationIndexPost(req, res) {
 
   let targetURL;
   if (submitButton === 'submitToUKRI') {
+
     targetURL = '/prototypes/multi-user-application/submitted';
   } else {
     targetURL = '/prototypes/multi-user-application/';
@@ -272,15 +282,19 @@ function appV3AdminViewGet(req, res) {
 function appV3DetailsGet(req, res) {
   let viewData, readOnly;
 
-  let projectNameDB, detailsInputDB, detailsIsComplete;
+  let projectNameDB, detailsInputDB, detailsIsComplete, applicationStatus;
   const fs = require('fs');
   const dataFileJSON = './temp-store.json';
   let data = JSON.parse(fs.readFileSync(dataFileJSON, 'utf8'));
   projectNameDB = data[0].projectName;
   detailsInputDB = data[0].detailsInput;
   detailsIsComplete = data[0].detailsIsComplete;
+  applicationStatus = data[0].applicationStatus;
   let userType = req.session.userType;
   if (userType === 'office') {
+    readOnly = true;
+  }
+  if (applicationStatus === 'startShare') {
     readOnly = true;
   }
 
@@ -336,7 +350,7 @@ function appV3DetailsPost(req, res) {
 //
 // ************************************************************************
 function appV3ApplicantsGet(req, res) {
-  let viewData, projectName, applicantsIsComplete;
+  let viewData, projectName, applicantsIsComplete, applicationStatus;
 
   let readOnly = req.session.readOnly;
   let userType = req.session.userType;
@@ -349,6 +363,11 @@ function appV3ApplicantsGet(req, res) {
   let data = JSON.parse(fs.readFileSync(dataFileJSON, 'utf8'));
   projectName = data[0].projectName;
   applicantsIsComplete = data[0].applicantsIsComplete;
+  applicationStatus = data[0].applicationStatus;
+
+  if (applicationStatus === 'startShare') {
+    readOnly = true;
+  }
 
   viewData = {
     applicantsIsComplete,
@@ -393,7 +412,7 @@ function appV3ApplicantsPost(req, res) {
 //
 // ************************************************************************
 function appV3JustificationGet(req, res) {
-  let viewData, projectName, justificationIsComplete;
+  let viewData, projectName, justificationIsComplete, applicationStatus;
 
   let readOnly = req.session.readOnly;
   let userType = req.session.userType;
@@ -406,6 +425,11 @@ function appV3JustificationGet(req, res) {
   let data = JSON.parse(fs.readFileSync(dataFileJSON, 'utf8'));
   projectName = data[0].projectName;
   justificationIsComplete = data[0].justificationIsComplete;
+  applicationStatus = data[0].applicationStatus;
+
+  if (applicationStatus === 'startShare') {
+    readOnly = true;
+  }
 
   viewData = {
     justificationIsComplete,
@@ -465,187 +489,11 @@ function appV3SubmittedGet(req, res) {
 
 // ************************************************************************
 //
-//        Eligibility - research area
-//
-// ************************************************************************
-/*export function appV3EligibilityResearchAreaGet(req, res) {
-  let viewData, programmeTopic;
-
-  let projectName = req.session.storedProjectName;
-  if (!projectName) {
-    projectName = untitledProjectName;
-  }
-
-  let programmeTopicIsComplete = req.session.programmeTopicIsComplete;
-  programmeTopic = req.session.programmeTopic;
-  let readOnly = req.session.readOnly;
-
-  viewData = {
-    projectName,
-    programmeTopic,
-    programmeTopicIsComplete,
-    readOnly,
-  };
-
-  return res.render('prototypes/multi-user-application/eligibility-research-area', viewData);
-}
-
-export function appV3EligibilityResearchAreaPost(req, res) {
-  const { programmeTopic, isComplete } = req.body;
-
-  req.session.programmeTopic = programmeTopic;
-  req.session.hasBeenUpdated = true;
-
-  console.log('programmeTopic = ' + programmeTopic);
-
-  if (isComplete == 'on') {
-    req.session.programmeTopicIsComplete = true;
-  } else {
-    req.session.programmeTopicIsComplete = null;
-  }
-
-  return res.redirect('/prototypes/multi-user-application/');
-}*/
-// ************************************************************************
-//
-//        Current research activity
-//        Your research and its wider effect
-//
-// ************************************************************************
-/*
-export function appV3CurrentResearchActivityGet(req, res) {
-  let viewData, widerEffect, widerEffectIsComplete;
-
-  let projectName = req.session.storedProjectName;
-  if (!projectName) {
-    projectName = untitledProjectName;
-  }
-
-  widerEffect = req.session.widerEffect;
-  widerEffectIsComplete = req.session.widerEffectIsComplete;
-
-  let readOnly = req.session.readOnly;
-
-  viewData = {
-    projectName,
-    widerEffect,
-    widerEffectIsComplete,
-    readOnly,
-  };
-
-  return res.render('prototypes/multi-user-application/current-research-activity', viewData);
-}
-
-export function appV3CurrentResearchActivityPost(req, res) {
-  const { widerEffect, isComplete } = req.body;
-
-  req.session.widerEffect = widerEffect;
-  req.session.hasBeenUpdated = true;
-
-  console.log('widerEffect = ' + widerEffect);
-
-  if (isComplete == 'on') {
-    req.session.widerEffectIsComplete = true;
-  } else {
-    req.session.widerEffectIsComplete = null;
-  }
-
-  return res.redirect('/prototypes/multi-user-application/');
-}
-*/
-
-// ************************************************************************
-//
-//        Research history
-//        Your research experience
-//
-// ************************************************************************
-/*export function appV3ResearchHistoryGet(req, res) {
-  let viewData, researchExperience;
-
-  let projectName = req.session.storedProjectName;
-  if (!projectName) {
-    projectName = untitledProjectName;
-  }
-
-  let readOnly = req.session.readOnly;
-
-  researchExperience = req.session.researchExperience;
-  let researchExperienceIsComplete = req.session.researchExperienceIsComplete;
-  viewData = {
-    projectName,
-    researchExperience,
-    researchExperienceIsComplete,
-    readOnly,
-  };
-
-  return res.render('prototypes/multi-user-application/research-history', viewData);
-}
-
-export function appV3ResearchHistoryPost(req, res) {
-  const { researchExperience, isComplete } = req.body;
-
-  req.session.researchExperience = researchExperience;
-  req.session.hasBeenUpdated = true;
-
-  if (isComplete == 'on') {
-    req.session.researchExperienceIsComplete = true;
-  } else {
-    req.session.researchExperienceIsComplete = null;
-  }
-
-  return res.redirect('/prototypes/multi-user-application/');
-}*/
-// ************************************************************************
-//
-//        Write a review
-//
-// ************************************************************************
-/*export function appV3ReviewGet(req, res) {
-  let viewData, writeReview;
-
-  let projectName = req.session.storedProjectName;
-  if (!projectName) {
-    projectName = untitledProjectName;
-  }
-
-  let readOnly = req.session.readOnly;
-
-  writeReview = req.session.writeReview;
-  let writeReviewIsComplete = req.session.writeReviewIsComplete;
-
-  viewData = {
-    projectName,
-    writeReview,
-    writeReviewIsComplete,
-    readOnly,
-  };
-
-  return res.render('prototypes/multi-user-application/review', viewData);
-}
-
-export function appV3ReviewPost(req, res) {
-  const { writeReview, isComplete } = req.body;
-
-  req.session.writeReview = writeReview;
-  req.session.hasBeenUpdated = true;
-
-  if (isComplete == 'on') {
-    req.session.writeReviewIsComplete = true;
-  } else {
-    req.session.writeReviewIsComplete = null;
-  }
-
-  return res.redirect('/prototypes/multi-user-application/');
-}*/
-
-// ************************************************************************
-//
 //        CASE FOR SUPPORT
 //
 // ************************************************************************
 function appV3caseForSupportGet(req, res) {
-  let viewData, caseForSupportNotes, caseForSupportIsComplete, projectName;
+  let viewData, caseForSupportNotes, caseForSupportIsComplete, projectName, applicationStatus;
 
   // let caseForSupportNotes;
   const fs = require('fs');
@@ -654,10 +502,15 @@ function appV3caseForSupportGet(req, res) {
   caseForSupportNotes = data[0].caseForSupportNotes;
   caseForSupportIsComplete = data[0].caseForSupportIsComplete;
   projectName = data[0].projectName;
+  applicationStatus = data[0].applicationStatus;
 
   let readOnly;
   let userType = req.session.userType;
   if (userType === 'office') {
+    readOnly = true;
+  }
+
+  if (applicationStatus === 'startShare') {
     readOnly = true;
   }
 
@@ -697,26 +550,15 @@ function appV3caseForSupportPost(req, res) {
     }
   });
 
-  /*if (isComplete == 'on') {
-    req.session.caseForSupportIsComplete = true;
-  } else {
-    req.session.caseForSupportIsComplete = null;
-  }
-   req.session.caseForSupportNotes = caseForSupportNotes;
-  req.session.caseHasBeenUpdated = true;
-  req.session.hasBeenUpdated = true;*/
-
   return res.redirect('/prototypes/multi-user-application/');
 }
 // ************************************************************************
 //
 //        Resources and costs
-//        appV3ResourcesAndCostsGet
-//        appV3ResourcesAndCostsPost
 //
 // ************************************************************************
 function appV3ResourcesAndCostsGet(req, res) {
-  let viewData, directlyIncurredCost, directlyAllocatedCost, indirectCost, exceptionCost, projectName, resourcesAndCostsIsComplete;
+  let viewData, directlyIncurredCost, directlyAllocatedCost, indirectCost, exceptionCost, projectName, resourcesAndCostsIsComplete, applicationStatus;
 
   // let caseForSupportNotes;
   const fs = require('fs');
@@ -728,10 +570,14 @@ function appV3ResourcesAndCostsGet(req, res) {
   indirectCost = data[0].indirectCost;
   exceptionCost = data[0].exceptionCost;
   resourcesAndCostsIsComplete = data[0].resourcesAndCostsIsComplete;
+  applicationStatus = data[0].applicationStatus;
 
   let readOnly;
   let userType = req.session.userType;
   if (userType === 'office') {
+    readOnly = true;
+  }
+  if (applicationStatus === 'startShare') {
     readOnly = true;
   }
 
@@ -785,7 +631,8 @@ function appV3ResourcesAndCostsPost(req, res) {
 //        Add applicant
 //
 // ************************************************************************
-function appV3AddApplicantGet(req, res) {
+/*
+export function appV3AddApplicantGet(req, res) {
   let viewData;
 
   let projectName = req.session.storedProjectName;
@@ -797,13 +644,13 @@ function appV3AddApplicantGet(req, res) {
 
   viewData = {
     projectName,
-    allOrgs
+    allOrgs,
   };
 
   return res.render('prototypes/multi-user-application/add-applicant', viewData);
 }
 
-function appV3AddApplicantPost(req, res) {
+export function appV3AddApplicantPost(req, res) {
   const { firstName, lastName, email, organisation, role } = req.body;
 
   req.session.firstName = firstName;
@@ -814,13 +661,15 @@ function appV3AddApplicantPost(req, res) {
 
   return res.redirect('/prototypes/multi-user-application/add-applicant');
 }
+*/
 
 // ************************************************************************
 //
 //        Prefill with data!
 //
 // ************************************************************************
-function appV3PopulateDataGet(req, res) {
+/*
+export function appV3PopulateDataGet(req, res) {
   let viewData;
 
   let readOnly = req.param('readOnly');
@@ -840,12 +689,19 @@ function appV3PopulateDataGet(req, res) {
 
   // req.session.caseForSupportNotes = '';
 
-  req.session.detailsInput = '<p class="govuk-body ">Pellentesque molestie ante quis elit gravida euismod. Vestibulum egestas elementum sapien. Nullam scelerisque convallis odio a euismod. Vestibulum id neque ac urna aliquet pharetra. Suspendisse vel convallis turpis, pretium rutrum metus. Proin in condimentum ex. Vestibulum quis eros faucibus, ornare ligula quis, rutrum metus. Morbi accumsan sit amet nisi et interdum. Sed vulputate enim nibh, sed iaculis odio porta et. Cras blandit commodo facilisis. Cras feugiat erat arcu, at egestas purus luctus sed. Nullam molestie tempus sapien sed interdum. Nunc non dui faucibus, viverra nisl eget, ultricies ex.</p> <p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate.</p><h3 class="govuk-heading-s">Start date</h3><p class="govuk-body ">August 2020</p><h3 class="govuk-heading-s">Duration</h3><p class="govuk-body ">36 months</p><p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. ';
-  req.session.eligibilityInput = '<p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate.</p>';
-  req.session.programmeTopic = '<p class="govuk-body ">Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. </p>';
-  req.session.widerEffect = '<p class="govuk-body ">Etiam ut molestie dui. Pellentesque semper ante non massa malesuada, id dictum turpis consectetur. Fusce euismod nunc at suscipit laoreet. Morbi blandit justo est, quis accumsan justo mollis viverra. Aenean non tempus est. Sed metus nibh, facilisis suscipit porttitor sed, porttitor quis justo. Fusce placerat nunc at tincidunt gravida. Vestibulum pharetra mollis eros, nec vulputate velit. Aenean tristique elit dignissim malesuada rhoncus. Sed viverra velit quis nunc varius convallis.</p><p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. Quisque fringilla blandit venenatis. Duis consequat, purus at sodales ornare, sapien eros maximus urna, eget ultrices tellus velit vitae lorem.</p>';
-  req.session.researchExperience = '<p class="govuk-body ">Etiam ut molestie dui. Pellentesque semper ante non massa malesuada, id dictum turpis consectetur. Fusce euismod nunc at suscipit laoreet. Morbi blandit justo est, quis accumsan justo mollis viverra. Aenean non tempus est. Sed metus nibh, facilisis suscipit porttitor sed, porttitor quis justo. Fusce placerat nunc at tincidunt gravida. Vestibulum pharetra mollis eros, nec vulputate velit. Aenean tristique elit dignissim malesuada rhoncus. Sed viverra velit quis nunc varius convallis.</p><p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. Quisque fringilla blandit venenatis. Duis consequat, purus at sodales ornare, sapien eros maximus urna.</p><p class="govuk-body ">Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. Quisque fringilla blandit venenatis. Duis consequat, purus at sodales ornare, sapien eros maximus urna.</p>';
-  req.session.writeReview = '<p class="govuk-body ">Quisque malesuada efficitur viverra. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc tincidunt est quis turpis tincidunt, quis luctus lorem ornare. Curabitur pulvinar mollis arcu. Praesent vehicula vulputate nibh sit amet lobortis. Suspendisse fringilla facilisis dui, sed sagittis lectus. Duis at eros nulla. Sed ac enim ornare, consectetur risus vel, molestie massa.</p><p class="govuk-body ">Pellentesque molestie ante quis elit gravida euismod. Vestibulum egestas elementum sapien. Nullam scelerisque convallis odio a euismod. Vestibulum id neque ac urna aliquet pharetra. Suspendisse vel convallis turpis, pretium rutrum metus. Proin in condimentum ex. Vestibulum quis eros faucibus, ornare ligula quis, rutrum metus. Morbi accumsan sit amet nisi et interdum. Sed vulputate enim nibh, sed iaculis odio porta et. Cras blandit commodo facilisis. Cras feugiat erat arcu, at egestas purus luctus sed. Nullam molestie tempus sapien sed interdum. Nunc non dui faucibus, viverra nisl eget, ultricies ex.</p><p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. Quisque fringilla blandit venenatis. Duis consequat, purus at sodales ornare, sapien eros maximus urna, eget ultrices tellus velit vitae lorem.';
+  req.session.detailsInput =
+    '<p class="govuk-body ">Pellentesque molestie ante quis elit gravida euismod. Vestibulum egestas elementum sapien. Nullam scelerisque convallis odio a euismod. Vestibulum id neque ac urna aliquet pharetra. Suspendisse vel convallis turpis, pretium rutrum metus. Proin in condimentum ex. Vestibulum quis eros faucibus, ornare ligula quis, rutrum metus. Morbi accumsan sit amet nisi et interdum. Sed vulputate enim nibh, sed iaculis odio porta et. Cras blandit commodo facilisis. Cras feugiat erat arcu, at egestas purus luctus sed. Nullam molestie tempus sapien sed interdum. Nunc non dui faucibus, viverra nisl eget, ultricies ex.</p> <p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate.</p><h3 class="govuk-heading-s">Start date</h3><p class="govuk-body ">August 2020</p><h3 class="govuk-heading-s">Duration</h3><p class="govuk-body ">36 months</p><p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. ';
+  req.session.eligibilityInput =
+    '<p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate.</p>';
+  req.session.programmeTopic =
+    '<p class="govuk-body ">Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. </p>';
+  req.session.widerEffect =
+    '<p class="govuk-body ">Etiam ut molestie dui. Pellentesque semper ante non massa malesuada, id dictum turpis consectetur. Fusce euismod nunc at suscipit laoreet. Morbi blandit justo est, quis accumsan justo mollis viverra. Aenean non tempus est. Sed metus nibh, facilisis suscipit porttitor sed, porttitor quis justo. Fusce placerat nunc at tincidunt gravida. Vestibulum pharetra mollis eros, nec vulputate velit. Aenean tristique elit dignissim malesuada rhoncus. Sed viverra velit quis nunc varius convallis.</p><p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. Quisque fringilla blandit venenatis. Duis consequat, purus at sodales ornare, sapien eros maximus urna, eget ultrices tellus velit vitae lorem.</p>';
+  req.session.researchExperience =
+    '<p class="govuk-body ">Etiam ut molestie dui. Pellentesque semper ante non massa malesuada, id dictum turpis consectetur. Fusce euismod nunc at suscipit laoreet. Morbi blandit justo est, quis accumsan justo mollis viverra. Aenean non tempus est. Sed metus nibh, facilisis suscipit porttitor sed, porttitor quis justo. Fusce placerat nunc at tincidunt gravida. Vestibulum pharetra mollis eros, nec vulputate velit. Aenean tristique elit dignissim malesuada rhoncus. Sed viverra velit quis nunc varius convallis.</p><p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. Quisque fringilla blandit venenatis. Duis consequat, purus at sodales ornare, sapien eros maximus urna.</p><p class="govuk-body ">Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. Quisque fringilla blandit venenatis. Duis consequat, purus at sodales ornare, sapien eros maximus urna.</p>';
+  req.session.writeReview =
+    '<p class="govuk-body ">Quisque malesuada efficitur viverra. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc tincidunt est quis turpis tincidunt, quis luctus lorem ornare. Curabitur pulvinar mollis arcu. Praesent vehicula vulputate nibh sit amet lobortis. Suspendisse fringilla facilisis dui, sed sagittis lectus. Duis at eros nulla. Sed ac enim ornare, consectetur risus vel, molestie massa.</p><p class="govuk-body ">Pellentesque molestie ante quis elit gravida euismod. Vestibulum egestas elementum sapien. Nullam scelerisque convallis odio a euismod. Vestibulum id neque ac urna aliquet pharetra. Suspendisse vel convallis turpis, pretium rutrum metus. Proin in condimentum ex. Vestibulum quis eros faucibus, ornare ligula quis, rutrum metus. Morbi accumsan sit amet nisi et interdum. Sed vulputate enim nibh, sed iaculis odio porta et. Cras blandit commodo facilisis. Cras feugiat erat arcu, at egestas purus luctus sed. Nullam molestie tempus sapien sed interdum. Nunc non dui faucibus, viverra nisl eget, ultricies ex.</p><p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. Quisque fringilla blandit venenatis. Duis consequat, purus at sodales ornare, sapien eros maximus urna, eget ultrices tellus velit vitae lorem.';
 
   return res.render('prototypes/multi-user-application/populate-data', viewData);
 }
+*/

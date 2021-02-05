@@ -339,7 +339,7 @@ router.get('/prototypes/multi-user-application/opportunity', demosController.app
 router.post('/prototypes/multi-user-application/opportunity', demosController.appV3AHRCOpportunityPost);
 
 // add data
-router.get('/prototypes/multi-user-application/populate-data', demosController.appV3PopulateDataGet);
+// router.get('/prototypes/multi-user-application/populate-data', demosController.appV3PopulateDataGet);
 
 // Create route from view path
 router.get('*', miscController.viewFileRoute);

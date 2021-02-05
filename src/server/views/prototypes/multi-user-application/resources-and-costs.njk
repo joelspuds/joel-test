@@ -34,7 +34,9 @@
 
     {% call components.bulmaRow() %}
 
-        {% call components.bulmaColumnAny(size='is-full') %}
+        {% call components.bulmaColumnAny(size='is-8') %}
+
+            <p class="govuk-body">Provide a summary of the top-level costs of your project. Ensure you input a number (even if it is a zero) in each box. A full break down of your costs will be required at the review stage.</p>
 
             <details class="govuk-details" data-module="govuk-details">
                 <summary class="govuk-details__summary">
@@ -63,7 +65,7 @@
 
                         <thead>
                         <tr>
-                            <th class="govuk-table__header">Funding type</th>
+                            <th class="govuk-table__header">Cost type</th>
                             <th class="govuk-table__header govuk-table__header--numeric">Full economic<br>cost (£)</th>
                             <th class="govuk-table__header govuk-table__header--numeric">Funding <br>percentage (%)</th>
                             <th class="govuk-table__header govuk-table__header--numeric">Funding <br>applied for (£)</th>

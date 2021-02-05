@@ -12,6 +12,16 @@
     {#<style>
         .tox-statusbar__wordcount, .tox-statusbar__branding { display: none!important}
     </style>#}
+
+    {% if readOnly %}
+        <style>
+            .tox .tox-edit-area__iframe {
+            // background-color: #efefef;
+                background-color: rgba(239, 239, 239, 0.3);
+            }
+        </style>
+    {% endif %}
+
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
             {{ components.captionHeading(text='Details and summary', caption=projectName) }}
