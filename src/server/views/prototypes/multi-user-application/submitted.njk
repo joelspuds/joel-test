@@ -1,7 +1,8 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {#{% set bodyClass = 'new-gds' %}#}
-{% set pageTitle = APPLICATION_OVERVIEW_TITLE_TAG + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Application submitted' + ' - UKRI Funding service' %}
+{% set projectName = projectName if projectName %}
 
 {% set backLinkContents =  [{url:'/prototypes/multi-user-application/opportunity', text:'Back to applications'}] %}
 
@@ -9,16 +10,16 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text=APPLICATION_OVERVIEW_TITLE_TAG, caption='APP171: New thinkers test project name') }}
+            {{ components.captionHeading(text='Application submitted', caption=projectName) }}
         {%- endcall %}
     {%- endcall %}
 
     {% call components.bulmaRow() %}
 
         {% call components.bulmaColumnAny(size='is-full') %}
-
-            {{ components.alerts(text='Application submitted on Monday 5 July 2020, 1:53pm', type='success')}}
-
+            <div class="alerts  alerts--success ">
+                Application submitted on {{ 'dataAndTime' | dateAndTime() }}
+            </div>
         {%- endcall %}
 
     {%- endcall %}
@@ -45,9 +46,8 @@
 
              <h2 class="govuk-heading-s">What happens next?</h2>
 
-             <p class="govuk-body">Your application has been received and, if eligible, will be sent for assessment by the BBC and AHRC. Both will create shortlists for consideration at a joint panel meeting in November, after which 60 candidates will be invited to attend workshops with the BBC.</p>
-             <p class="govuk-body">From these, 10 people will become Arts and Humanities Research Council, Radio 3 New Generation Thinkers for 2021.</p>
-             <p class="govuk-body">All applicants will be informed if they have, or have not been selected for the workshop stage by email between 7-11 December 2020. For more information about the process, refer back to the <a href="https://ahrc.ukri.org/funding/apply-for-funding/current-opportunities/new-generation-thinkers-2021/" class="govuk-link">New Generation Thinkers listing on the AHRC website</a>.</p>
+             <p class="govuk-body">Your application has been received and, if eligible, will be sent for assessment by AHRC. They will create shortlists for consideration at a joint panel meeting, after which 60 candidates will be invited to attend workshops.</p>
+             <p class="govuk-body">All applicants will be informed if they have, or have not been selected for the workshop stage by email. For more information about the process, refer back to the <a href="#" class="govuk-link">AHRC research networking scheme listing on the AHRC website</a>.</p>
 
              <h2 class="govuk-heading-s">Notification</h2>
 

@@ -422,6 +422,25 @@ export function appV3JustificationPost(req, res) {
 
 // ************************************************************************
 //
+//        Submitted
+//
+// ************************************************************************
+export function appV3SubmittedGet(req, res) {
+  let viewData, projectName;
+  const fs = require('fs');
+  const dataFileJSON = './temp-store.json';
+  let data = JSON.parse(fs.readFileSync(dataFileJSON, 'utf8'));
+  projectName = data[0].projectName;
+
+  viewData = {
+    projectName,
+  };
+
+  return res.render('prototypes/multi-user-application/submitted', viewData);
+}
+
+// ************************************************************************
+//
 //        Eligibility - research area
 //
 // ************************************************************************

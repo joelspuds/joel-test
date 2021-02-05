@@ -15,6 +15,7 @@ exports.appV3ApplicantsGet = appV3ApplicantsGet;
 exports.appV3ApplicantsPost = appV3ApplicantsPost;
 exports.appV3JustificationGet = appV3JustificationGet;
 exports.appV3JustificationPost = appV3JustificationPost;
+exports.appV3SubmittedGet = appV3SubmittedGet;
 exports.appV3caseForSupportGet = appV3caseForSupportGet;
 exports.appV3caseForSupportPost = appV3caseForSupportPost;
 exports.appV3ResourcesAndCostsGet = appV3ResourcesAndCostsGet;
@@ -441,6 +442,25 @@ function appV3JustificationPost(req, res) {
   });
 
   return res.redirect('/prototypes/multi-user-application/');
+}
+
+// ************************************************************************
+//
+//        Submitted
+//
+// ************************************************************************
+function appV3SubmittedGet(req, res) {
+  let viewData, projectName;
+  const fs = require('fs');
+  const dataFileJSON = './temp-store.json';
+  let data = JSON.parse(fs.readFileSync(dataFileJSON, 'utf8'));
+  projectName = data[0].projectName;
+
+  viewData = {
+    projectName
+  };
+
+  return res.render('prototypes/multi-user-application/submitted', viewData);
 }
 
 // ************************************************************************

@@ -27,3 +27,15 @@ Object.keys(_numberFormat).forEach(function (key) {
     }
   });
 });
+
+var _dateTime = require('./date-time');
+
+Object.keys(_dateTime).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _dateTime[key];
+    }
+  });
+});

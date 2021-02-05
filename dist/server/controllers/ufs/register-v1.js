@@ -88,7 +88,6 @@ function signinPostV1(req, res) {
     req.session.signinError = true;
     return res.redirect('/prototypes/register-v1/signin');
   } else {
-
     // just take EVERYBODY to the multi-user journery applicant start for now
     return res.redirect('/prototypes/multi-user-application/');
 
