@@ -1,0 +1,79 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'NOTadmin' %}
+{% set pageTitle = 'Home' + GLOBAL_TAG_TITLE_SUFFIX %}
+{#{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}#}
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+{% set showManageUsers = true %}
+{#{% set activeNavItem = 'manageUsers' %}#}
+{% set projectName = projectName if projectName %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Home', caption='University of Bath') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow(extraClass='bottom-rule') %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <div class="tfs-tile2 tfs-tile2--actions">
+                    <h2 class="govuk-heading-s tfs-tile2__heading"><a href="/prototypes/multi-users/applications-1" class="govuk-link">Applications</a></h2>
+                    {#<span class="tfs-tile2__number">{{ range(1, 10) | random }}</span>#}
+                    {% if projectName %}
+                        <span class="tfs-tile2__number">2</span>
+                    {% else %}
+                        <span class="tfs-tile2__number">1</span>
+                    {% endif %}
+                    <span class="tfs-tile2__progress">In progress</span>
+                    {#<span class="tfs-tile2__link"><a href="#" class="govuk-link">View payment schedule</a></span>#}
+                </div>
+
+            {%- endcall %}
+
+           {# {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <div class="tfs-tile2 tfs-tile2--actions">
+                    <h2 class="govuk-heading-s tfs-tile2__heading"><a href="/prototypes/champion/applications-2" class="govuk-link">Applications</a></h2>
+                    <span class="tfs-tile2__number">{{ range(10, 100) | random }}</span>
+                    <span class="tfs-tile2__progress">In progress</span>
+                    #}{#<span class="tfs-tile2__link"><a href="#" class="govuk-link">View payment schedule</a></span>#}{#
+                </div>
+
+            {%- endcall %}#}
+
+        {%- endcall %}
+
+    </section>
+
+    <section class="section" id="home-actions">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-8') %}
+                <p class="govuk-body">
+                    <a href="/prototypes/champion/all-users" class="govuk-link">Manage users</a>
+                </p>
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    {#<script>
+    </script>#}
+{% endblock %}

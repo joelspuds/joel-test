@@ -9,14 +9,15 @@
   }
 
   .govuk-link {
-    color: govuk-colour("white");
+    color: govuk-colour("white")!important;
 
     &:focus {
-      color: govuk-colour("black");
+      color: govuk-colour("black")!important;
     }
 
     &:hover {
-      text-decoration: none;
+      /*text-decoration: none;*/
+      color: govuk-colour("black")!important;
     }
   }
 

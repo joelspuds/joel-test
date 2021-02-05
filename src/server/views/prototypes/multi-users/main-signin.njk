@@ -1,0 +1,62 @@
+{% set showExternalFurniture = true %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set pageTitle = 'Sign in or create an account' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% set backLinkContents =  [{url:'/prototypes/application-v2/project-listings', text:'Back to all Opportunities'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Sign in or create an account') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-8', extraClass='u-space-t20') %}
+
+            <div class="has-background-grey-lighter u-pad-20 u-space-b20">
+
+                <p class="govuk-body">
+                    [Sign in form]
+                </p>
+
+            </div>
+
+            <div class="has-background-grey-lighter u-pad-20">
+
+                <p class="govuk-body">
+                    <a href="#" class="govuk-link">Create an account</a>
+                </p>
+
+            </div>
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-4 _is-offset-1') %}
+
+
+
+            <div class="rel-box rel-box--external">
+                <h2 class="govuk-heading-s">Related content</h2>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li><a href="#" class="govuk-link">THis is a related content link for filling up some space</a> </li>
+                    <li><a href="#" class="govuk-link">Don't take too miuch notice of this stuff</a> </li>
+                    <li><a href="#" class="govuk-link">You should be looking over on the left</a> </li>
+                </ul>
+            </div>
+
+            {#<div class="rel-box rel-box--external">
+                <ul class="govuk-list govuk-list--bullet">
+                    <li><a href="#" class="govuk-link">Print this page</a> </li>
+                    <li><a href="#" class="govuk-link">Download as PDF</a> </li>
+                </ul>
+            </div>#}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}

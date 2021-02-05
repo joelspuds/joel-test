@@ -25,6 +25,10 @@
     @extend .govuk-list--bullet;
   }
 
+  li {
+    font-size: 16px;
+  }
+
   ol {
     @extend .govuk-list;
     @extend .govuk-list--number;

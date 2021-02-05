@@ -1,0 +1,73 @@
+{% extends 'layouts/default.layout.njk' %}
+
+{% set pageTitle = 'Multiple users' %}
+
+{% block content %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnFull() %}
+
+            {{ components.pageHeading(heading='Start your research session') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST', name='submitApplication') %}
+
+
+
+            {% call components.gridRow() %}
+                {% call components.columnHalf(size='is-8') %}
+
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <h2 class="govuk-fieldset__legend govuk-fieldset__legend--m">What sort of user are you?</h2>
+                            <div class="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="applicant" name="userType" type="radio" value="applicant">
+                                    <label class="govuk-label govuk-radios__label" for="applicant">Applicant</label>
+                                    <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                                        I am a researcher making an application
+                                    </div>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="office" name="userType" type="radio" value="office">
+                                    <label class="govuk-label govuk-radios__label" for="office">Research office administrator</label>
+                                    <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                                        I work in the research office, and I need to check the applicant's work
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.gridRow() %}
+                {% call components.columnHalf(size='is-8') %}
+
+                    {{ components.button(text='Confirm', extraClass="application-controls__submit", name='saveAndComplete')}}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {% call components.gridRow() %}
+            {% call components.columnHalf(size='is-8') %}
+                <div class="is-warning u-pad-20" style="border:1px solid #909090; padding-bottom:0!important">
+                    <p class="govuk-body">
+                        This will destroy everything. Use with caution.
+                    </p>
+                    <button class="govuk-button govuk-button--secondary" value="wipeData" name="wipeData">Wipe all data</button>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}

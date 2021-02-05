@@ -207,3 +207,27 @@ Object.keys(_mmoController).forEach(function (key) {
     }
   });
 });
+
+var _multiUserApplicationController = require('./multiUserApplicationController');
+
+Object.keys(_multiUserApplicationController).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _multiUserApplicationController[key];
+    }
+  });
+});
+
+var _multiUsersController = require('./multiUsersController');
+
+Object.keys(_multiUsersController).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _multiUsersController[key];
+    }
+  });
+});

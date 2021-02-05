@@ -1,0 +1,196 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set pageTitle = 'Application preview' + GLOBAL_TAG_TITLE_SUFFIX %}
+{#{% set showSmoothScrollscripts = true %}#}
+{% set showStickyNavscripts = true %}
+
+{% set projectName = projectName if projectName %}
+
+{% set listItems = [
+    { text: '1. Details and summary', url: '#details' },
+    { text: '2. Case for support', url: '#case' },
+    { text: '3. Applicants', url: '#applicants' },
+    { text: '4. Resources and costs', url: '#resources' },
+    { text: '5. Justification of resources', url: '#justification' }
+] %}
+
+{% set detailsInput = detailsInput if detailsInput %}
+{% set directlyIncurredCost = directlyIncurredCost if directlyIncurredCost %}
+{% set directlyAllocatedCost = directlyAllocatedCost if directlyAllocatedCost %}
+{% set indirectCost = indirectCost if indirectCost %}
+{% set exceptionCost = exceptionCost if exceptionCost %}
+{% set caseForSupportNotes = caseForSupportNotes if caseForSupportNotes %}
+
+{% set readOnly = readOnly if readOnly %}
+{% set actionText = 'View ' if readOnly else 'Edit <span class="govuk-visually-hidden" aria-hidden="true">this section</span>'%}
+{#{% set backLinkContents =  [{url:'/prototypes/multi-user-application/', text:'Back to application'}] %}#}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Application preview', caption=projectName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item ">
+                        <a class="govuk-tabs__tab" href="/prototypes/multi-user-application/">Write application</a>
+                    </li>
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#">Read application</a>
+                    </li>
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='u-space-b30') %}
+
+        {% call components.bulmaColumnAny(size='is-3') %}
+            <nav class="sticky-nav">
+                {{ components.linkHeading(text='Contents', tag='h2', size='s')}}
+                {{ components.list(items=listItems, parentClass='sticky-nav')}}
+                <a href="#" class="govuk-link js-only print-link print-link--tabs" id="printThis" onclick="window.print();return false;">Print this page</a>
+            </nav>
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-9', customID='main-content') %}
+
+            {{ components.alerts(text='This is how assessors will see your proposal.', type='info')}}
+
+            {{ components.linkHeading(text=projectName, tag='h2', size='l', extraClass='serif') }}
+
+            {#{{ components.linkHeading(text='1. Details and summary', tag='h2', size='m', extraClass='serif', id='details', additionalLinkText=actionText, additionalLinkTextHidden=' Details and summary', additionalLinkurl='/prototypes/multi-user-application/details') }}#}
+            <h2 class="govuk-heading-m serif govuk-heading--link" id="details">
+               1. Details and summary
+               <span class="govuk-heading_additional-link govuk-heading-m">
+                   <a href="/prototypes/multi-user-application/details" class="govuk-link">{{ actionText }}</a>
+                </span>
+            </h2>
+
+            <div class="serif u-space-b30">
+            {% if detailsInput %}
+                {{ detailsInput }}
+            {% else %}
+                <p class='govuk-body-s meta'>No content has been added for this section yet.</p>
+            {% endif %}
+            </div>
+
+
+            <h2 class="govuk-heading-m serif govuk-heading--link" id="case">
+                2. Case for support
+                <span class="govuk-heading_additional-link govuk-heading-m">
+                   <a href="/prototypes/multi-user-application/case-for-support" class="govuk-link">{{ actionText }}</a>
+                </span>
+            </h2>
+            <div class="serif u-space-b30">
+                {% if caseForSupportNotes %}
+                    <div class="tiny-spoof">
+                        {{ caseForSupportNotes }}
+                    </div>
+                {% else %}
+                    <p class='govuk-body-s meta' >No content has been added for this section yet.</p>
+                {% endif %}
+            </div>
+
+            <h2 class="govuk-heading-m serif govuk-heading--link" id="applicants">
+                3. Applicants
+                <span class="govuk-heading_additional-link govuk-heading-m">
+                   <a href="/prototypes/multi-user-application/applicants" class="govuk-link">{{ actionText }}</a>
+                </span>
+            </h2>
+            <div class="serif u-space-b30">
+                <p class='govuk-body-s meta' >No content is required for this research section.</p>
+            </div>
+
+            <h2 class="govuk-heading-m serif govuk-heading--link" id="resources">
+                4. Resources and costs
+                <span class="govuk-heading_additional-link govuk-heading-m">
+                   <a href="/prototypes/multi-user-application/resources-and-costs" class="govuk-link">{{ actionText }}</a>
+                </span>
+            </h2>
+            <div class="serif u-space-b30">
+                {% if directlyAllocatedCost %}
+
+                    <ul class="govuk-list--bullet govuk-list">
+                        <li>
+                            <strong>Directly incurred costs</strong> :  £{{ directlyIncurredCost }}
+                        </li>
+                        <li>
+                            <strong>Directly allocated costs</strong> :  £{{ directlyAllocatedCost }}
+                        </li>
+                        <li>
+                            <strong>Indirect costs</strong> :  £{{ indirectCost }}
+                        </li>
+                        <li>
+                            <strong>Exceptions</strong> :  £{{ exceptionCost }}
+                        </li>
+                    </ul>
+
+
+                {% else %}
+                    <p class='govuk-body-s meta' >No content has been added for this section yet.</p>
+                {% endif %}
+            </div>
+
+            <h2 class="govuk-heading-m serif govuk-heading--link" id="justification">
+                5. Justification of resources
+                <span class="govuk-heading_additional-link govuk-heading-m">
+                   <a href="/prototypes/multi-user-application/justification-of-resources" class="govuk-link">{{ actionText }}</span>
+                   </a>
+                </span>
+            </h2>
+            <div class="serif u-space-b30">
+                <p class='govuk-body-s meta' >No content is required for this research section.</p>
+            </div>
+
+            <div class="u-align-right">
+                <a href="#main-content" class="govuk-link">Top of page</a>
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script type="text/javascript">
+      /* smooth-scroll.js v1.3.1 */
+      /*
+      n=0,
+      r=500,
+      i=15,
+      */
+      (function(e,t){
+        "use strict";
+        var n=0,
+          r=250,
+          i=15,
+          s=document.getElementsByTagName("a"),
+          o;
+        for(var u=0;u<s.length;u++){
+          o=s[u].attributes.href===t?null:s[u].attributes.href.nodeValue.toString();
+          if(o!==null&&o.length>1&&o.indexOf("#")!=-1){
+            s[u].onclick=function(){
+              var n,s=this.attributes.href.nodeValue.toString(),o=s.substr(0,s.indexOf("#")),u=s.substr(s.indexOf("#")+1);if(n=document.getElementById(u)){var l=(r-r%i)/i,c=f(),h=(a(n)-c)/l;if(e.history&&typeof e.history.pushState=="function")e.history.pushState({},t,o+"#"+u);for(var p=1;p<=l;p++){(function(){var t=h*p;setTimeout(function(){e.scrollTo(0,t+c)},i*p)})()}return false}}}}var a=function(e){var r=n*-1;while(e.offsetParent!=t&&e.offsetParent!=null){r+=e.offsetTop+(e.clientTop!=null?e.clientTop:0);e=e.offsetParent}return r};var f=function(){return e.pageYOffset!==t?e.pageYOffset:document.documentElement.scrollTop!==t?document.documentElement.scrollTop:document.body.scrollTop}})(window)
+    </script>
+
+
+   <script>
+      Zepto(function($){
+        $(window).on('load', function() {
+          console.log('window loaded');
+          $('.govuk-tabs__tab').attr('tabindex', '');
+        });
+      });
+    </script>
+
+{% endblock %}
+
+
+
+

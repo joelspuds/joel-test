@@ -4,6 +4,10 @@
 {% set allCouncils = allCouncils %}
 {% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
 {% set isAdminUser = false %}
+{%  set  directlyIncurredCost = directlyIncurredCost if directlyIncurredCost%}
+{%  set  directlyAllocatedCost = directlyAllocatedCost if directlyAllocatedCost%}
+{%  set  indirectCost = indirectCost if indirectCost%}
+{%  set  exceptionCost = exceptionCost if exceptionCost%}
 
 {% block content %}
 
@@ -75,7 +79,7 @@
                         <td class="govuk-table__cell govuk-table__cell--numeric">
                             <div class="govuk-form-group u-space-y5">
                                 <label class="govuk-label govuk-visually-hidden" for="directlyIncurredCost">Directly incurred full economic costs</label>
-                                <input class="govuk-input govuk-input--width-5 u-align-right" id="directlyIncurredCost" type="number" name="directlyIncurredCost" value="0">
+                                <input class="govuk-input govuk-input--width-5 u-align-right" id="directlyIncurredCost" type="number" name="directlyIncurredCost" value="{% if directlyIncurredCost %}{{ directlyIncurredCost }}{% else %}0{% endif %}">
                             </div>
                         </td>
                         <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">80</td>
@@ -87,7 +91,7 @@
                         <td class="govuk-table__cell govuk-table__cell--numeric">
                             <div class="govuk-form-group u-space-y5">
                                 <label class="govuk-label govuk-visually-hidden" for="directlyAllocatedCost">Directly allocated full economic costs</label>
-                                <input class="govuk-input govuk-input--width-5 u-align-right" id="directlyAllocatedCost" type="number" name="directlyAllocatedCost" value="0">
+                                <input class="govuk-input govuk-input--width-5 u-align-right" id="directlyAllocatedCost" type="number" name="directlyAllocatedCost" value="{% if directlyAllocatedCost %}{{ directlyAllocatedCost }}{% else %}0{% endif %}">
                             </div>
                         </td>
                         <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">80</td>
@@ -99,7 +103,7 @@
                         <td class="govuk-table__cell govuk-table__cell--numeric">
                             <div class="govuk-form-group u-space-y5">
                                 <label class="govuk-label govuk-visually-hidden" for="indirectCost">Indirect full economic costs</label>
-                                <input class="govuk-input govuk-input--width-5 u-align-right" id="indirectCost" type="number" name="indirectCost" value="0">
+                                <input class="govuk-input govuk-input--width-5 u-align-right" id="indirectCost" type="number" name="indirectCost" value="{% if indirectCost %}{{ indirectCost }}{% else %}0{% endif %}">
                             </div>
                         </td>
                         <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">80</td>
@@ -111,7 +115,7 @@
                         <td class="govuk-table__cell govuk-table__cell--numeric">
                             <div class="govuk-form-group u-space-y5">
                                 <label class="govuk-label govuk-visually-hidden" for="exceptionCost">Exceptional full economic costs</label>
-                                <input class="govuk-input govuk-input--width-5 u-align-right" id="exceptionCost" type="number" name="exceptionCost" value="0">
+                                <input class="govuk-input govuk-input--width-5 u-align-right" id="exceptionCost" type="number" name="exceptionCost" value="{% if exceptionCost %}{{ exceptionCost }}{% else %}0{% endif %}">
                             </div>
                         </td>
                         <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">100</td>
@@ -123,12 +127,6 @@
                         <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--borderless u-pad-t20"><strong><span id="totalCost">£0</span></strong></td>
                         <td class="" colspan="2">&nbsp;</td>
                     </tr>
-
-                    {#<tr>
-                        <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--borderless"><strong>Total funding requested</strong></td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--borderless"><strong><span id="totalRequested">£0</span></strong></td>
-                        <td class="" colspan="2">&nbsp;</td>
-                    </tr>#}
 
                     <tr>
                         <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--borderless"><strong>Contribution from applying organisation</strong></td>

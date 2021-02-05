@@ -79,18 +79,31 @@ function signinPostV1(req, res) {
 
   req.session.savedEmail = email;
 
+  // let userType = req.session.userType;
+  // let journey = req.session.journey;
+
   let confirmedEmail = req.session.confirmedEmail;
 
   if (!email || email.length < 1 || !password || password.length < 1) {
     req.session.signinError = true;
     return res.redirect('/prototypes/register-v1/signin');
   } else {
-    if (confirmedEmail === true) {
-      return res.redirect('/prototypes/application-v2/');
+
+    // just take EVERYBODY to the multi-user journery applicant start for now
+    return res.redirect('/prototypes/multi-user-application/');
+
+    /*if (journey === 'multiUser') {
+      // return res.redirect('/prototypes/multi-user/application-overview');
+      req.session.signedIn = true;
+      return res.redirect('/prototypes/multi-user-application/');
     } else {
-      /*return res.redirect('/prototypes/register-v1/signedin');*/
-      return res.redirect('/prototypes/application-v2/');
-    }
+      if (confirmedEmail === true) {
+        return res.redirect('/prototypes/application-v2/');
+      } else {
+        /!*return res.redirect('/prototypes/register-v1/signedin');*!/
+        return res.redirect('/prototypes/application-v2/');
+      }
+    }*/
   }
 }
 

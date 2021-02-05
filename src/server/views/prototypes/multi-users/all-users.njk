@@ -1,0 +1,97 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'external' %}
+{% set pageTitle = 'Dashboard tiles' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/champion/home', text:'Back to home'}] %}
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+{% set showManageUsers = true %}
+{% set activeNavItem = 'manageUsers' %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Manage users', caption='University of Bath') }}
+
+            <p class="govuk-body">To add administrators, <a href="#" class="govuk-link">contact UKRI</a>.</p>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-12') %}
+
+                <div class="responsive-table">
+
+                    <table class="govuk-table">
+                        <caption class="govuk-table__caption govuk-visually-hidden">Project team members</caption>
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header cell-max-35">Full name</th>
+                                <th scope="col" class="govuk-table__header cell-max-35">Email address</th>
+                                <th scope="col" class="govuk-table__header">User type</th>
+                                <th scope="col" class="govuk-table__header">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell ">Prof. Jane Doe</td>
+                                <td class="govuk-table__cell">j.doe@bath.ac.uk</td>
+                                <td class="govuk-table__cell">Administrator</td>
+                                <td class="govuk-table__cell">Active</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Dr. Phoebe Buffay-Hannigan</td>
+                                <td class="govuk-table__cell">p.buffay-hanningane@bath.ac.uk</td>
+                                <td class="govuk-table__cell">Applicant</td>
+                                <td class="govuk-table__cell">Active</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Dr. Richard Johnson</td>
+                                <td class="govuk-table__cell">r.johnson@bath.ac.uk</td>
+                                <td class="govuk-table__cell">Applicant</td>
+                                <td class="govuk-table__cell">Active</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Dr. Annabel Hatt</td>
+                                <td class="govuk-table__cell">a.hatt@bath.ac.uk</td>
+                                <td class="govuk-table__cell">Replicant</td>
+                                <td class="govuk-table__cell">Active</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Dave Trousers</td>
+                                <td class="govuk-table__cell">d.trousers@bath.ac.uk</td>
+                                <td class="govuk-table__cell">Applicant</td>
+                                <td class="govuk-table__cell">Active</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    {#<script>
+    </script>#}
+{% endblock %}
+
