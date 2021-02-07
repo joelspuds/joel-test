@@ -8,6 +8,11 @@
 {% set activeNavItem = 'applications' %}
 {% set projectName = projectName if projectName %}
 
+{% set progressPercentage = progressPercentage if progressPercentage %}
+{% set reverseProgressPercentage = reverseProgressPercentage if reverseProgressPercentage %}
+{% set hasBeenSubmitted = hasBeenSubmitted if hasBeenSubmitted %}
+
+
 {% block content %}
 
     {% call components.bulmaRow() %}
@@ -60,8 +65,12 @@
                                 <td class="govuk-table__cell">Rafflesia Arnoldii</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric">14 April 2021</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric">
-                                    In progress
-                                    <span class="mega-table_item-meta">0% complete</span>
+                                    {% if hasBeenSubmitted %}
+                                        Submitted
+                                    {%  else %}
+                                        In progress
+                                    {%  endif %}
+                                    <span class="mega-table_item-meta">{{ progressPercentage }}% complete</span>
                                 </td>
                             </tr>
                             {% endif %}

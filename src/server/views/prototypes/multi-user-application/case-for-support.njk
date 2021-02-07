@@ -12,7 +12,7 @@
     {% if readOnly %}
     <style>
     .tox .tox-edit-area__iframe {
-        // background-color: #efefef;
+        /* background-color: #efefef;*/
         background-color: rgba(239, 239, 239, 0.3);
     }
     </style>
@@ -44,12 +44,10 @@
 
             {% call components.bulmaColumnAny(size='is-8') %}
 
-                <p class="govuk-body">In the space provided below, explain why you think your research is relevant and deserving of funding. Show your methodology and indicated timescales – you have 250 words.</p>
-
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
                     <div class="govuk-form-group ">
                         <label class="govuk-label govuk-label--s govuk-!-font-weight-bold" for="caseForSupportNotes">Enter your case for support</label>
-
+                        <div class="govuk-hint">Explain why you think your research is relevant and deserving of funding. Show your methodology and indicated timescales – you have 250 words.</div>
                         <details class="govuk-details u-space-t20" data-module="govuk-details" role="group">
                             <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
                                 <span class="govuk-details__summary-text">What you should include in your answer</span>

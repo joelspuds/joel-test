@@ -32,31 +32,23 @@
 
         {% call components.bulmaRow() %}
 
-            {% call components.bulmaColumnAny(size='is-full') %}
-
-                <p class="govuk-body">In the space provided below detail the background and reasons why your proposed research needs the resources you are seeking funding for. You have 250 words.</p>
+            {% call components.bulmaColumnAny(size='is-8') %}
 
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
                     <div class="govuk-form-group ">
                         <label class="govuk-label govuk-label--s govuk-!-font-weight-bold" for="justificationInput">Enter your justification</label>
+                        <div class="govuk-hint">Detail the background and reasons why your proposed research needs the resources you are seeking funding for. You have 250 words.</div>
                         <details class="govuk-details u-space-t20" data-module="govuk-details" role="group">
                             <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
                                 <span class="govuk-details__summary-text">Guidance for completing this section</span>
                             </summary>
                             <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
-                                <p class="govuk-body">The assessors are looking to see how you would cover the costs of networking activities that support the exchange of ideas across boundaries – primarily between researchers in the arts and humanities, but also with colleagues in other disciplines and sectors. Your need to demonstrate and explain:</p>
+                                <p class="govuk-body">The assessors are looking to see how you would cover the costs of your activities. You need to demonstrate and explain:</p>
                                 <ul class="govuk-list govuk-list--bullet">
                                     <li>your salary costs </li>
                                     <li>the salary costs of one co-investigator for the time spent overseeing and providing intellectual input to the activities</li>
-                                    <li>how you arrived at your figures for the setting up and coordination</li>
-                                    <li>of the activities (this should not make up the majority of the cost in the proposal)</li>
+                                    <li>how you arrived at your figures for the setting up and coordination of the activities (this should not make up the majority of the cost in the proposal)</li>
                                     <li>any related indirect and estates costs (UK researchers only)</li>
-                                </ul>
-                                <p class="govuk-body">Please note the grant does not cover:</p>
-                                <ul class="govuk-list govuk-list--bullet">
-                                    <li>standalone events that are not part of the research process</li>
-                                    <li>activities that would have taken place regardless (for instance, connected to an existing conference)</li>
-                                    <li>research assistants’ salary costs</li>
                                 </ul>
                             </div>
                         </details>

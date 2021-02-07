@@ -322,6 +322,7 @@ router.post('/prototypes/multi-user-application/applicants', demosController.app
 router.get('/prototypes/multi-user-application/justification-of-resources', demosController.appV3JustificationGet);
 router.post('/prototypes/multi-user-application/justification-of-resources', demosController.appV3JustificationPost);
 router.get('/prototypes/multi-user-application/submitted', demosController.appV3SubmittedGet);
+router.get('/prototypes/multi-user-application/read', demosController.appV3ReadGet);
 
 /*
 router.get('/prototypes/multi-user-application/eligibility-applicant', demosController.appV3EligibilityApplicantGet);

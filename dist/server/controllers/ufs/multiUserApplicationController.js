@@ -16,6 +16,7 @@ exports.appV3ApplicantsPost = appV3ApplicantsPost;
 exports.appV3JustificationGet = appV3JustificationGet;
 exports.appV3JustificationPost = appV3JustificationPost;
 exports.appV3SubmittedGet = appV3SubmittedGet;
+exports.appV3ReadGet = appV3ReadGet;
 exports.appV3caseForSupportGet = appV3caseForSupportGet;
 exports.appV3caseForSupportPost = appV3caseForSupportPost;
 exports.appV3ResourcesAndCostsGet = appV3ResourcesAndCostsGet;
@@ -191,7 +192,6 @@ function appV3tinyMCEApplicationIndexPost(req, res) {
 
   let targetURL;
   if (submitButton === 'submitToUKRI') {
-
     targetURL = '/prototypes/multi-user-application/submitted';
   } else {
     targetURL = '/prototypes/multi-user-application/';
@@ -485,6 +485,38 @@ function appV3SubmittedGet(req, res) {
   };
 
   return res.render('prototypes/multi-user-application/submitted', viewData);
+}
+
+// ************************************************************************
+//
+//        Read
+//
+// ************************************************************************
+function appV3ReadGet(req, res) {
+  let viewData, detailsInput, projectName, caseForSupportNotes, directlyIncurredCost, directlyAllocatedCost, indirectCost, exceptionCost;
+
+  const fs = require('fs');
+  const dataFileJSON = './temp-store.json';
+  let data = JSON.parse(fs.readFileSync(dataFileJSON, 'utf8'));
+  projectName = data[0].projectName;
+  detailsInput = data[0].detailsInput;
+  directlyIncurredCost = data[0].directlyIncurredCost;
+  directlyAllocatedCost = data[0].directlyAllocatedCost;
+  indirectCost = data[0].indirectCost;
+  exceptionCost = data[0].exceptionCost;
+  caseForSupportNotes = data[0].caseForSupportNotes;
+
+  viewData = {
+    projectName,
+    detailsInput,
+    caseForSupportNotes,
+    directlyIncurredCost,
+    directlyAllocatedCost,
+    indirectCost,
+    exceptionCost
+  };
+
+  return res.render('prototypes/multi-user-application/read', viewData);
 }
 
 // ************************************************************************

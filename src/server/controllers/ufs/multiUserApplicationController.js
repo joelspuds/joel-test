@@ -467,6 +467,38 @@ export function appV3SubmittedGet(req, res) {
 
 // ************************************************************************
 //
+//        Read
+//
+// ************************************************************************
+export function appV3ReadGet(req, res) {
+  let viewData, detailsInput, projectName, caseForSupportNotes, directlyIncurredCost, directlyAllocatedCost, indirectCost, exceptionCost;
+
+  const fs = require('fs');
+  const dataFileJSON = './temp-store.json';
+  let data = JSON.parse(fs.readFileSync(dataFileJSON, 'utf8'));
+  projectName = data[0].projectName;
+  detailsInput = data[0].detailsInput;
+  directlyIncurredCost = data[0].directlyIncurredCost;
+  directlyAllocatedCost = data[0].directlyAllocatedCost;
+  indirectCost = data[0].indirectCost;
+  exceptionCost = data[0].exceptionCost;
+  caseForSupportNotes = data[0].caseForSupportNotes;
+
+  viewData = {
+    projectName,
+    detailsInput,
+    caseForSupportNotes,
+    directlyIncurredCost,
+    directlyAllocatedCost,
+    indirectCost,
+    exceptionCost,
+  };
+
+  return res.render('prototypes/multi-user-application/read', viewData);
+}
+
+// ************************************************************************
+//
 //        CASE FOR SUPPORT
 //
 // ************************************************************************

@@ -16,14 +16,18 @@
 {% set userType = userType if userType %}
 {% set isShared = isShared if isShared %}
 {% set applicationStatus = applicationStatus if applicationStatus %}
-{% set backLinkContents =  [{url:'/prototypes/multi-user-application/opportunity', text:'Back to Opportunity'}] %}
+
+{% if userType == 'office' %}
+    {% set backLinkContents =  [{url:'/prototypes/multi-users/applications-1', text:'Back to applications'}] %}
+{% else %}
+    {% set backLinkContents =  [{url:'/prototypes/multi-user-application/opportunity', text:'Back to Opportunity'}] %}
+{% endif %}
 
 {% block content %}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
             {{ components.captionHeading(text='Application', caption=projectName) }}
-            {#<p>userType = {{ userType }}</p>#}
         {%- endcall %}
     {%- endcall %}
 

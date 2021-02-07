@@ -200,7 +200,7 @@ function multiUsersROHomeGet(req, res) {
 //
 // ************************************************************************
 function multiUsersROApplicationsListGet(req, res) {
-  let viewData;
+  let viewData, detailsIsComplete, caseForSupportIsComplete, applicantsIsComplete, resourcesAndCostsIsComplete, justificationIsComplete;
 
   // get project title
   let projectName;
@@ -208,9 +208,46 @@ function multiUsersROApplicationsListGet(req, res) {
   const dataFileJSON = './temp-store.json';
   var data = JSON.parse(fs.readFileSync(dataFileJSON, 'utf8'));
   projectName = data[0].projectName;
+  detailsIsComplete = data[0].detailsIsComplete;
+  caseForSupportIsComplete = data[0].caseForSupportIsComplete;
+  applicantsIsComplete = data[0].applicantsIsComplete;
+  resourcesAndCostsIsComplete = data[0].resourcesAndCostsIsComplete;
+  justificationIsComplete = data[0].justificationIsComplete;
+  let hasBeenSubmitted = data[0].hasBeenSubmitted;
+  /*if (hasBeenSubmitted === 'true') {
+    return res.redirect('/prototypes/multi-user-application/submitted');
+  }*/
+
+  let incrementValue = 20;
+  let progressPercentage = 0;
+  let reverseProgressPercentage = 0;
+
+  if (detailsIsComplete) {
+    progressPercentage += incrementValue;
+  }
+  if (caseForSupportIsComplete) {
+    progressPercentage = progressPercentage + incrementValue;
+  }
+  if (applicantsIsComplete) {
+    progressPercentage = progressPercentage + incrementValue;
+  }
+  if (resourcesAndCostsIsComplete) {
+    progressPercentage = progressPercentage + incrementValue;
+  }
+  if (justificationIsComplete) {
+    progressPercentage = progressPercentage + incrementValue;
+  }
+
+  progressPercentage = progressPercentage.toFixed(0);
+  if (progressPercentage > 95) {
+    progressPercentage = 100;
+  }
 
   viewData = {
-    projectName
+    projectName,
+    progressPercentage,
+    reverseProgressPercentage,
+    hasBeenSubmitted
   };
 
   return res.render('prototypes/multi-users/applications-1', viewData);
