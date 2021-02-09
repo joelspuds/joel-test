@@ -13,7 +13,7 @@
     "resourcesAndCostsIsComplete": null,
     "caseForSupportIsComplete": "on",
     "detailsIsComplete": "on",
-    "applicantsIsComplete": null,
+    "applicantsIsComplete": "on",
     "justificationIsComplete": null,
     "hasBeenSubmitted": null
   }
