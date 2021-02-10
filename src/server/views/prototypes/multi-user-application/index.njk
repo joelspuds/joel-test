@@ -150,7 +150,7 @@
                      <div class="govuk-inset-text">Your application is being reviewed by your Research Office. To edit it, they will need to return it to you, before they submit it to AHRC for assessment.</div>
                  {% else %}
                      <div class="application-controls govuk-clearfix">
-                         <p class="govuk-body">Select "Read application" to view how assessors will see your work. Select "Submit to your Research Office" to send your application to your Research Office to review and send to UKRI. You will not be able to make further edits, unless your Research Office returns it.</p>
+                         <p class="govuk-body">Select 'Read application' to view how assessors will see your work. Select 'Submit to your Research Office' to send your application to your Research Office to review and send to UKRI. You will not be able to make further edits, unless your Research Office returns it.</p>
                          {% call components.form(action='/prototypes/multi-user-application/', method='POST',name='submitApplication') %}
                              <button type="submit" class="govuk-button application-controls__submit" name="submitButton" value="startShare">Submit to your Research Office</button>
                          {%- endcall %}
