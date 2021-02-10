@@ -214,7 +214,9 @@ const startApp = exports.startApp = async () => {
         checkPeriod: 86400000
       }),
       // 20 minutes
-      maxAge: 1200000
+      // maxAge: 1200000,
+      // 60 minutes YEAH!
+      maxAge: 3600000
     }
   }));
 
