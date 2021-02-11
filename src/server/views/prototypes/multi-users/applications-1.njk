@@ -1,6 +1,6 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 {% set navType = 'NOTadmin' %}
-{% set pageTitle = 'Applications' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Applications' + ' - UKRI Funding service' %}
 {% set backLinkContents =  [{url:'/prototypes/multi-users/home', text:'Back to home'}] %}
 {% set isAdminUser = false %}
 {% set loggedOut = false %}
@@ -68,7 +68,11 @@
                                     {% if hasBeenSubmitted %}
                                         Submitted
                                     {%  else %}
-                                        In progress
+                                        {% if progressPercentage == '100' %}
+                                            Ready to submit
+                                        {% else %}
+                                            In progress
+                                        {% endif %}
                                     {%  endif %}
                                     <span class="mega-table_item-meta">{{ progressPercentage }}% complete</span>
                                 </td>
@@ -127,15 +131,6 @@
                         </ul>
                     </div>#}
                 </div>
-
-
-
-
-
-
-
-
-
             {%- endcall %}
 
         {%- endcall %}
