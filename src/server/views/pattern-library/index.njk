@@ -84,6 +84,8 @@
             })
             | prism }}
 
+            {{ components.button(text='This is actually a button', extraClass='govuk-button--link') | prism }}
+
             {{ components.heading(text='Character count', tag='h2', size='medium', extraClass='heading--divider') }}
 
             {{ components.govukCharacterCount({

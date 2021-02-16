@@ -1,8 +1,8 @@
-{% macro button(text='', url=false, start=false, disabled=false) %}
+{% macro button(text='', url=false, start=false, disabled=false, type='submit', extraClass='') %}
   {% set disabledCode = 'disabled="disabled" aria-disabled="true"' %}
   {% if url %}
     <a class="govuk-button {{ 'button-start' if start }}" href="{{ url }}" role="button">{{ text }}</a>
   {% else %}
-    <input class="govuk-button" type="submit" value="{{ text }}" {{ disabledCode if disabled }}>
+    <input class="govuk-button {{ extraClass if extraClass }}" type="{{ type }}" value="{{ text }}" {{ disabledCode if disabled }}>
   {% endif %}
 {% endmacro %}

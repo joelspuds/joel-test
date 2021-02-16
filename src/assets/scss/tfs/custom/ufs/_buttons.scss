@@ -1,12 +1,27 @@
 .govuk-button--link {
-  @include govuk-font($size: 16);
+  @include govuk-font($size: 19);
   @extend .govuk-link;
   border: 0;
   padding: 0;
   color: ufs-colour("other-blue");
+  background-color: transparent;
+  margin-bottom: 0;
+  -webkit-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 transparent;
 
   &:hover {
     cursor: pointer;
     color: govuk-colour("dark-blue");
+    background-color: transparent;
+    text-decoration: underline;
+  }
+
+  &:focus {
+    background-color: govuk-colour("yellow");
+    text-decoration: none;
+  }
+
+  &:active {
+    top: 0;
   }
 }
