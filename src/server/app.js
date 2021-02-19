@@ -20,6 +20,7 @@ import { CONFIG, isDevelopment, isTesting } from './config/constants';
 import * as Middlewares from './middlewares';
 import * as Helpers from './helpers';
 import * as REPO_PACKAGE_JSON from './../../package.json';
+import { content } from './config/content';
 
 export const startApp = async () => {
   // Create express server
@@ -49,6 +50,14 @@ export const startApp = async () => {
 
   // Add lodash as a global for view templates
   env.addGlobal('_', _);
+
+  // Load externally managed content from resources file
+  if (content) {
+    for (let key in content) {
+      // console.log('key ' + key + ' has value ' + content[key]);
+      env.addGlobal(key, content[key]);
+    }
+  }
 
   // Add app url as global
   env.addGlobal('appURL', CONFIG.appURL);
