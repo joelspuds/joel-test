@@ -124,7 +124,7 @@
                                     <div class="govuk-checkboxes">
                                         <div class="govuk-checkboxes__item">
                                             <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if widerEffectIsComplete %} checked{% endif %} {% if readOnly %} disabled {% endif %}>
-                                            <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                            <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">This Opportunity set-up has gone through the approval process</label>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -132,7 +132,7 @@
                         </div>
                     {%- endcall %}
 
-                    {{ components.button(text='Complete Opportunity setup', url='/prototypes/peer-review/', extraClass="application-controls__submit")}}
+                    {{ components.button(text='Complete Opportunity set-up', url='/prototypes/peer-review/', extraClass="application-controls__submit")}}
 
                 {%- endcall %}
 

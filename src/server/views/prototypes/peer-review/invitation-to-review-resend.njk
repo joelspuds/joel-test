@@ -21,19 +21,21 @@
                     </h2>
                 </div>
                 <div class="govuk-notification-banner__content ">
-                    <h3 class="govuk-notification-banner__heading">Invite will resend tomorrow</h3>
-                    <p class="govuk-body">Invite automatically resends once the 5-day deadline for responses passes. You can <a href="#" class="govuk-link">cancel the invite</a> if required. </p>
+                    <h3 class="govuk-notification-banner__heading">Reminder will be sent tomorrow</h3>
+                    <p class="govuk-body">
+                        The invitation to review will be automatically resent after the initial <strong>5-day deadline</strong> lapses. This reminder can be <a href="#" class="govuk-link">cancelled</a> if required.
+                    </p>
                 </div>
             </div>
         {%- endcall %}
     {%- endcall %}
 
 
-    {% call components.form(action='/prototypes/peer-review/invitation-to-review', method='POST',name='invitationToReview') %}
+    {% call components.form(action='#', method='POST',name='invitationToReview') %}
 
     {% call components.bulmaRow(extraClass='') %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Invitation to review', caption='Name of the application') }}
+            {{ components.captionHeading(text='Invite', caption='Name of the application') }}
         {%- endcall %}
     {%- endcall %}
 

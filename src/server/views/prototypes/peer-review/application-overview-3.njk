@@ -19,7 +19,7 @@
 
 {% block content %}
 
-    {% if inviteHasBeenSent === 'yes' %}
+    {% if inviteHasBeenSent %}
         {% call components.bulmaRow(extraClass='') %}
             {% call components.bulmaColumnAny(size='is-full') %}
                 <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
@@ -49,10 +49,10 @@
             <div class="govuk-tabs" data-module="govuk-tabs">
                 <ul class="govuk-tabs__list">
                     <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-                        <a class="govuk-tabs__tab " href="#">Manage invites</a>
+                        <a class="govuk-tabs__tab " href="#">Manage invites (8)</a>
                     </li>
                     <li class="govuk-tabs__list-item ">
-                        <a class="govuk-tabs__tab" href="/prototypes/peer-review/manage-reviews">Manage reviews</a>
+                        <a class="govuk-tabs__tab" href="/prototypes/peer-review/manage-reviews">Manage reviews (4)</a>
                     </li>
                     <li class="govuk-tabs__list-item ">
                         <a class="govuk-tabs__tab" href="/prototypes/peer-review/manage-applicant-response">Manage applicant response</a>
@@ -68,22 +68,17 @@
 
         {% call components.bulmaColumnAny(size='is-full') %}
 
-            {% if addedPerson %}
-                {% set sectoionTitle = 'Reviewer shortlist (5)' %}
-            {% else %}
-                {% set sectoionTitle = 'Reviewer shortlist' %}
-            {% endif %}
-
-            {{ components.captionHeading(text=sectoionTitle, tag='h2', size='m') }}
+            {{ components.captionHeading(text='Reviewer shortlist (8)', tag='h2', size='m') }}
             {#<p class="govuk-body">
                 Reviewers who can be approached to assess applications.
             </p>#}
 
             <p class="govuk-body">
-                <a href="/prototypes/peer-review/add-reviewer" class="govuk-button ">Add reviewer</a>
+                {#<a href="/prototypes/peer-review/add-reviewer" class="govuk-button {% if not addedPerson %}govuk-button--secondary{% endif %}">Add reviewer to shortlist</a>#}
+                <a href="#" class="govuk-button">Add reviewer to shortlist</a>
             </p>
 
-            {% if addedPerson %}
+            {#{% if addedPerson %}#}
 
             <table class="govuk-table mega-table">
                 <caption class="govuk-table__caption govuk-visually-hidden">Details of expert reviews assigned to this application </caption>
@@ -96,74 +91,81 @@
                 </tr>
                 </thead>
                 <tbody class="govuk-table__body">
-                    <tr class="govuk-table__row {% if person0invited %} mega-table_row-status--info {% endif %}">
-                        <td class="govuk-table__cell">Dr. {{ addedPerson.firstName }} {{ addedPerson.lastName }}</td>
-                        <td class="govuk-table__cell">{{ addedPerson.organisation }}</td>
+                    <tr class="govuk-table__row mega-table_row-status--complete">
                         <td class="govuk-table__cell">
-                            <a href="/prototypes/peer-review/add-note?source=v1" class="govuk-link">
-                                {% if hasNote %} View {% else %} Add {% endif %}
-                            </a>
+                            Dr. Arnaldo Calgari
+                        </td>
+                        <td class="govuk-table__cell">University of Borchester</td>
+                        <td class="govuk-table__cell">
+                            <a href="#" class="govuk-link">View</a>
                         </td>
                         <td class="govuk-table__cell u-align-right">
-                            {% if person0invited %}
-                                <a href="/prototypes/peer-review/invitation-to-review?personID=0" class="govuk-link">Sent</a> Today
-                            {% else %}
-                                <a href="/prototypes/peer-review/invitation-to-review?personID=0" class="govuk-link">Invite to review</a>
-                            {% endif %}
+                            <a href="#" class="govuk-link">Accepted</a>
                         </td>
                     </tr>
-                    <tr class="govuk-table__row {% if person1invited %} mega-table_row-status--info {% endif %}">
-                        <td class="govuk-table__cell">{{ examplePeople[1] }}</td>
+                    <tr class="govuk-table__row mega-table_row-status--complete">
+                        <td class="govuk-table__cell">Prof. Poppy Longue-Stock</td>
                         <td class="govuk-table__cell">Bristol University</td>
-                        <td class="govuk-table__cell"><a href="/prototypes/peer-review/add-note?source=v1" class="govuk-link">Add</a></td>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">Add</a></td>
                         <td class="govuk-table__cell u-align-right">
-                            {% if person1invited %}
-                                <a href="/prototypes/peer-review/invitation-to-review?personID=1" class="govuk-link">Sent</a> Today
-                            {% else %}
-                                <a href="/prototypes/peer-review/invitation-to-review?personID=1" class="govuk-link">Invite to review</a>
-                            {% endif %}
+                            <a href="#" class="govuk-link">Accepted</a>
                         </td>
                     </tr>
-                    <tr class="govuk-table__row {% if person2invited %} mega-table_row-status--info {% endif %}">
-                        <td class="govuk-table__cell">{{ examplePeople[2] }}</td>
+                    <tr class="govuk-table__row mega-table_row-status--complete">
+                        <td class="govuk-table__cell">Dr. Fester Addams</td>
                         <td class="govuk-table__cell">Essex University</td>
-                        <td class="govuk-table__cell"><a href="/prototypes/peer-review/add-note?source=v1" class="govuk-link">Add</a></td>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">Add</a></td>
                         <td class="govuk-table__cell u-align-right">
-                            {% if person2invited %}
-                                <a href="/prototypes/peer-review/invitation-to-review?personID=2" class="govuk-link">Sent</a> Today
-                            {% else %}
-                                <a href="/prototypes/peer-review/invitation-to-review?personID=2" class="govuk-link">Invite to review</a>
-                            {% endif %}
+                            <a href="#" class="govuk-link">Accepted</a>
                         </td>
                     </tr>
-                    <tr class="govuk-table__row {% if person3invited %} mega-table_row-status--info {% endif %}">
-                        <td class="govuk-table__cell">{{ examplePeople[3] }}</td>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Dr. Barbara Vickers</td>
                         <td class="govuk-table__cell">University of East Anglia</td>
-                        <td class="govuk-table__cell"><a href="/prototypes/peer-review/add-note?source=v1" class="govuk-link">Add</a></td>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">Add</a></td>
                         <td class="govuk-table__cell u-align-right">
-                            {% if person3invited %}
-                                <a href="/prototypes/peer-review/invitation-to-review?personID=3" class="govuk-link">Sent</a> Today
-                            {% else %}
-                                <a href="/prototypes/peer-review/invitation-to-review?personID=3" class="govuk-link">Invite to review</a>
-                            {% endif %}
+                            <a href="#" class="govuk-link">Invite to review</a>
                         </td>
                     </tr>
-                    <tr class="govuk-table__row {% if person4invited %} mega-table_row-status--info {% endif %}">
-                        <td class="govuk-table__cell">{{ examplePeople[4] }}</td>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Prof Maria Zamboni</td>
+                        <td class="govuk-table__cell">Birmingham University</td>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">Add</a></td>
+                        <td class="govuk-table__cell u-align-right">
+                            <a href="#" class="govuk-link">Invite to review</a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Dr Moff Gideon </td>
+                        <td class="govuk-table__cell">University of Hull</td>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">Add</a></td>
+                        <td class="govuk-table__cell u-align-right">
+                            <a href="#" class="govuk-link">Invite to review</a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row mega-table_row-status--complete">
+                        <td class="govuk-table__cell">	Dr. Patricia Particles</td>
                         <td class="govuk-table__cell">University of Newquay and Padstow</td>
-                        <td class="govuk-table__cell"><a href="/prototypes/peer-review/add-note?source=v1" class="govuk-link">Add</a></td>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">Add</a></td>
                         <td class="govuk-table__cell u-align-right">
-                            {% if person4invited %}
-                                <a href="/prototypes/peer-review/invitation-to-review?personID=4" class="govuk-link">Sent</a> Today
-                            {% else %}
-                                <a href="/prototypes/peer-review/invitation-to-review?personID=4" class="govuk-link">Invite to review</a>
-                            {% endif %}
+                            <a href="#" class="govuk-link">Accepted</a>
                         </td>
                     </tr>
+                    <tr class="govuk-table__row mega-table_row-status--flat">
+                        <td class="govuk-table__cell">Dr Philamena Buddlington</td>
+                        <td class="govuk-table__cell">Exeter University</td>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">Add</a></td>
+                        <td class="govuk-table__cell u-align-right">
+                            <a href="#" class="govuk-link">Declined</a>
+                        </td>
+                    </tr>
+
+
+
                 </tbody>
             </table>
 
-            {% endif %}
+            {#{% endif %}#}
 
         {%- endcall %}
 
@@ -181,8 +183,7 @@
 
     {%- endcall %}
 
-
-    {% if addedPerson %}
+    {#{% if addedPerson %}
         {% call components.bulmaRow() %}
             {% call components.bulmaColumnAny(size='is-9') %}
                 <p class="govuk-body">
@@ -190,7 +191,7 @@
                 </p>
             {%- endcall %}
         {%- endcall %}
-    {% endif %}
+    {% endif %}#}
 
 {% endblock %}
 

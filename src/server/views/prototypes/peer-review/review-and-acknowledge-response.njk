@@ -1,7 +1,7 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 {% set navType = 'admin' %}
 {% set isAdminUser = true %}
-{% set pageTitle = 'Review and acknowledge response'  + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Acknowledge response'  + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/peer-review/application-overview', text:'Back to appliction overview'}] %}
 
 {#{% set personID = personID if personID %}
@@ -32,7 +32,7 @@
 
         {% call components.bulmaRow(extraClass='') %}
             {% call components.bulmaColumnAny(size='is-full') %}
-                {{ components.captionHeading(text='Review and acknowledge response', caption='Name of the application') }}
+                {{ components.captionHeading(text='Acknowledge response', caption='Name of the application') }}
             {%- endcall %}
         {%- endcall %}
 

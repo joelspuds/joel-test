@@ -21,9 +21,9 @@
 
             {% call components.bulmaColumnAny(size='is-9') %}
 
-                <p class="govuk-body">
+                {#<p class="govuk-body">
                     Approved reviewers can be approached to review an application. Add reviewers to populate your shortlist.
-                </p>
+                </p>#}
 
                 <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
                     <label class="govuk-label govuk-label--s" for="firstName" id="firstNameLabel">First name
@@ -53,7 +53,7 @@
 
         {% call components.bulmaRow() %}
 
-            {% call components.bulmaColumnAny(size='column  is-full is-6-desktop is-6-widescreen') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-7-desktop is-7-widescreen') %}
 
                 <fieldset class="govuk-fieldset">
                     <legend class="govuk-fieldset__legend govuk-visually-hidden">Add the relevant organisation</legend>
@@ -102,7 +102,7 @@
             {% call components.bulmaColumnAny(size='is-full') %}
 
                 <div class="application-controls govuk-clearfix">
-                    {{ components.button(text='Add reviewer to shortlist', extraClass="application-controls__submit")}}
+                    {{ components.button(text='Add reviewer', extraClass="application-controls__submit")}}
 
                     <span class="sub-button">
                         {{ components.link(text='Cancel', url='/prototypes/peer-review/application-overview')}}

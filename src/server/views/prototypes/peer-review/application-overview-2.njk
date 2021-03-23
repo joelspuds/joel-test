@@ -69,9 +69,9 @@
         {% call components.bulmaColumnAny(size='is-full') %}
 
             {{ components.captionHeading(text='Expert review shortlist (8)', tag='h2', size='m') }}
-            <p class="govuk-body">
+            {#<p class="govuk-body">
                 Reviewers who can be approached to assess applications.
-            </p>
+            </p>#}
 
             <p class="govuk-body">
                 <a href="/prototypes/peer-review/add-reviewer" class="govuk-button {% if not addedPerson %}govuk-button--secondary{% endif %}">Add reviewer to shortlist</a>
@@ -187,7 +187,7 @@
 
             {{ components.captionHeading(text='Reviewer history', tag='h3', size='s') }}
 
-            <p class="govuk-body">To check proposed reviewers; current and previous review activity visit the <a href="#" class="govuk-link">Reviewer History</a> page in Siebel.</p>
+            <p class="govuk-body">You can view a reviewer’s Siebel history in <a href="#" class="govuk-link">data services</a>.</p>
 
         {%- endcall %}
 

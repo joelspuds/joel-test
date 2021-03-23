@@ -401,11 +401,16 @@ export function pvManageReviewsGet(req, res) {
   let person1Rejected = req.session.person1Rejected;
   let person4Rejected = req.session.person4Rejected;
 
+  let review1Usable = req.session.review1Usable;
+  let review4UnUsable = req.session.review4UnUsable;
+
   viewData = {
-    review1_markReviewAsUsable,
+    /*review1_markReviewAsUsable,
     review4_markReviewAsUsable,
     person1Rejected,
-    person4Rejected,
+    person4Rejected,*/
+    review1Usable,
+    review4UnUsable,
   };
   return res.render('prototypes/peer-review/manage-reviews', viewData);
 }
@@ -422,7 +427,7 @@ export function pvManageReviewsPost(req, res) {
 
   let redirectURL = '/prototypes/peer-review/manage-reviews';
 
-  if (review1_reviewAndReturnWithComments === 'reviewAndReturn') {
+  /*if (review1_reviewAndReturnWithComments === 'reviewAndReturn') {
     req.session.review1_status = 'return';
     redirectURL = '/prototypes/peer-review/review-and-return?reviewUser=1';
   }
@@ -439,7 +444,15 @@ export function pvManageReviewsPost(req, res) {
   }
 
   req.session.review1_markReviewAsUsable = review1_markReviewAsUsable;
-  req.session.review4_markReviewAsUsable = review4_markReviewAsUsable;
+  req.session.review4_markReviewAsUsable = review4_markReviewAsUsable;*/
+
+  if (review1_markReviewAsUsable) {
+    req.session.review1Usable = true;
+  }
+
+  if (review4_reviewAndReturnWithComments === 'reviewAndReturn') {
+    req.session.review4UnUsable = true;
+  }
 
   return res.redirect(redirectURL);
 }

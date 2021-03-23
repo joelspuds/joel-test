@@ -8,6 +8,10 @@
 {%  set review1_markReviewAsUsable = review1_markReviewAsUsable if review1_markReviewAsUsable  %}
 {%  set review4_markReviewAsUsable = review4_markReviewAsUsable if review4_markReviewAsUsable  %}
 
+{% set review1Usable = review1Usable if review1Usable %}
+{% set review4UnUsable = review4UnUsable if review4UnUsable %}
+
+
 {% block content %}
 
     {% call components.bulmaRow(extraClass='') %}
@@ -23,7 +27,7 @@
             <div class="govuk-tabs" data-module="govuk-tabs">
                 <ul class="govuk-tabs__list">
                     <li class="govuk-tabs__list-item ">
-                        <a class="govuk-tabs__tab " href="/prototypes/peer-review/application-overview-2">Manage invites (8)</a>
+                        <a class="govuk-tabs__tab " href="/prototypes/peer-review/application-overview-3">Manage invites (8)</a>
                     </li>
                     <li class="govuk-tabs__list-item govuk-tabs__list-item--selected ">
                         <a class="govuk-tabs__tab" href="#">Manage reviews (4)</a>
@@ -65,14 +69,17 @@
                 {#<a href="#" class="govuk-link js-only print-link print-link--tabs" id="printThis" onclick="window.print();return false;">Print this page</a>#}
                 <a href="#main-content" class="govuk-link">Top of page</a>
 
+
+                {% if (review1Usable) or (review4UnUsable) %}
+                    <p class="govuk-body" style="max-width:200px;">
+                        <br>
+                        <a href="/prototypes/peer-review/manage-reviews-ready" class="_govuk-link" style="border:2px solid darkred;display:inline-block;padding:8px;text-decoration:none;">Proceed to next stage in prototype</a>
+                    </p>
+                {% endif %}
+
             </nav>
 
-            {% if review1_markReviewAsUsable  %}
-                <p class="govuk-body">
-                    <br>
-                    <a href="/prototypes/peer-review/manage-reviews-ready" class="_govuk-link" style="border:2px solid darkred;display:inline-block;padding:8px;text-decoration:none;">Proceed to next stage in prototype</a>
-                </p>
-            {% endif %}
+
 
         {%- endcall %}
 
@@ -99,7 +106,8 @@
                         <td class="govuk-table__cell">Dr. Arnaldo Calgari</td>
                         <td class="govuk-table__cell">15 days remaining</td>
                         <td class="govuk-table__cell u-align-right">
-                            {% if review1_markReviewAsUsable %}
+                            {# {% if review1_markReviewAsUsable %} #}
+                            {%  if review1Usable %}
                                 <span class="status-text status-text--green">Usable</span>
                             {% else %}
                                 <span class="status-text status-text--blue">Recieved</span>
@@ -130,16 +138,12 @@
                         <td class="govuk-table__cell">Dr. Patricia Particles</td>
                         <td class="govuk-table__cell">22 days remaining</td>
                         <td class="govuk-table__cell u-align-right">
-                            {% if review4_markReviewAsUsable  %}
-                                <span class="status-text status-text--green">Usable</span>
-                            {% elseif person4Rejected %}
+                            {#{% if review4_markReviewAsUsable  %}#}
+                            {%  if review4UnUsable %}
                                 <span class="status-text status-text--red">Unusable</span>
                             {% else %}
                                 <span class="status-text status-text--blue">Recieved</span>
                             {% endif %}
-                            {#{% if person4Rejected %}
-
-                            {% endif %}#}
                         </td>
                         <td class="govuk-table__cell u-align-right">4 - Good</td>
                     </tr>
@@ -239,7 +243,8 @@
                         <p class="govuk-body">5 - Excellent</p>
 
 
-                        {% if review1_markReviewAsUsable  %}
+                        {#{% if review1_markReviewAsUsable %}#}
+                        {%  if review1Usable %}
 
                             <div class="govuk-inset-text boxed-content">
                                 <h3 class="govuk-heading-m u-space-b5"><span class="status-text--green"> Marked as usable</span></h3>
@@ -351,20 +356,15 @@
 
                         <h3 class="govuk-heading-s">(3) Research Context</h3>
 
-                        {#<p class="govuk-body">Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. </p>#}
-
                         <h3 class="govuk-heading-s">(4) Research Methods</h3>
-
 
                         <h3 class="govuk-heading-s">Conclusion</h3>
 
-                        {#<p class="govuk-body">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa. </p>
-#}
                         {{ components.captionHeading(text='Expert review score', tag='h2', size='s', id='reviews') }}
                         <p class="govuk-body">4 - Good</p>
 
 
-                        {% if person4Rejected %}
+                        {% if review4UnUsable %}
                             <div class="govuk-inset-text boxed-content">
                                 <h3 class="govuk-heading-m u-space-b5"><span class="status-text--red"> Marked as unusable</span></h3>
                                 <strong>By Arden Pimenta, MRC, UKRI </strong>  23 March 2021, 9:28am
@@ -445,7 +445,8 @@
             <p class="govuk-body">Email reviews to the applicant. Their responses and the reviews will be used to inform the decision-making process of the assessing panel.</p>
 
             <p class="govuk-body">
-                <a href="/prototypes/peer-review/review-and-send-invitation-to-respond" class="govuk-button">Invite applicant to respond</a>
+                {#<a href="/prototypes/peer-review/review-and-send-invitation-to-respond" class="govuk-button">Invite applicant to respond</a>#}
+                <a href="/prototypes/peer-review/send-reviews-to-applicant" class="govuk-button">Invite applicant to respond</a>
             </p>
 
 

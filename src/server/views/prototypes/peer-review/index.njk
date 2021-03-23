@@ -9,7 +9,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
-            {{ components.captionHeading(text='Peer review journey') }}
+            {{ components.captionHeading(text='Expert review journey') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -35,13 +35,30 @@
                 <li>
                     <strong>Adding a reviewer to an appplication</strong> Enter expert review journey as admin adding and managing reviewers to application:
                     <br>
-                    <a href="/prototypes/peer-review/applications-list" class="govuk-link">Add expert reviewers to application</a>
+                    <a href="/prototypes/peer-review/applications-list" class="govuk-link">Go to applications list for one Opportunity</a>
+                    <br>
+                    <hr>
+
                 </li>
 
                 <li>
-                    <strong>Application with reviwers added in various states</strong> Enter expert review journey as admin with existing data:
+                    <strong>Application with reviewers and no invites</strong> Enter expert review journey as admin with reviewers added but not invited:
                     <br>
-                    <a href="/prototypes/peer-review/opportunity-setup" class="govuk-link">Add expert reviewer module to Opportunity</a>
+                    <a href="/prototypes/peer-review/application-overview" class="govuk-link">Go to invite list, all uninvited</a>
+                </li>
+
+                <li>
+                    <strong>Application with reviewers added in various states</strong> Enter expert review journey as admin with existing data:
+                    <br>
+                    <a href="/prototypes/peer-review/application-overview-2" class="govuk-link">Go to pre-populated invite list</a>
+                    <br>
+                    <hr>
+                </li>
+                <li>
+                    <strong>Managing reviews and sending to applicant</strong>:
+                    <br>
+                    <a href="/prototypes/peer-review/application-overview-3" class="govuk-link">Go to static "complete reviewers" list.</a>
+                    <br>
                 </li>
 
             </ol>
