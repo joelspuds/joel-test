@@ -1,0 +1,69 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+
+{% set pageTitle = 'Peer review' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            {{ components.captionHeading(text='Peer review journey') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+
+            <ol class="govuk-list govuk-list--number">
+
+                <li>
+                    <strong>Setting up an Opportunity</strong> Journey as admin adding expert review workflow module:
+                    <br>
+                    <a href="/prototypes/peer-review/opportunity-setup" class="govuk-link">Add expert reviewer module to Opportunity</a>
+                </li>
+
+                <li>
+                    <strong>Stating at all opportunities list</strong> List and filters of all current Opportunities.
+                    <br>
+                    <a href="/prototypes/peer-review/all-opportunities" class="govuk-link">Add expert reviewers to application</a>
+
+                </li>
+
+                <li>
+                    <strong>Adding a reviewer to an appplication</strong> Enter expert review journey as admin adding and managing reviewers to application:
+                    <br>
+                    <a href="/prototypes/peer-review/applications-list" class="govuk-link">Add expert reviewers to application</a>
+                </li>
+
+                <li>
+                    <strong>Application with reviwers added in various states</strong> Enter expert review journey as admin with existing data:
+                    <br>
+                    <a href="/prototypes/peer-review/opportunity-setup" class="govuk-link">Add expert reviewer module to Opportunity</a>
+                </li>
+
+            </ol>
+
+            <hr>
+
+            <p class="govuk-body">
+                <a href="/prototypes/peer-review?clearSession=true" class="govuk-link">Clear all stored data</a>
+            </p>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+{% block bodyScripts %}
+    {#<script>
+      Zepto(function($){
+        $('#thing').on('click', function() {
+        });
+      });
+    </script>#}
+{% endblock %}
+
+

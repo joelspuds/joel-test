@@ -1,0 +1,98 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set pageTitle = 'Expert review' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/peer-review/opportunity-setup', text:'Back to Opportunity set-up'}] %}
+{% set isAdminUser = true %}
+
+{% set workflowReviewItemAdded = workflowReviewItemAdded if workflowReviewItemAdded %}
+
+{% set guidance = guidance if guidance %}
+{% set expertReviewIsComplete = expertReviewIsComplete if expertReviewIsComplete %}
+{% set wordCount = wordCount if wordCount %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            {{ components.captionHeading(text='Expert review', caption='The name of my Opportunity') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST', name='expertReview') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-8', customID='main-content') %}
+
+                {{ components.captionHeading(text='Expert review guidance', tag='h2', size='m') }}
+
+                <div class="govuk-form-group">
+                    <h3 class="govuk-label-wrapper">
+                        <label class="govuk-label govuk-label--s" for="more-detail">Guidelines for writing a expert review</label>
+                    </h3>
+                    <div id="guidance" class="govuk-hint">
+                        These guideline will be available to the reviewer when writing their review
+                    </div>
+                    <textarea class="govuk-textarea" id="guidance" name="guidance" rows="5" aria-describedby="more-detail-hint">{{ guidance }}</textarea>
+                </div>
+
+                {{ components.linkHeading(text='Expert review word count', tag='h3', size='s')}}
+
+                <details class="govuk-details u-space-t20" data-module="govuk-details" role="group">
+                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                        <span class="govuk-details__summary-text">Guidance to setting a word count limit</span>
+                    </summary>
+                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                        <p class="govuk-body">
+                            Potential reviewers base their decision to assess projects on reading the application summary, which they will see in an email. Space is therefore at a premium, so setting a word count limit of no more than 400 words is recommended.
+                        </p>
+
+                    </div>
+                </details>
+
+                <div class="govuk-form-group">
+                    <h3 class="govuk-label-wrapper">
+                        <label class="govuk-label govuk-label--s" for="wordCount">Word count limit</label>
+                    </h3>
+                    <input class="govuk-input govuk-input--width-4" id="wordCount" name="wordCount" type="text" spellcheck="false" aria-describedby="account-number-hint" pattern="[0-9]*" inputmode="numeric" formnovalidate value="{{ wordCount }}">
+                </div>
+
+                <section class="section" id="submitSection">
+                    {% call components.formGroup() %}
+                        <div class="application-item">
+                            <div class="application-item__contents">
+                                <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                    <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                        <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                    </legend>
+                                    <div class="govuk-checkboxes">
+                                        <div class="govuk-checkboxes__item">
+                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if expertReviewIsComplete %} checked{% endif %}>
+                                            <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    {%- endcall %}
+
+                    {% call components.formGroup() %}
+
+                        {{ components.button(text='Save and return', extraClass="application-controls__submit")}}
+
+                    {%- endcall %}
+
+                </section>
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}

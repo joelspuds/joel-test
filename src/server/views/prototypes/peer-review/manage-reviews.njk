@@ -1,0 +1,492 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set showStickyNavscripts = true %}
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{% set pageTitle = 'Manage invites'  + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/peer-review/applications-list', text:'Back to all applictions'}] %}
+
+{%  set review1_markReviewAsUsable = review1_markReviewAsUsable if review1_markReviewAsUsable  %}
+{%  set review4_markReviewAsUsable = review4_markReviewAsUsable if review4_markReviewAsUsable  %}
+
+{% block content %}
+
+    {% call components.bulmaRow(extraClass='') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Name of the application', caption='Name of my opportunity') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='', customID='main-content') %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item ">
+                        <a class="govuk-tabs__tab " href="/prototypes/peer-review/application-overview-2">Manage invites (8)</a>
+                    </li>
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected ">
+                        <a class="govuk-tabs__tab" href="#">Manage reviews (4)</a>
+                    </li>
+                    <li class="govuk-tabs__list-item ">
+                        <a class="govuk-tabs__tab" href="/prototypes/peer-review/manage-applicant-response">Manage applicant response</a>
+                    </li>
+                </ul>
+                <a href="#" class="govuk-link sneaky-tab-link">Read application</a>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-3') %}
+            <nav class="sticky-nav">
+                {{ components.linkHeading(text='Manage reviews', tag='h2', size='s')}}
+
+                <ul class="govuk-list">
+                    <li>
+                        <a href="#overview" class="govuk-link govuk-link--no-visited-state ">Reviews overview</a>
+                    </li>
+                    <li>
+                        <a href="#accordion-default-heading-1" class="govuk-link govuk-link--no-visited-state ">Review 1</a>
+                    </li>
+                    <li>
+                        <span class="meta">Review 2 (Unavailable)</span>
+                    </li>
+                    <li>
+                        <span class="meta">Review 3 (Unavailable)</span>
+                    </li>
+                    <li>
+                        <a href="#accordion-default-heading-4" class="govuk-link govuk-link--no-visited-state ">Review 4</a>
+                    </li>
+                </ul>
+
+                {#<a href="#" class="govuk-link js-only print-link print-link--tabs" id="printThis" onclick="window.print();return false;">Print this page</a>#}
+                <a href="#main-content" class="govuk-link">Top of page</a>
+
+            </nav>
+
+            {% if review1_markReviewAsUsable  %}
+                <p class="govuk-body">
+                    <br>
+                    <a href="/prototypes/peer-review/manage-reviews-ready" class="_govuk-link" style="border:2px solid darkred;display:inline-block;padding:8px;text-decoration:none;">Proceed to next stage in prototype</a>
+                </p>
+            {% endif %}
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-9', customID='main-content') %}
+
+            {% call components.form(action='#', method='POST',name='manageReviews') %}
+
+            {{ components.captionHeading(text='Reviews overview', tag='h2', size='m', id='overview') }}
+
+            <table class="govuk-table mega-table">
+                <caption class="govuk-table__caption govuk-visually-hidden">Reviews overview table</caption>
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">Review</th>
+                        <th scope="col" class="govuk-table__header">Name</th>
+                        <th scope="col" class="govuk-table__header">Reviewer deadline</th>
+                        <th scope="col" class="govuk-table__header govuk-table__header--numeric">Status</th>
+                        <th scope="col" class="govuk-table__header govuk-table__header--numeric">Application<br/>score</th>
+                    </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row {% if review1_markReviewAsUsable  %} _mega-table_row-status--complete {% endif %}">
+                        <td class="govuk-table__cell"><a href="#accordion-default-heading-1" class="govuk-link">Review 1</a></td>
+                        <td class="govuk-table__cell">Dr. Arnaldo Calgari</td>
+                        <td class="govuk-table__cell">15 days remaining</td>
+                        <td class="govuk-table__cell u-align-right">
+                            {% if review1_markReviewAsUsable %}
+                                <span class="status-text status-text--green">Usable</span>
+                            {% else %}
+                                <span class="status-text status-text--blue">Recieved</span>
+                            {% endif %}
+                        </td>
+                        <td class="govuk-table__cell u-align-right">5 - Excellent</td>
+                    </tr>
+                    <tr class="govuk-table__row _mega-table_row-status--complete">
+                        <td class="govuk-table__cell"><span class="meta">Review 2 (Unavailable)</span></td>
+                        <td class="govuk-table__cell">Prof. Poppy Longue-Stock</td>
+                        <td class="govuk-table__cell">21 days remaining</td>
+                        <td class="govuk-table__cell u-align-right">
+                            <span class="meta">In progress</span>
+                        </td>
+                        <td class="govuk-table__cell u-align-right">-</td>
+                    </tr>
+                    <tr class="govuk-table__row _mega-table_row-status--complete">
+                        <td class="govuk-table__cell"><span class="meta">Review 3 (Unavailable)</span></td>
+                        <td class="govuk-table__cell">Dr. Fester Addams</td>
+                        <td class="govuk-table__cell">22 days remaining</td>
+                        <td class="govuk-table__cell u-align-right">
+                            <span class="meta">In progress</span>
+                        </td>
+                        <td class="govuk-table__cell u-align-right">-</td>
+                    </tr>
+                    <tr class="govuk-table__row _mega-table_row-status--complete">
+                        <td class="govuk-table__cell"><a href="#accordion-default-heading-4" class="govuk-link">Review 4</a></td>
+                        <td class="govuk-table__cell">Dr. Patricia Particles</td>
+                        <td class="govuk-table__cell">22 days remaining</td>
+                        <td class="govuk-table__cell u-align-right">
+                            {% if review4_markReviewAsUsable  %}
+                                <span class="status-text status-text--green">Usable</span>
+                            {% elseif person4Rejected %}
+                                <span class="status-text status-text--red">Unusable</span>
+                            {% else %}
+                                <span class="status-text status-text--blue">Recieved</span>
+                            {% endif %}
+                            {#{% if person4Rejected %}
+
+                            {% endif %}#}
+                        </td>
+                        <td class="govuk-table__cell u-align-right">4 - Good</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            {{ components.captionHeading(text='Reviews', tag='h2', size='m', id='reviews') }}
+
+            <p class="govuk-body">You need to mark each review as usable before it can be sent to the applicant to respond, sent to panel, or both.</p>
+
+
+            <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+                <div class="govuk-accordion__section ">
+                    <div class="govuk-accordion__section-header">
+                        <h2 class="govuk-accordion__section-heading">
+                            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                              Review 1
+                            </span>
+                        </h2>
+                    </div>
+                    <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+
+                        <h3 class="govuk-heading-s">(1) Aims and Objectives and (2) Research Questions</h3>
+
+                        <p class="govuk-body"> There are two central and related aims in this proposal. The first is about developing a new philosophical model of habit and habitual thought. The second is about seeing whether this new model can inform/transform clinical practice.</p>
+
+                        <p class="govuk-body">Let me begin by addressing the first aim. Although habit is a very interesting topic, and more research on it would be very
+                        welcome (especially in the direction of habitual thought) a) I felt that the framing here lacks focus, motivation and feels
+                        disjointed. One is left wondering, for example, why there is this focus on "Aristotelian philosophy, Idealism, Pragmatism and
+                        Phenomenology." I'm not saying there shouldn't be this focus, I'm just saying that it should be more clearly motivated. What
+                        is it about these four traditions that makes them especially suitable? (E.g. Pragmatism and Embodied Phenomenology has
+                        an obvious fit - where is the fit with idealism? Or Neo-Aristotelianism?)</p>
+
+                        <p class="govuk-body">The second aim, I think is very nice: bringing philosophical insights about habits to bear on the clinic in general, and on
+                        breathing difficulties in particular, has a strong appeal. However, there's a bit of a lack of focus: there is talk of mental
+                        health, but also asthma, dysfunctional breathing, OT and speech and language therapy. The focus seems to shift slightly
+                        throughout the proposal. A clearer focus on, say, Asthma (or breathing difficulties, or mental health) would have been
+                        Welcome.</p>
+
+                        <p class="govuk-body">Also, the originality of the second main aim, undermines the motivation for the first aim. Exploring the different
+                        consequences of different philosophical accounts of habit (I especially liked the focus, in passing, on feelings of
+                        responsibility for symptoms) for clinical practice is in itself exciting and original. You do not need to promise a new account
+                        of habit and habitual thought to be contributing something significant.</p>
+
+                        <p class="govuk-body">A number of the secondary research questions under Q1. raised related concerns about just how original this new model of
+                        habit is going to be. This brings me on to issues with the Research Context.</p>
+
+                        <h3 class="govuk-heading-s">(3) Research Context</h3>
+                        <p class="govuk-body">Many research proposals make claims about how (i) the research target is under-researched and (ii) current research on
+                        said target is labouring under misapprehensions that will be corrected by the proposed research. We get this here too.
+                        However, I am not entirely sure that habit is (i) especially under-researched (and in fairness, relevant research is cited). In
+                        any case, the misapprehension that all current work on habit is being charged with is Cartesianism. Again, I'm really not
+                        sure that it's fair to say that Cartesianism looms large in philosophy of mind in general, and in work on habit in particular.
+                        Generally, philosophers drawn to working on habit are Pragmatists, Phenomenologist, Enactivists etc. In short Anti-
+                        Cartesians par excellence.</p>
+
+                        <p class="govuk-body">Again, what I feel is really exciting and potentially important about this proposal is the application of philosophy of habit to
+                        the clinic. No need to highlight originality in work on habit when it is unclear that it's really there. (The resort to the Cartesian
+                        straw man illustrates this.)</p>
+
+                        <p class="govuk-body">There is something of interest and originality that would deserve its own grant, and that is the topic of mental habit. This
+                        could build very nicely on burgeoning literature on mental action. Its implications for mental health could also be brought
+                        out. Though exciting in its own right, it is not clear how this fits with exciting proposals about habit and asthma.</p>
+
+                        <h3 class="govuk-heading-s">(4) Research Methods</h3>
+                        <p class="govuk-body">I found this section to be especially strong, but it only cemented my feeling that the second part of this project is what it
+                        should really be about. The varied, interdisciplinary and engaged set-ups (e.g. Reflective Practice Meetings, Focus groups
+                        etc.) is really exciting and well thought-out. The focus should be on getting philosophy of habit interacting with clinicians.</p>
+
+                        <h3 class="govuk-heading-s">Conclusion</h3>
+                        <p class="govuk-body">There is lots of good material in this proposal, and I am certain that, given the high quality of the applicants, and the research directions proposed, lots of good and important research would come out of it.</p>
+
+                        <p class="govuk-body">However, overall, I felt like too many things were brought in: a sharper focus, in general, on specific points of interest would
+                        have been nice. (There's, so to speak, a fair amount of jumping around thematically). Also, I can't help feeling like it is really
+                        two projects stuck together. Let's call the proposed research surrounding the main Research Question 1, Part 1, and the
+                        research surrounding main Research Question 2, Part 2.</p>
+
+                        <p class="govuk-body">I would have preferred a project that focused more fully on Part 2, namely, the application of philosophical views of habit to
+                        clinical practice. This part of the application, it seems to me, is original, impactful, interdisciplinary and engaged, and it
+                        would remain so even if all that was being done was applying various existing accounts of habit. I really liked Part 2. That
+                        said, a bit more focus and clarity on the target would have been nice. Why not, for example, go to town on asthma and
+                        breathing difficulties? There was distracting mention of mental health, OT, Speech and Language Therapy. It wasn't clear
+                        how this all tied together, and why these are specifically good targets for a habit-based approach. I'm not saying they're
+                        not, but it needs to be made explicit.</p>
+
+                        <p class="govuk-body">Part 1 is simply proposing the development of a new philosophical model of habit. This strikes me as more monodisciplinary
+                        than Part 2, although the historical angle is very welcome. Nevertheless, I did not get a sense of genuine
+                        originality. Pragmatist, embodied and phenomenological approaches to cognition are pretty mainstream these days, and
+                        many researchers working in these fields already pay attention to habit. A symptom of this, I felt, was the brief (and uncited)
+                        mention of a "Cartesian" mainstream. It could be a sampling bias on my part, but it doesn't seem to me like there are
+                        many Cartesians, and I doubt they pay much attention to habit.</p>
+
+                        <h3 class="govuk-heading-s">Real high points:</h3>
+                        <p class="govuk-body">I felt there was potential for some *very* interesting things to be said around agency and habit, and how this relates to responsibility (self and sense of self were unhelpfully mentioned - there is a vast literature on the self and how it relates to agency, and the relationship is not straightforward). This was nicely brought out in Part 2 regarding patients feeling responsible for their symptoms. More could have been made of this. This can also feature as a general point in Part 1. A bright flash of originality emerged in mention of mental habits. A separate mono-disciplinary project on mental habits would be great (it would dovetail nicely with recent work on mental action), as would one that looks at mental habits as a core explanatory (and hence clinically relevant) component of various pathologies. The hypothesis that anxiety and depression might be thought of in terms of toxic mental habits strikes me as potentially fruitful.</p>
+
+                        {{ components.captionHeading(text='Expert review score', tag='h2', size='s', id='reviews') }}
+                        <p class="govuk-body">5 - Excellent</p>
+
+
+                        {% if review1_markReviewAsUsable  %}
+
+                            <div class="govuk-inset-text boxed-content">
+                                <h3 class="govuk-heading-m u-space-b5"><span class="status-text--green"> Marked as usable</span></h3>
+                                <strong>By Arden Pimenta, MRC, UKRI </strong>  23 March 2021, 9:28am
+                            </div>
+
+                        {% else %}
+
+                        <div class="boxed-content">
+
+                            {{ components.captionHeading(text='Mark review as usable', tag='h3', size='s', id='') }}
+
+                            <p class="govuk-body">Can this review be used to help inform a funding decision? </p>
+
+                            <details class="govuk-details u-space-t20" data-module="govuk-details" role="group">
+                                <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                    <span class="govuk-details__summary-text">Guidelines for marking a review as usable</span>
+                                </summary>
+                                <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                    <p class="govuk-body"><strong>The review must:</strong></p>
+                                    <ul class="govuk-list govuk-list--bullet">
+                                        <li>Cover strengths and weaknesses</li>
+                                        <li>Cover all application criteria: The idea, Importance, Timeliness, Approach, Impact.</li>
+                                        <li>Be objective, evidenced based and justified</li>
+                                        <li>Challenge the applicant constructively</li>
+                                    </ul>
+
+                                    <p class="govuk-body"><strong>The review must not:</strong></p>
+                                    <ul class="govuk-list govuk-list--bullet">
+                                        <li>Share personal information</li>
+                                        <li>Base on rumour or opinion.</li>
+                                    </ul>
+                                </div>
+                            </details>
+
+                            <div class="govuk-form-group">
+                                <fieldset aria-describedby="contact-hint" class="govuk-fieldset">
+                                    <h2 class="govuk-fieldset__heading">
+                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Is this review usable</legend>
+                                    </h2>
+                                    {#<div class="govuk-hint" id="contact-hint">Select one option.</div>#}
+                                    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" data-aria-controls="review1_conditional-1" id="review1_yes" name="review1_reviewUsability" type="radio" value="yes"> <label class="govuk-label govuk-radios__label" for="review1_yes">Yes, the review is usable</label>
+                                        </div>
+                                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="review1_conditional-1">
+                                            <p class="govuk-body">This review does cover the criteria expected of a review and can be;</p>
+                                            <ol class="govuk-list govuk-list--number ">
+                                                <li>Shared with the applicant to respond</li>
+                                                <li>Shared with the Panel to inform a funding decision.</li>
+                                            </ol>
+                                            <p class="govuk-body">
+                                                <button class="govuk-button u-space-b0" type="submit" value="true" name="review1_markReviewAsUsable">Mark review as usable</button>
+                                            </p>
+                                        </div>
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" data-aria-controls="review1_conditional-2" id="review1_no" name="review1_reviewUsability" type="radio" value="no"> <label class="govuk-label govuk-radios__label" for="review1_no">No, the review is not usable </label>
+                                        </div>
+                                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="review1_conditional-2">
+                                            <p class="govuk-body">This review <strong>does not</strong> cover the criteria expected of a review.</p>
+                                            <p class="govuk-body">
+                                                <button class="govuk-button govuk-button--secondary u-space-b0" type="submit" name="review1_reviewAndReturnWithComments" value="reviewAndReturn">Review and return with comments</button>
+                                                {#<button class="govuk-button govuk-button--secondary govuk-button--warning u-space-b0" type="submit" name="reviewAndReject" value="reviewAndReject">Review and reject</button>#}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        {% endif %}
+
+                    </div>
+                </div>
+                <div class="govuk-accordion__section _govuk-accordion__section--disabled">
+                    {#<span class="js-hidden govuk-accordion__section-header--disabled">Review 2</span>#}
+                    <div class="govuk-accordion__section-header">
+                        <h2 class="govuk-accordion__section-heading meta">
+                            <span class="govuk-accordion__section-button" id="accordion-default-heading-2">Review 2 (Unavailable)</span>
+                        </h2>
+                    </div>
+                    <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+                        <p class='govuk-body'>This review is in progress</p>
+                    </div>
+                </div>
+                <div class="govuk-accordion__section _govuk-accordion__section--disabled ">
+                    {#<span class="js-hidden govuk-accordion__section-header--disabled">Review 3</span>#}
+                    <div class="govuk-accordion__section-header">
+                        <h2 class="govuk-accordion__section-heading meta">
+                            <span class="govuk-accordion__section-button" id="accordion-default-heading-3">Review 3 (Unavailable)</span>
+                        </h2>
+                    </div>
+                    <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+                        <p class='govuk-body'>This review is in progress</p>
+                    </div>
+                </div>
+                <div class="govuk-accordion__section">
+                    <div class="govuk-accordion__section-header">
+                        <h2 class="govuk-accordion__section-heading">
+                            <span class="govuk-accordion__section-button" id="accordion-default-heading-4">Review 4</span>
+                        </h2>
+                    </div>
+                    <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+                        <h3 class="govuk-heading-s">(1) Aims and Objectives</h3>
+                        <a href="#">please see my review in Google docs</a>
+                        <p class="govuk-body"></p>
+
+                        <h3 class="govuk-heading-s">(2) Research Questions</h3>
+
+                        <h3 class="govuk-heading-s">(3) Research Context</h3>
+
+                        {#<p class="govuk-body">Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. </p>#}
+
+                        <h3 class="govuk-heading-s">(4) Research Methods</h3>
+
+
+                        <h3 class="govuk-heading-s">Conclusion</h3>
+
+                        {#<p class="govuk-body">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa. </p>
+#}
+                        {{ components.captionHeading(text='Expert review score', tag='h2', size='s', id='reviews') }}
+                        <p class="govuk-body">4 - Good</p>
+
+
+                        {% if person4Rejected %}
+                            <div class="govuk-inset-text boxed-content">
+                                <h3 class="govuk-heading-m u-space-b5"><span class="status-text--red"> Marked as unusable</span></h3>
+                                <strong>By Arden Pimenta, MRC, UKRI </strong>  23 March 2021, 9:28am
+                            </div>
+                        {% else %}
+
+                        <div class="boxed-content">
+
+                            {{ components.captionHeading(text='Mark review as usable', tag='h3', size='s', id='') }}
+
+                            <p class="govuk-body">Can this review be used to help inform a funding decision? </p>
+
+                            <details class="govuk-details u-space-t20" data-module="govuk-details" role="group">
+                                <summary class="govuk-details__summary" role="button" aria-controls="details-content-1" aria-expanded="false">
+                                    <span class="govuk-details__summary-text">Guidelines for marking a review as usable</span>
+                                </summary>
+                                <div class="govuk-details__text" id="details-content-1" aria-hidden="true">
+                                    <p class="govuk-body"><strong>The review must:</strong></p>
+                                    <ul class="govuk-list govuk-list--bullet">
+                                        <li>Cover strengths and weaknesses</li>
+                                        <li>Cover all application criteria: The idea, Importance, Timeliness, Approach, Impact.</li>
+                                        <li>Be objective, evidenced based and justified</li>
+                                        <li>Challenge the applicant constructively</li>
+                                    </ul>
+
+                                    <p class="govuk-body"><strong>The review must not:</strong></p>
+                                    <ul class="govuk-list govuk-list--bullet">
+                                        <li>Share personal information</li>
+                                        <li>Base on rumour or opinion.</li>
+                                    </ul>
+                                </div>
+                            </details>
+
+                            <div class="govuk-form-group">
+                                <fieldset aria-describedby="contact-hint" class="govuk-fieldset">
+                                    <h2 class="govuk-fieldset__heading">
+                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Is this review usable</legend>
+                                    </h2>
+                                    {#<div class="govuk-hint" id="contact-hint">Select one option.</div>#}
+                                    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" data-aria-controls="review4_conditional-1" id="review4_yes" name="review4_reviewUsability" type="radio" value="yes"> <label class="govuk-label govuk-radios__label" for="review4_yes">Yes, the review is usable</label>
+                                        </div>
+                                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="review4_conditional-1">
+                                            <p class="govuk-body">This review does cover the criteria expected of a review and can be;</p>
+                                            <ol class="govuk-list govuk-list--number ">
+                                                <li>Shared with the applicant to respond</li>
+                                                <li>Shared with the Panel to inform a funding decision.</li>
+                                            </ol>
+                                            <p class="govuk-body">
+                                                <button class="govuk-button u-space-b0" type="submit" value="true" name="review4_markReviewAsUsable">Mark review as usable</button>
+                                            </p>
+                                        </div>
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" data-aria-controls="review4_conditional-2" id="review4_no" name="review4_reviewUsability" type="radio" value="no"> <label class="govuk-label govuk-radios__label" for="review4_no">No, the review is not usable </label>
+                                        </div>
+                                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="review4_conditional-2">
+                                            <p class="govuk-body">This review <strong>does not</strong> cover the criteria expected of a review.</p>
+                                            <p class="govuk-body">
+                                                <button class="govuk-button govuk-button--secondary u-space-b0" type="submit" name="review4_reviewAndReturnWithComments" value="reviewAndReturn">Review and return with comments</button>
+                                                {#<button class="govuk-button govuk-button--secondary govuk-button--warning u-space-b0" type="submit" name="reviewAndReject" value="reviewAndReject">Review and reject</button>#}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                        </div>
+
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+
+            {{ components.captionHeading(text='Invite applicant to respond to this review', tag='h2', size='m', id='') }}
+
+            <p class="govuk-body">Email reviews to the applicant. Their responses and the reviews will be used to inform the decision-making process of the assessing panel.</p>
+
+            <p class="govuk-body">
+                <a href="/prototypes/peer-review/review-and-send-invitation-to-respond" class="govuk-button">Invite applicant to respond</a>
+            </p>
+
+
+            {#{{ components.captionHeading(text='Mark application as unsuccessful', tag='h2', size='m', id='') }}
+
+            <p class="govuk-body">Remove application from expert review and send unsuccessful decision notification. The applicant will be able to read their reviews, but will not have the right to respond. The application will not move to the panel stage. </p>
+
+            <p class="govuk-body">
+                <a href="/prototypes/peer-review/add-reviewer" class="govuk-button govuk-button--secondary">Review and send notification</a>
+            </p>#}
+
+
+
+            {%- endcall %} {# end form #}
+
+        {%- endcall %}
+
+    {%- endcall %}
+{% endblock %}
+
+{% block bodyScripts %}
+    <script type="text/javascript">
+        /* smooth-scroll.js v1.3.1 */
+        /*
+        n=0,
+        r=500,
+        i=15,
+        */
+        (function(e,t){
+            "use strict";
+            var n=0,
+                r=250,
+                i=15,
+                s=document.getElementsByTagName("a"),
+                o;
+            for(var u=0;u<s.length;u++){
+                o=s[u].attributes.href===t?null:s[u].attributes.href.nodeValue.toString();
+                if(o!==null&&o.length>1&&o.indexOf("#")!=-1){
+                    s[u].onclick=function(){
+                        var n,s=this.attributes.href.nodeValue.toString(),o=s.substr(0,s.indexOf("#")),u=s.substr(s.indexOf("#")+1);if(n=document.getElementById(u)){var l=(r-r%i)/i,c=f(),h=(a(n)-c)/l;if(e.history&&typeof e.history.pushState=="function")e.history.pushState({},t,o+"#"+u);for(var p=1;p<=l;p++){(function(){var t=h*p;setTimeout(function(){e.scrollTo(0,t+c)},i*p)})()}return false}}}}var a=function(e){var r=n*-1;while(e.offsetParent!=t&&e.offsetParent!=null){r+=e.offsetTop+(e.clientTop!=null?e.clientTop:0);e=e.offsetParent}return r};var f=function(){return e.pageYOffset!==t?e.pageYOffset:document.documentElement.scrollTop!==t?document.documentElement.scrollTop:document.body.scrollTop}})(window)
+    </script>
+
+
+    {% endblock %}

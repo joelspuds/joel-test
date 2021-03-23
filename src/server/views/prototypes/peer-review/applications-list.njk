@@ -1,0 +1,165 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{% set pageTitle = 'Applications for Opportunity'  + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/peer-review/opportunity-setup', text:'Back to Opportunity setup'}] %}
+{% set allCouncils = allCouncils %}
+{% set megaData = megaData if megaData %}
+{% set namesArray = namesArray if namesArray %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow(extraClass='') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Expert review', caption='Name of my opportunity') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='', customID='main-content') %}
+
+        {% call components.bulmaColumnAny(size='is-9') %}
+
+            <div class="task-manager">
+
+                <h2 class="govuk-heading-s"><a href="#">Task manager (12)</a></h2>
+                <form action="#" method="get" name="filters">
+                    <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice ">
+                        <input class="govuk-checkboxes__input " id="filter1" type="checkbox" name="filter1" value="test">
+                        <label for="filter1" class="govuk-checkboxes__label u-display-ib">Invite declined (3)</label>
+                    </div>
+                    <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice ">
+                        <input class="govuk-checkboxes__input " id="filter2" type="checkbox" name="filter2" value="test">
+                        <label for="filter2" class="govuk-checkboxes__label u-display-ib">Extension request (2)</label>
+                    </div>
+                    <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice ">
+                        <input class="govuk-checkboxes__input " id="filter3" type="checkbox" name="filter3" value="test">
+                        <label for="filter3" class="govuk-checkboxes__label u-display-ib">Reviewer not responded (2)</label>
+                    </div>
+                    <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice ">
+                        <input class="govuk-checkboxes__input " id="filter4" type="checkbox" name="filter4" value="test">
+                        <label for="filter4" class="govuk-checkboxes__label u-display-ib">Review overdue (2)</label>
+                    </div>
+                    <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice ">
+                        <input class="govuk-checkboxes__input " id="filter5" type="checkbox" name="filter5" value="test">
+                        <label for="filter5" class="govuk-checkboxes__label u-display-ib">Review ready for usability checks (3)</label>
+                    </div>
+                </form>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='', customID='main-content') %}
+
+        {% call components.bulmaColumnAny(size='is-9') %}
+
+            <form action="#" method="get" role="search">
+                <div class="search">
+                    <div class="govuk-form-group govuk-form-group--search">
+                        <label class="govuk-label govuk-visually-hidden" for="search">Event name</label>
+                        <input class="govuk-input govuk-input--width-20 search__input" id="search" name="event-name" type="text" placeholder="Search all Opportunities">
+                        <button type="submit" class="search__submit">Search</button>
+                    </div>
+                </div>
+            </form>
+
+            {#<p class="govuk-body">
+                Showing <strong>125</strong> Opportunities filtered by <strong>MRC</strong> in award set-up
+            </p>#}
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-9') %}
+
+            <div class="responsive-table">
+
+                <table class="govuk-table mega-table responsive-table__table">
+                    <thead>
+                    <tr class="govuk-table__header">
+                        <th class="govuk-table__header">App<br>ref</th>
+                        <th class="govuk-table__header">Application name</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Shortlisted<br>reviewers</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Sent<br>invited</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Invites<br>accepted</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Usable<br>reviews</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr class="mega-table_row-status--plain">
+                        <td class="govuk-table__cell">APP374</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">The application name for prototype testing</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            <span class="mega-table_item-status" style="font-weight:normal;">
+                                In progress
+
+                            </span>
+                        </td>
+                    </tr>
+
+
+                    {% for item in megaData %}
+                        <tr class="mega-table_row-status--{{ item.style }}">
+                            <td class="govuk-table__cell">APP{{ range(100, 999) | random }}</td>
+                            <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">{{ item.name }}</a></td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(0, 4) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(2, 8) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(0, 4) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(0, 4) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+                                    {% if item.status == 'progress' %}In progress{% endif %}
+                                    {% if item.status == 'not' %}Not started{% endif %}
+                                    {% if item.status == 'complete' %}Complete{% endif %}
+                                </span>
+                               {# <span class="mega-table_item-meta">
+                                    {{ range(1, 5) | random }} of 9 complete
+                                </span>#}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            {#{{ components.pagination(totalItems=46,currentPage=2) }}#}
+            {#{{ components.pagination(totalItems=99,itemsPerPage=10,currentPage=4) }}#}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    <script>
+        function toggleVisibility(_this, id, className) {
+            // event.preventDefault();
+            let toggleSwitch = _this;
+            let toggleItem = document.getElementById(id);
+            if (hasClass(toggleItem, className)) {
+                toggleSwitch.classList.add('filter__title--closed');
+                toggleItem.classList.remove(className);
+                toggleSwitch.setAttribute('aria-expanded', true);
+            }
+            else  {
+                toggleSwitch.classList.remove('filter__title--closed');
+                toggleItem.classList.add(className);
+                toggleSwitch.setAttribute('aria-expanded', false);
+            }
+            // return false;
+        }
+        function hasClass(target, className) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,273 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{% set pageTitle = 'Invitation to revies extension'  + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/peer-review/application-overview-2', text:'Back to appliction overview'}] %}
+
+{% set personID = personID if personID %}
+{% set personName = personName if personName %}
+{% set showResendBanner = showResendBanner if showResendBanner %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow(extraClass='') %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                        Success
+                    </h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-body">Extension request accepted. The reviewer has been notified</p>
+                </div>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='invitationToReviewExtension') %}
+
+        {% call components.bulmaRow(extraClass='') %}
+            {% call components.bulmaColumnAny(size='is-two-thirds') %}
+                {{ components.captionHeading(text='Response', caption='Name of the application') }}
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='') %}
+            {% call components.bulmaColumnAny(size='is-two-thirds') %}
+                {{ components.captionHeading(text='Extension request accepted', tag='h2', size='l', extraClass='u-space-b0') }}
+                <p class="govuk-body meta ">
+                    <strong>By Arden Pimenta, MRC, UKRI </strong>  21 March 2021, 12:34am
+                </p>
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='') %}
+            {% call components.bulmaColumnAny(size='is-two-thirds') %}
+
+                {{ components.captionHeading(text='Recipient', tag='h2', size='s', extraClass='disabledText') }}
+
+                <p class="govuk-body">
+                    Dr. Everrard Chumney-Warner
+                </p>
+
+                {{ components.captionHeading(text='Subject', tag='h2', size='s', extraClass='_disabledText') }}
+
+                <p class="govuk-body">
+                    Extension request accepted
+                </p>
+
+                {{ components.captionHeading(text='Message', tag='h2', size='s', extraClass='_disabledText') }}
+
+                <p class="govuk-body">
+                    Your extension request for the application [name_of_application]  has been accepted.
+                </p>
+
+                {{ components.captionHeading(text='Peer review deadline', tag='h2', size='s', extraClass='_disabledText') }}
+
+                <p class="govuk-body">
+                    29 March 2021, 4:00pm
+                </p>
+
+                <p class="govuk-body">
+                    Thank you for your continued support as an expert reviewer.
+                </p>
+
+                <p class="govuk-body _disabledText">
+                    Yours sincerely,
+                    <br><br>
+                    Firstname Lastname<br>
+                    Portfolio Manager<br>
+                    Name of council, part of UK Research and Innovation<br>
+                    Tel: 01454 4545458<br>
+                    Email: fisrtname.lastname@name-of-council.org.uk
+                </p>
+
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+
+                <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+
+                    <div class="govuk-accordion__section govuk-accordion__section--expanded">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                              Extension request
+                            </span>
+                            </h2>
+                            <span class="meta">21 March 2021, 4:14pm</span>
+                        </div>
+                        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+
+                            {{ components.captionHeading(text='Extension request from', tag='h2', size='s', extraClass='_disabledText') }}
+
+                            <p class="govuk-body">
+                                Dr. Everrard Chumney-Warner
+                            </p>
+
+                            {{ components.captionHeading(text='Comments', tag='h2', size='s', extraClass='_disabledText') }}
+
+                            <p class="govuk-body">
+                                I am able to accept this review if you can allow me an additional week to complete it.
+                            </p>
+
+                            {{ components.captionHeading(text='Extension period', tag='h2', size='s', extraClass='_disabledText') }}
+
+                            <p class="govuk-body">
+                                1 week (29 March 2021)
+                            </p>
+
+                            <p class="govuk-body _disabledText">
+                                Yours sincerely,
+                                <br><br>
+                                Firstname Lastname<br>
+                                Portfolio Manager<br>
+                                Name of council, part of UK Research and Innovation<br>
+                                Tel: 01454 4545458<br>
+                                Email: fisrtname.lastname@name-of-council.org.uk
+                            </p>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="govuk-accordion__section govuk-accordion__section--expanded">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                            <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                              Invitation to review
+                            </span>
+                            </h2>
+                            <span class="meta">17 March 2021, 4:14pm</span>
+                        </div>
+                        <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+
+                            {{ components.captionHeading(text='Recipient', tag='h2', size='s', extraClass='_disabledText') }}
+
+                            <p class="govuk-body">
+                                Dr. Everrard Chumney-Warner
+                            </p>
+
+                            {{ components.captionHeading(text='Subject', tag='h2', size='s', extraClass='_disabledText') }}
+
+                            <p class="govuk-body _disabledText">
+                                You have been invited to review an application
+                            </p>
+
+                            {{ components.captionHeading(text='Message', tag='h2', size='s', extraClass='_disabledText') }}
+
+                            <p class="govuk-body _disabledText">
+                                UKRI believe that your expertise is ideal to peer review this application for grant
+                                funding.
+                            </p>
+
+                            <p class="govuk-body _disabledText">
+                                Peer reviews typically take 4 to 8 hours to complete.
+                            </p>
+
+                            {{ components.captionHeading(text=' Expert review deadline:', tag='h2', size='s', extraClass='_disabledText') }}
+
+                            <p class="govuk-body _disabledText">
+                                Monday, 14 4 2021
+                            </p>
+
+                            {{ components.captionHeading(text='Additonal text:', tag='h2', size='s', extraClass='_disabledText') }}
+
+                            <p class="govuk-body">Following from our telephone conversation, we agreed that your expertise would add insight into our ability
+                                to make a funding decision on this application.</p>
+
+                            <p class="govuk-body">Thanks again for your continued support</p>
+
+                            {{ components.captionHeading(text='Opportunity:', tag='h2', size='s', extraClass='_disabledText') }}
+
+                            <p class="govuk-body">
+                                <a href="#" class="govuk-link">Development of a Novel Inhibitor of Ricin</a>
+                            </p>
+
+
+                            {{ components.captionHeading(text='Application title:', tag='h2', size='s', extraClass='_disabledText') }}
+
+                            <p class="govuk-body _disabledText">
+                                Name of application
+                            </p>
+
+                            {{ components.captionHeading(text='Team:', tag='h2', size='s', extraClass='_disabledText') }}
+
+                            <ul class="govuk-list _disabledText">
+                                <li><strong class="_disabledText">Principal investigator:</strong> Prof Giles Dexter, Coventry University</li>
+                                <li><strong class="_disabledText">Co-investigator:</strong> Prof Ian Charles, Coventry University</li>
+                                <li><strong class="_disabledText">Researcher:</strong> Dr Maxwell Peterson, Coventry University</li>
+                            </ul>
+
+                            {{ components.captionHeading(text='Grant size:', tag='h2', size='s', extraClass='_disabledText') }}
+
+                            <p class="govuk-body _disabledText">
+                                £180,000
+                            </p>
+
+                            {{ components.captionHeading(text='Sumamry:', tag='h2', size='s', extraClass='_disabledText') }}
+
+                            <p class="govuk-body _disabledText">
+                                The PI proposes a high-impact collaborative research project to develop new inhibitors for ribosome inactivating proteins (RIPs), such as ricin and Shiga toxin. Ricin toxin, produced by the castor bean plant, has a nefarious past. Ricin is a well-known homicidal poison and has been used in several bioterrorist attacks. Shiga toxin is a deadly product of enterobacterial Escherichia coli. RIPs are RNA N-glycosidases that enzymatically remove specific purine residues from the universally conserved sarcin/ricin loop (S/R loop) of large ribosomal RNA, causing cellular death.
+                            </p>
+
+                            <p class="govuk-body _disabledText">Phasellus ac risus lectus. Proin quis vehicula metus. Suspendisse eget odio metus. Maecenas vehicula quam ut accumsan dapibus. Phasellus sit amet nibh a lectus commodo viverra in id risus. Maecenas at sem nec dolor consectetur accumsan. Morbi non eros magna. Sed et mauris libero. Donec sollicitudin, risus non pulvinar consectetur, nibh lacus venenatis nunc, eget laoreet libero quam et lacus. Proin eros tortor, tempor quis dui quis, consequat ultricies arcu. Sed congue turpis at elit posuere, quis iaculis elit consequat. In maximus eu mi id euismod.
+                            </p>
+
+                            <p class="govuk-body _disabledText">
+                                Yours sincerely,
+                                <br><br>
+                                Firstname Lastname<br>
+                                Portfolio Manager<br>
+                                Name of council, part of UK Research and Innovation<br>
+                                Tel: 01454 4545458<br>
+                                Email: fisrtname.lastname@name-of-council.org.uk
+                            </p>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="application-controls govuk-clearfix">
+                    {#<input type="hidden" value="{{ personID }}" name="hiddenPersonID">#}
+                    {#{{ components.button(text='Send invitation', extraClass="application-controls__submit govuk-button--secondary", secondary='true', url='/prototypes/peer-review/application-overview-2')}}#}
+
+                    <a class="govuk-button govuk-button--secondary" href="/prototypes/peer-review/application-overview-2" role="button">Review and cancel invitation</a>
+
+                    {#<a href="/prototypes/peer-review/application-overview-2" class="govuk-link">Return to application overview</a>#}
+
+                    {#<span class="sub-button">
+                        {{ components.link(text='Cancel', url='/prototypes/peer-review/application-overview')}}
+                    </span>#}
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+    {%- endcall %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+{% endblock %}

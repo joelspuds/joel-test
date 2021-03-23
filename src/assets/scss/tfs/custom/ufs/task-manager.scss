@@ -1,0 +1,13 @@
+.task-manager {
+  background-color: #F3F2F1;
+  padding: 20px;
+  margin-bottom: 20px;
+
+  .govuk-checkboxes__item {
+    display: inline-block;
+    margin-bottom: 0!important;
+  }
+  .govuk-checkboxes__item:last-child, .govuk-checkboxes__item:last-of-type {
+    // margin-bottom: 10px!important;
+  }
+}

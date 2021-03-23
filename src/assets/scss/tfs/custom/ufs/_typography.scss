@@ -113,3 +113,62 @@ body.ufs .govuk-heading_additional-link a span {
   border-bottom: 1px solid govuk-colour("mid-grey");
   padding-bottom: 10px;
 }
+
+.disabledText {
+  color: govuk-colour("dark-grey");
+}
+
+.sub-button {
+  display: inline-block;
+  float: left;
+  @include govuk-font($size: 16);
+  margin: 8px 0 0 20px;
+}
+
+
+.govuk-accordion__section--disabled {
+  cursor: default;
+  button {
+    display:none!important;
+  }
+
+  h2 {
+    display: none!important;
+  }
+
+  .js-hidden {
+    display:block!important;
+
+  }
+
+  .govuk-accordion__section-header--disabled {
+    font-weight: 700;
+    color: govuk-colour("mid-grey");
+    cursor: default;
+    @include govuk-font($size: 24, $weight: bold);
+    position: relative;
+    padding-right: 40px;
+    // border-top: 1px solid #b1b4b6;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+}
+
+.status-text {
+  // @include govuk-font($size: 19, $weight: bold);
+  font-weight: bold;
+
+  &--blue {
+    color: govuk-colour("blue");
+  }
+
+  &--green {
+    color: govuk-colour("green");
+  }
+
+  &--red {
+    color: govuk-colour("red");
+  }
+
+}

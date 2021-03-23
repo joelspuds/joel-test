@@ -1,0 +1,85 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set pageTitle = 'Manage Opportunity' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set opportunityName = opportunityName %}
+{% set opportunityID = opportunityID %}
+{% set isAdminUser = true %}
+{% set backLinkContents =  [{url:'#', text:'Back to all Opportunities'}] %}
+
+{% set workflowReviewItemAdded = workflowReviewItemAdded if workflowReviewItemAdded %}
+{% set expertReviewIsComplete = expertReviewIsComplete if expertReviewIsComplete %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            {{ components.captionHeading(text='Manage Opportunity', caption='The name of my Opportunity') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-8', customID='main-content') %}
+
+            {{ components.captionHeading(text='Closed', size='m', tag='h2') }}
+
+            <p class="govuk-body-l">Application deadline, 00 Month Year, 00:00am</p>
+
+            <section class="section" id="defaultItems">
+
+                <div class="application-items">
+
+                    <div class="application-item application-item--summary application-item--complete">
+                        <div class="application-item__contents govuk-clearfix">
+                            <div class="application-item__left">
+                                <a href="#" class="govuk-link">Applications</a>
+                                <div class="application-item__data">
+                                    <a class="application-item__data-item">
+                                        <span class="application-item__data-text"><strong>67</strong><br> Started</span>
+                                    </a>
+                                    <a class="application-item__data-item">
+                                        <span class="application-item__data-text"><strong>45</strong><br> Over 50% complete</span>
+                                    </a>
+                                    <a class="application-item__data-item">
+                                        <span class="application-item__data-text"><strong>31</strong><br> Submitted</span>
+                                    </a>
+                                    <a class="application-item__data-item">
+                                        <span class="application-item__data-text"><strong>28</strong><br> Eligible</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="application-item__right">
+                            <span class="application-item__meta">
+                                <span class="item-successful">Opened:<br>
+                                    <strong>9 Apr 2020</strong><br></span>
+                                <span class="item-successful">Closed:<br>
+                                <strong>21 Aug 2020</strong><br></span>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="application-item application-item--incomplete">
+                        <div class="application-item__contents govuk-clearfix">
+                            <div class="application-item__left">
+                                <a href="/prototypes/peer-review/application-overview" class="govuk-link">Expert review</a>
+                            </div>
+                            <div class="application-item__right">
+                               {# <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>#}
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </section>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}

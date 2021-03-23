@@ -1,0 +1,162 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set pageTitle = 'Opportunity setup' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set opportunityName = opportunityName %}
+{% set opportunityID = opportunityID %}
+{% set isAdminUser = true %}
+{% set backLinkContents =  [{url:'#', text:'Back to all Opportunities'}] %}
+
+{% set workflowReviewItemAdded = workflowReviewItemAdded if workflowReviewItemAdded %}
+{% set expertReviewIsComplete = expertReviewIsComplete if expertReviewIsComplete %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            {{ components.captionHeading(text='Opportunity set-up', caption='The name of my Opportunity') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-8', customID='main-content') %}
+
+            <p class="govuk-body-l">Select 'Funders' to list the bodies supporting your Opportunity. Then add the stages you need to manage it.</p>
+
+            <section class="section" id="defaultItems">
+
+                <div class="application-items">
+
+                    <div class="application-item application-item--complete">
+                        <div class="application-item__contents govuk-clearfix">
+                            <div class="application-item__left">
+                                {{ components.link(text="Funders", url='#') }}
+                            </div>
+                            <div class="application-item__right">
+                                <span class="application-item__meta">
+                                    <span>MRC</span>
+                                    <span>Innovate UK</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="workflow">
+
+                {{ components.captionHeading(text='Workflow', tag='h2', size='m', extraClass='u-space-t30') }}
+
+                <div class="application-items">
+                    <div class="application-item application-item--workflow u-space-b30 application-item--complete">
+                        <div class="application-item__contents govuk-clearfix">
+                            <div class="application-item__left">
+                                {{ components.link(text="Application", url='#') }}
+                            </div>
+                            <div class="application-item__right">
+                                <span class="application-item__meta">
+                               Publish date:<br>
+                                <strong> 23 Oct 2020</strong><br>
+                                Closing date:<br>
+                                <strong> 14 Feb 2021</strong>
+                            </span>
+                                <span class="application-item__control">{{ components.link(text="Remove", url='#') }} </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% if workflowReviewItemAdded %}
+
+                    <div class="application-items">
+                        <div class="application-item application-item--workflow u-space-b30 {% if expertReviewIsComplete %} application-item--complete {% else %} application-item--incomplete {% endif %}">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    {{ components.link(text="Expert review", url='/prototypes/peer-review/expert-review') }}
+                                </div>
+                                <div class="application-item__right">
+                                    {% if expertReviewIsComplete %}
+                                        <span class="application-item__meta">Complete</span>
+                                    {% else %}
+                                        <span class="application-item__meta">Incomplete</span>
+                                    {% endif %}
+                                        <span class="application-item__control">{{ components.link(text="Remove", url='#') }} </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endif %}
+
+                {% call components.form(action='#', method='POST',name='addWorkflowItemForm') %}
+
+                    <div class="govuk-form-group ">
+                        <label class="govuk-label" for="addWorkflowItem">Add workflow item</label>
+                        <div class="select-iterator">
+                            <select class="govuk-select " id="addWorkflowItem" name="addWorkflowItem">
+                                <option>Select</option>
+                                <option value="application">Application</option>
+                                <option value="review">Expert review</option>
+                            </select>
+                            {{ components.button(text='Add', extraClass='govuk-button--secondary') }}
+                        </div>
+                    </div>
+
+                {%- endcall %}
+
+            </section>
+
+            <section class="section" id="submitSection">
+
+                {% call components.formGroup() %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-item">
+                            <div class="application-item__contents">
+                                <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                    <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                        <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                    </legend>
+                                    <div class="govuk-checkboxes">
+                                        <div class="govuk-checkboxes__item">
+                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if widerEffectIsComplete %} checked{% endif %} {% if readOnly %} disabled {% endif %}>
+                                            <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    {%- endcall %}
+
+                    {{ components.button(text='Complete Opportunity setup', url='/prototypes/peer-review/', extraClass="application-controls__submit")}}
+
+                {%- endcall %}
+
+            </section>
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-3 is-offset-1') %}
+
+            <div class="govuk-related-items govuk-related-items--flush">
+
+                {#{{ components.captionHeading(text=opportunityID, tag='h2', size='xs', extraClass='u-space-y5') }}#}
+                <h2 class="govuk-heading-xs u-space-y5">
+                    <span class="govuk-visually-hidden">Opportunity reference: </span> {{opportunityID}}
+                </h2>
+                <p class="govuk-body-s u-space-b5">{{ opportunityName }}</p>
+
+                <ul class="govuk-list u-space-t10">
+                    <li>{{ components.link(text='Edit Opportunity name', url='#', extraClass='sub-button') }}</li>
+                </ul>
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{% set pageTitle = 'Add reviewer'  + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/peer-review/application-overview', text:'Back to appliction overview'}] %}
+{% set allOrgs = allOrgs if allOrgs %}
+{% set namesArray = namesArray if namesArray %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow(extraClass='') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Add reviewer to shortlist', caption='Name of the application') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='addReviewer') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                <p class="govuk-body">
+                    Approved reviewers can be approached to review an application. Add reviewers to populate your shortlist.
+                </p>
+
+                <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
+                    <label class="govuk-label govuk-label--s" for="firstName" id="firstNameLabel">First name
+                        {% if firstNameError %}
+                            <span class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> You must enter a first name
+                            </span>
+                        {% endif %}
+                    </label>
+                    <input class="govuk-input govuk-input--width-20 {% if firstNameError %}govuk-input--error{% endif %}" id="firstName" type="text" name="firstName" value="{{ firstName }}">
+                </div>
+
+                <div class="govuk-form-group {% if lastNameError %}govuk-form-group--error{% endif %}">
+                    <label class="govuk-label govuk-label--s" for="lastName" id="lastNameLabel">Last name
+                        {% if lastNameError %}
+                            <span class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> You must enter a last name
+                            </span>
+                        {% endif %}
+                    </label>
+                    <input class="govuk-input govuk-input--width-20 {% if lastNameError %}govuk-input--error{% endif %}" id="lastName" type="text" name="lastName" value="{{ lastName }}">
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-6-desktop is-6-widescreen') %}
+
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-visually-hidden">Add the relevant organisation</legend>
+
+                    <div class="govuk-form-group {% if organisationNameError %} govuk-form-group--error {% endif %}">
+                        <label class="govuk-label govuk-label--s" for="organisation">Organisation</label>
+                        {% if organisationNameError %}
+                            <span id="organisation-error" class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> You must enter an organisation that is registered with the UKRI Funding Service
+                            </span>
+                        {% endif %}
+                        <select name="organisation" class="govuk-select {% if organisationNameError %} govuk-select--error {% endif %} control" id="organisation">
+                            <option></option>
+                            {% for item in allOrgs %}
+                                <option value="{{ item.name }}">{{ item.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </fieldset>
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                <div class="govuk-form-group {% if emailError %}govuk-form-group--error{% endif %}">
+                    <label class="govuk-label govuk-label--s" for="emailAddress" id="emailAddressLabel">Email address
+                        {% if emailError %}
+                            <span class="govuk-error-message">
+                                    <span class="govuk-visually-hidden">Error:</span> You must enter a valid email address
+                            </span>
+                        {% endif %}
+                    </label>
+                    <input class="govuk-input govuk-input--width-20 {% if emailError %}govuk-input--error{% endif %}" id="emailAddress" type="text" name="emailAddress" value="{{ firstName }}">
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="application-controls govuk-clearfix">
+                    {{ components.button(text='Add reviewer to shortlist', extraClass="application-controls__submit")}}
+
+                    <span class="sub-button">
+                        {{ components.link(text='Cancel', url='/prototypes/peer-review/application-overview')}}
+                    </span>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %} {# nd form #}
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+    <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        var selectEl = document.querySelector('#organisation');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 1,
+            selectElement: selectEl
+        });
+    </script>
+
+{% endblock %}

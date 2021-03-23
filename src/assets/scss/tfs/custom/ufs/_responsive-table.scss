@@ -131,6 +131,54 @@ th.scrolly__locked-th--right {
           color: govuk-colour("red")
         }
       }
+
+      &--success {
+        // green
+        background-color: #F3F2F1;
+
+        .mega-table_item-status {
+          color: govuk-colour("green")
+        }
+      }
+      &--plain {
+        // white
+        // background-color: #F3F2F1;
+
+        .mega-table_item-status {
+          // color: govuk-colour("green")
+        }
+      }
+
+      &--danger {
+        // red
+        background-color: lighten(govuk-colour("red"), 45%);
+        border-left:4px solid govuk-colour("red");
+
+        .mega-table_item-status {
+          // color: govuk-colour("green")
+        }
+      }
+
+      &--info {
+        // blue
+        background-color: lighten(govuk-colour("blue"), 50%);
+        border-left:4px solid govuk-colour("blue");
+
+        .mega-table_item-status {
+          // color: govuk-colour("green")
+        }
+      }
+
+      &--flat {
+        // GREY
+        background-color: lighten(govuk-colour("mid-grey"), 25%);
+        border-left:4px solid govuk-colour("mid-grey");
+
+        .mega-table_item-status {
+          // color: govuk-colour("green")
+        }
+      }
+
     }
 
   }

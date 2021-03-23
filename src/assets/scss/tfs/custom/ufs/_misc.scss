@@ -83,3 +83,11 @@
 .red-text {
   color: red;
 }
+
+
+.boxed-content {
+  padding: 10px;
+  border-top: 1px solid govuk-colour("mid-grey");
+  border-bottom: 1px solid govuk-colour("mid-grey");
+  background-color: lighten(govuk-colour("mid-grey"), 20%);
+}

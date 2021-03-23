@@ -1,0 +1,210 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{% set pageTitle = 'Manage invites'  + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/peer-review/applications-list', text:'Back to all applictions'}] %}
+
+{% set namesArray = namesArray if namesArray %}
+{% set addedPerson = addedPerson if addedPerson %}
+{% set examplePeople = examplePeople if examplePeople %}
+{% set inviteHasBeenSent = inviteHasBeenSent if inviteHasBeenSent %}
+{% set hiddenPersonID = hiddenPersonID if hiddenPersonID %}
+
+{% set person0invited = person0invited if person0invited %}
+{% set person1invited = person1invited if person1invited %}
+{% set person2invited = person2invited if person2invited %}
+{% set person3invited = person3invited if person3invited %}
+{% set person4invited = person4invited if person4invited %}
+{% set hasNote = hasNote if hasNote %}
+
+{% block content %}
+
+    {% if inviteHasBeenSent %}
+        {% call components.bulmaRow(extraClass='') %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                            Success
+                        </h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <p class="govuk-body">Invitation has been sent</p>
+                    </div>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
+
+    {% call components.bulmaRow(extraClass='') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Name of the application', caption='Name of my opportunity') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='', customID='main-content') %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab " href="#">Manage invites (8)</a>
+                    </li>
+                    <li class="govuk-tabs__list-item ">
+                        <a class="govuk-tabs__tab" href="/prototypes/peer-review/manage-reviews">Manage reviews (4)</a>
+                    </li>
+                    <li class="govuk-tabs__list-item ">
+                        <a class="govuk-tabs__tab" href="/prototypes/peer-review/manage-applicant-response">Manage applicant response</a>
+                    </li>
+                </ul>
+                <a href="#" class="govuk-link sneaky-tab-link">Read application</a>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            {{ components.captionHeading(text='Expert review shortlist (8)', tag='h2', size='m') }}
+            <p class="govuk-body">
+                Reviewers who can be approached to assess applications.
+            </p>
+
+            <p class="govuk-body">
+                <a href="/prototypes/peer-review/add-reviewer" class="govuk-button {% if not addedPerson %}govuk-button--secondary{% endif %}">Add reviewer to shortlist</a>
+            </p>
+
+            {#{% if addedPerson %}#}
+
+            <table class="govuk-table mega-table">
+                <caption class="govuk-table__caption govuk-visually-hidden">Details of expert reviews assigned to this application </caption>
+                <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Name</th>
+                    <th scope="col" class="govuk-table__header">Organisation</th>
+                    <th scope="col" class="govuk-table__header">Notes</th>
+                    <th scope="col" class="govuk-table__header govuk-table__header--numeric">Invite</th>
+                </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row mega-table_row-status--complete">
+                        <td class="govuk-table__cell">
+                            {% if hasNote %}
+                                Dr. {{ addedPerson.firstName }} {{ addedPerson.lastName }}
+                            {% else %}
+                                Dr. Jane Doe
+                            {% endif %}
+                        </td>
+                        <td class="govuk-table__cell">{{ addedPerson.organisation }}</td>
+                        <td class="govuk-table__cell">
+                            <a href="/prototypes/peer-review/add-note?source=v2" class="govuk-link">
+                                {% if hasNote %} View {% else %} Add {% endif %}
+                            </a>
+                        </td>
+                        <td class="govuk-table__cell u-align-right">
+                            {#<a href="/prototypes/peer-review/invitation-to-review?personID=0" class="govuk-link">Accepted</a>#}
+                            <a href="#" class="govuk-link">Accepted</a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row mega-table_row-status--danger ">
+                        <td class="govuk-table__cell">{{ examplePeople[1] }}</td>
+                        <td class="govuk-table__cell">Bristol University</td>
+                        <td class="govuk-table__cell"><a href="/prototypes/peer-review/add-note?source=v2" class="govuk-link">Add</a></td>
+                        <td class="govuk-table__cell u-align-right">
+                            <a href="/prototypes/peer-review/invitation-to-review-decline" class="govuk-link">Declined</a> Today
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row mega-table_row-status--info">
+                        <td class="govuk-table__cell">{{ examplePeople[2] }}</td>
+                        <td class="govuk-table__cell">Essex University</td>
+                        <td class="govuk-table__cell"><a href="/prototypes/peer-review/add-note?source=v2" class="govuk-link">Add</a></td>
+                        <td class="govuk-table__cell u-align-right">
+                            <a href="/prototypes/peer-review/invitation-to-review-resend?personID=2&resend=true&version=2" class="govuk-link">Sent</a> 5 days ago
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row {% if person3invited %} mega-table_row-status--info {% endif %}">
+                        <td class="govuk-table__cell">{{ examplePeople[3] }}</td>
+                        <td class="govuk-table__cell">University of East Anglia</td>
+                        <td class="govuk-table__cell"><a href="/prototypes/peer-review/add-note?source=v2" class="govuk-link">Add</a></td>
+                        <td class="govuk-table__cell u-align-right">
+                            {% if person3invited %}
+                                <a href="/prototypes/peer-review/invitation-to-review?personID=3" class="govuk-link">Sent</a> Today
+                            {% else %}
+                                <a href="/prototypes/peer-review/invitation-to-review?personID=3" class="govuk-link">Invite to review</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Prof Maria Zamboni</td>
+                        <td class="govuk-table__cell">Birmingham University</td>
+                        <td class="govuk-table__cell"><a href="/prototypes/peer-review/add-note?source=v2" class="govuk-link">Add</a></td>
+                        <td class="govuk-table__cell u-align-right">
+                            <a href="#" class="govuk-link">Invite to review</a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Dr Moff Gideon </td>
+                        <td class="govuk-table__cell">University of Hull</td>
+                        <td class="govuk-table__cell"><a href="/prototypes/peer-review/add-note?source=v2" class="govuk-link">Add</a></td>
+                        <td class="govuk-table__cell u-align-right">
+                            <a href="#" class="govuk-link">Invite to review</a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row mega-table_row-status--change">
+                        <td class="govuk-table__cell">{{ examplePeople[4] }}</td>
+                        <td class="govuk-table__cell">University of Newquay and Padstow</td>
+                        <td class="govuk-table__cell"><a href="/prototypes/peer-review/add-note?source=v2" class="govuk-link">Add</a></td>
+                        <td class="govuk-table__cell u-align-right">
+                            <a href="/prototypes/peer-review/invitation-to-review-extension" class="govuk-link">Extension request</a> Today
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row mega-table_row-status--flat">
+                        <td class="govuk-table__cell">Dr Philamena Buddlington</td>
+                        <td class="govuk-table__cell">Exeter University</td>
+                        <td class="govuk-table__cell"><a href="/prototypes/peer-review/add-note?source=v2" class="govuk-link">Add</a></td>
+                        <td class="govuk-table__cell u-align-right">
+                            <a href="#" class="govuk-link">Declined</a>
+                        </td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+
+            {#{% endif %}#}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-9') %}
+
+            {{ components.captionHeading(text='Reviewer history', tag='h3', size='s') }}
+
+            <p class="govuk-body">To check proposed reviewers; current and previous review activity visit the <a href="#" class="govuk-link">Reviewer History</a> page in Siebel.</p>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {#{% if addedPerson %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-9') %}
+                <p class="govuk-body">
+                    <a href="/prototypes/peer-review/application-overview-2" class="_govuk-link" style="border:2px solid darkred;display:inline-block;padding:8px;text-decoration:none;">Proceed to next stage in prototype</a>
+                </p>
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}#}
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+{% endblock %}
