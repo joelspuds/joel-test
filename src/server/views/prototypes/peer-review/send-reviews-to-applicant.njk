@@ -51,7 +51,59 @@
                     The closing date to comment on the reviewers’ feedback is 4pm on 4 April 2021. After which, your application will be passed for final assessment and decision.
                 </p>
 
-                <div class="govuk-form-group">
+<div class="govuk-form-group">
+    {{ components.captionHeading(text='Response deadline', tag='h2', size='s', extraClass='') }}
+    {#<h2 class="govuk-fieldset__heading"></h2>#}
+    <p class="govuk-body">The standard deadline for assessing reviews is 5 days - unless you want to specify a date.</p>
+
+    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="yes" name="acceptRequest" type="radio" value="yes" data-aria-controls="conditional-contact">
+            <label class="govuk-label govuk-radios__label" for="yes">Specify a custom date</label>
+        </div>
+        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" role="group" aria-describedby="deadline-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        <h3 class="govuk-fieldset__heading">Set alternative deadline date</h3>
+                    </legend>
+                    <div id="passport-issued-hint" class="govuk-hint">
+                        For example, 27 3 2021
+                    </div>
+
+                    <div class="govuk-date-input" id="date-stuff">
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="deadlineDay">
+                                    Day
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="deadlineDay" name="deadlineDay" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="deadlineMonth">
+                                    Month
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="deadlineMonth" name="deadlineMonth" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="deadlineYear">
+                                    Year
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="deadlineYear" name="deadlineYear" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="no" name="acceptRequest" type="radio" value="no" data-aria-controls="conditional-contact-2">
+            <label class="govuk-label govuk-radios__label" for="no">Use standard 5-day deadline</label>
+        </div>
+    </div>
+
+                {#<div class="govuk-form-group">
                     <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
                             <h3 class="govuk-fieldset__heading">Response deadline</h3>
@@ -84,7 +136,7 @@
                         </div>
 
                     </fieldset>
-                </div>
+                </div>#}
 
             {%- endcall %}
 
