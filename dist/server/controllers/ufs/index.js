@@ -231,3 +231,15 @@ Object.keys(_multiUsersController).forEach(function (key) {
     }
   });
 });
+
+var _peerReviewController = require('./peerReviewController');
+
+Object.keys(_peerReviewController).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _peerReviewController[key];
+    }
+  });
+});

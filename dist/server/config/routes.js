@@ -362,6 +362,42 @@ router.post('/prototypes/multi-user-application/opportunity', demosController.ap
 // add data
 // router.get('/prototypes/multi-user-application/populate-data', demosController.appV3PopulateDataGet);
 
+/* *************************************************************** *
+
+  Peer review
+
+* *************************************************************** */
+router.get('/prototypes/peer-review/', demosController.pvIndexGet);
+router.post('/prototypes/peer-review/', demosController.pvIndexPost);
+router.get('/prototypes/peer-review/opportunity-setup', demosController.pvOpportunitySetupGet);
+router.post('/prototypes/peer-review/opportunity-setup', demosController.pvOpportunitySetupPost);
+router.get('/prototypes/peer-review/applications-list', demosController.pvApplicationsListGet);
+router.post('/prototypes/peer-review/applications-list', demosController.pvApplicationsListPost);
+router.get('/prototypes/peer-review/application-overview', demosController.pvApplicationOverviewGet);
+router.post('/prototypes/peer-review/applications-overview', demosController.pvApplicationOverviewPost);
+router.get('/prototypes/peer-review/add-reviewer', demosController.pvAddReviewerGet);
+router.post('/prototypes/peer-review/add-reviewer', demosController.pvAddReviewerPost);
+router.get('/prototypes/peer-review/invitation-to-review', demosController.pvInvitationToReviewGet);
+router.post('/prototypes/peer-review/invitation-to-review', demosController.pvInvitationToReviewPost);
+router.get('/prototypes/peer-review/application-overview-2', demosController.pvApplicationOverview2Get);
+router.post('/prototypes/peer-review/applications-overview-2', demosController.pvApplicationOverview2Post);
+router.get('/prototypes/peer-review/review-and-acknowledge-response', demosController.pvReviewAndAcknowledgeResponseGet);
+router.post('/prototypes/peer-review/review-and-acknowledge-response', demosController.pvReviewAndAcknowledgeResponsePost);
+router.get('/prototypes/peer-review/invitation-to-review-extension', demosController.pvInvitationToReviewExtensionGet);
+router.post('/prototypes/peer-review/invitation-to-review-extension', demosController.pvInvitationToReviewExtensionPost);
+router.get('/prototypes/peer-review/manage-reviews', demosController.pvManageReviewsGet);
+router.post('/prototypes/peer-review/manage-reviews', demosController.pvManageReviewsPost);
+router.get('/prototypes/peer-review/review-and-return', demosController.pvReviewAndReturnGet);
+router.post('/prototypes/peer-review/review-and-return', demosController.pvReviewAndReturnPost);
+router.get('/prototypes/peer-review/add-note', demosController.pvAddNotesGet);
+router.post('/prototypes/peer-review/add-note', demosController.pvAddNotesPost);
+
+router.get('/prototypes/peer-review/expert-review', demosController.pvExpertReviewGet);
+router.post('/prototypes/peer-review/expert-review', demosController.pvExpertReviewPost);
+
+router.get('/prototypes/peer-review/send-reviews-to-applicant', demosController.pvSendReviewsGet);
+router.post('/prototypes/peer-review/send-reviews-to-applicant', demosController.pvSendReviewsPost);
+
 // Create route from view path
 router.get('*', miscController.viewFileRoute);
 const allRoutes = exports.allRoutes = router;
