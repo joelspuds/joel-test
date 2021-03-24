@@ -203,6 +203,14 @@
         {%- endcall %}
     {% endif %}#}
 
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-9') %}
+            <p class="govuk-body">
+                <a href="/prototypes/peer-review/application-overview-3" class="_govuk-link" style="border:2px solid darkred;display:inline-block;padding:8px;text-decoration:none;">Proceed to next stage in prototype</a>
+            </p>
+        {%- endcall %}
+    {%- endcall %}
+
 {% endblock %}
 
 {% block bodyScripts %}
