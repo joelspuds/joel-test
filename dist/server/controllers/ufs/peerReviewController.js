@@ -192,10 +192,9 @@ function pvApplicationOverviewGet(req, res) {
   let inviteSome = req.param('inviteSome');
   if (inviteSome === 'true') {
     addedPerson = {
-      firstName: "Jane",
-      lastName: "Doe",
-      organisation: "University of Somerset"
-
+      firstName: 'Jane',
+      lastName: 'Doe',
+      organisation: 'University of Somerset'
     };
   }
 
