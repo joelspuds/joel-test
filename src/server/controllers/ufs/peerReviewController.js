@@ -462,6 +462,7 @@ export function pvManageReviewsPost(req, res) {
 
   if (review4_reviewAndReturnWithComments === 'reviewAndReturn') {
     req.session.review4UnUsable = true;
+    redirectURL = '/prototypes/peer-review/review-and-return?reviewUser=4';
   }
 
   return res.redirect(redirectURL);
