@@ -189,6 +189,16 @@ function pvApplicationOverviewGet(req, res) {
 
   let hasNote = req.session.hasNote;
 
+  let inviteSome = req.param('inviteSome');
+  if (inviteSome === 'true') {
+    addedPerson = {
+      firstName: "Jane",
+      lastName: "Doe",
+      organisation: "University of Somerset"
+
+    };
+  }
+
   viewData = {
     megaData,
     addedPerson,
@@ -263,6 +273,7 @@ function pvInvitationToReviewGet(req, res) {
 
   const examplePeople = generalData.examplePeopleList;
   let personID = req.param('personID');
+
   let addedPerson = req.session.addedPerson;
   console.log('personID = ' + personID);
   let personName;
