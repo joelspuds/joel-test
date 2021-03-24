@@ -141,6 +141,15 @@ export function pvApplicationsListPost(req, res) {
 export function pvApplicationOverviewGet(req, res) {
   let viewData;
 
+  let inviteSome = req.param('inviteSome');
+  if (inviteSome === 'true') {
+    req.session.addedPerson = {
+      firstName: 'Jane',
+      lastName: 'Doe',
+      organisation: 'University of Somerset',
+    };
+  }
+
   let addedPerson = req.session.addedPerson;
   const examplePeople = generalData.examplePeopleList;
   const megaData = generalData.megaDataApplicationNames;
@@ -156,15 +165,6 @@ export function pvApplicationOverviewGet(req, res) {
   let person4invited = req.session.person4invited;
 
   let hasNote = req.session.hasNote;
-
-  let inviteSome = req.param('inviteSome');
-  if (inviteSome === 'true') {
-    addedPerson = {
-      firstName: 'Jane',
-      lastName: 'Doe',
-      organisation: 'University of Somerset',
-    };
-  }
 
   viewData = {
     megaData,
