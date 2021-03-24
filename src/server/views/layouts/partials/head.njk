@@ -41,3 +41,10 @@
 // ga('create', 'UA-49672752-1', 'govuk-elements.herokuapp.com');
 // ga('send', 'pageview');
 </script>
+<script>
+    var n = sessionStorage.length;
+    while(n--) {
+        var key = sessionStorage.key(n);
+        sessionStorage.removeItem(key);
+    }
+</script>
