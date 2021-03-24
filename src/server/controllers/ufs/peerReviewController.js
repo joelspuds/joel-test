@@ -414,11 +414,14 @@ export function pvManageReviewsGet(req, res) {
   let review1Usable = req.session.review1Usable;
   let review4UnUsable = req.session.review4UnUsable;
 
+  let badReviewMessage = req.session.badReviewMessage;
+
   viewData = {
     /*review1_markReviewAsUsable,
     review4_markReviewAsUsable,
     person1Rejected,
     person4Rejected,*/
+    badReviewMessage,
     review1Usable,
     review4UnUsable,
   };
@@ -431,6 +434,7 @@ export function pvManageReviewsPost(req, res) {
     review4_markReviewAsUsable,
     review1_reviewAndReturnWithComments,
     review4_reviewAndReturnWithComments,
+    reviewAndReject,
   } = req.body;
 
   console.log(req.body);
@@ -462,7 +466,14 @@ export function pvManageReviewsPost(req, res) {
 
   if (review4_reviewAndReturnWithComments === 'reviewAndReturn') {
     req.session.review4UnUsable = true;
+    req.session.badReviewMessage = 'Unusable';
     redirectURL = '/prototypes/peer-review/review-and-return?reviewUser=4';
+  }
+
+  if (reviewAndReject === 'reviewAndReject') {
+    req.session.review4UnUsable = true;
+    req.session.badReviewMessage = 'Rejected';
+    redirectURL = '/prototypes/peer-review/review-and-reject';
   }
 
   return res.redirect(redirectURL);

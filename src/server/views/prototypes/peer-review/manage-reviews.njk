@@ -10,6 +10,8 @@
 
 {% set review1Usable = review1Usable if review1Usable %}
 {% set review4UnUsable = review4UnUsable if review4UnUsable %}
+{% set badReviewMessage = badReviewMessage if badReviewMessage %}
+
 
 
 {% block content %}
@@ -110,7 +112,7 @@
                             {%  if review1Usable %}
                                 <span class="status-text status-text--green">Usable</span>
                             {% else %}
-                                <span class="status-text status-text--blue">Recieved</span>
+                                <span class="status-text status-text--blue">Received</span>
                             {% endif %}
                         </td>
                         <td class="govuk-table__cell u-align-right">5 - Excellent</td>
@@ -140,9 +142,9 @@
                         <td class="govuk-table__cell u-align-right">
                             {#{% if review4_markReviewAsUsable  %}#}
                             {%  if review4UnUsable %}
-                                <span class="status-text status-text--red">Unusable</span>
+                                <span class="status-text status-text--red">{{ badReviewMessage }}</span>
                             {% else %}
-                                <span class="status-text status-text--blue">Recieved</span>
+                                <span class="status-text status-text--blue">Received</span>
                             {% endif %}
                         </td>
                         <td class="govuk-table__cell u-align-right">4 - Good</td>
@@ -425,7 +427,7 @@
                                             <p class="govuk-body">This review <strong>does not</strong> cover the criteria expected of a review.</p>
                                             <p class="govuk-body">
                                                 <button class="govuk-button govuk-button--secondary u-space-b0" type="submit" name="review4_reviewAndReturnWithComments" value="reviewAndReturn">Review and return with comments</button>
-                                                {#<button class="govuk-button govuk-button--secondary govuk-button--warning u-space-b0" type="submit" name="reviewAndReject" value="reviewAndReject">Review and reject</button>#}
+                                                <button class="govuk-button govuk-button--secondary govuk-button--warning u-space-b0" type="submit" name="reviewAndReject" value="reviewAndReject">Reject with comments</button>
                                             </p>
                                         </div>
                                     </div>
