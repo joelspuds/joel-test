@@ -107,28 +107,432 @@
                     </tr>
 
 
-                    {% for item in megaData %}
-                        <tr class="mega-table_row-status--{{ item.style }}">
-                            <td class="govuk-table__cell">APP{{ range(100, 999) | random }}</td>
-                            <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">{{ item.name }}</a></td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(0, 4) | random }}</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(2, 8) | random }}</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(0, 4) | random }}</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(0, 4) | random }}</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">
+
+                    <tr class="mega-table_row-status--plain">
+                        <td class="govuk-table__cell">APP339</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Viral pandemic: distributed societal issues and news shaping</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">2</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">2</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
                                 <span class="mega-table_item-status" style="font-weight:normal;">
-                                    {% if item.status == 'progress' %}In progress{% endif %}
-                                    {% if item.status == 'not' %}Not started{% endif %}
-                                    {% if item.status == 'complete' %}Complete{% endif %}
+                                    In progress
+
+
                                 </span>
-                               {# <span class="mega-table_item-meta">
-                                    {{ range(1, 5) | random }} of 9 complete
-                                </span>#}
-                            </td>
-                        </tr>
-                    {% endfor %}
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--success">
+                        <td class="govuk-table__cell">APP916</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Dimensional transmogrification methodology in domesticated urban felines.</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">10</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">6</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+
+
+                                    Complete
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--info">
+                        <td class="govuk-table__cell">APP261</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Jet propulsion systems in underwater environments</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">12</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">7</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+                                    In progress
+
+
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--success">
+                        <td class="govuk-table__cell">APP264</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Effluent filtering in pre-treated brown water overflows</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">20</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+
+
+                                    Complete
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--info">
+                        <td class="govuk-table__cell">APP215</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Recovery strategies from pollution in freshwater ecosystems</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">10</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">7</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">2</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">2</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+                                    In progress
+
+
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--success">
+                        <td class="govuk-table__cell">APP335</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Viral pandemic: distributed societal issues and news shaping</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">10</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+
+
+                                    Complete
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--plain">
+                        <td class="govuk-table__cell">APP695</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Viral pandemic: distributed societal issues and news shaping</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">10</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+                                    In progress
+
+
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--plain">
+                        <td class="govuk-table__cell">APP280</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Electric battery innovation for land-based travel</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">12</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+                                    In progress
+
+
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--plain">
+                        <td class="govuk-table__cell">APP937</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Meaningful entities in a post-apocalyptic world</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">10</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">2</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">2</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">1</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+                                    In progress
+
+
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--info">
+                        <td class="govuk-table__cell">APP903</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Searching the abyss for meaning</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">6</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">4</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+                                    In progress
+
+
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--success">
+                        <td class="govuk-table__cell">APP201</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Far red light in the seed germination of Buddleja davidii</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">12</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+
+
+                                    Complete
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--success">
+                        <td class="govuk-table__cell">APP571</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Long term effects of lockdown on mental health</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">13</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+
+
+                                    Complete
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--info">
+                        <td class="govuk-table__cell">APP679</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Hats, and why we should embrace them</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">12</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">4</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">2</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+                                    In progress
+
+
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--plain">
+                        <td class="govuk-table__cell">APP668</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Me and my lunch: post-prandial dipping</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">12</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">2</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+                                    In progress
+
+
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--success">
+                        <td class="govuk-table__cell">APP526</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">The importance of progressive enhancement in modern web development techniques</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">14</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">4</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+
+
+                                    Complete
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--plain">
+                        <td class="govuk-table__cell">APP902</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">4 lessons the pandemic taught us about work, life and balance</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">12</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">7</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">4</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">2</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+                                    In progress
+
+
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--danger">
+                        <td class="govuk-table__cell">APP164</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">How does artificial intelligence learn?</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">8</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+                                    In progress
+
+
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--success">
+                        <td class="govuk-table__cell">APP599</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">What is deep tech? A look at how it could shape the future</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">13</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">7</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">4</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+
+
+                                    Complete
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--plain">
+                        <td class="govuk-table__cell">APP791</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Never tell your parents you know anything about IT - a lifetime of support</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">11</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">7</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+                                    In progress
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--plain">
+                        <td class="govuk-table__cell">APP494</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">How much electricity does it take to power the world?</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">2</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">1</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">1</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+                                    In progress
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--success">
+                        <td class="govuk-table__cell">APP605</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Who were Las Mariposas, and why were they murdered?</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">13</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+
+
+                                    Complete
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--plain">
+                        <td class="govuk-table__cell">APP121</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">The myth of bringing your full, authentic self to work</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">2</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+                                    In progress
+
+
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--plain">
+                        <td class="govuk-table__cell">APP766</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Should we cry at work?</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+
+                                    In progress
+
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--plain">
+                        <td class="govuk-table__cell">APP500</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">How would you finish the sentence, "Imagine if..."?</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">13</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">7</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">2</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">2</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+                                    In progress
+
+
+                                </span>
+
+                        </td>
+                    </tr>
+
+                    <tr class="mega-table_row-status--danger">
+                        <td class="govuk-table__cell">APP227</td>
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/peer-review/application-overview" class="govuk-link">Climate change is our reality. Here's how we're taking action</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="mega-table_item-status" style="font-weight:normal;">
+
+                                    In progress
+
+                                </span>
+
+                        </td>
+                    </tr>
+
                     </tbody>
                 </table>
+
+
             </div>
 
             {#{{ components.pagination(totalItems=46,currentPage=2) }}#}

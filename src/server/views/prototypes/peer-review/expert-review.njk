@@ -28,7 +28,9 @@
 
             {% call components.bulmaColumnAny(size='is-8', customID='main-content') %}
 
-                {{ components.captionHeading(text='Expert review guidance', tag='h2', size='m') }}
+                {#{{ components.captionHeading(text='Expert review guidance', tag='h2', size='m') }}
+
+                <p class="govuk-body"> Your review will be checked for usability. If suitable, it will be forwarded to the applicant to respond to any feedback you provide. Your review and the applicant's response will be sent to panel for consideration.</p>#}
 
                 {#<div class="govuk-form-group">
                     <h3 class="govuk-label-wrapper">
@@ -43,16 +45,12 @@
 
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
                     <div class="govuk-form-group ">
-                        <label class="govuk-label govuk-label--s govuk-!-font-weight-bold" for="guidance">Additional text (optional)</label>
-                        <div class="govuk-hint">Add additional text that will be included in the invite. Any invite notes saved against each record will also be included.</div>
+                        <label class="govuk-label govuk-label--s govuk-!-font-weight-bold" for="guidance">Guidelines for writing an expert review</label>
+                        <div class="govuk-hint">Add any guidance that helps the reviewer complete their analysis and write up of the the application and produce a usable review.</div>
                         <textarea class="govuk-textarea govuk-js-character-count" name="guidance" id="guidance" rows="8" {% if readOnly %} disabled {% endif %}>{{ guidance }}</textarea>
                         {#<p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 250 words remaining</span></p>#}
                     </div>
                 </div>
-
-
-
-
 
                 {{ components.linkHeading(text='Expert review word count', tag='h3', size='s')}}
 
@@ -62,7 +60,8 @@
                     </summary>
                     <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
                         <p class="govuk-body">
-                            Potential reviewers base their decision to assess projects on reading the application summary, which they will see in an email. Space is therefore at a premium, so setting a word count limit of no more than 400 words is recommended.
+                            {#Roughly allow 400 words for each section of the application being reviewed. Try to keep the total under 2,000 words.#}
+                            The review should be no more that 2000 words in total unless there are special circumstances depending on the Opportunity.
                         </p>
 
                     </div>

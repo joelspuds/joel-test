@@ -25,8 +25,8 @@
 
         {% call components.bulmaColumnAny(size='is-8', customID='main-content') %}
 
-            <p class="govuk-body-l">Select 'Funders' to list the bodies supporting your Opportunity. Then add the stages you need to manage it.</p>
-
+            {#<p class="govuk-body-l">Select 'Funders' to list the bodies supporting your Opportunity. Then add the stages you need to manage it.</p>
+#}
             <section class="section" id="defaultItems">
 
                 <div class="application-items">
@@ -60,9 +60,8 @@
                             <div class="application-item__right">
                                 <span class="application-item__meta">
                                Publish date:<br>
-                                <strong> 23 Oct 2020</strong><br>
-                                Closing date:<br>
-                                <strong> 14 Feb 2021</strong>
+                                <strong> 24 Apr 2021</strong><br>
+
                             </span>
                                 <span class="application-item__control">{{ components.link(text="Remove", url='#') }} </span>
                             </div>
@@ -114,7 +113,7 @@
 
                 {% call components.formGroup() %}
 
-                    {% call components.formGroup() %}
+                    {#{% call components.formGroup() %}
                         <div class="application-item">
                             <div class="application-item__contents">
                                 <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
@@ -130,7 +129,7 @@
                                 </fieldset>
                             </div>
                         </div>
-                    {%- endcall %}
+                    {%- endcall %}#}
 
                     {{ components.button(text='Complete Opportunity set-up', url='/prototypes/peer-review/', extraClass="application-controls__submit")}}
 
@@ -150,9 +149,9 @@
                 </h2>
                 <p class="govuk-body-s u-space-b5">{{ opportunityName }}</p>
 
-                <ul class="govuk-list u-space-t10">
+                {#<ul class="govuk-list u-space-t10">
                     <li>{{ components.link(text='Edit Opportunity name', url='#', extraClass='sub-button') }}</li>
-                </ul>
+                </ul>#}
             </div>
 
         {%- endcall %}
