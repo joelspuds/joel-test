@@ -22,11 +22,11 @@
     {{ components.govukSkipLink({href:'#mainContent', html:'Skip to main content'}) }}
     {% include './partials/cookie-message.njk' %}
 
-    {% if newHeader %}
-        {% include './partials/bulma-ufs-new-header.njk' %}
+    {% if showFancyNav === 'yes' %}
+        {% include './partials/bulma-ufs-header-menus-2.njk' %}
     {% else %}
-        {#{% include './partials/bulma-ufs-header.njk' %}#}
         {% include './partials/bulma-ufs-new-header.njk' %}
+        {#{% include './partials/bulma-ufs-new-header.njk' %}#}
     {% endif %}
 
     {% if showExternalFurniture %}

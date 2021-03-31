@@ -15,6 +15,7 @@ exports.rteComplexPost = rteComplexPost;
 exports.rteComplex2Get = rteComplex2Get;
 exports.userDashBoardGet = userDashBoardGet;
 exports.userDashBoardFiltersGet = userDashBoardFiltersGet;
+exports.topNavGet = topNavGet;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 // import sanitizeHtml from '../../../../no';
@@ -296,4 +297,44 @@ function userDashBoardFiltersGet(req, res) {
     appData
   };
   return res.render('prototypes/molecules/user-dashboard-filters', viewData);
+}
+
+/*
+*
+*     Top nav switcher
+*
+*/
+function topNavGet(req, res) {
+  let viewData, actualNavType, navType, fancyNav, showFancyNav;
+
+  // const appData = generalData.megaDataApplications;
+
+  navType = req.param('navType');
+  fancyNav = req.param('fancyNav');
+  // console.log(navType);
+
+  if (navType === 'admin') {
+    req.session.navType = 'admin';
+  } else {
+    req.session.navType = 'external';
+  }
+
+  if (fancyNav === 'yes') {
+    req.session.fancyNav = 'yes';
+  } else {
+    req.session.fancyNav = 'no';
+  }
+
+  showFancyNav = req.session.fancyNav;
+  actualNavType = req.session.navType;
+
+  showFancyNav = 'yes';
+  actualNavType = 'admin';
+
+  viewData = {
+    // appData,
+    showFancyNav,
+    actualNavType
+  };
+  return res.render('prototypes/molecules/top-nav', viewData);
 }
