@@ -1,0 +1,254 @@
+$colour: ufs-colour("midnight");
+$hover-colour: #B938BC;
+
+* {
+  box-sizing: border-box;
+}
+
+.dropdown__title {
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+}
+
+// nav {
+.nav-bar__wrapper {
+  position:absolute;
+  right: 0;
+  top: 0;
+
+}
+.nav-bar {
+  // position: absolute;
+  // right: 0;
+  // top: 0;
+  //
+  float: right;
+  margin-left: 10px;
+  //
+  background-color: $colour;
+  // padding: 0 1rem;
+  // position: sticky;
+  // top: 0;
+  display: grid;
+  place-items: left;
+  //max-width: 120px;
+
+  > ul {
+    grid-auto-flow: column;
+
+    > li {
+      // margin: 0 0.5rem;
+
+      a,
+      .dropdown__title {
+        text-decoration: none;
+        text-align: center;
+        display: inline-block;
+        color: #fff;
+        font-size: 1.125rem;
+
+        &:focus {
+          outline: none;
+        }
+
+      }
+
+      > a,
+      .dropdown__title {
+        // padding: 1rem 0.5rem;
+        padding: 9px 12px 9px;
+        // border-top: 3px solid transparent;
+
+        &:hover,
+        &:focus {
+          // border-top-color: darken(lime, 20%);
+          // color: lime;
+          background-color: $hover-colour;
+        }
+      }
+
+      .dropdown__title {
+        padding-right: 28px;
+
+        &:after {
+          display: block;
+          position: absolute;
+          right: 8px;
+          top: 14px;
+          font-size: 12px;
+          content:"\25BC";
+          color: govuk-colour("white");
+        }
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+
+    li {
+      padding: 0;
+    }
+  }
+}
+
+.dropdown {
+  position: relative;
+
+  .dropdown__title {
+    display: inline-flex;
+    // align-items: center;
+    align-items: flex-start;
+
+  }
+
+  .dropdown__menu {
+    position: absolute;
+    min-width: 20ch;
+    // left: 50%;
+    // left: 0;
+    top: calc(100% - 0.25rem);
+    visibility: hidden;
+    // opacity: 0.3;
+    // padding: 0.5em 0;
+    padding: 0;
+    // background-color: #fff;
+
+    a {
+      color: govuk-colour("white");
+      background-color: $colour;
+      display: block;
+      padding: 0.5em;
+      opacity: 0;
+      text-align: left;
+
+      &:hover {
+        // background-color: rgba($colour, 0.15);
+        background-color: $hover-colour;
+      }
+
+      &:focus {
+        outline: none;
+        // background-color: rgba($colour, 0.25);
+        background-color: $hover-colour;
+      }
+    }
+  }
+
+  &:after {
+    // content: "";
+    // border: 0.5rem solid transparent;
+    // border-bottom-color: #fff;
+    // position: absolute;
+    // top: calc(100% - 1.25rem);
+    // left: 50%;
+  }
+
+  &:hover,
+  &:focus-within {
+    .dropdown__title {
+      // border-top-color: fuschia;
+    }
+
+    .dropdown__menu {
+      opacity: 1;
+      visibility: visible;
+
+      a {
+        opacity: 1;
+      }
+    }
+
+    &:after {
+      opacity: 1;
+    }
+  }
+}
+
+@include touch {
+  .nav-wrapper {
+    // display: none;
+  }
+}
+
+@include mobile {
+  .nav-wrapper {
+    display: none;
+  }
+}
+
+
+
+/*
+.nav-strip {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: lime;
+
+  &__link {
+    display: block;
+    background-color: ufs-colour("midnight");
+    padding: 8px 12px 7px;
+    color: govuk-colour("white");
+
+    &--dropper {
+      padding-right: 30px;
+
+      &:after {
+        display: block;
+        position: absolute;
+        right: 8px;
+        top: 12px;
+        font-size: 12px;
+        content:"\25BC";
+        color: govuk-colour("white");
+      }
+    }
+
+    &:hover {
+
+
+
+    }
+  }
+
+  &__wrap {
+
+  }
+
+  &__parent-list {
+
+  }
+
+  &__child-list {
+    display: none;
+  }
+
+  &__faker {
+    !*:hover {
+      .nav-strip__child-list {
+        display: block;
+      }
+    }*!
+  }
+
+  !*&__activate {
+    :hover {
+      + .nav-strip__child-list {
+        display: block;
+     }
+    }
+  }*!
+
+  &__activate:hover + .nav-strip__child-list,
+  &__activate:focus + .nav-strip__child-list{
+      display: block;
+  }
+
+}
+*/

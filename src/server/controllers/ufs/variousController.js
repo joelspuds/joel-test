@@ -311,7 +311,7 @@ export function topNavGet(req, res) {
   actualNavType = req.session.navType;
 
   showFancyNav = 'yes';
-  actualNavType = 'admin';
+  actualNavType = '_admin';
 
   viewData = {
     // appData,

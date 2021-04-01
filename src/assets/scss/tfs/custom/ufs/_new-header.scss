@@ -60,7 +60,6 @@
   }
 
   &--admin {
-
     .new-header__bar {
       background-color: ufs-colour("sand");
       background-image: url('/images/ufs/admin_graphic.svg');
@@ -111,6 +110,7 @@
       height: auto;
       float: none;
       clear: both;
+      margin-bottom:20px;
     }
   }
 
@@ -122,12 +122,10 @@
     @include mobile {
       display: block;
       width: 100%;
-      // border-bottom: 1px solid govuk-colour("mid-grey");
     }
 
     &--user {
       display: none;
-      margin-bottom: 10px;
 
       @include mobile {
         display: block;
@@ -138,38 +136,49 @@
   &__nav-link {
     // <a>
     display: inline-block;
-    // border: 2px solid white;
     padding: 0 4px;
-    font-size: 19px;
-    font-weight: bold;
     color: ufs-colour("ukri-blue");
+    text-decoration: none;
+    @include govuk-font($size: 19, $weight: bold);
 
-    &:hover {
+    /*&:hover {
       // border: 2px solid orange;
-    }
+    }*/
 
     @include mobile {
       border: none;
       display: block;
-      // padding: 6px 0;
 
       background-color: ufs-colour("ukri-blue");
       color: govuk-colour("white");
-      padding: 6px 10px;
-      margin-bottom: 4px;
+      padding: 10px 10px;
+      margin-bottom: 1px;
       text-align: right;
+      font-weight: normal;
 
       &:hover {
-        // border: none!important;
         background-color: govuk-colour("light-grey");
-        color: ufs-colour("ukri-blue");
+        color: govuk-colour("black");
       }
 
       &:focus {
         background-color: govuk-colour("yellow");
-        color: ufs-colour("ukri-blue");
+        color: govuk-colour("black");
       }
     }
+
+    &--active {
+      font-weight: bold;
+    }
+  }
+
+  &__nav-link-not {
+    display: block;
+    width: 100%;
+    padding: 14px 10px 10px;
+    margin-bottom: 1px;
+    text-align: right;
+    @include govuk-font($size:19, $weight: bold);
   }
 
   &__nav-text {
@@ -187,7 +196,14 @@
     .new-header__nav-link {
       &:hover {
         color: #622378;
-        // border: 2px solid #622378;
+      }
+    }
+
+    @include mobile {
+      .new-header__nav-link {
+        &:hover {
+          color: govuk-colour("black");
+        }
       }
     }
 

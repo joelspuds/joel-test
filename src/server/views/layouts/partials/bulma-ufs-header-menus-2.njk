@@ -19,22 +19,18 @@
                                     <li class="new-header__nav-item"><a href="/prototypes/dashboard/" class="new-header__nav-link">Home</a></li>
                                     <li class="new-header__nav-item"><a href="/prototypes/opportunity/" class="new-header__nav-link {% if activeNavItem == 'opportunities' %} new-header__nav-link--active {% endif %}">Opportunities</a>
                                     <li class="new-header__nav-item"><a href="#" class="new-header__nav-link {% if activeNavItem == 'awards' %} new-header__nav-link--active {% endif %}">Awards</a></li>
-                                    {#<li class="new-header__nav-item"><a href="#" class="new-header__nav-link">Outcomes</a></li>#}
-                                    {#<li class="new-header__nav-item"><a href="#" class="new-header__nav-link">Reporting</a></li>#}
                                     <li class="new-header__nav-item"><a href="#" class="new-header__nav-link">Users and organisations</a></li>
                                     <li class="new-header__nav-item new-header__nav-item--user">
-                                        Dr. Jane Doe
+                                        <span class="new-header__nav-link-not">Dr. Jane Doe</span>
                                     </li>
                                     <li class="new-header__nav-item new-header__nav-item--user">
                                         <a href="#" class="new-header__nav-link">Account settings</a>
                                     </li>
                                     <li class="new-header__nav-item new-header__nav-item--user">
-                                        {# <span class="new-header__nav-text">Arden Pimenta</span>
-                    <a href="#" class="new-header__nav-link">Your profile</a>#}
                                         <a href="#" class="new-header__nav-link">Sign out</a>
                                     </li>
                                     <li class="new-header__nav-item new-header__nav-item--user">
-                                        Account view
+                                        <span class="new-header__nav-link-not">Account view</span>
                                     </li>
                                     <li class="new-header__nav-item new-header__nav-item--user">
                                         <a href="#" class="new-header__nav-link">Personal (current)</a>
@@ -56,9 +52,25 @@
                                         <li class="new-header__nav-item"><a href="#" class="new-header__nav-link {% if activeNavItem == 'manageUsers' %} new-header__nav-link--active {% endif %}">Manage users</a></li>
                                     {% endif %}
                                     <li class="new-header__nav-item new-header__nav-item--user">
-                                        {#<span class="new-header__nav-text">Prof. Lady Joanne Potwash-McDoelingtonworth BSc MSc PhD MBE</span>
-                    <a href="#" class="new-header__nav-link">Your profile</a>#}
+                                        <span class="new-header__nav-link-not">Dr. Jane Doe</span>
+                                    </li>
+                                    <li class="new-header__nav-item new-header__nav-item--user">
+                                        <a href="#" class="new-header__nav-link">Account settings</a>
+                                    </li>
+                                    <li class="new-header__nav-item new-header__nav-item--user">
                                         <a href="#" class="new-header__nav-link">Sign out</a>
+                                    </li>
+                                    <li class="new-header__nav-item new-header__nav-item--user">
+                                        <span class="new-header__nav-link-not">Account view</span>
+                                    </li>
+                                    <li class="new-header__nav-item new-header__nav-item--user">
+                                        <a href="#" class="new-header__nav-link new-header__nav-link--active">Personal (current)</a>
+                                    </li>
+                                    <li class="new-header__nav-item new-header__nav-item--user">
+                                        <a href="#" class="new-header__nav-link">University of Fulchester</a>
+                                    </li>
+                                    <li class="new-header__nav-item new-header__nav-item--user">
+                                        <a href="#" class="new-header__nav-link">Frome College Of Artisanal Hipstering And Top Knottery</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -93,20 +105,57 @@
                             {% if navType == 'admin' %}
                                 <div class="nav-wrapper">
                                     <div class="nav-bar" aria-label="Organisation Navigation">
-                                        <ul>
+                                        <ul class="nav-bar__list">
                                             <li class="dropdown">
                                                 <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="organisation-dropdown">Account view</button>
                                                 <ul class="dropdown__menu" id="organisation-dropdown">
-                                                    <li><a href="#">Personal (current)</a></li>
+                                                    <li class="nav-bar__item"><a href="#">Personal (current)</a></li>
+                                                    <li class="nav-bar__item"><a href="#">University of Fulchester</a></li>
+                                                    <li class="nav-bar__item"><a href="#">Frome College Of Artisanal Hipstering And Top Knottery</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="nav-bar" aria-label="User Navigation">
+                                        <ul class="nav-bar__list">
+                                            <li class="dropdown">
+                                                <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="user-dropdown">Dr. Jane Doe</button>
+                                                <ul class="dropdown__menu" id="user-dropdown">
+                                                    <li class="nav-bar__item"><a href="#">Account settings</a></li>
+                                                    <li class="nav-bar__item"><a href="#">Sign out</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            {% else %}
+                                {#<div class="user-header">
+                                    <div class="user-header__user">
+                                        <ul class="user-header__list">
+                                            <li class="user-header__switch user-header__switch--only">
+                                                <a href="#?signout=true" class="user-header__control">Sign out</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>#}
+
+                                <div class="nav-wrapper">
+                                    <div class="nav-bar" aria-label="Organisation Navigation">
+                                        <ul class="nav-bar__list">
+                                            <li class="dropdown">
+                                                <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="organisation-dropdown">Account view</button>
+                                                <ul class="dropdown__menu" id="organisation-dropdown">
+                                                    <li><a href="#" class="dropdown__link--active">Personal (current)</a></li>
                                                     <li><a href="#">University of Fulchester</a></li>
                                                     <li><a href="#">Frome College Of Artisanal Hipstering And Top Knottery</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </div>
-
                                     <div class="nav-bar" aria-label="User Navigation">
-                                        <ul>
+                                        <ul class="nav-bar__list">
                                             <li class="dropdown">
                                                 <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="user-dropdown">Dr. Jane Doe</button>
                                                 <ul class="dropdown__menu" id="user-dropdown">
@@ -116,103 +165,8 @@
                                             </li>
                                         </ul>
                                     </div>
-
                                 </div>
 
-
-
-
-
-
-                                {#<div class="nav-strip">
-                                    <div class="nav-strip__wrap">
-                                        <ul class="nav-strip__parent-list">
-                                            <li class="nav-strip__faker">
-                                                <a href="#" class="nav-strip__link nav-strip__link--dropper nav-strip__activate">Dr. Jane Doe</a>
-                                                <ul class="nav-strip__child-list">
-                                                    <li class="nav-strip__child-list__item">
-                                                        <a href="#" class="nav-strip__link">Account settings</a>
-                                                    </li>
-                                                    <li class="nav-strip__child-list__item">
-                                                        <a href="#" class="nav-strip__link">Sign out</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        #}{#<button class="">Dr. Jane Doe</button>
-                                        <ul class="nav-strip__list">
-                                            <li>
-                                                <a href="#">Account settings</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Sign out</a>
-                                            </li>
-                                        </ul>#}{#
-                                    </div>
-                                    #}{#<div class="nav-strip__item">
-                                        <button class="">Account view</button>
-                                        <ul class="nav-strip__list">
-                                            <li>
-                                                <a href="#">Personal (current)</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Fulchester Polytechnic</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">ACME Widgets Inv</a>
-                                            </li>
-                                        </ul>
-                                    </div>#}{#
-                                </div>#}
-                                {#<div class="user-header">
-                                    <div class="user-header__user">
-                                        <ul class="user-header__list">
-                                            <li class="user-header__switch user-header__switch--only">
-                                                <a href="#?signout=true" class="user-header__control">Sign out</a>
-                                            </li>
-                                            <li class="user-header__switch">
-                                              <a href="#" class="user-header__control">Arden Pimenta</a>
-                                              <ul class="user-header__dropdown">
-                                                <li><a href="#">Your profile</a></li>
-                                                <li><a href="#">Sign out</a></li>
-                                              </ul>
-                                            </li>
-                                                                    <li class="user-header__switch">
-                                              <a href="#" class="user-header__control">Organisations</a>
-                                              <ul class="user-header__dropdown">
-                                                <li><a href="#">UKRI</a></li>
-                                                <li><a href="#">EPSRC</a></li>
-                                              </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>#}
-                            {% else %}
-                                <div class="user-header">
-                                    <div class="user-header__user">
-                                        <ul class="user-header__list">
-                                            <li class="user-header__switch user-header__switch--only">
-                                                <a href="#?signout=true" class="user-header__control">Sign out</a>
-                                            </li>
-                                            {#<li class="user-header__switch">
-                    <li class="user-header__switch user-header__switch--only">
-                      <a href="#?signout=true" class="user-header__control">Sign out</a>
-                      <a href="#" class="user-header__control">Prof. #}{#Lady#}{# Joanne Potwash-McDoelingtonworth #}{#BSc MSc PhD MBE#}{#</a>
-                      <ul class="user-header__dropdown">
-                        <li><a href="#">Your profile</a></li>
-                        <li><a href="#">Sign out</a></li>
-                      </ul>
-                    </li>
-                    {#<li class="user-header__switch">
-                      <a href="#" class="user-header__control">Organisations</a>
-                      <ul class="user-header__dropdown">
-                        <li><a href="#">University of Bath</a></li>
-                        <li><a href="#">Bristol Univeristy</a></li>
-                      </ul>
-                    </li>#}
-                                        </ul>
-                                    </div>
-                                </div>
                             {% endif %}
                         {% endif %}
                     </div>
