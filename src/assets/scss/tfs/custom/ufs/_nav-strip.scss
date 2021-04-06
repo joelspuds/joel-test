@@ -1,6 +1,7 @@
 $colour: ufs-colour("midnight");
 $hover-colour: #B938BC;
-$alt-colour: #7558C9;
+// $alt-colour: #7558C9;
+$alt-colour: #CB3564;
 
 .dropdown__title {
   background-color: transparent;
@@ -20,7 +21,6 @@ $alt-colour: #7558C9;
   margin-left: 2px;
   background-color: $colour;
   display: grid;
-  // place-items: left;
 
   &__list {
   // > ul {
@@ -48,7 +48,6 @@ $alt-colour: #7558C9;
 
         &:hover,
         &:focus {
-          // background-color: $hover-colour;
           background-color: $alt-colour;
         }
       }
@@ -93,7 +92,7 @@ $alt-colour: #7558C9;
   .dropdown__menu {
     position: absolute;
     min-width: 20ch;
-    top: calc(100% - 0.25rem);
+    top: 100%;
     visibility: hidden;
     padding: 0;
 
@@ -107,20 +106,13 @@ $alt-colour: #7558C9;
       border-top:1px solid govuk-colour("white");
 
       &:hover {
-        // background-color: $hover-colour;
-        // box-shadow: inset 0 0 2px 2px rgba(0,0,0,1);
-        // box-shadow: inset 0 0 1px 2px rgba($alt-colour, 1);
-        // box-shadow: inset 0 0 5px lime, 0 0 5px black;
         background-color: $alt-colour;
-        // box-shadow: inset 0 0 0 1ex $colour, inset 0 0 1px 1ex #FFF;
       }
 
       &:focus {
         outline: none;
-        // background-color: $hover-colour;
         background-color: $alt-colour;
       }
-
     }
   }
 
@@ -145,7 +137,7 @@ $alt-colour: #7558C9;
   }
 
   &__link--active {
-    @include govuk-font($size:16, $weight: bold);
+    font-weight: bold!important;
   }
 }
 
