@@ -5,13 +5,21 @@
 {% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
 {% set isAdminUser = true %}
 
+{% set listItems = [
+    { text: 'Personal details', url: '#' },
+    { text: 'Account security', url: '#' },
+    { text: 'Professional details', url: '#' },
+    { text: 'Permissions', url: '#' },
+    { text: 'Expert review preferences', url: '#' }
+] %}
+
 {% block content %}
 
     {% call components.bulmaRow() %}
 
         {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
 
-            {{ components.captionHeading(text='Profile page') }}
+            {{ components.captionHeading(text='Profile') }}
 
         {%- endcall %}
 
@@ -21,11 +29,25 @@
 
         {% call components.bulmaRow() %}
 
+            {% call components.bulmaColumnAny(size='is-3') %}
+                <nav class="">
+                    {{ components.linkHeading(text='Profile sections', tag='h2', size='s')}}
+                    {{ components.list(items=listItems, parentClass='')}}
+                </nav>
+            {%- endcall %}
+
             {% call components.bulmaColumnAny(size='column is-8') %}
 
                 {{ components.captionHeading(text='Personal details', tag='h2', size='m') }}
 
                 <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Honorific</dt>
+                        <dd class="govuk-summary-list__value">Professor</dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> honorific</span></a>
+                        </dd>
+                    </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">Name</dt>
                         <dd class="govuk-summary-list__value">Lucy Pevensie</dd>
@@ -55,63 +77,6 @@
                             <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> email</span></a>
                         </dd>
                     </div>
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">Password</dt>
-                        <dd class="govuk-summary-list__value">
-                            <p class="govuk-body">&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</p>
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> password</span></a>
-                        </dd>
-                    </div>
-                </dl>
-
-            {%- endcall %}
-
-        {%- endcall %}
-
-        {% call components.bulmaRow() %}
-
-            {% call components.bulmaColumnAny(size='column is-8') %}
-
-                {{ components.captionHeading(text='Professional details', tag='h2', size='m') }}
-
-                <dl class="govuk-summary-list">
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">Primary organisation</dt>
-                        <dd class="govuk-summary-list__value">Bristol University</dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> this organisation</span></a>
-                        </dd>
-                    </div>
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">Secondary organisations</dt>
-                        <dd class="govuk-summary-list__value">
-                            <p class="govuk-body">Cardiff University</p>
-                            <p class="govuk-body">University of the West of England</p>
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <p class="govuk-body">
-                                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> these organisations</span></a>
-                            </p>
-                        </dd>
-                    </div>
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Permitted roles
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            <p class="govuk-body">Lead applicant</p>
-                            <p class="govuk-body">Co-applicant</p>
-                            <p class="govuk-body">Peer reviewer</p>
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="#">
-                                Change<span class="govuk-visually-hidden"> roles</span>
-                            </a>
-                        </dd>
-                    </div>
-
                 </dl>
 
             {%- endcall %}
