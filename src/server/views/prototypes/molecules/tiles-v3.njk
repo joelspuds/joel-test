@@ -1,0 +1,58 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'NOTadmin' %}
+{% set pageTitle = 'Home tiles' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set isAdminUser = false %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Home tiles') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+                <div class="tfs-tile3">
+                    <a href="#" class="tfs-tile3__mega-link">
+                        <span class="tfs-tile3__heading">Applications</span>
+                        <span class="tfs-tile3__number">{{ range(1, 10) | random }}</span>
+                        <span class="tfs-tile3__progress">In progress</span>
+                    </a>
+                </div>
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+                <div class="tfs-tile3 ">
+                    <a href="#" class="tfs-tile3__mega-link tfs-tile3__mega-link--alt">
+                        <span class="tfs-tile3__heading">Reviews</span>
+                        <span class="tfs-tile3__number">{{ range(1, 10) | random }}</span>
+                        <span class="tfs-tile3__progress">In progress</span>
+                    </a>
+                </div>
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    {#<script>
+    </script>#}
+{% endblock %}

@@ -1,0 +1,116 @@
+$bar-width: 40px;
+$bar-height: 40px;
+$wrapper-width: 660px;
+
+.bar-rating {
+  float: left;
+
+  &__scale {
+    height: 24px;
+    clear: both;
+    max-width: $wrapper-width;
+  }
+
+  &__1to6 {
+    height: 24px;
+    clear: both;
+    max-width: $wrapper-width;
+
+    ul {
+      text-align: center;
+    }
+
+    li {
+      width: 18%;
+      display: inline-block;
+      text-align: center;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  &__inner-label {
+    display: block;
+    position: absolute;
+    bottom: -52px;
+    left:-2px;
+    width:80px;
+    text-align:left;
+    color: govuk-colour("black")!important;
+    text-indent: 0;
+    @include govuk-font($size: 16);
+
+    strong {
+      font-weight: bold;
+    }
+  }
+
+  &__wrapper {
+    width: $wrapper-width;
+    height: $bar-height;
+    clear: both;
+    padding:10px 0;
+    // background-color: #00e7eb;
+
+    & > label {
+      position: relative;
+      width: $bar-width;
+      height: $bar-height;
+      margin-right:70px;
+      background-color: #f3f3f3;
+      float: right;
+      // overflow: hidden;
+      // text-indent: 100px;
+      border: 2px solid #333;
+      border-radius: 50%;
+      cursor: pointer;
+
+      &:before {
+        position: absolute;
+        display: inline-block;
+        content: " ";
+        width: $bar-width - 2;
+        height: $bar-height - 2;
+        cursor: pointer;
+        // background-color: #1d72aa;
+        left: 0;
+        top: 0;
+      }
+
+      &:after {
+        position: absolute;
+        display: inline-block;
+        content: " ";
+        left: 37px;
+        top: 18px;
+        width:72px;
+        height: 2px;
+        border-top:2px solid govuk-colour("black")
+      }
+
+      &:first-of-type {
+        &:after {
+          display: none;
+        }
+      }
+    }
+
+    & > input:checked ~ label, /* show gold block when clicked */
+    &:not(:checked) > label:hover, /* hover current block */
+    &:not(:checked) > label:hover ~ label {
+      color: #FFD700;
+      background-color: #FFD700;
+    }
+
+    & > input:checked + label:hover, /* hover current block when changing rating */
+    & > input:checked ~ label:hover,
+    & > label:hover ~ input:checked ~ label, /* lighten current selection */
+    & > input:checked ~ label:hover ~ label {
+      color: #FFED85;
+      background-color: #FFED85;
+    }
+  }
+}

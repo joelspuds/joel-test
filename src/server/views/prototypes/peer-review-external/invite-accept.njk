@@ -1,0 +1,122 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set pageTitle = 'Accept invitation ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/peer-review-external/respond-to-invite', text:'Back to all responses'}] %}
+
+{% set acceptIsNotComplete = acceptIsNotComplete if acceptIsNotComplete %}
+
+{% block content %}
+
+    {% if acceptIsNotComplete %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-two-thirds') %}
+
+                {#{{ components.alerts(text='You must confirm that you are eligible to review this application', type='info')}}#}
+                <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Error</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <p class="govuk-notification-banner__heading">
+                            You must confirm that you are eligible to review this application
+                            {#<a class="govuk-notification-banner__link" href="#">View application</a>.#}
+                        </p>
+                    </div>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {% endif %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Accept, I am able to review this application', caption='Bio-detoxification of Ricin in castor bean') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-7', extraClass='') %}
+
+            {% call components.form(action='#', method='POST',name='confirmAcceptInvite') %}
+
+                <h2 class="govuk-heading-m">You should only review this application if;</h2>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>you don't have a <a href="#">conflict of interest</a> with the applicant</li>
+                    <li>the application fits with your <a href="#">area of expertise</a></li>
+                    <li>you have <a href="#">time to assess this application</a></li>
+                </ul>
+
+                {% call components.formGroup() %}
+                    <div class="application-item">
+                        <div class="application-item__contents">
+                            <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                    <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                </legend>
+                                <div class="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if widerEffectIsComplete %} checked{% endif %} {% if readOnly %} disabled {% endif %}>
+                                        <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">I confirm that I am eligible to review this application</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                {%- endcall %}
+
+                {% call components.formGroup() %}
+                    <div class="application-controls govuk-clearfix">
+
+                        {{ components.button(text='Accept and submit response', extraClass="application-controls__submit")}}
+
+                    </div>
+                {%- endcall %}
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
+
+            <div class="govuk-related-items govuk-related-items--flush">
+                <div class="application-data">
+                    <dl class="application-data__list">
+                        <dt class="application-data__key">Review deadline:</dt>
+                        <dd class="application-data__value">Tuesday 14 May 2021</dd>
+
+                        <dt class="application-data__key">Opportunity:</dt>
+                        <dd class="application-data__value"><a href="#">New Generation Thinkers 2020</a></dd>
+
+                        <dt class="application-data__key">Application title:</dt>
+                        <dd class="application-data__value">Bio-detoxification of Ricin in castor bean</dd>
+
+                        <dt class="application-data__key">Team:</dt>
+                        <dd class="application-data__value">
+                            Principal investigator: Prof Giles Dexter Coventry University<br>
+                            Co-investigator: Prof Gillian Demetriov Coventry University<br>
+                            Researcher: Dr. Maximoma Turnipé Coventry University<br>
+                        </dd>
+
+                        <dt class="application-data__key">Grant size:</dt>
+                        <dd class="application-data__value">£80,000</dd>
+
+                        <dt class="application-data__key">Funder:</dt>
+                        <dd class="application-data__value">[Name of council]</dd>
+                    </dl>
+                </div>
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+

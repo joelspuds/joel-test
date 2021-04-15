@@ -243,3 +243,15 @@ Object.keys(_peerReviewController).forEach(function (key) {
     }
   });
 });
+
+var _peerReviewResponseController = require('./peerReviewResponseController');
+
+Object.keys(_peerReviewResponseController).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _peerReviewResponseController[key];
+    }
+  });
+});

@@ -1,6 +1,5 @@
 $colour: ufs-colour("midnight");
 $hover-colour: #B938BC;
-// $alt-colour: #7558C9;
 $alt-colour: #CB3564;
 
 .dropdown__title {
@@ -100,7 +99,6 @@ $alt-colour: #CB3564;
       color: govuk-colour("white");
       background-color: $colour;
       display: block;
-      // padding: 0.5em;
       padding: 0.75em;
       opacity: 0;
       text-align: left;
@@ -120,7 +118,7 @@ $alt-colour: #CB3564;
   &:hover,
   &:focus-within {
     .dropdown__title {
-      // border-top-color: fuschia;
+      // leave
     }
 
     .dropdown__menu {
@@ -139,15 +137,13 @@ $alt-colour: #CB3564;
 
   &__link--active {
     font-weight: bold!important;
-    // add border inset
-    // border: 2px solid $alt-colour;
     box-shadow: inset 0 0 0 4px $alt-colour;
   }
 }
 
 @include touch {
   .nav-wrapper {
-    // display: none;
+    // mobile only
   }
 }
 

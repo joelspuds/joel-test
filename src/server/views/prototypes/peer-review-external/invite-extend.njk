@@ -1,0 +1,110 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set pageTitle = 'Extend invitation ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/peer-review-external/respond-to-invite', text:'Back to all responses'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Request extension to the review deadline', caption='Bio-detoxification of Ricin in castor bean') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-7', extraClass='') %}
+
+            {% call components.form(action='#', method='POST',name='confirmExtendInvite') %}
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            <h2 class="govuk-fieldset__heading _govuk-visually-hidden">
+                                I am able to accept this review if the deadline can be increased by;
+                            </h2>
+                        </legend>
+
+                        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="threeDays" name="extendLength" type="radio" value="3 days">
+                                <label class="govuk-label govuk-radios__label" for="threeDays">3 days</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="fiveDays" name="extendLength" type="radio" value="5 days">
+                                <label class="govuk-label govuk-radios__label" for="fiveDays">5 days</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="oneWeek" name="extendLength" type="radio" value="1 week">
+                                <label class="govuk-label govuk-radios__label" for="oneWeek">1 week</label>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="tenDays" name="extendLength" type="radio" value="10 days">
+                                <label class="govuk-label govuk-radios__label" for="tenDays">10 days</label>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </div>
+
+                {% call components.formGroup() %}
+                    <label class="govuk-label govuk-label--s" for="more-detail">Can you provide more detail?</label>
+                    <div id="more-detail-hint" class="govuk-hint">
+                        Help us improve our reviewer recruitment. Don’t include personal or financial information, eg your National Insurance number.
+                    </div>
+                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                {%- endcall %}
+
+                {% call components.formGroup() %}
+                    <div class="application-controls govuk-clearfix">
+
+                        {{ components.button(text='Submit extension request', extraClass="application-controls__submit")}}
+
+                    </div>
+                {%- endcall %}
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
+
+            <div class="govuk-related-items govuk-related-items--flush">
+                <div class="application-data">
+                    <dl class="application-data__list">
+                        <dt class="application-data__key">Review deadline:</dt>
+                        <dd class="application-data__value">Tuesday 14 May 2021</dd>
+
+                        <dt class="application-data__key">Opportunity:</dt>
+                        <dd class="application-data__value"><a href="#">New Generation Thinkers 2020</a></dd>
+
+                        <dt class="application-data__key">Application title:</dt>
+                        <dd class="application-data__value">Bio-detoxification of Ricin in castor bean</dd>
+
+                        <dt class="application-data__key">Team:</dt>
+                        <dd class="application-data__value">
+                            Principal investigator: Prof Giles Dexter Coventry University<br>
+                            Co-investigator: Prof Gillian Demetriov Coventry University<br>
+                            Researcher: Dr. Maximoma Turnipé Coventry University<br>
+                        </dd>
+
+                        <dt class="application-data__key">Grant size:</dt>
+                        <dd class="application-data__value">£80,000</dd>
+
+                        <dt class="application-data__key">Funder:</dt>
+                        <dd class="application-data__value">[Name of council]</dd>
+                    </dl>
+                </div>
+            </div>
+
+
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+

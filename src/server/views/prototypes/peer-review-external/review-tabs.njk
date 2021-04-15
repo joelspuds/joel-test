@@ -1,0 +1,587 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'NOTadmin' %}
+{% set pageTitle = 'Application review' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set isAdminUser = false %}
+
+{% set listItems = [
+    { text: 'Case for support', url: '#case' },
+    { text: 'Capability to deliver', url: '#capability' },
+    { text: 'Resources and costs', url: '#resources' },
+    { text: 'Ethical and societal issues', url: '#ethical' },
+    { text: 'Letters of support', url: '#letters' }
+] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Bio-detoxification of Ricin in castor bean', caption='Development of a Novel Inhibitor of Ricin') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full') %}
+                <div class="govuk-tabs" data-module="govuk-tabs">
+                    <h2 class="govuk-tabs__title">
+                        Contents
+                    </h2>
+                    <ul class="govuk-tabs__list">
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                            <a class="govuk-tabs__tab" href="#overview">
+                                Application overview
+                            </a>
+                        </li>
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="#read">
+                                Read application
+                            </a>
+                        </li>
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="#write">
+                                Write your review
+                            </a>
+                        </li>
+                    </ul>
+                    <style>
+                        .govuk-tabs__panel {
+                            border-left:0!important;
+                            border-right:0!important;
+                            border-bottom:0!important;
+                            padding-left:0!important;
+                            padding-right:0!important;
+                        }
+                    </style>
+                    <div class="govuk-tabs__panel" id="overview">
+
+                        {% call components.bulmaRow() %}
+
+                            {% call components.bulmaColumnAny(size='is-8', extraClass='') %}
+
+                                {{ components.captionHeading(text='Peer review deadline',tag='h2', size='s') }}
+
+                                <p class="govuk-body">
+                                    14 May 2021
+                                </p>
+
+                                {{ components.captionHeading(text='Opportunity',tag='h2', size='s') }}
+
+                                <p class="govuk-body">
+                                    <a href="#">Development of a Novel Inhibitor of Ricin</a>
+                                </p>
+
+                                {{ components.captionHeading(text='Application title',tag='h2', size='s') }}
+
+                                <p class="govuk-body">
+                                    Bio-detoxification of Ricin in castor bean
+                                </p>
+
+                                {{ components.captionHeading(text='Team',tag='h2', size='s') }}
+
+                                <p class="govuk-body">
+                                    <strong>Principal investigator:</strong> <a href="#">Prof Giles Dexter</a> Coventry University<br>
+                                    <strong>Co-investigator:</strong> <a href="#">Prof Ian Charles</a> Coventry University<br>
+                                    <strong>Researcher:</strong> <a href="#">Dr Maxwell Peterson</a> Coventry University<br>
+                                </p>
+
+                                {{ components.captionHeading(text='Grant size',tag='h2', size='s') }}
+
+                                <p class="govuk-body">
+                                    £80,000
+                                </p>
+
+                                {{ components.captionHeading(text='Summary',tag='h2', size='s') }}
+
+                                <p class="govuk-body">
+                                    The PI proposes a high-impact collaborative research project to develop new inhibitors for ribosome inactivating proteins (RIPs), such as ricin and Shiga toxin. Ricin toxin, produced by the castor bean plant, has a nefarious past. Ricin is a well-known homicidal poison and has been used in several bioterrorist attacks. Shiga toxin is a deadly product of enterobacterial Escherichia coli. RIPs are RNA N-glycosidases that enzymatically remove specific purine residues from the universally conserved sarcin/ricin loop (S/R loop) of large ribosomal RNA, causing cellular death.
+                                </p>
+
+                                <p class="govuk-body">
+                                    Phasellus ac risus lectus. Proin quis vehicula metus. Suspendisse eget odio metus. Maecenas vehicula quam ut accumsan dapibus. Phasellus sit amet nibh a lectus commodo viverra in id risus. Maecenas at sem nec dolor consectetur accumsan. Morbi non eros magna. Sed et mauris libero. Donec sollicitudin, risus non pulvinar consectetur, nibh lacus venenatis nunc, eget laoreet libero quam et lacus. Proin eros tortor, tempor quis dui quis, consequat ultricies arcu. Sed congue turpis at elit posuere, quis iaculis elit consequat. In maximus eu mi id euismod.
+                                </p>
+
+                                <p class="govuk-body u-space-t45">
+                                    <a href="/prototypes/peer-review-external/invite-reject" class="govuk-link">Unable to review this application?</a>
+                                </p>
+
+
+                            {%- endcall %}
+
+                            {#{% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
+        {%- endcall %}#}
+
+                        {%- endcall %}
+
+                    </div>
+                    {#
+
+
+                            END TAB ONE
+
+
+                    #}
+
+                    <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="read">
+
+                        {% call components.bulmaRow() %}
+
+                            {% call components.bulmaColumnAny(size='is-3') %}
+                                <nav class="sticky-nav">
+                                    {{ components.linkHeading(text='Contents', tag='h2', size='s')}}
+                                    {#{{ components.list(items=listItems, parentClass='sticky-nav')}}#}
+                                    <ul class="govuk-list">
+
+                                        <li>
+                                            <a href="#case" class="govuk-link govuk-link--no-visited-state canScroll ">Case for support</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#capability" class="govuk-link govuk-link--no-visited-state canScroll">Capability to deliver</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#resources" class="govuk-link govuk-link--no-visited-state canScroll">Resources and costs</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#ethical" class="govuk-link govuk-link--no-visited-state canScroll">Ethical and societal issues</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#letters" class="govuk-link govuk-link--no-visited-state canScroll">Letters of support</a>
+                                        </li>
+
+                                    </ul>
+
+                                    <a href="#" class="govuk-link js-only print-link print-link--tabs" id="printThis" onclick="window.print();return false;">Print this page</a>
+                                </nav>
+                            {%- endcall %}
+
+                            {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
+
+                                {{ components.captionHeading(text='Development of a Novel Inhibitor of Ricin', tag='h2', size='l', id='top', extraClass='serif') }}
+
+                                {{ components.captionHeading(text='1. Case for support', tag='h2', size='m', id='case', extraClass='serif') }}
+
+                                {{ components.captionHeading(text='1.1 Importance', tag='h3', size='s', extraClass='serif') }}
+
+                                <p class="govuk-body serif">
+                                    The PI proposes a high-impact collaborative research project to develop new inhibitors for ribosome inactivating proteins (RIPs), such as ricin and Shiga toxin. Ricin toxin, produced by the castor bean plant, has a
+                                    nefarious past. Ricin is a well-known homicidal poison and has been used in several bioterrorist attacks. Shiga toxin is a deadly product of  Escherichia coli. RIPs are RNA  that enzymatically remove specific purine residues from the universally conserved sarin/ricin loop (S/R loop) of large ribosomal RNA, causing cellular death. There are no effective pharmaceuticals for either ricin or Shiga toxin poisoning. The PI proposes using a viral protein (VPg) from turnip mosaic virus that we have shown to inhibit ricin activity in vitro. The goals of this proposal are: 1) Establish conditions for VPg-ricin complex formation and the rates of VPg-ricin interactions; 2) Determine minimum VPg peptide that effectively inhibits ricin and Shiga toxins; and 3) Optimize conditions to enhance inhibition of these toxic proteins.
+                                </p>
+
+                                {{ components.captionHeading(text='1.2 Scientific potential', tag='h3', size='s', extraClass='serif') }}
+
+                                <p class="govuk-body serif">
+                                    Ricin and related Shiga toxins are potentially lethal poisons, which as of yet, have no effective pharmaceutical treatments or preventions. The global problem of these poisons is an increasing threat to public health, directly relating to the mission of the National Institutes of Allergy and Infectious Diseases.
+                                </p>
+
+                                <p class="govuk-body serif">
+                                    There are no effective pharmaceuticals for either ricin or Shiga toxin poisoning. The PI proposes using a viral protein (VPg) from turnip mosaic virus that we have shown to inhibit ricin activity in vitro. The goals of this proposal are: 1) Establish conditions for VPg-ricin complex formation and the rates of VPg-ricin interactions;
+                                </p>
+
+                                <p class="govuk-body serif">
+                                    Ricin, astoundingly easily acquired, is an ideal toxin for bioterrorism, while the widespread transmission of E. coli poisoning is responsible for many severe human illnesses and several fatalities. In the future, it may be possible to utilize these toxins for their public health benefit, by repurposing them to attack specific human and animal diseases.
+                                </p>
+
+                                <p class="govuk-body serif">
+                                    Ricin toxin, produced by the castor bean plant, has a nefarious past. Ricin is a well-known homicidal poison and has been used in several bioterrorist attacks. Shiga toxin is a deadly product of  Escherichia coli. RIPs are RNA  that enzymatically remove specific purine residues from the universally conserved sarin/ricin loop (S/R loop) of large ribosomal RNA, causing cellular death. There are no effective pharmaceuticals for either ricin or Shiga toxin poisoning. The PI proposes using a viral protein (VPg) from turnip mosaic virus that we have shown to inhibit ricin activity in vitro. The goals of this proposal are: 1) Establish conditions for VPg-ricin complex formation and the rates of VPg-ricin interactions; 2) Determine minimum VPg peptide that effectively inhibits ricin and Shiga toxins; and 3) Optimize conditions to enhance inhibition of these toxic proteins.
+                                </p>
+
+                                <p class="govuk-body serif">
+                                    There are no effective pharmaceuticals for either ricin or Shiga toxin poisoning. The PI proposes using a viral protein (VPg) from turnip mosaic virus that we have shown to inhibit ricin activity in vitro. The goals of this proposal are: 1) Establish conditions for VPg-ricin complex formation and the rates of VPg-ricin interactions; 2) Determine minimum VPg peptide that effectively inhibits ricin and Shiga toxins; and 3) Optimize conditions to enhance inhibition of these toxic proteins.
+                                </p>
+
+                                {{ components.captionHeading(text='1.3 Ethics and research governance', tag='h3', size='s', extraClass='serif') }}
+
+                                <p class="govuk-body serif">
+                                    Ricin and related Shiga toxins are potentially lethal poisons, which as of yet, have no effective pharmaceutical treatments or preventions. The global problem of these poisons is an increasing threat to public health, directly relating to the mission of the National Institutes of Allergy and Infectious Diseases. Ricin, astoundingly easily acquired, is an ideal toxin for bioterrorism, while the widespread transmission of E. coli poisoning is responsible for many severe human illnesses and several fatalities.
+                                </p>
+
+                                {{ components.captionHeading(text='1.4 Exploitation and dissemination', tag='h3', size='s', extraClass='serif') }}
+
+                                <p class="govuk-body serif">
+                                    Ricin and related Shiga toxins are potentially lethal poisons, which as of yet, have no effective pharmaceutical treatments or preventions. The global problem of these poisons is an increasing threat to public health, directly relating to the mission of the National Institutes of Allergy and Infectious Diseases. Ricin, astoundingly easily acquired, is an ideal toxin for bioterrorism, while the widespread transmission of E. coli poisoning is responsible for many severe human illnesses and several fatalities.
+                                </p>
+
+
+                                <p class="govuk-body serif">
+                                    Shiga toxins are potentially lethal poisons, which as of yet, have no effective pharmaceutical treatments or preventions. The global problem of these poisons is an increasing threat to public health, directly relating to the mission of the National Institutes of Allergy and Infectious Diseases. Ricin, astoundingly easily acquired, is an ideal toxin for bioterrorism, while the widespread transmission of E. coli poisoning is responsible for many severe human illnesses and several fatalities. In the last year, John Jay had a total enrollment of 12,969 undergraduates and 1,763 graduate students. Of the 14,732 enrolled students, 20% identify as African American/Black and nearly 41% identify as Hispanic. Nearly 57% of the student body is female. (John Jay College, Office of Institutional Research, Fall 2015).
+                                </p>
+
+                                <div class="u-align-right">
+                                    <a class="govuk-link canScroll" href="#main-content">Top of page</a>
+                                </div>
+
+                                {{ components.captionHeading(text='2. Capability to deliver', tag='h2', size='m', id='capability', extraClass='serif') }}
+
+                                <p class="govuk-body serif">
+                                    ...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>
+                                </p>
+
+                                <div class="u-align-right">
+                                    <a class="govuk-link canScroll" href="#main-content">Top of page</a>
+                                </div>
+
+                                {{ components.captionHeading(text='3. Resources and costs', tag='h2', size='m', id='resources', extraClass='serif') }}
+
+                                <p class="govuk-body serif">
+                                    ...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>
+                                </p>
+
+                                <div class="u-align-right">
+                                    <a class="govuk-link canScroll" href="#main-content">Top of page</a>
+                                </div>
+
+                                {{ components.captionHeading(text='4. Ethical and societal issues', tag='h2', size='m', id='ethical', extraClass='serif') }}
+
+                                <p class="govuk-body serif">
+                                    ...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>
+                                </p>
+
+                                <div class="u-align-right">
+                                    <a class="govuk-link canScroll" href="#main-content">Top of page</a>
+                                </div>
+
+                                {{ components.captionHeading(text='5. Letters of support', tag='h2', size='m', id='letters', extraClass='serif') }}
+
+                                <p class="govuk-body serif">
+                                    ...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>
+                                </p>
+
+                                <div class="u-align-right">
+                                    <a class="govuk-link canScroll" href="#main-content">Top of page</a>
+                                </div>
+
+                                <hr>
+
+                                <p class="govuk-body u-space-t45">
+                                    <a href="/prototypes/peer-review-external/invite-reject" class="govuk-link">Unable to review this application?</a>
+                                </p>
+
+                            {%- endcall %}
+
+                        {%- endcall %}
+                    </div>
+                    {#
+
+
+                            END TAB TWO
+
+
+                    #}
+                    <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="write">
+
+                        {% call components.bulmaRow() %}
+
+                            {% call components.bulmaColumnAny(size='is-8', extraClass='{#u-space-t20#}') %}
+
+                                {{ components.captionHeading(text='Your review',tag='h2', size='s') }}
+
+                                <p class="govuk-body">Your review will be used by the panel and provides the basis of the funding decision.</p>
+
+                                <details class="govuk-details" data-module="govuk-details">
+                                    <summary class="govuk-details__summary">
+                                        <span class="govuk-details__summary-text">Guidance for writing a review</span>
+                                    </summary>
+                                    <div class="govuk-details__text">
+                                        <p>Where possible, reviews must be based on evidence, which you should clearly show in your comments. Please:</p>
+                                        <ul class="govuk-list govuk-list--bullet">
+                                            <li>firstly, familiarise yourself with any specified assessment factors or scoring matrix</li>
+                                            <li>provide comments and recommendations that are consistent with, justify and explain your scores</li>
+                                            <li>ensure your comments are comprehensive but concise</li>
+                                            <li>clearly identify strengths and weaknesses of the application in a constructive manner</li>
+                                            <li>raise any concerns in the form of questions for the applicant</li>
+                                            <li>avoid jargon - panellists may not be specialists in your field</li>
+                                            <li>consider other aspects of the proposed research or innovation, like its methodology, experimental designand data management plan, As well as its potential impact (and the pathways to achieving it) including any ethical and social issues (for example, the appropriate use of animals and/or human tissue).</li>
+                                        </ul>
+                                    </div>
+                                </details>
+
+
+                            {%- endcall %}
+
+                        {%- endcall %}
+
+
+                        {% call components.form(action='#', method='POST',name='formReview') %}
+
+
+                            {% call components.bulmaRow() %}
+
+                                {% call components.bulmaColumnAny(size='is-8 ', extraClass='{#u-space-t20#}') %}
+                                    <noscript>
+                                        <div class="alerts  alerts--danger ">
+                                            <strong>JavaScript is not enabled</strong> This means anything you enter or paste into the box below will appear without formatting. To use 'rich text editing' functions, like bold text or lists, you will need <a href="https://www.enable-javascript.com/" class="govuk-link" target="_blank">to enable JavaScript</a> in your device or browser's security settings. If you did not disable JavaScript, try refreshing this page in a few minutes.
+                                        </div>
+                                    </noscript>
+                                    {#{{ components.textarea(options=selectOptions, label='Enter your case for support', labelBold=true, name='htmlTest', id='tinyMCEInput', hint='', group=true, rows='12', size='', value=exampleHTML, extraClass='', visuallyHidden=true) }}#}
+                                    <div class="form-group ">
+                                        <label class="govuk-visually-hidden" for="tinyMCEInput">Enter your review</label>
+                                        <textarea class="form-control " name="htmlTest" id="tinyMCEInput" rows="12"></textarea>
+                                    </div>
+
+
+                                    <p>
+                                        <span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite"></span>
+                                    </p>
+
+                                {%- endcall %}
+
+                                {% call components.bulmaColumnAny(size='is-4') %}
+
+                                    <div class="govuk-related-items govuk-related-items--flush">
+                                        {{ components.captionHeading(text='You must:', tag='h3', size='s', extraClass='u-space-t20') }}
+                                    </div>
+
+                                    <ul class="govuk-list govuk-list--bullet bull">
+                                        <li>Cover strengths and weaknesses</li>
+                                        <li>Cover all application criteria: The idea, Importance, Timeliness, Approach, Impact.</li>
+                                        <li>Be objective, evidenced based and justified</li>
+                                        <li>Challenge the applicant constructively</li>
+                                    </ul>
+
+                                    {{ components.captionHeading(text='Do not:', tag='h3', size='s', extraClass='u-space-y5') }}
+
+                                    <ul class="govuk-list govuk-list--bullet bull">
+                                        <li>Share personal information</li>
+                                        <li>Base on rumour or opinion.</li>
+
+                                    </ul>
+
+                                {%- endcall %}
+
+                            {%- endcall %}
+
+                            {% call components.bulmaRow() %}
+
+                                {% call components.bulmaColumnAny(size='is-8 ', extraClass='u-space-t45') %}
+                                    <fieldset class="bar-rating u-space-b30">
+
+                                        <legend class="govuk">
+                                            <h3 class="govuk-heading-s">Your score</h3>
+                                        </legend>
+
+                                        {#<div class="bar-rating__scale" aria-hidden="true">
+                                            <span class="u-float-left">Not at all</span>
+                                            <span class="u-float-right">Yes, completely</span>
+                                        </div>#}
+
+                                        <div class="bar-rating__wrapper">
+
+                                            <input type="radio" class="bar-rating__input" id="starContent6" name="ratingContent" aria-label="6 out of 6" value="6">
+                                            <label for="starContent6" title="The application was exceptional - 6 stars">
+                                                <span class="bar-rating__inner-label"><strong>6</strong><br> Exceptional</span>
+                                            </label>
+
+                                            <input type="radio" class="bar-rating__input" id="starContent5" name="ratingContent" aria-label="5 out of 6" value="5">
+                                            <label for="starContent5" title="The application was excellent - 5 stars">
+                                                <span class="bar-rating__inner-label"><strong>5</strong><br> Excellent</span>
+                                            </label>
+
+                                            <input type="radio" class="bar-rating__input" id="starContent4" name="ratingContent" aria-label="4 out of 6" value="4">
+                                            <label for="starContent4" title="The application was very good - 4 stars">
+                                                <span class="bar-rating__inner-label"><strong>4</strong><br> Very good</span>
+                                            </label>
+
+                                            <input type="radio" class="bar-rating__input" id="starContent3" name="ratingContent" aria-label="3 out of 6" value="3">
+                                            <label for="starContent3" title="The application was good - 3 stars">
+                                                <span class="bar-rating__inner-label"><strong>3</strong><br> Good</span>
+                                            </label>
+
+                                            <input type="radio" class="bar-rating__input" id="starContent2" name="ratingContent" aria-label="2 out of 6" value="2">
+                                            <label for="starContent2" title="The application was uncompetitive - 2 stars">
+                                                <span class="bar-rating__inner-label"><strong>2</strong><br> Uncompetitive</span>
+                                            </label>
+
+                                            <input type="radio" class="bar-rating__input" id="starContent1" name="ratingContent" aria-label="1 out of 6" value="1">
+                                            <label for="starContent1" title="The application was unfundable - 1 star">
+                                                <span class="bar-rating__inner-label"><strong>1</strong><br> Unfundable</span>
+                                            </label>
+
+                                        </div>
+
+                                        {#<div class="bar-rating__1to6" aria-hidden="true">
+                                            <ul>
+                                                <li>
+                                                    <strong>1</strong>
+                                                    <br>Unfundable
+                                                </li>
+                                                <li>
+                                                    <strong>2</strong>
+                                                    <br>Uncompetitive
+                                                </li>
+                                                <li>
+                                                    <strong>3</strong>
+                                                    <br>Good
+                                                </li>
+                                                <li>
+                                                    <strong>4</strong>
+                                                    <br>Very good
+                                                </li>
+                                                <li>
+                                                    <strong>5</strong>
+                                                    <br>Excellent
+                                                </li>
+                                                <li>
+                                                    <strong>6</strong>
+                                                    <br>Exceptional
+                                                </li>
+                                            </ul>
+                                        </div>#}
+
+                                    </fieldset>
+                                {%- endcall %}
+                            {%- endcall %}
+
+                            {% call components.bulmaRow(extraClass='') %}
+
+                                {% call components.bulmaColumnAny(size='is-8 ', extraClass='u-space-t45') %}
+
+                                    <div class="application-controls govuk-clearfix">
+                                        <button type="submit" class="govuk-button application-controls__submit" name="submitButton" >Review and submit</button>
+
+                                    </div>
+
+                                    <p class="govuk-body u-space-t30">
+                                        <a href="/prototypes/peer-review-external/invite-reject" class="govuk-link">Unable to review this application?</a>
+                                    </p>
+
+                                {%- endcall %}
+
+                            {%- endcall %}
+
+                        {%- endcall %}
+
+
+
+
+                    </div>
+                    {#
+
+
+
+                            END TAB THREE
+
+
+
+                    #}
+
+                </div>
+            {%- endcall %}
+
+        {%- endcall %}
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    {#<script>
+    </script>#}
+    <script type="text/javascript">
+        /* smooth-scroll.js v1.3.1 */
+        /*
+        n=0,
+        r=500,
+        i=15,
+        */
+        (function(e,t){
+            "use strict";
+            var n=0,
+                r=250,
+                i=15,
+                /*s=document.getElementsByTagName("a"),*/
+                s=document.getElementsByClassName('canScroll'),
+                o;
+            for(var u=0;u<s.length;u++){
+                o=s[u].attributes.href===t?null:s[u].attributes.href.nodeValue.toString();
+                if(o!==null&&o.length>1&&o.indexOf("#")!=-1){
+                    s[u].onclick=function(){
+                        var n,s=this.attributes.href.nodeValue.toString(),o=s.substr(0,s.indexOf("#")),u=s.substr(s.indexOf("#")+1);if(n=document.getElementById(u)){var l=(r-r%i)/i,c=f(),h=(a(n)-c)/l;if(e.history&&typeof e.history.pushState=="function")e.history.pushState({},t,o+"#"+u);for(var p=1;p<=l;p++){(function(){var t=h*p;setTimeout(function(){e.scrollTo(0,t+c)},i*p)})()}return false}}}}var a=function(e){var r=n*-1;while(e.offsetParent!=t&&e.offsetParent!=null){r+=e.offsetTop+(e.clientTop!=null?e.clientTop:0);e=e.offsetParent}return r};var f=function(){return e.pageYOffset!==t?e.pageYOffset:document.documentElement.scrollTop!==t?document.documentElement.scrollTop:document.body.scrollTop}})(window)
+    </script>
+
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        /*
+      tinyMCE.init({
+          setup: function(editor) {
+              editor.on("init", function(){
+              editor.addShortcut("ctrl+u", "", "");
+          });
+          }
+      })
+      oninit : "disableShortcuts",
+          setup: function(editor) {
+            editor.on('init', function(){
+              editor.addShortcut('Command+I', '', '');
+            });
+          },
+
+      */
+
+        tinymce.init({
+            selector: '#tinyMCEInput',
+            height: 500,
+            plugins: [
+                'advlist autolink lists link anchor',
+                'wordcount'
+            ],
+            content_style: '.red-text {color: red}',
+            formats :{
+                //redText: { selector: 'p', classes: 'red-text' },
+                redText: { inline: 'span', classes: 'red-text' },
+                para: { selector: 'p,h2,h3,h4,li', classes: 'govuk-body' },
+                heading2: { selector: 'p,h2,h3,h4,li', classes: 'govuk-heading-l', exact: true },
+                heading3: { selector: 'p,h2,h3,h4', classes: 'govuk-heading-m', exact: true },
+                heading4: { selector: 'p,h2,h3,h4', classes: 'govuk-heading-s', exact: true },
+                unorderedList: { selector: 'ul, ol, p,h2,h3,h4', classes: 'govuk-list govuk-list--bullets'},
+            },
+            style_formats: [
+                /*{title: 'Red text', format: 'redText', styles: { color: '#ff0000' }},*/
+                {title: 'Paragraph', format: 'para'},
+                /*{title: 'Heading 2', format: 'heading2', block: 'h2', /!*styles: { color: 'lime' },*!/ classes: 'govuk-heading-l'},*/
+                {title: 'Heading 2', format: 'heading2', remove: 'all', block: 'h2', classes: 'govuk-heading-l'},
+                {title: 'Heading 3', format: 'heading3', block: 'h3', classes: 'govuk-heading-m'},
+                {title: 'Heading 4', format: 'heading4', block: 'h4', classes: 'govuk-heading-s'},
+                {title: 'Unordered list', format: 'unorderedList', block: 'ul'},
+            ],
+            advlist_bullet_styles: 'disc',
+            advlist_number_styles: 'default',
+            // toolbar: 'formatselect | bold italic | bullist numlist | align | indent outdent | link',
+            // toolbar: 'formatselect | bold | bullist numlist | link',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ],
+            menubar: false,
+        });
+    </script>
+    <script>
+        ;(function(){
+            let wordcounter = document.getElementById('codeOutput');
+            let counteroutputFoot = document.getElementById('wordCount2');
+            let words;
+            const limit = 50;
+            function countemwords(){
+                words = (wordcounter.value == '')? 0 : wordcounter.value.split(' ').length;
+                let remainder = limit - words;
+                counteroutputFoot.innerHTML = 'You have ' + words + ' words';
+            }
+            wordcounter.addEventListener('input', function(e){
+                countemwords()
+            }, false);
+            document.addEventListener("DOMContentLoaded", function(event) {
+                countemwords()
+            }, false);
+            window.addEventListener("load", function(event) {
+                countemwords();
+            }, false)
+        })();
+    </script>
+{% endblock %}

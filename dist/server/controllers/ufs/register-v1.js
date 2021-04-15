@@ -82,14 +82,21 @@ function signinPostV1(req, res) {
   // let userType = req.session.userType;
   // let journey = req.session.journey;
 
+  const inviteResponse = req.session.inviteResponse;
+
   let confirmedEmail = req.session.confirmedEmail;
 
   if (!email || email.length < 1 || !password || password.length < 1) {
     req.session.signinError = true;
     return res.redirect('/prototypes/register-v1/signin');
   } else {
-    // just take EVERYBODY to the multi-user journery applicant start for now
-    return res.redirect('/prototypes/multi-user-application/');
+    if (inviteResponse === 'accept') {
+      // take users to the start of the external expert review page
+      return res.redirect('/prototypes/peer-review-external/user-home/');
+    } else {
+      // take users to the multi-user journey applicant start
+      return res.redirect('/prototypes/multi-user-application/');
+    }
 
     /*if (journey === 'multiUser') {
       // return res.redirect('/prototypes/multi-user/application-overview');

@@ -172,3 +172,15 @@ body.ufs .govuk-heading_additional-link a span {
   }
 
 }
+
+.govuk-notification-banner--danger {
+  border-color: govuk-colour("red");
+
+  .govuk-notification-banner__header {
+    background-color: govuk-colour("red");
+  }
+
+  .govuk-notification-banner__link {
+    // @include govuk-link-style-success;
+  }
+}

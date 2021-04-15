@@ -1,0 +1,120 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set pageTitle = 'Respond to invite ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{#{% set backLinkContents =  [{url:'/prototypes/application-v2/opportunity', text:'Back to Opportunity'}] %}#}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Respond to invite', caption='Bio-detoxification of Ricin in castor bean') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% if hasBeenUpdated %}
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                {{ components.alerts(text='You have successfully updated your application', type='success')}}
+
+            {%- endcall %}
+
+        {%- endcall %}
+    {% endif %}
+
+
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-7', extraClass='') %}
+
+            {% call components.form(action='#', method='POST',name='responseToInvite') %}
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                            <h2 class="govuk-fieldset__heading">
+                                Response to invite
+                            </h2>
+                        </legend>
+                        <div class="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="invite-response" name="inviteResponse" type="radio" value="accept">
+                                <label class="govuk-label govuk-radios__label" for="invite-response">
+                                    Accept, I am able to review this application
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="invite-response-2" name="inviteResponse" type="radio" value="reject">
+                                <label class="govuk-label govuk-radios__label" for="invite-response-2">
+                                    Reject, I am unable to review this application
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="invite-response-3" name="inviteResponse" type="radio" value="extend">
+                                <label class="govuk-label govuk-radios__label" for="invite-response-3">
+                                    Request extension to the review deadline
+                                </label>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </div>
+
+
+                {% call components.formGroup() %}
+                    <div class="application-controls govuk-clearfix">
+                        {{ components.button(text='Continue', extraClass="application-controls__submit")}}
+                    </div>
+                {%- endcall %}
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
+
+            <div class="govuk-related-items govuk-related-items--flush">
+                <div class="application-data">
+                    <dl class="application-data__list">
+                        <dt class="application-data__key">Review deadline:</dt>
+                        <dd class="application-data__value">Tuesday 14 May 2021</dd>
+
+                        <dt class="application-data__key">Opportunity:</dt>
+                        <dd class="application-data__value"><a href="#">New Generation Thinkers 2020</a></dd>
+
+                        <dt class="application-data__key">Application title:</dt>
+                        <dd class="application-data__value">Bio-detoxification of Ricin in castor bean</dd>
+
+                        <dt class="application-data__key">Team:</dt>
+                        <dd class="application-data__value">
+                            Principal investigator: Prof Giles Dexter Coventry University<br>
+                            Co-investigator: Prof Gillian Demetriov Coventry University<br>
+                            Researcher: Dr. Maximoma Turnipé Coventry University<br>
+                        </dd>
+
+                        <dt class="application-data__key">Grant size:</dt>
+                        <dd class="application-data__value">£80,000</dd>
+
+                        <dt class="application-data__key">Funder:</dt>
+                        <dd class="application-data__value">[Name of council]</dd>
+                    </dl>
+                </div>
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+{% block bodyScripts %}
+  {#  <script>
+        Zepto(function($){
+            $(window).on('load', function() {
+                console.log('window loaded');
+                $('.govuk-tabs__tab').attr('tabindex', '');
+            });
+        });
+    </script>#}
+{% endblock %}
+

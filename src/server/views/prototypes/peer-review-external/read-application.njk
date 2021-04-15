@@ -1,0 +1,201 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set listItems = [
+    { text: 'Case for support', url: '#case' },
+    { text: 'Capability to deliver', url: '#capability' },
+    { text: 'Resources and costs', url: '#resources' },
+    { text: 'Ethical and societal issues', url: '#ethical' },
+    { text: 'Letters of support', url: '#letters' }
+] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Bio-detoxification of Ricin in castor bean', caption='Development of a Novel Inhibitor of Ricin') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+
+            <p class="govuk-body">
+                <strong>Peer review deadline:</strong> 14 May 2021<br>
+                <a href="#" class="govuk-link">Request review deadline extension </a>
+            </p>
+        {%- endcall %}
+    {%- endcall %}
+
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/peer-review-external/application-overview">Application information</a>
+                    </li>
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#">Read application</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/pper-review-external/write-review">Write your review</a>
+                    </li>
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-3') %}
+            <nav class="sticky-nav">
+                {{ components.linkHeading(text='Contents', tag='h2', size='s')}}
+                {{ components.list(items=listItems, parentClass='sticky-nav')}}
+
+                <a href="#" class="govuk-link js-only print-link print-link--tabs" id="printThis" onclick="window.print();return false;">Print this page</a>
+            </nav>
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
+
+            {{ components.captionHeading(text='Development of a Novel Inhibitor of Ricin', tag='h2', size='l', id='top', extraClass='serif') }}
+
+            {{ components.captionHeading(text='1. Case for support', tag='h2', size='m', id='case', extraClass='serif') }}
+
+            {{ components.captionHeading(text='1.1 Importance', tag='h3', size='s', extraClass='serif') }}
+
+            <p class="govuk-body serif">
+                The PI proposes a high-impact collaborative research project to develop new inhibitors for ribosome inactivating proteins (RIPs), such as ricin and Shiga toxin. Ricin toxin, produced by the castor bean plant, has a
+                nefarious past. Ricin is a well-known homicidal poison and has been used in several bioterrorist attacks. Shiga toxin is a deadly product of  Escherichia coli. RIPs are RNA  that enzymatically remove specific purine residues from the universally conserved sarin/ricin loop (S/R loop) of large ribosomal RNA, causing cellular death. There are no effective pharmaceuticals for either ricin or Shiga toxin poisoning. The PI proposes using a viral protein (VPg) from turnip mosaic virus that we have shown to inhibit ricin activity in vitro. The goals of this proposal are: 1) Establish conditions for VPg-ricin complex formation and the rates of VPg-ricin interactions; 2) Determine minimum VPg peptide that effectively inhibits ricin and Shiga toxins; and 3) Optimize conditions to enhance inhibition of these toxic proteins.
+            </p>
+
+            {{ components.captionHeading(text='1.2 Scientific potential', tag='h3', size='s', extraClass='serif') }}
+
+            <p class="govuk-body serif">
+                Ricin and related Shiga toxins are potentially lethal poisons, which as of yet, have no effective pharmaceutical treatments or preventions. The global problem of these poisons is an increasing threat to public health, directly relating to the mission of the National Institutes of Allergy and Infectious Diseases.
+            </p>
+
+            <p class="govuk-body serif">
+                There are no effective pharmaceuticals for either ricin or Shiga toxin poisoning. The PI proposes using a viral protein (VPg) from turnip mosaic virus that we have shown to inhibit ricin activity in vitro. The goals of this proposal are: 1) Establish conditions for VPg-ricin complex formation and the rates of VPg-ricin interactions;
+            </p>
+
+            <p class="govuk-body serif">
+                Ricin, astoundingly easily acquired, is an ideal toxin for bioterrorism, while the widespread transmission of E. coli poisoning is responsible for many severe human illnesses and several fatalities. In the future, it may be possible to utilize these toxins for their public health benefit, by repurposing them to attack specific human and animal diseases.
+            </p>
+
+            <p class="govuk-body serif">
+                Ricin toxin, produced by the castor bean plant, has a nefarious past. Ricin is a well-known homicidal poison and has been used in several bioterrorist attacks. Shiga toxin is a deadly product of  Escherichia coli. RIPs are RNA  that enzymatically remove specific purine residues from the universally conserved sarin/ricin loop (S/R loop) of large ribosomal RNA, causing cellular death. There are no effective pharmaceuticals for either ricin or Shiga toxin poisoning. The PI proposes using a viral protein (VPg) from turnip mosaic virus that we have shown to inhibit ricin activity in vitro. The goals of this proposal are: 1) Establish conditions for VPg-ricin complex formation and the rates of VPg-ricin interactions; 2) Determine minimum VPg peptide that effectively inhibits ricin and Shiga toxins; and 3) Optimize conditions to enhance inhibition of these toxic proteins.
+            </p>
+
+            <p class="govuk-body serif">
+                There are no effective pharmaceuticals for either ricin or Shiga toxin poisoning. The PI proposes using a viral protein (VPg) from turnip mosaic virus that we have shown to inhibit ricin activity in vitro. The goals of this proposal are: 1) Establish conditions for VPg-ricin complex formation and the rates of VPg-ricin interactions; 2) Determine minimum VPg peptide that effectively inhibits ricin and Shiga toxins; and 3) Optimize conditions to enhance inhibition of these toxic proteins.
+            </p>
+
+            {{ components.captionHeading(text='1.3 Ethics and research governance', tag='h3', size='s', extraClass='serif') }}
+
+            <p class="govuk-body serif">
+                Ricin and related Shiga toxins are potentially lethal poisons, which as of yet, have no effective pharmaceutical treatments or preventions. The global problem of these poisons is an increasing threat to public health, directly relating to the mission of the National Institutes of Allergy and Infectious Diseases. Ricin, astoundingly easily acquired, is an ideal toxin for bioterrorism, while the widespread transmission of E. coli poisoning is responsible for many severe human illnesses and several fatalities.
+            </p>
+
+            {{ components.captionHeading(text='1.4 Exploitation and dissemination', tag='h3', size='s', extraClass='serif') }}
+
+            <p class="govuk-body serif">
+                Ricin and related Shiga toxins are potentially lethal poisons, which as of yet, have no effective pharmaceutical treatments or preventions. The global problem of these poisons is an increasing threat to public health, directly relating to the mission of the National Institutes of Allergy and Infectious Diseases. Ricin, astoundingly easily acquired, is an ideal toxin for bioterrorism, while the widespread transmission of E. coli poisoning is responsible for many severe human illnesses and several fatalities.
+            </p>
+
+
+            <p class="govuk-body serif">
+                Shiga toxins are potentially lethal poisons, which as of yet, have no effective pharmaceutical treatments or preventions. The global problem of these poisons is an increasing threat to public health, directly relating to the mission of the National Institutes of Allergy and Infectious Diseases. Ricin, astoundingly easily acquired, is an ideal toxin for bioterrorism, while the widespread transmission of E. coli poisoning is responsible for many severe human illnesses and several fatalities. In the last year, John Jay had a total enrollment of 12,969 undergraduates and 1,763 graduate students. Of the 14,732 enrolled students, 20% identify as African American/Black and nearly 41% identify as Hispanic. Nearly 57% of the student body is female. (John Jay College, Office of Institutional Research, Fall 2015).
+            </p>
+
+            <div class="u-align-right">
+                <a class="govuk-link" href="#main-content">Top of page</a>
+            </div>
+
+            {{ components.captionHeading(text='2. Capability to deliver', tag='h2', size='m', id='capability', extraClass='serif') }}
+
+            <p class="govuk-body serif">
+                ...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>
+            </p>
+
+            <div class="u-align-right">
+                <a class="govuk-link" href="#main-content">Top of page</a>
+            </div>
+
+            {{ components.captionHeading(text='3. Resources and costs', tag='h2', size='m', id='resources', extraClass='serif') }}
+
+            <p class="govuk-body serif">
+                ...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>
+            </p>
+
+            <div class="u-align-right">
+                <a class="govuk-link" href="#main-content">Top of page</a>
+            </div>
+
+            {{ components.captionHeading(text='4. Ethical and societal issues', tag='h2', size='m', id='ethical', extraClass='serif') }}
+
+            <p class="govuk-body serif">
+                ...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>
+            </p>
+
+            <div class="u-align-right">
+                <a class="govuk-link" href="#main-content">Top of page</a>
+            </div>
+
+            {{ components.captionHeading(text='5. Letters of support', tag='h2', size='m', id='letters', extraClass='serif') }}
+
+            <p class="govuk-body serif">
+                ...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>...<br>
+            </p>
+
+            <div class="u-align-right">
+                <a class="govuk-link" href="#main-content">Top of page</a>
+            </div>
+
+            <hr>
+
+            <p class="govuk-body u-space-t45">
+                <a href="/prototypes/peer-review-external/invite-reject" class="govuk-link">Unable to review this application?</a>
+            </p>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        Zepto(function($){
+            $(window).on('load', function() {
+                console.log('window loaded');
+                $('.govuk-tabs__tab').attr('tabindex', '');
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        /* smooth-scroll.js v1.3.1 */
+        /*
+        n=0,
+        r=500,
+        i=15,
+        */
+        (function(e,t){
+            "use strict";
+            var n=0,
+                r=250,
+                i=15,
+                s=document.getElementsByTagName("a"),
+                o;
+            for(var u=0;u<s.length;u++){
+                o=s[u].attributes.href===t?null:s[u].attributes.href.nodeValue.toString();
+                if(o!==null&&o.length>1&&o.indexOf("#")!=-1){
+                    s[u].onclick=function(){
+                        var n,s=this.attributes.href.nodeValue.toString(),o=s.substr(0,s.indexOf("#")),u=s.substr(s.indexOf("#")+1);if(n=document.getElementById(u)){var l=(r-r%i)/i,c=f(),h=(a(n)-c)/l;if(e.history&&typeof e.history.pushState=="function")e.history.pushState({},t,o+"#"+u);for(var p=1;p<=l;p++){(function(){var t=h*p;setTimeout(function(){e.scrollTo(0,t+c)},i*p)})()}return false}}}}var a=function(e){var r=n*-1;while(e.offsetParent!=t&&e.offsetParent!=null){r+=e.offsetTop+(e.clientTop!=null?e.clientTop:0);e=e.offsetParent}return r};var f=function(){return e.pageYOffset!==t?e.pageYOffset:document.documentElement.scrollTop!==t?document.documentElement.scrollTop:document.body.scrollTop}})(window)
+    </script>
+{% endblock %}
+

@@ -75,6 +75,18 @@ $module: 'overview';
     &--inactive {
       background-color: ufs-colour("light-grey");
     }
+
+    &--new {
+      border-left: 4px solid govuk-colour("blue");
+
+      .overview-item__meta,
+      .overview-item__meta *,
+      .overview-item__meta strong {
+        color: govuk-colour("blue")!important;
+      }
+
+
+    }
   }
 
   &-items--plain {

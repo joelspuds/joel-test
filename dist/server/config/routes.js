@@ -399,6 +399,28 @@ router.post('/prototypes/peer-review/expert-review', demosController.pvExpertRev
 router.get('/prototypes/peer-review/send-reviews-to-applicant', demosController.pvSendReviewsGet);
 router.post('/prototypes/peer-review/send-reviews-to-applicant', demosController.pvSendReviewsPost);
 
+/* *************************************************************** *
+
+  Peer review invite to expert
+
+* *************************************************************** */
+router.get('/prototypes/peer-review-external/', demosController.prResponseIndexGet);
+router.post('/prototypes/peer-review-external/', demosController.prResponseIndexPost);
+router.get('/prototypes/peer-review-external/respond-to-invite', demosController.prResponseRespondGet);
+router.post('/prototypes/peer-review-external/respond-to-invite', demosController.prResponseRespondPost);
+router.get('/prototypes/peer-review-external/invite-accept', demosController.prAcceptResponseGet);
+router.post('/prototypes/peer-review-external/invite-accept', demosController.prAcceptResponsePost);
+router.get('/prototypes/peer-review-external/invite-reject', demosController.prRejectResponseGet);
+router.post('/prototypes/peer-review-external/invite-reject', demosController.prRejectResponsePost);
+router.get('/prototypes/peer-review-external/invite-extend', demosController.prExtendResponseGet);
+router.post('/prototypes/peer-review-external/invite-extend', demosController.prExtendResponsePost);
+router.get('/prototypes/peer-review-external/thanks', demosController.prThanksGet);
+router.post('/prototypes/peer-review-external/thanks', demosController.prThanksPost);
+router.get('/prototypes/peer-review-external/user-home', demosController.prHomeGet);
+router.post('/prototypes/peer-review-external/user-home', demosController.prHomePost);
+router.get('/prototypes/peer-review-external/user-reviews', demosController.prReviewsGet);
+router.post('/prototypes/peer-review-external/user-reviews', demosController.prReviewsPost);
+
 // Create route from view path
 router.get('*', miscController.viewFileRoute);
 const allRoutes = exports.allRoutes = router;
