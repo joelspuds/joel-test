@@ -1,0 +1,60 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'business' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/external-users/home-business' %}
+{% set reviewsLink = '#' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{#{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}#}
+{% set pageTitle = 'Organisation home' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {#{{ actualNavType }}#}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Home', caption='Cyberdine Systems Ltd') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+                <div class="tfs-tile3">
+                    <a href="/prototypes/external-users/organisation-applications" class="tfs-tile3__mega-link tfs-tile3__mega-link--alt">
+                        <span class="tfs-tile3__heading">Applications</span>
+                        <span class="tfs-tile3__number">{{ range(20, 50) | random }}</span>
+                        <span class="tfs-tile3__progress">In progress</span>
+                    </a>
+                </div>
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+                <div class="tfs-tile3 ">
+                    <a href="#" class="tfs-tile3__mega-link tfs-tile3__mega-link--alt">
+                        <span class="tfs-tile3__heading">Award</span>
+                        <span class="tfs-tile3__number">{{ range(1, 10) | random }}</span>
+                        <span class="tfs-tile3__progress">In progress</span>
+                    </a>
+                </div>
+            {%- endcall %}
+
+        {%- endcall %}
+    </section>
+
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+

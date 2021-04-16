@@ -201,8 +201,10 @@ $alt-colour: #CB3564;
       }
     }
 
-    .new-header__nav-link--active {
-      box-shadow: inset 0 0 0 4px $alt-colour;
+    @include mobile {
+      .new-header__nav-link--active {
+        box-shadow: inset 0 0 0 4px $alt-colour;
+      }
     }
 
     @include mobile {
@@ -227,6 +229,12 @@ $alt-colour: #CB3564;
       &:hover {
         // color: ufs-colour("sand");
         // border: 2px solid ufs-colour("sand");
+      }
+    }
+
+    @include mobile {
+      .new-header__nav-link--active {
+        box-shadow: inset 0 0 0 4px $alt-colour;
       }
     }
 

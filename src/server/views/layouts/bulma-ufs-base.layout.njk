@@ -24,6 +24,11 @@
 
     {% if showFancyNav === 'yes' %}
         {% include './partials/bulma-ufs-header-menus-2.njk' %}
+
+    {% elseif showExternalNav %}
+
+        {% include './partials/bulma-ufs-header-menus-external-only.njk' %}
+
     {% else %}
         {% include './partials/bulma-ufs-new-header.njk' %}
         {#{% include './partials/bulma-ufs-new-header.njk' %}#}

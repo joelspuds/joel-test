@@ -1,0 +1,37 @@
+{% set showExternalNav = true %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = true %}
+
+{#{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}#}
+{% set pageTitle = 'Index page, signed out' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {#{{ actualNavType }}#}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Index page, signed out') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+
+            <p class="govuk-body">
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+            </p>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+

@@ -420,6 +420,20 @@ router.get('/prototypes/peer-review-external/user-home', demosController.prHomeG
 router.post('/prototypes/peer-review-external/user-home', demosController.prHomePost);
 router.get('/prototypes/peer-review-external/user-reviews', demosController.prReviewsGet);
 router.post('/prototypes/peer-review-external/user-reviews', demosController.prReviewsPost);
+router.get('/prototypes/peer-review-external/review-tabs', demosController.prReviewTabsGet);
+router.post('/prototypes/peer-review-external/review-tabs', demosController.prReviewTabsPost);
+router.get('/prototypes/peer-review-external/review-and-submit', demosController.prReviewAndSubmitGet);
+router.post('/prototypes/peer-review-external/review-and-submit', demosController.prReviewAndSubmitPost);
+
+/* *************************************************************** *
+
+  External users nav demo
+
+* *************************************************************** */
+router.get('/prototypes/external-users/applications', demosController.externalUsersApplicationsGet);
+router.post('/prototypes/external-users/applications', demosController.externalUsersApplicationsPost);
+router.get('/prototypes/external-users/reviews', demosController.externalUsersReviewsGet);
+router.post('/prototypes/external-users/reviews', demosController.externalUsersReviewsPost);
 
 // Create route from view path
 router.get('*', miscController.viewFileRoute);

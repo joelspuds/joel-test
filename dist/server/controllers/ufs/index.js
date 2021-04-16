@@ -255,3 +255,15 @@ Object.keys(_peerReviewResponseController).forEach(function (key) {
     }
   });
 });
+
+var _externalUsersController = require('./externalUsersController');
+
+Object.keys(_externalUsersController).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _externalUsersController[key];
+    }
+  });
+});

@@ -4871,3 +4871,6 @@ let megaDataReviewsList = [
   },
 ];
 export const megaDataReviews = megaDataReviewsList;
+
+let reviewValues = ['', 'Unfundable', 'Uncompetitive', 'Good', 'Very good', 'Excellent', 'Exceptional'];
+export const reviewRatingValues = reviewValues;

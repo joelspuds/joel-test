@@ -19,6 +19,10 @@ exports.prHomeGet = prHomeGet;
 exports.prHomePost = prHomePost;
 exports.prReviewsGet = prReviewsGet;
 exports.prReviewsPost = prReviewsPost;
+exports.prReviewTabsGet = prReviewTabsGet;
+exports.prReviewTabsPost = prReviewTabsPost;
+exports.prReviewAndSubmitGet = prReviewAndSubmitGet;
+exports.prReviewAndSubmitPost = prReviewAndSubmitPost;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 
@@ -198,6 +202,69 @@ function prReviewsGet(req, res) {
 }
 
 function prReviewsPost(req, res) {
+  const {} = req.body;
+  let redirectURL = '';
+  console.log();
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    Review tabs mega page
+
+*************** */
+function prReviewTabsGet(req, res) {
+  let viewData;
+
+  const inviteResponse = req.session.inviteResponse;
+  const review = req.session.review;
+  const rating = req.session.rating;
+
+  viewData = {
+    inviteResponse,
+    review,
+    rating
+  };
+  return res.render('prototypes/peer-review-external/review-tabs', viewData);
+}
+
+function prReviewTabsPost(req, res) {
+  const { review, rating } = req.body;
+  let redirectURL = '/prototypes/peer-review-external/review-and-submit';
+  console.log();
+
+  req.session.review = review;
+  req.session.rating = rating;
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    Review and submit the review
+
+*************** */
+function prReviewAndSubmitGet(req, res) {
+  let viewData;
+
+  const inviteResponse = req.session.inviteResponse;
+  const review = req.session.review;
+  const rating = req.session.rating;
+
+  const reviewValues = generalData.reviewRatingValues;
+  let thisReviewValue = reviewValues[rating];
+
+  viewData = {
+    inviteResponse,
+    review,
+    rating,
+    thisReviewValue
+  };
+  return res.render('prototypes/peer-review-external/review-and-submit', viewData);
+}
+
+function prReviewAndSubmitPost(req, res) {
   const {} = req.body;
   let redirectURL = '';
   console.log();

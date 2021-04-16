@@ -830,3 +830,6 @@ let megaDataReviewsList = [{
   active: false
 }];
 const megaDataReviews = exports.megaDataReviews = megaDataReviewsList;
+
+let reviewValues = ['', 'Unfundable', 'Uncompetitive', 'Good', 'Very good', 'Excellent', 'Exceptional'];
+const reviewRatingValues = exports.reviewRatingValues = reviewValues;

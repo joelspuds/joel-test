@@ -3,6 +3,8 @@
 {% set pageTitle = 'Application review' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
 {% set isAdminUser = false %}
+{% set review = review if review %}
+{% set rating = rating if rating %}
 
 {% set listItems = [
     { text: 'Case for support', url: '#case' },
@@ -17,6 +19,17 @@
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
             {{ components.captionHeading(text='Bio-detoxification of Ricin in castor bean', caption='Development of a Novel Inhibitor of Ricin') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+
+            <p class="govuk-body">
+                <strong>Review deadline:</strong> 14 May 2021 (21 days left) <br>
+                <a href="#" class="govuk-link">Request review deadline extension</a>
+            </p>
         {%- endcall %}
     {%- endcall %}
 
@@ -110,9 +123,6 @@
 
                             {%- endcall %}
 
-                            {#{% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
-        {%- endcall %}#}
-
                         {%- endcall %}
 
                     </div>
@@ -131,32 +141,25 @@
                             {% call components.bulmaColumnAny(size='is-3') %}
                                 <nav class="sticky-nav">
                                     {{ components.linkHeading(text='Contents', tag='h2', size='s')}}
-                                    {#{{ components.list(items=listItems, parentClass='sticky-nav')}}#}
                                     <ul class="govuk-list">
-
                                         <li>
                                             <a href="#case" class="govuk-link govuk-link--no-visited-state canScroll ">Case for support</a>
                                         </li>
-
                                         <li>
                                             <a href="#capability" class="govuk-link govuk-link--no-visited-state canScroll">Capability to deliver</a>
                                         </li>
-
                                         <li>
                                             <a href="#resources" class="govuk-link govuk-link--no-visited-state canScroll">Resources and costs</a>
                                         </li>
-
                                         <li>
                                             <a href="#ethical" class="govuk-link govuk-link--no-visited-state canScroll">Ethical and societal issues</a>
                                         </li>
-
                                         <li>
                                             <a href="#letters" class="govuk-link govuk-link--no-visited-state canScroll">Letters of support</a>
                                         </li>
-
                                     </ul>
 
-                                    <a href="#" class="govuk-link js-only print-link print-link--tabs" id="printThis" onclick="window.print();return false;">Print this page</a>
+                                    {#<a href="#" class="govuk-link js-only print-link print-link--tabs" id="printThis" onclick="window.print();return false;">Print this page</a>#}
                                 </nav>
                             {%- endcall %}
 
@@ -277,9 +280,9 @@
 
                         {% call components.bulmaRow() %}
 
-                            {% call components.bulmaColumnAny(size='is-8', extraClass='{#u-space-t20#}') %}
+                            {% call components.bulmaColumnAny(size='is-8', extraClass='') %}
 
-                                {{ components.captionHeading(text='Your review',tag='h2', size='s') }}
+                                {{ components.captionHeading(text='Your review',tag='h2', size='m') }}
 
                                 <p class="govuk-body">Your review will be used by the panel and provides the basis of the funding decision.</p>
 
@@ -321,7 +324,7 @@
                                     {#{{ components.textarea(options=selectOptions, label='Enter your case for support', labelBold=true, name='htmlTest', id='tinyMCEInput', hint='', group=true, rows='12', size='', value=exampleHTML, extraClass='', visuallyHidden=true) }}#}
                                     <div class="form-group ">
                                         <label class="govuk-visually-hidden" for="tinyMCEInput">Enter your review</label>
-                                        <textarea class="form-control " name="htmlTest" id="tinyMCEInput" rows="12"></textarea>
+                                        <textarea class="form-control " name="review" id="tinyMCEInput" rows="12">{{ review }}</textarea>
                                     </div>
 
 
@@ -339,7 +342,7 @@
 
                                     <ul class="govuk-list govuk-list--bullet bull">
                                         <li>Cover strengths and weaknesses</li>
-                                        <li>Cover all application criteria: The idea, Importance, Timeliness, Approach, Impact.</li>
+                                        <li>Cover all application criteria: the idea, importance, timeliness, approach, impact.</li>
                                         <li>Be objective, evidenced based and justified</li>
                                         <li>Challenge the applicant constructively</li>
                                     </ul>
@@ -362,7 +365,7 @@
                                     <fieldset class="bar-rating u-space-b30">
 
                                         <legend class="govuk">
-                                            <h3 class="govuk-heading-s">Your score</h3>
+                                            <h3 class="govuk-heading-m">Your score</h3>
                                         </legend>
 
                                         {#<div class="bar-rating__scale" aria-hidden="true">
@@ -372,32 +375,32 @@
 
                                         <div class="bar-rating__wrapper">
 
-                                            <input type="radio" class="bar-rating__input" id="starContent6" name="ratingContent" aria-label="6 out of 6" value="6">
+                                            <input type="radio" class="bar-rating__input" id="starContent6" name="rating" aria-label="6 out of 6" value="6" {% if rating == 6 %} {% endif %}>
                                             <label for="starContent6" title="The application was exceptional - 6 stars">
                                                 <span class="bar-rating__inner-label"><strong>6</strong><br> Exceptional</span>
                                             </label>
 
-                                            <input type="radio" class="bar-rating__input" id="starContent5" name="ratingContent" aria-label="5 out of 6" value="5">
+                                            <input type="radio" class="bar-rating__input" id="starContent5" name="rating" aria-label="5 out of 6" value="5">
                                             <label for="starContent5" title="The application was excellent - 5 stars">
                                                 <span class="bar-rating__inner-label"><strong>5</strong><br> Excellent</span>
                                             </label>
 
-                                            <input type="radio" class="bar-rating__input" id="starContent4" name="ratingContent" aria-label="4 out of 6" value="4">
+                                            <input type="radio" class="bar-rating__input" id="starContent4" name="rating" aria-label="4 out of 6" value="4" checked>
                                             <label for="starContent4" title="The application was very good - 4 stars">
                                                 <span class="bar-rating__inner-label"><strong>4</strong><br> Very good</span>
                                             </label>
 
-                                            <input type="radio" class="bar-rating__input" id="starContent3" name="ratingContent" aria-label="3 out of 6" value="3">
+                                            <input type="radio" class="bar-rating__input" id="starContent3" name="rating" aria-label="3 out of 6" value="3">
                                             <label for="starContent3" title="The application was good - 3 stars">
                                                 <span class="bar-rating__inner-label"><strong>3</strong><br> Good</span>
                                             </label>
 
-                                            <input type="radio" class="bar-rating__input" id="starContent2" name="ratingContent" aria-label="2 out of 6" value="2">
+                                            <input type="radio" class="bar-rating__input" id="starContent2" name="rating" aria-label="2 out of 6" value="2">
                                             <label for="starContent2" title="The application was uncompetitive - 2 stars">
                                                 <span class="bar-rating__inner-label"><strong>2</strong><br> Uncompetitive</span>
                                             </label>
 
-                                            <input type="radio" class="bar-rating__input" id="starContent1" name="ratingContent" aria-label="1 out of 6" value="1">
+                                            <input type="radio" class="bar-rating__input" id="starContent1" name="rating" aria-label="1 out of 6" value="1">
                                             <label for="starContent1" title="The application was unfundable - 1 star">
                                                 <span class="bar-rating__inner-label"><strong>1</strong><br> Unfundable</span>
                                             </label>
@@ -446,7 +449,7 @@
 
                                     </div>
 
-                                    <p class="govuk-body u-space-t30">
+                                    <p class="govuk-body u-space-t10">
                                         <a href="/prototypes/peer-review-external/invite-reject" class="govuk-link">Unable to review this application?</a>
                                     </p>
 

@@ -1,0 +1,85 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '/prototypes/external-users/applications' %}
+{% set homeLink = '/prototypes/external-users/home' %}
+{% set reviewsLink = '/prototypes/external-users/reviews' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{#{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}#}
+{% set pageTitle = 'User home' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {#{{ actualNavType }}#}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Home', caption='Jane Doington-Smyth') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+                <div class="tfs-tile3">
+                    <a href="/prototypes/external-users/applications" class="tfs-tile3__mega-link tfs-tile3__mega-link--alt">
+                        <span class="tfs-tile3__heading">Applications</span>
+                        <span class="tfs-tile3__number">{{ range(1, 10) | random }}</span>
+                        <span class="tfs-tile3__progress">In progress</span>
+                    </a>
+                </div>
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+                <div class="tfs-tile3 ">
+                    <a href="/prototypes/external-users/reviews" class="tfs-tile3__mega-link tfs-tile3__mega-link--alt">
+                        <span class="tfs-tile3__heading">Reviews</span>
+                        <span class="tfs-tile3__number">{{ range(1, 10) | random }}</span>
+                        <span class="tfs-tile3__progress">In progress</span>
+                    </a>
+                </div>
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+                <div class="tfs-tile3 ">
+                    <a href="/prototypes/external-users/award-setup" class="tfs-tile3__mega-link tfs-tile3__mega-link--alt">
+                        <span class="tfs-tile3__heading">Award setup</span>
+                        <span class="tfs-tile3__number">{{ range(1, 10) | random }}</span>
+                        <span class="tfs-tile3__progress">In progress</span>
+                    </a>
+                </div>
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='u-space-t20') %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+                <div class="tfs-tile3 ">
+                    <a href="/prototypes/external-users/award" class="tfs-tile3__mega-link tfs-tile3__mega-link--alt">
+                        <span class="tfs-tile3__heading">Award</span>
+                        <span class="tfs-tile3__number">{{ range(1, 10) | random }}</span>
+                        <span class="tfs-tile3__progress">In progress</span>
+                    </a>
+                </div>
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+

@@ -19,3 +19,4 @@ export * from './multiUserApplicationController';
 export * from './multiUsersController';
 export * from './peerReviewController';
 export * from './peerReviewResponseController';
+export * from './externalUsersController';

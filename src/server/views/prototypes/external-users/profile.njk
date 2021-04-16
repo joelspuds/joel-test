@@ -1,0 +1,100 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = '' %}
+{% set navArea = 'profile' %}
+{% set applicationsLink = '/prototypes/external-users/applications' %}
+{% set homeLink = '/prototypes/external-users/home' %}
+{% set reviewsLink = '/prototypes/external-users/reviews' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set listItems = [
+    { text: 'Personal details', url: '#' },
+    { text: 'Account security', url: '#' },
+    { text: 'Professional details', url: '#' },
+    { text: 'Permissions', url: '#' },
+    { text: 'Expert review preferences', url: '#' }
+] %}
+
+{#{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}#}
+{% set pageTitle = 'Account settings' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {#{{ actualNavType }}#}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Account settings', caption='Jane Doington-Smyth') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-3') %}
+                <nav class="">
+                    {{ components.linkHeading(text='Profile sections', tag='h2', size='s')}}
+                    {{ components.list(items=listItems, parentClass='')}}
+                </nav>
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-8') %}
+
+                {{ components.captionHeading(text='Personal details', tag='h2', size='m') }}
+
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Honorific</dt>
+                        <dd class="govuk-summary-list__value">Professor</dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> honorific</span></a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Name</dt>
+                        <dd class="govuk-summary-list__value">Jane Doington-Smyth</dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Telephone
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            <p class="govuk-body">07700 900457</p>
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> contact details</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Email</dt>
+                        <dd class="govuk-summary-list__value">
+                            <p class="govuk-body">jane.doington-smyth@bristol.ac.uk</p>
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> email</span></a>
+                        </dd>
+                    </div>
+                </dl>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+    </section>
+
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+
