@@ -49,13 +49,13 @@
                             <span class="new-header__nav-link-not">Account view</span>
                         </li>
                         <li class="new-header__nav-item new-header__nav-item--user">
-                            <a href="/prototypes/external-users/home" class="new-header__nav-link {% if navArea == 'personal' %}new-header__nav-link--active{% endif %}">Personal (current)</a>
+                            <a href="/prototypes/external-users/home" class="new-header__nav-link {% if navArea == 'personal' %}new-header__nav-link--active{% endif %}">Personal {% if navArea == 'personal' %}(current){% endif %}</a>
                         </li>
                         <li class="new-header__nav-item new-header__nav-item--user">
-                            <a href="/prototypes/external-users/home-organisation" class="new-header__nav-link {% if navArea == 'organisation' %}new-header__nav-link--active{% endif %}">University of Manchester</a>
+                            <a href="/prototypes/external-users/home-organisation" class="new-header__nav-link {% if navArea == 'organisation' %}new-header__nav-link--active{% endif %}">University of Manchester {% if navArea == 'organisation' %}(current){% endif %}</a>
                         </li>
                         <li class="new-header__nav-item new-header__nav-item--user">
-                            <a href="/prototypes/external-users/home-business" class="new-header__nav-link {% if navArea == 'business' %}new-header__nav-link--active{% endif %}">Cyberdine Systems Ltd</a>
+                            <a href="/prototypes/external-users/home-business" class="new-header__nav-link {% if navArea == 'business' %}new-header__nav-link--active{% endif %}">Cyberdine Systems Ltd {% if navArea == 'business' %}(current){% endif %}</a>
                         </li>
                     </ul>
                 </nav>
