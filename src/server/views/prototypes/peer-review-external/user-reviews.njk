@@ -2,13 +2,14 @@
 
 {% set pageTitle = 'Reviews ' + GLOBAL_TAG_TITLE_SUFFIX %}
 {#{% set backLinkContents =  [{url:'#', text:'Back to reviews'}] %}#}
+{% set backLinkContents =  [{url:'/prototypes/peer-review-external/user-home/', text:'Back to home'}] %}
 
 {% set inviteResponse = inviteResponse if inviteResponse %}
 {% set appData = appData if appData %}
 
 {% block content %}
 
-    {% call components.bulmaRow() %}
+    {#{% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-full') %}
 
             <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
@@ -26,7 +27,7 @@
             </div>
 
         {%- endcall %}
-    {%- endcall %}
+    {%- endcall %}#}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
@@ -48,7 +49,7 @@
 
             {% call components.bulmaColumnAny(size='column is-full {#is-9-desktop is-9-widescreen#}') %}
 
-                {{ components.captionHeading(text='In progress', tag='h2', size='m') }}
+                {#{{ components.captionHeading(text='In progress', tag='h2', size='m') }}#}
 
                 <ul class="overview-items overview-items--plain">
 
@@ -58,7 +59,7 @@
                             <div class="columns">
                                 <div class="column is-8">
                                     <h3 class="overview-item__title">
-                                        <a href="/prototypes/peer-review-external/review-overview" class="govuk-link">{{ item.name }}</a>
+                                        <a href="/prototypes/peer-review-external/review-tabs" class="govuk-link">{{ item.name }}</a>
                                     </h3>
                                     <ul class="overview-item__meta-list">
                                         {#<li class="overview-item__meta-item" ><strong>Opportunity: </strong><a href="#" class="govuk-link">OPP{{ range(000, 999) | random }}: {{ item.oppName }}</a><br></li>#}

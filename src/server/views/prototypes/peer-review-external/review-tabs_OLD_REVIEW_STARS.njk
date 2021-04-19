@@ -362,44 +362,81 @@
                             {% call components.bulmaRow() %}
 
                                 {% call components.bulmaColumnAny(size='is-8 ', extraClass='u-space-t45') %}
+                                    <fieldset class="bar-rating u-space-b30">
 
-                                    <div class="govuk-form-group">
-                                        <fieldset class="govuk-fieldset">
-                                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                                <h2 class="govuk-fieldset__heading">Your score</h2>
-                                            </legend>
-                                            <div class="govuk-radios govuk-radios--small">
-                                                <div class="govuk-radios__item">
-                                                    <input class="govuk-radios__input" id="score1" name="rating" type="radio" value="1 - Unfundable">
-                                                    <label class="govuk-label govuk-radios__label" for="score1">1 - Unfundable</label>
-                                                </div>
-                                                <div class="govuk-radios__item">
-                                                    <input class="govuk-radios__input" id="score2" name="rating" type="radio" value="2 - Uncompetitive">
-                                                    <label class="govuk-label govuk-radios__label" for="score2">2 - Uncompetitive</label>
-                                                </div>
-                                                <div class="govuk-radios__item">
-                                                    <input class="govuk-radios__input" id="score3" name="rating" type="radio" value="3 Good">
-                                                    <label class="govuk-label govuk-radios__label" for="score3">3 - Good</label>
-                                                </div>
-                                                <div class="govuk-radios__item">
-                                                    <input class="govuk-radios__input" id="score4" name="rating" type="radio" value="4 - Very good">
-                                                    <label class="govuk-label govuk-radios__label" for="score4">4 - Very good</label>
-                                                </div>
-                                                <div class="govuk-radios__item">
-                                                    <input class="govuk-radios__input" id="score5" name="rating" type="radio" value="5 - Excellent">
-                                                    <label class="govuk-label govuk-radios__label" for="score5">5 - Excellent</label>
-                                                </div>
-                                                <div class="govuk-radios__item">
-                                                    <input class="govuk-radios__input" id="score6" name="rating" type="radio" value="6 - Exceptional">
-                                                    <label class="govuk-label govuk-radios__label" for="score6">6 - Exceptional</label>
-                                                </div>
+                                        <legend class="govuk">
+                                            <h3 class="govuk-heading-m">Your score</h3>
+                                        </legend>
 
-                                            </div>
+                                        {#<div class="bar-rating__scale" aria-hidden="true">
+                                            <span class="u-float-left">Not at all</span>
+                                            <span class="u-float-right">Yes, completely</span>
+                                        </div>#}
 
-                                        </fieldset>
-                                    </div>
+                                        <div class="bar-rating__wrapper">
 
+                                            <input type="radio" class="bar-rating__input" id="starContent6" name="rating" aria-label="6 out of 6" value="6" {% if rating == 6 %} {% endif %}>
+                                            <label for="starContent6" title="The application was exceptional - 6 stars">
+                                                <span class="bar-rating__inner-label"><strong>6</strong><br> Exceptional</span>
+                                            </label>
 
+                                            <input type="radio" class="bar-rating__input" id="starContent5" name="rating" aria-label="5 out of 6" value="5">
+                                            <label for="starContent5" title="The application was excellent - 5 stars">
+                                                <span class="bar-rating__inner-label"><strong>5</strong><br> Excellent</span>
+                                            </label>
+
+                                            <input type="radio" class="bar-rating__input" id="starContent4" name="rating" aria-label="4 out of 6" value="4" checked>
+                                            <label for="starContent4" title="The application was very good - 4 stars">
+                                                <span class="bar-rating__inner-label"><strong>4</strong><br> Very good</span>
+                                            </label>
+
+                                            <input type="radio" class="bar-rating__input" id="starContent3" name="rating" aria-label="3 out of 6" value="3">
+                                            <label for="starContent3" title="The application was good - 3 stars">
+                                                <span class="bar-rating__inner-label"><strong>3</strong><br> Good</span>
+                                            </label>
+
+                                            <input type="radio" class="bar-rating__input" id="starContent2" name="rating" aria-label="2 out of 6" value="2">
+                                            <label for="starContent2" title="The application was uncompetitive - 2 stars">
+                                                <span class="bar-rating__inner-label"><strong>2</strong><br> Uncompetitive</span>
+                                            </label>
+
+                                            <input type="radio" class="bar-rating__input" id="starContent1" name="rating" aria-label="1 out of 6" value="1">
+                                            <label for="starContent1" title="The application was unfundable - 1 star">
+                                                <span class="bar-rating__inner-label"><strong>1</strong><br> Unfundable</span>
+                                            </label>
+
+                                        </div>
+
+                                        {#<div class="bar-rating__1to6" aria-hidden="true">
+                                            <ul>
+                                                <li>
+                                                    <strong>1</strong>
+                                                    <br>Unfundable
+                                                </li>
+                                                <li>
+                                                    <strong>2</strong>
+                                                    <br>Uncompetitive
+                                                </li>
+                                                <li>
+                                                    <strong>3</strong>
+                                                    <br>Good
+                                                </li>
+                                                <li>
+                                                    <strong>4</strong>
+                                                    <br>Very good
+                                                </li>
+                                                <li>
+                                                    <strong>5</strong>
+                                                    <br>Excellent
+                                                </li>
+                                                <li>
+                                                    <strong>6</strong>
+                                                    <br>Exceptional
+                                                </li>
+                                            </ul>
+                                        </div>#}
+
+                                    </fieldset>
                                 {%- endcall %}
                             {%- endcall %}
 
