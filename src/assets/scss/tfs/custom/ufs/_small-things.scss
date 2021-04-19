@@ -57,7 +57,9 @@
 
   &__cancel {
     display: block;
-    float: right;
+    // float: right;
     margin-top: govuk-spacing(1);
+    @include govuk-font($size: 19);
+    clear: both;
   }
 }
