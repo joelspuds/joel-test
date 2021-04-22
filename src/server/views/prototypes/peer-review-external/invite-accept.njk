@@ -1,6 +1,6 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
-{% set pageTitle = 'Accept invitation ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Accept invitation to review ' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/peer-review-external/respond-to-invite', text:'Back to all responses'}] %}
 
 {% set acceptIsNotComplete = acceptIsNotComplete if acceptIsNotComplete %}
@@ -34,7 +34,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Accept, I am able to review this application', caption='Bio-detoxification of Ricin in castor bean') }}
+            {{ components.captionHeading(text='Accept invitation to review', caption='Bio-detoxification of Ricin in castor bean') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -44,13 +44,19 @@
 
             {% call components.form(action='#', method='POST',name='confirmAcceptInvite') %}
 
-                <h2 class="govuk-heading-m">You should only review this application if;</h2>
+                <h2 class="govuk-heading-m">Only accept this invitation, provided:</h2>
 
-                <ul class="govuk-list govuk-list--bullet">
+                {#<ul class="govuk-list govuk-list--bullet">
                     <li>you don't have a <a href="#">conflict of interest</a> with the applicant</li>
                     <li>the application fits with your <a href="#">area of expertise</a></li>
                     <li>you have <a href="#">time to assess this application</a></li>
+                </ul>#}
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>the application focuses on your area of expertise</li>
+                    <li>you have the time to review this application</li>
+                    <li>I confirm the above and my eligibility to review this application</li>
                 </ul>
+
 
                 {% call components.formGroup() %}
                     <div class="application-item">
@@ -61,7 +67,7 @@
                                 </legend>
                                 <div class="govuk-checkboxes">
                                     <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if widerEffectIsComplete %} checked{% endif %} {% if readOnly %} disabled {% endif %}>
+                                        <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox">
                                         <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">I confirm that I am eligible to review this application</label>
                                     </div>
                                 </div>
@@ -73,7 +79,7 @@
                 {% call components.formGroup() %}
                     <div class="application-controls govuk-clearfix">
 
-                        {{ components.button(text='Accept and submit response', extraClass="application-controls__submit")}}
+                        {{ components.button(text='Accept', extraClass="application-controls__submit")}}
 
                     </div>
                 {%- endcall %}

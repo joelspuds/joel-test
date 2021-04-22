@@ -1,7 +1,7 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 {% set navType = 'NOTadmin' %}
 {% set pageTitle = 'Application review' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/peer-review-external/user-reviews', text:'Back to all reviews'}] %}
+{% set backLinkContents =  [{url:'/prototypes/peer-review-external/user-reviews-complete', text:'Back to all reviews'}] %}
 {% set isAdminUser = false %}
 {% set review = review if review %}
 {% set rating = rating if rating %}
@@ -14,21 +14,38 @@
     { text: 'Letters of support', url: '#letters' }
 ] %}
 
+{% set review = review if review %}
+{% set rating = rating if rating %}
+{% set thisReviewValue = thisReviewValue if thisReviewValue %}
+
 {% block content %}
 
-    {#{% call components.bulmaRow() %}
-        {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Bio-detoxification of Ricin in castor bean', caption='Development of a Novel Inhibitor of Ricin') }}
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            {#{{ components.alerts(text='You must confirm that you are eligible to review this application', type='info')}}#}
+            <div class="govuk-notification-banner govuk-notification-banner--success" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Complete</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">
+                        Review complete, submitted on {{ 'dataAndTime' | dateAndTime() }}
+                    </p>
+                </div>
+            </div>
+
         {%- endcall %}
-    {%- endcall %}#}
+
+    {%- endcall %}
 
     {% call components.bulmaRow() %}
 
         {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
 
             <p class="govuk-body">
-                <strong>Review deadline:</strong> 14 May 2021 (21 days left) <br>
-                <a href="#" class="govuk-link">Request review deadline extension</a>
+                <strong>Review deadline:</strong> 14 May 2021<br>
             </p>
         {%- endcall %}
     {%- endcall %}
@@ -43,7 +60,7 @@
                         Contents
                     </h2>
                     <ul class="govuk-tabs__list">
-                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <li class="govuk-tabs__list-item ">
                             <a class="govuk-tabs__tab" href="#overview">
                                 Application overview
                             </a>
@@ -53,7 +70,7 @@
                                 Read application
                             </a>
                         </li>
-                        <li class="govuk-tabs__list-item">
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
                             <a class="govuk-tabs__tab" href="#write">
                                 Write your review
                             </a>
@@ -165,6 +182,7 @@
 
                             {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
 
+
                                 {% include '../generic-includes/review-content.njk' %}
 
                                 <p class="govuk-body u-space-t45">
@@ -190,25 +208,15 @@
 
                                 {{ components.captionHeading(text='Your review',tag='h2', size='m') }}
 
-                                <p class="govuk-body">Your review will be used by the panel and provides the basis of the funding decision.</p>
+                                <div class="tiny-spoof u-space-b30">
+                                    {{ review }}
+                                </div>
 
-                                <details class="govuk-details" data-module="govuk-details">
-                                    <summary class="govuk-details__summary">
-                                        <span class="govuk-details__summary-text">Guidance for writing a review</span>
-                                    </summary>
-                                    <div class="govuk-details__text">
-                                        <p>Where possible, reviews must be based on evidence, which you should clearly show in your comments. Please:</p>
-                                        <ul class="govuk-list govuk-list--bullet">
-                                            <li>firstly, familiarise yourself with any specified assessment factors or scoring matrix</li>
-                                            <li>provide comments and recommendations that are consistent with, justify and explain your scores</li>
-                                            <li>ensure your comments are comprehensive but concise</li>
-                                            <li>clearly identify strengths and weaknesses of the application in a constructive manner</li>
-                                            <li>raise any concerns in the form of questions for the applicant</li>
-                                            <li>avoid jargon - panellists may not be specialists in your field</li>
-                                            <li>consider other aspects of the proposed research or innovation, like its methodology, experimental designand data management plan, As well as its potential impact (and the pathways to achieving it) including any ethical and social issues (for example, the appropriate use of animals and/or human tissue).</li>
-                                        </ul>
-                                    </div>
-                                </details>
+                                <h2 class="govuk-heading-m">Your review score</h2>
+
+                                <p class="govuk-body">
+                                    {{ rating }} - {{ thisReviewValue }}
+                                </p>
 
 
                             {%- endcall %}
@@ -222,128 +230,17 @@
                             {% call components.bulmaRow() %}
 
                                 {% call components.bulmaColumnAny(size='is-8 ', extraClass='{#u-space-t20#}') %}
-                                    <noscript>
-                                        <div class="alerts  alerts--danger ">
-                                            <strong>JavaScript is not enabled</strong> This means anything you enter or paste into the box below will appear without formatting. To use 'rich text editing' functions, like bold text or lists, you will need <a href="https://www.enable-javascript.com/" class="govuk-link" target="_blank">to enable JavaScript</a> in your device or browser's security settings. If you did not disable JavaScript, try refreshing this page in a few minutes.
-                                        </div>
-                                    </noscript>
-                                    {#{{ components.textarea(options=selectOptions, label='Enter your case for support', labelBold=true, name='htmlTest', id='tinyMCEInput', hint='', group=true, rows='12', size='', value=exampleHTML, extraClass='', visuallyHidden=true) }}#}
-                                    <div class="form-group ">
-                                        <label class="govuk-visually-hidden" for="tinyMCEInput">Enter your review</label>
-                                        <textarea class="form-control " name="review" id="tinyMCEInput" rows="12">{{ review }}</textarea>
-                                    </div>
 
-
-                                    <p>
-                                        <span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite"></span>
-                                    </p>
 
                                 {%- endcall %}
 
-                                {% call components.bulmaColumnAny(size='is-4') %}
 
-                                    <div class="govuk-related-items govuk-related-items--flush">
-                                        {{ components.captionHeading(text='You must:', tag='h3', size='s', extraClass='u-space-t20') }}
-                                    </div>
-
-                                    <ul class="govuk-list govuk-list--bullet bull">
-                                        <li>Cover strengths and weaknesses</li>
-                                        <li>Cover all application criteria: the idea, importance, timeliness, approach, impact.</li>
-                                        <li>Be objective, evidenced based and justified</li>
-                                        <li>Challenge the applicant constructively</li>
-                                    </ul>
-
-                                    {{ components.captionHeading(text='Do not:', tag='h3', size='s', extraClass='u-space-y5') }}
-
-                                    <ul class="govuk-list govuk-list--bullet bull">
-                                        <li>Share personal information</li>
-                                        <li>Base on rumour or opinion.</li>
-                                    </ul>
-
-                                {%- endcall %}
 
                             {%- endcall %}
 
-                            {% call components.bulmaRow() %}
-
-                                {% call components.bulmaColumnAny(size='is-8 ', extraClass='u-space-t45') %}
-
-                                    <div class="govuk-form-group">
-                                        <fieldset class="govuk-fieldset">
-                                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                                <h2 class="govuk-fieldset__heading">Your score</h2>
-                                            </legend>
-
-                                            <details class="govuk-details" data-module="govuk-details">
-                                                <summary class="govuk-details__summary">
-                                                    <span class="govuk-details__summary-text">Guidance for scoring a review</span>
-                                                </summary>
-                                                <div class="govuk-details__text">
-                                                    <p>Where possible, reviews must be based on evidence, which you should clearly show in your comments. Please:</p>
-                                                    <ul class="govuk-list govuk-list--bullet">
-                                                        <li>firstly, familiarise yourself with any specified assessment factors or scoring matrix</li>
-                                                        <li>provide comments and recommendations that are consistent with, justify and explain your scores</li>
-                                                        <li>ensure your comments are comprehensive but concise</li>
-                                                        <li>clearly identify strengths and weaknesses of the application in a constructive manner</li>
-                                                        <li>raise any concerns in the form of questions for the applicant</li>
-                                                        <li>avoid jargon - panellists may not be specialists in your field</li>
-                                                        <li>consider other aspects of the proposed research or innovation, like its methodology, experimental designand data management plan, As well as its potential impact (and the pathways to achieving it) including any ethical and social issues (for example, the appropriate use of animals and/or human tissue).</li>
-                                                    </ul>
-                                                </div>
-                                            </details>
 
 
-                                            <div class="govuk-radios govuk-radios--small">
-                                                <div class="govuk-radios__item">
-                                                    <input class="govuk-radios__input" id="score1" name="rating" type="radio" value="1" {% if rating == 1 %} checked {% endif %}>
-                                                    <label class="govuk-label govuk-radios__label" for="score1">1 - Unfundable</label>
-                                                </div>
-                                                <div class="govuk-radios__item">
-                                                    <input class="govuk-radios__input" id="score2" name="rating" type="radio" value="2" {% if rating == 2 %} checked {% endif %}>
-                                                    <label class="govuk-label govuk-radios__label" for="score2">2 - Uncompetitive</label>
-                                                </div>
-                                                <div class="govuk-radios__item">
-                                                    <input class="govuk-radios__input" id="score3" name="rating" type="radio" value="3" {% if rating == 3 %} checked {% endif %}>
-                                                    <label class="govuk-label govuk-radios__label" for="score3">3 - Good</label>
-                                                </div>
-                                                <div class="govuk-radios__item">
-                                                    <input class="govuk-radios__input" id="score4" name="rating" type="radio" value="4" {% if rating == 4 %} checked {% endif %}>
-                                                    <label class="govuk-label govuk-radios__label" for="score4">4 - Very good</label>
-                                                </div>
-                                                <div class="govuk-radios__item">
-                                                    <input class="govuk-radios__input" id="score5" name="rating" type="radio" value="5" {% if rating == 5 %} checked {% endif %}>
-                                                    <label class="govuk-label govuk-radios__label" for="score5">5 - Excellent</label>
-                                                </div>
-                                                <div class="govuk-radios__item">
-                                                    <input class="govuk-radios__input" id="score6" name="rating" type="radio" value="6" {% if rating == 6 %} checked {% endif %}>
-                                                    <label class="govuk-label govuk-radios__label" for="score6">6 - Exceptional</label>
-                                                </div>
 
-                                            </div>
-
-                                        </fieldset>
-                                    </div>
-
-
-                                {%- endcall %}
-                            {%- endcall %}
-
-                            {% call components.bulmaRow(extraClass='') %}
-
-                                {% call components.bulmaColumnAny(size='is-8 ', extraClass='u-space-t45') %}
-
-                                    <div class="application-controls govuk-clearfix">
-                                        <button type="submit" class="govuk-button application-controls__submit" name="submitButton" >Review and submit</button>
-
-                                    </div>
-
-                                    <p class="govuk-body u-space-t10">
-                                        <a href="/prototypes/peer-review-external/invite-reject" class="govuk-link">Unable to review this application?</a>
-                                    </p>
-
-                                {%- endcall %}
-
-                            {%- endcall %}
 
                         {%- endcall %}
 

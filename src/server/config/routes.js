@@ -404,6 +404,13 @@ router.get('/prototypes/peer-review-external/review-tabs', demosController.prRev
 router.post('/prototypes/peer-review-external/review-tabs', demosController.prReviewTabsPost);
 router.get('/prototypes/peer-review-external/review-and-submit', demosController.prReviewAndSubmitGet);
 router.post('/prototypes/peer-review-external/review-and-submit', demosController.prReviewAndSubmitPost);
+router.get('/prototypes/peer-review-external/review-complete', demosController.prReviewCompleteGet);
+router.get('/prototypes/peer-review-external/user-reviews-complete', demosController.prReviewsCompleteGet);
+router.get('/prototypes/peer-review-external/applicant-review-tabs', demosController.prApplicantReviewTabsGet);
+router.post('/prototypes/peer-review-external/applicant-review-tabs', demosController.prApplicantReviewTabsPost);
+router.get('/prototypes/peer-review-external/applicant-review-and-submit', demosController.prApplicantReviewCommentsTabsGet);
+router.post('/prototypes/peer-review-external/applicant-review-and-submit', demosController.prApplicantReviewCommentsTabsPost);
+router.get('/prototypes/peer-review-external/applicant-review-tabs-complete', demosController.prApplicantReviewTabCompletesGet);
 
 /* *************************************************************** *
 

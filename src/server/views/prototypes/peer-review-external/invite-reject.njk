@@ -1,13 +1,13 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
-{% set pageTitle = 'Reject invitation ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Reject invitation to review  ' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/peer-review-external/respond-to-invite', text:'Back to all responses'}] %}
 
 {% block content %}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Reject, I am unable to review this application', caption='Bio-detoxification of Ricin in castor bean') }}
+            {{ components.captionHeading(text='Reject invitation to review ', caption='Bio-detoxification of Ricin in castor bean') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -21,7 +21,7 @@
                     <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                             <h2 class="govuk-fieldset__heading _govuk-visually-hidden">
-                                I am unable to review this application because:
+                                I cannot review this application because:
                             </h2>
                         </legend>
 
@@ -56,17 +56,15 @@
                 </div>
 
                 {% call components.formGroup() %}
-                    <label class="govuk-label govuk-label--s" for="more-detail">Can you provide more detail?</label>
-                    <div id="more-detail-hint" class="govuk-hint">
-                        Help us improve our reviewer recruitment. Don’t include personal or financial information, eg your National Insurance number.
-                    </div>
+                    <label class="govuk-label govuk-label--s" for="more-detail">Provide more detail (optional)</label>
+                    <div id="more-detail-hint" class="govuk-hint">Use the box below to tell us why you are rejecting this invitation, or anything you think may help us with reviewer recruitment. Avoid telling us any personal information.</div>
                     <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
                 {%- endcall %}
 
                 {% call components.formGroup() %}
                     <div class="application-controls govuk-clearfix">
 
-                        {{ components.button(text='Reject and submit response', extraClass="application-controls__submit")}}
+                        {{ components.button(text='Reject', extraClass="application-controls__submit")}}
 
                     </div>
                 {%- endcall %}

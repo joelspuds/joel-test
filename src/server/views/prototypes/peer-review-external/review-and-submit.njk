@@ -9,6 +9,7 @@
 {% set thisReviewValue = thisReviewValue if thisReviewValue %}
 
 
+
 {% block content %}
 
     {% call components.bulmaRow() %}
@@ -25,24 +26,22 @@
 
                 <h2 class="govuk-heading-m">Your review</h2>
 
-                <div class="output u-space-b30">
+                <p>{{ test }}</p>
+
+                <div class="tiny-spoof u-space-b30">
                     {{ review }}
                 </div>
 
-                <h2 class="govuk-heading-m">Your rating</h2>
+                <h2 class="govuk-heading-m">Your review score</h2>
 
                 <p class="govuk-body">
                     {{ rating }} - {{ thisReviewValue }}
                 </p>
 
-
-
                 {% call components.formGroup() %}
                     <div class="application-controls govuk-clearfix">
 
                         {{ components.button(text='Accept and submit response', extraClass="application-controls__submit")}}
-
-                        <br><br><br>
 
                         {{ components.link(text='Cancel, return to write your review', url='/prototypes/peer-review-external/review-tabs#write', extraClass="application-controls__cancel")}}
 

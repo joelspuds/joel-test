@@ -1,6 +1,6 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
-{% set pageTitle = 'Extend invitation ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Request extension to the review deadline ' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/peer-review-external/respond-to-invite', text:'Back to all responses'}] %}
 
 {% block content %}
@@ -21,7 +21,7 @@
                     <fieldset class="govuk-fieldset">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                             <h2 class="govuk-fieldset__heading _govuk-visually-hidden">
-                                I am able to accept this review if the deadline can be increased by;
+                                I can review this application, provided the deadline is extended by:
                             </h2>
                         </legend>
 
@@ -36,22 +36,22 @@
                             </div>
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="oneWeek" name="extendLength" type="radio" value="1 week">
-                                <label class="govuk-label govuk-radios__label" for="oneWeek">1 week</label>
+                                <label class="govuk-label govuk-radios__label" for="oneWeek">7 days</label>
                             </div>
 
-                            <div class="govuk-radios__item">
+                            {#<div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="tenDays" name="extendLength" type="radio" value="10 days">
                                 <label class="govuk-label govuk-radios__label" for="tenDays">10 days</label>
-                            </div>
+                            </div>#}
                         </div>
 
                     </fieldset>
                 </div>
 
                 {% call components.formGroup() %}
-                    <label class="govuk-label govuk-label--s" for="more-detail">Can you provide more detail?</label>
+                    <label class="govuk-label govuk-label--s" for="more-detail">Provide more detail (optional)</label>
                     <div id="more-detail-hint" class="govuk-hint">
-                        Help us improve our reviewer recruitment. Don’t include personal or financial information, eg your National Insurance number.
+                        Use the box below to tell us why you are requesting this extension, or anything you think may help us with reviewer recruitment. Avoid telling us any personal information.
                     </div>
                     <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
                 {%- endcall %}
@@ -59,7 +59,7 @@
                 {% call components.formGroup() %}
                     <div class="application-controls govuk-clearfix">
 
-                        {{ components.button(text='Submit extension request', extraClass="application-controls__submit")}}
+                        {{ components.button(text='Request extension', extraClass="application-controls__submit")}}
 
                     </div>
                 {%- endcall %}

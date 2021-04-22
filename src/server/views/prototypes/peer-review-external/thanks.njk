@@ -3,13 +3,21 @@
 {% set pageTitle = 'Thanks ' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'#', text:'Back to reviews'}] %}
 
+{% set titleText = 'Thank you' %}
+
+{% if inviteResponse == 'extend' %}
+    {% set titleText = 'Your extension has been requested' %}
+{% endif %}
+
+
+
 {% set inviteResponse = inviteResponse if inviteResponse %}
 
 {% block content %}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Thank you for your response', caption='Bio-detoxification of Ricin in castor bean') }}
+            {{ components.captionHeading(text=titleText, caption='Bio-detoxification of Ricin in castor bean') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -22,12 +30,17 @@
                 {{ components.captionHeading(text='What happens next', tag='h2', size='m') }}
 
                 <p class="govuk-body">
-                    You need to sign in or create an account to view the application and submit your review by 14 May 2021.
-                </p>
+                    You will receive an email notifying you when the application is available. To review it, you will need to sign in to the UKRI Funding Service or create a new account.</p>
+
+                {{ components.captionHeading(text='Dealine', tag='h2', size='m') }}
 
                 <p class="govuk-body">
-                    <a href="/prototypes/register-v1/start" class="govuk-button">Continue</a>
+                    You must submit your review by 14 May 2021
                 </p>
+
+                {#<p class="govuk-body">
+                    <a href="/prototypes/register-v1/start" class="govuk-button">Continue</a>
+                </p>#}
 
             {% endif %}
 
@@ -36,20 +49,41 @@
                 {{ components.captionHeading(text='What happens next', tag='h2', size='m') }}
 
                 <p class="govuk-body">
-                    Your extension request has been submitted, a member of URKI may be in touch to discuss further.
+                    We will inform you of our decision by email and may contact you to discuss this.
                 </p>
 
-                {{ components.captionHeading(text='Notification', tag='h2', size='m') }}
+
+               {# {{ components.captionHeading(text='Notification', tag='h2', size='m') }}
 
                 <p class="govuk-body">
                     You will be informed of the extension decision by email.
+                </p>#}
+
+            {% endif %}
+
+
+            {% if inviteResponse == 'reject' %}
+
+                {{ components.captionHeading(text='What happens next', tag='h2', size='m') }}
+
+                <p class="govuk-body">
+                    You do not need to do anything. We value your continued support and look forward to
+                    inviting you to review future applications.
                 </p>
 
             {% endif %}
 
+            <p class="govuk-body u-space-t45">
+                <a href="#" class="govuk-link">Tell us what you think of this service</a> – takes 2 minutes.
+            </p>
+
         {%- endcall %}
 
     {%- endcall %}
+
+    <p class="prototype-button-wrapper" style="">
+        <a href="/prototypes/peer-review-external" class="prototype-button" style="">Return to prototype home</a>
+    </p>
 
 {% endblock %}
 {% block bodyScripts %}

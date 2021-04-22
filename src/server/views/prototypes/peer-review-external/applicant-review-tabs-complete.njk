@@ -1,0 +1,356 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'NOTadmin' %}
+{% set pageTitle = 'Application review' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/peer-review-external/applicant-reviews-complete', text:'Back to all reviews'}] %}
+{% set isAdminUser = false %}
+{% set applicantReviewComment = applicantReviewComment if applicantReviewComment %}
+
+
+{% set listItems = [
+    { text: 'Case for support', url: '#case' },
+    { text: 'Capability to deliver', url: '#capability' },
+    { text: 'Resources and costs', url: '#resources' },
+    { text: 'Ethical and societal issues', url: '#ethical' },
+    { text: 'Letters of support', url: '#letters' }
+] %}
+
+{% set review = review if review %}
+{% set rating = rating if rating %}
+{% set thisReviewValue = thisReviewValue if thisReviewValue %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-notification-banner govuk-notification-banner--success" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">
+                        Your response has been submitted on {{ 'dataAndTime' | dateAndTime() }}
+                    </p>
+                </div>
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Application', caption='Bio-detoxification of Ricin in castor bean') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+
+            <p class="govuk-body">
+                <strong>Response  deadline:</strong> 14 May 2021<br>
+            </p>
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full') %}
+                <div class="govuk-tabs" data-module="govuk-tabs">
+                    <h2 class="govuk-tabs__title">
+                        Contents
+                    </h2>
+                    <ul class="govuk-tabs__list">
+                        <li class="govuk-tabs__list-item ">
+                            <a class="govuk-tabs__tab" href="#overview">
+                                Status
+                            </a>
+                        </li>
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="#read">
+                                Read application
+                            </a>
+                        </li>
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                            <a class="govuk-tabs__tab" href="#write">
+                                Reviews
+                            </a>
+                        </li>
+                    </ul>
+                    <style>
+                        .govuk-tabs__panel {
+                            border-left:0!important;
+                            border-right:0!important;
+                            border-bottom:0!important;
+                            padding-left:0!important;
+                            padding-right:0!important;
+                        }
+                    </style>
+                    <div class="govuk-tabs__panel" id="overview">
+
+                        {% call components.bulmaRow() %}
+
+                            {% call components.bulmaColumnAny(size='is-8', extraClass='') %}
+
+                                {{ components.captionHeading(text='Response sent',tag='h2', size='m', extraClass='u-space-b0') }}
+                                <p class="meta u-space-b30">Monday 25 April 2021, 9:00am</p>
+
+                                {{ components.captionHeading(text='What happens next?',tag='h3', size='s') }}
+
+                                <p class="govuk-body">Your application, the reviews and your feedback will now be assessed by a panel of experts.</p>
+                                <p class="govuk-body">When their evaluation has concluded they will decide which applications will be awarded funding.</p>
+                                <p class="govuk-body">For full details, including indicative timings, refer back to the <a href="#">[Name_of_opportunity] guidance</a>.</p>
+
+                                {{ components.captionHeading(text='Notification',tag='h3', size='s') }}
+
+                                <p class="govuk-body">
+                                    You will be informed of the panel's decision by email.
+                                </p>
+
+
+                                {#
+                                    STATUs ACCORDION
+                                #}
+
+                                <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+                                    <div class="govuk-accordion__section _govuk-accordion__section--expanded">
+                                        <div class="govuk-accordion__section-header">
+                                            <h2 class="govuk-accordion__section-heading"><span class="govuk-accordion__section-button" id=
+                                                "accordion-default-heading-1">Reviews received</span></h2><span class="meta">25 April 2021, 8.21pm</span>
+                                        </div>
+                                        <div aria-labelledby="accordion-default-heading-1" class="govuk-accordion__section-content" id="accordion-default-content-1">
+                                            {{ components.captionHeading(text='Comments submitted by', tag='h3', size='s', extraClass='') }}
+                                            <p class="govuk-body">Prof. Denselle Schmidt-Nord</p>
+                                        </div>
+                                    </div>
+                                    <div class="govuk-accordion__section _govuk-accordion__section--expanded">
+                                        <div class="govuk-accordion__section-header">
+                                            <h2 class="govuk-accordion__section-heading"><span class="govuk-accordion__section-button" id=
+                                                "accordion-default-heading-2">Application submitted</span></h2><span class="meta">17 March 2021, 4:14pm</span>
+                                        </div>
+                                        <div aria-labelledby="accordion-default-heading-2" class="govuk-accordion__section-content" id="accordion-default-content-2">
+                                            {{ components.captionHeading(text='Application submitted by', tag='h3', size='s', extraClass='') }}
+                                            <p class="govuk-body">Prof. Denselle Schmidt-Nord</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            {%- endcall %}
+
+                            {% call components.bulmaColumnAny(size='is-3 is-offset-1') %}
+
+                                <div class="application-data">
+                                    <dl class="application-data__list">
+                                        <dt class="application-data__key">Opportunity:</dt>
+                                        <dd class="application-data__value"><a href="#">[Name_of_opportunity]</a></dd>
+
+                                        <dt class="application-data__key">Application reference:</dt>
+                                        <dd class="application-data__value">APP[reference_number]</dd>
+
+                                        <dt class="application-data__key">Application deadline</dt>
+                                        <dd class="application-data__value">25 April 2021</dd>
+
+                                        <dt class="application-data__key">Funder:</dt>
+                                        <dd class="application-data__value">[Name of council]</dd>
+                                    </dl>
+                                </div>
+
+                            {%- endcall %}
+
+                        {%- endcall %}
+
+                    </div>
+                    {#
+
+
+                    END TAB ONE
+
+
+                    #}
+
+                    <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="read">
+
+                        {% call components.bulmaRow() %}
+
+                            {% call components.bulmaColumnAny(size='is-3') %}
+                                <nav class="sticky-nav">
+                                    {{ components.linkHeading(text='Contents', tag='h2', size='s')}}
+                                    <ul class="govuk-list">
+                                        <li>
+                                            <a href="#case" class="govuk-link govuk-link--no-visited-state canScroll ">Case for support</a>
+                                        </li>
+                                        <li>
+                                            <a href="#capability" class="govuk-link govuk-link--no-visited-state canScroll">Capability to deliver</a>
+                                        </li>
+                                        <li>
+                                            <a href="#resources" class="govuk-link govuk-link--no-visited-state canScroll">Resources and costs</a>
+                                        </li>
+                                        <li>
+                                            <a href="#ethical" class="govuk-link govuk-link--no-visited-state canScroll">Ethical and societal issues</a>
+                                        </li>
+                                        <li>
+                                            <a href="#letters" class="govuk-link govuk-link--no-visited-state canScroll">Letters of support</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            {%- endcall %}
+
+                            {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
+
+
+                                {% include '../generic-includes/review-content.njk' %}
+
+                                <p class="govuk-body u-space-t45">
+                                    <a href="/prototypes/peer-review-external/invite-reject" class="govuk-link">Unable to review this application?</a>
+                                </p>
+
+                            {%- endcall %}
+
+                        {%- endcall %}
+                    </div>
+                    {#
+
+
+                    END TAB TWO
+
+
+                    #}
+                    <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="write">
+
+                        {% call components.bulmaRow() %}
+
+                            {% call components.bulmaColumnAny(size='is-3') %}
+                                <nav class="sticky-nav">
+                                    {{ components.linkHeading(text='Manage reviews', tag='h2', size='s')}}
+
+                                    <ul class="govuk-list">
+                                        <li>
+                                            <a href="#accordion-review-heading-1" class="govuk-link govuk-link--no-visited-state canScroll ">Review 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#accordion-review-heading-2" class="govuk-link govuk-link--no-visited-state canScroll">Review 2</a>
+                                        </li>
+                                        <li>
+                                            <a href="#accordion-review-heading-3" class="govuk-link govuk-link--no-visited-state canScroll">Review 3</a>
+                                        </li>
+                                    </ul>
+                                    {#<a href="#main-content" class="govuk-link">Top of page</a>#}
+                                </nav>
+
+                                <p class="govuk-body">
+                                    <a href="#main-content" class="govuk-link">Download reviews</a>
+                                    <br>
+                                    <a href="#main-content" class="govuk-link">Print reviews</a>
+                                </p>
+
+
+                            {%- endcall %}
+
+                            {% call components.bulmaColumnAny(size='is-9', customID='main-content') %}
+
+                                {% call components.form(action='#', method='POST',name='manageReviews') %}
+
+                                    {{ components.captionHeading(text='Reviews', tag='h2', size='m', id='reviews') }}
+
+                                    <p class="govuk-body">Your application has received 3 reviews. You can comment on the feedback in the space provided below. Reviews and your responses to them will be assessed at panel to help inform funding decisions.</p>
+
+
+                                    <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-review">
+                                        <div class="govuk-accordion__section ">
+                                            <div class="govuk-accordion__section-header">
+                                                <h2 class="govuk-accordion__section-heading">
+                                            <span class="govuk-accordion__section-button" id="accordion-review-heading-1">
+                                              Review 1
+                                            </span>
+                                                </h2>
+                                            </div>
+                                            <div id="accordion-review-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-review-heading-1">
+
+                                                {% include '../generic-includes/application-peer-review.njk' %}
+
+                                            </div>
+                                        </div>
+                                        <div class="govuk-accordion__section">
+                                            <div class="govuk-accordion__section-header">
+                                                <h2 class="govuk-accordion__section-heading ">
+                                                    <span class="govuk-accordion__section-button" id="accordion-review-heading-2">Review 2</span>
+                                                </h2>
+                                            </div>
+                                            <div id="accordion-review-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-review-heading-2">
+
+                                                {% include '../generic-includes/placeholder-paragraphs.njk' %}
+
+                                            </div>
+                                        </div>
+                                        <div class="govuk-accordion__section ">
+                                            <div class="govuk-accordion__section-header">
+                                                <h2 class="govuk-accordion__section-heading ">
+                                                    <span class="govuk-accordion__section-button" id="accordion-review-heading-3">Review 3</span>
+                                                </h2>
+                                            </div>
+                                            <div id="accordion-review-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-review-heading-3">
+                                                {% include '../generic-includes/placeholder-paragraphs.njk' %}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {{ components.captionHeading(text='Your comments', tag='h2', size='m', id='') }}
+                                    <p class="meta u-space-b30">
+                                       Submitted on {{ 'dataAndTime' | dateAndTime() }}
+                                    </p>
+
+                                    <div class="tiny-spoof">
+                                        {{ applicantReviewComment }}
+                                    </div>
+
+                                {%- endcall %} {# end form #}
+
+                            {%- endcall %}
+
+                        {%- endcall %}
+
+                    </div>
+                    {#
+                    END TAB THREE
+                    #}
+
+                </div>
+            {%- endcall %}
+
+        {%- endcall %}
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+    <script type="text/javascript">
+        /* smooth-scroll.js v1.3.1 */
+        /*
+        n=0,
+        r=500,
+        i=15,
+        */
+        (function(e,t){
+            "use strict";
+            var n=0,
+                r=250,
+                i=15,
+                /*s=document.getElementsByTagName("a"),*/
+                s=document.getElementsByClassName('canScroll'),
+                o;
+            for(var u=0;u<s.length;u++){
+                o=s[u].attributes.href===t?null:s[u].attributes.href.nodeValue.toString();
+                if(o!==null&&o.length>1&&o.indexOf("#")!=-1){
+                    s[u].onclick=function(){
+                        var n,s=this.attributes.href.nodeValue.toString(),o=s.substr(0,s.indexOf("#")),u=s.substr(s.indexOf("#")+1);if(n=document.getElementById(u)){var l=(r-r%i)/i,c=f(),h=(a(n)-c)/l;if(e.history&&typeof e.history.pushState=="function")e.history.pushState({},t,o+"#"+u);for(var p=1;p<=l;p++){(function(){var t=h*p;setTimeout(function(){e.scrollTo(0,t+c)},i*p)})()}return false}}}}var a=function(e){var r=n*-1;while(e.offsetParent!=t&&e.offsetParent!=null){r+=e.offsetTop+(e.clientTop!=null?e.clientTop:0);e=e.offsetParent}return r};var f=function(){return e.pageYOffset!==t?e.pageYOffset:document.documentElement.scrollTop!==t?document.documentElement.scrollTop:document.body.scrollTop}})(window)
+    </script>
+{% endblock %}

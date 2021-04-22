@@ -23,6 +23,13 @@ exports.prReviewTabsGet = prReviewTabsGet;
 exports.prReviewTabsPost = prReviewTabsPost;
 exports.prReviewAndSubmitGet = prReviewAndSubmitGet;
 exports.prReviewAndSubmitPost = prReviewAndSubmitPost;
+exports.prReviewCompleteGet = prReviewCompleteGet;
+exports.prReviewsCompleteGet = prReviewsCompleteGet;
+exports.prApplicantReviewTabsGet = prApplicantReviewTabsGet;
+exports.prApplicantReviewTabsPost = prApplicantReviewTabsPost;
+exports.prApplicantReviewCommentsTabsGet = prApplicantReviewCommentsTabsGet;
+exports.prApplicantReviewCommentsTabsPost = prApplicantReviewCommentsTabsPost;
+exports.prApplicantReviewTabCompletesGet = prApplicantReviewTabCompletesGet;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 
@@ -266,8 +273,122 @@ function prReviewAndSubmitGet(req, res) {
 
 function prReviewAndSubmitPost(req, res) {
   const {} = req.body;
-  let redirectURL = '';
-  console.log();
+  let redirectURL = '/prototypes/peer-review-external/review-complete';
+  // console.log('going to review complete');
 
   return res.redirect(redirectURL);
+}
+
+/* **************
+
+    Review and submit the review
+
+*************** */
+function prReviewCompleteGet(req, res) {
+  let viewData;
+  // console.log('review complete function');
+
+  const inviteResponse = req.session.inviteResponse;
+  const review = req.session.review;
+  const rating = req.session.rating;
+
+  const reviewValues = generalData.reviewRatingValues;
+  let thisReviewValue = reviewValues[rating];
+
+  viewData = {
+    inviteResponse,
+    review,
+    rating,
+    thisReviewValue
+  };
+  return res.render('prototypes/peer-review-external/review-completed', viewData);
+}
+/* **************
+
+    Reviews list, complete
+
+*************** */
+function prReviewsCompleteGet(req, res) {
+  let viewData;
+  const appData = generalData.megaDataReviews;
+
+  viewData = {
+    appData
+  };
+  return res.render('prototypes/peer-review-external/user-reviews-complete', viewData);
+}
+
+/* **************
+
+    Applicant review tabs
+
+*************** */
+function prApplicantReviewTabsGet(req, res) {
+  let viewData;
+
+  // const inviteResponse = req.session.inviteResponse;
+  // const review = req.session.review;
+  // const rating = req.session.rating;
+
+  // const reviewValues = generalData.reviewRatingValues;
+  // let thisReviewValue = reviewValues[rating];
+
+  let applicantReviewComment = req.session.req.session.applicantReviewComment;
+
+  /*inviteResponse,
+    review,
+    rating,
+    thisReviewValue,*/
+
+  viewData = {
+    applicantReviewComment
+  };
+  return res.render('prototypes/peer-review-external/applicant-review-tabs', viewData);
+}
+
+function prApplicantReviewTabsPost(req, res) {
+  const { tinyMCEInput } = req.body;
+  let redirectURL = '/prototypes/peer-review-external/applicant-review-and-submit';
+  console.log(req.body);
+  req.session.applicantReviewComment = tinyMCEInput;
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    Applicant confirm review comments
+
+*************** */
+function prApplicantReviewCommentsTabsGet(req, res) {
+  let viewData;
+
+  let comment = req.session.req.session.applicantReviewComment;
+
+  viewData = {
+    comment
+  };
+  return res.render('prototypes/peer-review-external/applicant-review-and-submit', viewData);
+}
+
+function prApplicantReviewCommentsTabsPost(req, res) {
+  const {} = req.body;
+  let redirectURL = '/prototypes/peer-review-external/applicant-review-tabs-complete';
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    Applicant review tabs compete
+
+*************** */
+function prApplicantReviewTabCompletesGet(req, res) {
+  let viewData;
+  let applicantReviewComment = req.session.req.session.applicantReviewComment;
+
+  viewData = {
+    applicantReviewComment
+  };
+  return res.render('prototypes/peer-review-external/applicant-review-tabs-complete', viewData);
 }

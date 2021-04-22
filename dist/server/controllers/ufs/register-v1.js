@@ -34,6 +34,12 @@ function registerStartGetV1(req, res) {
   let useComplexDetailsPage = req.session.useComplexDetailsPage;
    console.log('useAltSaveMethod = ' + useAltSaveMethod);
   */
+
+  let applicantCommentsOnReviews = req.param('applicantCommentsOnReviews');
+  if (applicantCommentsOnReviews === 'true') {
+    req.session.applicantCommentsOnReviews = true;
+  }
+
   viewData = {};
 
   return res.render('prototypes/register-v1/start', viewData);
@@ -65,6 +71,16 @@ function signinGetV1(req, res) {
     req.session.confirmedEmail = true;
   }
 
+  let applicantReviews = req.param('applicantReviews');
+  if (applicantReviews === 'true') {
+    req.session.applicantReviews = true;
+  }
+
+  let applicantCommentsOnReviews = req.param('applicantCommentsOnReviews');
+  if (applicantCommentsOnReviews === 'true') {
+    req.session.applicantCommentsOnReviews = true;
+  }
+
   viewData = {
     confirmedEmail,
     signinError,
@@ -83,8 +99,14 @@ function signinPostV1(req, res) {
   // let journey = req.session.journey;
 
   const inviteResponse = req.session.inviteResponse;
+  req.session.inviteResponse = null;
 
-  let confirmedEmail = req.session.confirmedEmail;
+  /*let confirmedEmail = req.session.confirmedEmail;
+  req.session.confirmedEmail = null;*/
+  let applicantReviews = req.session.applicantReviews;
+  req.session.applicantReviews = null;
+  let applicantCommentsOnReviews = req.session.applicantCommentsOnReviews;
+  req.session.applicantCommentsOnReviews = null;
 
   if (!email || email.length < 1 || !password || password.length < 1) {
     req.session.signinError = true;
@@ -93,6 +115,12 @@ function signinPostV1(req, res) {
     if (inviteResponse === 'accept') {
       // take users to the start of the external expert review page
       return res.redirect('/prototypes/peer-review-external/user-home/');
+    } else if (applicantReviews === true) {
+      // take users to the multi-user journey applicant start
+      return res.redirect('/prototypes/peer-review-external/user-home');
+    } else if (applicantCommentsOnReviews === true) {
+      // take users to the applicants view of the reviews they have received
+      return res.redirect('/prototypes/peer-review-external/applicant-home');
     } else {
       // take users to the multi-user journey applicant start
       return res.redirect('/prototypes/multi-user-application/');
