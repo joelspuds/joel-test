@@ -1,0 +1,156 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = '' %}
+{% set navArea = 'profile' %}
+{% set applicationsLink = '/prototypes/edi/applications' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+{% set pageTitle = "EDI religion" %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set backLinkContents =  [{url:'/prototypes/edi/profile', text:'Back to account settings'}] %}
+
+{% block content %}
+
+    {#{% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Warning</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">
+                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion (EDI) profile</a> before you can submit an application.
+                        #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
+                    </p>
+                </div>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}#}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='What is your religion?', caption='Equality, Diversity and inclusion (EDI) Information') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.form(action='#', method='POST',name='ediForm') %}
+
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-8') %}
+
+                <p class="govuk-body">If you prefer not to say, continue without entering any information.</p>
+
+                <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
+                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                        <span class="govuk-details__summary-text">Guidance for answering this question</span>
+                    </summary>
+                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                        <p class="govuk-body">It's up to you how you answer this question. If you don’t have a religion, please select "No religion".</p>
+                        <p class="govuk-body">If you want to provide a religion, denomination, branch or caste that isn’t listed separately, select the “Any other religion”
+                            option and enter the name by typing your own answer.</p>
+                    </div>
+                </details>
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-visually-hidden">Select your religious beliefs</legend>
+                        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="religion1" name="religion" type="radio" value="No religion">
+                                <label class="govuk-label govuk-radios__label" for="religion1">No religion</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="religion2" name="religion" type="radio" value="Christian">
+                                <label class="govuk-label govuk-radios__label" for="religion2">Christian (including Church of England, Catholic, Protestant and all other Christian denominations)</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="religion3" name="religion" type="radio" value="Buddhist">
+                                <label class="govuk-label govuk-radios__label" for="religion3">Buddhist</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="religion4" name="religion" type="radio" value="Hindu">
+                                <label class="govuk-label govuk-radios__label" for="religion4">Hindu</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="religion5" name="religion" type="radio" value="Muslim">
+                                <label class="govuk-label govuk-radios__label" for="religion5">Muslim</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="religion6" name="religion" type="radio" value="Sikh">
+                                <label class="govuk-label govuk-radios__label" for="religion6">Sikh</label>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="religion7" name="religion" type="radio" value="Any other religion" data-aria-controls="conditional-other">
+                                <label class="govuk-label govuk-radios__label" for="religion7">Any other religion</label>
+                            </div>
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-other">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="other-religion-input">This is also voluntary, so you can leave it blank if you prefer.</label>
+                                    <input class="govuk-input govuk-!-width-one-third" id="other-religion-input" name="other-religion-input" type="text" spellcheck="false"></div>
+
+                            </div>
+                            <div class="govuk-radios__divider">or</div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="where-do-you-live-6" name="religion" type="radio" value="Prefer not to say">
+                                <label class="govuk-label govuk-radios__label" for="where-do-you-live-6">Prefer not to say</label>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </div>
+
+                <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
+                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                        <span class="govuk-details__summary-text">Why we ask this question</span>
+                    </summary>
+                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                        <p class="govuk-body">These questions will help us check we have reached a representative section of society and help us identify inequalities. The information you provide is kept anonymous and will not be used to identify any individual. Your answers will not affect and funding decisions regarding your applications. The information you provide will be separated from the selection process and will only be used for monitoring processes to make sure that people are treated fairly and according to their needs.</p>
+                        <p class="govuk-body">We need to understand if certain groups experience inequalities. Some of the questions may not be important or relevant to you, but they are important to the person with that characteristic. Completing these questions will help us analyse results accurately. Information provided in this survey is anonymous and held securely by UKRI.</p>
+                    </div>
+                </details>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-full') %}
+
+                    <div class="application-controls govuk-clearfix">
+                        {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
+                    </div>
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+
+
+        {%- endcall %} {# end form #}
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+{% endblock %}

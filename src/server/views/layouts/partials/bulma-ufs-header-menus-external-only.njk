@@ -1,5 +1,8 @@
 {#{% set applicationsLink = applicationsLink if applicationsLink '/prototypes/external-users/applications' %}#}
 
+{#{% set accountSettingsLink = '/prototypes/edi/home'  %}#}
+{% set accountSettingsLink = altProfilePagelink if altProfilePagelink else '/prototypes/edi/home' %}
+
 <header class="new-header {% if navType == 'admin' %} new-header--admin {% else %} new-header--external {% endif %}" role="banner">
     <div class="container new-header__top">
         <div class="columns">
@@ -21,7 +24,6 @@
                         <li class="new-header__nav-item">
                             {#<a href="/prototypes/external-users/applications" class="new-header__nav-link {% if activeNavItem == 'applications' %} new-header__nav-link--active {% endif %}">Applications</a>#}
                             <a href="{{ applicationsLink }}" class="new-header__nav-link {% if activeNavItem == 'applications' %} new-header__nav-link--active {% endif %}">Applications</a>
-
                         </li>
 
                         <li class="new-header__nav-item">
@@ -61,7 +63,7 @@
                 </nav>
 
                 {% else %}
-
+                    [nothing]
                 {% endif %}
 
             </div>
@@ -77,6 +79,7 @@
                         <span class="new-header__service">Funding Service</span>
                         {% if not loggedOut %}
                             <div class="nav-wrapper">
+                                {% if not hideAccountLinks %}
                                 <div class="nav-bar" aria-label="Organisation Navigation">
                                     <ul class="nav-bar__list">
                                         <li class="dropdown">
@@ -89,19 +92,20 @@
                                         </li>
                                     </ul>
                                 </div>
+                                {% endif %}
+
                                 <div class="nav-bar" aria-label="User Navigation">
                                     <ul class="nav-bar__list">
                                         <li class="dropdown">
                                             <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="user-dropdown">Dr. Jane Doington-Smyth</button>
                                             <ul class="dropdown__menu" id="user-dropdown">
-                                                <li><a href="/prototypes/external-users/profile" class="{% if navArea == 'profile' %}dropdown__link--active{% endif %}">Account settings</a></li>
+                                                <li><a href="{{ accountSettingsLink }}" class="{% if navArea == 'profile' %}dropdown__link--active{% endif %}">Account settings</a></li>
                                                 <li><a href="/prototypes/external-users/index">Sign out</a></li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-
                         {% else %}
 
                             <div class="nav-wrapper">
@@ -120,7 +124,6 @@
                                 </div>
                             </div>
 
-
                         {% endif %}
                     </div>
                 </div>
@@ -129,7 +132,6 @@
 
     {% endif %}
 </header>
-
 {% if not loggedOut %}
     <script>
         window.onload = function(){

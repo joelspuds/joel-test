@@ -1,0 +1,186 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = '' %}
+{% set navArea = 'profile' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set backLinkContents =  [{url:'/prototypes/edi/home', text:'Back to home'}] %}
+
+
+{% set listItems = [
+    { text: 'Personal details', url: '#' },
+    { text: 'Equality, Diversity and Inclusion (EDI) profile', url: '/prototypes/edi/edi-start' },
+    { text: 'Account security', url: '#' },
+    { text: 'Professional details', url: '#' },
+    { text: 'Permissions', url: '#' },
+    { text: 'Expert review preferences', url: '#' }
+] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Warning</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">
+                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion (EDI) profile</a> before you can submit an application.
+                        {#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}
+                    </p>
+                </div>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Account settings', caption='Professor Annabel Doubley-Barell') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-3') %}
+                <nav class="">
+                    {{ components.linkHeading(text='Profile sections', tag='h2', size='s')}}
+                    {#{{ components.list(items=listItems, parentClass='')}}#}
+
+                    <ul class="govuk-list">
+                        <li>
+                            <a href="/prototypes/edi/profile" class="govuk-link govuk-link--no-visited-state">Personal details</a>
+                        </li>
+                        <li>
+                            <a href="/prototypes/edi/edi" class="govuk-link govuk-link--no-visited-state sticky-nav__link--active">Equality, Diversity and Inclusion (EDI) profile</a>
+                        </li>
+                        <li>
+                            <a href="#" class="govuk-link govuk-link--no-visited-state ">Account security</a>
+                        </li>
+                        <li>
+                            <a href="#" class="govuk-link govuk-link--no-visited-state ">Professional details</a>
+                        </li>
+                        <li>
+                            <a href="#" class="govuk-link govuk-link--no-visited-state ">Permissions</a>
+                        </li>
+                        <li>
+                            <a href="#" class="govuk-link govuk-link--no-visited-state ">Expert review preferences</a>
+                        </li>
+                    </ul>
+                </nav>
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-8') %}
+
+                {{ components.captionHeading(text='Equality, Diversity and Inclusion (EDI) profile', tag='h2', size='m') }}
+
+                <p class="govuk-body">
+                    By embedding equality, diversity and inclusion in all we do, we can maximise the impact of our research and innovation to involve and benefit all parts of society. Everything we fund must embrace a diversity of thought, people and ideas.</p>
+
+                <p class="govuk-body"><strong>This survey consists of 7 questions and should take no more than 2 minutes.</strong></p>
+
+                <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">Why we ask for Equality, Diversity and inclusion (EDI) Information</span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        <p class="govuk-body">Nunc eu magna ex. Maecenas eu faucibus mi. Nam faucibus massa ut dui scelerisque suscipit. Phasellus ut varius risus. Nam placerat ante sit amet mauris viverra, nec condimentum velit rhoncus. In sit amet diam volutpat, dapibus quam eleifend, sodales tellus. Nam diam ex, bibendum a dolor ac, vehicula elementum neque. Sed tincidunt cursus turpis, in pharetra urna ultrices eu. Sed nec nisl a sapien euismod porttitor.</p>
+
+                        <p class="govuk-body">Suspendisse vel bibendum urna, non sollicitudin est. Donec lobortis molestie arcu at viverra. Nam mattis massa non nisl scelerisque accumsan. In ut erat faucibus, eleifend leo at, blandit ligula. Ut posuere purus semper felis tincidunt, et vestibulum diam malesuada. Duis ac lobortis justo, in dictum tellus. Sed viverra sed odio in egestas. Donec varius velit in malesuada pulvinar. Suspendisse eget risus nisl. Aenean purus odio, convallis id convallis a, eleifend at orci.</p>
+                    </div>
+                </details>
+
+                <p class="govuk-body">
+                    <a href="#" class="govuk-button govuk-button--start">Start the EDI profile questions</a>
+                </p>
+
+
+                {#<dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Honorific</dt>
+                        <dd class="govuk-summary-list__value">Professor</dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> honorific</span></a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Name</dt>
+                        <dd class="govuk-summary-list__value">Annabel Doubley-Barell</dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Telephone
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            <p class="govuk-body">07700 900457</p>
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> contact details</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Email</dt>
+                        <dd class="govuk-summary-list__value">
+                            <p class="govuk-body">annabel.doubley-barell@bristol.ac.uk</p>
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> email</span></a>
+                        </dd>
+                    </div>
+                </dl>#}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    {#<script>
+      function toggleVisibility(_this, id, className) {
+        // event.preventDefault();
+        let toggleSwitch = _this;
+        let toggleItem = document.getElementById(id);
+        if (hasClass(toggleItem, className)) {
+          toggleSwitch.classList.add('filter__title--closed');
+          toggleItem.classList.remove(className);
+          toggleSwitch.setAttribute('aria-expanded', true);
+        }
+        else  {
+          toggleSwitch.classList.remove('filter__title--closed');
+          toggleItem.classList.add(className);
+          toggleSwitch.setAttribute('aria-expanded', false);
+        }
+        // return false;
+      }
+      function hasClass(target, className) {
+        return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+      }
+    </script>#}
+{% endblock %}

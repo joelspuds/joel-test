@@ -422,6 +422,27 @@ router.post('/prototypes/external-users/applications', demosController.externalU
 router.get('/prototypes/external-users/reviews', demosController.externalUsersReviewsGet);
 router.post('/prototypes/external-users/reviews', demosController.externalUsersReviewsPost);
 
+/* *************************************************************** *
+
+  EDI profile
+
+* *************************************************************** */
+router.get('/prototypes/edi', demosController.ediIndexGet);
+router.post('/prototypes/edi', demosController.ediIndexPost);
+router.get('/prototypes/edi/home', demosController.ediHomeGet);
+router.post('/prototypes/edi/home', demosController.ediHomePost);
+router.get('/prototypes/edi/profile', demosController.ediProfileGet);
+router.post('/prototypes/edi/profile', demosController.ediProfilePost);
+router.get('/prototypes/edi/edi', demosController.ediEDIGet);
+router.post('/prototypes/edi/edi', demosController.ediEDIPost);
+
+router.get('/prototypes/edi/edi-dob', demosController.ediDOBGet);
+router.post('/prototypes/edi/edi-dob', demosController.ediDOBPost);
+router.get('/prototypes/edi/edi-religion', demosController.ediReligionGet);
+router.post('/prototypes/edi/edi-religion', demosController.ediReligionPost);
+router.get('/prototypes/edi/edi-confirm', demosController.ediConfirmGet);
+router.post('/prototypes/edi/edi-confirm', demosController.ediConfirmPost);
+
 // Create route from view path
 router.get('*', miscController.viewFileRoute);
 export const allRoutes = router;

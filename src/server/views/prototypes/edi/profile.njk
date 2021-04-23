@@ -1,0 +1,158 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = '' %}
+{% set navArea = 'profile' %}
+{% set applicationsLink = '/prototypes/edi/applications' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+{% set pageTitle = "Account settings" %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set backLinkContents =  [{url:'/prototypes/edi/home', text:'Back to home'}] %}
+
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Warning</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">
+                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion (EDI) profile</a> before you can submit an application.
+                        {#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}
+                    </p>
+                </div>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Account settings', caption='Professor Annabel Doubley-Barell') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-3') %}
+                <nav class="">
+                    {{ components.linkHeading(text='Profile sections', tag='h2', size='s')}}
+                    {#{{ components.list(items=listItems, parentClass='')}}#}
+
+                    <ul class="govuk-list">
+                        <li>
+                            <a href="/prototypes/edi/profile" class="govuk-link govuk-link--no-visited-state sticky-nav__link--active">Personal details</a>
+                        </li>
+                        <li>
+                            <a href="/prototypes/edi/edi" class="govuk-link govuk-link--no-visited-state ">Equality, Diversity and Inclusion (EDI) profile</a>
+                        </li>
+                        <li>
+                            <a href="#" class="govuk-link govuk-link--no-visited-state ">Account security</a>
+                        </li>
+                        <li>
+                            <a href="#" class="govuk-link govuk-link--no-visited-state ">Professional details</a>
+                        </li>
+                        <li>
+                            <a href="#" class="govuk-link govuk-link--no-visited-state ">Permissions</a>
+                        </li>
+                        <li>
+                            <a href="#" class="govuk-link govuk-link--no-visited-state ">Expert review preferences</a>
+                        </li>
+                    </ul>
+                </nav>
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-8') %}
+
+                {{ components.captionHeading(text='Personal details', tag='h2', size='m') }}
+
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Honorific</dt>
+                        <dd class="govuk-summary-list__value">Professor</dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> honorific</span></a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Name</dt>
+                        <dd class="govuk-summary-list__value">Annabel Doubley-Barell</dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Telephone
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            <p class="govuk-body">07700 900457</p>
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> contact details</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Email</dt>
+                        <dd class="govuk-summary-list__value">
+                            <p class="govuk-body">annabel.doubley-barell@bristol.ac.uk</p>
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> email</span></a>
+                        </dd>
+                    </div>
+                </dl>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    {#<script>
+      function toggleVisibility(_this, id, className) {
+        // event.preventDefault();
+        let toggleSwitch = _this;
+        let toggleItem = document.getElementById(id);
+        if (hasClass(toggleItem, className)) {
+          toggleSwitch.classList.add('filter__title--closed');
+          toggleItem.classList.remove(className);
+          toggleSwitch.setAttribute('aria-expanded', true);
+        }
+        else  {
+          toggleSwitch.classList.remove('filter__title--closed');
+          toggleItem.classList.add(className);
+          toggleSwitch.setAttribute('aria-expanded', false);
+        }
+        // return false;
+      }
+      function hasClass(target, className) {
+        return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+      }
+    </script>#}
+{% endblock %}
