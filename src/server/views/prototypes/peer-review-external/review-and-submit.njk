@@ -1,6 +1,20 @@
+{% set loggedOut = false %}
+{% set isAdminUser = false %}
+{% set showExternalNav = true %}
+{% set signInLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set activeNavItem = 'reviews' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/peer-review-external/user-home' %}
+{% set reviewsLink = '/prototypes/peer-review-external/user-reviews' %}
+{% set awardsSetupLinkHide = true %}
+{% set awardsLinkHide = true %}
+{% set signOutLink = '#' %}
+{% set altProfilePagelink = '#' %}
+
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
-{% set pageTitle = 'Review and submit ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Check and submit ' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/peer-review-external/respond-to-invite', text:'Back to all responses'}] %}
 
 {% set acceptIsNotComplete = acceptIsNotComplete if acceptIsNotComplete %}
@@ -14,7 +28,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Review and submit', caption='Bio-detoxification of Ricin in castor bean') }}
+            {{ components.captionHeading(text='Check and submit', caption='Bio-detoxification of Ricin in castor bean') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -41,7 +55,7 @@
                 {% call components.formGroup() %}
                     <div class="application-controls govuk-clearfix">
 
-                        {{ components.button(text='Accept and submit response', extraClass="application-controls__submit")}}
+                        {{ components.button(text='Submit review', extraClass="application-controls__submit")}}
 
                         {{ components.link(text='Cancel, return to write your review', url='/prototypes/peer-review-external/review-tabs#write', extraClass="application-controls__cancel")}}
 
@@ -58,17 +72,17 @@
             </div>
 
             <ul class="govuk-list govuk-list--bullet bull">
-                <li>Cover strengths and weaknesses</li>
-                <li>Cover all application criteria: the idea, importance, timeliness, approach, impact.</li>
-                <li>Be objective, evidenced based and justified</li>
-                <li>Challenge the applicant constructively</li>
+                <li>cover strengths and weaknesses</li>
+                <li>cover all application criteria: the idea, importance, timeliness, approach, impact</li>
+                <li>be objective, evidenced based and justified</li>
+                <li>challenge the applicant constructively</li>
             </ul>
 
             {{ components.captionHeading(text='Do not:', tag='h3', size='s', extraClass='u-space-y5') }}
 
             <ul class="govuk-list govuk-list--bullet bull">
-                <li>Share personal information</li>
-                <li>Base on rumour or opinion.</li>
+                <li>share personal information</li>
+                <li>base on rumour or opinion</li>
 
             </ul>
 

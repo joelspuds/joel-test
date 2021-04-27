@@ -1,7 +1,12 @@
+{% set loggedOut = true %}
+{% set isAdminUser = false %}
+{% set showExternalNav = true %}
+{% set signInLink = '#' %}
+
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set pageTitle = 'Thanks ' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'#', text:'Back to reviews'}] %}
+{#{% set backLinkContents =  [{url:'#', text:'Back to reviews'}] %}#}
 
 {% set titleText = 'Thank you' %}
 
@@ -30,9 +35,9 @@
                 {{ components.captionHeading(text='What happens next', tag='h2', size='m') }}
 
                 <p class="govuk-body">
-                    You will receive an email notifying you when the application is available. To review it, you will need to sign in to the UKRI Funding Service or create a new account.</p>
+                   {# You will receive an email notifying you when the application is available.#} To review it, you will need to <a href="/prototypes/register-v1/start?applicantReviews=true">sign in to the UKRI Funding Service</a> or create a new account.</p>
 
-                {{ components.captionHeading(text='Dealine', tag='h2', size='m') }}
+                {{ components.captionHeading(text='Deadline', tag='h2', size='m') }}
 
                 <p class="govuk-body">
                     You must submit your review by 14 May 2021

@@ -1,13 +1,18 @@
+{% set loggedOut = true %}
+{% set isAdminUser = false %}
+{% set showExternalNav = true %}
+{% set signInLink = '#' %}
+
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
-{% set pageTitle = 'Reject invitation to review  ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Decline invitation to review  ' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/peer-review-external/respond-to-invite', text:'Back to all responses'}] %}
 
 {% block content %}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Reject invitation to review ', caption='Bio-detoxification of Ricin in castor bean') }}
+            {{ components.captionHeading(text='Decline invitation to review ', caption='Bio-detoxification of Ricin in castor bean') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -57,14 +62,14 @@
 
                 {% call components.formGroup() %}
                     <label class="govuk-label govuk-label--s" for="more-detail">Provide more detail (optional)</label>
-                    <div id="more-detail-hint" class="govuk-hint">Use the box below to tell us why you are rejecting this invitation, or anything you think may help us with reviewer recruitment. Avoid telling us any personal information.</div>
+                    <div id="more-detail-hint" class="govuk-hint">Use the box below to tell us why you are declining this invitation, or anything you think may help us with reviewer recruitment. Avoid telling us any personal information.</div>
                     <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
                 {%- endcall %}
 
                 {% call components.formGroup() %}
                     <div class="application-controls govuk-clearfix">
 
-                        {{ components.button(text='Reject', extraClass="application-controls__submit")}}
+                        {{ components.button(text='Decline', extraClass="application-controls__submit")}}
 
                     </div>
                 {%- endcall %}
@@ -81,14 +86,14 @@
                         <dd class="application-data__value">Tuesday 14 May 2021</dd>
 
                         <dt class="application-data__key">Opportunity:</dt>
-                        <dd class="application-data__value"><a href="#">New Generation Thinkers 2020</a></dd>
+                        <dd class="application-data__value"><a href="#">Development of a Novel Inhibitor of Ricin</a></dd>
 
                         <dt class="application-data__key">Application title:</dt>
                         <dd class="application-data__value">Bio-detoxification of Ricin in castor bean</dd>
 
                         <dt class="application-data__key">Team:</dt>
                         <dd class="application-data__value">
-                            Principal investigator: Prof Giles Dexter Coventry University<br>
+                            Principal investigator: Prof Giles Dexter, Coventry University<br>
                             Co-investigator: Prof Gillian Demetriov Coventry University<br>
                             Researcher: Dr. Maximoma Turnipé Coventry University<br>
                         </dd>
@@ -97,7 +102,7 @@
                         <dd class="application-data__value">£80,000</dd>
 
                         <dt class="application-data__key">Funder:</dt>
-                        <dd class="application-data__value">[Name of council]</dd>
+                        <dd class="application-data__value">UKRI</dd>
                     </dl>
                 </div>
             </div>

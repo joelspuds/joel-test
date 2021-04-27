@@ -1,17 +1,33 @@
+{% set loggedOut = false %}
+{% set isAdminUser = false %}
+{% set showExternalNav = true %}
+{% set signInLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set activeNavItem = 'applications' %}
+{% set applicationsLink = '/prototypes/peer-review-external/applicant-reviews' %}
+{% set homeLink = '/prototypes/peer-review-external/applicant-home' %}
+{% set reviewsLink = '#' %}
+{% set awardsSetupLinkHide = true %}
+{% set awardsLinkHide = true %}
+{% set signOutLink = '#' %}
+{% set altProfilePagelink = '#' %}
+{% set userName = 'Prof. Giles Dexter' %}
+
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 {% set navType = 'NOTadmin' %}
 {% set pageTitle = 'Application review' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/peer-review-external/applicant-reviews', text:'Back to all reviews'}] %}
-{% set isAdminUser = false %}
+{% set backLinkContents =  [{url:'/prototypes/peer-review-external/applicant-reviews', text:'Back to all applications'}] %}
+
 {% set applicantReviewComment = applicantReviewComment if applicantReviewComment %}
 
-
+{% set showStickyNavscripts = true %}
 {% set listItems = [
-    { text: 'Case for support', url: '#case' },
-    { text: 'Capability to deliver', url: '#capability' },
-    { text: 'Resources and costs', url: '#resources' },
-    { text: 'Ethical and societal issues', url: '#ethical' },
-    { text: 'Letters of support', url: '#letters' }
+    { text: 'Case for support', url: '#case', class:'canScroll' },
+    { text: 'Capability to deliver', url: '#capability', class:'canScroll' },
+    { text: 'Pathways to impact', url: '#pathways', class:'canScroll' },
+    { text: 'Data impact statement', url: '#data', class:'canScroll' },
+    { text: 'Finances', url: '#finances', class:'canScroll' },
+    { text: 'Letters of support', url: '#letters', class:'canScroll' }
 ] %}
 
 {% set review = review if review %}
@@ -20,25 +36,9 @@
 
 {% block content %}
 
-    {#{% call components.bulmaRow() %}
-
-        {% call components.bulmaColumnAny(size='is-full') %}
-
-            #}{#{{ components.alerts(text='You must confirm that you are eligible to review this application', type='info')}}#}{#
-            <div class="govuk-notification-banner govuk-notification-banner--success" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-                <div class="govuk-notification-banner__header">
-                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Complete</h2>
-                </div>
-                <div class="govuk-notification-banner__content">
-                    <p class="govuk-notification-banner__heading">
-                        Review complete, submitted on {{ 'dataAndTime' | dateAndTime() }}
-                    </p>
-                </div>
-            </div>
-
-        {%- endcall %}
-
-    {%- endcall %}#}
+    <style>
+        .tox-statusbar__wordcount, .tox-statusbar__branding { display: none!important}
+    </style>
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
@@ -51,8 +51,8 @@
         {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
 
             <p class="govuk-body">
-                <strong>Response deadline:</strong> 14 May 2021<br>
-                <a href="#" class="govuk-link">Request response deadline extension </a>
+                <strong>Response deadline:</strong> 28 May 2021<br>
+                <a href="#" class="govuk-link">Request extension </a>
             </p>
         {%- endcall %}
     {%- endcall %}
@@ -105,7 +105,7 @@
 
                                 <p class="govuk-body">
                                     Your application has been reviewed and feedback has been provided for you to read and respond. <strong>Your
-                                        response must be received by 4.00pm on 12 May 2021</strong>.
+                                        response must be received by 4.00pm on 28 May 2021</strong>.
                                 </p>
                                 <p class="govuk-body">Each review and any comments you make will be sent to panel to inform a decision.</p>
                                 <p class="govuk-body">For more information about this process, please refer to the original <a href="#">guidance</a>.</p>
@@ -129,19 +129,9 @@
                                         </div>
                                         <div aria-labelledby="accordion-default-heading-2" class="govuk-accordion__section-content" id="accordion-default-content-2">
                                             {{ components.captionHeading(text='Application submitted by', tag='h3', size='s', extraClass='') }}
-                                            <p class="govuk-body">Prof. Denselle Schmidt-Nord</p>
+                                            <p class="govuk-body">Prof. Giles Dexter</p>
                                         </div>
                                     </div>
-                                   {# <div class="govuk-accordion__section _govuk-accordion__section--expanded">
-                                        <div class="govuk-accordion__section-header">
-                                            <h2 class="govuk-accordion__section-heading"><span class="govuk-accordion__section-button" id=
-                                                "accordion-default-heading-1">Invite</span></h2><span class="meta">14 March 2021, 12:34am</span>
-                                        </div>
-                                        <div aria-labelledby="accordion-default-heading-1" class="govuk-accordion__section-content" id="accordion-default-content-1">
-                                            {{ components.captionHeading(text='Recipient', tag='h2', size='s', extraClass='_disabledText') }}
-
-                                        </div>
-                                    </div>#}
                                 </div>
                             {%- endcall %}
 
@@ -150,7 +140,7 @@
                                     <div class="application-data">
                                         <dl class="application-data__list">
                                             <dt class="application-data__key">Opportunity:</dt>
-                                            <dd class="application-data__value"><a href="#">[Name_of_opportunity]</a></dd>
+                                            <dd class="application-data__value"><a href="#">Development of a Novel Inhibitor of Ricin</a></dd>
 
                                             <dt class="application-data__key">Application reference:</dt>
                                             <dd class="application-data__value">APP[reference_number]</dd>
@@ -159,7 +149,7 @@
                                             <dd class="application-data__value">25 April 2021</dd>
 
                                             <dt class="application-data__key">Funder:</dt>
-                                            <dd class="application-data__value">[Name of council]</dd>
+                                            <dd class="application-data__value">UKRI</dd>
                                         </dl>
                                     </div>
 
@@ -183,23 +173,7 @@
                             {% call components.bulmaColumnAny(size='is-3') %}
                                 <nav class="sticky-nav">
                                     {{ components.linkHeading(text='Contents', tag='h2', size='s')}}
-                                    <ul class="govuk-list">
-                                        <li>
-                                            <a href="#case" class="govuk-link govuk-link--no-visited-state canScroll ">Case for support</a>
-                                        </li>
-                                        <li>
-                                            <a href="#capability" class="govuk-link govuk-link--no-visited-state canScroll">Capability to deliver</a>
-                                        </li>
-                                        <li>
-                                            <a href="#resources" class="govuk-link govuk-link--no-visited-state canScroll">Resources and costs</a>
-                                        </li>
-                                        <li>
-                                            <a href="#ethical" class="govuk-link govuk-link--no-visited-state canScroll">Ethical and societal issues</a>
-                                        </li>
-                                        <li>
-                                            <a href="#letters" class="govuk-link govuk-link--no-visited-state canScroll">Letters of support</a>
-                                        </li>
-                                    </ul>
+                                    {{ components.list(items=listItems, parentClass='sticky-nav')}}
                                 </nav>
 
                             {%- endcall %}
@@ -248,13 +222,13 @@
 
                                 </nav>
 
-                                <p class="govuk-body">
-                                    {#<a href="#main-content" class="govuk-link">Top of page</a>
-                                    <br><br>#}
+                                {#<p class="govuk-body">
+                                    #}{#<a href="#main-content" class="govuk-link">Top of page</a>
+                                    <br><br>#}{#
                                     <a href="#main-content" class="govuk-link">Download reviews</a>
                                     <br>
                                     <a href="#main-content" class="govuk-link">Print reviews</a>
-                                </p>
+                                </p>#}
 
                             {%- endcall %}
 
@@ -264,7 +238,7 @@
 
                                     {{ components.captionHeading(text='Reviews', tag='h2', size='m', id='reviews') }}
 
-                                    <p class="govuk-body">Your application has received 3 reviews. You can comment on the feedback in the space provided below. Reviews and your responses to them will be assessed at panel to help inform funding decisions.</p>
+                                    <p class="govuk-body">Your application has received 3 reviews. You can comment on the feedback in the space provided below. Reviews and your response to them will be assessed at panel to help inform funding decisions.</p>
 
 
                                     <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-review">
@@ -308,41 +282,39 @@
 
                                     {{ components.captionHeading(text='Respond to reviews (Recommended)', tag='h2', size='m', id='') }}
 
-                                    <p class="govuk-body">Any comments you make about these reviews will be sent with to the funding decision panel for assessment. </p>
+                                    <p class="govuk-body">Any comments you make about these reviews will be sent to the funding decision panel for assessment.</p>
 
                                     <details class="govuk-details u-space-t20" data-module="govuk-details" role="group">
                                         <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
                                             <span class="govuk-details__summary-text">Guidelines for responding to reviews</span>
                                         </summary>
                                         <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
-                                            <p class="govuk-body">Commenting on reviews of your application is optional. If you wish to respond, use the space provided below. You have 2500 words to reply to all reviews.</p>
+                                            {#<p class="govuk-body">Commenting on reviews of your application is optional. If you wish to respond, use the space provided below. You have 2500 words to reply to all reviews.</p>
                                             <p class="govuk-body">Please start each set of comments with the word ‘Review’ and then the number in the order they are displayed above.</p>
                                             <p class="govuk-body">(For example: Review 1: The reviews comments are incorrect due to X,Y and Z)</p>
-                                            <p class="govuk-body">Select ‘Review and submit’ to review your response before submitting.</p>
+                                            <p class="govuk-body">Select ‘Check and submit’ to review your response before submitting.</p>#}
+                                            <p class="govuk-body">
+                                                Responding to the feedback in the reviews of your application is optional. If you wish to do so, use the space provided below. You have a total of 2500 words.</p>
+                                            <p class="govuk-body">Where you want to respond to specific feedback from an individual review, reference the review's number. For example: ‘…in Review 1…’</p>
+                                            <p class="govuk-body">When you have finished, select ‘Check and submit' to see how your response will be viewed by panel and to ensure you’re satisfied with it before submitting.
+                                            </p>
 
                                         </div>
                                     </details>
-
-
-
 
                                     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
                                         <div class="govuk-form-group ">
                                             <label class="govuk-visually-hidden" for="tinyMCEInput">Additional text (optional)</label>
                                             {#<div class="govuk-hint">Add additional text that will be included in the response.</div>#}
                                             <textarea class="govuk-textarea govuk-js-character-count" name="tinyMCEInput" id="tinyMCEInput" rows="8" {% if readOnly %} disabled {% endif %}>{{ applicantReviewComment }}</textarea>
-                                            {#<p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 250 words remaining</span></p>#}
+                                            <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 2500 words remaining</span></p>
                                         </div>
                                     </div>
-
-
 
                                     {% call components.formGroup() %}
                                         <div class="application-controls govuk-clearfix">
 
-                                            {{ components.button(text='Review and submit', extraClass="application-controls__submit")}}
-
-                                            {{ components.link(text='Decline right to respond', url='#', extraClass="application-controls__cancel")}}
+                                            {{ components.button(text='Check and submit', extraClass="application-controls__submit")}}
 
                                         </div>
                                     {%- endcall %}
@@ -352,25 +324,6 @@
                             {%- endcall %}
 
                         {%- endcall %}
-
-
-                        {#{% call components.form(action='#', method='POST',name='formReview') %}
-
-
-                            {% call components.bulmaRow() %}
-
-                                {% call components.bulmaColumnAny(size='is-8 ', extraClass='#}{#u-space-t20#}{#') %}
-
-
-                                {%- endcall %}
-
-                            {%- endcall %}
-
-
-                        {%- endcall %}#}
-
-
-
 
                     </div>
                     {#
@@ -419,82 +372,51 @@
     </script>
 
     <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
     <script>
-        /*
-      tinyMCE.init({
-          setup: function(editor) {
-              editor.on("init", function(){
-              editor.addShortcut("ctrl+u", "", "");
-          });
-          }
-      })
-      oninit : "disableShortcuts",
-          setup: function(editor) {
-            editor.on('init', function(){
-              editor.addShortcut('Command+I', '', '');
-            });
-          },
-
-      */
+        const counteroutputFoot = document.getElementById('wordCount');
+        let words = 0;
+        const limit = 2500;
+        let tinyMCEWordCount;
 
         tinymce.init({
             selector: '#tinyMCEInput',
             height: 500,
+            {% if readOnly %} readonly : 1, {% endif %}
             plugins: [
-                'advlist autolink lists link anchor',
-                'wordcount'
+                'advlist autolink lists link image preview anchor',
+                'media table paste  wordcount'
             ],
-            content_style: '.red-text {color: red}',
-            formats :{
-                //redText: { selector: 'p', classes: 'red-text' },
-                redText: { inline: 'span', classes: 'red-text' },
-                para: { selector: 'p,h2,h3,h4,li', classes: 'govuk-body' },
-                heading2: { selector: 'p,h2,h3,h4,li', classes: 'govuk-heading-l', exact: true },
-                heading3: { selector: 'p,h2,h3,h4', classes: 'govuk-heading-m', exact: true },
-                heading4: { selector: 'p,h2,h3,h4', classes: 'govuk-heading-s', exact: true },
-                unorderedList: { selector: 'ul, ol, p,h2,h3,h4', classes: 'govuk-list govuk-list--bullets'},
+            setup: function(editor) {
+
+                editor.on('keyup', function(e) {
+                    tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                    console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                    words = tinyMCEWordCount;
+                    let remainder = limit - words;
+                    if (words < limit) {
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    } else {
+                        let overCount = words - limit;
+                        counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+                    }
+                });
+
+                editor.on('init', function(e) {
+                    setTimeout(function(){
+                        tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                        console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                        words = tinyMCEWordCount;
+                        let remainder = limit - words;
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    }, 500);
+                });
             },
-            style_formats: [
-                /*{title: 'Red text', format: 'redText', styles: { color: '#ff0000' }},*/
-                {title: 'Paragraph', format: 'para'},
-                /*{title: 'Heading 2', format: 'heading2', block: 'h2', /!*styles: { color: 'lime' },*!/ classes: 'govuk-heading-l'},*/
-                {title: 'Heading 2', format: 'heading2', remove: 'all', block: 'h2', classes: 'govuk-heading-l'},
-                {title: 'Heading 3', format: 'heading3', block: 'h3', classes: 'govuk-heading-m'},
-                {title: 'Heading 4', format: 'heading4', block: 'h4', classes: 'govuk-heading-s'},
-                {title: 'Unordered list', format: 'unorderedList', block: 'ul'},
-            ],
-            advlist_bullet_styles: 'disc',
-            advlist_number_styles: 'default',
-            // toolbar: 'formatselect | bold italic | bullist numlist | align | indent outdent | link',
-            // toolbar: 'formatselect | bold | bullist numlist | link',
+            toolbar: 'formatselect | bold italic | bullist numlist | align | indent outdent | link | table |',
             content_css: [
                 '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
                 '/stylesheets/tinymce.css'
             ],
             menubar: false,
         });
-    </script>
-    <script>
-        ;(function(){
-            let wordcounter = document.getElementById('codeOutput');
-            let counteroutputFoot = document.getElementById('wordCount2');
-            let words;
-            const limit = 50;
-            function countemwords(){
-                words = (wordcounter.value == '')? 0 : wordcounter.value.split(' ').length;
-                let remainder = limit - words;
-                counteroutputFoot.innerHTML = 'You have ' + words + ' words';
-            }
-            wordcounter.addEventListener('input', function(e){
-                countemwords()
-            }, false);
-            document.addEventListener("DOMContentLoaded", function(event) {
-                countemwords()
-            }, false);
-            window.addEventListener("load", function(event) {
-                countemwords();
-            }, false)
-        })();
     </script>
 {% endblock %}

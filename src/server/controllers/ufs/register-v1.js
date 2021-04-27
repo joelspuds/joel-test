@@ -19,6 +19,11 @@ export function registerStartGetV1(req, res) {
     req.session.applicantCommentsOnReviews = true;
   }
 
+  let applicantReviews = req.param('applicantReviews');
+  if (applicantReviews === 'true') {
+    req.session.applicantReviews = true;
+  }
+
   viewData = {};
 
   return res.render('prototypes/register-v1/start', viewData);

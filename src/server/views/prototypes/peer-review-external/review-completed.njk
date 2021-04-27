@@ -1,17 +1,33 @@
+{% set loggedOut = false %}
+{% set isAdminUser = false %}
+{% set showExternalNav = true %}
+{% set signInLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set activeNavItem = 'reviews' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/peer-review-external/user-home' %}
+{% set reviewsLink = '/prototypes/peer-review-external/user-reviews-complete' %}
+{% set awardsSetupLinkHide = true %}
+{% set awardsLinkHide = true %}
+{% set signOutLink = '#' %}
+{% set altProfilePagelink = '#' %}
+
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 {% set navType = 'NOTadmin' %}
 {% set pageTitle = 'Application review' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/peer-review-external/user-reviews-complete', text:'Back to all reviews'}] %}
-{% set isAdminUser = false %}
+
 {% set review = review if review %}
 {% set rating = rating if rating %}
 
+{% set showStickyNavscripts = true %}
 {% set listItems = [
-    { text: 'Case for support', url: '#case' },
-    { text: 'Capability to deliver', url: '#capability' },
-    { text: 'Resources and costs', url: '#resources' },
-    { text: 'Ethical and societal issues', url: '#ethical' },
-    { text: 'Letters of support', url: '#letters' }
+    { text: 'Case for support', url: '#case', class:'canScroll' },
+    { text: 'Capability to deliver', url: '#capability', class:'canScroll' },
+    { text: 'Pathways to impact', url: '#pathways', class:'canScroll' },
+    { text: 'Data impact statement', url: '#data', class:'canScroll' },
+    { text: 'Finances', url: '#finances', class:'canScroll' },
+    { text: 'Letters of support', url: '#letters', class:'canScroll' }
 ] %}
 
 {% set review = review if review %}
@@ -72,7 +88,7 @@
                         </li>
                         <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
                             <a class="govuk-tabs__tab" href="#write">
-                                Write your review
+                                Your review
                             </a>
                         </li>
                     </ul>
@@ -91,7 +107,7 @@
 
                             {% call components.bulmaColumnAny(size='is-8', extraClass='') %}
 
-                                {{ components.captionHeading(text='Peer review deadline',tag='h2', size='s') }}
+                                {{ components.captionHeading(text='Review deadline',tag='h2', size='s') }}
 
                                 <p class="govuk-body">
                                     14 May 2021
@@ -112,9 +128,9 @@
                                 {{ components.captionHeading(text='Team',tag='h2', size='s') }}
 
                                 <p class="govuk-body">
-                                    <strong>Principal investigator:</strong> <a href="#">Prof Giles Dexter</a> Coventry University<br>
-                                    <strong>Co-investigator:</strong> <a href="#">Prof Ian Charles</a> Coventry University<br>
-                                    <strong>Researcher:</strong> <a href="#">Dr Maxwell Peterson</a> Coventry University<br>
+                                    <strong>Principal investigator:</strong> Prof Giles Dexter, Coventry University<br>
+                                    <strong>Co-investigator:</strong> Prof Ian Charles,  Coventry University<br>
+                                    <strong>Researcher:</strong> Dr Maxwell Peterson,  Coventry University<br>
                                 </p>
 
                                 {{ components.captionHeading(text='Grant size',tag='h2', size='s') }}
@@ -158,25 +174,7 @@
                             {% call components.bulmaColumnAny(size='is-3') %}
                                 <nav class="sticky-nav">
                                     {{ components.linkHeading(text='Contents', tag='h2', size='s')}}
-                                    <ul class="govuk-list">
-                                        <li>
-                                            <a href="#case" class="govuk-link govuk-link--no-visited-state canScroll ">Case for support</a>
-                                        </li>
-                                        <li>
-                                            <a href="#capability" class="govuk-link govuk-link--no-visited-state canScroll">Capability to deliver</a>
-                                        </li>
-                                        <li>
-                                            <a href="#resources" class="govuk-link govuk-link--no-visited-state canScroll">Resources and costs</a>
-                                        </li>
-                                        <li>
-                                            <a href="#ethical" class="govuk-link govuk-link--no-visited-state canScroll">Ethical and societal issues</a>
-                                        </li>
-                                        <li>
-                                            <a href="#letters" class="govuk-link govuk-link--no-visited-state canScroll">Letters of support</a>
-                                        </li>
-                                    </ul>
-
-                                    {#<a href="#" class="govuk-link js-only print-link print-link--tabs" id="printThis" onclick="window.print();return false;">Print this page</a>#}
+                                    {{ components.list(items=listItems, parentClass='sticky-nav')}}
                                 </nav>
                             {%- endcall %}
 

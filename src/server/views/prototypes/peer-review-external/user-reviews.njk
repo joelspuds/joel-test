@@ -1,3 +1,17 @@
+{% set loggedOut = false %}
+{% set isAdminUser = false %}
+{% set showExternalNav = true %}
+{% set signInLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set activeNavItem = 'reviews' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/peer-review-external/user-home' %}
+{% set reviewsLink = '/prototypes/peer-review-external/user-reviews' %}
+{% set awardsSetupLinkHide = true %}
+{% set awardsLinkHide = true %}
+{% set signOutLink = '#' %}
+{% set altProfilePagelink = '#' %}
+
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set pageTitle = 'Reviews ' + GLOBAL_TAG_TITLE_SUFFIX %}
@@ -49,13 +63,13 @@
 
             {% call components.bulmaColumnAny(size='column is-full {#is-9-desktop is-9-widescreen#}') %}
 
-                {#{{ components.captionHeading(text='In progress', tag='h2', size='m') }}#}
+                {#{{ components.captionHeading(text='Incomplete', tag='h2', size='m') }}#}
 
                 <ul class="overview-items overview-items--plain">
 
                     {% for item in appData %}
 
-                        <li class="overview-item {% if item.active != true %} overview-item--inactive {% endif %} {% if item.isNew == true %} overview-item--new {% endif %}">
+                        <li class="overview-item {% if item.active != true %} overview-item--inactive {% endif %} {% if item.isNew == true %} _overview-item--new {% endif %}">
                             <div class="columns">
                                 <div class="column is-8">
                                     <h3 class="overview-item__title">
@@ -123,9 +137,9 @@
                                     <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
                                         <div class="u-align-cell">
                                             <strong>{{ item.status }}</strong>
-                                            {% if item.completeness %}
+                                            {#{% if item.completeness %}
                                                 <span class="meta"><br>{{ item.completeness }}</span>
-                                            {% endif %}
+                                            {% endif %}#}
                                         </div>
                                     </div>
                                 </div>

@@ -3,6 +3,15 @@
 {#{% set accountSettingsLink = '/prototypes/edi/home'  %}#}
 {% set accountSettingsLink = altProfilePagelink if altProfilePagelink else '/prototypes/edi/home' %}
 
+{#{% set signInURL = signInLink if signInLink else '#' %}#}
+{% set signInURL = signInLink if signInLink else '/prototypes/external-users/sign-in' %}
+{% set userName = userName if userName else 'Dr. Jane Doeington-Longname' %}
+
+{% set signOutLink = signOutLink if signOutLink else '/prototypes/external-users/index' %}
+{#{% set accountSettingsLink = accountSettingsLink if accountSettingsLink else 'Dr. Jane Doeington-Longname' %}#}
+
+
+
 <header class="new-header {% if navType == 'admin' %} new-header--admin {% else %} new-header--external {% endif %}" role="banner">
     <div class="container new-header__top">
         <div class="columns">
@@ -10,9 +19,9 @@
                 <a href="#" class="new-header__brand" title="UKRI Funding Service homepage" aria-label="Return to UKRI Funding Service homepage">
                     <img src="/images/ufs/ukri_logo_new.svg" alt="UKRI logo">
                 </a>
-                {% if not loggedOut %}
+                {#{% if not loggedOut %}#}
                     <button class="mobile-menu" type="button" aria-controls="mobile-nav" aria-expanded="false">Menu <span>&#9660;</span></button>
-                {% endif %}
+                {#{% endif %}#}
 
                 {% if not loggedOut %}
                 <nav class="new-header__nav new-header__nav--touch-hide">
@@ -30,22 +39,26 @@
                             <a href="{{ reviewsLink }}" class="new-header__nav-link {% if activeNavItem == 'reviews' %} new-header__nav-link--active {% endif %}">Reviews</a>
                         </li>
 
+                        {% if not awardsSetupLinkHide %}
                         <li class="new-header__nav-item">
                             <a href="#" class="new-header__nav-link {% if activeNavItem == 'setup' %} new-header__nav-link--active {% endif %}">Award setup</a>
                         </li>
+                        {% endif %}
 
+                        {% if not awardsLinkHide %}
                         <li class="new-header__nav-item">
                             <a href="#" class="new-header__nav-link {% if activeNavItem == 'awards' %} new-header__nav-link--active {% endif %}">Awards</a>
                         </li>
+                        {% endif %}
 
                         <li class="new-header__nav-item new-header__nav-item--user">
-                            <span class="new-header__nav-link-not">Dr. Jane Doington-Smyth</span>
+                            <span class="new-header__nav-link-not">{{ userName }}</span>
                         </li>
                         <li class="new-header__nav-item new-header__nav-item--user">
-                            <a href="/prototypes/external-users/profile" class="new-header__nav-link {% if activeNavItem == 'profile' %}new-header__nav-link--active{% endif %}">Account settings</a>
+                            <a href="{{ accountSettingsLink }}" class="new-header__nav-link {% if activeNavItem == 'profile' %}new-header__nav-link--active{% endif %}">Account settings</a>
                         </li>
                         <li class="new-header__nav-item new-header__nav-item--user">
-                            <a href="/prototypes/external-users/index" class="new-header__nav-link">Sign out</a>
+                            <a href="{{ signOutLink }}" class="new-header__nav-link">Sign out</a>
                         </li>
                         <li class="new-header__nav-item new-header__nav-item--user">
                             <span class="new-header__nav-link-not">Account view</span>
@@ -63,7 +76,13 @@
                 </nav>
 
                 {% else %}
-                    [nothing]
+                <nav class="new-header__nav new-header__nav--touch-hide">
+                    <ul class="new-header__nav-list">
+                        <li class="new-header__nav-item new-header__nav-item--user">
+                            <a href="{{ signInURL }}" class="new-header__nav-link ">Sign in</a>
+                        </li>
+                    </ul>
+                </nav>
                 {% endif %}
 
             </div>
@@ -97,23 +116,21 @@
                                 <div class="nav-bar" aria-label="User Navigation">
                                     <ul class="nav-bar__list">
                                         <li class="dropdown">
-                                            <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="user-dropdown">Dr. Jane Doington-Smyth</button>
+                                            <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="user-dropdown">{{ userName }}</button>
                                             <ul class="dropdown__menu" id="user-dropdown">
                                                 <li><a href="{{ accountSettingsLink }}" class="{% if navArea == 'profile' %}dropdown__link--active{% endif %}">Account settings</a></li>
-                                                <li><a href="/prototypes/external-users/index">Sign out</a></li>
+                                                <li><a href="{{ signOutLink }}">Sign out</a></li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         {% else %}
-
                             <div class="nav-wrapper">
-
                                 <div class="nav-bar" aria-label="User Navigation">
                                     <ul class="nav-bar__list">
                                         <li class="dropdown">
-                                            <a href="/prototypes/external-users/sign-in">Sign in</a>
+                                            <a href="{{ signInURL }}">Sign in</a>
                                             {#<button type="button" class="dropdown__title" aria-expanded="false" aria-controls="user-dropdown">Dr. Jane Doe</button>
                                             <ul class="dropdown__menu" id="user-dropdown">
                                                 <li><a href="#">Account settings</a></li>
@@ -132,7 +149,7 @@
 
     {% endif %}
 </header>
-{% if not loggedOut %}
+{#{% if not loggedOut %}#}
     <script>
         window.onload = function(){
             // let topNavSwitcher = document.getElementsByClassName('new-header__nav');
@@ -150,4 +167,4 @@
             };
         };
     </script>
-{% endif %}
+{#{% endif %}#}

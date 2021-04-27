@@ -1,3 +1,18 @@
+{% set loggedOut = false %}
+{% set isAdminUser = false %}
+{% set showExternalNav = true %}
+{% set signInLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set activeNavItem = 'applications' %}
+{% set applicationsLink = '/prototypes/peer-review-external/applicant-reviews' %}
+{% set homeLink = '/prototypes/peer-review-external/applicant-home' %}
+{% set reviewsLink = '#' %}
+{% set awardsSetupLinkHide = true %}
+{% set awardsLinkHide = true %}
+{% set signOutLink = '#' %}
+{% set altProfilePagelink = '#' %}
+{% set userName = 'Prof. Giles Dexter' %}
+
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set pageTitle = 'Applications ' + GLOBAL_TAG_TITLE_SUFFIX %}
@@ -10,7 +25,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Applications', caption='Prof. Denselle Schmidt-Nord') }}
+            {{ components.captionHeading(text='Applications', caption='Prof. Giles Dexter') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -24,7 +39,7 @@
 
 
 
-                    <li class="overview-item   overview-item--new ">
+                    <li class="overview-item _overview-item--new ">
                         <div class="columns">
                             <div class="column is-8">
                                 <h3 class="overview-item__title">
@@ -44,7 +59,7 @@
                                             <strong><span class="govuk-!-font-size-24">5</span>
                                             <br>days left</strong>
                                             <br>
-                                            <span class="govuk-body-s">Deadline 14 May 2021</span>
+                                            <span class="govuk-body-s">Deadline 28 May 2021</span>
                                         </span>
                                     </div>
                                 </div>
@@ -63,11 +78,11 @@
                         <div class="columns">
                             <div class="column is-8">
                                 <h3 class="overview-item__title">
-                                    <a href="#" class="govuk-link">A fine example name for this item</a>
+                                    <a href="#" class="govuk-link">Linear field waves in liquids</a>
                                 </h3>
                                 <ul class="overview-item__meta-list">
 
-                                    <li class="overview-item__meta-item"><strong>Opportunity: </strong>OPP390: Marvellous Opportunity describing some bleeding-edge research area<br></li>
+                                    <li class="overview-item__meta-item"><strong>Opportunity: </strong>OPP390: Electromagnetic waves in liquids<br></li>
                                     <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA97<br></li>
                                     <li class="overview-item__meta-item"><strong>Organisation:</strong> University of Cardiff</li>
                                 </ul>
@@ -87,8 +102,8 @@
                             <div class="column is-2">
                                 <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
                                     <div class="u-align-cell">
-                                        <strong>In progress</strong>
-                                        <span class="meta"><br>75% complete</span>
+                                        <strong>Incomplete</strong>
+                                        {#<span class="meta"><br>75% complete</span>#}
                                     </div>
                                 </div>
                             </div>

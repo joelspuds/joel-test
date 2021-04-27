@@ -1,3 +1,18 @@
+{% set loggedOut = false %}
+{% set isAdminUser = false %}
+{% set showExternalNav = true %}
+{% set signInLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set activeNavItem = 'applications' %}
+{% set applicationsLink = '/prototypes/peer-review-external/applicant-reviews' %}
+{% set homeLink = '/prototypes/peer-review-external/applicant-home' %}
+{% set reviewsLink = '#' %}
+{% set awardsSetupLinkHide = true %}
+{% set awardsLinkHide = true %}
+{% set signOutLink = '#' %}
+{% set altProfilePagelink = '#' %}
+{% set userName = 'Prof. Giles Dexter' %}
+
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set pageTitle = 'Submit your response' + GLOBAL_TAG_TITLE_SUFFIX %}
@@ -20,7 +35,7 @@
 
             {% call components.form(action='#', method='POST',name='confirmReviewComment') %}
 
-                <h2 class="govuk-heading-m">Your comments</h2>
+                <h2 class="govuk-heading-m">Your response</h2>
 
                 <div class="tiny-spoof u-space-b30">
                     {{ comment }}

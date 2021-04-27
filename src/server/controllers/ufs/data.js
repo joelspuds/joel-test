@@ -792,8 +792,8 @@ let megaDataApplicationsList = [
   },
   {
     id: '97',
-    name: 'A fine example name for this item',
-    oppName: 'Marvellous Opportunity describing some bleeding-edge research area',
+    name: 'Linear field waves in liquids',
+    oppName: 'Electromagnetic waves in liquids',
     funder: 'MRC',
     org: 'University of Cardiff',
     daysLeft: '5',
@@ -841,7 +841,7 @@ let megaDataApplicationsList = [
     daysLeft: '34',
     progressMessage: 'Awaiting assessment',
     action: '',
-    status: 'Submitted',
+    status: 'Completed',
     completeness: '',
     active: true,
   },
@@ -855,7 +855,7 @@ let megaDataApplicationsList = [
     progressMessage: 'Deadline 20 Jan 2021',
     finalMessage: 'Closed',
     action: '',
-    status: 'Submitted',
+    status: 'Completed',
     completeness: '',
     active: false,
   },
@@ -869,7 +869,7 @@ let megaDataApplicationsList = [
     progressMessage: 'Deadline 20 Jan 2021',
     finalMessage: 'Closed',
     action: 'Remove application',
-    status: 'Not submitted',
+    status: 'Incomplete',
     completeness: '',
     active: false,
   },
@@ -4777,10 +4777,11 @@ let megaDataReviewsList = [
     oppName: 'Development of a Novel Inhibitor of Ricin',
     funder: 'MRC',
     org: 'University of Cardiff',
-    daysLeft: '5',
+    daysLeft: '21',
     progressMessage: 'Deadline 14 May 2021',
     action: '',
-    status: 'Invitation to review',
+    status: 'In progress',
+    /*status: 'Invitation to review',*/
     /*completeness: '100% complete',*/
     active: true,
     imminent: false,
@@ -4788,12 +4789,12 @@ let megaDataReviewsList = [
   },
   {
     id: '97',
-    name: 'A fine example name for this item',
-    oppName: 'Marvellous Opportunity describing some bleeding-edge research area',
+    name: 'Linear field waves in liquids',
+    oppName: 'Electromagnetic waves in liquids',
     funder: 'MRC',
     org: 'University of Cardiff',
-    daysLeft: '8',
-    progressMessage: 'Deadline 14 May 2021',
+    daysLeft: '48',
+    progressMessage: 'Deadline 9 June 2021',
     action: '',
     status: 'In progress',
     completeness: '75% complete',
@@ -4837,7 +4838,7 @@ let megaDataReviewsList = [
     daysLeft: '34',
     progressMessage: 'Awaiting assessment',
     action: '',
-    status: 'Submitted',
+    status: 'In progress',
     completeness: '',
     active: true,
   },
@@ -4851,7 +4852,7 @@ let megaDataReviewsList = [
     progressMessage: 'Deadline 20 Jan 2021',
     finalMessage: 'Closed',
     action: '',
-    status: 'Submitted',
+    status: 'Completed',
     completeness: '',
     active: false,
   },
@@ -4865,12 +4866,13 @@ let megaDataReviewsList = [
     progressMessage: 'Deadline 20 Jan 2021',
     finalMessage: 'Closed',
     action: 'Remove application',
-    status: 'Not submitted',
+    status: 'Incomplete',
     completeness: '',
     active: false,
   },
 ];
 export const megaDataReviews = megaDataReviewsList;
 
-let reviewValues = ['', 'Unfundable', 'Uncompetitive', 'Good', 'Very good', 'Excellent', 'Exceptional'];
+// let reviewValues = ['', 'Unfundable', 'Uncompetitive', 'Good', 'Very good', 'Excellent', 'Exceptional'];
+let reviewValues = ['', 'Unviable', 'Unsuitable', 'Un-recommendable', 'Viable', 'Suitable', 'Recommendable'];
 export const reviewRatingValues = reviewValues;

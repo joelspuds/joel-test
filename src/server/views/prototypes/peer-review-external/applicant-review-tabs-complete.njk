@@ -1,3 +1,18 @@
+{% set loggedOut = false %}
+{% set isAdminUser = false %}
+{% set showExternalNav = true %}
+{% set signInLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set activeNavItem = 'applications' %}
+{% set applicationsLink = '/prototypes/peer-review-external/applicant-reviews' %}
+{% set homeLink = '/prototypes/peer-review-external/applicant-home' %}
+{% set reviewsLink = '#' %}
+{% set awardsSetupLinkHide = true %}
+{% set awardsLinkHide = true %}
+{% set signOutLink = '#' %}
+{% set altProfilePagelink = '#' %}
+{% set userName = 'Prof. Giles Dexter' %}
+
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 {% set navType = 'NOTadmin' %}
 {% set pageTitle = 'Application review' + GLOBAL_TAG_TITLE_SUFFIX %}
@@ -5,13 +20,14 @@
 {% set isAdminUser = false %}
 {% set applicantReviewComment = applicantReviewComment if applicantReviewComment %}
 
-
+{% set showStickyNavscripts = true %}
 {% set listItems = [
-    { text: 'Case for support', url: '#case' },
-    { text: 'Capability to deliver', url: '#capability' },
-    { text: 'Resources and costs', url: '#resources' },
-    { text: 'Ethical and societal issues', url: '#ethical' },
-    { text: 'Letters of support', url: '#letters' }
+    { text: 'Case for support', url: '#case', class:'canScroll' },
+    { text: 'Capability to deliver', url: '#capability', class:'canScroll' },
+    { text: 'Pathways to impact', url: '#pathways', class:'canScroll' },
+    { text: 'Data impact statement', url: '#data', class:'canScroll' },
+    { text: 'Finances', url: '#finances', class:'canScroll' },
+    { text: 'Letters of support', url: '#letters', class:'canScroll' }
 ] %}
 
 {% set review = review if review %}
@@ -103,7 +119,7 @@
 
                                 <p class="govuk-body">Your application, the reviews and your feedback will now be assessed by a panel of experts.</p>
                                 <p class="govuk-body">When their evaluation has concluded they will decide which applications will be awarded funding.</p>
-                                <p class="govuk-body">For full details, including indicative timings, refer back to the <a href="#">[Name_of_opportunity] guidance</a>.</p>
+                                <p class="govuk-body">For full details, including indicative timings, refer back to the <a href="#">Development of a Novel Inhibitor of Ricin guidance</a>.</p>
 
                                 {{ components.captionHeading(text='Notification',tag='h3', size='s') }}
 
@@ -124,17 +140,17 @@
                                         </div>
                                         <div aria-labelledby="accordion-default-heading-1" class="govuk-accordion__section-content" id="accordion-default-content-1">
                                             {{ components.captionHeading(text='Comments submitted by', tag='h3', size='s', extraClass='') }}
-                                            <p class="govuk-body">Prof. Denselle Schmidt-Nord</p>
+                                            <p class="govuk-body">Prof. Giles Dexter</p>
                                         </div>
                                     </div>
                                     <div class="govuk-accordion__section _govuk-accordion__section--expanded">
                                         <div class="govuk-accordion__section-header">
                                             <h2 class="govuk-accordion__section-heading"><span class="govuk-accordion__section-button" id=
-                                                "accordion-default-heading-2">Application submitted</span></h2><span class="meta">17 March 2021, 4:14pm</span>
+                                                "accordion-default-heading-2">Application submitted</span></h2><span class="meta">{{ 'dataAndTime' | dateAndTime() }}, 4:14pm</span>
                                         </div>
                                         <div aria-labelledby="accordion-default-heading-2" class="govuk-accordion__section-content" id="accordion-default-content-2">
                                             {{ components.captionHeading(text='Application submitted by', tag='h3', size='s', extraClass='') }}
-                                            <p class="govuk-body">Prof. Denselle Schmidt-Nord</p>
+                                            <p class="govuk-body">Prof. Giles Dexter</p>
                                         </div>
                                     </div>
 
@@ -148,7 +164,7 @@
                                 <div class="application-data">
                                     <dl class="application-data__list">
                                         <dt class="application-data__key">Opportunity:</dt>
-                                        <dd class="application-data__value"><a href="#">[Name_of_opportunity]</a></dd>
+                                        <dd class="application-data__value"><a href="#">Development of a Novel Inhibitor of Ricin</a></dd>
 
                                         <dt class="application-data__key">Application reference:</dt>
                                         <dd class="application-data__value">APP[reference_number]</dd>
@@ -157,7 +173,7 @@
                                         <dd class="application-data__value">25 April 2021</dd>
 
                                         <dt class="application-data__key">Funder:</dt>
-                                        <dd class="application-data__value">[Name of council]</dd>
+                                        <dd class="application-data__value">UKRI</dd>
                                     </dl>
                                 </div>
 
@@ -181,23 +197,8 @@
                             {% call components.bulmaColumnAny(size='is-3') %}
                                 <nav class="sticky-nav">
                                     {{ components.linkHeading(text='Contents', tag='h2', size='s')}}
-                                    <ul class="govuk-list">
-                                        <li>
-                                            <a href="#case" class="govuk-link govuk-link--no-visited-state canScroll ">Case for support</a>
-                                        </li>
-                                        <li>
-                                            <a href="#capability" class="govuk-link govuk-link--no-visited-state canScroll">Capability to deliver</a>
-                                        </li>
-                                        <li>
-                                            <a href="#resources" class="govuk-link govuk-link--no-visited-state canScroll">Resources and costs</a>
-                                        </li>
-                                        <li>
-                                            <a href="#ethical" class="govuk-link govuk-link--no-visited-state canScroll">Ethical and societal issues</a>
-                                        </li>
-                                        <li>
-                                            <a href="#letters" class="govuk-link govuk-link--no-visited-state canScroll">Letters of support</a>
-                                        </li>
-                                    </ul>
+
+                                    {{ components.list(items=listItems, parentClass='sticky-nav')}}
                                 </nav>
                             {%- endcall %}
 
@@ -243,11 +244,11 @@
                                     {#<a href="#main-content" class="govuk-link">Top of page</a>#}
                                 </nav>
 
-                                <p class="govuk-body">
+                                {#<p class="govuk-body">
                                     <a href="#main-content" class="govuk-link">Download reviews</a>
                                     <br>
                                     <a href="#main-content" class="govuk-link">Print reviews</a>
-                                </p>
+                                </p>#}
 
 
                             {%- endcall %}
@@ -258,7 +259,7 @@
 
                                     {{ components.captionHeading(text='Reviews', tag='h2', size='m', id='reviews') }}
 
-                                    <p class="govuk-body">Your application has received 3 reviews. You can comment on the feedback in the space provided below. Reviews and your responses to them will be assessed at panel to help inform funding decisions.</p>
+                                    <p class="govuk-body">Your application has received 3 reviews. You can comment on the feedback in the space provided below. Reviews and your response to them will be assessed at panel to help inform funding decisions.</p>
 
 
                                     <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-review">
@@ -300,7 +301,7 @@
                                         </div>
                                     </div>
 
-                                    {{ components.captionHeading(text='Your comments', tag='h2', size='m', id='') }}
+                                    {{ components.captionHeading(text='Your response', tag='h2', size='m', id='') }}
                                     <p class="meta u-space-b30">
                                        Submitted on {{ 'dataAndTime' | dateAndTime() }}
                                     </p>

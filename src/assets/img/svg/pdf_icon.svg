@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40.085" height="42" viewBox="0 0 40.085 42">
+  <g id="Group_6" data-name="Group 6" transform="translate(0 1.5)">
+    <path id="Path_2" data-name="Path 2" d="M0,0V39H31.532V10.365L20.9,0Z" transform="translate(7.053)" fill="none" stroke="#005ea5" stroke-miterlimit="10" stroke-width="3"/>
+    <path id="Path_3" data-name="Path 3" d="M0,0V10.563H10.787" transform="translate(27.798)" fill="none" stroke="#005ea5" stroke-miterlimit="10" stroke-width="3"/>
+    <rect id="Rectangle" width="26.553" height="13.813" transform="translate(0 15.844)" fill="#005ea5"/>
+    <text id="PDF" transform="translate(4 26)" fill="#fff" font-size="9" font-family="OpenSans-Extrabold, Open Sans" font-weight="800" letter-spacing="0.1em"><tspan x="0" y="0">PDF</tspan></text>
+  </g>
+</svg>

@@ -1,3 +1,18 @@
+{% set loggedOut = false %}
+{% set isAdminUser = false %}
+{% set showExternalNav = true %}
+{% set signInLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set activeNavItem = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/peer-review-external/user-home' %}
+{% set reviewsLink = '/prototypes/peer-review-external/user-reviews' %}
+{% set awardsSetupLinkHide = true %}
+{% set awardsLinkHide = true %}
+{% set signOutLink = '#' %}
+{% set altProfilePagelink = '#' %}
+
+
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set pageTitle = 'Home ' + GLOBAL_TAG_TITLE_SUFFIX %}
@@ -40,7 +55,7 @@
                 <a href="#" class="tfs-tile3__mega-link">
                     <span class="tfs-tile3__heading">Applications</span>
                     <span class="tfs-tile3__number">{{ range(1, 10) | random }}</span>
-                    <span class="tfs-tile3__progress">In progress</span>
+                    <span class="tfs-tile3__progress">Incomplete</span>
                 </a>
             </div>
         {%- endcall %}
@@ -49,8 +64,9 @@
             <div class="tfs-tile3 ">
                 <a href="/prototypes/peer-review-external/user-reviews" class="tfs-tile3__mega-link tfs-tile3__mega-link--alt">
                     <span class="tfs-tile3__heading">Reviews</span>
-                    <span class="tfs-tile3__number">{{ range(1, 10) | random }}</span>
-                    <span class="tfs-tile3__progress">In progress</span>
+                    {#<span class="tfs-tile3__number">{{ range(1, 10) | random }}</span>#}
+                    <span class="tfs-tile3__number">5</span>
+                    <span class="tfs-tile3__progress">Incomplete</span>
                 </a>
             </div>
         {%- endcall %}

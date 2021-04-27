@@ -1,3 +1,8 @@
+{% set loggedOut = true %}
+{% set isAdminUser = false %}
+{% set showExternalNav = true %}
+{% set signInLink = '#' %}
+
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set pageTitle = 'Request extension to the review deadline ' + GLOBAL_TAG_TITLE_SUFFIX %}
@@ -76,14 +81,14 @@
                         <dd class="application-data__value">Tuesday 14 May 2021</dd>
 
                         <dt class="application-data__key">Opportunity:</dt>
-                        <dd class="application-data__value"><a href="#">New Generation Thinkers 2020</a></dd>
+                        <dd class="application-data__value"><a href="#">Development of a Novel Inhibitor of Ricin</a></dd>
 
                         <dt class="application-data__key">Application title:</dt>
                         <dd class="application-data__value">Bio-detoxification of Ricin in castor bean</dd>
 
                         <dt class="application-data__key">Team:</dt>
                         <dd class="application-data__value">
-                            Principal investigator: Prof Giles Dexter Coventry University<br>
+                            Principal investigator: Prof Giles Dexter, Coventry University<br>
                             Co-investigator: Prof Gillian Demetriov Coventry University<br>
                             Researcher: Dr. Maximoma Turnipé Coventry University<br>
                         </dd>
@@ -92,7 +97,7 @@
                         <dd class="application-data__value">£80,000</dd>
 
                         <dt class="application-data__key">Funder:</dt>
-                        <dd class="application-data__value">[Name of council]</dd>
+                        <dd class="application-data__value">UKRI</dd>
                     </dl>
                 </div>
             </div>

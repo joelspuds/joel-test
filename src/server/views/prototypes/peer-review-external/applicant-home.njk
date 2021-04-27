@@ -1,3 +1,19 @@
+{% set loggedOut = false %}
+{% set isAdminUser = false %}
+{% set showExternalNav = true %}
+{% set signInLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set activeNavItem = 'home' %}
+{% set applicationsLink = '/prototypes/peer-review-external/applicant-reviews' %}
+{% set homeLink = '/prototypes/peer-review-external/applicant-home' %}
+{% set reviewsLink = '#' %}
+{% set awardsSetupLinkHide = true %}
+{% set awardsLinkHide = true %}
+{% set signOutLink = '#' %}
+{% set altProfilePagelink = '#' %}
+{% set userName = 'Prof. Giles Dexter' %}
+
+
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set pageTitle = 'Home ' + GLOBAL_TAG_TITLE_SUFFIX %}
@@ -29,7 +45,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Home', caption='Prof. Denselle Schmidt-Nord') }}
+            {{ components.captionHeading(text='Home', caption='Prof. Giles Dexter') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -40,7 +56,7 @@
                 <a href="/prototypes/peer-review-external/applicant-reviews" class="tfs-tile3__mega-link">
                     <span class="tfs-tile3__heading">Applications</span>
                     <span class="tfs-tile3__number">2</span>
-                    <span class="tfs-tile3__progress">In progress</span>
+                    <span class="tfs-tile3__progress">Incomplete</span>
                 </a>
             </div>
         {%- endcall %}
