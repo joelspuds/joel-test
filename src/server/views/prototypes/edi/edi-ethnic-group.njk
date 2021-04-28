@@ -6,7 +6,7 @@
 {% set reviewsLink = '#' %}
 {% set hideAccountLinks = 'true' %}
 {% set altProfilePagelink = '/prototypes/edi/profile' %}
-{% set pageTitle = "EDI religion" %}
+{% set pageTitle = "EDI ethnic roup" %}
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set isAdminUser = false %}
@@ -38,7 +38,7 @@
 
         {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
 
-            {{ components.captionHeading(text='What is your religion?', caption='Equality, Diversity and inclusion (EDI) Information') }}
+            {{ components.captionHeading(text='What is your ethnic group?', caption='Equality, Diversity and inclusion (EDI) Information') }}
 
         {%- endcall %}
 
@@ -61,9 +61,15 @@
                         <span class="govuk-details__summary-text">Guidance for answering this question</span>
                     </summary>
                     <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
-                        <p class="govuk-body">It's up to you how you answer this question. If you don’t have a religion, please select "No religion".</p>
-                        <p class="govuk-body">If you want to provide a religion, denomination, branch or caste that isn’t listed separately, select the “Any other religion”
-                            option and enter the name by typing your own answer.</p>
+                        <p class="govuk-body">This question has more than one stage.</p>
+
+                        <p class="govuk-body">It's up to you how you answer this question. Your ethnic group could be your cultural or family background.</p>
+
+                        <p class="govuk-body">First, choose one option that best reflects your identity from the groups listed.</p>
+
+                        <p class="govuk-body">    Once you’ve chosen the group you most closely identify with, select an option on the next page. If your ethnic group isn’t listed, you can select the “Any other” option and enter your identity. </p>
+
+                        <p class="govuk-body">   If you feel you belong to more than one ethnic background from the group, select “Mixed or Multiple ethnic group”.</p>
                     </div>
                 </details>
 
@@ -72,44 +78,42 @@
                         <legend class="govuk-visually-hidden">Select your religious beliefs</legend>
                         <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="religion1" name="religion" type="radio" value="No religion">
-                                <label class="govuk-label govuk-radios__label" for="religion1">No religion</label>
+                                <input class="govuk-radios__input" id="ethnicity1" name="ethnicity" type="radio" value="Asian or Asian British">
+                                <label class="govuk-label govuk-radios__label" for="ethnicity1">Asian or Asian British</label>
+                                <div class="govuk-hint govuk-radios__hint">Includes any Asian background, for example, Bangladeshi, Chinese, Indian, Pakistani</div>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="religion2" name="religion" type="radio" value="Christian">
-                                <label class="govuk-label govuk-radios__label" for="religion2">Christian (including Church of England, Catholic, Protestant and all other Christian denominations)</label>
+                                <input class="govuk-radios__input" id="ethnicity2" name="ethnicity" type="radio" value="Black, African, Black British or Caribbean">
+                                <label class="govuk-label govuk-radios__label" for="ethnicity2">Black, African, Black British or Caribbean</label>
+                                <div class="govuk-hint govuk-radios__hint">Includes any Black background</div>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="religion3" name="religion" type="radio" value="Buddhist">
-                                <label class="govuk-label govuk-radios__label" for="religion3">Buddhist</label>
+                                <input class="govuk-radios__input" id="ethnicity3" name="ethnicity" type="radio" value="Mixed or multiple ethnic groups">
+                                <label class="govuk-label govuk-radios__label" for="ethnicity3">Mixed or multiple ethnic groups</label>
+                                <div class="govuk-hint govuk-radios__hint">Includes any Mixed background</div>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="religion4" name="religion" type="radio" value="Hindu">
-                                <label class="govuk-label govuk-radios__label" for="religion4">Hindu</label>
+                                <input class="govuk-radios__input" id="ethnicity4" name="ethnicity" type="radio" value="White">
+                                <label class="govuk-label govuk-radios__label" for="ethnicity4">White</label>
+                                <div class="govuk-hint govuk-radios__hint">Includes any White background</div>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="religion5" name="religion" type="radio" value="Muslim">
-                                <label class="govuk-label govuk-radios__label" for="religion5">Muslim</label>
-                            </div>
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="religion6" name="religion" type="radio" value="Sikh">
-                                <label class="govuk-label govuk-radios__label" for="religion6">Sikh</label>
-                            </div>
-
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="religion7" name="religion" type="radio" value="Any other religion" data-aria-controls="conditional-other">
-                                <label class="govuk-label govuk-radios__label" for="religion7">Any other religion</label>
+                                <input class="govuk-radios__input" id="ethnicity5" name="ethnicity" type="radio" value="Another ethnic group" data-aria-controls="conditional-other">
+                                <label class="govuk-label govuk-radios__label" for="ethnicity5">Another ethnic group</label>
+                                <div class="govuk-hint govuk-radios__hint">Includes any other ethnic group, for example, Arab</div>
                             </div>
                             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-other">
                                 <div class="govuk-form-group">
-                                    <label class="govuk-label" for="other-religion-input">This is also voluntary, so you can leave it blank if you prefer.</label>
+
+                                    <label class="govuk-label" for="other-religion-input">Provide more details</label>
+                                    <div class="govuk-hint govuk-radios__hint" style="padding-left:0;">This is also voluntary, so you can leave it blank if you prefer.</div>
                                     <input class="govuk-input govuk-!-width-one-third" id="other-religion-input" name="other-religion-input" type="text" spellcheck="false"></div>
 
                             </div>
                             <div class="govuk-radios__divider">or</div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="religion6" name="religion" type="radio" value="Prefer not to say">
-                                <label class="govuk-label govuk-radios__label" for="religion6">Prefer not to say</label>
+                                <input class="govuk-radios__input" id="ethnicity6" name="ethnicity" type="radio" value="Prefer not to say">
+                                <label class="govuk-label govuk-radios__label" for="ethnicity6">Prefer not to say</label>
                             </div>
                         </div>
 

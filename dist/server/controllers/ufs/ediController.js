@@ -15,6 +15,10 @@ exports.ediDOBGet = ediDOBGet;
 exports.ediDOBPost = ediDOBPost;
 exports.ediReligionGet = ediReligionGet;
 exports.ediReligionPost = ediReligionPost;
+exports.ediEthnicGroupGet = ediEthnicGroupGet;
+exports.ediEthnicGroupPost = ediEthnicGroupPost;
+exports.ediEthnicAsianGet = ediEthnicAsianGet;
+exports.ediEthnicAsianPost = ediEthnicAsianPost;
 exports.ediConfirmGet = ediConfirmGet;
 exports.ediConfirmPost = ediConfirmPost;
 let generalData = require('./data');
@@ -181,6 +185,62 @@ function ediReligionGet(req, res) {
 }
 
 function ediReligionPost(req, res) {
+  const {} = req.body;
+  console.log(req.body);
+
+  let redirectURL = '/prototypes/edi/edi-ethnic-group';
+  // let redirectURL = '';
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    EDI ethnic group
+
+*************** */
+function ediEthnicGroupGet(req, res) {
+  let viewData, religion;
+
+  const ediDone = req.session.ediDone;
+
+  viewData = {
+    ediDone,
+    religion
+  };
+
+  return res.render('prototypes/edi/edi-ethnic-group', viewData);
+}
+
+function ediEthnicGroupPost(req, res) {
+  const {} = req.body;
+  console.log(req.body);
+
+  // let redirectURL = '/prototypes/edi/edi-confirm';
+  let redirectURL = '';
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    EDI ethnic group ASIAN
+
+*************** */
+function ediEthnicAsianGet(req, res) {
+  let viewData, religion;
+
+  const ediDone = req.session.ediDone;
+
+  viewData = {
+    ediDone,
+    religion
+  };
+
+  return res.render('prototypes/edi/edi-asian', viewData);
+}
+
+function ediEthnicAsianPost(req, res) {
   const {} = req.body;
   console.log(req.body);
 

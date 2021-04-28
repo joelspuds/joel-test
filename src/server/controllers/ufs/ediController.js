@@ -165,6 +165,62 @@ export function ediReligionPost(req, res) {
   const {} = req.body;
   console.log(req.body);
 
+  let redirectURL = '/prototypes/edi/edi-ethnic-group';
+  // let redirectURL = '';
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    EDI ethnic group
+
+*************** */
+export function ediEthnicGroupGet(req, res) {
+  let viewData, religion;
+
+  const ediDone = req.session.ediDone;
+
+  viewData = {
+    ediDone,
+    religion,
+  };
+
+  return res.render('prototypes/edi/edi-ethnic-group', viewData);
+}
+
+export function ediEthnicGroupPost(req, res) {
+  const {} = req.body;
+  console.log(req.body);
+
+  // let redirectURL = '/prototypes/edi/edi-confirm';
+  let redirectURL = '';
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    EDI ethnic group ASIAN
+
+*************** */
+export function ediEthnicAsianGet(req, res) {
+  let viewData, religion;
+
+  const ediDone = req.session.ediDone;
+
+  viewData = {
+    ediDone,
+    religion,
+  };
+
+  return res.render('prototypes/edi/edi-asian', viewData);
+}
+
+export function ediEthnicAsianPost(req, res) {
+  const {} = req.body;
+  console.log(req.body);
+
   // let redirectURL = '/prototypes/edi/edi-confirm';
   let redirectURL = '';
 

@@ -746,7 +746,8 @@ let megaDataReviewsList = [{
   daysLeft: '21',
   progressMessage: 'Deadline 14 May 2021',
   action: '',
-  status: 'In progress',
+  status: 'Incomplete',
+  /*status: 'In progress',*/
   /*status: 'Invitation to review',*/
   /*completeness: '100% complete',*/
   active: true,
@@ -761,7 +762,7 @@ let megaDataReviewsList = [{
   daysLeft: '48',
   progressMessage: 'Deadline 9 June 2021',
   action: '',
-  status: 'In progress',
+  status: 'Incomplete',
   completeness: '75% complete',
   active: true,
   imminent: false
@@ -774,7 +775,7 @@ let megaDataReviewsList = [{
   daysLeft: '12',
   progressMessage: 'Deadline 21 May 2021',
   action: '',
-  status: 'In progress',
+  status: 'Incomplete',
   completeness: '25% complete',
   active: true,
   imminent: false
@@ -787,7 +788,7 @@ let megaDataReviewsList = [{
   daysLeft: '34',
   progressMessage: 'Deadline 14 May 2021',
   action: '',
-  status: 'In progress',
+  status: 'Incomplete',
   completeness: '75% complete',
   active: true,
   imminent: false
@@ -800,7 +801,7 @@ let megaDataReviewsList = [{
   daysLeft: '34',
   progressMessage: 'Awaiting assessment',
   action: '',
-  status: 'In progress',
+  status: 'Incomplete',
   completeness: '',
   active: true
 }, {

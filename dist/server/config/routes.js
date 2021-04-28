@@ -460,6 +460,11 @@ router.get('/prototypes/edi/edi-dob', demosController.ediDOBGet);
 router.post('/prototypes/edi/edi-dob', demosController.ediDOBPost);
 router.get('/prototypes/edi/edi-religion', demosController.ediReligionGet);
 router.post('/prototypes/edi/edi-religion', demosController.ediReligionPost);
+router.get('/prototypes/edi/edi-ethnic-group', demosController.ediEthnicGroupGet);
+router.post('/prototypes/edi/edi-ethnic-group', demosController.ediEthnicGroupPost);
+router.get('/prototypes/edi/edi-ethnic-group', demosController.ediEthnicAsianGet);
+router.post('/prototypes/edi/edi-ethnic-group', demosController.ediEthnicAsianPost);
+
 router.get('/prototypes/edi/edi-confirm', demosController.ediConfirmGet);
 router.post('/prototypes/edi/edi-confirm', demosController.ediConfirmPost);
 

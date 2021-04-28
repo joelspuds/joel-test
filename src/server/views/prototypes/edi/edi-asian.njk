@@ -1,0 +1,122 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = '' %}
+{% set navArea = 'profile' %}
+{% set applicationsLink = '/prototypes/edi/applications' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+{% set pageTitle = "EDI ethnic roup" %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set backLinkContents =  [{url:'/prototypes/edi/profile', text:'Back to account settings'}] %}
+
+{% block content %}
+
+    {#{% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Warning</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">
+                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion (EDI) profile</a> before you can submit an application.
+                        #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
+                    </p>
+                </div>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}#}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Which one best describes your Asian or Asian British background?', caption='Equality, Diversity and inclusion (EDI) Information') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.form(action='#', method='POST',name='ediForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-8') %}
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-visually-hidden">Select your ethnic background</legend>
+                        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="asian1" name="asian" type="radio" value="Bangladeshi">
+                                <label class="govuk-label govuk-radios__label" for="asian1">Bangladeshi</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="asian2" name="asian" type="radio" value="Chinese">
+                                <label class="govuk-label govuk-radios__label" for="asian2">Chinese</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="asian3" name="asian" type="radio" value="Indian">
+                                <label class="govuk-label govuk-radios__label" for="asian3">Indian</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="asian4" name="asian" type="radio" value="Pakistani">
+                                <label class="govuk-label govuk-radios__label" for="asian4">Pakistani</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="asian5" name="asian" type="radio" value="Another Asian background" data-aria-controls="conditional-other">
+                                <label class="govuk-label govuk-radios__label" for="asian5">Another Asian background</label>
+                            </div>
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-other">
+                                <div class="govuk-form-group">
+
+                                    <label class="govuk-label" for="other-religion-input">Provide more details</label>
+                                    <div class="govuk-hint govuk-radios__hint" style="padding-left:0;">This is also voluntary, so you can leave it blank if you prefer.</div>
+                                    <input class="govuk-input govuk-!-width-one-third" id="other-religion-input" name="other-religion-input" type="text" spellcheck="false"></div>
+
+                            </div>
+                            <div class="govuk-radios__divider">or</div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="asian6" name="asian" type="radio" value="Prefer not to say">
+                                <label class="govuk-label govuk-radios__label" for="asian6">Prefer not to say</label>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-full') %}
+
+                    <div class="application-controls govuk-clearfix">
+                        {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
+                    </div>
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %} {# end form #}
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+{% endblock %}
