@@ -18,7 +18,7 @@
 
 {% block content %}
 
-    {% call components.bulmaRow() %}
+    {#{% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-full') %}
 
             <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
@@ -28,13 +28,13 @@
                 <div class="govuk-notification-banner__content">
                     <p class="govuk-notification-banner__heading">
                         You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion (EDI) profile</a> before you can submit an application.
-                        {#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}
+                        #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
                     </p>
                 </div>
             </div>
 
         {%- endcall %}
-    {%- endcall %}
+    {%- endcall %}#}
 
     {% call components.bulmaRow() %}
 
@@ -99,7 +99,9 @@
                 </details>
 
                 <p class="govuk-body">
-                    <a href="/prototypes/edi/edi-dob" class="govuk-button govuk-button--start">Start the EDI profile questions</a>
+                    <a href="/prototypes/edi/edi-dob" class="govuk-button govuk-button--start --star">Start the EDI profile questions <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+                        </svg></a>
                 </p>
 
 
