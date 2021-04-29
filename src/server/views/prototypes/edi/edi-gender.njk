@@ -87,13 +87,6 @@
                                 <label class="govuk-label govuk-radios__label" for="gender1">Yes</label>
                             </div>
 
-
-
-                            {#<div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="gender2" name="gender" type="radio" value="Male">
-                                <label class="govuk-label govuk-radios__label" for="gender2">No</label>
-                            </div>#}
-
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="gender2" name="gender" type="radio" value="Any other religion" data-aria-controls="conditional-other">
                                 <label class="govuk-label govuk-radios__label" for="gender2">No</label>
@@ -105,10 +98,6 @@
                                     <input class="govuk-input govuk-!-width-one-third" id="other-gender-input" name="other-gender-input" type="text" spellcheck="false"></div>
 
                             </div>
-
-
-
-
 
                             <div class="govuk-radios__divider">or</div>
                             <div class="govuk-radios__item">
@@ -136,8 +125,6 @@
             {% call components.bulmaRow() %}
 
                 {% call components.bulmaColumnAny(size='is-full') %}
-
-                    <p class="govuk-body">The next question asks about your gender.</p>
 
                     <div class="application-controls govuk-clearfix">
                         {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
