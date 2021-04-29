@@ -55,46 +55,199 @@
                     <dl class="govuk-summary-list">
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Date of birth</dt>
-                            <dd class="govuk-summary-list__value">{{ ediDay }} {{ ediMonth }} {{ ediYear }}</dd>
+                            <dd class="govuk-summary-list__value">1 January 1990 {{ ediDay }} {{ ediMonth }} {{ ediYear }}</dd>
                             <dd class="govuk-summary-list__actions">
                                 <a class="govuk-link" href="/prototypes/edi/edi-dob?edit=true">Change<span class="govuk-visually-hidden"> date for birth</span></a>
                             </dd>
                         </div>
                         <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Conditions or illness</dt>
+                            <dd class="govuk-summary-list__value">None</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> conditions and illnesses</span></a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Religion</dt>
-                            <dd class="govuk-summary-list__value">{{ religion }}</dd>
+                            <dd class="govuk-summary-list__value">No religion</dd>
                             <dd class="govuk-summary-list__actions">
                                 <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> religion</span></a>
                             </dd>
                         </div>
-                        {#<div class="govuk-summary-list__row">
-                            <dt class="govuk-summary-list__key">
-                                Telephone
-                            </dt>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Ethnic group</dt>
                             <dd class="govuk-summary-list__value">
-                                <p class="govuk-body">07700 900457</p>
+                                Asian or Asian British - Bangladeshi
                             </dd>
                             <dd class="govuk-summary-list__actions">
-                                <a class="govuk-link" href="#">
-                                    Change<span class="govuk-visually-hidden"> contact details</span>
-                                </a>
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> ethnic group</span></a>
                             </dd>
                         </div>
                         <div class="govuk-summary-list__row">
-                            <dt class="govuk-summary-list__key">Email</dt>
-                            <dd class="govuk-summary-list__value">
-                                <p class="govuk-body">annabel.doubley-barell@bristol.ac.uk</p>
-                            </dd>
+                            <dt class="govuk-summary-list__key">Sex</dt>
+                            <dd class="govuk-summary-list__value">Female</dd>
                             <dd class="govuk-summary-list__actions">
-                                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> email</span></a>
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> sex</span></a>
                             </dd>
-                        </div>#}
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Gender</dt>
+                            <dd class="govuk-summary-list__value">Female - same as birth</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> gender</span></a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Sexual orientation</dt>
+                            <dd class="govuk-summary-list__value">Straight or Heterosexual</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> sexual orientation</span></a>
+                            </dd>
+                        </div>
                     </dl>
 
 
                 {%- endcall %}
 
             {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='column is-8') %}
+
+                    {{ components.captionHeading(text='Alternative answers', tag='h2', size='m') }}
+
+                    <dl class="govuk-summary-list">
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Date of birth</dt>
+                            <dd class="govuk-summary-list__value">Prefer not to say</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-dob?edit=true">Change<span class="govuk-visually-hidden"> date for birth</span></a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Conditions or illness</dt>
+                            <dd class="govuk-summary-list__value">Yes</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> conditions and illnesses</span></a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Religion</dt>
+                            <dd class="govuk-summary-list__value">
+                                Any other religion - Jedi
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> religion</span></a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Ethnic group</dt>
+                            <dd class="govuk-summary-list__value">
+                                Another ethnic group - mixed European
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> ethnic group</span></a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Sex</dt>
+                            <dd class="govuk-summary-list__value">Prefer not to say</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> sex</span></a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Gender</dt>
+                            <dd class="govuk-summary-list__value">AMAB Transgender</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> gender</span></a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Sexual orientation</dt>
+                            <dd class="govuk-summary-list__value">
+                                Other sexual orientation - Pansexual
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> sexual orientation</span></a>
+                            </dd>
+                        </div>
+                    </dl>
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='column is-8') %}
+
+                    {{ components.captionHeading(text='Alternative questions and answers', tag='h2', size='m') }}
+
+                    <dl class="govuk-summary-list">
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">What is your date of birth?</dt>
+                            <dd class="govuk-summary-list__value">9 12 1980</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-dob?edit=true">Change<span class="govuk-visually-hidden"> date for birth</span></a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Do you have any conditions or illnesses that reduce your ability to carry out day-to-day activities?</dt>
+                            <dd class="govuk-summary-list__value">Prefer not to say</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> conditions and illnesses</span></a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">What is your religion?</dt>
+                            <dd class="govuk-summary-list__value">
+                                Christian (including Church of England, Catholic, Protestant and all other Christian denominations)
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> religion</span></a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">What is your ethnic group?</dt>
+                            <dd class="govuk-summary-list__value">
+                                Black, African, Black British or Caribbean
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> ethnic group</span></a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">What is your sex?</dt>
+                            <dd class="govuk-summary-list__value">Male</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> sex</span></a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Is the gender you identify with the same as your sex registered at birth?</dt>
+                            <dd class="govuk-summary-list__value">Yes</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> gender</span></a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Which of the following best describes your sexual orientation?</dt>
+                            <dd class="govuk-summary-list__value">
+                                Prefer not to say
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> sexual orientation</span></a>
+                            </dd>
+                        </div>
+                    </dl>
+
+
+                {%- endcall %}
+
+            {%- endcall %}
+
 
         {%- endcall %} {# end form #}
     </section>

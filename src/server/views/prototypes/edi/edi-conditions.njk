@@ -1,0 +1,123 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = '' %}
+{% set navArea = 'profile' %}
+{% set applicationsLink = '/prototypes/edi/applications' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+{% set pageTitle = "EDI conditions" %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set backLinkContents =  [{url:'/prototypes/edi/profile', text:'Back to account settings'}] %}
+
+{% block content %}
+
+    {#{% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Warning</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">
+                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion (EDI) profile</a> before you can submit an application.
+                        #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
+                    </p>
+                </div>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}#}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Do you have any conditions or illnesses that reduce your ability to carry out day-to-day activities?', caption='Equality, Diversity and inclusion (EDI) Information') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.form(action='#', method='POST',name='ediForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-8') %}
+
+                <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
+                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                        <span class="govuk-details__summary-text">Guidance for answering this question</span>
+                    </summary>
+                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                        <p class="govuk-body">This question is asking about the physical or mental health conditions or illnesses.</p>
+                        <p class="govuk-body">
+                            <strong>What we mean by day-to-day activities</strong>
+                            Day-to-day activities include everyday tasks, for example eating, washing, walking and going shopping.</p>
+                    </div>
+                </details>
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-visually-hidden">Select your ethnic background</legend>
+                        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="conditions1" name="conditions" type="radio" value="Yes">
+                                <label class="govuk-label govuk-radios__label" for="conditions1">Yes</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="conditions2" name="conditions" type="radio" value="No">
+                                <label class="govuk-label govuk-radios__label" for="conditions2">No</label>
+                            </div>
+                            <div class="govuk-radios__divider">or</div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="conditions3" name="conditions" type="radio" value="Prefer not to say">
+                                <label class="govuk-label govuk-radios__label" for="conditions3">Prefer not to say</label>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </div>
+
+                {#<details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
+                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                        <span class="govuk-details__summary-text">Why we ask this question</span>
+                    </summary>
+                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                        <p class="govuk-body">This question is vital for understanding equality monitoring.</p>
+                    </div>
+                </details>#}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-full') %}
+
+                    <div class="application-controls govuk-clearfix">
+                        {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
+                    </div>
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %} {# end form #}
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+{% endblock %}

@@ -458,6 +458,8 @@ router.post('/prototypes/edi/edi', demosController.ediEDIPost);
 
 router.get('/prototypes/edi/edi-dob', demosController.ediDOBGet);
 router.post('/prototypes/edi/edi-dob', demosController.ediDOBPost);
+router.get('/prototypes/edi/edi-conditions', demosController.ediConditionsGet);
+router.post('/prototypes/edi/edi-conditions', demosController.ediConditionsPost);
 router.get('/prototypes/edi/edi-religion', demosController.ediReligionGet);
 router.post('/prototypes/edi/edi-religion', demosController.ediReligionPost);
 router.get('/prototypes/edi/edi-ethnic-group', demosController.ediEthnicGroupGet);
@@ -468,6 +470,8 @@ router.get('/prototypes/edi/edi-sex', demosController.ediSexGet);
 router.post('/prototypes/edi/edi-sex', demosController.ediSexPost);
 router.get('/prototypes/edi/edi-gender', demosController.ediGenderGet);
 router.post('/prototypes/edi/edi-gender', demosController.ediGenderPost);
+router.get('/prototypes/edi/edi-orientation', demosController.ediOrientationGet);
+router.post('/prototypes/edi/edi-orientation', demosController.ediOrientationPost);
 
 router.get('/prototypes/edi/edi-confirm', demosController.ediConfirmGet);
 router.post('/prototypes/edi/edi-confirm', demosController.ediConfirmPost);

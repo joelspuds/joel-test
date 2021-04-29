@@ -138,6 +138,32 @@ export function ediDOBPost(req, res) {
   userData[0].dobYear = dobYear;
   console.log(userData);*/
 
+  let redirectURL = '/prototypes/edi/edi-conditions';
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    EDI Conditions illnesses
+
+*************** */
+export function ediConditionsGet(req, res) {
+  let viewData;
+
+  const ediDone = req.session.ediDone;
+
+  viewData = {
+    ediDone,
+  };
+
+  return res.render('prototypes/edi/edi-conditions', viewData);
+}
+
+export function ediConditionsPost(req, res) {
+  const {} = req.body;
+  console.log(req.body);
+
   let redirectURL = '/prototypes/edi/edi-religion';
 
   return res.redirect(redirectURL);
@@ -275,7 +301,34 @@ export function ediGenderPost(req, res) {
   const {} = req.body;
   console.log(req.body);
 
-  let redirectURL = '/prototypes/edi/edi-gender';
+  let redirectURL = '/prototypes/edi/edi-orientation';
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    EDI orientation
+
+*************** */
+export function ediOrientationGet(req, res) {
+  let viewData, gender;
+
+  const ediDone = req.session.ediDone;
+
+  viewData = {
+    ediDone,
+    gender,
+  };
+
+  return res.render('prototypes/edi/edi-orientation', viewData);
+}
+
+export function ediOrientationPost(req, res) {
+  const {} = req.body;
+  console.log(req.body);
+
+  let redirectURL = '/prototypes/edi/edi-confirm';
 
   return res.redirect(redirectURL);
 }

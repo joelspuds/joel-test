@@ -13,6 +13,8 @@ exports.ediEDIGet = ediEDIGet;
 exports.ediEDIPost = ediEDIPost;
 exports.ediDOBGet = ediDOBGet;
 exports.ediDOBPost = ediDOBPost;
+exports.ediConditionsGet = ediConditionsGet;
+exports.ediConditionsPost = ediConditionsPost;
 exports.ediReligionGet = ediReligionGet;
 exports.ediReligionPost = ediReligionPost;
 exports.ediEthnicGroupGet = ediEthnicGroupGet;
@@ -23,6 +25,8 @@ exports.ediSexGet = ediSexGet;
 exports.ediSexPost = ediSexPost;
 exports.ediGenderGet = ediGenderGet;
 exports.ediGenderPost = ediGenderPost;
+exports.ediOrientationGet = ediOrientationGet;
+exports.ediOrientationPost = ediOrientationPost;
 exports.ediConfirmGet = ediConfirmGet;
 exports.ediConfirmPost = ediConfirmPost;
 let generalData = require('./data');
@@ -165,6 +169,32 @@ function ediDOBPost(req, res) {
   userData[0].dobYear = dobYear;
   console.log(userData);*/
 
+  let redirectURL = '/prototypes/edi/edi-conditions';
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    EDI Conditions illnesses
+
+*************** */
+function ediConditionsGet(req, res) {
+  let viewData;
+
+  const ediDone = req.session.ediDone;
+
+  viewData = {
+    ediDone
+  };
+
+  return res.render('prototypes/edi/edi-conditions', viewData);
+}
+
+function ediConditionsPost(req, res) {
+  const {} = req.body;
+  console.log(req.body);
+
   let redirectURL = '/prototypes/edi/edi-religion';
 
   return res.redirect(redirectURL);
@@ -302,7 +332,34 @@ function ediGenderPost(req, res) {
   const {} = req.body;
   console.log(req.body);
 
-  let redirectURL = '/prototypes/edi/edi-gender';
+  let redirectURL = '/prototypes/edi/edi-orientation';
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    EDI orientation
+
+*************** */
+function ediOrientationGet(req, res) {
+  let viewData, gender;
+
+  const ediDone = req.session.ediDone;
+
+  viewData = {
+    ediDone,
+    gender
+  };
+
+  return res.render('prototypes/edi/edi-orientation', viewData);
+}
+
+function ediOrientationPost(req, res) {
+  const {} = req.body;
+  console.log(req.body);
+
+  let redirectURL = '/prototypes/edi/edi-confirm';
 
   return res.redirect(redirectURL);
 }
