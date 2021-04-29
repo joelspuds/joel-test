@@ -6,9 +6,7 @@
 {% set reviewsLink = '#' %}
 {% set hideAccountLinks = 'true' %}
 {% set altProfilePagelink = '/prototypes/edi/profile' %}
-
-{% set pageTitle = "EDI date of birth" %}
-
+{% set pageTitle = "EDI sex" %}
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set isAdminUser = false %}
@@ -40,7 +38,7 @@
 
         {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
 
-            {{ components.captionHeading(text='What is your date of birth?', caption='Equality, Diversity and inclusion (EDI) Information') }}
+            {{ components.captionHeading(text='What is your sex?', caption='Equality, Diversity and inclusion (EDI) Information') }}
 
         {%- endcall %}
 
@@ -54,58 +52,47 @@
 
             {% call components.bulmaColumnAny(size='column is-8') %}
 
-                <p class="govuk-body">If you prefer not to say, continue without entering any information.</p>
-
                 <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
                     <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
                         <span class="govuk-details__summary-text">Guidance for answering this question</span>
                     </summary>
                     <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
-                        <p class="govuk-body">Please enter the date you were born.</p>
-                        <p class="govuk-body">Example: 25 05 2000</p>
-                        <p class="govuk-body">If you don’t know your date of birth, please estimate it as best you can.</p>
+                        <p class="govuk-body">This question is vital for understanding equality monitoring. Please select either "Female" or "Male". </p>
+                        <p class="govuk-body"> If you are considering how to answer, use the sex recorded on your birth certificate or Gender Recognition Certificate.</p>
+                        <p class="govuk-body">If you are aged 16 or over, there is a later voluntary question on gender identity. This asks if the gender you identify with is different from your sex registered at birth. If it is different, you can then record your gender identity.</p>
                     </div>
                 </details>
 
                 <div class="govuk-form-group">
-                    <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
-                        <legend class="govuk-visually-hidden">Enter your date of birth</legend>
-                        <div class="govuk-date-input" id="passport-issued">
-                            <div class="govuk-date-input__item">
-                                <div class="govuk-form-group">
-                                    <label class="govuk-label govuk-date-input__label" for="dobDay">
-                                        Day
-                                    </label>
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dobDay" name="dobDay" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-visually-hidden">Select your ethnic background</legend>
+                        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="sex1" name="sex" type="radio" value="Female">
+                                <label class="govuk-label govuk-radios__label" for="sex1">Female</label>
                             </div>
-                            <div class="govuk-date-input__item">
-                                <div class="govuk-form-group">
-                                    <label class="govuk-label govuk-date-input__label" for="dobMonth">
-                                        Month
-                                    </label>
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dobMonth" name="dobMonth" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="sex2" name="sex" type="radio" value="Male">
+                                <label class="govuk-label govuk-radios__label" for="sex2">Male</label>
                             </div>
-                            <div class="govuk-date-input__item">
-                                <div class="govuk-form-group">
-                                    <label class="govuk-label govuk-date-input__label" for="dobYear">
-                                        Year
-                                    </label>
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dobYear" name="dobYear" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                            <div class="govuk-radios__divider">or</div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="sex3" name="sex" type="radio" value="Prefer not to say">
+                                <label class="govuk-label govuk-radios__label" for="sex3">Prefer not to say</label>
                             </div>
                         </div>
 
                     </fieldset>
                 </div>
 
-                <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
+                {#<details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
                     <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
                         <span class="govuk-details__summary-text">Why we ask this question</span>
                     </summary>
                     <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
-                        <p class="govuk-body">These questions will help us check we have reached a representative section of society and help us identify inequalities. The information you provide is kept anonymous and will not be used to identify any individual. Your answers will not affect and funding decisions regarding your applications. The information you provide will be separated from the selection process and will only be used for monitoring processes to make sure that people are treated fairly and according to their needs.</p>
-                        <p class="govuk-body">We need to understand if certain groups experience inequalities. Some of the questions may not be important or relevant to you, but they are important to the person with that characteristic. Completing these questions will help us analyse results accurately. Information provided in this survey is anonymous and held securely by UKRI.</p>
+                        <p class="govuk-body">This question is vital for understanding equality monitoring.</p>
                     </div>
-                </details>
+                </details>#}
 
             {%- endcall %}
 
@@ -115,6 +102,8 @@
 
                 {% call components.bulmaColumnAny(size='is-full') %}
 
+                    <p class="govuk-body">The next question asks about your gender.</p>
+
                     <div class="application-controls govuk-clearfix">
                         {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
                     </div>
@@ -122,8 +111,6 @@
                 {%- endcall %}
 
             {%- endcall %}
-
-
 
         {%- endcall %} {# end form #}
     </section>

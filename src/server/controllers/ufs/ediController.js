@@ -193,8 +193,8 @@ export function ediEthnicGroupPost(req, res) {
   const {} = req.body;
   console.log(req.body);
 
-  // let redirectURL = '/prototypes/edi/edi-confirm';
-  let redirectURL = '';
+  let redirectURL = '/prototypes/edi/edi-asian';
+  // let redirectURL = '';
 
   return res.redirect(redirectURL);
 }
@@ -221,8 +221,61 @@ export function ediEthnicAsianPost(req, res) {
   const {} = req.body;
   console.log(req.body);
 
-  // let redirectURL = '/prototypes/edi/edi-confirm';
-  let redirectURL = '';
+  let redirectURL = '/prototypes/edi/edi-sex';
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    EDI sex
+
+*************** */
+export function ediSexGet(req, res) {
+  let viewData, religion;
+
+  const ediDone = req.session.ediDone;
+
+  viewData = {
+    ediDone,
+    religion,
+  };
+
+  return res.render('prototypes/edi/edi-sex', viewData);
+}
+
+export function ediSexPost(req, res) {
+  const {} = req.body;
+  console.log(req.body);
+
+  let redirectURL = '/prototypes/edi/edi-gender';
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    EDI gender
+
+*************** */
+export function ediGenderGet(req, res) {
+  let viewData, gender;
+
+  const ediDone = req.session.ediDone;
+
+  viewData = {
+    ediDone,
+    gender,
+  };
+
+  return res.render('prototypes/edi/edi-gender', viewData);
+}
+
+export function ediGenderPost(req, res) {
+  const {} = req.body;
+  console.log(req.body);
+
+  let redirectURL = '/prototypes/edi/edi-gender';
 
   return res.redirect(redirectURL);
 }
