@@ -1,0 +1,204 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = '' %}
+{% set navArea = 'profile' %}
+{% set applicationsLink = '/prototypes/edi/applications' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+{% set pageTitle = "EDI conditions" %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set backLinkContents =  [{url:'/prototypes/edi/profile', text:'Back to account settings'}] %}
+
+{% block content %}
+
+    {#{% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Warning</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">
+                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion (EDI) profile</a> before you can submit an application.
+                        #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
+                    </p>
+                </div>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}#}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Which of the following conditions, illnesses or disabilities do you have?', caption='Equality, Diversity and inclusion (EDI) Information') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.form(action='#', method='POST',name='ediForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-8') %}
+
+                <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
+                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                        <span class="govuk-details__summary-text">Guidance for answering this question</span>
+                    </summary>
+                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                        <p class="govuk-body">This question is asking about the physical or mental health conditions, illnesses or disabilities that reduce your ability to carry out day-to-day activities.</p>
+                        <p class="govuk-body">
+                            <strong>What we mean by day-to-day activities</strong>
+                            Day-to-day activities include everyday tasks, for example eating, washing, walking and going shopping.</p>
+                        <p class="govuk-body">
+                            This is voluntary, so you can leave it blank if you prefer.
+                        </p>
+                    </div>
+                </details>
+
+                <h1 class="govuk-heading-xl">
+                    Change to radios
+                    <br>multiple at top
+
+
+                </h1>
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="disabilities-hint">
+                        <legend class="govuk-visually-hidden">Select all the conditions, illnesses or disabilities that you have</legend>
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="disabilities1" name="disabilities" type="checkbox" value="An unseen disability">
+                                <label class="govuk-label govuk-checkboxes__label" for="disabilities1">An unseen disability</label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="disabilities2" name="disabilities" type="checkbox" value="Autistic spectrum disorder">
+                                <label class="govuk-label govuk-checkboxes__label" for="disabilities2">Autistic spectrum disorder</label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="disabilities3" name="disabilities" type="checkbox" value="Blind/partially sighted">
+                                <label class="govuk-label govuk-checkboxes__label" for="disabilities3">Blind/partially sighted</label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="disabilities4" name="disabilities" type="checkbox" value="Deaf/hearing impairment">
+                                <label class="govuk-label govuk-checkboxes__label" for="disabilities4">Deaf/hearing impairment</label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="disabilities5" name="disabilities" type="checkbox" value="Dyslexia">
+                                <label class="govuk-label govuk-checkboxes__label" for="disabilities5">Dyslexia</label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="disabilities6" name="disabilities" type="checkbox" value="Mental health difficulties">
+                                <label class="govuk-label govuk-checkboxes__label" for="disabilities6">Mental health difficulties</label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="disabilities7" name="disabilities" type="checkbox" value="Mobility difficulties">
+                                <label class="govuk-label govuk-checkboxes__label" for="disabilities7">Mobility difficulties</label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="disabilities8" name="disabilities" type="checkbox" value="Multiple disabilities">
+                                <label class="govuk-label govuk-checkboxes__label" for="disabilities8">Multiple disabilities</label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="disabilities9" name="disabilities" type="checkbox" value="No known disability">
+                                <label class="govuk-label govuk-checkboxes__label" for="disabilities9">No known disability</label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="disabilities10" name="disabilities" type="checkbox" value="Personal care support">
+                                <label class="govuk-label govuk-checkboxes__label" for="disabilities10">Personal care support</label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="disabilities11" name="disabilities" type="checkbox" value="Other disability" data-aria-controls="conditional-disability-1">
+                                <label class="govuk-label govuk-checkboxes__label" for="disabilities11">Other disability</label>
+                            </div>
+                            <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-disability-1">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="other-disability-input">Provide more details</label>
+                                    <div class="govuk-hint govuk-checkboxes__hint" style="padding-left:0;">This is voluntary, so you can leave it blank if you prefer.</div>
+                                    <input class="govuk-input govuk-!-width-one-third" id="other-disability-input" name="disabilitiesOther" type="tel"></div>
+
+                            </div>
+
+                            <div class="govuk-radios__divider">or</div>
+
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="disabilities12" name="disabilities" type="checkbox" value="I don't have any disabilities">
+                                <label class="govuk-label govuk-checkboxes__label" for="disabilities12">I don't have any conditions, illnesses or disabilities</label>
+                                <div class="govuk-hint govuk-checkboxes__hint">Selecting this option will clear any checked boxes above.</div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </div>
+
+                <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
+                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                        <span class="govuk-details__summary-text">Why we ask this question</span>
+                    </summary>
+                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                        <p class="govuk-body">This question is vital for understanding equality monitoring.</p>
+                    </div>
+                </details>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-full') %}
+
+                    <div class="application-controls govuk-clearfix">
+                        {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
+                    </div>
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %} {# end form #}
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    <script>
+        var ready = (callback) => {
+            if (document.readyState != "loading") callback();
+            else document.addEventListener("DOMContentLoaded", callback);
+        }
+
+        ready(() => {
+            console.log('ready');
+            let otherCheckboxID = 'disabilities12';
+            let allChecks = document.querySelectorAll('.govuk-checkboxes__input');
+            let othersCheckbox = document.getElementById(otherCheckboxID);
+            othersCheckbox.addEventListener("click", (e) => {
+                console.log('clicked');
+                allChecks.forEach(box => { box.style.border = "1px solid red" });
+                allChecks.forEach(box => {
+                    if (box.getAttribute('id') !== otherCheckboxID) {
+                        box.checked = false
+                    }
+                });
+            });
+
+        });
+
+
+
+    </script>
+{% endblock %}

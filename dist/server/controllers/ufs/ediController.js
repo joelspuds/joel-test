@@ -15,6 +15,8 @@ exports.ediDOBGet = ediDOBGet;
 exports.ediDOBPost = ediDOBPost;
 exports.ediConditionsGet = ediConditionsGet;
 exports.ediConditionsPost = ediConditionsPost;
+exports.ediDisabilitiesGet = ediDisabilitiesGet;
+exports.ediDisabilitiesPost = ediDisabilitiesPost;
 exports.ediReligionGet = ediReligionGet;
 exports.ediReligionPost = ediReligionPost;
 exports.ediEthnicGroupGet = ediEthnicGroupGet;
@@ -192,6 +194,36 @@ function ediConditionsGet(req, res) {
 }
 
 function ediConditionsPost(req, res) {
+  const { conditions } = req.body;
+  console.log(req.body);
+
+  let redirectURL = '/prototypes/edi/edi-religion';
+
+  if (conditions === 'Yes') {
+    redirectURL = '/prototypes/edi/edi-disabilities';
+  }
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    EDI Disabilities
+
+*************** */
+function ediDisabilitiesGet(req, res) {
+  let viewData;
+
+  const ediDone = req.session.ediDone;
+
+  viewData = {
+    ediDone
+  };
+
+  return res.render('prototypes/edi/edi-disabilities', viewData);
+}
+
+function ediDisabilitiesPost(req, res) {
   const {} = req.body;
   console.log(req.body);
 

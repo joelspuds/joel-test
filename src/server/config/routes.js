@@ -440,6 +440,9 @@ router.get('/prototypes/edi/edi-dob', demosController.ediDOBGet);
 router.post('/prototypes/edi/edi-dob', demosController.ediDOBPost);
 router.get('/prototypes/edi/edi-conditions', demosController.ediConditionsGet);
 router.post('/prototypes/edi/edi-conditions', demosController.ediConditionsPost);
+router.get('/prototypes/edi/edi-disabilities', demosController.ediDisabilitiesGet);
+router.post('/prototypes/edi/edi-disabilities', demosController.ediDisabilitiesPost);
+
 router.get('/prototypes/edi/edi-religion', demosController.ediReligionGet);
 router.post('/prototypes/edi/edi-religion', demosController.ediReligionPost);
 router.get('/prototypes/edi/edi-ethnic-group', demosController.ediEthnicGroupGet);

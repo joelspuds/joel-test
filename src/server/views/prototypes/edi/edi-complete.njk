@@ -18,23 +18,23 @@
 
 {% block content %}
 
-    {#{% call components.bulmaRow() %}
+    {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-full') %}
 
-            <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner govuk-notification-banner--success" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
                 <div class="govuk-notification-banner__header">
-                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Warning</h2>
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
                 </div>
                 <div class="govuk-notification-banner__content">
                     <p class="govuk-notification-banner__heading">
-                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion (EDI) profile</a> before you can submit an application.
-                        #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
+                        You have completed your EDI survey.
                     </p>
+                    <p class="govuk-body">You can change your answers at any time.</p>
                 </div>
             </div>
 
         {%- endcall %}
-    {%- endcall %}#}
+    {%- endcall %}
 
     {% call components.bulmaRow() %}
 
@@ -80,73 +80,64 @@
 
             {% call components.bulmaColumnAny(size='column is-8') %}
 
-                {{ components.captionHeading(text='Start your Equality, Diversity and Inclusion (EDI) profile survey', tag='h2', size='m') }}
+                {{ components.captionHeading(text='Equality, Diversity and Inclusion (EDI) profile survey', tag='h2', size='m') }}
 
-                <p class="govuk-body">To help UKRI identify inequalities in certain groups, and ensure we reach a representative section of society, we need to ask you 7 questions. Some of which you may feel are not important or relevant. However, they are to someone with that characteristic.</p>
-                <p class="govuk-body">Rest assured, your answers are separated from the selection process and have no bearing on decisions made in respect of fundingapplications. Moreover, the information provided is:</p>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>kept anonymous</li>
-                    <li>not used to identify individuals</li>
-                    <li>held securely by UKRI</li>
-                    <li>used only to ensure people are treated fairly and according to their needs.</li>
-                </ul>
-
-                <p class="govuk-body"><strong>The survey should take no more than 2 minutes.</strong></p>
-
-                <details class="govuk-details" data-module="govuk-details">
-                    <summary class="govuk-details__summary">
-                        <span class="govuk-details__summary-text">Why we ask for EDI information</span>
-                    </summary>
-                    <div class="govuk-details__text">
-                        <p class="govuk-body">Embedding equality, diversity and inclusion in UKRI-funded research and innovation, maximises its impact and involves and benefits every part of society. Everything UKRI funds must embrace a diversity of thought, people and ideas. Completing the survey helps us to analyse results correctly</p>
-                    </div>
-                </details>
-
-                <p class="govuk-body">
-                    <a href="/prototypes/edi/edi-dob" class="govuk-button govuk-button--start --star">Start survey <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
-                            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
-                        </svg></a>
-                </p>
-
-
-                {#<dl class="govuk-summary-list">
+                <dl class="govuk-summary-list">
                     <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">Honorific</dt>
-                        <dd class="govuk-summary-list__value">Professor</dd>
+                        <dt class="govuk-summary-list__key">Date of birth</dt>
+                        <dd class="govuk-summary-list__value">1 January 1990 {{ ediDay }} {{ ediMonth }} {{ ediYear }}</dd>
                         <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> honorific</span></a>
+                            <a class="govuk-link" href="/prototypes/edi/edi-dob?edit=true">Change<span class="govuk-visually-hidden"> date for birth</span></a>
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">Name</dt>
-                        <dd class="govuk-summary-list__value">Annabel Doubley-Barell</dd>
+                        <dt class="govuk-summary-list__key">Conditions or illness</dt>
+                        <dd class="govuk-summary-list__value">None</dd>
                         <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                            <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> conditions, illnesses or disabilities</span></a>
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Telephone
-                        </dt>
+                        <dt class="govuk-summary-list__key">Religion</dt>
+                        <dd class="govuk-summary-list__value">No religion</dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> religion</span></a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Ethnic group</dt>
                         <dd class="govuk-summary-list__value">
-                            <p class="govuk-body">07700 900457</p>
+                            Asian or Asian British - Bangladeshi
                         </dd>
                         <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="#">
-                                Change<span class="govuk-visually-hidden"> contact details</span>
-                            </a>
+                            <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> ethnic group</span></a>
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">Email</dt>
-                        <dd class="govuk-summary-list__value">
-                            <p class="govuk-body">annabel.doubley-barell@bristol.ac.uk</p>
-                        </dd>
+                        <dt class="govuk-summary-list__key">Sex</dt>
+                        <dd class="govuk-summary-list__value">Female</dd>
                         <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> email</span></a>
+                            <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> sex</span></a>
                         </dd>
                     </div>
-                </dl>#}
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Gender</dt>
+                        <dd class="govuk-summary-list__value">Female - same as birth</dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> gender</span></a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Sexual orientation</dt>
+                        <dd class="govuk-summary-list__value">Straight or Heterosexual</dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> sexual orientation</span></a>
+                        </dd>
+                    </div>
+                </dl>
+
+
+
 
             {%- endcall %}
 

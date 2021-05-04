@@ -161,6 +161,36 @@ export function ediConditionsGet(req, res) {
 }
 
 export function ediConditionsPost(req, res) {
+  const { conditions } = req.body;
+  console.log(req.body);
+
+  let redirectURL = '/prototypes/edi/edi-religion';
+
+  if (conditions === 'Yes') {
+    redirectURL = '/prototypes/edi/edi-disabilities';
+  }
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    EDI Disabilities
+
+*************** */
+export function ediDisabilitiesGet(req, res) {
+  let viewData;
+
+  const ediDone = req.session.ediDone;
+
+  viewData = {
+    ediDone,
+  };
+
+  return res.render('prototypes/edi/edi-disabilities', viewData);
+}
+
+export function ediDisabilitiesPost(req, res) {
   const {} = req.body;
   console.log(req.body);
 

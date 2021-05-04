@@ -38,7 +38,7 @@
 
         {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
 
-            {{ components.captionHeading(text='Do you have any conditions or illnesses that reduce your ability to carry out day-to-day activities?', caption='Equality, Diversity and inclusion (EDI) Information') }}
+            {{ components.captionHeading(text='Do you have any conditions, illnesses or disabilities that reduce your ability to carry out day-to-day activities?', caption='Equality, Diversity and inclusion (EDI) Information') }}
 
         {%- endcall %}
 
@@ -57,7 +57,7 @@
                         <span class="govuk-details__summary-text">Guidance for answering this question</span>
                     </summary>
                     <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
-                        <p class="govuk-body">This question is asking about the physical or mental health conditions or illnesses.</p>
+                        <p class="govuk-body">This question is asking about the physical or mental health conditions, illnesses or disabilities.</p>
                         <p class="govuk-body">
                             <strong>What we mean by day-to-day activities</strong>
                             Day-to-day activities include everyday tasks, for example eating, washing, walking and going shopping.</p>
@@ -66,11 +66,12 @@
 
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset">
-                        <legend class="govuk-visually-hidden">Select your ethnic background</legend>
+                        <legend class="govuk-visually-hidden">Do you have any conditions, illnesses or disabilities?</legend>
                         <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="conditions1" name="conditions" type="radio" value="Yes">
                                 <label class="govuk-label govuk-radios__label" for="conditions1">Yes</label>
+                                <div class="govuk-hint govuk-radios__hint">You can give more details about any conditions, illnesses or disabilities on the next page</div>
                             </div>
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="conditions2" name="conditions" type="radio" value="No">
@@ -86,14 +87,14 @@
                     </fieldset>
                 </div>
 
-                {#<details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
+                <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
                     <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
                         <span class="govuk-details__summary-text">Why we ask this question</span>
                     </summary>
                     <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
                         <p class="govuk-body">This question is vital for understanding equality monitoring.</p>
                     </div>
-                </details>#}
+                </details>
 
             {%- endcall %}
 
