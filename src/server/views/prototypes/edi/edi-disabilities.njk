@@ -66,76 +66,72 @@
                         </p>
                     </div>
                 </details>
-
-                <h1 class="govuk-heading-xl">
-                    Change to radios
-                    <br>multiple at top
-
-
-                </h1>
-
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset" aria-describedby="disabilities-hint">
                         <legend class="govuk-visually-hidden">Select all the conditions, illnesses or disabilities that you have</legend>
-                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="disabilities1" name="disabilities" type="checkbox" value="An unseen disability">
-                                <label class="govuk-label govuk-checkboxes__label" for="disabilities1">An unseen disability</label>
+                        <div class="govuk-radios" data-module="govuk-radios">
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="disabilities8" name="disabilities" type="radio" value="Multiple disabilities">
+                                <label class="govuk-label govuk-radios__label" for="disabilities8">Multiple disabilities</label>
                             </div>
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="disabilities2" name="disabilities" type="checkbox" value="Autistic spectrum disorder">
-                                <label class="govuk-label govuk-checkboxes__label" for="disabilities2">Autistic spectrum disorder</label>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="disabilities1" name="disabilities" type="radio" value="An unseen disability">
+                                <label class="govuk-label govuk-radios__label" for="disabilities1">An unseen disability</label>
                             </div>
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="disabilities3" name="disabilities" type="checkbox" value="Blind/partially sighted">
-                                <label class="govuk-label govuk-checkboxes__label" for="disabilities3">Blind/partially sighted</label>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="disabilities2" name="disabilities" type="radio" value="Autistic spectrum disorder">
+                                <label class="govuk-label govuk-radios__label" for="disabilities2">Autistic spectrum disorder</label>
                             </div>
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="disabilities4" name="disabilities" type="checkbox" value="Deaf/hearing impairment">
-                                <label class="govuk-label govuk-checkboxes__label" for="disabilities4">Deaf/hearing impairment</label>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="disabilities3" name="disabilities" type="radio" value="Blind/partially sighted">
+                                <label class="govuk-label govuk-radios__label" for="disabilities3">Blind/partially sighted</label>
                             </div>
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="disabilities5" name="disabilities" type="checkbox" value="Dyslexia">
-                                <label class="govuk-label govuk-checkboxes__label" for="disabilities5">Dyslexia</label>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="disabilities4" name="disabilities" type="radio" value="Deaf/hearing impairment">
+                                <label class="govuk-label govuk-radios__label" for="disabilities4">Deaf/hearing impairment</label>
                             </div>
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="disabilities6" name="disabilities" type="checkbox" value="Mental health difficulties">
-                                <label class="govuk-label govuk-checkboxes__label" for="disabilities6">Mental health difficulties</label>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="disabilities5" name="disabilities" type="radio" value="Dyslexia">
+                                <label class="govuk-label govuk-radios__label" for="disabilities5">Dyslexia</label>
                             </div>
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="disabilities7" name="disabilities" type="checkbox" value="Mobility difficulties">
-                                <label class="govuk-label govuk-checkboxes__label" for="disabilities7">Mobility difficulties</label>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="disabilities6" name="disabilities" type="radio" value="Mental health difficulties">
+                                <label class="govuk-label govuk-radios__label" for="disabilities6">Mental health difficulties</label>
                             </div>
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="disabilities8" name="disabilities" type="checkbox" value="Multiple disabilities">
-                                <label class="govuk-label govuk-checkboxes__label" for="disabilities8">Multiple disabilities</label>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="disabilities7" name="disabilities" type="radio" value="Mobility difficulties">
+                                <label class="govuk-label govuk-radios__label" for="disabilities7">Mobility difficulties</label>
                             </div>
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="disabilities9" name="disabilities" type="checkbox" value="No known disability">
-                                <label class="govuk-label govuk-checkboxes__label" for="disabilities9">No known disability</label>
+                            {#<div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="disabilities9" name="disabilities" type="radio" value="No known disability">
+                                <label class="govuk-label govuk-radios__label" for="disabilities9">No known disability</label>
+                            </div>#}
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="disabilities10" name="disabilities" type="radio" value="Personal care support">
+                                <label class="govuk-label govuk-radios__label" for="disabilities10">Personal care support</label>
                             </div>
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="disabilities10" name="disabilities" type="checkbox" value="Personal care support">
-                                <label class="govuk-label govuk-checkboxes__label" for="disabilities10">Personal care support</label>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="disabilities11" name="disabilities" type="radio" value="Other disability" data-aria-controls="conditional-disability-1">
+                                <label class="govuk-label govuk-radios__label" for="disabilities11">Other disability</label>
                             </div>
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="disabilities11" name="disabilities" type="checkbox" value="Other disability" data-aria-controls="conditional-disability-1">
-                                <label class="govuk-label govuk-checkboxes__label" for="disabilities11">Other disability</label>
-                            </div>
-                            <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-disability-1">
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-disability-1">
                                 <div class="govuk-form-group">
                                     <label class="govuk-label" for="other-disability-input">Provide more details</label>
-                                    <div class="govuk-hint govuk-checkboxes__hint" style="padding-left:0;">This is voluntary, so you can leave it blank if you prefer.</div>
+                                    <div class="govuk-hint govuk-radios__hint" style="padding-left:0;">This is voluntary, so you can leave it blank if you prefer.</div>
                                     <input class="govuk-input govuk-!-width-one-third" id="other-disability-input" name="disabilitiesOther" type="tel"></div>
 
                             </div>
 
                             <div class="govuk-radios__divider">or</div>
 
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="disabilities12" name="disabilities" type="checkbox" value="I don't have any disabilities">
-                                <label class="govuk-label govuk-checkboxes__label" for="disabilities12">I don't have any conditions, illnesses or disabilities</label>
-                                <div class="govuk-hint govuk-checkboxes__hint">Selecting this option will clear any checked boxes above.</div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="disabilities12" name="disabilities" type="radio" value="Prefer not to say">
+                                <label class="govuk-label govuk-radios__label" for="disabilities12">Prefer not to say</label>
+                                {#
+                                I don't have any conditions, illnesses or disabilities
+                                <div class="govuk-hint govuk-radios__hint">Selecting this option will clear any checked boxes above.</div>#}
                             </div>
                         </div>
 
@@ -184,7 +180,7 @@
         ready(() => {
             console.log('ready');
             let otherCheckboxID = 'disabilities12';
-            let allChecks = document.querySelectorAll('.govuk-checkboxes__input');
+            let allChecks = document.querySelectorAll('.govuk-radios__input');
             let othersCheckbox = document.getElementById(otherCheckboxID);
             othersCheckbox.addEventListener("click", (e) => {
                 console.log('clicked');
