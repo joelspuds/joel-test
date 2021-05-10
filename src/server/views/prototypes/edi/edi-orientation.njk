@@ -25,7 +25,7 @@
                 </div>
                 <div class="govuk-notification-banner__content">
                     <p class="govuk-notification-banner__heading">
-                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion (EDI) profile</a> before you can submit an application.
+                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion</a> before you can submit an application.
                         #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
                     </p>
                 </div>
@@ -38,7 +38,7 @@
 
         {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
 
-            {{ components.captionHeading(text='Which of the following best describes your sexual orientation?', caption='Equality, Diversity and inclusion (EDI) Information') }}
+            {{ components.captionHeading(text='Which of the following best describes your sexual orientation?', caption='Equality, Diversity and Inclusion Profile') }}
 
         {%- endcall %}
 
@@ -62,7 +62,7 @@
                             <li>"Straight or Heterosexual" means that you're only attracted to people of the opposite sex</li>
                             <li>"Gay or Lesbian" means that you’re attracted to people of the same sex</li>
                             <li>"Bisexual" means that you're attracted to more than one sex</li>
-                            <li>"Other sexual orientation" lets you enter your own answer, for example, pansexual or asexual.</li>
+                            <li>"Other sexual orientation" opens a box in which you can enter your own answer, for example, pansexual or asexual.</li>
                         </ul>
                         <p class="govuk-body">This is also voluntary, so you can leave it blank if you prefer.</p>
                     </div>
@@ -74,12 +74,12 @@
                         <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="orientation1" name="orientation" type="radio" value="Straight or Heterosexual">
-                                <label class="govuk-label govuk-radios__label" for="orientation1">Straight or Heterosexual</label>
+                                <label class="govuk-label govuk-radios__label" for="orientation1">Straight or heterosexual</label>
                             </div>
 
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="orientation2" name="orientation" type="radio" value="Gay or Lesbian">
-                                <label class="govuk-label govuk-radios__label" for="orientation2">Gay or Lesbian</label>
+                                <label class="govuk-label govuk-radios__label" for="orientation2">Gay or lesbian</label>
                             </div>
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="orientation3" name="orientation" type="radio" value="Straight or Bisexual">
@@ -92,8 +92,8 @@
                             </div>
                             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-other">
                                 <div class="govuk-form-group">
-                                    <label class="govuk-label" for="other-gender-input">Enter your preferred term for your sexual orientation</label>
-                                    <div class="govuk-hint govuk-radios__hint" style="padding-left:0;">This is also voluntary, so you can leave it blank if you prefer.</div>
+                                    <label class="govuk-label" for="other-gender-input">Enter the term you use to describe your sexual orientation or leave blank if you prefer.</label>
+                                    {#<div class="govuk-hint govuk-radios__hint" style="padding-left:0;">This is also voluntary, so you can leave it blank if you prefer.</div>#}
                                     <input class="govuk-input govuk-!-width-one-third" id="other-gender-input" name="other-gender-input" type="text" spellcheck="false"></div>
 
                             </div>

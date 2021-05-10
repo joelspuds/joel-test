@@ -25,7 +25,7 @@
                 </div>
                 <div class="govuk-notification-banner__content">
                     <p class="govuk-notification-banner__heading">
-                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion (EDI) profile</a> before you can submit an application.
+                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion</a> before you can submit an application.
                         #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
                     </p>
                 </div>
@@ -38,7 +38,7 @@
 
         {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
 
-            {{ components.captionHeading(text='Is the gender you identify with the same as your sex registered at birth?', caption='Equality, Diversity and inclusion (EDI) Information') }}
+            {{ components.captionHeading(text='Is the gender you identify with the same as your sex registered at birth?', caption='Equality, Diversity and Inclusion Profile') }}
 
         {%- endcall %}
 
@@ -57,7 +57,7 @@
                         <span class="govuk-details__summary-text">Guidance for answering this question</span>
                     </summary>
                     <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
-                        <p class="govuk-body">It's up to you how you answer this question.</p>
+                        <p class="govuk-body">It is up to you how you answer this question.</p>
                         <p class="govuk-body u-space-b5">
                             <strong>Select "Yes" if:</strong>
                         </p>
@@ -69,10 +69,10 @@
                             <strong>Select "No" if:</strong>
                         </p>
                         <ul class="govuk-list govuk-list--bullet">
-                            <li>your gender identity is different from the sex recorded on your birth certificate when you were born, for example if you're transgender or non-binary</li>
+                            <li>•	you now identify with a gender that differs from the sex recorded on your birth certificate - for example, transgender or non-binary</li>
                         </ul>
                         <p class="govuk-body">
-                            If you answered "No", please enter the term you use to describe your gender.
+                            If you answered "No", enter the term you use to describe your gender.
                             <br>
                             This is also voluntary, so you can leave it blank if you prefer.
                         </p>
@@ -94,8 +94,8 @@
                             </div>
                             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-other">
                                 <div class="govuk-form-group">
-                                    <label class="govuk-label" for="other-gender-input">Enter the term you use to describe your gender.</label>
-                                    <div class="govuk-hint govuk-radios__hint" style="padding-left:0;">This is also voluntary, so you can leave it blank if you prefer.</div>
+                                    <label class="govuk-label" for="other-gender-input">Enter the term you use to describe your gender or leave blank if you prefer.</label>
+                                    {#<div class="govuk-hint govuk-radios__hint" style="padding-left:0;">This is also voluntary, so you can leave it blank if you prefer.</div>#}
                                     <input class="govuk-input govuk-!-width-one-third" id="other-gender-input" name="other-gender-input" type="text" spellcheck="false"></div>
 
                             </div>

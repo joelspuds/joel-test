@@ -25,7 +25,7 @@
                 </div>
                 <div class="govuk-notification-banner__content">
                     <p class="govuk-notification-banner__heading">
-                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion (EDI) profile</a> before you can submit an application.
+                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion</a> before you can submit an application.
                         #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
                     </p>
                 </div>
@@ -38,7 +38,7 @@
 
         {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
 
-            {{ components.captionHeading(text='Do you have any conditions, illnesses or disabilities that reduce your ability to carry out day-to-day activities?', caption='Equality, Diversity and inclusion (EDI) Information') }}
+            {{ components.captionHeading(text='Do you have any conditions, illnesses or disabilities that reduce your ability to carry out day-to-day activities?', caption='Equality, Diversity and Inclusion Profile') }}
 
         {%- endcall %}
 
@@ -57,10 +57,10 @@
                         <span class="govuk-details__summary-text">Guidance for answering this question</span>
                     </summary>
                     <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
-                        <p class="govuk-body">This question is asking about the physical or mental health conditions, illnesses or disabilities.</p>
+                        <p class="govuk-body">This question is asking about physical or mental health conditions, illnesses or disabilities.</p>
                         <p class="govuk-body">
-                            <strong>What we mean by day-to-day activities</strong>
-                            Day-to-day activities include everyday tasks, for example eating, washing, walking and going shopping.</p>
+                            <strong>What do we mean by day-to-day activities? </strong>
+                            These include everyday tasks, for example: eating, washing, walking and going shopping. This question is vital to understanding equality monitoring.</p>
                     </div>
                 </details>
 
@@ -87,14 +87,14 @@
                     </fieldset>
                 </div>
 
-                <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
+                {#<details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
                     <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
                         <span class="govuk-details__summary-text">Why we ask this question</span>
                     </summary>
                     <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
                         <p class="govuk-body">This question is vital for understanding equality monitoring.</p>
                     </div>
-                </details>
+                </details>#}
 
             {%- endcall %}
 

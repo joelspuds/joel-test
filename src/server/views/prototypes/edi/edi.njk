@@ -18,7 +18,7 @@
 
 {% block content %}
 
-    {#{% call components.bulmaRow() %}
+    {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-full') %}
 
             <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
@@ -27,14 +27,13 @@
                 </div>
                 <div class="govuk-notification-banner__content">
                     <p class="govuk-notification-banner__heading">
-                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion (EDI) profile</a> before you can submit an application.
-                        #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
+                        You must complete your Equality, Diversity and Inclusion (EDI) profile before you can submit an application.
                     </p>
                 </div>
             </div>
 
         {%- endcall %}
-    {%- endcall %}#}
+    {%- endcall %}
 
     {% call components.bulmaRow() %}
 
@@ -52,7 +51,7 @@
 
             {% call components.bulmaColumnAny(size='is-3') %}
                 <nav class="">
-                    {{ components.linkHeading(text='Profile sections', tag='h2', size='s')}}
+                    {# {{ components.linkHeading(text='Profile sections', tag='h2', size='s')}} #}
                     {#{{ components.list(items=listItems, parentClass='')}}#}
 
                     <ul class="govuk-list">
@@ -60,7 +59,7 @@
                             <a href="/prototypes/edi/profile" class="govuk-link govuk-link--no-visited-state">Personal details</a>
                         </li>
                         <li>
-                            <a href="/prototypes/edi/edi" class="govuk-link govuk-link--no-visited-state sticky-nav__link--active">Equality, Diversity and Inclusion (EDI) profile</a>
+                            <a href="/prototypes/edi/edi" class="govuk-link govuk-link--no-visited-state sticky-nav__link--active">Equality, Diversity and Inclusion</a>
                         </li>
                         <li>
                             <a href="#" class="govuk-link govuk-link--no-visited-state ">Account security</a>
@@ -80,10 +79,12 @@
 
             {% call components.bulmaColumnAny(size='column is-8') %}
 
-                {{ components.captionHeading(text='Start your Equality, Diversity and Inclusion (EDI) profile survey', tag='h2', size='m') }}
+                {{ components.captionHeading(text='Equality, Diversity and Inclusion (EDI) Profile', tag='h2', size='m') }}
 
+                <p class="govuk-body">Embedding equality, diversity and inclusion in UKRI-funded project and initiatives, maximises its impact and involves and benefits every part of society. Everything UKRI funds must embrace a diversity of thought, people and ideas. </p>
                 <p class="govuk-body">To help UKRI identify inequalities in certain groups, and ensure we reach a representative section of society, we need to ask you 7 questions. Some of which you may feel are not important or relevant. However, they are to someone with that characteristic.</p>
-                <p class="govuk-body">Rest assured, your answers are separated from the selection process and have no bearing on decisions made in respect of fundingapplications. Moreover, the information provided is:</p>
+
+                <p class="govuk-body">Rest assured, your answers are separated from the selection process and have no bearing on decisions made in respect of funding applications. Importantly, the information provided is:</p>
                 <ul class="govuk-list govuk-list--bullet">
                     <li>kept anonymous</li>
                     <li>not used to identify individuals</li>
@@ -96,22 +97,20 @@
                 </p>
 
                 <p class="govuk-body">
-                    <strong>The survey should take no more than 2 minutes.</strong>
+                    <strong>Completing your EDI Profile should take no more than 2 minutes.</strong>
                 </p>
 
-
-
-                <details class="govuk-details" data-module="govuk-details">
+                {#<details class="govuk-details" data-module="govuk-details">
                     <summary class="govuk-details__summary">
                         <span class="govuk-details__summary-text">Why we ask for EDI information</span>
                     </summary>
                     <div class="govuk-details__text">
                         <p class="govuk-body">Embedding equality, diversity and inclusion in UKRI-funded research and innovation, maximises its impact and involves and benefits every part of society. Everything UKRI funds must embrace a diversity of thought, people and ideas. Completing the survey helps us to analyse results correctly</p>
                     </div>
-                </details>
+                </details>#}
 
                 <p class="govuk-body">
-                    <a href="/prototypes/edi/edi-dob" class="govuk-button govuk-button--start --star">Start survey <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                    <a href="/prototypes/edi/edi-dob" class="govuk-button govuk-button--start --star">Start profile <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
                             <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
                         </svg></a>
                 </p>
