@@ -16,6 +16,7 @@ exports.rteComplex2Get = rteComplex2Get;
 exports.userDashBoardGet = userDashBoardGet;
 exports.userDashBoardFiltersGet = userDashBoardFiltersGet;
 exports.topNavGet = topNavGet;
+exports.sortableTablesGet = sortableTablesGet;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 // import sanitizeHtml from '../../../../no';
@@ -337,4 +338,22 @@ function topNavGet(req, res) {
     actualNavType
   };
   return res.render('prototypes/molecules/top-nav', viewData);
+}
+
+/*
+*
+*     Sortable tables
+*
+*/
+function sortableTablesGet(req, res) {
+  let viewData;
+  // const bigData = generalData.megaDataApplications;
+  const bigData = generalData.megaDataAwards;
+
+  console.log(bigData);
+
+  viewData = {
+    bigData
+  };
+  return res.render('prototypes/molecules/sortable-tables', viewData);
 }

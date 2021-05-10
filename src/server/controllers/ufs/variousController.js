@@ -320,3 +320,21 @@ export function topNavGet(req, res) {
   };
   return res.render('prototypes/molecules/top-nav', viewData);
 }
+
+/*
+*
+*     Sortable tables
+*
+*/
+export function sortableTablesGet(req, res) {
+  let viewData;
+  // const bigData = generalData.megaDataApplications;
+  const bigData = generalData.megaDataAwards;
+
+  console.log(bigData);
+
+  viewData = {
+    bigData,
+  };
+  return res.render('prototypes/molecules/sortable-tables', viewData);
+}
