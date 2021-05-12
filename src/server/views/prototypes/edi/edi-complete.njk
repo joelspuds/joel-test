@@ -52,8 +52,6 @@
 
             {% call components.bulmaColumnAny(size='is-3') %}
                 <nav class="">
-                    {# {{ components.linkHeading(text='Profile sections', tag='h2', size='s')}} #}
-                    {#{{ components.list(items=listItems, parentClass='')}}#}
 
                     <ul class="govuk-list">
                         <li>
@@ -80,7 +78,7 @@
 
             {% call components.bulmaColumnAny(size='column is-8') %}
 
-                {{ components.captionHeading(text='Equality, Diversity and Inclusion (EDI) profile survey', tag='h2', size='m') }}
+                {{ components.captionHeading(text='Equality, Diversity and Inclusion (EDI) profile', tag='h2', size='m') }}
 
                 <dl class="govuk-summary-list">
                     <div class="govuk-summary-list__row">
@@ -91,7 +89,7 @@
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">Conditions or illness</dt>
+                        <dt class="govuk-summary-list__key">Conditions, illnesses or disabilities</dt>
                         <dd class="govuk-summary-list__value">None</dd>
                         <dd class="govuk-summary-list__actions">
                             <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> conditions, illnesses or disabilities</span></a>

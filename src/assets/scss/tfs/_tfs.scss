@@ -1,5 +1,12 @@
 
-@import '../govuk-frontend/src/govuk/settings/_all.scss';
+// @import '../govuk-frontend/src/govuk/settings/_all.scss';
+// src/govuk-frontend_3-10-0/govuk/settings/_all.scss
+// the above is pointing to another random ass folder somewhere in my own file system the old stuff needs to go to _3-10-0 folder
+// @import '../../govuk-frontend_3-10-0/govuk/settings/_all.scss';
+@import '../../_govuk/settings/all';
+
+
+
 // @import '../../../../node_modules/govuk-frontend/settings/all';
 
 @import './variables';

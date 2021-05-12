@@ -1,87 +1,29 @@
-Further details and guidance for using this kit for prototypes and releases for MTS can be found internally in Confluence by searching for front-end.
+## set up app
+clone the repo
 
-## Demo
+    git clone https://devops.innovateuk.org/code-repository/scm/ukri/tfs-prototypes.git
 
-You can view the MOT component library and prototypes here:
+install the node packages
 
-[Heroku Demo](https://dvsa-front-end.herokuapp.com/)
+    npm run install
 
-## Login credentials
+move GDS stuff into folder structure
+(if the app starts after one of these processes, then kill it, and continue to the end)
 
-If you'd like to access the [Prototypes pages](https://dvsa-front-end.herokuapp.com/prototypes), log in as below.
-The prototype system is password protected to prevent users accidentally accessing what may look like a real Government Service.
+    npm run copy-package 
+    npm run start-dev:copy-gds-njk
+    
 
-User: admin  
-Password: dvsa  
+build assets
 
+    npm run build-production
 
-## Local Setup
+run the app
 
-### Prerequisite
+    npm run start-dev
 
-1. Clone this repo and cd into the directory using terminal
+Open the browser of your choice and go to: [http://localhost:3002/](http://localhost:3002/)
 
-2. Install dependencies using NPM
+Most of what you probably want will be in the [prototypes section](http://localhost:3002/prototypes) 
 
-```javascript
-docker-compose run app npm install
-```
-
-### Development
-
-To run development mode run the following command inside the directory.
-
-```javascript
-docker-compose up
-```
-
-You can access the local server with the following url
-
-```
-http://localhost:3002
-```
-
-It will automatically run the following processess concurrently
-
-* gulp start-dev task
-* webpack with development configurations
-* express application with nodemon
-
-
-## Build Production
-
-Build production command will generate production ready assets and node js server code.
-
-The productions assets are located in the **dist/assets** folder and the server code is located in the **dist/server** folder.
-
-```javascript
-docker-compose run app npm run build-production
-```
-
-**Run this command and commit changes before pushing to heroku.**
-
-## Docker setup for development
-
-**You will need the latest version of docker installed**
-
-### Running development mode
-
-For faster development you can use docker by running the following command:
-
-```
-docker-compose up
-```
-
-After which the server is located at the local address below:
-
-```
-http://localhost:3002
-```
-
-### Building production assets
-
-Run the following command
-
-```
-docker-compose run --rm app npm run build-production
-```
+Other options can be found in the package.json file in the root of the project.

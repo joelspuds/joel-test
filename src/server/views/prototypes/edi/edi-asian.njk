@@ -38,7 +38,7 @@
 
         {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
 
-            {{ components.captionHeading(text='Which one best describes your Asian or Asian British background?', caption='Equality, Diversity and Inclusion Profile') }}
+            {{ components.captionHeading(text='Which one best describes your Asian or Asian British background?', caption='Equality, Diversity and Inclusion profile') }}
 
         {%- endcall %}
 
@@ -51,6 +51,18 @@
         {% call components.bulmaRow() %}
 
             {% call components.bulmaColumnAny(size='column is-8') %}
+
+                <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
+                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                        <span class="govuk-details__summary-text">Guidance for answering this question</span>
+                    </summary>
+                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                        <p class="govuk-body">
+                            It is up to you how you answer. Your ethnic group could be your cultural or family background.</p>
+                        <p class="govuk-body">Select the option from the list that you most closely identify with and 'Save and continue'.</p>
+                    </div>
+                </details>
+
 
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset">
@@ -93,6 +105,16 @@
 
                     </fieldset>
                 </div>
+
+                <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
+                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                        <span class="govuk-details__summary-text">Why we ask this question</span>
+                    </summary>
+                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                        <p class="govuk-body">This question will help us check we have reached a representative section of society and understand if certain groups experience inequalities. It may not be important or relevant to you, but it is important to the person with that characteristic.</p>
+                        <p class="govuk-body">The information you provide is kept anonymous, held securely by UKRI and will not be used to identify any individual. It will be separated from the selection process and will not affect any funding decisions regarding your applications. Your answer is only used for monitoring processes, to help us analyse results accurately and ensure people are treated fairly and according to their needs.</p>
+                    </div>
+                </details>
 
             {%- endcall %}
 
