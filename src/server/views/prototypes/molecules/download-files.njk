@@ -76,7 +76,7 @@
 
         {%- endcall %}
 
-        {% call components.bulmaRow() %}
+        {% call components.bulmaRow(extraClass='js-only--block') %}
 
             {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
 
@@ -97,67 +97,41 @@
 {% endblock %}
 {% block bodyScripts %}
     <script>
-        Zepto(function($){
-            /*$('#downloadAll').on('click', function(e) {
-                e.preventDefault();
-                window.open('/misc/file1.pdf', '/misc/file2.pdf');
-               // window.open('/misc/file2.pdf');
-               // window.open('/misc/file3.pdf');
-               // window.open('/misc/file4.pdf');
-               // window.open('/misc/file5.pdf');
-            });*/
-
-            /*let testing;
-            console.log(tghisIUwefwer);*/
-
-            var urls = [
+        var ready = (callback) => {
+            if (document.readyState != 'loading') callback();
+            else document.addEventListener('DOMContentLoaded', callback);
+        }
+        ready(() => {
+            const urls = [
                 '/misc/file1.pdf',
                 '/misc/file2.pdf',
                 '/misc/file3.pdf',
                 '/misc/file4.pdf',
                 '/misc/file5.pdf'
             ]
-
             var tempURLS;
-
             var interval;
 
             $('#downloadAll').on('click', function(e) {
                 e.preventDefault();
-                // download(urls);
-                tempURLS = urls;
-                interval = setInterval(download, 300, urls);
+                tempURLS = [...urls];
+                interval = setInterval(download, 300, tempURLS);
             });
 
-            function download(urls) {
+            function download(tempURLS) {
                 var url = tempURLS.pop();
 
                 if (url == null) {
+                    clearInterval(interval);
                     return;
                 }
-
                 var a = document.createElement("a");
                 a.setAttribute('href', url);
                 a.setAttribute('download', '');
                 a.setAttribute('target', '_blank');
                 a.click();
-
-                /*console.log(url);
-                console.log(urls.length);*/
-
-               /* if (urls.length < 0) {
-                    clearInterval(interval);
-                    return;
-                }*/
-
-                // urls.shift();
-
             }
         });
-
-
-
-
     </script>
 {% endblock %}
 
