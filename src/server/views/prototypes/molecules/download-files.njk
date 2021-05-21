@@ -1,0 +1,164 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set navType = 'admin' %}
+{#{% set isAdminUser = true %}#}
+{%  set loggedOut = false %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+
+{% set createOpportunityError = createOpportunityError if createOpportunityError %}
+{% set createOpportunityErrorMessage = createOpportunityErrorMessage if createOpportunityErrorMessage %}
+{% set opportunityName = opportunityName if opportunityName %}
+{% set createOpportunityErrorMessageInputLevel = createOpportunityErrorMessageInputLevel if createOpportunityErrorMessageInputLevel %}
+
+{% set newHeader = true %}
+
+{% set pageTitle = 'Download response material' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            {{ components.captionHeading(text='Download response material', caption='Development of a Novel Inhibitor of Ricin') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='downloadAllFiles') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+
+                {{ components.captionHeading(text='Reviews', tag='h2', size='m') }}
+
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header ">File name</th>
+                    </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell"><a href="/misc/file1.pdf" class="govuk-link">Review_1.PDF (157kb)</a></td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell"><a href="/misc/file2.pdf" class="govuk-link">Review_2.PDF (261kb)</a></td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell"><a href="/misc/file3.pdf" class="govuk-link">Review_3.PDF (188kb)</a></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                {{ components.captionHeading(text='Response documents', tag='h2', size='m') }}
+
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header ">File name</th>
+                    </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a href="/misc/file4.pdf" class="govuk-link">Response_guidance.PDF (1.1MB)</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a href="/misc/file5.pdf" class="govuk-link">Response_form.PDF (261kb)</a></td>
+                    </tr>
+                    {#<tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a href="/misc/file3.pdf" class="govuk-link">Review_3.PDF (188kb)</a></td>
+                    </tr>#}
+
+                    </tbody>
+                </table>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+
+                <div class="application-controls govuk-clearfix">
+
+                    {{ components.button(text='Download all files', extraClass="application-controls__submit", id='downloadAll')}}
+
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        Zepto(function($){
+            /*$('#downloadAll').on('click', function(e) {
+                e.preventDefault();
+                window.open('/misc/file1.pdf', '/misc/file2.pdf');
+               // window.open('/misc/file2.pdf');
+               // window.open('/misc/file3.pdf');
+               // window.open('/misc/file4.pdf');
+               // window.open('/misc/file5.pdf');
+            });*/
+
+            /*let testing;
+            console.log(tghisIUwefwer);*/
+
+            var urls = [
+                '/misc/file1.pdf',
+                '/misc/file2.pdf',
+                '/misc/file3.pdf',
+                '/misc/file4.pdf',
+                '/misc/file5.pdf'
+            ]
+
+            var tempURLS;
+
+            var interval;
+
+            $('#downloadAll').on('click', function(e) {
+                e.preventDefault();
+                // download(urls);
+                tempURLS = urls;
+                interval = setInterval(download, 300, urls);
+            });
+
+            function download(urls) {
+                var url = tempURLS.pop();
+
+                if (url == null) {
+                    return;
+                }
+
+                var a = document.createElement("a");
+                a.setAttribute('href', url);
+                a.setAttribute('download', '');
+                a.setAttribute('target', '_blank');
+                a.click();
+
+                /*console.log(url);
+                console.log(urls.length);*/
+
+               /* if (urls.length < 0) {
+                    clearInterval(interval);
+                    return;
+                }*/
+
+                // urls.shift();
+
+            }
+        });
+
+
+
+
+    </script>
+{% endblock %}
+
+

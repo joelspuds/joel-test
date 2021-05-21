@@ -1,0 +1,104 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set navType = 'admin' %}
+{#{% set isAdminUser = true %}#}
+{%  set loggedOut = false %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+
+{% set createOpportunityError = createOpportunityError if createOpportunityError %}
+{% set createOpportunityErrorMessage = createOpportunityErrorMessage if createOpportunityErrorMessage %}
+{% set opportunityName = opportunityName if opportunityName %}
+{% set createOpportunityErrorMessageInputLevel = createOpportunityErrorMessageInputLevel if createOpportunityErrorMessageInputLevel %}
+
+{% set newHeader = true %}
+
+{% set pageTitle = 'Download demo' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            {{ components.captionHeading(text='Download response material', caption='Development of a Novel Inhibitor of Ricin') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='/prototypes/application-v2/eligibility-applicant', method='POST',name='formProjectTeam') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+
+                <p class="govuk-body">
+                    Download any file individually by clicking on the file name, or select several files and click 'Download multiple files' to do them all at once.
+                </p>
+
+
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Select</th>
+                        <th scope="col" class="govuk-table__header ">File name</th>
+                    </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <div class="govuk-form-group u-space-b20">
+                                    <div class="govuk-checkboxes govuk-checkboxes--small">
+                                        <div class="govuk-checkboxes__item">
+                                            <input class="govuk-checkboxes__input" id="file1" name="download" type="checkbox" value="/misc/file1.pdf">
+                                            <label class="govuk-label govuk-checkboxes__label" for="file1">
+                                                <span class="govuk-visually-hidden">Application File 1</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="govuk-table__cell"><a href="/misc/file1.pdf" class="govuk-link">Application</a></td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <div class="govuk-form-group u-space-b20">
+                                    <div class="govuk-checkboxes govuk-checkboxes--small">
+                                        <div class="govuk-checkboxes__item">
+                                            <input class="govuk-checkboxes__input" id="file1" name="download" type="checkbox" value="/misc/file1.pdf">
+                                            <label class="govuk-label govuk-checkboxes__label" for="file1">
+                                                <span class="govuk-visually-hidden">Application File 1</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="govuk-table__cell"><a href="/misc/file1.pdf" class="govuk-link">Application</a></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+
+                <div class="application-controls govuk-clearfix">
+
+                    {{ components.button(text='Download multiple files', extraClass="application-controls__submit")}}
+
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+
