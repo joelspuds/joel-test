@@ -423,6 +423,10 @@ router.get('/prototypes/peer-review-external/user-reviews', demosController.prRe
 router.post('/prototypes/peer-review-external/user-reviews', demosController.prReviewsPost);
 router.get('/prototypes/peer-review-external/review-tabs', demosController.prReviewTabsGet);
 router.post('/prototypes/peer-review-external/review-tabs', demosController.prReviewTabsPost);
+
+router.get('/prototypes/peer-review-external/write-review', demosController.prWriteReviewGet);
+router.post('/prototypes/peer-review-external/write-review', demosController.prWriteReviewPost);
+
 router.get('/prototypes/peer-review-external/review-and-submit', demosController.prReviewAndSubmitGet);
 router.post('/prototypes/peer-review-external/review-and-submit', demosController.prReviewAndSubmitPost);
 router.get('/prototypes/peer-review-external/review-complete', demosController.prReviewCompleteGet);
@@ -468,8 +472,8 @@ router.get('/prototypes/edi/edi-religion', demosController.ediReligionGet);
 router.post('/prototypes/edi/edi-religion', demosController.ediReligionPost);
 router.get('/prototypes/edi/edi-ethnic-group', demosController.ediEthnicGroupGet);
 router.post('/prototypes/edi/edi-ethnic-group', demosController.ediEthnicGroupPost);
-router.get('/prototypes/edi/edi-asian', demosController.ediEthnicAsianGet);
-router.post('/prototypes/edi/edi-asian', demosController.ediEthnicAsianPost);
+router.get('/prototypes/edi/edi-ethnic-sub-group', demosController.ediEthnicSubGet);
+router.post('/prototypes/edi/edi-ethnic-sub-group', demosController.ediEthnicSubPost);
 router.get('/prototypes/edi/edi-sex', demosController.ediSexGet);
 router.post('/prototypes/edi/edi-sex', demosController.ediSexPost);
 router.get('/prototypes/edi/edi-gender', demosController.ediGenderGet);

@@ -12,27 +12,17 @@
 {% set isAdminUser = false %}
 {%  set loggedOut = false %}
 
-{% set backLinkContents =  [{url:'/prototypes/edi/profile', text:'Back to account settings'}] %}
+{% set edit = edit if edit %}
+{% set userData = userData if userData %}
+
+{% set backToConfirm = backToConfirm if backToConfirm %}
+{% if edit === 'true' %}
+    {% set backLinkContents =  [{url:backToConfirm.url, text:backToConfirm.linkText}] %}
+{% else %}
+    {% set backLinkContents =  [{url:'/prototypes/edi/edi-ethnic-group', text:'Back to ethnicity'}] %}
+{% endif %}
 
 {% block content %}
-
-    {#{% call components.bulmaRow() %}
-        {% call components.bulmaColumnAny(size='is-full') %}
-
-            <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-                <div class="govuk-notification-banner__header">
-                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Warning</h2>
-                </div>
-                <div class="govuk-notification-banner__content">
-                    <p class="govuk-notification-banner__heading">
-                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion</a> before you can submit an application.
-                        #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
-                    </p>
-                </div>
-            </div>
-
-        {%- endcall %}
-    {%- endcall %}#}
 
     {% call components.bulmaRow() %}
 
@@ -66,16 +56,16 @@
                         <legend class="govuk-visually-hidden">Select your ethnic background</legend>
                         <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="sex1" name="sex" type="radio" value="Female">
+                                <input class="govuk-radios__input" id="sex1" name="sex" type="radio" value="Female" {% if userData.sex === "Female" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="sex1">Female</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="sex2" name="sex" type="radio" value="Male">
+                                <input class="govuk-radios__input" id="sex2" name="sex" type="radio" value="Male" {% if userData.sex === "Male" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="sex2">Male</label>
                             </div>
                             <div class="govuk-radios__divider">or</div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="sex3" name="sex" type="radio" value="Prefer not to say">
+                                <input class="govuk-radios__input" id="sex3" name="sex" type="radio" value="Prefer not to say" {% if userData.sex === "Prefer not to say" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="sex3">Prefer not to say</label>
                             </div>
                         </div>
@@ -98,17 +88,15 @@
         {%- endcall %}
 
             {% call components.bulmaRow() %}
-
                 {% call components.bulmaColumnAny(size='is-full') %}
-
-                    <p class="govuk-body">The next question is about gender.</p>
-
                     <div class="application-controls govuk-clearfix">
-                        {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
+                        {% if edit == 'true'  %}
+                            {{ components.button(text='Save changes', extraClass="application-controls__submit")}}
+                        {% else %}
+                            {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
+                        {% endif %}
                     </div>
-
                 {%- endcall %}
-
             {%- endcall %}
 
         {%- endcall %} {# end form #}

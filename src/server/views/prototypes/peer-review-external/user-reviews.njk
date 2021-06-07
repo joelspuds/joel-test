@@ -63,94 +63,208 @@
 
             {% call components.bulmaColumnAny(size='column is-full {#is-9-desktop is-9-widescreen#}') %}
 
-                {#{{ components.captionHeading(text='Incomplete', tag='h2', size='m') }}#}
+                {{ components.captionHeading(text='Incomplete reviews', tag='h2', size='m') }}
 
                 <ul class="overview-items overview-items--plain">
+                    <li class="overview-item   _overview-item--new ">
+                        <div class="columns">
+                            <div class="column is-8">
+                                <h3 class="overview-item__title">
+                                    <a href="/prototypes/peer-review-external/review-tabs" class="govuk-link">Bio-detoxification of Ricin in castor bean</a>
+                                </h3>
+                                <ul class="overview-item__meta-list ">
 
-                    {% for item in appData %}
-
-                        <li class="overview-item {% if item.active != true %} overview-item--inactive {% endif %} {% if item.isNew == true %} _overview-item--new {% endif %}">
-                            <div class="columns">
-                                <div class="column is-8">
-                                    <h3 class="overview-item__title">
-                                        <a href="/prototypes/peer-review-external/review-tabs" class="govuk-link">{{ item.name }}</a>
-                                    </h3>
-                                    <ul class="overview-item__meta-list">
-                                        {#<li class="overview-item__meta-item" ><strong>Opportunity: </strong><a href="#" class="govuk-link">OPP{{ range(000, 999) | random }}: {{ item.oppName }}</a><br></li>#}
-                                        <li class="overview-item__meta-item" ><strong>Opportunity: </strong>OPP{{ range(000, 999) | random }}: {{ item.oppName }}<br></li>
-                                        <li class="overview-item__meta-item" ><strong>Application reference:</strong> AWA{{ item.id }}<br></li>
-                                        <li class="overview-item__meta-item" ><strong>Organisation:</strong> {{ item.org }}</li>
-                                    </ul>
-                                </div>
-                                <div class="column is-2">
-                                    {% if item.hoursLeft  %}
-                                        <div class="u-align-setup-vertical u-align-center">
-                                            <div class="u-align-cell">
-                                                <span class="overview-item__meta overview-item__meta--danger">
-                                                    <strong><span class="govuk-!-font-size-24">{{ item.hoursLeft }}</span>
-                                                    <br>hours left</strong>
-                                                    <br>
-                                                    <span class="govuk-body-s">
-                                                        {{ item.progressMessage }}
-                                                    </span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                    {% if item.daysLeft and item.imminent %}
-                                        <div class="u-align-setup-vertical u-align-center">
-                                            <div class="u-align-cell">
-                                                <span class="overview-item__meta overview-item__meta--danger">
-                                                    <strong><span class="govuk-!-font-size-24">{{ item.daysLeft }}</span>
-                                                    <br>days left</strong>
-                                                    <br>
-                                                    <span class="govuk-body-s">{{ item.progressMessage }}</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                    {% if item.daysLeft and not item.imminent %}
-                                        <div class="u-align-setup-vertical u-align-center">
-                                            <div class="u-align-cell">
-                                                <span class="overview-item__meta">
-                                                    <strong><span class="govuk-!-font-size-24">{{ item.daysLeft }}</span>
-                                                    <br>days left</strong>
-                                                    <br>
-                                                    <span class="govuk-body-s">{{ item.progressMessage }}</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                    {% if not item.active %}
-                                        <div class="u-align-setup-vertical u-align-center">
-                                            <div class="u-align-cell">
-                                                <span class="overview-item__meta">
-                                                    <strong>{{ item.finalMessage }}</strong>
-                                                    <br>
-                                                    <span class="govuk-body-s">{{ item.progressMessage }}</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    {%  endif %}
-                                </div>
-                                <div class="column is-2">
-                                    <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
-                                        <div class="u-align-cell">
-                                            <strong>{{ item.status }}</strong>
-                                            {#{% if item.completeness %}
-                                                <span class="meta"><br>{{ item.completeness }}</span>
-                                            {% endif %}#}
-                                        </div>
+                                    <li class="overview-item__meta-item"><strong>Opportunity: </strong>OPP702: Development of a Novel Inhibitor of Ricin<br></li>
+                                    <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA24<br></li>
+                                    <li class="overview-item__meta-item"><strong>Organisation:</strong> University of Cardiff</li>
+                                </ul>
+                            </div>
+                            <div class="column is-2">
+                                <div class="u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                                        <span class="overview-item__meta overview-item__meta--danger">
+                                            <strong><span class="govuk-!-font-size-24">2</span>
+                                            <br>days left</strong>
+                                            <br>
+                                            <span class="govuk-body-s">Deadline 14 May 2021</span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                            <div class="column is-2">
+                                <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                                        <strong>Incomplete</strong>
 
-                    {% endfor %}
-                </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="overview-item  ">
+                        <div class="columns">
+                            <div class="column is-8">
+                                <h3 class="overview-item__title">
+                                    <a href="/prototypes/peer-review-external/review-tabs" class="govuk-link">Linear field waves in liquids</a>
+                                </h3>
+                                <ul class="overview-item__meta-list">
+
+                                    <li class="overview-item__meta-item"><strong>Opportunity: </strong>OPP387: Electromagnetic waves in liquids<br></li>
+                                    <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA97<br></li>
+                                    <li class="overview-item__meta-item"><strong>Organisation:</strong> University of Cardiff</li>
+                                </ul>
+                            </div>
+                            <div class="column is-2">
+                                <div class="u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                                        <span class="overview-item__meta">
+                                            <strong><span class="govuk-!-font-size-24">48</span>
+                                            <br>days left</strong>
+                                            <br>
+                                            <span class="govuk-body-s">Deadline 9 June 2021</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-2">
+                                <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                                        <strong>Incomplete</strong>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="overview-item  ">
+                        <div class="columns">
+                            <div class="column is-8">
+                                <h3 class="overview-item__title">
+                                    <a href="/prototypes/peer-review-external/review-tabs" class="govuk-link">Viral pandemic: distributed societal issues and news shaping</a>
+                                </h3>
+                                <ul class="overview-item__meta-list">
+
+                                    <li class="overview-item__meta-item"><strong>Opportunity: </strong>OPP443: Electric battery innovation for land-based travel<br></li>
+                                    <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA124<br></li>
+                                    <li class="overview-item__meta-item"><strong>Organisation:</strong> University of Cardiff</li>
+                                </ul>
+                            </div>
+                            <div class="column is-2">
+                                <div class="u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                                        <span class="overview-item__meta">
+                                            <strong><span class="govuk-!-font-size-24">12</span>
+                                            <br>days left</strong>
+                                            <br>
+                                            <span class="govuk-body-s">Deadline 21 May 2021</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-2">
+                                <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                                        <strong>Incomplete</strong>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                  </ul>
+
             {%- endcall %}
         {%- endcall %}
 
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full {#is-9-desktop is-9-widescreen#}') %}
+
+                {{ components.captionHeading(text='Incomplete reviews', tag='h2', size='m') }}
+
+                <ul class="overview-items overview-items--plain">
+                    <li class="overview-item  overview-item--inactive  ">
+                        <div class="columns">
+                            <div class="column is-8">
+                                <h3 class="overview-item__title">
+                                    <a href="/prototypes/peer-review-external/review-tabs" class="govuk-link">Jet propulsion systems in underwater environments</a>
+                                </h3>
+                                <ul class="overview-item__meta-list">
+
+                                    <li class="overview-item__meta-item"><strong>Opportunity: </strong>OPP687: Freshwater ecology Part I, Sub aquatic travel and investigation methods?<br></li>
+                                    <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA401<br></li>
+                                    <li class="overview-item__meta-item"><strong>Organisation:</strong> Abberllangeverybrewybethy University</li>
+                                </ul>
+                            </div>
+                            <div class="column is-2">
+                                <div class="u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                                        <span class="overview-item__meta">
+                                            <strong>Closed</strong>
+                                            <br>
+                                            <span class="govuk-body-s">Deadline 20 Jan 2021</span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="column is-2">
+                                <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center overview-item__meta--danger">
+                                    <div class="u-align-cell">
+                                        <strong>Complete</strong>
+                                        <br>
+                                        Application funded
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+
+                    <li class="overview-item  overview-item--inactive  ">
+                        <div class="columns">
+                            <div class="column is-8">
+                                <h3 class="overview-item__title">
+                                    <a href="/prototypes/peer-review-external/review-tabs" class="govuk-link">Dimensional transmogrification methodology in domesticated urban felines.</a>
+                                </h3>
+                                <ul class="overview-item__meta-list">
+
+                                    <li class="overview-item__meta-item"><strong>Opportunity: </strong>OPP920: Preservation of distributed and diverse avian populations in tendered and semi-wild non-rural environments<br></li>
+                                    <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA417<br></li>
+                                    <li class="overview-item__meta-item"><strong>Organisation:</strong> Bristol University</li>
+                                </ul>
+                            </div>
+                            <div class="column is-2">
+                                <div class="u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                                        <span class="overview-item__meta">
+                                            <strong>Closed</strong>
+                                            <br>
+                                            <span class="govuk-body-s">Deadline 20 Jan 2021</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-2">
+                                <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center overview-item__meta--danger">
+                                    <div class="u-align-cell">
+                                        <strong>Complete</strong>
+                                        <br>
+                                        Application unfunded
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                </ul>
+
+            {%- endcall %}
+        {%- endcall %}
 
     </section>
 

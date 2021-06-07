@@ -12,36 +12,22 @@
 {% set isAdminUser = false %}
 {%  set loggedOut = false %}
 
-{% set backLinkContents =  [{url:'/prototypes/edi/profile', text:'Back to account settings'}] %}
+{% set edit = edit if edit %}
+{% set userData = userData if userData %}
+
+{% set backToConfirm = backToConfirm if backToConfirm %}
+{% if edit === 'true' %}
+    {% set backLinkContents =  [{url:backToConfirm.url, text:backToConfirm.linkText}] %}
+{% else %}
+    {% set backLinkContents =  [{url:'/prototypes/edi/edi-dob', text:'Back to date of birth'}] %}
+{% endif %}
 
 {% block content %}
 
-    {#{% call components.bulmaRow() %}
-        {% call components.bulmaColumnAny(size='is-full') %}
-
-            <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-                <div class="govuk-notification-banner__header">
-                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Warning</h2>
-                </div>
-                <div class="govuk-notification-banner__content">
-                    <p class="govuk-notification-banner__heading">
-                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion</a> before you can submit an application.
-                        #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
-                    </p>
-                </div>
-            </div>
-
-        {%- endcall %}
-    {%- endcall %}#}
-
     {% call components.bulmaRow() %}
-
         {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
-
             {{ components.captionHeading(text='Do you have any conditions, illnesses or disabilities that reduce your ability to carry out day-to-day activities?', caption='Equality, Diversity and Inclusion profile') }}
-
         {%- endcall %}
-
     {%- endcall %}
 
     <section class="section" id="main-content">
@@ -69,17 +55,17 @@
                         <legend class="govuk-visually-hidden">Do you have any conditions, illnesses or disabilities?</legend>
                         <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="conditions1" name="conditions" type="radio" value="Yes">
+                                <input class="govuk-radios__input" id="conditions1" name="conditions" type="radio" value="Yes" {% if userData.conditions === "Yes" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="conditions1">Yes</label>
                                 <div class="govuk-hint govuk-radios__hint">You can give more details about any conditions, illnesses or disabilities on the next page.</div>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="conditions2" name="conditions" type="radio" value="No">
+                                <input class="govuk-radios__input" id="conditions2" name="conditions" type="radio" value="No" {% if userData.conditions === "No" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="conditions2">No</label>
                             </div>
                             <div class="govuk-radios__divider">or</div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="conditions3" name="conditions" type="radio" value="Prefer not to say">
+                                <input class="govuk-radios__input" id="conditions3" name="conditions" type="radio" value="Prefer not to say" {% if userData.conditions === "Prefer not to say" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="conditions3">Prefer not to say</label>
                             </div>
                         </div>
@@ -104,15 +90,15 @@
         {%- endcall %}
 
             {% call components.bulmaRow() %}
-
                 {% call components.bulmaColumnAny(size='is-full') %}
-
                     <div class="application-controls govuk-clearfix">
-                        {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
+                        {% if edit == 'true'  %}
+                            {{ components.button(text='Save changes', extraClass="application-controls__submit")}}
+                        {% else %}
+                            {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
+                        {% endif %}
                     </div>
-
                 {%- endcall %}
-
             {%- endcall %}
 
         {%- endcall %} {# end form #}

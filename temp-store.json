@@ -2,7 +2,7 @@
   {
     "placeholder": "meh",
     "userType": null,
-    "applicationStatus": null,
+    "applicationStatus": "startShare",
     "detailsInput": "<p>afwefwe f</p>",
     "projectName": "Really cool project title befitting of this awesome opportunity",
     "caseForSupportNotes": "<p>e fwe fwefwef</p>",
@@ -14,7 +14,6 @@
     "caseForSupportIsComplete": "on",
     "detailsIsComplete": "on",
     "applicantsIsComplete": "on",
-    "justificationIsComplete": "on",
-    "hasBeenSubmitted": null
+    "justificationIsComplete": "on"
   }
 ]

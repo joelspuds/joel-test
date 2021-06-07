@@ -56,7 +56,7 @@
 
     {%- endcall %}
 
-    {% call components.bulmaRow() %}
+    {#{% call components.bulmaRow() %}
 
         {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
 
@@ -64,7 +64,7 @@
                 <strong>Review deadline:</strong> 14 May 2021<br>
             </p>
         {%- endcall %}
-    {%- endcall %}
+    {%- endcall %}#}
 
     <section class="section" id="main-content">
 
@@ -92,54 +92,46 @@
                             </a>
                         </li>
                     </ul>
-                    <style>
-                        .govuk-tabs__panel {
-                            border-left:0!important;
-                            border-right:0!important;
-                            border-bottom:0!important;
-                            padding-left:0!important;
-                            padding-right:0!important;
-                        }
-                    </style>
-                    <div class="govuk-tabs__panel" id="overview">
+
+                    <div class="govuk-tabs__panel govuk-tabs__panel--borderless" id="overview">
 
                         {% call components.bulmaRow() %}
 
                             {% call components.bulmaColumnAny(size='is-8', extraClass='') %}
 
-                                {{ components.captionHeading(text='Review deadline',tag='h2', size='s') }}
+                                {{ components.captionHeading(text='Review deadline',tag='h2', size='s', extraClass='u-space-b5') }}
 
                                 <p class="govuk-body">
                                     14 May 2021
                                 </p>
 
-                                {{ components.captionHeading(text='Opportunity',tag='h2', size='s') }}
+                                {{ components.captionHeading(text='Opportunity',tag='h2', size='s', extraClass='u-space-b5') }}
 
                                 <p class="govuk-body">
                                     <a href="#">Development of a Novel Inhibitor of Ricin</a>
                                 </p>
 
-                                {{ components.captionHeading(text='Application title',tag='h2', size='s') }}
+                                {#{{ components.captionHeading(text='Application title',tag='h2', size='s') }}
 
                                 <p class="govuk-body">
                                     Bio-detoxification of Ricin in castor bean
-                                </p>
+                                </p>#}
 
-                                {{ components.captionHeading(text='Team',tag='h2', size='s') }}
+                              {#  {{ components.captionHeading(text='Team',tag='h2', size='s') }}
 
                                 <p class="govuk-body">
                                     <strong>Principal investigator:</strong> Prof Giles Dexter, Coventry University<br>
                                     <strong>Co-investigator:</strong> Prof Ian Charles,  Coventry University<br>
                                     <strong>Researcher:</strong> Dr Maxwell Peterson,  Coventry University<br>
-                                </p>
+                                </p>#}
 
-                                {{ components.captionHeading(text='Grant size',tag='h2', size='s') }}
+                                {{ components.captionHeading(text='Grant size',tag='h2', size='s', extraClass='u-space-b5') }}
 
                                 <p class="govuk-body">
                                     £80,000
                                 </p>
 
-                                {{ components.captionHeading(text='Summary',tag='h2', size='s') }}
+                                {{ components.captionHeading(text='Summary',tag='h2', size='s', extraClass='u-space-b5') }}
 
                                 <p class="govuk-body">
                                     The PI proposes a high-impact collaborative research project to develop new inhibitors for ribosome inactivating proteins (RIPs), such as ricin and Shiga toxin. Ricin toxin, produced by the castor bean plant, has a nefarious past. Ricin is a well-known homicidal poison and has been used in several bioterrorist attacks. Shiga toxin is a deadly product of enterobacterial Escherichia coli. RIPs are RNA N-glycosidases that enzymatically remove specific purine residues from the universally conserved sarcin/ricin loop (S/R loop) of large ribosomal RNA, causing cellular death.

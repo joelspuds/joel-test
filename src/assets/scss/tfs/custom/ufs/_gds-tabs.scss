@@ -1,0 +1,27 @@
+.govuk-tabs {
+  position: relative;
+}
+
+.tabs-cta {
+  position: absolute;
+  right: 0;
+  top:4px;
+
+  @include touch {
+    position: relative;
+    right: auto;
+    top: auto;
+    margin-top: 10px;
+    max-width: 300px;
+  }
+
+}
+
+
+.govuk-tabs__panel--borderless {
+  border-left:0!important;
+  border-right:0!important;
+  border-bottom:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}

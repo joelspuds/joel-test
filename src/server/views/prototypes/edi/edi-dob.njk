@@ -13,6 +13,8 @@
 
 {% set isAdminUser = false %}
 {%  set loggedOut = false %}
+{% set edit = edit if edit %}
+{% set userData = userData if userData %}
 
 {% set backLinkContents =  [{url:'/prototypes/edi/profile', text:'Back to account settings'}] %}
 
@@ -76,21 +78,21 @@
                                     <label class="govuk-label govuk-date-input__label" for="dobDay">
                                         Day
                                     </label>
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dobDay" name="dobDay" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dobDay" name="dobDay" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ userData.dobDay }}"></div>
                             </div>
                             <div class="govuk-date-input__item">
                                 <div class="govuk-form-group">
                                     <label class="govuk-label govuk-date-input__label" for="dobMonth">
                                         Month
                                     </label>
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dobMonth" name="dobMonth" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dobMonth" name="dobMonth" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ userData.dobMonth }}"></div>
                             </div>
                             <div class="govuk-date-input__item">
                                 <div class="govuk-form-group">
                                     <label class="govuk-label govuk-date-input__label" for="dobYear">
                                         Year
                                     </label>
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dobYear" name="dobYear" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dobYear" name="dobYear" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ userData.dobYear }}"></div>
                             </div>
                         </div>
 
@@ -113,17 +115,17 @@
 
         {%- endcall %}
 
-            {% call components.bulmaRow() %}
-
-                {% call components.bulmaColumnAny(size='is-full') %}
-
-                    <div class="application-controls govuk-clearfix">
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="application-controls govuk-clearfix">
+                    {% if edit == 'true'  %}
+                        {{ components.button(text='Save changes', extraClass="application-controls__submit")}}
+                    {% else %}
                         {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
-                    </div>
-
-                {%- endcall %}
-
+                    {% endif %}
+                </div>
             {%- endcall %}
+        {%- endcall %}
 
 
 

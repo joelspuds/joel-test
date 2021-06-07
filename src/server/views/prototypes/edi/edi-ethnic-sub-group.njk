@@ -1,0 +1,213 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = '' %}
+{% set navArea = 'profile' %}
+{% set applicationsLink = '/prototypes/edi/applications' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+{% set pageTitle = "EDI ethnic roup" %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set edit = edit if edit %}
+{% set userData = userData if userData %}
+
+{% set backToConfirm = backToConfirm if backToConfirm %}
+{% if edit === 'true' %}
+    {% set backLinkContents =  [{url:backToConfirm.url, text:backToConfirm.linkText}] %}
+{% else %}
+    {% set backLinkContents =  [{url:'/prototypes/edi/edi-ethnic-group', text:'Back to ethnicity'}] %}
+{% endif %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {% set headingText = 'Which of these best describes your ' + userData.ethnicity + ' background?'  %}
+
+            {{ components.captionHeading(text=headingText, caption='Equality, Diversity and Inclusion profile') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.form(action='#', method='POST',name='ediForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-8') %}
+
+                <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
+                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                        <span class="govuk-details__summary-text">Guidance for answering this question</span>
+                    </summary>
+                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                        <p class="govuk-body">
+                            It is up to you how you answer. Your ethnic group could be your cultural or family background.</p>
+                        <p class="govuk-body">Select the option from the list that you most closely identify with and 'Save and continue'.</p>
+                    </div>
+                </details>
+
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-visually-hidden">Select your ethnic background</legend>
+                        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+                            {% if userData.ethnicity === 'Asian or Asian British' %}
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="ethnicSubGroup1" name="ethnicSubGroup" type="radio" value="Bangladeshi" {% if userData.ethnicSubGroup === "Bangladeshi" %} checked="checked" {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="ethnicSubGroup1">Bangladeshi</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="ethnicSubGroup2" name="ethnicSubGroup" type="radio" value="Chinese" {% if userData.ethnicSubGroup === "Chinese" %} checked="checked" {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="ethnicSubGroup2">Chinese</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="ethnicSubGroup3" name="ethnicSubGroup" type="radio" value="Indian" {% if userData.ethnicSubGroup === "Indian" %} checked="checked" {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="ethnicSubGroup3">Indian</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="ethnicSubGroup4" name="ethnicSubGroup" type="radio" value="Pakistani" {% if userData.ethnicSubGroup === "Pakistani" %} checked="checked" {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="ethnicSubGroup4">Pakistani</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="ethnicSubGroup5" name="ethnicSubGroup" type="radio" value="Another background" data-aria-controls="conditional-other" {% if userData.ethnicSubGroup === "Another background" %} checked="checked" {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="ethnicSubGroup5">Another Asian background</label>
+                            </div>
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-other">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="otherEthnicSubGroup">Use the box to provide more details or leave blank if you prefer.</label>
+                                    <input class="govuk-input govuk-!-width-one-third" id="otherEthnicSubGroup" name="otherEthnicSubGroup" type="text" spellcheck="false">
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            {% if userData.ethnicity === 'Mixed or multiple ethnic groups' %}
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnicSubGroup1" name="ethnicSubGroup" type="radio" value="White and Asian" {% if userData.ethnicSubGroup === "White and Asian" %} checked="checked" {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="ethnicSubGroup1">White and Asian</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnicSubGroup2" name="ethnicSubGroup" type="radio" value="White and Black Caribbean" {% if userData.ethnicSubGroup === "White and Black Caribbean" %} checked="checked" {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="ethnicSubGroup2">White and Black Caribbean</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnicSubGroup3" name="ethnicSubGroup" type="radio" value="White and Black African" {% if userData.ethnicSubGroup === "White and Black African" %} checked="checked" {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="ethnicSubGroup3">White and Black African</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnicSubGroup5" name="ethnicSubGroup" type="radio" value="Another background" data-aria-controls="conditional-other" {% if userData.ethnicSubGroup === "Another background" %} checked="checked" {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="ethnicSubGroup5">Another mixed background</label>
+                                </div>
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-other">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="otherEthnicSubGroup">Use the box to provide more details or leave blank if you prefer.</label>
+                                        <input class="govuk-input govuk-!-width-one-third" id="otherEthnicSubGroup" name="otherEthnicSubGroup" type="text" spellcheck="false">
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            {% if userData.ethnicity === 'White' %}
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnicSubGroup1" name="ethnicSubGroup" type="radio" value="Gypsy or Irish Traveller" {% if userData.ethnicSubGroup === "Gypsy or Irish Traveller" %} checked="checked" {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="ethnicSubGroup1">Gypsy or Irish Traveller</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnicSubGroup2" name="ethnicSubGroup" type="radio" value="English, Welsh, Scottish, Northern Irish, British" {% if userData.ethnicSubGroup === "eiguiergierugh" %} checked="checked" {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="ethnicSubGroup2">English, Welsh, Scottish, Northern Irish, British</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnicSubGroup3" name="ethnicSubGroup" type="radio" value="Roma" {% if userData.ethnicSubGroup === "Roma" %} checked="checked" {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="ethnicSubGroup3">Roma</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnicSubGroup4" name="ethnicSubGroup" type="radio" value="Irish" {% if userData.ethnicSubGroup === "Irish" %} checked="checked" {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="ethnicSubGroup4">Irish</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnicSubGroup5" name="ethnicSubGroup" type="radio" value="Another background" data-aria-controls="conditional-other" {% if userData.ethnicSubGroup === "Another background" %} checked="checked" {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="ethnicSubGroup5">Another white background</label>
+                                </div>
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-other">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="otherEthnicSubGroup">Use the box to provide more details or leave blank if you prefer.</label>
+                                        <input class="govuk-input govuk-!-width-one-third" id="otherEthnicSubGroup" name="otherEthnicSubGroup" type="text" spellcheck="false">
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            {% if userData.ethnicity === 'Black, African, Black British or Caribbean' %}
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnicSubGroup1" name="ethnicSubGroup" type="radio" value="African" {% if userData.ethnicSubGroup === "Afican" %} checked="checked" {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="ethnicSubGroup1">African</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnicSubGroup2" name="ethnicSubGroup" type="radio" value="Caribbean" {% if userData.ethnicSubGroup === "Caribbean" %} checked="checked" {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="ethnicSubGroup2">Caribbean</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="ethnicSubGroup5" name="ethnicSubGroup" type="radio" value="Another background" data-aria-controls="conditional-other" {% if userData.ethnicSubGroup === "Another background" %} checked="checked" {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="ethnicSubGroup5">Another black background</label>
+                                </div>
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-other">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="otherEthnicSubGroup">Use the box to provide more details or leave blank if you prefer.</label>
+                                        <input class="govuk-input govuk-!-width-one-third" id="otherEthnicSubGroup" name="otherEthnicSubGroup" type="text" spellcheck="false" value="{{ otherEthnicSubGroup }}">
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <div class="govuk-radios__divider">or</div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="ethnicSubGroup6" name="ethnicSubGroup" type="radio" value="Prefer not to say" {% if userData.ethnicSubGroup === "eiguiergierugh" %} checked="checked" {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="ethnicSubGroup6">Prefer not to say</label>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </div>
+
+                <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
+                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                        <span class="govuk-details__summary-text">Why we ask this question</span>
+                    </summary>
+                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                        <p class="govuk-body">This question will help us check we have reached a representative section of society and understand if certain groups experience inequalities. It may not be important or relevant to you, but it is important to the person with that characteristic.</p>
+                        <p class="govuk-body">The information you provide is kept anonymous, held securely by UKRI and will not be used to identify any individual. It will be separated from the selection process and will not affect any funding decisions regarding your applications. Your answer is only used for monitoring processes, to help us analyse results accurately and ensure people are treated fairly and according to their needs.</p>
+                    </div>
+                </details>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+                    <div class="application-controls govuk-clearfix">
+                        {% if edit == 'true'  %}
+                            {{ components.button(text='Save changes', extraClass="application-controls__submit")}}
+                        {% else %}
+                            {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
+                        {% endif %}
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+        {%- endcall %} {# end form #}
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+{% endblock %}

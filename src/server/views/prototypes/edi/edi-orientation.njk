@@ -12,27 +12,17 @@
 {% set isAdminUser = false %}
 {%  set loggedOut = false %}
 
-{% set backLinkContents =  [{url:'/prototypes/edi/profile', text:'Back to account settings'}] %}
+{% set edit = edit if edit %}
+{% set userData = userData if userData %}
+
+{% set backToConfirm = backToConfirm if backToConfirm %}
+{% if edit === 'true' %}
+    {% set backLinkContents =  [{url:backToConfirm.url, text:backToConfirm.linkText}] %}
+{% else %}
+    {% set backLinkContents =  [{url:'/prototypes/edi/edi-gender', text:'Back to gender'}] %}
+{% endif %}
 
 {% block content %}
-
-    {#{% call components.bulmaRow() %}
-        {% call components.bulmaColumnAny(size='is-full') %}
-
-            <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-                <div class="govuk-notification-banner__header">
-                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Warning</h2>
-                </div>
-                <div class="govuk-notification-banner__content">
-                    <p class="govuk-notification-banner__heading">
-                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion</a> before you can submit an application.
-                        #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
-                    </p>
-                </div>
-            </div>
-
-        {%- endcall %}
-    {%- endcall %}#}
 
     {% call components.bulmaRow() %}
 
@@ -73,34 +63,32 @@
                         <legend class="govuk-visually-hidden">Select your gender</legend>
                         <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="orientation1" name="orientation" type="radio" value="Straight or Heterosexual">
+                                <input class="govuk-radios__input" id="orientation1" name="orientation" type="radio" value="Straight or Heterosexual" {% if userData.orientation === "Straight or Heterosexual" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="orientation1">Straight or heterosexual</label>
                             </div>
 
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="orientation2" name="orientation" type="radio" value="Gay or Lesbian">
+                                <input class="govuk-radios__input" id="orientation2" name="orientation" type="radio" value="Gay or Lesbian" {% if userData.orientation === "Gay or Lesbian" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="orientation2">Gay or lesbian</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="orientation3" name="orientation" type="radio" value="Straight or Bisexual">
+                                <input class="govuk-radios__input" id="orientation3" name="orientation" type="radio" value="Straight or Bisexual" {% if userData.orientation === "Bisexual" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="orientation3">Bisexual</label>
                             </div>
 
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="orientation4" name="orientation" type="radio" value="Other sexual orientation" data-aria-controls="conditional-other">
+                                <input class="govuk-radios__input" id="orientation4" name="orientation" type="radio" value="Other sexual orientation" data-aria-controls="conditional-other" {% if userData.orientation === "Other sexual orientation" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="orientation4">Other sexual orientation</label>
                             </div>
                             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-other">
                                 <div class="govuk-form-group">
-                                    <label class="govuk-label" for="other-gender-input">Enter the term you use to describe your sexual orientation or leave blank if you prefer.</label>
-                                    {#<div class="govuk-hint govuk-radios__hint" style="padding-left:0;">This is also voluntary, so you can leave it blank if you prefer.</div>#}
-                                    <input class="govuk-input govuk-!-width-one-third" id="other-gender-input" name="other-gender-input" type="text" spellcheck="false"></div>
-
+                                    <label class="govuk-label" for="otherOrientation">Enter the term you use to describe your sexual orientation or leave blank if you prefer.</label>
+                                    <input class="govuk-input govuk-!-width-one-third" id="otherOrientation" name="otherOrientation" type="text" spellcheck="false" value="{{ userData.otherOrientation }}"></div>
                             </div>
 
                             <div class="govuk-radios__divider">or</div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="orientation5" name="orientation" type="radio" value="Prefer not to say">
+                                <input class="govuk-radios__input" id="orientation5" name="orientation" type="radio" value="Prefer not to say" {% if userData.orientation === "Prefer not to say" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="orientation5">Prefer not to say</label>
                             </div>
                         </div>
@@ -123,15 +111,15 @@
         {%- endcall %}
 
             {% call components.bulmaRow() %}
-
                 {% call components.bulmaColumnAny(size='is-full') %}
-
                     <div class="application-controls govuk-clearfix">
-                        {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
+                        {% if edit == 'true'  %}
+                            {{ components.button(text='Save changes', extraClass="application-controls__submit")}}
+                        {% else %}
+                            {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
+                        {% endif %}
                     </div>
-
                 {%- endcall %}
-
             {%- endcall %}
 
         {%- endcall %} {# end form #}

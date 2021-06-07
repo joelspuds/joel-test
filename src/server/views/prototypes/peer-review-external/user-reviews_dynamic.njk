@@ -1,0 +1,163 @@
+{% set loggedOut = false %}
+{% set isAdminUser = false %}
+{% set showExternalNav = true %}
+{% set signInLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set activeNavItem = 'reviews' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/peer-review-external/user-home' %}
+{% set reviewsLink = '/prototypes/peer-review-external/user-reviews' %}
+{% set awardsSetupLinkHide = true %}
+{% set awardsLinkHide = true %}
+{% set signOutLink = '#' %}
+{% set altProfilePagelink = '#' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set pageTitle = 'Reviews ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{#{% set backLinkContents =  [{url:'#', text:'Back to reviews'}] %}#}
+{% set backLinkContents =  [{url:'/prototypes/peer-review-external/user-home/', text:'Back to home'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+{% set appData = appData if appData %}
+
+{% block content %}
+
+    {#{% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                        Important
+                    </h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">
+                        You have been invited to review an application You have 5 days to respond to the invite.
+                        <a class="govuk-notification-banner__link" href="#">View invitation</a>.
+                    </p>
+                </div>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}#}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Reviews', caption='Dr. Jane Doeington-Longname') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {#{% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-3') %}
+
+        {%- endcall %}
+
+    {%- endcall %}#}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full {#is-9-desktop is-9-widescreen#}') %}
+
+                {{ components.captionHeading(text='Incomplete reviews', tag='h2', size='m') }}
+
+                <ul class="overview-items overview-items--plain">
+
+                    {% for item in appData %}
+
+                        <li class="overview-item {% if item.active != true %} overview-item--inactive {% endif %} {% if item.isNew == true %} _overview-item--new {% endif %}">
+                            <div class="columns">
+                                <div class="column is-8">
+                                    <h3 class="overview-item__title">
+                                        <a href="/prototypes/peer-review-external/review-tabs" class="govuk-link">{{ item.name }}</a>
+                                    </h3>
+                                    <ul class="overview-item__meta-list">
+                                        {#<li class="overview-item__meta-item" ><strong>Opportunity: </strong><a href="#" class="govuk-link">OPP{{ range(000, 999) | random }}: {{ item.oppName }}</a><br></li>#}
+                                        <li class="overview-item__meta-item" ><strong>Opportunity: </strong>OPP{{ range(000, 999) | random }}: {{ item.oppName }}<br></li>
+                                        <li class="overview-item__meta-item" ><strong>Application reference:</strong> AWA{{ item.id }}<br></li>
+                                        <li class="overview-item__meta-item" ><strong>Organisation:</strong> {{ item.org }}</li>
+                                    </ul>
+                                </div>
+                                <div class="column is-2">
+                                    {% if item.hoursLeft  %}
+                                        <div class="u-align-setup-vertical u-align-center">
+                                            <div class="u-align-cell">
+                                                <span class="overview-item__meta overview-item__meta--danger">
+                                                    <strong><span class="govuk-!-font-size-24">{{ item.hoursLeft }}</span>
+                                                    <br>hours left</strong>
+                                                    <br>
+                                                    <span class="govuk-body-s">
+                                                        {{ item.progressMessage }}
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if item.daysLeft and item.imminent %}
+                                        <div class="u-align-setup-vertical u-align-center">
+                                            <div class="u-align-cell">
+                                                <span class="overview-item__meta overview-item__meta--danger">
+                                                    <strong><span class="govuk-!-font-size-24">{{ item.daysLeft }}</span>
+                                                    <br>days left</strong>
+                                                    <br>
+                                                    <span class="govuk-body-s">{{ item.progressMessage }}</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if item.daysLeft and not item.imminent %}
+                                        <div class="u-align-setup-vertical u-align-center">
+                                            <div class="u-align-cell">
+                                                <span class="overview-item__meta">
+                                                    <strong><span class="govuk-!-font-size-24">{{ item.daysLeft }}</span>
+                                                    <br>days left</strong>
+                                                    <br>
+                                                    <span class="govuk-body-s">{{ item.progressMessage }}</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if not item.active %}
+                                        <div class="u-align-setup-vertical u-align-center">
+                                            <div class="u-align-cell">
+                                                <span class="overview-item__meta">
+                                                    <strong>{{ item.finalMessage }}</strong>
+                                                    <br>
+                                                    <span class="govuk-body-s">{{ item.progressMessage }}</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    {%  endif %}
+                                </div>
+                                <div class="column is-2">
+                                    <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                        <div class="u-align-cell">
+                                            <strong>{{ item.status }}</strong>
+                                            {#{% if item.completeness %}
+                                                <span class="meta"><br>{{ item.completeness }}</span>
+                                            {% endif %}#}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    {% endfor %}
+                </ul>
+            {%- endcall %}
+        {%- endcall %}
+
+
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+

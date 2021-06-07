@@ -44,7 +44,7 @@ $module: 'overview';
       }
 
       &--right {
-        border-left: 1px dotted govuk-colour("mid-grey");
+        border-left: 1px solid govuk-colour("mid-grey");
         padding-left: 6px;
 
         @include touch {

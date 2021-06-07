@@ -14,6 +14,8 @@
 {% set isAdminUser = false %}
 {%  set loggedOut = false %}
 
+{% set userData = userData if userData %}
+
 {% set backLinkContents =  [{url:'/prototypes/edi/home', text:'Back to home'}] %}
 
 {% block content %}

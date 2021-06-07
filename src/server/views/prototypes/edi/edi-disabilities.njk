@@ -12,27 +12,17 @@
 {% set isAdminUser = false %}
 {%  set loggedOut = false %}
 
-{% set backLinkContents =  [{url:'/prototypes/edi/profile', text:'Back to account settings'}] %}
+{% set edit = edit if edit %}
+{% set userData = userData if userData %}
+
+{% set backToConfirm = backToConfirm if backToConfirm %}
+{% if edit === 'true' %}
+    {% set backLinkContents =  [{url:backToConfirm.url, text:backToConfirm.linkText}] %}
+{% else %}
+    {% set backLinkContents =  [{url:'/prototypes/edi/edi-conditions', text:'Back to conditions, illnesses or disabilities'}] %}
+{% endif %}
 
 {% block content %}
-
-    {#{% call components.bulmaRow() %}
-        {% call components.bulmaColumnAny(size='is-full') %}
-
-            <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-                <div class="govuk-notification-banner__header">
-                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Warning</h2>
-                </div>
-                <div class="govuk-notification-banner__content">
-                    <p class="govuk-notification-banner__heading">
-                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion</a> before you can submit an application.
-                        #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
-                    </p>
-                </div>
-            </div>
-
-        {%- endcall %}
-    {%- endcall %}#}
 
     {% call components.bulmaRow() %}
 
@@ -69,66 +59,61 @@
                         <div class="govuk-radios" data-module="govuk-radios">
 
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="disabilities8" name="disabilities" type="radio" value="Multiple disabilities">
+                                <input class="govuk-radios__input" id="disabilities8" name="disabilities" type="radio" value="Multiple disabilities" {% if userData.disabilities === "Multiple disabilities" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="disabilities8">Multiple disabilities</label>
                             </div>
 
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="disabilities1" name="disabilities" type="radio" value="An unseen disability">
+                                <input class="govuk-radios__input" id="disabilities1" name="disabilities" type="radio" value="An unseen disability" {% if userData.disabilities === "An unseen disability" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="disabilities1">An unseen disability</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="disabilities2" name="disabilities" type="radio" value="Autistic spectrum disorder">
+                                <input class="govuk-radios__input" id="disabilities2" name="disabilities" type="radio" value="Autistic spectrum disorder" {% if userData.disabilities === "Autistic spectrum disorder" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="disabilities2">Autistic spectrum disorder</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="disabilities3" name="disabilities" type="radio" value="Blind/partially sighted">
+                                <input class="govuk-radios__input" id="disabilities3" name="disabilities" type="radio" value="Blind/partially sighted" {% if userData.disabilities === "Blind/partially sighted" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="disabilities3">Blind/partially sighted</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="disabilities4" name="disabilities" type="radio" value="Deaf/hearing impairment">
+                                <input class="govuk-radios__input" id="disabilities4" name="disabilities" type="radio" value="Deaf/hearing impairment" {% if userData.disabilities === "Deaf/hearing impairment" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="disabilities4">Deaf/hearing impairment</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="disabilities5" name="disabilities" type="radio" value="Dyslexia">
+                                <input class="govuk-radios__input" id="disabilities5" name="disabilities" type="radio" value="Dyslexia" {% if userData.disabilities === "Dyslexia" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="disabilities5">Dyslexia</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="disabilities6" name="disabilities" type="radio" value="Mental health difficulties">
+                                <input class="govuk-radios__input" id="disabilities6" name="disabilities" type="radio" value="Mental health difficulties" {% if userData.disabilities === "Mental health difficulties" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="disabilities6">Mental health difficulties</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="disabilities7" name="disabilities" type="radio" value="Mobility difficulties">
+                                <input class="govuk-radios__input" id="disabilities7" name="disabilities" type="radio" value="Mobility difficulties" {% if userData.disabilities === "Mobility difficulties" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="disabilities7">Mobility difficulties</label>
                             </div>
-                            {#<div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="disabilities9" name="disabilities" type="radio" value="No known disability">
-                                <label class="govuk-label govuk-radios__label" for="disabilities9">No known disability</label>
-                            </div>#}
+
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="disabilities10" name="disabilities" type="radio" value="Personal care support">
+                                <input class="govuk-radios__input" id="disabilities10" name="disabilities" type="radio" value="Personal care support" {% if userData.disabilities === "Personal care support" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="disabilities10">Personal care support</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="disabilities11" name="disabilities" type="radio" value="Other disability" data-aria-controls="conditional-disability-1">
+                                <input class="govuk-radios__input" id="disabilities11" name="disabilities" type="radio" value="Other disability" data-aria-controls="conditional-disability-1" {% if userData.disabilities === "Other disability" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="disabilities11">Other disability</label>
                             </div>
                             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-disability-1">
                                 <div class="govuk-form-group">
                                     <label class="govuk-label" for="other-disability-input">Enter your disability or leave blank if you prefer.</label>
                                     {#<div class="govuk-hint govuk-radios__hint" style="padding-left:0;">This is voluntary, so you can leave it blank if you prefer.</div>#}
-                                    <input class="govuk-input govuk-!-width-one-third" id="other-disability-input" name="disabilitiesOther" type="tel"></div>
+                                    <input class="govuk-input govuk-!-width-one-third" id="other-disability-input" name="disabilitiesOther" type="text" value="{{ userData.disabilitiesOther }}">
+                                </div>
 
                             </div>
 
                             <div class="govuk-radios__divider">or</div>
 
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="disabilities12" name="disabilities" type="radio" value="Prefer not to say">
+                                <input class="govuk-radios__input" id="disabilities12" name="disabilities" type="radio" value="Prefer not to say" {% if userData.disabilities === "Prefer not to say" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="disabilities12">Prefer not to say</label>
-                                {#
-                                I don't have any conditions, illnesses or disabilities
-                                <div class="govuk-hint govuk-radios__hint">Selecting this option will clear any checked boxes above.</div>#}
                             </div>
                         </div>
 
@@ -152,15 +137,15 @@
         {%- endcall %}
 
             {% call components.bulmaRow() %}
-
                 {% call components.bulmaColumnAny(size='is-full') %}
-
                     <div class="application-controls govuk-clearfix">
-                        {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
+                        {% if edit == 'true'  %}
+                            {{ components.button(text='Save changes', extraClass="application-controls__submit")}}
+                        {% else %}
+                            {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
+                        {% endif %}
                     </div>
-
                 {%- endcall %}
-
             {%- endcall %}
 
         {%- endcall %} {# end form #}

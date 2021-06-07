@@ -99,6 +99,9 @@ let ethical = [
 ];
 export const ethicalReasons = ethical;
 
+let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+export const shortMonths = months;
+
 let applicantTypes = [
   {
     name: 'Lead applicant',

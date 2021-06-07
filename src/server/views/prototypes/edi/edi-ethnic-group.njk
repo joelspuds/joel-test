@@ -12,36 +12,22 @@
 {% set isAdminUser = false %}
 {%  set loggedOut = false %}
 
-{% set backLinkContents =  [{url:'/prototypes/edi/profile', text:'Back to account settings'}] %}
+{% set edit = edit if edit %}
+{% set userData = userData if userData %}
+
+{% set backToConfirm = backToConfirm if backToConfirm %}
+{% if edit === 'true' %}
+    {% set backLinkContents =  [{url:backToConfirm.url, text:backToConfirm.linkText}] %}
+{% else %}
+    {% set backLinkContents =  [{url:'/prototypes/edi/edi-religion', text:'Back to religion'}] %}
+{% endif %}
 
 {% block content %}
 
-    {#{% call components.bulmaRow() %}
-        {% call components.bulmaColumnAny(size='is-full') %}
-
-            <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-                <div class="govuk-notification-banner__header">
-                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Warning</h2>
-                </div>
-                <div class="govuk-notification-banner__content">
-                    <p class="govuk-notification-banner__heading">
-                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion</a> before you can submit an application.
-                        #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
-                    </p>
-                </div>
-            </div>
-
-        {%- endcall %}
-    {%- endcall %}#}
-
     {% call components.bulmaRow() %}
-
         {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
-
             {{ components.captionHeading(text='What is your ethnic group?', caption='Equality, Diversity and Inclusion profile') }}
-
         {%- endcall %}
-
     {%- endcall %}
 
     <section class="section" id="main-content">
@@ -70,41 +56,38 @@
                         <legend class="govuk-visually-hidden">Select your religious beliefs</legend>
                         <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="ethnicity1" name="ethnicity" type="radio" value="Asian or Asian British">
+                                <input class="govuk-radios__input" id="ethnicity1" name="ethnicity" type="radio" value="Asian or Asian British" {% if userData.ethnicity === "Asian or Asian British" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="ethnicity1">Asian or Asian British</label>
                                 <div class="govuk-hint govuk-radios__hint">Includes any Asian background, for example, Bangladeshi, Chinese, Indian, Pakistani</div>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="ethnicity2" name="ethnicity" type="radio" value="Black, African, Black British or Caribbean">
+                                <input class="govuk-radios__input" id="ethnicity2" name="ethnicity" type="radio" value="Black, African, Black British or Caribbean" {% if userData.ethnicity === "Black, African, Black British or Caribbean" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="ethnicity2">Black, African, Black British or Caribbean</label>
-                                <div class="govuk-hint govuk-radios__hint">Includes any Black background</div>
+                                <div class="govuk-hint govuk-radios__hint">Includes any black background</div>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="ethnicity3" name="ethnicity" type="radio" value="Mixed or multiple ethnic groups">
+                                <input class="govuk-radios__input" id="ethnicity3" name="ethnicity" type="radio" value="Mixed or multiple ethnic groups" {% if userData.ethnicity === "Mixed or multiple ethnic groups" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="ethnicity3">Mixed or multiple ethnic groups</label>
-                                <div class="govuk-hint govuk-radios__hint">Includes any Mixed background</div>
+                                <div class="govuk-hint govuk-radios__hint">Includes any mixed background</div>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="ethnicity4" name="ethnicity" type="radio" value="White">
+                                <input class="govuk-radios__input" id="ethnicity4" name="ethnicity" type="radio" value="White" {% if userData.ethnicity === "White" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="ethnicity4">White</label>
-                                <div class="govuk-hint govuk-radios__hint">Includes any White background</div>
+                                <div class="govuk-hint govuk-radios__hint">Includes any white background</div>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="ethnicity5" name="ethnicity" type="radio" value="Another ethnic group" data-aria-controls="conditional-other">
+                                <input class="govuk-radios__input" id="ethnicity5" name="ethnicity" type="radio" value="Another ethnic group" data-aria-controls="conditional-other" {% if userData.ethnicity === "Another ethnic group" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="ethnicity5">Another ethnic group</label>
-                                {#<div class="govuk-hint govuk-radios__hint">Includes any other ethnic group, for example, Arab</div>#}
                             </div>
                             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-other">
                                 <div class="govuk-form-group">
-
-                                    <label class="govuk-label" for="other-religion-input">Use the box to enter any other ethnic group or leave blank if you prefer.</label>
-                                    {#<div class="govuk-hint govuk-radios__hint" style="padding-left:0;">This is also voluntary, so you can leave it blank if you prefer.</div>#}
-                                    <input class="govuk-input govuk-!-width-one-third" id="other-religion-input" name="other-religion-input" type="text" spellcheck="false"></div>
-
+                                    <label class="govuk-label" for="otherEthnicGroup">Use the box to enter any other ethnic group or leave blank if you prefer.</label>
+                                    <input class="govuk-input govuk-!-width-one-third" id="otherEthnicGroup" name="otherEthnicGroup" type="text" spellcheck="false" value="{{ userData.otherEthnicGroup }}">
+                                </div>
                             </div>
                             <div class="govuk-radios__divider">or</div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="ethnicity6" name="ethnicity" type="radio" value="Prefer not to say">
+                                <input class="govuk-radios__input" id="ethnicity6" name="ethnicity" type="radio" value="Prefer not to say" {% if userData.ethnicity === "Prefer not to say" %} checked="checked" {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="ethnicity6">Prefer not to say</label>
                             </div>
                         </div>
@@ -127,18 +110,16 @@
         {%- endcall %}
 
             {% call components.bulmaRow() %}
-
                 {% call components.bulmaColumnAny(size='is-full') %}
-
                     <div class="application-controls govuk-clearfix">
-                        {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
+                        {% if edit == 'true'  %}
+                            {{ components.button(text='Save changes', extraClass="application-controls__submit")}}
+                        {% else %}
+                            {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
+                        {% endif %}
                     </div>
-
                 {%- endcall %}
-
             {%- endcall %}
-
-
 
         {%- endcall %} {# end form #}
     </section>

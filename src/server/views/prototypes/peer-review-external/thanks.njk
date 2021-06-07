@@ -11,7 +11,7 @@
 {% set titleText = 'Thank you' %}
 
 {% if inviteResponse == 'extend' %}
-    {% set titleText = 'Your extension has been requested' %}
+    {% set titleText = 'Your extension request has been accepted' %}
 {% endif %}
 
 
@@ -34,12 +34,13 @@
 
                 {{ components.captionHeading(text='What happens next', tag='h2', size='m') }}
 
-                <p class="govuk-body">
-                    If you want to view the application now you will need to <a href="/prototypes/register-v1/start?applicantReviews=true">sign in to the UKRI Funding Service</a> or create a new account.
-                    We will also send you an email with this information.</p>
-
                 {#<p class="govuk-body">
-                   #}{# You will receive an email notifying you when the application is available.#}{# To review it, you will need to <a href="/prototypes/register-v1/start?applicantReviews=true">sign in to the UKRI Funding Service</a> or create a new account.</p>#}
+                    If you want to view the application now you will need to <a href="/prototypes/register-v1/start?applicantReviews=true">sign in to the UKRI Funding Service</a> or create a new account.
+                    We will also send you an email with this information.</p>#}
+
+                <p class="govuk-body">
+                    If you want to view the application now you will need to <a href="/prototypes/register-v1/start?applicantReviews=true" class="govuk-link">sign into the UKRI Funding Service</a> or create a new account.</p>
+
 
                 {{ components.captionHeading(text='Deadline', tag='h2', size='m') }}
 
@@ -58,33 +59,23 @@
                 {{ components.captionHeading(text='What happens next', tag='h2', size='m') }}
 
                 <p class="govuk-body">
-                    We will inform you of our decision by email and may contact you to discuss this.
+                    If you want to view the application now you will need to <a href="/prototypes/register-v1/start?applicantReviews=true" class="govuk-link">sign into the UKRI Funding Service</a> or create a new account.</p>
+
+                <p class="govuk-body">
+                    We will also send you an email with a link to complete you review.
                 </p>
 
-
-               {# {{ components.captionHeading(text='Notification', tag='h2', size='m') }}
-
-                <p class="govuk-body">
-                    You will be informed of the extension decision by email.
-                </p>#}
-
-            {% endif %}
-
-
-            {% if inviteResponse == 'reject' %}
-
-                {{ components.captionHeading(text='What happens next', tag='h2', size='m') }}
+                {{ components.captionHeading(text='Deadline', tag='h2', size='s') }}
 
                 <p class="govuk-body">
-                    You do not need to do anything. We value your continued support and look forward to
-                    inviting you to review future applications.
+                    You must submit your review by Monday 14 MJune 2021.
                 </p>
 
             {% endif %}
 
-            <p class="govuk-body u-space-t45">
+            {#<p class="govuk-body u-space-t45">
                 <a href="#" class="govuk-link">Tell us what you think of this service</a> – takes 2 minutes.
-            </p>
+            </p>#}
 
         {%- endcall %}
 

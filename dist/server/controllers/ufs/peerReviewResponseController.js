@@ -21,6 +21,8 @@ exports.prReviewsGet = prReviewsGet;
 exports.prReviewsPost = prReviewsPost;
 exports.prReviewTabsGet = prReviewTabsGet;
 exports.prReviewTabsPost = prReviewTabsPost;
+exports.prWriteReviewGet = prWriteReviewGet;
+exports.prWriteReviewPost = prWriteReviewPost;
 exports.prReviewAndSubmitGet = prReviewAndSubmitGet;
 exports.prReviewAndSubmitPost = prReviewAndSubmitPost;
 exports.prReviewCompleteGet = prReviewCompleteGet;
@@ -139,7 +141,7 @@ function prExtendResponseGet(req, res) {
 
 function prExtendResponsePost(req, res) {
   const {} = req.body;
-  let redirectURL = '/prototypes/peer-review-external/thanks';
+  let redirectURL = '/prototypes/peer-review-external/invite-extended';
   console.log();
 
   return res.redirect(redirectURL);
@@ -243,6 +245,40 @@ function prReviewTabsPost(req, res) {
 
   req.session.review = review;
   req.session.rating = rating;
+
+  return res.redirect(redirectURL);
+}
+
+/* **************
+
+    Write Review (was on tabs mega page)
+
+*************** */
+function prWriteReviewGet(req, res) {
+  let viewData;
+
+  const inviteResponse = req.session.inviteResponse;
+  const review = req.session.review;
+  const rating = req.session.rating;
+  const isComplete = req.session.isComplete;
+
+  viewData = {
+    inviteResponse,
+    review,
+    rating,
+    isComplete
+  };
+  return res.render('prototypes/peer-review-external/write-review', viewData);
+}
+
+function prWriteReviewPost(req, res) {
+  const { review, rating, isComplete } = req.body;
+  let redirectURL = '/prototypes/peer-review-external/review-tabs#write';
+  console.log(req.body);
+
+  req.session.review = review;
+  req.session.rating = rating;
+  req.session.isComplete = isComplete;
 
   return res.redirect(redirectURL);
 }

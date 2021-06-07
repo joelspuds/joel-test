@@ -1,0 +1,349 @@
+{% set loggedOut = false %}
+{% set isAdminUser = false %}
+{% set showExternalNav = true %}
+{% set signInLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set activeNavItem = 'reviews' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/peer-review-external/user-home' %}
+{% set reviewsLink = '/prototypes/peer-review-external/user-reviews' %}
+{% set awardsSetupLinkHide = true %}
+{% set awardsLinkHide = true %}
+{% set signOutLink = '#' %}
+{% set altProfilePagelink = '#' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set pageTitle = 'Application review' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/peer-review-external/review-tabs', text:'Back to all reviews'}] %}
+
+{% set review = review if review %}
+{% set rating = rating if rating %}
+{% set isComplete = isComplete if isComplete %}
+
+{% set showStickyNavscripts = true %}
+{% set listItems = [
+    { text: 'Case for support', url: '#case', class:'canScroll' },
+    { text: 'Capability to deliver', url: '#capability', class:'canScroll' },
+    { text: 'Pathways to impact', url: '#pathways', class:'canScroll' },
+    { text: 'Data impact statement', url: '#data', class:'canScroll' },
+    { text: 'Finances', url: '#finances', class:'canScroll' },
+    { text: 'Letters of support', url: '#letters', class:'canScroll' }
+] %}
+
+{% block content %}
+
+    <style>
+        .tox-statusbar__wordcount, .tox-statusbar__branding { display: none!important}
+    </style>
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Write your review', caption='Bio-detoxification of Ricin in castor bean') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full') %}
+
+                {% call components.bulmaRow() %}
+
+                    {% call components.bulmaColumnAny(size='is-8', extraClass='') %}
+
+                        {{ components.captionHeading(text='Review criteria',tag='h2', size='m') }}
+
+                        <p class="govuk-body">The content in this section will be written by the Opportunity author at the hosting Council. They will provide specific guidance to help you review applications for this funding.</p>
+
+                        <p class="govuk-body">
+                            <strong>(Example)</strong> Please comment on the importance and competitiveness of the proposed research, including:
+                        </p>
+
+                        <ol class="boguk-list govuk-list--number">
+                            <li>strength of medical or scientific case
+                            <li>level of innovation, and whether this is likely to lead to significant new
+                                understanding</li>
+                            <li>management strategy proposed, including equitable access to any shared resources</li>
+                            <li>feasibility of experimental plans, statistics, methodology and design, including provision of sample size calculations, strategies to avoid bias, and preliminary data where appropriate</li>
+                            <li>how well risks have been identified, and will be mitigated.</li>
+                        </ol>
+
+                        {#<p class="govuk-body">Your review will be used by the panel and provides the basis of the funding decision.</p>
+
+                        <details class="govuk-details" data-module="govuk-details">
+                            <summary class="govuk-details__summary">
+                                <span class="govuk-details__summary-text">Guidance for writing a review</span>
+                            </summary>
+                            <div class="govuk-details__text">
+                                <p>Where possible, reviews must be based on evidence, which you should clearly show in your comments. Please:</p>
+                                <ul class="govuk-list govuk-list--bullet">
+                                    <li>firstly, familiarise yourself with any specified assessment factors or scoring matrix</li>
+                                    <li>provide comments and recommendations that are consistent with, justify and explain your scores</li>
+                                    <li>ensure your comments are comprehensive but concise</li>
+                                    <li>clearly identify strengths and weaknesses of the application in a constructive manner</li>
+                                    <li>raise any concerns in the form of questions for the applicant</li>
+                                    <li>avoid jargon - panellists may not be specialists in your field</li>
+                                    <li>consider other aspects of the proposed research or innovation, like its methodology, experimental designand data management plan, As well as its potential impact (and the pathways to achieving it) including any ethical and social issues (for example, the appropriate use of animals and/or human tissue).</li>
+                                </ul>
+                            </div>
+                        </details>#}
+
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+
+                {% call components.form(action='#', method='POST',name='formReview') %}
+
+
+                    {% call components.bulmaRow() %}
+
+                        {% call components.bulmaColumnAny(size='is-8 ', extraClass='{#u-space-t20#}') %}
+                            <noscript>
+                                <div class="alerts  alerts--danger ">
+                                    <strong>JavaScript is not enabled</strong> This means anything you enter or paste into the box below will appear without formatting. To use 'rich text editing' functions, like bold text or lists, you will need <a href="https://www.enable-javascript.com/" class="govuk-link" target="_blank">to enable JavaScript</a> in your device or browser's security settings. If you did not disable JavaScript, try refreshing this page in a few minutes.
+                                </div>
+                            </noscript>
+                            {#{{ components.textarea(options=selectOptions, label='Enter your case for support', labelBold=true, name='htmlTest', id='tinyMCEInput', hint='', group=true, rows='12', size='', value=exampleHTML, extraClass='', visuallyHidden=true) }}#}
+                            <div class="form-group ">
+                                <label class="govuk-visually-hidden" for="tinyMCEInput">Enter your review</label>
+                                <textarea class="form-control " name="review" id="tinyMCEInput" rows="12">{{ review }}</textarea>
+                                <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 2500 words remaining</span></p>
+                            </div>
+
+
+                            <p>
+                                <span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite"></span>
+                            </p>
+
+                        {%- endcall %}
+
+                        {% call components.bulmaColumnAny(size='is-4') %}
+
+                            <div class="govuk-related-items govuk-related-items--flush">
+                                {{ components.captionHeading(text='You must:', tag='h3', size='s', extraClass='u-space-t20') }}
+                            </div>
+
+                            <ul class="govuk-list govuk-list--bullet bull">
+                                <li>cover strengths and weaknesses</li>
+                                <li>cover all application criteria: the idea, importance, timeliness, approach, impact</li>
+                                <li>be objective, evidenced based and justified</li>
+                                <li>challenge the applicant constructively</li>
+                            </ul>
+
+                            {{ components.captionHeading(text='Do not:', tag='h3', size='s', extraClass='u-space-y5') }}
+
+                            <ul class="govuk-list govuk-list--bullet bull">
+                                <li>share personal information</li>
+                                <li>base on rumour or opinion</li>
+                            </ul>
+
+                        {%- endcall %}
+
+                    {%- endcall %}
+
+                    {#{% call components.bulmaRow() %}
+
+                        {% call components.bulmaColumnAny(size='is-8 ', extraClass='u-space-t45') %}
+
+                            <div class="govuk-form-group">
+                                <fieldset class="govuk-fieldset">
+                                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                        <h2 class="govuk-fieldset__heading">Overall score</h2>
+                                    </legend>
+
+                                    <p class="govuk-body">Select the grade most appropriate for this application.</p>
+
+                                    <details class="govuk-details" data-module="govuk-details">
+                                        <summary class="govuk-details__summary">
+                                            <span class="govuk-details__summary-text">Guidance for scoring a review</span>
+                                        </summary>
+                                        <div class="govuk-details__text">
+                                            <p>Use the explanations below to help you select a score and word that could go at the end of the following sentence:
+                                                'In my opinion this application is...'</p>
+                                            <ol class="govuk-list govuk-list--bullet">
+                                                <li><strong>Unviable</strong> – there is a rational or practical reason why the proposal in this application is unfeasible</li>
+                                                <li><strong>Unsuitable</strong> – this application is either not aligned to the requirements of the Opportunity or lacks soundness in its methodology</li>
+                                                <li><strong>Un-recommendable</strong> – the application may be viable, aligned to the Opportunity’s requirements and sound. Yet it lacks either focus or originality or the potential outcomes are not significant</li>
+                                                <li><strong>Viable</strong> – this application meets enough of the requirements, objectives and criteria stipulated in the Opportunity to be worthy of further consideration</li>
+                                                <li><strong>Suitable</strong> – the application meets all the requirements, objectives and criteria stipulated in the Opportunity</li>
+                                                <li><strong>Recommendable</strong> - the application exceeds all the requirements, objectives and criteria stipulated in the Opportunity with potentially significant outcomes</li>
+                                            </ol>
+                                        </div>
+                                    </details>
+
+
+                                    <div class="govuk-radios govuk-radios--small">
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="score1" name="rating" type="radio" value="1" {% if rating == 1 %} checked {% endif %}>
+                                            <label class="govuk-label govuk-radios__label" for="score1">1 - Unviable</label>
+                                        </div>
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="score2" name="rating" type="radio" value="2" {% if rating == 2 %} checked {% endif %}>
+                                            <label class="govuk-label govuk-radios__label" for="score2">2 - Unsuitable</label>
+                                        </div>
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="score3" name="rating" type="radio" value="3" {% if rating == 3 %} checked {% endif %}>
+                                            <label class="govuk-label govuk-radios__label" for="score3">3 - Un-recommendable </label>
+                                        </div>
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="score4" name="rating" type="radio" value="4" {% if rating == 4 %} checked {% endif %}>
+                                            <label class="govuk-label govuk-radios__label" for="score4">4 - Viable </label>
+                                        </div>
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="score5" name="rating" type="radio" value="5" {% if rating == 5 %} checked {% endif %}>
+                                            <label class="govuk-label govuk-radios__label" for="score5">5 - Suitable </label>
+                                        </div>
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="score6" name="rating" type="radio" value="6" {% if rating == 6 %} checked {% endif %}>
+                                            <label class="govuk-label govuk-radios__label" for="score6">6 - Recommendable </label>
+                                        </div>
+
+                                    </div>
+
+                                </fieldset>
+                            </div>
+
+
+                        {%- endcall %}
+                    {%- endcall %}#}
+
+                    {% call components.bulmaRow() %}
+
+                        {% call components.bulmaColumnAny(size='is-8 ', extraClass='u-space-t45') %}
+
+                            {{ components.captionHeading(text='Score this application', tag='h2', size='m', extraClass='u-space-y5') }}
+
+                            <p class="govuk-body">Using a scale from 1-10, where 1 equals 'very poor' or 'ill thought through' and 10 equates to 'excellent – no room for improvement', enter a number below.</p>
+
+
+                            <div class="govuk-form-group">
+                                <label class="govuk-label" for="width-2">Score</label>
+                                <input class="govuk-input govuk-input--width-2" id="width-2" name="rating" type="number" value="{{ rating }}">&nbsp; /10
+                            </div>
+
+                        {%- endcall %}
+                    {%- endcall %}
+
+                    {% call components.bulmaRow(extraClass='') %}
+
+                        {% call components.bulmaColumnAny(size='is-8 ', extraClass='u-space-t45') %}
+
+                            <div class="application-item">
+                                <div class="application-item__contents">
+                                    <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                        <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                            <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                        </legend>
+                                        <div class="govuk-checkboxes">
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if isComplete == 'on' %} checked{% endif %}>
+                                                <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+
+                            <div class="application-controls govuk-clearfix">
+                                <button type="submit" class="govuk-button application-controls__submit" name="submitButton" >Save and return</button>
+                            </div>
+
+                            {#<p class="govuk-body u-space-t10">
+                                <a href="/prototypes/peer-review-external/invite-reject" class="govuk-link">Unable to review this application?</a>
+                            </p>#}
+
+                        {%- endcall %}
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    {#<script>
+    </script>#}
+    <script type="text/javascript">
+        /* smooth-scroll.js v1.3.1 */
+        /*
+        n=0,
+        r=500,
+        i=15,
+        */
+        (function(e,t){
+            "use strict";
+            var n=0,
+                r=250,
+                i=15,
+                /*s=document.getElementsByTagName("a"),*/
+                s=document.getElementsByClassName('canScroll'),
+                o;
+            for(var u=0;u<s.length;u++){
+                o=s[u].attributes.href===t?null:s[u].attributes.href.nodeValue.toString();
+                if(o!==null&&o.length>1&&o.indexOf("#")!=-1){
+                    s[u].onclick=function(){
+                        var n,s=this.attributes.href.nodeValue.toString(),o=s.substr(0,s.indexOf("#")),u=s.substr(s.indexOf("#")+1);if(n=document.getElementById(u)){var l=(r-r%i)/i,c=f(),h=(a(n)-c)/l;if(e.history&&typeof e.history.pushState=="function")e.history.pushState({},t,o+"#"+u);for(var p=1;p<=l;p++){(function(){var t=h*p;setTimeout(function(){e.scrollTo(0,t+c)},i*p)})()}return false}}}}var a=function(e){var r=n*-1;while(e.offsetParent!=t&&e.offsetParent!=null){r+=e.offsetTop+(e.clientTop!=null?e.clientTop:0);e=e.offsetParent}return r};var f=function(){return e.pageYOffset!==t?e.pageYOffset:document.documentElement.scrollTop!==t?document.documentElement.scrollTop:document.body.scrollTop}})(window)
+    </script>
+
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        const counteroutputFoot = document.getElementById('wordCount');
+        let words = 0;
+        const limit = 2500;
+        let tinyMCEWordCount;
+
+        tinymce.init({
+            selector: '#tinyMCEInput',
+            height: 500,
+            {% if readOnly %} readonly : 1, {% endif %}
+            plugins: [
+                'advlist autolink lists link image preview anchor',
+                'media table paste  wordcount'
+            ],
+            setup: function(editor) {
+
+                editor.on('keyup', function(e) {
+                    tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                    console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                    words = tinyMCEWordCount;
+                    let remainder = limit - words;
+                    if (words < limit) {
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    } else {
+                        let overCount = words - limit;
+                        counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+                    }
+                });
+
+                editor.on('init', function(e) {
+                    setTimeout(function(){
+                        tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                        console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                        words = tinyMCEWordCount;
+                        let remainder = limit - words;
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    }, 500);
+                });
+            },
+            toolbar: 'formatselect | bold italic | bullist numlist | align | indent outdent | link | table |',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ],
+            menubar: false,
+        });
+    </script>
+{% endblock %}
