@@ -34,7 +34,7 @@ exports.ediConfirmPost = ediConfirmPost;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 let userData = {};
-userData = {
+/*userData = {
   religion: 'Any other religion',
   otherReligion: 'Jedi',
   ethnicity: 'White',
@@ -53,8 +53,8 @@ userData = {
   disabilities: 'Other disability',
   disabilitiesOther: 'Sore feet',
   orientation: 'Straight or Bisexual',
-  otherOrientation: ''
-};
+  otherOrientation: '',
+};*/
 
 const backToConfirm = {
   url: '/prototypes/edi/edi-confirm',

@@ -1,7 +1,7 @@
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 let userData = {};
-userData = {
+/*userData = {
   religion: 'Any other religion',
   otherReligion: 'Jedi',
   ethnicity: 'White',
@@ -21,7 +21,7 @@ userData = {
   disabilitiesOther: 'Sore feet',
   orientation: 'Straight or Bisexual',
   otherOrientation: '',
-};
+};*/
 
 const backToConfirm = {
   url: '/prototypes/edi/edi-confirm',
