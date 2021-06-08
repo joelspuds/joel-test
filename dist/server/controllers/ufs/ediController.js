@@ -391,6 +391,9 @@ function ediEthnicGroupPost(req, res) {
   }
 
   if (ethnicity === 'Another ethnic group' || ethnicity === 'Prefer not to say') {
+    userData.otherEthnicSubGroup = null;
+    userData.ethnicSubGroup = null;
+
     if (edit === 'true') {
       redirectURL = confirmURL;
     } else {
@@ -427,6 +430,7 @@ function ediEthnicSubPost(req, res) {
 
   userData.ethnicSubGroup = ethnicSubGroup;
   userData.otherEthnicSubGroup = otherEthnicSubGroup;
+  userData.otherEthnicGroup = null;
 
   let redirectURL = '/prototypes/edi/edi-sex';
 
