@@ -464,6 +464,8 @@ router.post('/prototypes/edi/edi-orientation', demosController.ediOrientationPos
 router.get('/prototypes/edi/edi-confirm', demosController.ediConfirmGet);
 router.post('/prototypes/edi/edi-confirm', demosController.ediConfirmPost);
 
+router.get('/prototypes/edi/edi-complete', demosController.ediCompleteGet);
+
 // Create route from view path
 router.get('*', miscController.viewFileRoute);
 export const allRoutes = router;

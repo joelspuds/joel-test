@@ -31,6 +31,7 @@ exports.ediOrientationGet = ediOrientationGet;
 exports.ediOrientationPost = ediOrientationPost;
 exports.ediConfirmGet = ediConfirmGet;
 exports.ediConfirmPost = ediConfirmPost;
+exports.ediCompleteGet = ediCompleteGet;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 let userData = {};
@@ -43,7 +44,7 @@ let userData = {};
   otherEthnicSubGroup: '',
   sex: 'Prefer not to say',
   gender: 'No',
-  otherGender: 'testing gender',
+  otherGender: 'non-binary',
   genderText: 'Different from assigned at birth',
   dobDay: '12',
   dobMonth: '3',
@@ -52,14 +53,15 @@ let userData = {};
   conditions: 'Yes',
   disabilities: 'Other disability',
   disabilitiesOther: 'Sore feet',
-  orientation: 'Straight or Bisexual',
+  orientation: 'Straight or heterosexual',
   otherOrientation: '',
 };*/
 
-const backToConfirm = {
+let backToConfirm = {
   url: '/prototypes/edi/edi-confirm',
   linkText: 'Back to confirm'
 };
+let confirmURL = '/prototypes/edi/edi-confirm';
 
 /* **************
 
@@ -206,7 +208,7 @@ function ediDOBPost(req, res) {
 
   let edit = req.param('edit');
   if (edit === 'true') {
-    redirectURL = '/prototypes/edi/edi-confirm';
+    redirectURL = confirmURL;
   }
 
   console.log(userData);
@@ -261,7 +263,7 @@ function ediConditionsPost(req, res) {
     userData.disabilitiesOther = null;
 
     if (edit === 'true') {
-      redirectURL = '/prototypes/edi/edi-confirm';
+      redirectURL = confirmURL;
     }
   }
 
@@ -302,7 +304,7 @@ function ediDisabilitiesPost(req, res) {
 
   let edit = req.param('edit');
   if (edit === 'true') {
-    redirectURL = '/prototypes/edi/edi-confirm';
+    redirectURL = confirmURL;
   }
 
   console.log(userData);
@@ -342,7 +344,7 @@ function ediReligionPost(req, res) {
 
   let edit = req.param('edit');
   if (edit === 'true') {
-    redirectURL = '/prototypes/edi/edi-confirm';
+    redirectURL = confirmURL;
   }
 
   userData.religion = religion;
@@ -389,7 +391,11 @@ function ediEthnicGroupPost(req, res) {
   }
 
   if (ethnicity === 'Another ethnic group' || ethnicity === 'Prefer not to say') {
-    redirectURL = '/prototypes/edi/edi-sex';
+    if (edit === 'true') {
+      redirectURL = confirmURL;
+    } else {
+      redirectURL = '/prototypes/edi/edi-sex';
+    }
   }
 
   console.log(userData);
@@ -426,7 +432,7 @@ function ediEthnicSubPost(req, res) {
 
   let edit = req.param('edit');
   if (edit === 'true') {
-    redirectURL = '/prototypes/edi/edi-confirm';
+    redirectURL = confirmURL;
   }
 
   console.log(userData);
@@ -462,7 +468,7 @@ function ediSexPost(req, res) {
 
   let edit = req.param('edit');
   if (edit === 'true') {
-    redirectURL = '/prototypes/edi/edi-confirm';
+    redirectURL = confirmURL;
   }
 
   console.log(userData);
@@ -516,7 +522,7 @@ function ediGenderPost(req, res) {
 
   let edit = req.param('edit');
   if (edit === 'true') {
-    redirectURL = '/prototypes/edi/edi-confirm';
+    redirectURL = confirmURL;
   }
 
   return res.redirect(redirectURL);
@@ -548,7 +554,7 @@ function ediOrientationPost(req, res) {
   userData.orientation = orientation;
   userData.otherOrientation = otherOrientation;
 
-  let redirectURL = '/prototypes/edi/edi-confirm';
+  let redirectURL = confirmURL;
 
   if (orientation !== 'Other sexual orientation') {
     userData.otherOrientation = null;
@@ -556,7 +562,7 @@ function ediOrientationPost(req, res) {
 
   let edit = req.param('edit');
   if (edit === 'true') {
-    redirectURL = '/prototypes/edi/edi-confirm';
+    redirectURL = confirmURL;
   }
 
   console.log(userData);
@@ -569,12 +575,9 @@ function ediOrientationPost(req, res) {
 
 *************** */
 function ediConfirmGet(req, res) {
-  let viewData, religion, wordMonth;
-
-  const ediDone = req.session.ediDone;
+  let viewData;
 
   viewData = {
-    ediDone,
     userData,
     backToConfirm
   };
@@ -586,7 +589,34 @@ function ediConfirmPost(req, res) {
   const {} = req.body;
   console.log(req.body);
 
-  let redirectURL = '/prototypes/edi/edi';
+  let redirectURL = '/prototypes/edi/edi-complete';
+
+  req.session.ediIsComplete = true;
+  backToConfirm = {
+    url: '/prototypes/edi/edi-complete',
+    linkText: 'Back to Equality, Diversity and Inclusion (EDI) profile'
+  };
+
+  confirmURL = '/prototypes/edi/edi-complete';
 
   return res.redirect(redirectURL);
+}
+
+/* **************
+
+    EDI complete
+
+*************** */
+function ediCompleteGet(req, res) {
+  let viewData;
+
+  let ediIsComplete = req.session.ediIsComplete;
+  req.session.ediIsComplete = null;
+
+  viewData = {
+    userData,
+    ediIsComplete
+  };
+
+  return res.render('prototypes/edi/edi-complete', viewData);
 }
