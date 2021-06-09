@@ -121,14 +121,14 @@
 
                      <div class="application-controls govuk-clearfix">
 
-                         <div class="govuk-inset-text">
+                         <p class="govuk-body">
                              The Lead Applicant has sent you their work to be reviewed and cannot work on it further until you return it to them. If they have marked all sections as complete, you can either return it to them to edit, or submit it to UKRI for assessment.
-                         </div>
+                         </p>
                          {% call components.form(action='/prototypes/multi-user-application2/', method='POST',name='submitApplication') %}
 
-                             <button type="submit" class="govuk-button application-controls__submit" name="submitButton" {% if progressPercentage != 100 %}disabled{% endif %} value="submitToUKRI">Submit to UKRI</button>
+                             <button type="submit" class="govuk-button application-controls__submit" name="submitButton" {% if progressPercentage != 100 %}disabled{% endif %} value="submitToUKRI">Submit aplication</button>
 
-                             <button type="submit" class="govuk-button govuk-button--secondary application-controls__submit u-space-x20" name="submitButton"  value="stopShare">Return to Lead Applicant</button>
+                             <button type="submit" class="govuk-button govuk-button--secondary application-controls__submit u-space-x20" name="submitButton"  value="stopShare">Return applicant</button>
                          {%- endcall %}
                      </div>
 
@@ -165,7 +165,7 @@
                 <div class="progress-meter__text progress-meter__text--back" role="progress-bar" aria-valuenow="27%"><span class="govuk-visually-hidden">Your application is</span> {{ progressPercentage }}% complete</div>
                 <div class="progress-meter__clipper" aria-hidden="true" style="clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%); -webkit-clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%)">
                     {% if progressPercentage == 100 %}
-                        <div class="progress-meter__text progress-meter__text--front"><strong>Ready to submit</strong></div>
+                        <div class="progress-meter__text progress-meter__text--front"><strong>100% complete</strong></div>
                     {% else %}
                         <div class="progress-meter__text progress-meter__text--front">{{ progressPercentage }}% complete</div>
                     {% endif %}

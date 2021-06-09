@@ -42,11 +42,12 @@ export function ediIndexGet(req, res) {
     req.session.destroy();
     userData = {};
   }
+  console.log('clearSession = ' + clearSession);
+  console.log('userData = ');
+  console.log(userData);
 
-  const ediDone = req.session.ediDone;
-  viewData = {
-    ediDone,
-  };
+  /*const ediDone = req.session.ediDone;*/
+  viewData = {};
 
   return res.render('prototypes/edi/index', viewData);
 }
@@ -152,6 +153,7 @@ export function ediDOBGet(req, res) {
     ediDone,
     userData,
     edit,
+    backToConfirm,
   };
 
   return res.render('prototypes/edi/edi-dob', viewData);

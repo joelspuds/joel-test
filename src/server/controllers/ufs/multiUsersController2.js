@@ -2,17 +2,83 @@ const untitledProjectName = 'Untitled project';
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 
+/*
+
+temp-store2.json
+
+
+[
+  {
+    "placeholder": "meh",
+    "userType": null,
+    "applicationStatus": "startShare",
+    "detailsInput": "<p>This is some dummy content</p>",
+    "projectName": "Really cool project title befitting of this awesome opportunity",
+    "caseForSupportNotes": "<p>This is some dummy content</p>",
+    "directlyIncurredCost": "0",
+    "directlyAllocatedCost": "0",
+    "indirectCost": "0",
+    "exceptionCost": "0",
+    "resourcesAndCostsIsComplete": "on",
+    "caseForSupportIsComplete": "on",
+    "detailsIsComplete": "on",
+    "applicantsIsComplete": "on",
+    "justificationIsComplete": "on"
+  }
+]
+
+
+
+* */
+
 // ************************************************************************
 //
 //        MMO index
 //
 // ************************************************************************
 export function multiUsers2Get(req, res) {
-  let viewData;
-  viewData = {};
+  let viewData, currentlyEditableBy, applicationStatus, userType;
+
+  let editableBy = req.param('editableBy');
+  if (editableBy === 'applicant') {
+    currentlyEditableBy = 'Applicant';
+    applicationStatus = 'stopShare';
+    userType = 'applicant';
+    req.session.userType = 'applicant';
+  } else if (editableBy === 'researchOffice') {
+    currentlyEditableBy = 'Research Office';
+    applicationStatus = 'startShare';
+    userType = 'office';
+    req.session.userType = 'office';
+  }
+
+  if (applicationStatus) {
+    const fs = require('fs');
+    const dataFileJSON = './temp-store2.json';
+    fs.readFile(dataFileJSON, 'utf8', (err, data) => {
+      if (err) {
+        console.log('Error reading file from disk: ${err}');
+      } else {
+        // parse JSON string to JSON object
+        const databases = JSON.parse(data);
+        databases[0].applicationStatus = applicationStatus;
+        databases[0].userType = userType;
+        fs.writeFile(dataFileJSON, JSON.stringify(databases, null, 2), err => {
+          if (err) {
+            console.log(`Error writing file: ${err}`);
+          }
+        });
+      }
+    });
+  }
+
+  console.log(currentlyEditableBy);
 
   req.session.journey = 'multiUser';
 
+  viewData = {
+    currentlyEditableBy,
+  };
   return res.render('prototypes/multi-users2/index', viewData);
 }
 

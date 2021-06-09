@@ -16,7 +16,15 @@
 {% set edit = edit if edit %}
 {% set userData = userData if userData %}
 
-{% set backLinkContents =  [{url:'/prototypes/edi/profile', text:'Back to account settings'}] %}
+
+{% set backToConfirm = backToConfirm if backToConfirm %}
+{% if edit === 'true' %}
+    {% set backLinkContents =  [{url:backToConfirm.url, text:backToConfirm.linkText}] %}
+{% else %}
+    {% set backLinkContents =  [{url:'/prototypes/edi/profile', text:'Back to account settings'}] %}
+{% endif %}
+
+
 
 {% block content %}
 

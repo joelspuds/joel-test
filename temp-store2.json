@@ -1,11 +1,11 @@
 [
   {
     "placeholder": "meh",
-    "userType": null,
+    "userType": "office",
     "applicationStatus": "startShare",
-    "detailsInput": "<p>afwefwe f</p>",
+    "detailsInput": "<p>This is some dummy content</p>",
     "projectName": "Really cool project title befitting of this awesome opportunity",
-    "caseForSupportNotes": "<p>e fwe fwefwef</p>",
+    "caseForSupportNotes": "<p>This is some dummy content</p>",
     "directlyIncurredCost": "0",
     "directlyAllocatedCost": "0",
     "indirectCost": "0",
