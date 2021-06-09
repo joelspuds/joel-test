@@ -481,7 +481,8 @@ export function ediGenderPost(req, res) {
 
   if (gender === 'Yes') {
     userData.genderText = 'Same as assigned at birth';
-  } else {
+  }
+  if (gender === 'No') {
     userData.genderText = 'Different from assigned at birth';
   }
 
