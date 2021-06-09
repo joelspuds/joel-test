@@ -1,0 +1,79 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{#{% set bodyClass = 'new-gds' %}#}
+{% set pageTitle = 'Application submitted' + ' - UKRI Funding service' %}
+{% set projectName = projectName if projectName %}
+
+{% set backLinkContents =  [{url:'/prototypes/multi-user-application2/opportunity', text:'Back to applications'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Application submitted', caption=projectName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <div class="alerts  alerts--success ">
+                Application submitted on {{ 'dataAndTime' | dateAndTime() }}
+            </div>
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#">Submission details</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/multi-user-application2/read">Read</a>
+                    </li>
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+         {% call components.bulmaColumnAny(size='is-7', extraClass='') %}
+
+             <h2 class="govuk-heading-s">What happens next?</h2>
+
+             <p class="govuk-body">Your application has been received and, if eligible, will be sent for assessment by AHRC. They will create shortlists for consideration at a joint panel meeting, after which 60 candidates will be invited to attend workshops.</p>
+             <p class="govuk-body">All applicants will be informed if they have, or have not been selected for the workshop stage by email. For more information about the process, refer back to the <a href="#" class="govuk-link">AHRC research networking scheme listing on the AHRC website</a>.</p>
+
+             <h2 class="govuk-heading-s">Notification</h2>
+
+             <p class="govuk-body">We will inform you of our decision by email.</p>
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
+
+            <div class="application-data">
+                <dl class="application-data__list">
+                    <dt class="application-data__key">Funding Opportunity:</dt>
+                    <dd class="application-data__value"><a href="/prototypes/multi-user-application2/opportunity" class="govuk-link" target="_blank">OPP334: AHRC research networking scheme</a></dd>
+
+                    <dt class="application-data__key">Application reference:</dt>
+                    <dd class="application-data__value">APP00171</dd>
+
+                    <dt class="application-data__key">Application deadline:</dt>
+                    <dd class="application-data__value">14th April 2021</dd>
+                    <dt class="application-data__key">Funder:</dt>
+                    <dd class="application-data__value">AHRC</dd>
+                </dl>
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}

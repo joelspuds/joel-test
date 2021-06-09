@@ -232,6 +232,30 @@ Object.keys(_multiUsersController).forEach(function (key) {
   });
 });
 
+var _multiUserApplicationController2 = require('./multiUserApplicationController2');
+
+Object.keys(_multiUserApplicationController2).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _multiUserApplicationController2[key];
+    }
+  });
+});
+
+var _multiUsersController2 = require('./multiUsersController2');
+
+Object.keys(_multiUsersController2).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _multiUsersController2[key];
+    }
+  });
+});
+
 var _peerReviewController = require('./peerReviewController');
 
 Object.keys(_peerReviewController).forEach(function (key) {

@@ -17,6 +17,8 @@ export * from './awardsController';
 export * from './mmoController';
 export * from './multiUserApplicationController';
 export * from './multiUsersController';
+export * from './multiUserApplicationController2';
+export * from './multiUsersController2';
 export * from './peerReviewController';
 export * from './peerReviewResponseController';
 export * from './externalUsersController';

@@ -40,6 +40,7 @@ export function ediIndexGet(req, res) {
   let clearSession = req.param('clearSession');
   if (clearSession === 'true') {
     req.session.destroy();
+    userData = {};
   }
 
   const ediDone = req.session.ediDone;
@@ -356,7 +357,13 @@ export function ediEthnicGroupPost(req, res) {
     redirectURL = '/prototypes/edi/edi-ethnic-sub-group?edit=true';
   }
 
-  if (ethnicity === 'Another ethnic group' || ethnicity === 'Prefer not to say') {
+  if (
+    ethnicity === 'Another ethnic group' ||
+    ethnicity === 'Prefer not to say' ||
+    ethnicity === '' ||
+    ethnicity === undefined ||
+    ethnicity === null
+  ) {
     userData.otherEthnicSubGroup = null;
     userData.ethnicSubGroup = null;
 

@@ -1,0 +1,27 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set pageTitle = 'Populate data' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% set backLinkContents =  [{url:'/prototypes/multi-user-application2/opportunity', text:'Back to Opportunity'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Populate data') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+            <p class="govuk-body">
+                Data has been populated: <a href="/prototypes/multi-user-application2/" class="govuk-link">Complete application overview page</a>
+            </p>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}

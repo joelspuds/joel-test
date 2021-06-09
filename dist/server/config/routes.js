@@ -306,20 +306,9 @@ router.get('/prototypes/champion/data-display', demosController.mmoDataTestDispl
 * *************************************************************** */
 router.get('/prototypes/multi-users', demosController.multiUsersGet);
 router.post('/prototypes/multi-users', demosController.multiUsersPost);
-/*router.get('/prototypes/multi-user/sign-in', demosController.multiUsersSignInGet);
-router.post('/prototypes/multi-user/sign-in', demosController.multiUsersSignInPost);*/
-
 router.get('/prototypes/multi-users/opportunity', demosController.multiUsersOpportunityGet);
-// router.post('/prototypes/multi-users/opportunity', demosController.multiUsersSignInPost);
-
 router.get('/prototypes/multi-users/home', demosController.multiUsersROHomeGet);
 router.get('/prototypes/multi-users/applications-1', demosController.multiUsersROApplicationsListGet);
-// router.post('/prototypes/multi-users/home', demosController.multiUsersROHomePost);
-
-/*router.get('/prototypes/champion/confirm', demosController.multiUsersConfirmGet);
-router.post('/prototypes/champion/confirm', demosController.multiUsersConfirmPost);
-router.get('/prototypes/champion/create-password', demosController.multiUsersCreatePasswordGet);
-router.post('/prototypes/champion/create-password', demosController.multiUsersCreatePasswordPost);*/
 router.get('/prototypes/multi-users/data-test', demosController.multiUsersDataTestGet);
 router.post('/prototypes/multi-users/data-test', demosController.multiUsersDataTestPost);
 router.get('/prototypes/multi-users/data-display', demosController.multiUsersDataTestDisplayGet);
@@ -346,18 +335,6 @@ router.post('/prototypes/multi-user-application/justification-of-resources', dem
 router.get('/prototypes/multi-user-application/submitted', demosController.appV3SubmittedGet);
 router.get('/prototypes/multi-user-application/read', demosController.appV3ReadGet);
 
-/*
-router.get('/prototypes/multi-user-application/eligibility-applicant', demosController.appV3EligibilityApplicantGet);
-router.post('/prototypes/multi-user-application/eligibility-applicant', demosController.appV3EligibilityApplicantPost);
-router.get('/prototypes/multi-user-application/eligibility-research-area', demosController.appV3EligibilityResearchAreaGet);
-router.post('/prototypes/multi-user-application/eligibility-research-area', demosController.appV3EligibilityResearchAreaPost);
-router.get('/prototypes/multi-user-application/current-research-activity', demosController.appV3CurrentResearchActivityGet);
-router.post('/prototypes/multi-user-application/current-research-activity', demosController.appV3CurrentResearchActivityPost);
-router.get('/prototypes/multi-user-application/research-history', demosController.appV3ResearchHistoryGet);
-router.post('/prototypes/multi-user-application/research-history', demosController.appV3ResearchHistoryPost);
-*/
-/*router.get('/prototypes/multi-user-application/review', demosController.appV3ReviewGet);
-router.post('/prototypes/multi-user-application/review', demosController.appV3ReviewPost);*/
 router.get('/prototypes/multi-user-application/opportunity', demosController.appV3AHRCOpportunityGet);
 router.post('/prototypes/multi-user-application/opportunity', demosController.appV3AHRCOpportunityPost);
 
@@ -485,6 +462,45 @@ router.get('/prototypes/edi/edi-confirm', demosController.ediConfirmGet);
 router.post('/prototypes/edi/edi-confirm', demosController.ediConfirmPost);
 
 router.get('/prototypes/edi/edi-complete', demosController.ediCompleteGet);
+
+/* *************************************************************** *
+
+  MMO stuff
+
+* *************************************************************** */
+router.get('/prototypes/multi-users2', demosController.multiUsers2Get);
+router.post('/prototypes/multi-users2', demosController.multiUsers2Post);
+router.get('/prototypes/multi-users2/opportunity', demosController.multiUsers2OpportunityGet);
+router.get('/prototypes/multi-users2/home', demosController.multiUsers2ROHomeGet);
+router.get('/prototypes/multi-users2/applications-1', demosController.multiUsers2ROApplicationsListGet);
+router.get('/prototypes/multi-users2/data-test', demosController.multiUsers2DataTestGet);
+router.post('/prototypes/multi-users2/data-test', demosController.multiUsers2DataTestPost);
+router.get('/prototypes/multi-users2/data-display', demosController.multiUsers2DataTestDisplayGet);
+
+/* *************************************************************** *
+
+  Multi-user applications, to work with MMO stuff above
+
+* *************************************************************** */
+router.get('/prototypes/multi-user-application2', demosController.appV3_2tinyMCEApplicationIndexGet);
+router.post('/prototypes/multi-user-application2', demosController.appV3_2tinyMCEApplicationIndexPost);
+router.get('/prototypes/multi-user-application2/case-for-support', demosController.appV3_2caseForSupportGet);
+router.post('/prototypes/multi-user-application2/case-for-support', demosController.appV3_2caseForSupportPost);
+router.get('/prototypes/multi-user-application2/view', demosController.appV3_2tinyMCEApplicationViewGet);
+router.get('/prototypes/multi-user-application2/admin-view', demosController.appV3_2AdminViewGet);
+router.get('/prototypes/multi-user-application2/details', demosController.appV3_2DetailsGet);
+router.post('/prototypes/multi-user-application2/details', demosController.appV3_2DetailsPost);
+router.get('/prototypes/multi-user-application2/resources-and-costs', demosController.appV3_2ResourcesAndCostsGet);
+router.post('/prototypes/multi-user-application2/resources-and-costs', demosController.appV3_2ResourcesAndCostsPost);
+router.get('/prototypes/multi-user-application2/applicants', demosController.appV3_2ApplicantsGet);
+router.post('/prototypes/multi-user-application2/applicants', demosController.appV3_2ApplicantsPost);
+router.get('/prototypes/multi-user-application2/justification-of-resources', demosController.appV3_2JustificationGet);
+router.post('/prototypes/multi-user-application2/justification-of-resources', demosController.appV3_2JustificationPost);
+router.get('/prototypes/multi-user-application2/submitted', demosController.appV3_2SubmittedGet);
+router.get('/prototypes/multi-user-application2/read', demosController.appV3_2ReadGet);
+
+router.get('/prototypes/multi-user-application2/opportunity', demosController.appV3_2AHRCOpportunityGet);
+router.post('/prototypes/multi-user-application2/opportunity', demosController.appV3_2AHRCOpportunityPost);
 
 // Create route from view path
 router.get('*', miscController.viewFileRoute);

@@ -1,0 +1,46 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set pageTitle = 'Data test' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set dataStore = dataStore if dataStore %}
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Data test', caption=projectName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% if isComplete %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                {{ components.alerts(text='This has been marked as complete', type='info')}}
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+           <p class="govuk-body">
+               <strong>First name:</strong> {{ firstName if firstName else 'none entered' }}
+           </p>
+
+            <p class="govuk-body">
+                <strong>Last name:</strong> {{ lastName if lastName else 'none entered' }}
+            </p>
+
+            <p class="govuk-body">
+                <strong>Is marked complete:</strong>  {{ 'true' if isComplete else 'false' }}
+            </p>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+{% endblock %}
