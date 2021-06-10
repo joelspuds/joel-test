@@ -48,7 +48,9 @@
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Conditions, illnesses or disabilities</dt>
                             <dd class="govuk-summary-list__value">
-                                {{ userData.conditions }} {% if userData.disabilities %} - {{ userData.disabilities }}{% endif %}{% if userData.disabilitiesOther %}, {{ userData.disabilitiesOther }} {% endif %}
+                                {{ userData.conditions }}
+                                {% if userData.disabilities %}<br>{{ userData.disabilities }}{% endif %}
+                                {% if userData.disabilitiesOther %}<br>{{ userData.disabilitiesOther }} {% endif %}
                             </dd>
                             <dd class="govuk-summary-list__actions">
                                 <a class="govuk-link" href="/prototypes/edi/edi-conditions?edit=true">Change<span class="govuk-visually-hidden"> conditions, illnesses or disabilities</span></a>
@@ -57,7 +59,8 @@
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Religion</dt>
                             <dd class="govuk-summary-list__value">
-                                {{ userData.religion }}{% if userData.otherReligion %} - {{ userData.otherReligion }}  {% endif %}
+                                {{ userData.religion }}
+                                {% if userData.otherReligion %}<br>{{ userData.otherReligion }}  {% endif %}
                             </dd>
                             <dd class="govuk-summary-list__actions">
                                 <a class="govuk-link" href="/prototypes/edi/edi-religion?edit=true">Change<span class="govuk-visually-hidden"> religion</span></a>
@@ -66,9 +69,10 @@
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Ethnic group</dt>
                             <dd class="govuk-summary-list__value">
-                                {{ userData.ethnicity }}{% if userData.otherEthnicGroup %} - {{ userData.otherEthnicGroup }} {% endif %}
-                                {% if userData.ethnicSubGroup %}, {{ userData.ethnicSubGroup }} {% endif %}
-                                {% if userData.otherEthnicSubGroup %} - {{ userData.otherEthnicSubGroup }} {% endif %}
+                                {{ userData.ethnicity }}
+                                {% if userData.otherEthnicGroup %}<br>{{ userData.otherEthnicGroup }} {% endif %}
+                                {% if userData.ethnicSubGroup %}<br>{{ userData.ethnicSubGroup }} {% endif %}
+                                {% if userData.otherEthnicSubGroup %}<br>{{ userData.otherEthnicSubGroup }} {% endif %}
                             </dd>
                             <dd class="govuk-summary-list__actions">
                                 <a class="govuk-link" href="/prototypes/edi/edi-ethnic-group?edit=true">Change<span class="govuk-visually-hidden"> ethnic group</span></a>
@@ -86,7 +90,8 @@
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Gender</dt>
                             <dd class="govuk-summary-list__value">
-                                {{ userData.genderText }} {% if userData.otherGender %} - {{ userData.otherGender }}  {% endif %}
+                                {{ userData.genderText }}
+                                {% if userData.otherGender %}<br>{{ userData.otherGender }}  {% endif %}
                             </dd>
                             <dd class="govuk-summary-list__actions">
                                 <a class="govuk-link" href="/prototypes/edi/edi-gender?edit=true">Change<span class="govuk-visually-hidden"> gender</span></a>
@@ -95,7 +100,8 @@
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Sexual orientation</dt>
                             <dd class="govuk-summary-list__value">
-                                {{ userData.orientation }} {% if userData.otherOrientation %} -  {{ userData.otherOrientation }} {% endif %}
+                                {{ userData.orientation }}
+                                {% if userData.otherOrientation %}<br>{{ userData.otherOrientation }} {% endif %}
                             </dd>
                             <dd class="govuk-summary-list__actions">
                                 <a class="govuk-link" href="/prototypes/edi/edi-orientation?edit=true">Change<span class="govuk-visually-hidden"> sexual orientation</span></a>
