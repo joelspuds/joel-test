@@ -270,6 +270,15 @@ function ediConditionsPost(req, res) {
     }
   }
 
+  if (conditions === 'Prefer not to say') {
+    userData.disabilities = null;
+    userData.disabilitiesOther = null;
+
+    if (edit === 'true') {
+      redirectURL = confirmURL;
+    }
+  }
+
   console.log(userData);
   return res.redirect(redirectURL);
 }
