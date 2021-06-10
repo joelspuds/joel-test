@@ -23,3 +23,4 @@ export * from './peerReviewController';
 export * from './peerReviewResponseController';
 export * from './externalUsersController';
 export * from './ediController';
+export * from './submissionController';

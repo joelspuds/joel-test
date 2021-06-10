@@ -482,6 +482,16 @@ router.get('/prototypes/multi-user-application2/read', demosController.appV3_2Re
 router.get('/prototypes/multi-user-application2/opportunity', demosController.appV3_2AHRCOpportunityGet);
 router.post('/prototypes/multi-user-application2/opportunity', demosController.appV3_2AHRCOpportunityPost);
 
+/* *************************************************************** *
+
+  MSubmission control
+
+* *************************************************************** */
+router.get('/prototypes/submission-control', demosController.submissionIndexGet);
+router.post('/prototypes/submission-control', demosController.submissionIndexPost);
+router.get('/prototypes/submission-control/application-overview', demosController.submissionApplicationOverviewGet);
+router.post('/prototypes/submission-control/application-overview', demosController.submissionApplicationOverviewPost);
+
 // Create route from view path
 router.get('*', miscController.viewFileRoute);
 export const allRoutes = router;

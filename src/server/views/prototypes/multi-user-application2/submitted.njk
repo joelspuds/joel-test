@@ -9,19 +9,29 @@
 {% block content %}
 
     {% call components.bulmaRow() %}
-        {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Application submitted', caption=projectName) }}
-        {%- endcall %}
-    {%- endcall %}
-
-    {% call components.bulmaRow() %}
 
         {% call components.bulmaColumnAny(size='is-full') %}
-            <div class="alerts  alerts--success ">
-                Application submitted on {{ 'dataAndTime' | dateAndTime() }}
+            <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                        Success
+                    </h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <h3 class="govuk-notification-banner__heading">
+                        Training outcome recorded and trainee withdrawn
+                    </h3>
+                    <p class="govuk-body">Contact <a class="govuk-notification-banner__link" href="#">example@department.gov.uk</a> if you think there's a problem.</p>
+                </div>
             </div>
         {%- endcall %}
 
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Application submitted', caption=projectName) }}
+        {%- endcall %}
     {%- endcall %}
 
     {% call components.bulmaRow() %}

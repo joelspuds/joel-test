@@ -14,6 +14,7 @@
     "caseForSupportIsComplete": "on",
     "detailsIsComplete": "on",
     "applicantsIsComplete": "on",
-    "justificationIsComplete": "on"
+    "justificationIsComplete": "on",
+    "hasBeenSubmitted": "true"
   }
 ]

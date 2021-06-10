@@ -303,3 +303,15 @@ Object.keys(_ediController).forEach(function (key) {
     }
   });
 });
+
+var _submissionController = require('./submissionController');
+
+Object.keys(_submissionController).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _submissionController[key];
+    }
+  });
+});

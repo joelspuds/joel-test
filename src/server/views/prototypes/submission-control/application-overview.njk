@@ -17,11 +17,10 @@
 {% set isShared = isShared if isShared %}
 {% set applicationStatus = applicationStatus if applicationStatus %}
 
-{% if userType == 'office' %}
-    {% set backLinkContents =  [{url:'/prototypes/multi-users/applications-1', text:'Back to applications'}] %}
-{% else %}
-    {% set backLinkContents =  [{url:'/prototypes/multi-user-application2/opportunity', text:'Back to Opportunity'}] %}
-{% endif %}
+
+{#{% set backLinkContents =  [{url:'/prototypes/multi-users/applications-1', text:'Back to applications'}] %}#}
+{% set backLinkContents =  [{url:'#', text:'Back to applications'}] %}
+
 
 {% block content %}
 
@@ -131,8 +130,6 @@
                              <button type="submit" class="govuk-button govuk-button--secondary application-controls__submit u-space-x20" name="submitButton"  value="stopShare">Return applicant</button>
                          {%- endcall %}
                      </div>
-
-
 
                   {% else %}
 

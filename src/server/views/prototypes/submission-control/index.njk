@@ -1,0 +1,88 @@
+{% extends 'layouts/default.layout.njk' %}
+
+{% set pageTitle = 'Multiple users' %}
+
+{% set currentlyEditableBy = currentlyEditableBy if currentlyEditableBy else 'not set' %}
+
+{% block content %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnFull() %}
+
+            {{ components.pageHeading(heading='Start your research session') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST', name='submitApplication') %}
+
+        {% call components.gridRow() %}
+            {% call components.columnHalf(size='is-8') %}
+
+                {{ components.captionHeading(text='Applicant journeys', tag='h2', size='m') }}
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        <a href="/prototypes/submission-control/start-email" class="govuk-link">Start email</a>
+                    </li>
+                </ul>
+
+
+
+              {#  {{ components.captionHeading(text='Set sharing status', tag='h2', size='m') }}
+                <p class="govuk-body">
+                    Currently editable by <strong>{{ currentlyEditableBy }}</strong>
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        <a href="?editableBy=applicant" class="govuk-link">Editable by applicant</a>
+                    </li>
+                    <li>
+                        <a href="?editableBy=researchOffice" class="govuk-link">Editable by Research Office</a>
+                    </li>
+                </ul>
+
+                #}{#{% if currentlyEditableBy %}#}{#
+
+                {% if currentlyEditableBy === 'Research Office' %}
+
+                    {{ components.captionHeading(text='Research Office journeys', tag='h2', size='m') }}
+
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>
+                            <a href="/prototypes/multi-user-application2/" class="govuk-link">Application overview</a>
+                        </li>
+                    </ul>
+
+                    #}{#{% endif %}#}{#
+
+                {% elseif currentlyEditableBy === 'Applicant' %}
+
+                    {{ components.captionHeading(text='Applicant journeys', tag='h2', size='m') }}
+
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>
+                            <a href="/prototypes/multi-users2/start-email" class="govuk-link">Start email</a>
+                        </li>
+                    </ul>
+
+                    #}{#{% endif %}#}{#
+
+                {% else %}
+
+                    <p class="govuk-body">Choose a sharing status to see which journeys are available.</p>
+
+                {% endif %}
+#}
+                {#{{ components.button(text='Confirm', extraClass="application-controls__submit", name='saveAndComplete')}}#}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+{% endblock %}

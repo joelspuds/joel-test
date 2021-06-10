@@ -62,6 +62,12 @@
     @include govuk-font($size: 19);
     clear: both;
   }
+
+  &--paired-buttons {
+    .govuk-button {
+      float: left;
+    }
+  }
 }
 
 .prototype-button-wrapper {
