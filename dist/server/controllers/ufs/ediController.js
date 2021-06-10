@@ -35,6 +35,7 @@ exports.ediCompleteGet = ediCompleteGet;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 let userData = {};
+/*
 userData = {
   religion: 'Any other religion',
   otherReligion: 'Jedi',
@@ -54,8 +55,9 @@ userData = {
   disabilities: 'Other disability',
   disabilitiesOther: 'Sore feet',
   orientation: 'Straight or heterosexual',
-  otherOrientation: ''
+  otherOrientation: '',
 };
+*/
 
 let backToConfirm = {
   url: '/prototypes/edi/edi-confirm',
