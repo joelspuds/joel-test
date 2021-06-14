@@ -93,6 +93,8 @@
                         {% if edit == 'true'  %}
                             {{ components.button(text='Save changes', extraClass="application-controls__submit")}}
                         {% else %}
+
+                            <p class="govuk-body">The next question asks about your gender.</p>
                             {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
                         {% endif %}
                     </div>

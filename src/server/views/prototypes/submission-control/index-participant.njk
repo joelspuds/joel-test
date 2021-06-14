@@ -1,0 +1,66 @@
+{% extends 'layouts/default.layout.njk' %}
+
+{% set pageTitle = 'Multiple users' %}
+
+{% set currentlyEditableBy = currentlyEditableBy if currentlyEditableBy else 'not set' %}
+
+{% block content %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnFull() %}
+
+            {{ components.pageHeading(heading='Directory') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST', name='submitApplication') %}
+
+        {% call components.gridRow() %}
+            {% call components.columnHalf(size='is-8') %}
+
+
+
+                {{ components.captionHeading(text='Applicant journeys', tag='h2', size='m') }}
+
+                <ol class="govuk-list govuk-list--number">
+                    <li>
+                        <a href="/prototypes/submission-control/applicant/applications-list" class="govuk-link">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/submission-control/application-returned-email" class="govuk-link">Link 2A</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/submission-control/applicant/applications-list?returned=true" class="govuk-link">Link 2B</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/submission-control/application-submitted-to-UKRI-email" class="govuk-link">Link 3</a>
+
+                    </li>
+                </ol>
+
+                {{ components.captionHeading(text='Research office journeys', tag='h2', size='m') }}
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        <a href="/prototypes/submission-control/start-email" class="govuk-link">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="/prototypes/submission-control/applications-list" class="govuk-link">Link 2</a>
+                    </li>
+                </ul>
+
+                <p class="govuk-body">
+                    <a href="/prototypes/submission-control/?clearSession=true&from=participant" class="govuk-link">Clear data</a>
+                </p>
+
+            {%- endcall %}
+
+
+        {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+{% endblock %}

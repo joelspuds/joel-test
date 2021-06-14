@@ -1,0 +1,116 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set pageTitle = 'Application' + ' - UKRI Funding service' %}
+{% set storedSpeakerNotes = storedSpeakerNotes if storedSpeakerNotes %}
+{% set projectName = projectName if projectName %}
+{% set projectDetails = projectDetails if projectDetails %}
+
+{% set progressPercentage = progressPercentage if progressPercentage %}
+{% set reverseProgressPercentage = reverseProgressPercentage if reverseProgressPercentage %}
+
+{# new stuff for mutliuser #}
+{% set userType = userType if userType %}
+{% set isShared = isShared if isShared %}
+{% set applicationStatus = applicationStatus if applicationStatus %}
+
+{% set hasBeenSubmitted = true %}
+
+{% set backLinkContents =  [{url:'#', text:'Back to applications'}] %}
+
+
+{% block content %}
+
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <h3 class="govuk-notification-banner__heading">
+                        Application submitted {{ 'dataAndTime' | dateAndTime() }}.
+                    </h3>
+                </div>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Application', caption='APP171: Bio-detoxification of Ricin in castor bean') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#">Write application</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                       <a class="govuk-tabs__tab" href="/prototypes/submission-control/view-3">Read application</a>
+
+                    </li>
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                {{ components.captionHeading(text='What happens next?', tag='h2', size='s') }}
+
+                <p class="govuk-body">Your application has been received and, if eligible, will be sent for assessment. Assessors will create shortlists for consideration at a joint panel meeting in November.</p>
+
+                <p class="govuk-body">All applicants will be informed if they have, or have not been selected for the next stage by email between 7-11 December 2021. </p>
+                <h2 class="govuk-heading-s">Notification</h2>
+                <p class="govuk-body">We will inform you of our decision by email.</p>
+                {{ components.captionHeading(text='Can you spare 2 minutes to share your thoughts?', tag='h2', size='s') }}
+                <p class="govuk-body">To improve the new UKRI Funding Service, we would really appreciate how you found using it.</p>
+                <p class="govuk-body"><a href="#" class="govuk-button">Provide feedback</a></p>
+            {%- endcall %}
+
+
+            {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
+
+                <div class="application-data">
+                    <dl class="application-data__list">
+                        <dt class="application-data__key">Funding Opportunity:</dt>
+                        <dd class="application-data__value"><a href="#" class="govuk-link" target="_blank">OPP591: Development of a Novel Inhibitor of Ricin</a></dd>
+
+                        <dt class="application-data__key">Application reference:</dt>
+                        <dd class="application-data__value">APP171</dd>
+
+                        <dt class="application-data__key">Application deadline:</dt>
+                        <dd class="application-data__value">4 July 2021</dd>
+                        <dt class="application-data__key">Funder:</dt>
+                        <dd class="application-data__value">AHRC</dd>
+                    </dl>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+      Zepto(function($){
+        $(window).on('load', function() {
+          console.log('window loaded');
+          $('.govuk-tabs__tab').attr('tabindex', '');
+        });
+      });
+    </script>
+{% endblock %}
+

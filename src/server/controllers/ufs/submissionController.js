@@ -26,10 +26,10 @@ let journeyDataApplicant = {
   detailsIsComplete: true,
   detailsReadOnly: false,
   projectName: 'APP171: Bio-detoxification of Ricin in castor bean',
-  detailsInput: '<p>This is my content for Details and Summary</p>',
+  detailsInput: '<p>Details and Summary dummy content</p>',
   caseForSupportIsComplete: false,
   caseForSupportReadOnly: false,
-  caseForSupportNotes: '<p>This is my Case for Support content</p>',
+  caseForSupportNotes: '<p>Case for Support dummy content</p>',
   directlyIncurredCost: '25000',
   directlyAllocatedCost: '25000',
   indirectCost: '25000',
@@ -38,7 +38,7 @@ let journeyDataApplicant = {
   resourcesAndCostsReadOnly: false,
   justificationIsComplete: true,
   justificationReadOnly: false,
-  justificationContent: 'Justification of resources content',
+  justificationContent: 'Justification of resources dummy content',
   progressPercentage: 75,
 };
 
@@ -49,8 +49,14 @@ let journeyDataApplicant = {
 // ************************************************************************
 export function submissionIndexGet(req, res) {
   let viewData;
+  let templateName = 'prototypes/submission-control/index';
 
   let clearSession = req.param('clearSession');
+  let from = req.param('from');
+  if (from === 'participant') {
+    templateName = 'prototypes/submission-control/index-participant';
+  }
+
   if (clearSession === 'true') {
     req.session.destroy();
     /*journeyDataApplicant = null;
@@ -59,10 +65,10 @@ export function submissionIndexGet(req, res) {
       detailsIsComplete: true,
       detailsReadOnly: true,
       projectName: 'APP171: Bio-detoxification of Ricin in castor bean',
-      detailsInput: '<p>This is my content for Details and Summary</p>',
+      detailsInput: '<p>Details and Summary dummy content</p>',
       caseForSupportIsComplete: true,
       caseForSupportReadOnly: true,
-      caseForSupportNotes: '<p>This is my Case for Support content</p>',
+      caseForSupportNotes: '<p>Case for Support dummy content</p>',
       directlyIncurredCost: '25000',
       directlyAllocatedCost: '25000',
       indirectCost: '25000',
@@ -71,7 +77,7 @@ export function submissionIndexGet(req, res) {
       resourcesAndCostsReadOnly: true,
       justificationIsComplete: true,
       justificationReadOnly: true,
-      justificationContent: 'Justification of resources content',
+      justificationContent: 'Justification of resources dummy content',
     };
     journeyDataApplicant = {
       detailsIsComplete: true,
@@ -96,7 +102,7 @@ export function submissionIndexGet(req, res) {
 
   viewData = {};
 
-  return res.render('prototypes/submission-control/index', viewData);
+  return res.render(templateName, viewData);
 }
 
 export function submissionIndexPost(req, res) {
@@ -749,30 +755,3 @@ export function submissionApplicantApplicationViewPost(req, res) {
   let targetURL = '/prototypes/submission-control/applicant/view';
   return res.redirect(targetURL);
 }
-
-/*
-* Non pages functions for setting parameters
-* */
-/*export function submissionSetAsReturnedFromROPost(req, res) {
-  //let viewData;
-  const {} = req.body;
-
-  console.log('running through submissionSetAsReturnedFromROGet ');
-
-  req.session.sendToResearchOffice = false;
-  journeyDataApplicant.detailsReadOnly = false;
-  journeyDataApplicant.caseForSupportReadOnly = false;
-  journeyDataApplicant.resourcesAndCostsReadOnly = false;
-  journeyDataApplicant.justificationReadOnly = false;
-  journeyDataApplicant.detailsIsComplete = true;
-  journeyDataApplicant.caseForSupportIsComplete = true;
-  journeyDataApplicant.resourcesAndCostsIsComplete = true;
-  journeyDataApplicant.justificationIsComplete = true;
-  journeyDataApplicant.progressPercentage = 100;
-
-  let targetURL = '/prototypes/submission-control/applicant/application-overview';
-  return res.redirect(targetURL);
-
-  /!*viewData = {};
-  return res.render('prototypes/submission-control/applicant/view', viewData);*!/
-}*/

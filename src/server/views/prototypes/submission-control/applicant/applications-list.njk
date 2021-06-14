@@ -65,8 +65,8 @@
 
             {% call components.bulmaColumnAny(size='column is-full {#is-9-desktop is-9-widescreen#}') %}
 
-                <ul class="overview-items overview-items--plain">
-                    <li class="overview-item">
+                 <ul class="overview-items overview-items--plain">
+                   {# <li class="overview-item">
                         <div class="columns">
                             <div class="column is-8">
                                 <h3 class="overview-item__title"><a class="govuk-link" href="#">Dimensional transmogrification of domesticated felines</a></h3>
@@ -94,11 +94,20 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </li>#}
                     <li class="overview-item">
+
+
                         <div class="columns">
                             <div class="column is-8">
-                                <h3 class="overview-item__title"><a class="govuk-link" href="/prototypes/submission-control/applicant/application-overview">Bio-detoxification of Ricin in castor bean</a></h3>
+                                <h3 class="overview-item__title">
+                                    {% if showReturnedBanner %}
+                                    <a class="govuk-link" href="/prototypes/submission-control/applicant/application-overview?returned=true">Bio-detoxification of Ricin in castor bean</a>
+                                    {% else %}
+                                        <a class="govuk-link" href="/prototypes/submission-control/applicant/application-overview">Bio-detoxification of Ricin in castor bean</a>
+                                    {% endif %}
+
+                                </h3>
                                 <ul class="overview-item__meta-list">
                                     <li class="overview-item__meta-item"><strong>Opportunity:</strong> OPP591: Development of a Novel Inhibitor of Ricin<br></li>
                                     <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA24<br></li>
@@ -117,14 +126,20 @@
                             <div class="column is-2">
                                 <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
                                     <div class="u-align-cell">
+                                        {% if showReturnedBanner %}
                                         <strong>In progress</strong> <span class="meta"><br>
+                        100% complete</span>
+                                        {%  else %}
+                                            <strong>In progress</strong> <span class="meta"><br>
                         75% complete</span>
+                                        {% endif %}
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <li class="overview-item">
+                   {# <li class="overview-item">
                         <div class="columns">
                             <div class="column is-8">
                                 <h3 class="overview-item__title"><a class="govuk-link" href="#">Hyper-warp fractalization within subharmonic symapthetic responses</a></h3>
@@ -152,9 +167,9 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </li>#}
 
-                    <li class="overview-item overview-item--inactive">
+                    {#<li class="overview-item overview-item--inactive">
                         <div class="columns">
                             <div class="column is-8">
                                 <h3 class="overview-item__title"><a class="govuk-link" href="#">Linear field waves in liquids</a></h3>
@@ -181,7 +196,7 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </li>#}
 
                     <li class="overview-item overview-item--inactive">
                         <div class="columns">

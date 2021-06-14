@@ -20,7 +20,12 @@
 
 {% set sendToResearchOffice = sendToResearchOffice if sendToResearchOffice %}
 {% set showReturnedBanner = showReturnedBanner if showReturnedBanner %}
-{% set backLinkContents =  [{url:'/prototypes/submission-control/applicant/applications-list', text:'Back to applications'}] %}
+
+{% if sendToResearchOffice %}
+{% set backLinkContents =  [{url:'#', text:'Back to applications'}] %}
+{% else %}
+    {% set backLinkContents =  [{url:'/prototypes/submission-control/applicant/applications-list', text:'Back to applications'}] %}
+{% endif %}
 
 
 {% block content %}
@@ -34,9 +39,9 @@
                     </div>
                     <div class="govuk-notification-banner__content">
                         <h3 class="govuk-notification-banner__heading">
-                            You application is now with the research office
+                            You application is now with the Research Office
                         </h3>
-                        <p class="govuk-body">You can contact your Research Office at <a class="govuk-notification-banner__link" href="#">research.office@cardiff.ac.uk</a> to discuss your application in more detail.</p>
+                       {# <p class="govuk-body">You can contact your Research Office at <a class="govuk-notification-banner__link" href="#">research.office@cardiff.ac.uk</a> to discuss your application in more detail.</p>#}
                         {#<p class="govuk-body">
                             Ensure you have made the applicant aware of the changes they need to make.
                         </p>#}
@@ -143,18 +148,20 @@
 
              {% if sendToResearchOffice %}
 
-                 <div class="application-controls application-controls--paired-buttons govuk-clearfix">
-                     {{ components.captionHeading(text='With research office', tag='h2', size='s') }}
+                 <div class="application-controls application-controls--paired-buttons govuk-clearfix u-space-t45">
+                     {#{{ components.captionHeading(text='With Research Office', tag='h2', size='s') }}#}
                      <p class="govuk-body">
+                         <strong>With Research Office</strong>
+                         <br>
                          Your application is being reviewed by your Research Office, who can submit it to UKRI for assessment. If you want to edit it, you will need to ask them to return it to you.
                      </p>
-                     <p class="govuk-body">You can contact your Research Office at <a class="govuk-notification-banner__link" href="#">research.office@cardiff.ac.uk</a> to discuss your application in more detail.</p>
+                     {#<p class="govuk-body">You can contact your Research Office at <a class="govuk-notification-banner__link" href="#">research.office@cardiff.ac.uk</a> to discuss your application in more detail.</p>#}
                  </div>
 
              {% else %}
 
                  {% if readyToSend %}
-                     <div class="application-controls application-controls--paired-buttons govuk-clearfix">
+                     <div class="application-controls application-controls--paired-buttons govuk-clearfix u-space-t45">
                          <p class="govuk-body">
                              When you send your application to your Research Office you will not be able to make further edits, unless they return it to you. Only your Research Office can submit this application to UKRI.
                          </p>
@@ -164,7 +171,7 @@
                      </div>
                  {% else %}
 
-                     <div class="application-controls application-controls--paired-buttons govuk-clearfix">
+                     <div class="application-controls application-controls--paired-buttons govuk-clearfix u-space-t45">
                          <p class="govuk-body">
                              You can only select 'Send to Research Office' when your application is 100% complete.
                          </p>
@@ -195,7 +202,7 @@
             <div class="application-data">
                 <dl class="application-data__list">
                     <dt class="application-data__key">Funding Opportunity:</dt>
-                    <dd class="application-data__value"><a href="/prototypes/submission-control/opportunity" class="govuk-link" target="_blank">OPP334: AHRC research networking scheme</a></dd>
+                    <dd class="application-data__value"><a href="" class="govuk-link" target="_blank">OPP171: Development of a Novel Inhibitor of Ricin</a></dd>
 
                     <dt class="application-data__key">Application reference:</dt>
                     <dd class="application-data__value">APP00171</dd>
