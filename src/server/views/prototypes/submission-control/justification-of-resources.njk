@@ -1,0 +1,139 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set pageTitle = 'Justification of resources' + ' - UKRI Funding service' %}
+{% set projectName = projectName if projectName %}
+{% set justificationIsComplete = justificationIsComplete if justificationIsComplete %}
+{% set justificationContent = justificationContent if justificationContent %}
+{% set readOnly = readOnly if readOnly %}
+
+{% set backLinkContents =  [{url:'/prototypes/submission-control/application-overview', text:'Back to application'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Justification of resources', caption=projectName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% if readOnly %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                {{ components.warning(text='Read-only view') }}
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
+
+    {% call components.form(action='#', method='POST',name='formProjectTeam') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-8') %}
+
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+                    <div class="govuk-form-group ">
+                        <label class="govuk-label govuk-label--s govuk-!-font-weight-bold" for="justificationInput">Enter your justification</label>
+                        <div class="govuk-hint">Detail the background and reasons why your proposed research needs the resources you are seeking funding for. You have 250 words.</div>
+                        <details class="govuk-details u-space-t20" data-module="govuk-details" role="group">
+                            <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                <span class="govuk-details__summary-text">Guidance for completing this section</span>
+                            </summary>
+                            <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                <p class="govuk-body">The assessors are looking to see how you would cover the costs of your activities. You need to demonstrate and explain:</p>
+                                <ul class="govuk-list govuk-list--bullet">
+                                    <li>your salary costs </li>
+                                    <li>the salary costs of one co-investigator for the time spent overseeing and providing intellectual input to the activities</li>
+                                    <li>how you arrived at your figures for the setting up and coordination of the activities (this should not make up the majority of the cost in the proposal)</li>
+                                    <li>any related indirect and estates costs (UK researchers only)</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <textarea class="govuk-textarea govuk-js-character-count" name="justificationInput" id="justificationInput" rows="18" {% if readOnly %} disabled {% endif %}>{{ justificationContent }}</textarea>
+                        <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 100 words remaining</span></p>
+                    </div>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                {% call components.formGroup() %}
+                    <div class="application-item">
+                        <div class="application-item__contents application-item__contents--mac">
+                            <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                    <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                </legend>
+                                <div class="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if justificationIsComplete %} checked{% endif %} {% if readOnly %} disabled {% endif %}>
+                                        <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                {% call components.formGroup() %}
+                    <div class="application-controls govuk-clearfix">
+                        {% if readOnly %}
+                            <a href="/prototypes/submission-control/application-overview" class="govuk-link">Return to application</a>
+                        {% else %}
+                            {{ components.button(text='Save and return', extraClass="application-controls__submit")}}
+                        {% endif %}
+                    </div>
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+      <script>
+      ;(function(){
+        let wordcounter = document.getElementById('justificationInput');
+        let counteroutputFoot = document.getElementById('wordCount');
+        let words;
+        const limit = 250;
+
+        function countemwords(){
+          words = (wordcounter.value == '')? 0 : wordcounter.value.split(' ').length;
+          let remainder = limit - words;
+          if (words < limit) {
+            wordcounter.classList.remove('govuk-textarea--error');
+            counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+          } else {
+            let overCount = words - limit;
+            wordcounter.classList.add('govuk-textarea--error');
+            counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+          }
+        }
+        wordcounter.addEventListener('input', function(e){
+          countemwords()
+        }, false);
+        document.addEventListener("DOMContentLoaded", function(event) {
+          countemwords()
+        }, false);
+        window.addEventListener("load", function(event) {
+          countemwords();
+        }, false)
+      })();
+    </script>
+{% endblock %}

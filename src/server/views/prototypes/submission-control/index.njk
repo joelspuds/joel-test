@@ -10,7 +10,7 @@
 
         {% call components.columnFull() %}
 
-            {{ components.pageHeading(heading='Start your research session') }}
+            {{ components.pageHeading(heading='Submission control research sessions') }}
 
         {%- endcall %}
 
@@ -21,65 +21,48 @@
         {% call components.gridRow() %}
             {% call components.columnHalf(size='is-8') %}
 
-                {{ components.captionHeading(text='Applicant journeys', tag='h2', size='m') }}
+                {{ components.captionHeading(text='Research office journeys', tag='h2', size='m') }}
 
                 <ul class="govuk-list govuk-list--bullet">
                     <li>
                         <a href="/prototypes/submission-control/start-email" class="govuk-link">Start email</a>
                     </li>
+                    <li>
+                        <a href="/prototypes/submission-control/applications-list" class="govuk-link">Applications dashboard</a>
+                    </li>
                 </ul>
 
-
-
-              {#  {{ components.captionHeading(text='Set sharing status', tag='h2', size='m') }}
-                <p class="govuk-body">
-                    Currently editable by <strong>{{ currentlyEditableBy }}</strong>
-                </p>
+                {{ components.captionHeading(text='Applicant journeys', tag='h2', size='m') }}
 
                 <ul class="govuk-list govuk-list--bullet">
                     <li>
-                        <a href="?editableBy=applicant" class="govuk-link">Editable by applicant</a>
+                        <a href="/prototypes/submission-control/applicant/applications-list" class="govuk-link">Applicant sends incomplete application to RO</a>
+                        <br>
+                        (Goes to list of applicant's various applications)
                     </li>
                     <li>
-                        <a href="?editableBy=researchOffice" class="govuk-link">Editable by Research Office</a>
+                        <a href="/prototypes/submission-control/applicant/applications-list?returned=true" class="govuk-link">Applicant is notified of RO return on applications list</a>
+                        <br>
+                        (Goes to list of applicant's various applications)
+                    </li>
+                    <li>
+                        <a href="/prototypes/submission-control/application-returned-email" class="govuk-link">Applicant receives email notification from RO</a>
+                        <br>
+                        (Goes to email notification from RO)
+                    </li>
+                    <li>
+                        <a href="/prototypes/submission-control/application-submitted-to-UKRI-email" class="govuk-link">Applicant receives email notification saying it has been submitted to UKRI</a>
+                        <br>
+                        (Goes to email notification from UKRI)
                     </li>
                 </ul>
 
-                #}{#{% if currentlyEditableBy %}#}{#
-
-                {% if currentlyEditableBy === 'Research Office' %}
-
-                    {{ components.captionHeading(text='Research Office journeys', tag='h2', size='m') }}
-
-                    <ul class="govuk-list govuk-list--bullet">
-                        <li>
-                            <a href="/prototypes/multi-user-application2/" class="govuk-link">Application overview</a>
-                        </li>
-                    </ul>
-
-                    #}{#{% endif %}#}{#
-
-                {% elseif currentlyEditableBy === 'Applicant' %}
-
-                    {{ components.captionHeading(text='Applicant journeys', tag='h2', size='m') }}
-
-                    <ul class="govuk-list govuk-list--bullet">
-                        <li>
-                            <a href="/prototypes/multi-users2/start-email" class="govuk-link">Start email</a>
-                        </li>
-                    </ul>
-
-                    #}{#{% endif %}#}{#
-
-                {% else %}
-
-                    <p class="govuk-body">Choose a sharing status to see which journeys are available.</p>
-
-                {% endif %}
-#}
-                {#{{ components.button(text='Confirm', extraClass="application-controls__submit", name='saveAndComplete')}}#}
+                <p class="govuk-body">
+                    <a href="/prototypes/submission-control/?clearSession=true" class="govuk-link">Clear data</a>
+                </p>
 
             {%- endcall %}
+
 
         {%- endcall %}
 

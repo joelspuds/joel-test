@@ -1,0 +1,151 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'NOTadmin' %}
+{% set pageTitle = 'Applications' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'#', text:'Back to home'}] %}
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+{% set showManageUsers = true %}
+{% set activeNavItem = 'applications' %}
+
+{% set hasBeenSubmitted = hasBeenSubmitted if hasBeenSubmitted %}
+{% set sentBackToApplicant = sentBackToApplicant if sentBackToApplicant %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Applications', caption='University of Bath') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow(extraClass='') %}
+
+            {% call components.bulmaColumnAny(size='column is-12') %}
+
+                <div class="responsive-table">
+
+                    <table class="govuk-table responsive-table__table">
+                        <thead>
+                        <tr class="govuk-table__header">
+                            <th class="govuk-table__header">Application<br>number</th>
+                            <th class="govuk-table__header">Application title</th>
+                            <th class="govuk-table__header">Opportunity</th>
+                            <th class="govuk-table__header">Applicant<br></th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Deadline</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Application<br>status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="govuk-table__cell">APP171</td>
+                            <td class="govuk-table__cell"><a href="/prototypes/submission-control/application-overview" class="govuk-link">Bio-detoxification of Ricin in castor bean</a></td>
+                            <td class="govuk-table__cell">New Generation Thinkers 2021</td>
+                            <td class="govuk-table__cell">Bernado De Quillier</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">21 Jun 2021</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                {% if sentBackToApplicant %}
+                                    With applicant
+                                    <span class="mega-table_item-meta">100% complete</span>
+                                {% else %}
+                                    With Research Office
+                                    <span class="mega-table_item-meta">100% complete</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">APP666</td>
+                            <td class="govuk-table__cell"><a href="/prototypes/submission-control/application-overview-2" class="govuk-link">Secrets from the gaps in archaeological history </a></td>
+                            <td class="govuk-table__cell">Artefacts of the 21st Century, a dig for knowledge</td>
+                            <td class="govuk-table__cell">Rafflesia Arnoldii</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">4 July 2021</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                {% if hasBeenSubmitted %}
+                                    Submitted
+                                    <span class="mega-table_item-meta">100% complete</span>
+                                {% else %}
+                                    With Research Office
+                                    <span class="mega-table_item-meta">100% complete</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">APP721</td>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">A lost beach, a forgotten past</a></td>
+                            <td class="govuk-table__cell">Verses from the past; a poetical history of childhood</td>
+                            <td class="govuk-table__cell">Lovelia Darling</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">4 Oct 2021</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">Not submitted</td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                {#{{ components.pagination(totalItems=46,currentPage=2) }}#}
+                {#{{ components.pagination(totalItems=99,itemsPerPage=10,currentPage=4) }}#}
+
+                <div class="pager">
+                    <div class="pager__summary">
+                        Showing 1 to 3 of 3 items
+                    </div>
+                    {#<div class="pager__controls">
+                        <ul class="pager__list">
+                            <li class="pager__list-item">
+                                <a class="pager__list-link pager__prev govuk-link" href="#">Prev</a>
+                            </li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link govuk-link" href="#">1</a>
+                            </li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link govuk-link" href="#">2</a>
+                            </li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link govuk-link" href="#">3</a>
+                            </li>
+                            <li class="pager__list-item"><span class="pager__list-not-link">4</span></li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link govuk-link" href="#">5</a>
+                            </li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link govuk-link" href="#">6</a>
+                            </li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link govuk-link" href="#">7</a>
+                            </li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link govuk-link" href="#">8</a>
+                            </li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link govuk-link" href="#">9</a>
+                            </li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link govuk-link" href="#">10</a>
+                            </li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link pager__next govuk-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </div>#}
+                </div>
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    {#<script>
+    </script>#}
+{% endblock %}

@@ -1,0 +1,227 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set pageTitle = 'Application' + ' - UKRI Funding service' %}
+{% set storedSpeakerNotes = storedSpeakerNotes if storedSpeakerNotes %}
+{% set projectName = projectName if projectName %}
+{% set projectDetails = projectDetails if projectDetails %}
+{#{% set hasBeenUpdated = hasBeenUpdated if hasBeenUpdated %}
+{% set projectDetailsIsComplete = projectDetailsIsComplete if projectDetailsIsComplete %}
+{% set eligibilityInputComplete = eligibilityInputComplete if eligibilityInputComplete %}
+{% set widerEffectIsComplete = widerEffectIsComplete if widerEffectIsComplete %}
+{% set researchExperienceIsComplete = researchExperienceIsComplete if researchExperienceIsComplete %}#}
+{% set progressPercentage = progressPercentage if progressPercentage %}
+{% set reverseProgressPercentage = reverseProgressPercentage if reverseProgressPercentage %}
+
+{# new stuff for mutliuser #}
+{% set userType = userType if userType %}
+{% set isShared = isShared if isShared %}
+{% set applicationStatus = applicationStatus if applicationStatus %}
+{% set readyToSend = readyToSend if readyToSend %}
+
+{% set sendToResearchOffice = sendToResearchOffice if sendToResearchOffice %}
+{% set showReturnedBanner = showReturnedBanner if showReturnedBanner %}
+{% set backLinkContents =  [{url:'/prototypes/submission-control/applicant/applications-list', text:'Back to applications'}] %}
+
+
+{% block content %}
+
+    {% if sendToResearchOffice %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <h3 class="govuk-notification-banner__heading">
+                            You application is now with the research office
+                        </h3>
+                        <p class="govuk-body">You can contact your Research Office at <a class="govuk-notification-banner__link" href="#">research.office@cardiff.ac.uk</a> to discuss your application in more detail.</p>
+                        {#<p class="govuk-body">
+                            Ensure you have made the applicant aware of the changes they need to make.
+                        </p>#}
+                    </div>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
+
+    {% if showReturnedBanner %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="govuk-notification-banner govuk-notification-banner--infos" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <h3 class="govuk-notification-banner__heading">
+                            This application has been returned by your Research Office. Confirm with them the changes they are asking you to make.
+                        </h3>
+                    </div>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
+
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Application', caption=projectName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#">Write application</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/submission-control/applicant/view">Read application</a>
+                    </li>
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+         {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+             <div class="application-item {% if detailsIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny application-item--skinny-last">
+                 <div class="application-item__contents govuk-clearfix">
+                     <div class="application-item__left">{{ components.link(text='1. Details and summary', url='/prototypes/submission-control/applicant/details')}}</div>
+                     <div class="application-item__right">
+                         {% if detailsIsComplete %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                         {% else %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                         {% endif %}
+                    </div>
+                 </div>
+             </div>
+
+             <div class="application-item {% if caseForSupportIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny application-item--skinny-last">
+                 <div class="application-item__contents govuk-clearfix">
+                     <div class="application-item__left">{{ components.link(text='2. Case for support', url='/prototypes/submission-control/applicant/case-for-support')}}</div>
+                     <div class="application-item__right">
+                         {% if caseForSupportIsComplete %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                         {% else %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                         {% endif %}
+                     </div>
+                 </div>
+             </div>
+
+             <div class="application-item {% if resourcesAndCostsIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny application-item--skinny-last">
+                 <div class="application-item__contents govuk-clearfix">
+                     <div class="application-item__left">{{ components.link(text='3. Resources and costs', url='/prototypes/submission-control/applicant/resources-and-costs')}}</div>
+                     <div class="application-item__right">
+                         {% if resourcesAndCostsIsComplete %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                         {% else %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                         {% endif %}
+                     </div>
+                 </div>
+             </div>
+
+             <div class="application-item {% if justificationIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny application-item--skinny-last">
+                 <div class="application-item__contents govuk-clearfix">
+                     <div class="application-item__left">{{ components.link(text='4. Justification of resources', url='/prototypes/submission-control/applicant/justification-of-resources')}}</div>
+                     <div class="application-item__right">
+                         {% if justificationIsComplete %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                         {% else %}
+                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                         {% endif %}
+                     </div>
+                 </div>
+             </div>
+
+             {% if sendToResearchOffice %}
+
+                 <div class="application-controls application-controls--paired-buttons govuk-clearfix">
+                     {{ components.captionHeading(text='With research office', tag='h2', size='s') }}
+                     <p class="govuk-body">
+                         Your application is being reviewed by your Research Office, who can submit it to UKRI for assessment. If you want to edit it, you will need to ask them to return it to you.
+                     </p>
+                     <p class="govuk-body">You can contact your Research Office at <a class="govuk-notification-banner__link" href="#">research.office@cardiff.ac.uk</a> to discuss your application in more detail.</p>
+                 </div>
+
+             {% else %}
+
+                 {% if readyToSend %}
+                     <div class="application-controls application-controls--paired-buttons govuk-clearfix">
+                         <p class="govuk-body">
+                             When you send your application to your Research Office you will not be able to make further edits, unless they return it to you. Only your Research Office can submit this application to UKRI.
+                         </p>
+                         {% call components.form(action='#', method='POST',name='submitApplication') %}
+                             <button type="submit" class="govuk-button application-controls__submit" name="submitButton" value="sendToResearchOffice">Send to Research Office</button>
+                         {%- endcall %}
+                     </div>
+                 {% else %}
+
+                     <div class="application-controls application-controls--paired-buttons govuk-clearfix">
+                         <p class="govuk-body">
+                             You can only select 'Send to Research Office' when your application is 100% complete.
+                         </p>
+                         {% call components.form(action='#', method='POST',name='submitApplication') %}
+                             <button type="submit" class="govuk-button application-controls__submit" name="submitButton" disabled value="sendToResearchOffice">Send to Research Office</button>
+                         {%- endcall %}
+                     </div>
+
+                 {% endif %}
+
+             {% endif %}
+
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
+
+            <div class="progress-meter">
+                <div class="progress-meter__text progress-meter__text--back" role="progress-bar" aria-valuenow="27%"><span class="govuk-visually-hidden">Your application is</span> {{ progressPercentage }}% complete</div>
+                <div class="progress-meter__clipper" aria-hidden="true" style="clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%); -webkit-clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%)">
+                    {% if readyToSend %}
+                        <div class="progress-meter__text progress-meter__text--front"><strong>100% complete</strong></div>
+                    {% else %}
+                        <div class="progress-meter__text progress-meter__text--front">{{ progressPercentage }}% complete</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="application-data">
+                <dl class="application-data__list">
+                    <dt class="application-data__key">Funding Opportunity:</dt>
+                    <dd class="application-data__value"><a href="/prototypes/submission-control/opportunity" class="govuk-link" target="_blank">OPP334: AHRC research networking scheme</a></dd>
+
+                    <dt class="application-data__key">Application reference:</dt>
+                    <dd class="application-data__value">APP00171</dd>
+
+                    <dt class="application-data__key">Application deadline:</dt>
+                    <dd class="application-data__value">14th April 2021</dd>
+                    <dt class="application-data__key">Funder:</dt>
+                    <dd class="application-data__value">AHRC</dd>
+                </dl>
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+      Zepto(function($){
+        $(window).on('load', function() {
+          console.log('window loaded');
+          $('.govuk-tabs__tab').attr('tabindex', '');
+        });
+      });
+    </script>
+{% endblock %}
+

@@ -1,0 +1,181 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set pageTitle = 'Details and summary' + ' - UKRI Funding service' %}
+
+{% set backLinkContents =  [{url:'/prototypes/submission-control/applicant/application-overview', text:'Back to application'}] %}
+
+{% set detailsIsComplete = detailsIsComplete if detailsIsComplete%}
+{% set readOnly = readOnly if readOnly %}
+{% set projectName = projectNameDB if projectNameDB %}
+{% set detailsInput = detailsInputDB if detailsInputDB %}
+
+{% block content %}
+    <style>
+        .tox-statusbar__wordcount, .tox-statusbar__branding { display: none!important}
+    </style>
+
+    {% if readOnly %}
+        <style>
+            .tox .tox-edit-area__iframe {
+            // background-color: #efefef;
+                background-color: rgba(239, 239, 239, 0.3);
+            }
+        </style>
+    {% endif %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Details and summary', caption=projectName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% if readOnly %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                {{ components.warning(text='Read-only view') }}
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
+
+    {% call components.form(action='#', method='POST',name='formProjectTeam') %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-8') %}
+                {% call components.formGroup() %}
+                    <div class="govuk-form-group ">
+                        <label class="govuk-label govuk-label--s  govuk-!-font-weight-bold " for="projectName">Application name
+                            <span class="govuk-hint">Make this the title of your research proposal.</span>
+                        </label>
+                        <input class="govuk-input " id="projectName" type="text" name="projectName" value="{{ projectName }}" {% if readOnly %} disabled {% endif %}>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-8') %}
+                <div class="govuk-form-group ">
+                    <label class="govuk-label govuk-label--s  govuk-!-font-weight-bold " for="projectSummary">Summary
+                        <span class="govuk-hint">Provide a brief synopsis of the research programme your proposing to conduct over a 2-year period. You have 250 words.</span>
+                    </label>
+                    <details class="govuk-details" data-module="govuk-details" role="group">
+                        <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                            <span class="govuk-details__summary-text">Guidance for writing a summary</span>
+                        </summary>
+                        <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                            <p class="govuk-body">Summarise how your proposal will explore new areas, including other user communities. It can include innovative approaches but must be arts and humanities-led, with a majority of the methodologies, research questions and outputs falling within AHRC’s subject remit. Give details of the aims and objectives, the timetable for any proposed activities, proposed participants and key speakers, and plans for management and coordination, including the membership of any proposed advisory group or steering committee.</p>
+                            <p class="govuk-body">You should also clearly outline the rationale for the activities, approach and the research context by explaining:</p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>the central theme of the proposed activity and why it is innovative</li>
+                                <li>the importance of this theme being explored</li>
+                                <li>how the proposed activities will create genuine interaction across boundaries and advance understanding</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <textarea class="govuk-textarea govuk-js-character-count" name="projectSummary" id="projectSummary" rows="18" {% if readOnly %} disabled {% endif %}>{{ detailsInput }}</textarea>
+                    <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 250 words remaining</span></p>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-8') %}
+
+                {% call components.formGroup() %}
+                    <div class="application-item">
+                        <div class="application-item__contents application-item__contents--mac">
+                            <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                    <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                </legend>
+                                <div class="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if detailsIsComplete %} checked{% endif %} {% if readOnly %} disabled {% endif %}>
+                                        <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-8') %}
+
+                {% call components.formGroup() %}
+                    <div class="application-controls govuk-clearfix">
+                        {% if readOnly %}
+                            <a href="/prototypes/submission-control/applicant/application-overview" class="govuk-link">Return to application</a>
+                        {% else %}
+                                {{ components.button(text='Save and return', extraClass="application-controls__submit")}}
+                        {% endif %}
+                    </div>
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        const counteroutputFoot = document.getElementById('wordCount');
+        let words = 0;
+        const limit = 250;
+        let tinyMCEWordCount;
+
+        tinymce.init({
+            selector: '#projectSummary',
+            height: 500,
+            {% if readOnly %} readonly : 1, {% endif %}
+            plugins: [
+                'advlist autolink lists link image preview anchor',
+                'media table paste  wordcount'
+            ],
+            setup: function(editor) {
+
+                editor.on('keyup', function(e) {
+                    tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                    console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                    words = tinyMCEWordCount;
+                    let remainder = limit - words;
+                    if (words < limit) {
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    } else {
+                        let overCount = words - limit;
+                        counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+                    }
+                });
+
+                editor.on('init', function(e) {
+                    setTimeout(function(){
+                        tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                        console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                        words = tinyMCEWordCount;
+                        let remainder = limit - words;
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    }, 500);
+                });
+            },
+            toolbar: 'formatselect | bold italic | bullist numlist | align | indent outdent | link | table |',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ],
+            menubar: false,
+        });
+    </script>
+
+{% endblock %}

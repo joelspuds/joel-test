@@ -504,13 +504,49 @@ router.post('/prototypes/multi-user-application2/opportunity', demosController.a
 
 /* *************************************************************** *
 
-  MSubmission control
+  Submission control
 
 * *************************************************************** */
 router.get('/prototypes/submission-control', demosController.submissionIndexGet);
 router.post('/prototypes/submission-control', demosController.submissionIndexPost);
 router.get('/prototypes/submission-control/application-overview', demosController.submissionApplicationOverviewGet);
 router.post('/prototypes/submission-control/application-overview', demosController.submissionApplicationOverviewPost);
+router.get('/prototypes/submission-control/view', demosController.submissionApplicationViewGet);
+router.post('/prototypes/submission-control/view', demosController.submissionApplicationViewPost);
+router.get('/prototypes/submission-control/applications-list', demosController.submissionApplicationsListGet);
+// router.post('/prototypes/submission-control/application-overview', demosController.submissionApplicationOverviewPost);
+
+router.get('/prototypes/submission-control/application-overview-2', demosController.submissionApplicationOverview2Get);
+router.post('/prototypes/submission-control/application-overview-2', demosController.submissionApplicationOverview2Post);
+
+router.get('/prototypes/submission-control/details', demosController.submissionDetailsGet);
+router.post('/prototypes/submission-control/details', demosController.submissionDetailsPost);
+router.get('/prototypes/submission-control/case-for-support', demosController.submissionCaseGet);
+router.post('/prototypes/submission-control/case-for-support', demosController.submissionCasePost);
+router.get('/prototypes/submission-control/justification-of-resources', demosController.submissionJustificationGet);
+router.post('/prototypes/submission-control/justification-of-resources', demosController.submissionJustificationPost);
+router.get('/prototypes/submission-control/resources-and-costs', demosController.submissionResourcesGet);
+router.post('/prototypes/submission-control/resources-and-costs', demosController.submissionResourcesPost);
+
+// Applicants stuff
+router.get('/prototypes/submission-control/applicant/applications-list', demosController.submissionApplicantApplicationsListGet);
+router.post('/prototypes/submission-control/applicant/applications-list', demosController.submissionApplicantApplicationsListPost);
+router.get('/prototypes/submission-control/applicant/application-overview', demosController.submissionApplicantApplicationOverviewGet);
+router.post('/prototypes/submission-control/applicant/application-overview', demosController.submissionApplicantApplicationOverviewPost);
+router.get('/prototypes/submission-control/applicant/view', demosController.submissionApplicantApplicationViewGet);
+router.post('/prototypes/submission-control/applicant/view', demosController.submissionApplicantApplicationViewPost);
+
+router.get('/prototypes/submission-control/applicant/details', demosController.submissionApplicantDetailsGet);
+router.post('/prototypes/submission-control/applicant/details', demosController.submissionApplicantDetailsPost);
+router.get('/prototypes/submission-control/applicant/case-for-support', demosController.submissionApplicantCaseGet);
+router.post('/prototypes/submission-control/applicant/case-for-support', demosController.submissionApplicantCasePost);
+router.get('/prototypes/submission-control/applicant/justification-of-resources', demosController.submissionApplicantJustificationGet);
+router.post('/prototypes/submission-control/applicant/justification-of-resources', demosController.submissionApplicantJustificationPost);
+router.get('/prototypes/submission-control/applicant/resources-and-costs', demosController.submissionApplicantResourcesGet);
+router.post('/prototypes/submission-control/applicant/resources-and-costs', demosController.submissionApplicantResourcesPost);
+
+// non paged functions
+// router.post('/prototypes/submission-control/applicant/set-as-returned-from-ro', demosController.submissionSetAsReturnedFromROPost);
 
 // Create route from view path
 router.get('*', miscController.viewFileRoute);

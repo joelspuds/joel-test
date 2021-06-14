@@ -42,6 +42,7 @@ export function ediIndexGet(req, res) {
   let clearSession = req.param('clearSession');
   if (clearSession === 'true') {
     req.session.destroy();
+    confirmURL = '/prototypes/edi/edi-confirm';
     userData = {};
   }
   console.log('clearSession = ' + clearSession);

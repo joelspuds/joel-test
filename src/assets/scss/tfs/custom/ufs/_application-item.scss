@@ -12,6 +12,15 @@ $module: 'application-item';
         position: relative;
         background-color: govuk-colour("light-grey");
         padding: 20px 40px 20px 20px;
+
+        &--mac {
+            max-width: 250px;
+            padding-right: 20px;
+
+            .govuk-checkboxes__label {
+                padding-right: 0;
+            }
+        }
     }
 
     &__link {

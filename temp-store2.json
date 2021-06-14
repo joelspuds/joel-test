@@ -1,11 +1,11 @@
 [
   {
     "placeholder": "meh",
-    "userType": "office",
-    "applicationStatus": "startShare",
+    "userType": "applicant",
+    "applicationStatus": "stopShare",
     "detailsInput": "<p>This is some dummy content</p>",
     "projectName": "Really cool project title befitting of this awesome opportunity",
-    "caseForSupportNotes": "<p>This is some dummy content</p>",
+    "caseForSupportNotes": "<p>This is my Case for Support content</p>",
     "directlyIncurredCost": "0",
     "directlyAllocatedCost": "0",
     "indirectCost": "0",
@@ -14,7 +14,6 @@
     "caseForSupportIsComplete": "on",
     "detailsIsComplete": "on",
     "applicantsIsComplete": "on",
-    "justificationIsComplete": "on",
-    "hasBeenSubmitted": "true"
+    "justificationIsComplete": "on"
   }
 ]
