@@ -1,0 +1,294 @@
+{% set showExternalNav = false %}
+{#{% set activeNavItem = 'applications' %}#}
+{% set navArea = 'applications' %}
+{% set applicationsLink = '/prototypes/edi/applications' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{#{% set reviewsLink = '#' %}#}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+{% set pageTitle = "Applications" %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set showReturnedBanner = showReturnedBanner if showReturnedBanner %}
+{% set backLinkContents =  [{url:'#', text:'Back to home'}] %}
+{% set pageTitle = 'Applications' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% if showReturnedBanner %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="govuk-notification-banner govuk-notification-banner--infos" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <h3 class="govuk-notification-banner__heading">
+                            <a href="/prototypes/submission-control/applicant/application-overview?returned=true">Bio-detoxification of Ricin in castor bean</a> has been returned by your Research Office. Confirm with them the changes they are asking you to make.
+                        </h3>
+                    </div>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
+
+   {# {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-notification-banner govuk-notification-banner--info" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Warning</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">
+                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion (EDI)</a> profile before any applications you contribute to can be submitted to UKRI.
+                        #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
+                    </p>
+                </div>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}#}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Applications', caption='Dr. Jane Doington-Longname') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full {#is-9-desktop is-9-widescreen#}') %}
+
+                 <ul class="overview-items overview-items--plain">
+                   {# <li class="overview-item">
+                        <div class="columns">
+                            <div class="column is-8">
+                                <h3 class="overview-item__title"><a class="govuk-link" href="#">Dimensional transmogrification of domesticated felines</a></h3>
+                                <ul class="overview-item__meta-list">
+                                    <li class="overview-item__meta-item"><strong>Opportunity:</strong> OPP419: Efficient livestock storage techniques<br></li>
+                                    <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA97<br></li>
+                                    <li class="overview-item__meta-item"><strong>Organisation:</strong> University of Cardiff</li>
+                                </ul>
+                            </div>
+                            <div class="column is-2">
+                                <div class="u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                        <span class="overview-item__meta overview-item__meta--danger"><strong><span class="govuk-!-font-size-24">1</span><br>
+                        day left</strong><br>
+                        <span class="govuk-body-s">Deadline 21 June 2021</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-2">
+                                <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                                        <strong>With Research Office</strong> <span class="meta"><br>
+                        100% complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>#}
+                    <li class="overview-item">
+
+
+                        <div class="columns">
+                            <div class="column is-8">
+                                <h3 class="overview-item__title">
+                                    <a class="govuk-link" href="/prototypes/submission-control/application-overview-3?hasBeenSubmitted=true">Bio-detoxification of Ricin in castor bean</a>
+
+                                </h3>
+                                <ul class="overview-item__meta-list">
+                                    <li class="overview-item__meta-item"><strong>Opportunity:</strong> OPP591: Development of a Novel Inhibitor of Ricin<br></li>
+                                    <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA24<br></li>
+                                    <li class="overview-item__meta-item"><strong>Organisation:</strong> University of Cardiff</li>
+                                </ul>
+                            </div>
+                            <div class="column is-2">
+                                <div class="u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                        <span class="overview-item__meta"><strong><span class="govuk-!-font-size-24">20</span><br>
+                        days left</strong><br>
+                        <span class="govuk-body-s">Deadline 4 July 2021</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-2">
+                                <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+
+                                        <strong>Submitted</strong> <span class="meta"><br>
+                        100% complete</span>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                   {# <li class="overview-item">
+                        <div class="columns">
+                            <div class="column is-8">
+                                <h3 class="overview-item__title"><a class="govuk-link" href="#">Hyper-warp fractalization within subharmonic symapthetic responses</a></h3>
+                                <ul class="overview-item__meta-list">
+                                    <li class="overview-item__meta-item"><strong>Opportunity:</strong> OPP546: Mult-valent harmonic interactions <br></li>
+                                    <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA24<br></li>
+                                    <li class="overview-item__meta-item"><strong>Organisation:</strong> University of Cardiff</li>
+                                </ul>
+                            </div>
+                            <div class="column is-2">
+                                <div class="u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                        <span class="overview-item__meta"><strong><span class="govuk-!-font-size-24">25</span><br>
+                        days left</strong><br>
+                        <span class="govuk-body-s">Deadline 9 July 2021</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-2">
+                                <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                                        <strong>In progress</strong> <span class="meta"><br>
+                        50% complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>#}
+
+                    {#<li class="overview-item overview-item--inactive">
+                        <div class="columns">
+                            <div class="column is-8">
+                                <h3 class="overview-item__title"><a class="govuk-link" href="#">Linear field waves in liquids</a></h3>
+                                <ul class="overview-item__meta-list">
+                                    <li class="overview-item__meta-item"><strong>Opportunity:</strong> OPP422: Electromagnetic waves in liquids<br></li>
+                                    <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA112<br></li>
+                                    <li class="overview-item__meta-item"><strong>Organisation:</strong> University of Cardiff</li>
+                                </ul>
+                            </div>
+                            <div class="column is-2">
+                                <div class="u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                        <span class="overview-item__meta"><strong><span class="">Closed</span><br>
+                        </strong>
+                        <span class="govuk-body-s">Deadline 5 May 2021</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-2">
+                                <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                                        <strong>Submitted</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>#}
+
+                    <li class="overview-item overview-item--inactive">
+                        <div class="columns">
+                            <div class="column is-8">
+                                <h3 class="overview-item__title"><a class="govuk-link" href="#">Plasma field resonance transfer modulation functions</a></h3>
+                                <ul class="overview-item__meta-list">
+                                    <li class="overview-item__meta-item"><strong>Opportunity:</strong> OPP401: Fractal resonance harmonics<br></li>
+                                    <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA83<br></li>
+                                    <li class="overview-item__meta-item"><strong>Organisation:</strong> University of Cardiff</li>
+                                </ul>
+                            </div>
+                            <div class="column is-2">
+                                <div class="u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                        <span class="overview-item__meta"><strong><span class="">Closed</span><br>
+                        </strong>
+                        <span class="govuk-body-s">Deadline 6 March 2021</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-2">
+                                <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                                        <strong>Not submitted</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    {#<li class="overview-item overview-item--inactive">
+                        <div class="columns">
+                            <div class="column is-8">
+                                <h3 class="overview-item__title"><a class="govuk-link" href="#">Linear field waves in liquids</a></h3>
+                                <ul class="overview-item__meta-list">
+                                    <li class="overview-item__meta-item"><strong>Opportunity:</strong> OPP422: Electromagnetic waves in liquids<br></li>
+                                    <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA97<br></li>
+                                    <li class="overview-item__meta-item"><strong>Organisation:</strong> University of Cardiff</li>
+                                </ul>
+                            </div>
+                            <div class="column is-2">
+                                <div class="u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                        <span class="overview-item__meta overview-item__meta--danger"><strong><span class="govuk-!-font-size-24">5</span><br>
+                        days left</strong><br>
+                        <span class="govuk-body-s">Deadline 14 May 2021</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-2">
+                                <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                                        <strong>Ready to submit</strong> <span class="meta"><br>
+                        100% complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>#}
+                    {#<li class="overview-item">
+                        <div class="columns">
+                            <div class="column is-8">
+                                <h3 class="overview-item__title"><a class="govuk-link" href="#">Viral pandemic: distributed societal issues and news shaping</a></h3>
+                                <ul class="overview-item__meta-list">
+                                    <li class="overview-item__meta-item"><strong>Opportunity:</strong> OPP732: Electric battery innovation for land-based travel<br></li>
+                                    <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA124<br></li>
+                                    <li class="overview-item__meta-item"><strong>Organisation:</strong> University of Cardiff</li>
+                                </ul>
+                            </div>
+                            <div class="column is-2">
+                                <div class="u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                        <span class="overview-item__meta overview-item__meta--danger"><strong><span class="govuk-!-font-size-24">1</span><br>
+                        days left</strong><br>
+                        <span class="govuk-body-s">Deadline 21 May 2021</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-2">
+                                <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                    <div class="u-align-cell">
+                                        <strong>Ready to submit</strong> <span class="meta"><br>
+                        100% complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>#}
+                </ul>
+            {%- endcall %}
+        {%- endcall %}
+
+    </section>
+
+    {% include '../../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+{% endblock %}
+
+
