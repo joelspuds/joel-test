@@ -21,7 +21,7 @@
         {%- endcall %}
     {%- endcall %}
 
-    {% if readOnly %}
+    {% if readOnlyforJavaScript %}
         {% call components.bulmaRow() %}
             {% call components.bulmaColumnAny(size='is-full') %}
                 {{ components.warning(text='Read-only view') }}
