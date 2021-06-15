@@ -20,6 +20,9 @@
 
     <section class="section" id="main-content">
 
+
+
+
         {% call components.bulmaRow() %}
 
             {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
@@ -31,7 +34,7 @@
                             <div class="govuk-checkboxes">
                                 <div class="govuk-checkboxes__item">
                                     <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if fundersIsComplete %} checked{% endif %}>
-                                    <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark [this_item] as complete</label>
+                                    <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
                                 </div>
                             </div>
                         </div>
@@ -42,6 +45,32 @@
             {%- endcall %}
 
         {%- endcall %}
+
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+                {% call components.form(action='/prototypes/opportunity-v3/workflow-application', method='POST', name='submitApplication') %}
+
+                    <div class="application-item">
+                        <div class="application-item__contents application-item__contents--mac">
+                            <div class="govuk-checkboxes">
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="markAsComplete2" name="isComplete2" type="checkbox" {% if fundersIsComplete %} checked{% endif %}>
+                                    <label class="govuk-label govuk-checkboxes__label" for="markAsComplete2">Mark as complete</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
     </section>
 
     {% include '../../layouts/partials/user-contact.njk' %}

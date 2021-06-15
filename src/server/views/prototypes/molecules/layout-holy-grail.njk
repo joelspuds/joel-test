@@ -1,0 +1,135 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '/prototypes/external-users/applications' %}
+{% set homeLink = '/prototypes/external-users/home' %}
+{% set reviewsLink = '/prototypes/external-users/reviews' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set pageTitle = 'Holy grail' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {#{{ actualNavType }}#}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='column is-full') %}
+            <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">
+                        The wrappers for this notification are only present when there is a notification. They don't need to lie in wait, just in case!
+                    </p>
+                </div>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='column is-full') %}
+            <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+                <h2 class="govuk-error-summary__title" id="error-summary-title">There is a problem</h2>
+                <div class="govuk-error-summary__body">
+                    <ul class="govuk-list govuk-error-summary__list">
+                        <li>
+                            <a href="#passport-issued-error">You must enter a date that is in the past</a>
+                        </li>
+                        <li>
+                            <a href="#postcode-error">You must enter a valid postcode, like SW9 8SE</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Holy grail', caption='This contains most of the stuff') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="govuk-tabs" data-module="govuk-tabs">
+                    <ul class="govuk-tabs__list">
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                            <a class="govuk-tabs__tab" href="#">Write application</a>
+                        </li>
+                        <li class="govuk-tabs__list-item ">
+                            <a class="govuk-tabs__tab" href="#">Read application</a>
+                        </li>
+                    </ul>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+    </section>
+
+    <section class="section" id="">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+                <div class="tfs-tile3">
+                    <a href="/prototypes/external-users/applications" class="tfs-tile3__mega-link tfs-tile3__mega-link--alt">
+                        <span class="tfs-tile3__heading">Applications</span>
+                        <span class="tfs-tile3__number">{{ range(1, 10) | random }}</span>
+                        <span class="tfs-tile3__progress">In progress</span>
+                    </a>
+                </div>
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+                <div class="tfs-tile3 ">
+                    <a href="/prototypes/external-users/reviews" class="tfs-tile3__mega-link tfs-tile3__mega-link--alt">
+                        <span class="tfs-tile3__heading">Reviews</span>
+                        <span class="tfs-tile3__number">{{ range(1, 10) | random }}</span>
+                        <span class="tfs-tile3__progress">In progress</span>
+                    </a>
+                </div>
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+                <div class="tfs-tile3 ">
+                    <a href="/prototypes/external-users/award-setup" class="tfs-tile3__mega-link tfs-tile3__mega-link--alt">
+                        <span class="tfs-tile3__heading">Award setup</span>
+                        <span class="tfs-tile3__number">0</span>
+                        <span class="tfs-tile3__progress">In progress</span>
+                    </a>
+                </div>
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='u-space-t20') %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+                <div class="tfs-tile3 ">
+                    <a href="/prototypes/external-users/award" class="tfs-tile3__mega-link tfs-tile3__mega-link--alt">
+                        <span class="tfs-tile3__heading">Award</span>
+                        <span class="tfs-tile3__number">0</span>
+                        <span class="tfs-tile3__progress">In progress</span>
+                    </a>
+                </div>
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+
