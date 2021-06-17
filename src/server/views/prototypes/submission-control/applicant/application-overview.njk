@@ -95,7 +95,9 @@
 
          {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
-             <div class="application-item {% if detailsIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny application-item--skinny-last">
+<div class="application-items">
+
+             <div class="application-item {% if detailsIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
                  <div class="application-item__contents govuk-clearfix">
                      <div class="application-item__left">{{ components.link(text='1. Details and summary', url='/prototypes/submission-control/applicant/details')}}</div>
                      <div class="application-item__right">
@@ -108,7 +110,7 @@
                  </div>
              </div>
 
-             <div class="application-item {% if caseForSupportIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny application-item--skinny-last">
+             <div class="application-item {% if caseForSupportIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
                  <div class="application-item__contents govuk-clearfix">
                      <div class="application-item__left">{{ components.link(text='2. Case for support', url='/prototypes/submission-control/applicant/case-for-support')}}</div>
                      <div class="application-item__right">
@@ -121,7 +123,7 @@
                  </div>
              </div>
 
-             <div class="application-item {% if resourcesAndCostsIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny application-item--skinny-last">
+             <div class="application-item {% if resourcesAndCostsIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
                  <div class="application-item__contents govuk-clearfix">
                      <div class="application-item__left">{{ components.link(text='3. Resources and costs', url='/prototypes/submission-control/applicant/resources-and-costs')}}</div>
                      <div class="application-item__right">
@@ -134,7 +136,7 @@
                  </div>
              </div>
 
-             <div class="application-item {% if justificationIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny application-item--skinny-last">
+             <div class="application-item {% if justificationIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
                  <div class="application-item__contents govuk-clearfix">
                      <div class="application-item__left">{{ components.link(text='4. Justification of resources', url='/prototypes/submission-control/applicant/justification-of-resources')}}</div>
                      <div class="application-item__right">
@@ -146,6 +148,8 @@
                      </div>
                  </div>
              </div>
+
+</div>
 
              {% if sendToResearchOffice %}
 
