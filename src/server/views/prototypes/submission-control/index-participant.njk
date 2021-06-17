@@ -1,26 +1,29 @@
-{% extends 'layouts/default.layout.njk' %}
+{% set showExternalNav = false %}
+{% set applicationsLink = '' %}
+{% set homeLink = '' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '' %}
+{% set pageTitle = "Submission control" %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
 
-{% set pageTitle = 'Multiple users' %}
+{% set isAdminUser = false %}
+{%  set loggedOut = true %}
 
-{% set currentlyEditableBy = currentlyEditableBy if currentlyEditableBy else 'not set' %}
+{% set pageTitle = 'Applications' + GLOBAL_TAG_TITLE_SUFFIX %}
 
 {% block content %}
 
-    {% call components.gridRow() %}
-
-        {% call components.columnFull() %}
-
-            {{ components.pageHeading(heading='Directory') }}
-
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Submission control') }}
         {%- endcall %}
-
     {%- endcall %}
 
-    {% call components.form(action='#', method='POST', name='submitApplication') %}
+    <section class="section" id="mainContent">
 
-        {% call components.gridRow() %}
-            {% call components.columnHalf(size='is-8') %}
+        {% call components.bulmaRow() %}
 
+            {% call components.bulmaColumnAny(size='column is-full {#is-9-desktop is-9-widescreen#}') %}
 
 
                 {{ components.captionHeading(text='Applicant journeys', tag='h2', size='m') }}
@@ -56,11 +59,25 @@
                     <a href="/prototypes/submission-control/?clearSession=true&from=participant" class="govuk-link">Clear data</a>
                 </p>
 
+
+
+
+
             {%- endcall %}
-
-
         {%- endcall %}
 
-    {%- endcall %} {# end form #}
+    </section>
+
 
 {% endblock %}
+
+{% block bodyScripts %}
+{% endblock %}
+
+
+
+
+
+
+
+
