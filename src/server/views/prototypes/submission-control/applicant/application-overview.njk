@@ -28,8 +28,28 @@
     {% set backLinkContents =  [{url:'/prototypes/submission-control/applicant/applications-list', text:'Back to applications'}] %}
 {% endif %}
 
+{% set readyToSentToRO = readyToSentToRO if readyToSentToRO %}
+
+
 
 {% block content %}
+
+    {% if readyToSentToRO %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="govuk-notification-banner govuk-notification-banner--info" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <h3 class="govuk-notification-banner__heading">
+                            Your application is now ready to send to your organisation's Research Office. Only they can submit it to UKRI.
+                        </h3>
+                    </div>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
 
     {% if sendToResearchOffice %}
         {% call components.bulmaRow() %}
@@ -39,13 +59,7 @@
                         <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
                     </div>
                     <div class="govuk-notification-banner__content">
-                        <h3 class="govuk-notification-banner__heading">
-                            You application is now with the Research Office
-                        </h3>
-                       {# <p class="govuk-body">You can contact your Research Office at <a class="govuk-notification-banner__link" href="#">research.office@cardiff.ac.uk</a> to discuss your application in more detail.</p>#}
-                        {#<p class="govuk-body">
-                            Ensure you have made the applicant aware of the changes they need to make.
-                        </p>#}
+                        <h3 class="govuk-notification-banner__heading">Your application is now with your organisation's Research Office. If you need to edit it, contact them urgently so they can return it to you.</h3>
                     </div>
                 </div>
             {%- endcall %}
@@ -156,9 +170,9 @@
                  <div class="application-controls application-controls--paired-buttons govuk-clearfix u-space-t45">
                      {#{{ components.captionHeading(text='With Research Office', tag='h2', size='s') }}#}
                      <p class="govuk-body">
-                         <strong>With Research Office</strong>
+                         <span class="govuk-!-font-weight-bold govuk-!-font-size-24">With Research Office</span>
                          <br>
-                         Your application is being reviewed by your Research Office, who can submit it to UKRI for assessment. If you want to edit it, you will need to ask them to return it to you.
+                         Your application is being checked by your Research Office. Only they can submit it to UKRI for assessment.
                      </p>
                      {#<p class="govuk-body">You can contact your Research Office at <a class="govuk-notification-banner__link" href="#">research.office@cardiff.ac.uk</a> to discuss your application in more detail.</p>#}
                  </div>
@@ -168,7 +182,7 @@
                  {% if readyToSend %}
                      <div class="application-controls application-controls--paired-buttons govuk-clearfix u-space-t45">
                          <p class="govuk-body">
-                             When you send your application to your Research Office you will not be able to make further edits, unless they return it to you. Only your Research Office can submit this application to UKRI.
+                             Only send your application to your Research Office when you are satisfied you do not need to make further edits, as you cannot do so whilst they are checking it.
                          </p>
                          {% call components.form(action='#', method='POST',name='submitApplication') %}
                              <button type="submit" class="govuk-button application-controls__submit" name="submitButton" value="sendToResearchOffice">Send to Research Office</button>
