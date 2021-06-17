@@ -42,6 +42,10 @@
 
             {% call components.bulmaColumnAny(size='column is-8') %}
 
+                {% if edit !== 'true'  %}
+                <p class="govuk-body govuk-!-font-size-24">The next question asks about your gender.</p>
+                {% endif %}
+
                 <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
                     <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
                         <span class="govuk-details__summary-text">Guidance for answering this question</span>
@@ -93,8 +97,6 @@
                         {% if edit == 'true'  %}
                             {{ components.button(text='Save changes', extraClass="application-controls__submit")}}
                         {% else %}
-
-                            <p class="govuk-body">The next question asks about your gender.</p>
                             {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
                         {% endif %}
                     </div>
