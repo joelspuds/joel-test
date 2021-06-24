@@ -12,13 +12,22 @@
   left:0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.75);
   // background-color: govuk-colour("black");
   z-index: 1001;
 
+
+  /*opacity: 0.6;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.2s;*/
+
+
   &-inner {
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
+    border:4px solid govuk-colour("black");
 
     @include touch {
       max-width: 320px;
@@ -27,12 +36,14 @@
     padding: 20px 20px 0;
     background-color: govuk-colour("white");
     margin: 10% auto 0;
-    // opacity: 1!important;
+    opacity: 1!important;
   }
 
   &--hidden {
     display: none;
   }
+
+
 
 
 }
@@ -45,6 +56,7 @@
   animation-timing-function: ease-in;
   animation-duration: 1s;
 }
+*/
 
 @keyframes fadeInOpacity {
   0% {
@@ -54,4 +66,4 @@
     opacity: 0.6;
   }
 }
-*/
+

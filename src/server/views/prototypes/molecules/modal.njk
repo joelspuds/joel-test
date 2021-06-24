@@ -39,8 +39,8 @@
 
     <div class="modal modal--hidden" id="modalOverlay" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
         <div class="modal-inner">
-            <h2 class="govuk-heading-m" id="modalTitle">Your session is about to time out</h2>
-            <p class="govuk-body">You will automatically be signed out in [XX] minutes, at which point you will lose any unsaved changes.
+            <h2 class="govuk-heading-l" id="modalTitle">Your session is about to time out</h2>
+            <p class="govuk-body">You will automatically be signed out in <strong>15 minutes</strong>, at which point you will lose any unsaved changes.
             <p class="govuk-body">Select 'Stay signed in' to continue working.</p>
             <p class="govuk-body">
                 <button class="govuk-button" id="closeModal">Stay signed in</button>
@@ -51,7 +51,6 @@
 {% endblock %}
 
 {% block bodyScripts %}
-
     <script>
         var ready = (callback) => {
             if (document.readyState != 'loading') callback();
@@ -68,69 +67,19 @@
                 e.preventDefault();
                 body.classList.add('has-modal');
                 modal.classList.remove('modal--hidden');
+                pageTitleNotification.on('Session time out!', 1000);
             });
 
             closeModalButton.addEventListener('click', (e) => {
                 e.preventDefault();
                 body.classList.remove('has-modal');
                 modal.classList.add('modal--hidden');
-                console.log('testing');
+                pageTitleNotification.off();
             });
-
-
-
-           /* const urls = [
-                '/misc/file1.pdf',
-                '/misc/file2.pdf',
-                '/misc/file3.pdf',
-                '/misc/file4.pdf',
-                '/misc/file5.pdf'
-            ]
-            var tempURLS;
-            var interval;
-
-            $('#downloadAll').on('click', function(e) {
-                e.preventDefault();
-                tempURLS = [...urls];
-                interval = setInterval(download, 300, tempURLS);
-            });
-
-            function download(tempURLS) {
-                var url = tempURLS.pop();
-
-                if (url == null) {
-                    clearInterval(interval);
-                    return;
-                }
-                var a = document.createElement("a");
-                a.setAttribute('href', url);
-                a.setAttribute('download', '');
-                a.setAttribute('target', '_blank');
-                a.click();
-            }*/
         });
+
+        !function(t,e){var n;t.pageTitleNotification=(n={currentTitle:null,interval:null},{on:function(l,i){n.interval||(n.currentTitle=e.title,n.interval=t.setInterval(function(){e.title=n.currentTitle===e.title?l:n.currentTitle},i||1e3))},off:function(){t.clearInterval(n.interval),n.interval=null,e.title=n.currentTitle}})}(window,document);
+
+
     </script>
-
-
-    {#<script>
-        function toggleVisibility(_this, id, className) {
-            // event.preventDefault();
-            let toggleSwitch = _this;
-            let toggleItem = document.getElementById(id);
-            if (hasClass(toggleItem, className)) {
-                toggleSwitch.classList.add('filter__title--closed');
-                toggleItem.classList.remove(className);
-                toggleSwitch.setAttribute('aria-expanded', true);
-            }
-            else  {
-                toggleSwitch.classList.remove('filter__title--closed');
-                toggleItem.classList.add(className);
-                toggleSwitch.setAttribute('aria-expanded', false);
-            }
-            // return false;
-        }
-        function hasClass(target, className) {
-            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
-        }
-    </script>#}
 {% endblock %}
