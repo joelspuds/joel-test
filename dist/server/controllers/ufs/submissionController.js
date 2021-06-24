@@ -576,7 +576,6 @@ function submissionApplicantApplicationOverviewGet(req, res) {
     justificationIsComplete,
     sendToResearchOffice,
     readyToSentToRO
-
   };
 
   return res.render('prototypes/submission-control/applicant/application-overview', viewData);

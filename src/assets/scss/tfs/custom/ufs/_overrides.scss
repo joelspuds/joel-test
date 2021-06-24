@@ -260,3 +260,7 @@ td.u-align-right {
 .govuk-radios__label:before {
   background-color: govuk-colour("white")!important;
 }
+
+.govuk-table__header {
+  vertical-align: bottom;
+}

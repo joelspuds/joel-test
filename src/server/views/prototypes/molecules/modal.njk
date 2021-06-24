@@ -1,0 +1,136 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set pageTitle = 'Modal overlay' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+
+{% set allCouncils = allCouncils %}
+
+{% block content %}
+
+    {% call components.bulmaRow(extraClass='') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Modal overlay') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-8') %}
+
+            <p class="govuk-body">Adipiscing vivamus fames. Rutrum duis curabitur eleifend vehicula dictum sociis ultricies suspendisse egestas ullamcorper quam, elementum suspendisse, dolor imperdiet. Senectus montes.</p>
+
+            <p class="govuk-body"><a href="#" id="activateModal">Activate modal</a> </p>
+
+            <p class="govuk-body">Aptent luctus risus nibh lacinia <strong>auctor</strong> nullam mollis, quisque suspendisse nulla iaculis urna conubia nullam sed per nostra augue, pretium gravida odio suspendisse vehicula sodales at primis hymenaeos varius. A sociis imperdiet aptent dui volutpat vivamus molestie sit fringilla nisl libero venenatis aenean.</p>
+
+            <p class="govuk-body">Scelerisque duis tempor ut metus senectus faucibus arcu mi. Curabitur volutpat. Luctus sociis habitant tellus, potenti. Litora condimentum est condimentum diam facilisis amet fermentum, vivamus pharetra fringilla nam quis libero nostra rutrum etiam erat varius. Nisl habitant curae; sagittis.</p>
+
+            <p class="govuk-body">Ornare cum sem. Conubia luctus erat. Mi. Elit tincidunt cum. Lorem fringilla eleifend placerat. Rutrum vulputate ultrices <em>hendrerit</em> fermentum vitae varius pretium tincidunt metus tempus ultricies, cursus. Dis natoque ullamcorper, <strong>hymenaeos</strong> semper.</p>
+
+            <p class="govuk-body">Ad eleifend <strong>taciti</strong> pulvinar tempus fames pharetra integer ultricies. Non netus semper varius justo velit. Velit quis inceptos Congue natoque eget eget pellentesque erat hymenaeos mauris ultrices commodo.</p>
+
+            <p class="govuk-body"><em>Consequat</em> senectus dapibus, <em>sit</em> malesuada est sem nisl pharetra aliquet orci, adipiscing convallis <em>et</em> vitae magnis, laoreet bibendum parturient vulputate Pellentesque. <strong>Id</strong> varius dui integer volutpat <em>ad</em> varius primis varius sem inceptos facilisi sociosqu mollis duis penatibus.</p>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <div class="modal modal--hidden" id="modalOverlay" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-inner">
+            <h2 class="govuk-heading-m" id="modalTitle">Your session is about to time out</h2>
+            <p class="govuk-body">You will automatically be signed out in [XX] minutes, at which point you will lose any unsaved changes.
+            <p class="govuk-body">Select 'Stay signed in' to continue working.</p>
+            <p class="govuk-body">
+                <button class="govuk-button" id="closeModal">Stay signed in</button>
+            </p>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+    <script>
+        var ready = (callback) => {
+            if (document.readyState != 'loading') callback();
+            else document.addEventListener('DOMContentLoaded', callback);
+        }
+        ready(() => {
+
+            let openModalLink = document.getElementById('activateModal');
+            let closeModalButton = document.getElementById('closeModal');
+            let modal = document.getElementById('modalOverlay');
+            let body = document.getElementsByTagName('body')[0];
+
+            openModalLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                body.classList.add('has-modal');
+                modal.classList.remove('modal--hidden');
+            });
+
+            closeModalButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                body.classList.remove('has-modal');
+                modal.classList.add('modal--hidden');
+                console.log('testing');
+            });
+
+
+
+           /* const urls = [
+                '/misc/file1.pdf',
+                '/misc/file2.pdf',
+                '/misc/file3.pdf',
+                '/misc/file4.pdf',
+                '/misc/file5.pdf'
+            ]
+            var tempURLS;
+            var interval;
+
+            $('#downloadAll').on('click', function(e) {
+                e.preventDefault();
+                tempURLS = [...urls];
+                interval = setInterval(download, 300, tempURLS);
+            });
+
+            function download(tempURLS) {
+                var url = tempURLS.pop();
+
+                if (url == null) {
+                    clearInterval(interval);
+                    return;
+                }
+                var a = document.createElement("a");
+                a.setAttribute('href', url);
+                a.setAttribute('download', '');
+                a.setAttribute('target', '_blank');
+                a.click();
+            }*/
+        });
+    </script>
+
+
+    {#<script>
+        function toggleVisibility(_this, id, className) {
+            // event.preventDefault();
+            let toggleSwitch = _this;
+            let toggleItem = document.getElementById(id);
+            if (hasClass(toggleItem, className)) {
+                toggleSwitch.classList.add('filter__title--closed');
+                toggleItem.classList.remove(className);
+                toggleSwitch.setAttribute('aria-expanded', true);
+            }
+            else  {
+                toggleSwitch.classList.remove('filter__title--closed');
+                toggleItem.classList.add(className);
+                toggleSwitch.setAttribute('aria-expanded', false);
+            }
+            // return false;
+        }
+        function hasClass(target, className) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
+    </script>#}
+{% endblock %}
