@@ -15,14 +15,25 @@
         {%- endcall %}
     {%- endcall %}
 
-    {% call components.bulmaRow() %}
+    {% call components.bulmaRow(customID='mainContent') %}
 
         {% call components.bulmaColumnAny(size='is-8') %}
 
             <p class="govuk-body">Adipiscing vivamus fames. Rutrum duis curabitur eleifend vehicula dictum sociis ultricies suspendisse egestas ullamcorper quam, elementum suspendisse, dolor imperdiet. Senectus montes.</p>
 
+           {# <script>
+                window.onload = function() {
+                    document.getElementById('testButton').focus();
+                };
+            </script>
+
+            <p class="govuk-body">
+                <button class="govuk-button" id="testButton">Tab test</button>
+            </p>#}
+
 
                 <div class="govuk-form-group ">
+
                     <label class="govuk-label govuk-label--s  govuk-!-font-weight-bold " for="countdownValue">Countdown start value
                     </label>
                     <input class="govuk-input govuk-input--width-2" id="countdownValue" type="text" name="countdownValue" value="60" >
@@ -30,15 +41,15 @@
                 </div>
 
 
-            <p class="govuk-body">Aptent luctus risus nibh lacinia <strong>auctor</strong> nullam mollis, quisque suspendisse nulla iaculis urna conubia nullam sed per nostra augue, pretium gravida odio suspendisse vehicula sodales at primis hymenaeos varius. A sociis imperdiet aptent dui volutpat vivamus molestie sit fringilla nisl libero venenatis aenean.</p>
+            <p class="govuk-body">Aptent luctus risus nibh lacinia <strong>auctor</strong> nullam mollis, quisque suspendisse nulla iaculis urna conubia nullam sed per nostra augue, pretium gravida odio suspendisse vehicula sodales at primis hymenaeos varius. A sociis imperdiet aptent dui volutpat vivamus molestie sit fringilla nisl libero venenatis aenean. <a href="#" class="govuk-link">Focus test</a> </p>
 
-            <p class="govuk-body">Scelerisque duis tempor ut metus senectus faucibus arcu mi. Curabitur volutpat. Luctus sociis habitant tellus, potenti. Litora condimentum est condimentum diam facilisis amet fermentum, vivamus pharetra fringilla nam quis libero nostra rutrum etiam erat varius. Nisl habitant curae; sagittis.</p>
+            <p class="govuk-body">Scelerisque duis tempor ut metus senectus faucibus arcu mi. Curabitur volutpat. Luctus sociis habitant tellus, potenti. Litora condimentum est condimentum diam facilisis amet fermentum, vivamus pharetra fringilla nam quis libero nostra rutrum etiam erat varius <a href="#" class="govuk-link">focus test</a>. Nisl habitant curae; sagittis.</p>
 
-            <p class="govuk-body">Ornare cum sem. Conubia luctus erat. Mi. Elit tincidunt cum. Lorem fringilla eleifend placerat. Rutrum vulputate ultrices <em>hendrerit</em> fermentum vitae varius pretium tincidunt metus tempus ultricies, cursus. Dis natoque ullamcorper, <strong>hymenaeos</strong> semper.</p>
+            <p class="govuk-body">Ornare cum sem. Conubia luctus erat. Mi. Elit tincidunt cum. Lorem fringilla eleifend <a href="#" class="govuk-link">focus test</a> placerat. Rutrum vulputate ultrices <em>hendrerit</em> fermentum vitae varius pretium tincidunt metus tempus ultricies, cursus. Dis natoque ullamcorper, <strong>hymenaeos</strong> semper.</p>
 
-            <p class="govuk-body">Ad eleifend <strong>taciti</strong> pulvinar tempus fames pharetra integer ultricies. Non netus semper varius justo velit. Velit quis inceptos Congue natoque eget eget pellentesque erat hymenaeos mauris ultrices commodo.</p>
+            <p class="govuk-body">Ad eleifend <a href="#" class="govuk-link">focus test</a> pulvinar tempus fames pharetra integer ultricies. Non netus semper varius justo velit. Velit quis inceptos Congue natoque eget eget pellentesque erat hymenaeos mauris ultrices commodo.</p>
 
-            <p class="govuk-body"><em>Consequat</em> senectus dapibus, <em>sit</em> malesuada est sem nisl pharetra aliquet orci, adipiscing convallis <em>et</em> vitae magnis, laoreet bibendum parturient vulputate Pellentesque. <strong>Id</strong> varius dui integer volutpat <em>ad</em> varius primis varius sem inceptos facilisi sociosqu mollis duis penatibus.</p>
+            <p class="govuk-body">Consequat <a href="#" class="govuk-link">focus test</a> senectus dapibus, <em>sit</em> malesuada est sem nisl pharetra aliquet orci, adipiscing convallis <em>et</em> vitae magnis, laoreet bibendum parturient vulputate Pellentesque. Id <a href="#" class="govuk-link">focus test</a> varius dui integer volutpat <em>ad</em> varius primis varius sem inceptos facilisi sociosqu mollis duis penatibus.</p>
 
         {%- endcall %}
 
@@ -76,12 +87,12 @@
             let timer = document.getElementById('timer');
             let body = document.getElementsByTagName('body')[0];
             let countdownValue;
-            // console.log('countdownValue = ' + countdownValue);
+            let countdownTimer;
 
             function startTimer() {
                 countdownValue = document.getElementById('countdownValue').value;
                 let i = countdownValue;
-                let countdownTimer = setInterval(function() {
+                countdownTimer = setInterval(function() {
                     timer.textContent = i + ' seconds';
                     i = i - 1;
                     if (i <= 0) {
@@ -90,6 +101,12 @@
                         window.location = '/prototypes/molecules/modal';
                     }
                 }, 1000);
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Tab') {
+                        modal.focus();
+                    }
+                });
             }
 
             openModalLink.addEventListener('click', (e) => {
@@ -97,6 +114,8 @@
                 body.classList.add('has-modal');
                 modal.classList.remove('modal--hidden');
                 pageTitleNotification.on('Session time out!', 1000);
+                modal.setAttribute('aria-hidden', 'false');
+                modal.focus();
                 startTimer();
             });
 
@@ -105,6 +124,10 @@
                 body.classList.remove('has-modal');
                 modal.classList.add('modal--hidden');
                 pageTitleNotification.off();
+                //
+                modal.setAttribute('aria-hidden', 'true');
+                countdownValue = null;
+                clearInterval(countdownTimer);
             });
         });
 
