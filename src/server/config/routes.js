@@ -491,6 +491,10 @@ router.get('/prototypes/submission-control', demosController.submissionIndexGet)
 router.post('/prototypes/submission-control', demosController.submissionIndexPost);
 router.get('/prototypes/submission-control/application-overview', demosController.submissionApplicationOverviewGet);
 router.post('/prototypes/submission-control/application-overview', demosController.submissionApplicationOverviewPost);
+
+router.get('/prototypes/submission-control/application-submission-confirm', demosController.submissionConfirmGet);
+router.post('/prototypes/submission-control/application-submission-confirm', demosController.submissionConfirmPost);
+
 router.get('/prototypes/submission-control/view', demosController.submissionApplicationViewGet);
 router.post('/prototypes/submission-control/view', demosController.submissionApplicationViewPost);
 router.get('/prototypes/submission-control/applications-list', demosController.submissionApplicationsListGet);

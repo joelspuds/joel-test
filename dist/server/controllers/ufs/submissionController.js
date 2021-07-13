@@ -19,6 +19,8 @@ exports.submissionResourcesGet = submissionResourcesGet;
 exports.submissionResourcesPost = submissionResourcesPost;
 exports.submissionApplicationOverview2Get = submissionApplicationOverview2Get;
 exports.submissionApplicationOverview2Post = submissionApplicationOverview2Post;
+exports.submissionConfirmGet = submissionConfirmGet;
+exports.submissionConfirmPost = submissionConfirmPost;
 exports.submissionApplicationsListGet = submissionApplicationsListGet;
 exports.submissionApplicantApplicationsListGet = submissionApplicantApplicationsListGet;
 exports.submissionApplicantApplicationsListPost = submissionApplicantApplicationsListPost;
@@ -200,11 +202,16 @@ function submissionApplicationOverviewGet(req, res) {
 
 function submissionApplicationOverviewPost(req, res) {
   const { submitButton } = req.body;
-  let targetURL = '/prototypes/submission-control/application-overview';
+  // let targetURL = '/prototypes/submission-control/application-overview';
+  let targetURL;
   if (submitButton === 'stopShare') {
     // targetURL = '/prototypes/submission-control/application-overview-with-applicant';
+    targetURL = '/prototypes/submission-control/application-overview';
     req.session.sentBackToApplicant = true;
+  } else if (submitButton === 'submitToUKRI') {
+    targetURL = '/prototypes/submission-control/application-submission-confirm';
   }
+
   return res.redirect(targetURL);
 }
 
@@ -409,10 +416,40 @@ function submissionApplicationOverview2Get(req, res) {
 
 function submissionApplicationOverview2Post(req, res) {
   const { submitButton } = req.body;
-  let targetURL = '/prototypes/submission-control/application-overview-2';
+  let targetURL;
   if (submitButton === 'submitToUKRI') {
-    req.session.hasBeenSubmitted = true;
+    // req.session.hasBeenSubmitted = true;
+    targetURL = '/prototypes/submission-control/application-submission-confirm';
+    // req.session.tempHasBeenSubmitted = true;
+  } else {
+    targetURL = '/prototypes/submission-control/application-overview-2';
   }
+
+  return res.redirect(targetURL);
+}
+
+/*
+
+ Application submission confirm
+
+*/
+function submissionConfirmGet(req, res) {
+  let viewData;
+  let projectName = journeyData.projectName;
+
+  // let tempHasBeenSubmitted = req.session.tempHasBeenSubmitted;
+
+  viewData = {
+    projectName
+  };
+
+  return res.render('prototypes/submission-control/application-submission-confirm', viewData);
+}
+
+function submissionConfirmPost(req, res) {
+  const {} = req.body;
+  // req.session.tempHasBeenSubmitted = true;
+  let targetURL = '/prototypes/submission-control/application-overview-3';
   return res.redirect(targetURL);
 }
 

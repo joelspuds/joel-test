@@ -50,11 +50,11 @@
                             <td class="govuk-table__cell govuk-table__cell--numeric">21 Jun 2021</td>
                             <td class="govuk-table__cell govuk-table__cell--numeric">
                                 {% if sentBackToApplicant %}
-                                    With applicant
-                                    <span class="mega-table_item-meta">100% complete</span>
+                                    <strong>Returned to applicant</strong>
+                                    {#<span class="mega-table_item-meta">100% complete</span>#}
                                 {% else %}
-                                    With Research Office
-                                    <span class="mega-table_item-meta">100% complete</span>
+                                    <strong>With Research Office</strong>
+                                    {#<span class="mega-table_item-meta">100% complete</span>#}
                                 {% endif %}
                             </td>
                         </tr>
@@ -66,22 +66,61 @@
                             <td class="govuk-table__cell govuk-table__cell--numeric">4 July 2021</td>
                             <td class="govuk-table__cell govuk-table__cell--numeric">
                                 {% if hasBeenSubmitted %}
-                                    Submitted
-                                    <span class="mega-table_item-meta">100% complete</span>
+                                    <strong>Submitted</strong>
+                                    {#<span class="mega-table_item-meta">100% complete</span>#}
                                 {% else %}
-                                    With Research Office
-                                    <span class="mega-table_item-meta">100% complete</span>
+                                    <strong>With Research Office</strong>
+                                    {#<span class="mega-table_item-meta">100% complete</span>#}
                                 {% endif %}
                             </td>
                         </tr>
                         <tr>
-                            <td class="govuk-table__cell">APP721</td>
-                            <td class="govuk-table__cell"><a href="#" class="govuk-link">A lost beach, a forgotten past</a></td>
+                            <td class="govuk-table__cell">APP625</td>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Swords, jewels and all things lost</a></td>
+                            <td class="govuk-table__cell">Artefacts of the 21st Century, a dig for knowledge</td>
+                            <td class="govuk-table__cell">Terence McDonagh</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">4 July 2021</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <strong>With applicant</strong>
+                                <span class="mega-table_item-meta">75% complete</span>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">APP72</td>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">A distant beach, a forgotten past</a></td>
                             <td class="govuk-table__cell">Verses from the past; a poetical history of childhood</td>
                             <td class="govuk-table__cell">Lovelia Darling</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">4 Oct 2020</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">Not submitted</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric"><strong>Closed</strong><br> 12 Jan 2021</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <strong>Submitted</strong>
+                            </td>
                         </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">APP68</td>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">The dust on our toys</a></td>
+                            <td class="govuk-table__cell">Verses from the past; a poetical history of childhood</td>
+                            <td class="govuk-table__cell">Kerina Muggeridge</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric"><strong>Closed</strong><br>12 Jan 2021</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <strong>Submitted</strong>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">APP65</td>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Memories of the playground from a dark winter</a></td>
+                            <td class="govuk-table__cell">Verses from the past; a poetical history of childhood</td>
+                            <td class="govuk-table__cell">Isaac Parkin {#{{ 'firstAndLast' | giveMeAName }}#}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric"><strong>Closed</strong><br>12 Jan 2021</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <strong>Not submitted</strong>
+                                <span class="mega-table_item-meta">100% complete</span>
+                            </td>
+                        </tr>
+
+
 
                         </tbody>
 

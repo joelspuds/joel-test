@@ -1,0 +1,111 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+
+{% set pageTitle = 'Design log' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            {{ components.captionHeading(text='Design log') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-8', customID='main-content') %}
+
+            {{ components.captionHeading(text='Research and design areas', tag='h2', size='m') }}
+
+            {# {{ components.captionHeading(text='EDI', tag='h2', size='m') }} #}
+
+            <ul class="govuk-list _govuk-list--bullet">
+
+                <li>
+                    <h3 class="govuk-heading-s u-space-b5"><a href="/prototypes/design-log/log-edi" class="govuk-link">Equality, Diversity and Inclusion (EDI) Part II</a></h3>
+                    <span class="meta govuk-!-display-block govuk-!-font-size-16 u-space-b10">June 2021</span>
+                    <p class="govuk-body">
+                        EDI survey questions reworded, and navigational options to "Change" action from review/overview page.
+                    </p>
+                </li>
+
+                <li>
+                    <h3 class="govuk-heading-s u-space-b5"><a href="/prototypes/design-log/log-edi" class="govuk-link">Submission control</a></h3>
+                    <span class="meta govuk-!-display-block govuk-!-font-size-16 u-space-b10">May 2021</span>
+                    <p class="govuk-body">
+                        Interaction between lead applicant and Reasearch Office when completing and submitting application to UKRI.
+                    </p>
+                </li>
+
+                <li>
+                    <h3 class="govuk-heading-s u-space-b5"><a href="/prototypes/design-log/log-edi" class="govuk-link">Equality, Diversity and Inclusion (EDI) Part I</a></h3>
+                    <span class="meta govuk-!-display-block govuk-!-font-size-16 u-space-b10">May 2021</span>
+                    <p class="govuk-body">
+                        Adding the EDI survey questions to the profile section in time for Pilot II.
+                    </p>
+                </li>
+
+                <li>
+                    <h3 class="govuk-heading-s u-space-b5"><a href="/prototypes/design-log/log-edi" class="govuk-link">External nav structure</a></h3>
+                    <span class="meta govuk-!-display-block govuk-!-font-size-16 u-space-b10">April 2021</span>
+                    <p class="govuk-body">
+                        Exploring navigational and hierarchy structure for external users from sign in to different ares of the site as different user types.
+                    </p>
+                </li>
+
+                <li>
+                    <h3 class="govuk-heading-s u-space-b5"><a href="/prototypes/design-log/log-edi" class="govuk-link">Peer review</a></h3>
+                    <span class="meta govuk-!-display-block govuk-!-font-size-16 u-space-b10">April 2021</span>
+                    <p class="govuk-body">
+                        Peer review comment and submission journey.
+                    </p>
+                </li>
+
+                <li>
+                    <h3 class="govuk-heading-s u-space-b5"><a href="/prototypes/design-log/log-edi" class="govuk-link">Applicant and Research Office - 2 player</a></h3>
+                    <span class="meta govuk-!-display-block govuk-!-font-size-16 u-space-b10">March 2021</span>
+                    <p class="govuk-body">
+                        Researching interaction between lead applicant and Research Office simultaneously; both users are required to complete journey.
+                    </p>
+                </li>
+
+                <li>
+                    <h3 class="govuk-heading-s u-space-b5"><a href="/prototypes/design-log/log-edi" class="govuk-link">Registration and sign-in journey</a></h3>
+                    <span class="meta govuk-!-display-block govuk-!-font-size-16 u-space-b10">February 2021</span>
+                    <p class="govuk-body">
+                        New users can register for account and complete basic profile questions including organisation selection and some personal details.
+                    </p>
+                </li>
+
+
+
+            </ul>
+
+            {#<hr>
+
+            <p class="govuk-body">
+                <a href="/prototypes/edi/?clearSession=true" class="govuk-link">Clear data</a>
+            </p>#}
+
+
+            {#<p class="govuk-body">
+                <a href="/prototypes/peer-review-external?clearSession=true" class="govuk-link">Clear all stored data</a>
+            </p>#}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+{% block bodyScripts %}
+    {#<script>
+      Zepto(function($){
+        $('#thing').on('click', function() {
+        });
+      });
+    </script>#}
+{% endblock %}
+
+
