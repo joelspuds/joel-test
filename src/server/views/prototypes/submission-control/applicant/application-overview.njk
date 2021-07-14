@@ -211,11 +211,25 @@
             <div class="progress-meter">
                 <div class="progress-meter__text progress-meter__text--back" role="progress-bar" aria-valuenow="27%"><span class="govuk-visually-hidden">Your application is</span> {{ progressPercentage }}% complete</div>
                 <div class="progress-meter__clipper" aria-hidden="true" style="clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%); -webkit-clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%)">
-                    {% if readyToSend %}
-                        <div class="progress-meter__text progress-meter__text--front"><strong>100% complete</strong></div>
+
+                    {% if showReturnedBanner %}
+
+                        <div class="progress-meter__text progress-meter__text--front"><strong>Returned to applicant</strong></div>
+
                     {% else %}
-                        <div class="progress-meter__text progress-meter__text--front">{{ progressPercentage }}% complete</div>
+
+                        {% if readyToSend %}
+                            {% if sendToResearchOffice %}
+                                <div class="progress-meter__text progress-meter__text--front"><strong>With Research Office</strong></div>
+                            {%  else %}
+                                <div class="progress-meter__text progress-meter__text--front"><strong>Ready to send</strong></div>
+                            {% endif %}
+                        {% else %}
+                            <div class="progress-meter__text progress-meter__text--front">{{ progressPercentage }}% complete</div>
+                        {% endif %}
+
                     {% endif %}
+
                 </div>
             </div>
             <div class="application-data">
