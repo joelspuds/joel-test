@@ -1,0 +1,112 @@
+{% set showExternalNav = false %}
+{% set activeNavItem = 'design-and-code' %}
+{% set reviewsLink = '' %}
+{% set navType = 'admin' %}
+
+{% set designSystemConceptNav = true %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = true %}
+{% set loggedOut = false %}
+
+{% set backLinkContents =  [{url:'/design/design-and-code', text:'Design and code'}] %}
+{% set pageTitle = 'Components' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {#{{ components.captionHeading(text='Design', caption='Jane Doington-Smyth') }}#}
+            {{ components.captionHeading(text='Components',caption='Design and code') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <ul class="govuk-list">
+                    {#<li><a href="#" class="govuk-link">Styles</a></li>
+                    <li><a href="/design/design-and-code/components" class="govuk-link">Components</a></li>
+                    <li><a href="#" class="govuk-link">Patterns</a></li>
+                    <li><a href="#" class="govuk-link">Prototype in code</a></li>
+                    <li><a href="#" class="govuk-link">Resources</a></li>#}
+                    <li><a href="#" class="govuk-link">Accordion</a></li>
+                    <li><a href="#" class="govuk-link">Articles</a></li>
+                    <li><a href="#" class="govuk-link">Autosuggest</a></li>
+                    <li><a href="#" class="govuk-link">Back link</a></li>
+                    <li><a href="#" class="govuk-link">Breadcrumbs</a></li>
+                    <li><a href="#" class="govuk-link">Button</a></li>
+                    <li><a href="#" class="govuk-link">Call to action</a></li>
+                    <li><a href="#" class="govuk-link">Card</a></li>
+                    <li><a href="#" class="govuk-link">Checkboxes</a></li>
+                    <li><a href="#" class="govuk-link">Collapsible</a></li>
+                    <li><a href="#" class="govuk-link">Downloads</a></li>
+                    <li><a href="#" class="govuk-link">Error</a></li>
+                    <li><a href="#" class="govuk-link">Field</a></li>
+                    <li><a href="#" class="govuk-link">Fieldset</a></li>
+                    <li><a href="#" class="govuk-link">Footer</a></li>
+                    <li><a href="#" class="govuk-link">Header</a></li>
+                    <li><a href="#" class="govuk-link">Hero</a></li>
+                    <li><a href="#" class="govuk-link">Input</a></li>
+                    <li><a href="#" class="govuk-link">Label</a></li>
+                    <li><a href="#" class="govuk-link">Metadata</a></li>
+                    <li><a href="#" class="govuk-link">Mutually exclusive</a></li>
+                    <li><a href="#" class="govuk-link">Pagination</a></li>
+                    <li><a href="#" class="govuk-link">Panel</a></li>
+                    <li><a href="#" class="govuk-link">Password</a></li>
+                    <li><a href="#" class="govuk-link">Phase banner</a></li>
+                    <li><a href="#" class="govuk-link">Promotional banner</a></li>
+                    <li><a href="#" class="govuk-link">Radios</a></li>
+                    <li><a href="#" class="govuk-link">Related content</a></li>
+                    <li><a href="#" class="govuk-link">Related links</a></li>
+                    <li><a href="#" class="govuk-link">Search</a></li>
+                    <li><a href="#" class="govuk-link">Section navigation</a></li>
+                    <li><a href="#" class="govuk-link">Select</a></li>
+                    <li><a href="#" class="govuk-link">Share page</a></li>
+                    <li><a href="#" class="govuk-link">Skip to content</a></li>
+                    <li><a href="#" class="govuk-link">Status</a></li>
+                    <li><a href="#" class="govuk-link">Summary</a></li>
+                    <li><a href="#" class="govuk-link">Table</a></li>
+                    <li><a href="#" class="govuk-link">Table of contents</a></li>
+                    <li><a href="#" class="govuk-link">Tabs</a></li>
+                    <li><a href="#" class="govuk-link">Textarea</a></li>
+                    <li><a href="#" class="govuk-link">Timeline</a></li>
+                    <li><a href="/design/design-and-code/components/time-out" class="govuk-link">Time out</a></li>
+                    <li><a href="#" class="govuk-link">Upload</a></li>
+                    <li><a href="#" class="govuk-link">Video</a></li>
+                </ul>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                {{ components.captionHeading(text='Components overview',size='m',tag='h2') }}
+
+                {#<p class="govuk-body">
+                    Styles make up the foundations on which UKRI digital products and services are built.
+                </p>#}
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='u-space-t20') %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+

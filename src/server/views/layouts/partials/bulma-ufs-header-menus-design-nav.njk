@@ -1,0 +1,80 @@
+{#{% set applicationsLink = applicationsLink if applicationsLink '/prototypes/external-users/applications' %}#}
+
+{#{% set accountSettingsLink = '/prototypes/edi/home'  %}#}
+{#{% set accountSettingsLink = altProfilePagelink if altProfilePagelink else '/prototypes/edi/home' %}#}
+
+{#{% set signInURL = signInLink if signInLink else '#' %}#}
+{#{% set signInURL = signInLink if signInLink else '/prototypes/external-users/sign-in' %}#}
+{#{% set userName = userName if userName else 'Dr. Jane Doeington-Longname' %}#}
+
+{#{% set signOutLink = signOutLink if signOutLink else '/prototypes/external-users/index' %}#}
+
+
+<header class="new-header {% if navType == 'admin' %} new-header--admin {% else %} new-header--external {% endif %}" role="banner">
+    <div class="container new-header__top">
+        <div class="columns">
+            <div class="column {#column-one-quarter#}">
+                <a href="#" class="new-header__brand" title="UKRI Funding Service homepage" aria-label="Return to UKRI Funding Service homepage">
+                    <img src="/images/ufs/ukri_logo_new.svg" alt="UKRI logo">
+                </a>
+                {#{% if not loggedOut %}#}
+                    <button class="mobile-menu" type="button" aria-controls="mobile-nav" aria-expanded="false">Menu <span>&#9660;</span></button>
+                {#{% endif %}#}
+
+                <nav class="new-header__nav new-header__nav--touch-hide">
+                    <ul class="new-header__nav-list">
+                        <li class="new-header__nav-item">
+                            <a href="/design/" class="new-header__nav-link {% if activeNavItem == 'design' %} new-header__nav-link--active {% endif %}">Design</a>
+                        </li>
+                        <li class="new-header__nav-item">
+                            <a href="/design/principles" class="new-header__nav-link {% if activeNavItem == 'principles' %} new-header__nav-link--active {% endif %}">Principles</a>
+                        </li>
+
+                        <li class="new-header__nav-item">
+                            <a href="/design/design-and-code" class="new-header__nav-link {% if activeNavItem == 'design-and-code' %} new-header__nav-link--active {% endif %}">Design and code</a>
+                        </li>
+
+                        <li class="new-header__nav-item">
+                            <a href="/design/guides" class="new-header__nav-link {% if activeNavItem == 'guides' %} new-header__nav-link--active {% endif %}">Guides</a>
+                        </li>
+
+                        <li class="new-header__nav-item">
+                            <a href="/design/open-working" class="new-header__nav-link {% if activeNavItem == 'open-working' %} new-header__nav-link--active {% endif %}">Open working</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="new-header__bar">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <span class="new-header__service">Funding Service</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+{#{% if not loggedOut %}#}
+    <script>
+        window.onload = function(){
+            // let topNavSwitcher = document.getElementsByClassName('new-header__nav');
+            let topNavMenu = document.getElementsByClassName('new-header__nav')[0];
+            document.querySelector('.mobile-menu').onclick = function(){
+                // topNavMenu.classList.toggle('new-header__nav--touch-hide');
+                // this.setAttribute('aria-expanded', 'true');
+                if(topNavMenu.classList.contains('new-header__nav--touch-hide')) {
+                    topNavMenu.classList.remove('new-header__nav--touch-hide');
+                    this.setAttribute('aria-expanded', true);
+                } else {
+                    topNavMenu.classList.add('new-header__nav--touch-hide');
+                    this.setAttribute('aria-expanded', false);
+                }
+            };
+        };
+    </script>
+{#{% endif %}#}

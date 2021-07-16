@@ -29,6 +29,10 @@
 
         {% include './partials/bulma-ufs-header-menus-external-only.njk' %}
 
+    {% elseif designSystemConceptNav %}
+
+        {% include './partials/bulma-ufs-header-menus-design-nav.njk' %}
+
     {% else %}
         {% include './partials/bulma-ufs-new-header.njk' %}
         {#{% include './partials/bulma-ufs-new-header.njk' %}#}

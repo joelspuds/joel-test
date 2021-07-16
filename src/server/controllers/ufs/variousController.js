@@ -338,3 +338,21 @@ export function sortableTablesGet(req, res) {
   };
   return res.render('prototypes/molecules/sortable-tables', viewData);
 }
+
+/*
+*
+*     Colours page in molecules
+*
+*/
+export function colourPaletteGet(req, res) {
+  let viewData;
+  // const bigData = generalData.megaDataApplications;
+  const allColours = generalData.colourPalette;
+
+  console.log(allColours);
+
+  viewData = {
+    allColours,
+  };
+  return res.render('prototypes/molecules/colours', viewData);
+}

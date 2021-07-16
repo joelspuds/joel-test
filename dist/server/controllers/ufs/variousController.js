@@ -17,6 +17,7 @@ exports.userDashBoardGet = userDashBoardGet;
 exports.userDashBoardFiltersGet = userDashBoardFiltersGet;
 exports.topNavGet = topNavGet;
 exports.sortableTablesGet = sortableTablesGet;
+exports.colourPaletteGet = colourPaletteGet;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 // import sanitizeHtml from '../../../../no';
@@ -356,4 +357,22 @@ function sortableTablesGet(req, res) {
     bigData
   };
   return res.render('prototypes/molecules/sortable-tables', viewData);
+}
+
+/*
+*
+*     Colours page in molecules
+*
+*/
+function colourPaletteGet(req, res) {
+  let viewData;
+  // const bigData = generalData.megaDataApplications;
+  const allColours = generalData.colourPalette;
+
+  console.log(allColours);
+
+  viewData = {
+    allColours
+  };
+  return res.render('prototypes/molecules/colours', viewData);
 }

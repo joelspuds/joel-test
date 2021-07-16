@@ -839,3 +839,27 @@ const megaDataReviews = exports.megaDataReviews = megaDataReviewsList;
 // let reviewValues = ['', 'Unfundable', 'Uncompetitive', 'Good', 'Very good', 'Excellent', 'Exceptional'];
 let reviewValues = ['', 'Unviable', 'Unsuitable', 'Un-recommendable', 'Viable', 'Suitable', 'Recommendable'];
 const reviewRatingValues = exports.reviewRatingValues = reviewValues;
+
+let allColours = [{
+  'govuk-colour-red': '#D4351C',
+  'govuk-colour-green': '#00703C',
+  'govuk-colour-dark-blue': '#003078',
+  'govuk-colour-purple': '#4C2C92',
+  'govuk-colour-dark-grey': '#6F777B',
+  'govuk-colour-light-grey': '#F3F2F1',
+  'govuk-colour-light-purple': '#6F72AF',
+  'govuk-colour-pink': '#D53880',
+  'govuk-colour-orange': '#F47738',
+  'govuk-colour-light-green': '#85994B',
+  'govuk-colour-yellow': '#FFDD00',
+  'govuk-colour-blue': '#1D70B8',
+  'govuk-colour-light-blue': '#5694CA',
+  'govuk-colour-black': '#0B0C0C',
+  'govuk-colour-mid-grey': '#B1B4B6',
+  'govuk-colour-white': '#FFFFFF',
+  'govuk-colour-bright-purple': '#912B88',
+  'govuk-colour-light-pink': '#F499BE',
+  'govuk-colour-brown': '#B58840',
+  'govuk-colour-turquoise': '#28A197'
+}];
+const colourPalette = exports.colourPalette = allColours;

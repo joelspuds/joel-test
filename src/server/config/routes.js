@@ -253,6 +253,7 @@ router.get('/prototypes/molecules/user-dashboard', demosController.userDashBoard
 router.get('/prototypes/molecules/user-dashboard-filters', demosController.userDashBoardFiltersGet);
 router.get('/prototypes/molecules/top-nav', demosController.topNavGet);
 router.get('/prototypes/molecules/sortable-tables', demosController.sortableTablesGet);
+router.get('/prototypes/molecules/colours', demosController.colourPaletteGet);
 
 /* *************************************************************** *
 

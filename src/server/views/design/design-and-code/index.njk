@@ -1,0 +1,96 @@
+{% set showExternalNav = false %}
+{% set activeNavItem = 'design-and-code' %}
+{% set reviewsLink = '' %}
+{% set navType = 'admin' %}
+
+{% set designSystemConceptNav = true %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = true %}
+{% set loggedOut = false %}
+
+{% set backLinkContents =  [{url:'/design', text:'Design'}] %}
+{% set pageTitle = 'Design and code' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {#{{ components.captionHeading(text='Design', caption='Jane Doington-Smyth') }}#}
+            {{ components.captionHeading(text='Design and code',caption='Design') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <ul class="govuk-list">
+                    <li><a href="#" class="govuk-link">Styles</a></li>
+                    <li><a href="/design/design-and-code/components" class="govuk-link">Components</a></li>
+                    <li><a href="#" class="govuk-link">Patterns</a></li>
+                    <li><a href="#" class="govuk-link">Prototype in code</a></li>
+                    <li><a href="#" class="govuk-link">Resources</a></li>
+                </ul>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                {{ components.captionHeading(text='Styles',size='m',tag='h2') }}
+
+                <p class="govuk-body">
+                    Styles make up the foundations on which UKRI digital products and services are built.
+                </p>
+
+                {{ components.captionHeading(text='Components',size='m',tag='h2') }}
+
+                <p class="govuk-body">
+                    Components are reusable parts of the user interface that have been made to support
+                    a variety of applications.
+                </p>
+
+                {{ components.captionHeading(text='Patterns',size='m',tag='h2') }}
+
+                <p class="govuk-body">
+                    Patterns are best practice, simple, and reusable solutions to users’ commonly occurring
+                    tasks or problems, built up of components.
+                </p>
+
+                {{ components.captionHeading(text='Prototype in code',size='m',tag='h2') }}
+
+                <p class="govuk-body">
+                    You can start using the latest version of the UKRI Design System in your service right now.
+                    All of the styles, assets and components are production ready.
+                </p>
+
+                {{ components.captionHeading(text='Resourses',size='m',tag='h2') }}
+
+                <p class="govuk-body">
+                    You can download offline assets to help mock up wireframes and click through prototypes.
+                </p>
+
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='u-space-t20') %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+

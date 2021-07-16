@@ -1,0 +1,53 @@
+{% set showExternalNav = false %}
+{% set activeNavItem = 'principles' %}
+{% set reviewsLink = '' %}
+{% set navType = 'admin' %}
+
+{% set designSystemConceptNav = true %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = true %}
+{% set loggedOut = false %}
+
+{% set backLinkContents =  [{url:'/design', text:'Design'}] %}
+{% set pageTitle = 'Principles' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {#{{ components.captionHeading(text='Design', caption='Jane Doington-Smyth') }}#}
+            {{ components.captionHeading(text='Principles', caption='Design') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='u-space-t20') %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+
