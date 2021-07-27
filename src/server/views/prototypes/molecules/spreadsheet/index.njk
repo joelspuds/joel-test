@@ -61,10 +61,12 @@
 
 
 {% block bodyScripts %}
-    {#<link href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" media="all" rel="stylesheet">#}
-    <link href="/stylesheets/handsontable.full.min.css" media="all" rel="stylesheet">
-    {#<script src='https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js'></script>#}
-    <script src='/javascripts/handsontable.full.min.js'></script>
+    {# remote #}
+    <link href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" media="all" rel="stylesheet">
+    <script src='https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js'></script>
+    {# local #}
+    {#<link href="/stylesheets/handsontable.full.min.css" media="all" rel="stylesheet">
+    <script src='/javascripts/handsontable.full.min.js'></script>#}
     <script>
         var ready = (callback) => {
             if (document.readyState != 'loading') callback();
