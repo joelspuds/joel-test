@@ -57,6 +57,10 @@ router.post('/prototypes/example-journey/application/resources-and-cost', demosC
 // spreadsheet
 router.get('/prototypes/example-journey/application/spreadsheet', demosController.spreadSheetGet);
 router.post('/prototypes/example-journey/application/spreadsheet', demosController.spreadSheetPost);
+router.get('/prototypes/molecules/spreadsheet', demosController.spreadSheetExampleGet);
+router.post('/prototypes/molecules/spreadsheet', demosController.spreadSheetExamplePost);
+router.get('/prototypes/molecules/spreadsheet/display', demosController.spreadSheetExampleDisplayGet);
+// router.post('/prototypes/molecules/spreadsheet/display', demosController.spreadSheetExampleDisplayPost);
 
 // data from google docs
 router.get('/prototypes/gds/data-from-docs', demosController.dataTestGet);

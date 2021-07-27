@@ -1,0 +1,131 @@
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set pageTitle = 'Display spreadsheet example' %}
+{#{% set showSpreadsheetscripts = true %}#}
+{% set spreadSheetData = spreadSheetData if spreadSheetData  %}
+{% set resultArray = resultArray if resultArray  %}
+{% set headerRow = headerRow if headerRow  %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Display spreadsheet example') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {#{% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-9-desktop is-9-widescreen') %}
+
+                <code>
+                {{ spreadSheetData }}
+                </code>
+
+            {%- endcall %}
+
+        {%- endcall %}#}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-9-desktop is-9-widescreen') %}
+
+                {% if resultArray %}
+
+                <table class="govuk-table">
+                    <thead>
+                        <tr>
+                            {% for item in headerRow %}
+                            <th class="govuk-table__header">
+                                {{ item }}
+                            </th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for items in resultArray %}
+                        <tr>
+                        {% for item in items %}
+                            <td class="govuk-table__cell _govuk-table__cell--numeric">
+                                {{ item }}
+                            </td>
+                        {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+
+                {% else %}
+                    <p class="govuk-body">You have not sent any data!</p>
+                {% endif %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full {#is-9-desktop is-9-widescreen#}') %}
+
+                <p class="govuk-body">That was cool, let's <a href="/prototypes/molecules/spreadsheet/">do it again</a>!</p>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+{% endblock %}
+
+
+{% block bodyScripts %}
+    {#<link href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" media="all" rel="stylesheet">#}{#
+    <link href="/stylesheets/handsontable.full.min.css" media="all" rel="stylesheet">
+    #}{#<script src='https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js'></script>#}{#
+    <script src='/javascripts/handsontable.full.min.js'></script>
+    <script>
+        var ready = (callback) => {
+            if (document.readyState != 'loading') callback();
+            else document.addEventListener('DOMContentLoaded', callback);
+        }
+        ready(() => {
+
+            let data = [
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', '', '', '', '']
+            ];
+
+            let container = document.getElementById('financialData');
+            let hot = new Handsontable(container, {
+                data: data,
+                rowHeaders: true,
+                colHeaders: true,
+                filters: true,
+                dropdownMenu: true,
+                licenseKey: 'non-commercial-and-evaluation'
+            });
+
+            /* let saveButton = document.getElementById('saveTableData');
+             saveButton.onclick = function(e) {
+                 e.preventDefault();
+                 console.log('HERE IS YOUR EASILY-DIGESTIBLE CSV DATE:');
+                 console.log(data);
+                 alert('HERE IS YOUR EASILY-DIGESTIBLE CSV DATE:' + '\n' + '\n'  + data);
+             };*/
+
+        });
+    </script>#}
+{% endblock %}
+
+
+
+
+

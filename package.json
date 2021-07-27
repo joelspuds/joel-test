@@ -49,6 +49,8 @@
     "consolidate": "^0.10.0",
     "cookie-session": "^2.0.0-beta.3",
     "core-js": "^2.5.7",
+    "csv": "^5.5.0",
+    "csv-parser": "^3.0.0",
     "datatables": "^1.10.18",
     "datatables.net": "^1.10.19",
     "datatables.net-responsive": "^2.2.3",
