@@ -43,6 +43,27 @@
                     <input type="hidden" id="dataHolder" name="dataHolder">
                     <input type="hidden" id="colCount" name="colCount">
 
+                    <noscript>
+                        <div class="govuk-warning-text">
+                            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                            <strong class="govuk-warning-text__text">
+                                <span class="govuk-warning-text__assistive">Warning</span>
+                                You have JavaScript disabled in your browser settings
+                            </strong>
+                        </div>
+                        <p class="govuk-body">You have JavaScript turned off and it is required to use this feature. If you can not enable JavaScript, then email your spreadsheet to <a href="mailto:financialdata@ukri.org">financialdata@ukri.org</a> and ensure that you include the name of the Opportunity and your application reference number.</p>
+                        {#<div class="govuk-form-group">
+                            <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="more-detail">
+                                    Can you provide more detail?
+                                </label>
+                            </h1>
+                            <div id="more-detail-hint" class="govuk-hint">
+                                Do not include personal or financial information, like your National Insurance number or credit card details.
+                            </div>
+                            <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                        </div>#}
+                    </noscript>
+
                     <div class="application-controls govuk-clearfix u-space-t45">
 
                         <button type="submit" id="saveTableData" class="govuk-button application-controls__submit">Munge data</button>
