@@ -34,13 +34,20 @@
 
             {% call components.bulmaColumnAny(size='column is-9-desktop is-9-widescreen') %}
 
-                {% if resultArray %}
+                <style>
+                    .govuk-table__cell.govuk-table__cell--numeric:first-of-type,
+                    .govuk-table__header.govuk-table__header--numeric:first-of-type {
+                        text-align: left!important
+                    }
+                </style>
+
+                {% if spreadSheetData %}
 
                 <table class="govuk-table">
                     <thead>
                         <tr>
                             {% for item in headerRow %}
-                            <th class="govuk-table__header">
+                            <th class="govuk-table__header govuk-table__header--numeric">
                                 {{ item }}
                             </th>
                             {% endfor %}
@@ -51,8 +58,9 @@
                         {% for items in resultArray %}
                         <tr>
                         {% for item in items %}
-                            <td class="govuk-table__cell _govuk-table__cell--numeric">
-                                {{ item }}
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                {#{{ item }}#}
+                                {{ item | numberFormat() }}
                             </td>
                         {% endfor %}
                         </tr>
@@ -61,19 +69,14 @@
 
                 </table>
 
+                <p class="govuk-body">That was cool, let's <a href="/prototypes/molecules/spreadsheet/">do it again</a>!</p>
+
                 {% else %}
                     <p class="govuk-body">You have not sent any data!</p>
+
+                    <p class="govuk-body">That was bogus, let's <a href="/prototypes/molecules/spreadsheet/">try again</a>!</p>
+
                 {% endif %}
-
-            {%- endcall %}
-
-        {%- endcall %}
-
-        {% call components.bulmaRow() %}
-
-            {% call components.bulmaColumnAny(size='column is-full {#is-9-desktop is-9-widescreen#}') %}
-
-                <p class="govuk-body">That was cool, let's <a href="/prototypes/molecules/spreadsheet/">do it again</a>!</p>
 
             {%- endcall %}
 

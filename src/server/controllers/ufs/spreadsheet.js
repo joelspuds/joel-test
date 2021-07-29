@@ -32,14 +32,21 @@ export function spreadSheetExampleGet(req, res) {
 export function spreadSheetExamplePost(req, res) {
   const { data, dataHolder, colCount } = req.body;
 
+  let redirectURL = '/prototypes/molecules/spreadsheet/display';
+  // let redirectURL = '/prototypes/molecules/spreadsheet/';
+
   console.log('colCount = ' + colCount);
+  console.log('data = ');
+  console.log(data);
 
   req.session.colCount = colCount;
   req.session.spreadSheetData = dataHolder;
+  console.log('dataHolder = ');
+  console.log(dataHolder);
 
   // console.log('spreadSheetData = ' + dataHolder);
 
-  return res.redirect('/prototypes/molecules/spreadsheet/display');
+  return res.redirect(redirectURL);
 }
 
 /*
@@ -53,34 +60,39 @@ export function spreadSheetExampleDisplayGet(req, res) {
   spreadSheetData = req.session.spreadSheetData;
   colCount = req.session.colCount;
 
-  /*console.log('the data from session:');
-  console.log(spreadSheetData);
-  console.log(colCount);*/
-
-  let data = [];
-  data = spreadSheetData.split(',');
+  let data;
   let tempArray = [];
   let resultArray = [];
-  for (let i = 0; i < data.length; i++) {
-    tempArray.push(data[i]);
-    if ((i + 1) % colCount === 0) {
-      resultArray.push(tempArray);
-      tempArray = [];
+  let headerRow;
+
+  if (spreadSheetData) {
+    console.log('the data from session:');
+    console.log(spreadSheetData);
+    console.log(colCount);
+
+    data = spreadSheetData.split(',');
+
+    for (let i = 0; i < data.length; i++) {
+      tempArray.push(data[i]);
+      if ((i + 1) % colCount === 0) {
+        resultArray.push(tempArray);
+        tempArray = [];
+      }
     }
+
+    // remove header into it's own array
+    headerRow = resultArray[0];
+    resultArray.splice(0, 1);
+
+    console.log('data = ');
+    console.log(data);
+
+    console.log('result = ');
+    console.log(resultArray);
+
+    console.log('headerRow = ');
+    console.log(headerRow);
   }
-
-  // remove header into it's own array
-  let headerRow = resultArray[0];
-  resultArray.splice(0, 1);
-
-  /*console.log('data = ');
-  console.log(data);
-
-  console.log('result = ');
-  console.log(resultArray);
-
-  console.log('headerRow = ');
-  console.log(headerRow);*/
 
   viewData = {
     spreadSheetData,
