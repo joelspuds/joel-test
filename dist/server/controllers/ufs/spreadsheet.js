@@ -76,7 +76,6 @@ function spreadSheetExampleDisplayGet(req, res) {
   let headerRow;
 
   if (spreadSheetData) {
-
     console.log('the data from session:');
     console.log(spreadSheetData);
     console.log(colCount);
