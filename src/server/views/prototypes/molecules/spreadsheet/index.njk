@@ -9,7 +9,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Spreadsheet example') }}
+            {{ components.captionHeading(text='Enter detailed costs using \'copy and paste\'') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -18,22 +18,22 @@
         {% call components.bulmaRow() %}
 
             {% call components.bulmaColumnAny(size='column is-9-desktop is-9-widescreen') %}
-                {#{{ components.paragraph(text='Enter your financial data into the spreadsheet below. You can cut and paste directly from an Excel spreadsheet. Paste into', size='l')}}#}
+                {{ components.paragraph(text='Instead of listing the Full Economic Costs we require to evaluate this application, we have provided a ready-made spreadsheet template for you to download. Enter the data directly into it, before copying and pasting all of the data using the table below.', size='l')}}
 
                 <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
                     <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
-                        <span class="govuk-details__summary-text">Guidance on entering financial data</span>
+                        <span class="govuk-details__summary-text">Guidance for entering cost data</span>
                     </summary>
                     <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
-                        <div class="tiny-spoof">
-                            <p class="govuk-body">You can only use the formatting options available in the text editor's toolbar. These are:</p>
-                            <ul class="govuk-list govuk-list--bullet u-space-b0">
+
+                            <p class="govuk-body">Download the spreadsheet template. Then enter the costs for this application into it. When you have finished, select the header row and all the relevant cells, copy them and paste them all into cell 'A1' below. {#Or, if the costs already exist in a document, cut and paste that into cell 'A1' instead – having ensured it includes all the costs listed in our spreadsheet.#}</p>
+                          {#  <ul class="govuk-list govuk-list--bullet u-space-b0">
                                 <li>Headings</li>
                                 <li>Bold</li>
                                 <li>Links</li>
                                 <li>Bulleted and numbered lists</li>
-                            </ul>
-                        </div>
+                            </ul>#}
+
                     </div>
                 </details>
 
@@ -70,22 +70,16 @@
                                 You have JavaScript disabled in your browser settings
                             </strong>
                         </div>
-                        <p class="govuk-body">You have JavaScript turned off and it is required to use this feature. If you can not enable JavaScript, then email your spreadsheet to <a href="mailto:financialdata@ukri.org">financialdata@ukri.org</a> and ensure that you include the name of the Opportunity and your application reference number.</p>
-                        {#<div class="govuk-form-group">
-                            <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="more-detail">
-                                    Can you provide more detail?
-                                </label>
-                            </h1>
-                            <div id="more-detail-hint" class="govuk-hint">
-                                Do not include personal or financial information, like your National Insurance number or credit card details.
-                            </div>
-                            <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                        </div>#}
+
+                        <p class="govuk-body">You have JavaScript turned off and it is required to use this feature. If you cannot enable JavaScript, then email your spreadsheet to <a href="mailto:financialdata@ukri.org">financialdata@ukri.org</a> and ensure that you include the name of the Opportunity and your application reference number.</p>
+
+                        <p class="govuk-body"><a href="#">Return to previous page</a> </p>
+
                     </noscript>
 
-                    <div class="application-controls govuk-clearfix u-space-t45">
+                    <div class="application-controls govuk-clearfix u-space-t45 js-only">
 
-                        <button type="submit" id="saveTableData" class="govuk-button application-controls__submit">Save financial information</button>
+                        <button type="submit" id="saveTableData" class="govuk-button application-controls__submit">Save detailed costs</button>
 
                     </div>
 
