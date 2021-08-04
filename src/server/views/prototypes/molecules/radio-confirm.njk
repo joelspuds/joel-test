@@ -1,0 +1,190 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set navType = 'admin' %}
+{#{% set isAdminUser = true %}#}
+{%  set loggedOut = false %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+
+{% set createOpportunityError = createOpportunityError if createOpportunityError %}
+{% set createOpportunityErrorMessage = createOpportunityErrorMessage if createOpportunityErrorMessage %}
+{% set opportunityName = opportunityName if opportunityName %}
+{% set createOpportunityErrorMessageInputLevel = createOpportunityErrorMessageInputLevel if createOpportunityErrorMessageInputLevel %}
+
+{% set newHeader = true %}
+
+{% set pageTitle = 'Confirm details' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            {{ components.captionHeading(text='Confirm details') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+
+            <p class="govuk-body">
+                There are existing details for this user. Confirm or update their profile with the most accurate details.
+            </p>
+
+            {#{{ components.captionHeading(text='Users organisation', tag='h2', size='m') }}#}
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            <h2 class="govuk-fieldset__heading">User's first name</h2>
+                        </legend>
+                        {#<div id="contact-hint" class="govuk-hint">
+                        Select one option.
+                    </div>#}
+                        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="firstName1" name="firstName" type="radio" value="" data-aria-controls="conditional-contact">
+                                <label class="govuk-label govuk-radios__label" for="firstName1">
+                                    Jonothy
+                                    <span class="govuk-hint">This is the information you have just entered</span>
+                                </label>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="firstName2" name="firstName" type="radio" value="" data-aria-controls="conditional-contact-2">
+                                <label class="govuk-label govuk-radios__label" for="firstName2">
+                                    Johnington
+                                    <span class="govuk-hint">This is the information already stored in the application</span>
+                                </label>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="firstName3" name="firstName" type="radio" value="" data-aria-controls="firstName3Input">
+                                <label class="govuk-label govuk-radios__label" for="firstName3">
+                                    Add a new first name
+                                </label>
+                            </div>
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="firstName3Input">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="firstNameAdditional">
+                                        Enter a more up-to-date first name
+                                    </label>
+                                    <input class="govuk-input govuk-!-width-one-third" id="firstNameAdditional" name="firstNameAdditional" type="text"></div>
+
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h2 class="govuk-fieldset__heading">User's current organisation</h2>
+                    </legend>
+                    {#<div id="contact-hint" class="govuk-hint">
+                        Select one option.
+                    </div>#}
+                    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
+                            <label class="govuk-label govuk-radios__label" for="contact">
+                                University of Cardiff
+                                <span class="govuk-hint">This is the information you have just entered</span>
+                            </label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
+                            <label class="govuk-label govuk-radios__label" for="contact-2">
+                                Cardiff University
+                                <span class="govuk-hint">This is the information already stored in the application</span>
+                            </label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="contact-3" name="contact" type="radio" value="text" data-aria-controls="conditional-contact-3">
+                            <label class="govuk-label govuk-radios__label" for="contact-3">
+                                Add a new organisation
+                            </label>
+                        </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label" for="contact-by-text">
+                                    Enter the name of their current organisation
+                                </label>
+                                <input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contact-by-text" type="tel" autocomplete="tel"></div>
+
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='js-only--block') %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+
+                <div class="application-controls govuk-clearfix">
+
+                    {{ components.button(text='Confirm details', extraClass="application-controls__submit", id='downloadAll')}}
+
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        var ready = (callback) => {
+            if (document.readyState != 'loading') callback();
+            else document.addEventListener('DOMContentLoaded', callback);
+        }
+        ready(() => {
+            const urls = [
+                '/misc/file1.pdf',
+                '/misc/file2.pdf',
+                '/misc/file3.pdf',
+                '/misc/file4.pdf',
+                '/misc/file5.pdf'
+            ]
+            var tempURLS;
+            var interval;
+
+            $('#downloadAll').on('click', function(e) {
+                e.preventDefault();
+                tempURLS = [...urls];
+                interval = setInterval(download, 300, tempURLS);
+            });
+
+            function download(tempURLS) {
+                var url = tempURLS.pop();
+
+                if (url == null) {
+                    clearInterval(interval);
+                    return;
+                }
+                var a = document.createElement("a");
+                a.setAttribute('href', url);
+                a.setAttribute('download', '');
+                a.setAttribute('target', '_blank');
+                a.click();
+            }
+        });
+    </script>
+{% endblock %}
+
+
