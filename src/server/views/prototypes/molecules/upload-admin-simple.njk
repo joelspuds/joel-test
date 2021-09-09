@@ -24,7 +24,7 @@
 
         {% call components.bulmaRow() %}
 
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
 
                 {#{{ components.captionHeading(text='Reviews', tag='h2', size='m') }}#}
                 <fieldset class="govuk-fieldset">
@@ -63,7 +63,6 @@ assessed.</span>
 
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="wordcount" id="wordcountLabel">Word limit</label>
-
                     <input class="govuk-input govuk-input--width-4" id="wordcount" name="wordcount" type="text" value="400">
                 </div>
 
@@ -113,7 +112,7 @@ which it will be assessed.</span>
                                 </div>
                             </div>
                             <div class="govuk-radios__item govuk-radios__item__hack--right">
-                                <input class="govuk-radios__input" id="docNo" name="uploadDoc" type="radio" value="no" checked>
+                                <input class="govuk-radios__input" id="docNo" name="uploadDoc" type="radio" value="no">
                                 <label class="govuk-label govuk-radios__label" for="docNo">No</label>
                             </div>
                         </div>
