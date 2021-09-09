@@ -315,3 +315,15 @@ Object.keys(_submissionController).forEach(function (key) {
     }
   });
 });
+
+var _designController = require('./designController');
+
+Object.keys(_designController).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _designController[key];
+    }
+  });
+});
