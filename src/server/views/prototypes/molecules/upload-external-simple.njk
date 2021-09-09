@@ -1,0 +1,172 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = '_admin' %}
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+
+{% set newHeader = true %}
+
+{% set pageTitle = 'File upload; admin, simple' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    <style>
+        .tox-statusbar__wordcount, .tox-statusbar__branding { display: none!important}
+    </style>
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            {{ components.captionHeading(text='CV', caption='Title of application') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='uploadFileAdminSimple') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="textarea1">Write your content here</label>
+                    <span id="more-detail-hint" class="govuk-hint ">Use this text area to give a brief description of the document your are uploading and and further details you might think are relevant or important.</span>
+
+                    <textarea class="govuk-textarea govuk-js-character-count" name="textarea1" id="textarea1" rows="18"></textarea>
+                    <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message govuk-visually-hidden" aria-live="polite">You have 250 words remaining</span></p>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='u-space-t30') %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+
+                {{ components.captionHeading(text='Document upload', tag='h2', size='m') }}
+
+                <details class="govuk-details u-space-b10 " data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">Guidance for document upload</span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        <p class="govuk-body">Include all the academic institutions for whom you have carried out research. Start with the most recent; describe what you did and how you did it, providing any interesting outcomes. You should set this out in the same way you might set out a CV.</p>
+
+                        <p class="govuk-body">The assessors are particularly looking for:</p>
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>a breadth of research interest</li>
+                            <li>high standards of scholarship.</li>
+                        </ul>
+
+                        {{ components.captionHeading(text='Accepted document types', tag='h3', size='s') }}
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>PDF (.pdf)</li>
+                        </ul>
+
+                        <p class="govuk-body">Each document must be less than 20MB</p>
+
+                    </div>
+                </details>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='') %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="file-upload-1">Upload a file</label>
+                    <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="application-item">
+                    <div class="application-item__contents application-item__contents--mac">
+                        <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                            <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                            </legend>
+                            <div class="govuk-checkboxes">
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox">
+                                    <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="application-controls govuk-clearfix">
+                    {{ components.button(text='Save and return', extraClass="application-controls__submit")}}
+                    {#<span class="sub-button">
+                        {{ components.link(text='Cancel', url='/prototypes/application-v2/')}}
+                    </span>#}
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        const counteroutputFoot = document.getElementById('wordCount');
+        let words = 0;
+        const limit = 250;
+        let tinyMCEWordCount;
+
+        tinymce.init({
+            selector: '#textarea1, #textarea2',
+            height: 500,
+            {% if readOnly %} readonly : 1, {% endif %}
+            plugins: [
+                'advlist autolink lists link image preview anchor',
+                'media table paste  wordcount'
+            ],
+            setup: function(editor) {
+
+                editor.on('keyup', function(e) {
+                    tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                    console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                    words = tinyMCEWordCount;
+                    let remainder = limit - words;
+                    if (words < limit) {
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    } else {
+                        let overCount = words - limit;
+                        counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+                    }
+                });
+
+                editor.on('init', function(e) {
+                    setTimeout(function(){
+                        tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                        console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                        words = tinyMCEWordCount;
+                        let remainder = limit - words;
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    }, 500);
+                });
+            },
+            toolbar: 'formatselect | bold italic | bullist numlist | align | indent outdent | link | table |',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ],
+            menubar: false,
+        });
+    </script>
+
+{% endblock %}
+
+

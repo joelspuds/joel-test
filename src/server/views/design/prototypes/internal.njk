@@ -1,0 +1,63 @@
+{% set activeNavItem = 'prototypes' %}
+
+{% extends 'layouts/design.layout.njk' %}
+
+{% set backLinkContents =  [{url:'/design/prototypes', text:'Back to Prototypes'}] %}
+{% set pageTitle = 'Internal user journeys' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% set sideNavItems = [
+    { text: 'External user journeys', url: '/design/prototypes/external' },
+    { text: 'Internal user journeys', url: '/design/prototypes/internal',class:'side-nav--active'},
+    { text: 'Proof of concept', url: '/design/prototypes/proof-of-concept'}
+] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            {{ components.captionHeading(text='Internal user journeys',caption='Prototypes') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <nav class="sticky-nav">
+                    {{ components.list(items=sideNavItems, parentClass='')}}
+                </nav>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                {#{{ components.captionHeading(text='Internal user journeys', tag='h2', size='m') }}#}
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/opportunity-v3">Create Opportunity v3</a> (or <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/opportunity-v3?clearSession=true">clear session</a>)
+                        <p class="meta govuk-!-font-size-16">Feb 2020 (?)</p>
+                        <p class="govuk-body">Create a new Opportunity as internal admin</p>
+                    </li>
+
+                    <li>
+                        <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/peer-review/index-details">Expert review</a>
+                        <p class="meta govuk-!-font-size-16">March 2021</p>
+                        <p class="govuk-body">aka "peer review"</p>
+                    </li>
+
+                </ul>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+

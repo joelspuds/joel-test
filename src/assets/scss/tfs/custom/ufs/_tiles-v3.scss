@@ -41,5 +41,11 @@
     color: govuk-colour("black")!important;
     @include govuk-font($size: 48, $weight: bold);
   }
+
+  &--plain {
+    .tfs-tile3__mega-link {
+      border-top: 0;
+    }
+  }
 }
 

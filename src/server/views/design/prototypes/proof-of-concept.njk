@@ -1,0 +1,56 @@
+{% set activeNavItem = 'prototypes' %}
+
+{% extends 'layouts/design.layout.njk' %}
+
+{% set backLinkContents =  [{url:'/design/prototypes', text:'Back to Prototypes'}] %}
+{% set pageTitle = 'Proof of concept' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% set sideNavItems = [
+    { text: 'External user journeys', url: '/design/prototypes/external'},
+    { text: 'Internal user journeys', url: '/design/prototypes/internal'},
+    { text: 'Proof of concept', url: '/design/prototypes/proof-of-concept', class:'side-nav--active'}
+] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            {{ components.captionHeading(text='Proof of concept',caption='Prototypes') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <nav class="sticky-nav">
+                    {{ components.list(items=sideNavItems, parentClass='')}}
+                </nav>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                {#{{ components.captionHeading(text='Proof of concept', tag='h2', size='m') }}#}
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/external-users/">External nav structure</a>
+                        <p class="govuk-body">Skeletal demo of external page hierarchy with consideration to different organisation and company affiliations.</p>
+                    </li>
+
+                </ul>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+

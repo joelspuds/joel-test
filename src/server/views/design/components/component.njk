@@ -1,0 +1,65 @@
+{% set activeNavItem = 'components' %}
+
+{% set components = components if components %}
+{% set chunkFile = chunkFile if chunkFile %}
+{% set lastChunk = lastChunk if lastChunk %}
+{% set newChunkAsString = newChunkAsString if newChunkAsString %}
+
+{% extends 'layouts/design.layout.njk' %}
+
+{% set backLinkContents =  [{url:'/design/components', text:'Back to components'}] %}
+{% set pageTitle = newChunkAsString + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% set sideNavItems = components if components %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            {{ components.captionHeading(text=newChunkAsString, caption='Components') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <nav class="sticky-nav">
+                    {% if sideNavItems %}
+                        <ul class="govuk-list">
+                            {% for item in sideNavItems %}
+                                <li>
+                                    <a href="{{ item.url }}" class="govuk-link govuk-link--no-visited-state {% if item.title == newChunkAsString %}side-nav--active {% endif%} ">{{ item.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>There are no side nav items, oddly.</p>
+                    {% endif %}
+                </nav>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                {#<p class="govuk-body">Make your service look and feel like a UKRI service.</p>
+
+                <p class="govuk-body">If you need to apply styles manually, you should still follow existing GOV.UK conventions. For example, do not assign new meanings to colours, do not change the style of buttons or adjust the thickness of borders on form inputs.</p>#}
+
+                {% include chunkFile %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+
+    </section>
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+

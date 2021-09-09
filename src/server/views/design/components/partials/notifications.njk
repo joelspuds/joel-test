@@ -1,0 +1,20 @@
+<p class="govuk-body">
+    Keep up with the cool kidz: <a href="https://design-system.service.gov.uk/components/notification-banner/">GDS notification banner</a>
+</p>
+
+
+    {{ components.captionHeading(text='Normal', tag='h2', size='s') }}
+
+    {{ components.notifications(title='Important information', text='This box contains some important information that you should read.', linkText='View application', linkURL='#') | prism }}
+
+    {{ components.captionHeading(text='Normal, passing HTML to text.', tag='h2', size='s') }}
+
+    {{ components.notifications(title='Important information', text='This box contains some important information <a class="govuk-notification-banner__link" href="#">and this link in the text</a> that you should read and maybe click on.', secondaryText='This information will prevent you making a mistake later on hopefully.') | prism  }}
+
+    {{ components.captionHeading(text='No title, and no link', tag='h2', size='s') }}
+
+    {{ components.notifications(text='This is also pretty important.') | prism  }}
+
+    {{ components.captionHeading(text='Success, with secondary text', tag='h2', size='s') }}
+
+{{ components.notifications(title='Success', type='success', text='Nice work, you\'ve successfully done this thing.', linkText='Check your stuff', linkURL='#', secondaryText='Contact <a class="govuk-notification-banner__link" href="#">example@department.gov.uk</a> if you think there\'s a problem.') | prism  }}

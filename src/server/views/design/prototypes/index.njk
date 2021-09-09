@@ -1,0 +1,97 @@
+{% set activeNavItem = 'prototypes' %}
+
+{% extends 'layouts/design.layout.njk' %}
+
+{% set backLinkContents =  [{url:'/design', text:'Back to UKRI Design system home'}] %}
+{% set pageTitle = 'Styles' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% set sideNavItems = [
+    { text: 'External user journeys', url: '/design/prototypes/external'},
+    { text: 'Internal user journeys', url: '/design/prototypes/internal'},
+    { text: 'Proof of concept', url: '/design/prototypes/proof-of-concept'}
+] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            {{ components.captionHeading(text='Prototypes') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <nav class="sticky-nav">
+                    {{ components.list(items=sideNavItems, parentClass='')}}
+                </nav>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                <p class="govuk-body govuk-!-font-size-24">User journeys for research, testing and proof-of-concept.</p>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+       {# {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-half') %}
+
+                {{ components.captionHeading(text='External user journeys', tag='h2', size='m') }}
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/application-v2">Application</a>
+                        <p class="meta govuk-!-font-size-16">May 2020</p>
+                        <p class="govuk-body">Apply for an Opportunity.</p>
+                    </li>
+                    <li>
+                        <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/example-journey/application/project-listings">Apply for opportunity as user</a>
+                        <p class="govuk-body">As above, but starts from list of many Opportunities.</p>
+                    </li>
+                    <li>
+                        <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/register-v1/">Register or signin journey</a>
+                    </li>
+                    <li>
+                        <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/multi-users/">Applicant and Research Office - 2 player</a>
+                        <p class="govuk-body">Requires two users to coordinate the approval and submission of an application from the Research Office. </p>
+                    </li>
+                    <li>
+                        <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/peer-review/">Peer review, internal journey</a>
+                    </li>
+                    <li>
+                        <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/peer-review-external/">Peer review, external journey</a>
+                    </li>
+                    <li>
+                        <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/external-users/">External nav structure</a>
+                        <p class="govuk-body">Skeletal demo of external page hierarchy with consideration to different organisation and company affiliations.</p>
+                    </li>
+                    <li>
+                        <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/edi">Ethnicity, diversity and inclusion (EDI) journey</a>
+                        <p class="govuk-body">Complete EDI journey for external users, including confirm answers page, edit singly, and return to user profile with completed profile.</p>
+                    </li>
+                    <li>
+                        <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/submission-control/">Submission control (Applicant and Research Office Part II)</a>
+                    </li>
+                    <li>
+                        <a class="govuk-link govuk-link--no-visited-state" href="/prototypes/submission-control/index-participants">Ditto above - participant's sanitised start page</a>
+                    </li>
+                </ul>
+
+            {%- endcall %}
+
+        {%- endcall %}#}
+
+    </section>
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+

@@ -1,0 +1,63 @@
+{% set activeNavItem = 'components' %}
+
+{% extends 'layouts/design.layout.njk' %}
+
+{% set backLinkContents =  [{url:'/design', text:'Back to UKRI Design system home'}] %}
+{% set pageTitle = 'Components' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% set sideNavItems = components if components %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            {{ components.captionHeading(text='Components') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                {#<nav class="sticky-nav">
+                    #}{# {{ components.linkHeading(text='Profile sections', tag='h2', size='s')}} #}{#
+                    {{ components.list(items=sideNavItems, parentClass='')}}
+                </nav>#}
+
+                <nav class="sticky-nav">
+                    {% if sideNavItems %}
+                    <ul class="govuk-list">
+                        {% for item in sideNavItems %}
+                        <li>
+                            <a href="{{ item.url }}" class="govuk-link govuk-link--no-visited-state ">{{ item.title }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                        <p>There are no side nav items, oddly.</p>
+                    {% endif %}
+                </nav>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                <p class="govuk-body">Make your service look and feel like a UKRI service.</p>
+
+                <p class="govuk-body">If you need to apply styles manually, you should still follow existing GOV.UK conventions. For example, do not assign new meanings to colours, do not change the style of buttons or adjust the thickness of borders on form inputs.</p>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+
+    </section>
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+

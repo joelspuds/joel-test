@@ -264,3 +264,29 @@ td.u-align-right {
 .govuk-table__header {
   vertical-align: bottom;
 }
+
+
+.dev-preview__fullscreen-button {
+  // hide this dfor now as we're not importing the enable fullscreen JS behaviour.
+  display: none!important;
+}
+
+// overrides for inline radio buttons with a conditional drop down - needs responsive testing
+.govuk-radios__item__hack {
+  position: relative;
+}
+
+.govuk-radios__item__hack--left {
+  width: 160px;
+}
+
+.govuk-radios__item__hack--right {
+  width: 200px;
+  position: absolute;
+  left: 160px;
+  top:0;
+}
+
+.govuk-radios__item__hack--conditional {
+  /*padding-top: 140px;*/
+}

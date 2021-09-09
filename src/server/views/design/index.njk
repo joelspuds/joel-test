@@ -1,24 +1,15 @@
-{% set showExternalNav = false %}
-{% set activeNavItem = 'design' %}
-{% set reviewsLink = '' %}
-{% set navType = 'admin' %}
+{% set activeNavItem = 'home' %}
 
-{% set designSystemConceptNav = true %}
+{% extends 'layouts/design.layout.njk' %}
 
-{% extends 'layouts/bulma-ufs.layout.njk' %}
-
-{% set isAdminUser = true %}
-{% set loggedOut = false %}
-
-{% set backLinkContents =  [{url:'/', text:'Home'}] %}
-{% set pageTitle = 'User home' + GLOBAL_TAG_TITLE_SUFFIX %}
+{#{% set backLinkContents =  [{url:'/', text:'Home'}] %}#}
+{% set pageTitle = 'UKRI Design system' + GLOBAL_TAG_TITLE_SUFFIX %}
 
 {% block content %}
 
     {% call components.bulmaRow() %}
-        {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {#{{ components.captionHeading(text='Design', caption='Jane Doington-Smyth') }}#}
-            {{ components.captionHeading(text='Design') }}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            {{ components.captionHeading(text='Design and build digital services for UKRI') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -26,19 +17,74 @@
 
         {% call components.bulmaRow() %}
 
-            {% call components.bulmaColumnAny(size='column is-3') %}
+            {% call components.bulmaColumnAny(size='column is-full') %}
 
-            {%- endcall %}
-
-            {% call components.bulmaColumnAny(size='column is-3') %}
+                <p class="govuk-body govuk-!-font-size-24">Everything you need to make accessible and consistent digital product</p>
 
             {%- endcall %}
 
         {%- endcall %}
 
-        {% call components.bulmaRow(extraClass='u-space-t20') %}
+        {% call components.bulmaRow(extraClass='u-space-t20 u-space-b45') %}
 
             {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <div class="tfs-tile3 tfs-tile3--plain">
+                    <a href="/design/styles" class="tfs-tile3__mega-link">
+                        <span class="tfs-tile3__heading">Styles</span>
+                        <span class="tfs-tile3__progress">Guides for applying layout, typography and colour.</span>
+                    </a>
+                </div>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <div class="tfs-tile3 tfs-tile3--plain">
+                    <a href="/design/components" class="tfs-tile3__mega-link">
+                        <span class="tfs-tile3__heading">Components</span>
+                        <span class="tfs-tile3__progress">Reusable and accessible guidance to build the components.</span>
+                    </a>
+                </div>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <div class="tfs-tile3 tfs-tile3--plain">
+                    <a href="/design/patterns" class="tfs-tile3__mega-link">
+                        <span class="tfs-tile3__heading">Patterns</span>
+                        <span class="tfs-tile3__progress">Patterns on common tasks and how components should work together.</span>
+                    </a>
+                </div>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <div class="tfs-tile3 tfs-tile3--plain">
+                    <a href="/design/prototypes" class="tfs-tile3__mega-link">
+                        <span class="tfs-tile3__heading">Prototypes</span>
+                        <span class="tfs-tile3__progress">Dynamic journeys for testing and research.</span>
+                    </a>
+                </div>
+
+            {%- endcall %}
+
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-half') %}
+
+                {{ components.captionHeading(text='UKRI Design community', tag='h2', size='l') }}
+
+                <h3 class="govuk-heading-m"><a href="/design/principles" class="govuk-link">Principles</a></h3>
+
+                {#<p class="govuk-body"><a href="/design/principles" class="govuk-link">Principles</a></p>#}
+
+                <p class="govuk-body">Value statements that frame design decisions and support consistency in decision making across UKRI</p>
 
             {%- endcall %}
 

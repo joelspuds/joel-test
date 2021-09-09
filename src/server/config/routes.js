@@ -534,6 +534,21 @@ router.post('/prototypes/submission-control/applicant/justification-of-resources
 router.get('/prototypes/submission-control/applicant/resources-and-costs', demosController.submissionApplicantResourcesGet);
 router.post('/prototypes/submission-control/applicant/resources-and-costs', demosController.submissionApplicantResourcesPost);
 
+/* *************************************************************** *
+
+  Design section
+
+* *************************************************************** */
+router.get('/design', demosController.designHomeGet);
+router.post('/prototypes/awards', demosController.designHomePost);
+
+router.get('/design/components', demosController.designComponentsGet);
+router.get('/design/components/*', demosController.designComponentGet);
+// router.post('/prototypes/awards', demosController.designComponentPost);
+
+/*router.get('/prototypes/awards/create', demosController.createAwardGet);
+router.post('/prototypes/awards/create', demosController.createAwardPost);*/
+
 // non paged functions
 // router.post('/prototypes/submission-control/applicant/set-as-returned-from-ro', demosController.submissionSetAsReturnedFromROPost);
 

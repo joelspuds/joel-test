@@ -1,0 +1,177 @@
+{% set activeNavItem = 'styles' %}
+
+{% extends 'layouts/design.layout.njk' %}
+
+{% set backLinkContents =  [{url:'/design/styles', text:'Back to Styles'}] %}
+{% set pageTitle = 'Colour' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% set sideNavItems = [
+    { text: 'Colour', url: '/design/styles/colour', class:'side-nav--active' },
+    { text: 'Page templates', url: '#', isActive:false },
+    { text: 'Typography', url: '#', isActive:false }
+] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            {{ components.captionHeading(text='Colour', caption='Styles') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <nav class="side-nav">
+                    {# {{ components.linkHeading(text='Profile sections', tag='h2', size='s')}} #}
+                    {{ components.list(items=sideNavItems, parentClass='')}}
+                </nav>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                <p class="govuk-body govuk-!-font-size-24">
+                    Always use the GOV.UK and UKRI colour palette.
+                </p>
+
+                {{ components.captionHeading(text='Colour contrast', tag='h2', size='m') }}
+
+                <p class="govuk-body">
+                    You must make sure that the contrast ratio of text and interactive elements in your service meets level AA of the <a href="https://www.w3.org/TR/WCAG21/#distinguishable"> Web Content Accessibility Guidelines (WCAG 2.1)</a>.
+                </p>
+
+                {{ components.captionHeading(text='Main colours', tag='h2', size='m') }}
+
+                <p class="govuk-body">
+                    Use the Sass variables provided rather than copying the hexadecimal (hex) colour values. For example, use <code>$govuk-brand-colour</code> rather than <code>#1d70b8</code>. This means that your service will always use the most recent colour palette whenever you update.
+                </p>
+
+                <p class="govuk-body">
+                    Only use the variables in the context they’re designed for. In all other cases, you should reference the colour palette directly. For example, if you wanted to use red to represent some data in a graph you should use <code>govuk-colour(“red”)</code> rather than <code>$govuk-error-colour</code>.
+                </p>
+
+                {{ components.captionHeading(text='Text', tag='h3', size='s') }}
+                <div class="colours">
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#0B0C0C"></span>
+                        <span class="colour__text">govuk-text-colour - #0B0C0C</span>
+                    </div>
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#6F777B"></span>
+                        <span class="colour__text">govuk-secondary-text-colour - #6F777B</span>
+                    </div>
+                </div>
+
+                {{ components.captionHeading(text='Links', tag='h3', size='s') }}
+                <div class="colours">
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#1D70B8"></span>
+                        <span class="colour__text">govuk-link-colour - #1D70B8</span>
+                    </div>
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#003078"></span>
+                        <span class="colour__text">govuk-link-hover-colour - #003078</span>
+                    </div>
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#4C2C92"></span>
+                        <span class="colour__text">govuk-link-visited-colour - #4C2C92</span>
+                    </div>
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#0B0C0C"></span>
+                        <span class="colour__text">govuk-link-active-colour - #0B0C0C</span>
+                    </div>
+                </div>
+
+                {{ components.captionHeading(text='Border', tag='h3', size='s') }}
+                <div class="colours">
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#B1B4B6"></span>
+                        <span class="colour__text">govuk-border-colour - #B1B4B6</span>
+                    </div>
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#0B0C0C"></span>
+                        <span class="colour__text">govuk-input-border-colour - #0B0C0C</span>
+                    </div>
+                </div>
+
+                {{ components.captionHeading(text='Focus state', tag='h3', size='s') }}
+                <div class="colours">
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#FFDD00"></span>
+                        <span class="colour__text">govuk-focus-colour - #FFDD00</span>
+                    </div>
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#0B0C0C"></span>
+                        <span class="colour__text">govuk-focus-text-colour - #0B0C0C</span>
+                    </div>
+                </div>
+
+                {{ components.captionHeading(text='Error state', tag='h3', size='s') }}
+                <div class="colours">
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#D4351C"></span>
+                        <span class="colour__text">govuk-error-colour - #D4351C</span>
+                    </div>
+                </div>
+
+                {{ components.captionHeading(text='Brand colours', tag='h3', size='s') }}
+                <div class="colours">
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#1D70B8"></span>
+                        <span class="colour__text">govuk-brand-colour - #1D70B8</span>
+                    </div>
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#2C2D62"></span>
+                        <span class="colour__text">ukri-blue - #2C2D62</span>
+                    </div>
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#A74499"></span>
+                        <span class="colour__text">light-pruple - #A74499</span>
+                    </div>
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#F89C21"></span>
+                        <span class="colour__text">sand - #F89C21</span>
+                    </div>
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#D57927"></span>
+                        <span class="colour__text">ochre - #D57927</span>
+                    </div>
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#00A787"></span>
+                        <span class="colour__text">jade - #00A787</span>
+                    </div>
+                    <div class="colour">
+                        <span class="colour__blob" style="background-color:#67C04D"></span>
+                        <span class="colour__text">lime - #67C04D</span>
+                    </div>
+                </div>
+
+                {{ components.captionHeading(text='Colour palette', tag='h3', size='s') }}
+                <p class="govuk-body">Use these colours for graphs and supporting material.</p>
+                <div class="colours colours--split">
+                    {% for item in allColours %}
+                        {% for colourName, colourValue in item %}
+                            <div class="colour">
+                                <span class="colour__blob" style="background-color:{{ colourValue}}"></span>
+                                <span class="colour__text">{{ colourName }} - {{ colourValue}}</span>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+

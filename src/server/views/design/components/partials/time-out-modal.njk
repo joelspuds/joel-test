@@ -1,0 +1,95 @@
+{#
+<h2 class="govuk-heading-m">Time out modal</h2>
+#}
+
+<p class="govuk-body">This pattern warns the user before we time them out of a service and tells them what has happened when we do time them out.</p>
+
+<h2 class="govuk-heading-m">When to use it</h2>
+
+<p class="govuk-body">We time external users out when they do not do anything for 60 minutes. Warn them after 45 minutes, which gives them 15 minutes to decide to keep using the service.</p>
+
+<h2 class="govuk-heading-m">How it works</h2>
+
+<p class="govuk-body">When a user is signed in and they start a page session a 60 minutes session opens. After 45 minutes we use a modal to display the time out warning.</p>
+
+<p class="govuk-body"> The modals counts down from 15 minutes to 1 minute in one minute intervals. and in seconds from 59 to 0 seconds. </p>
+
+<p class="govuk-body">The user can:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+    <li>select a button to 'stay signed in' the service and refresh the 60 minutes session</li>
+    <li>do nothing</li>
+</ul>
+
+<p class="govuk-body">If they do nothing, take them to a 'sign in' page and use the 'important banner component' to display the 'Session timed out' message. </p>
+
+<h2 class="govuk-heading-m">CSS/SCSS location and notes</h2>
+<p class="govuk-body">Add <code>.has-modal</code> class to <code>body</code>.</p>
+<p class="govuk-body">Heroku prototyping kit: <code>src/assets/scss/tfs/custom/ufs/_modal.scss </code></p>
+
+{% call components.displayCode() %}
+
+    Preview not available due to particulars of CSS hiding the modal!<br>
+
+    <div class="modal modal--hidden" id="modalOverlay" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-inner">
+            <h2 class="govuk-heading-l" id="modalTitle">Your session is about to time out</h2>
+            <p class="govuk-body">You will automatically be signed out in <strong><span id="timer" role="timer">15 minutes</span></strong>, at which point you will lose any unsaved changes.
+            <p class="govuk-body">Select 'Stay signed in' to continue working.</p>
+            <p class="govuk-body">
+                <button class="govuk-button" id="closeModal">Stay signed in</button>
+            </p>
+        </div>
+    </div>
+
+{%- endcall %}
+
+<p class="govuk-body"><a href="/prototypes/molecules/modal" class="govuk-link">View full page example</a></p>
+
+<h2 class="govuk-heading-m">Research on this component</h2>
+
+<p class="govuk-body">To ensure information is kept secure within TFS, it is proposed that a session will timeout after an hour of inactivity.  During the 2020 pilot, this timeout functionality existed but without any warning that it was going to happen; users expressed frustration at being logged out of the system and work being lost as a result. </p>
+
+<p class="govuk-body"><a href="#" class="govuk-link">User research catalogue link  (opens in a new tab) - log in required</a></p>
+
+<h3 class="govuk-heading-s">Key insights</h3>
+
+<ul class="govuk-list govuk-list--bullet">
+    <li>Users are accepting of the timeout functionality to keep data secure</li>
+    <li>They like the warning notification and countdown; a shorter message with only one clear action works better than a longer message</li>
+    <li>Their assumption is that the timeout is triggered by complete inactivity</li>
+    <li>There are concerns about work being lost if they miss the notification, and a desire for auto saving and/or an awareness of the timeout function to avoid this happening</li>
+</ul>
+
+<h3 class="govuk-heading-s">Next steps</h3>
+
+<ul class="govuk-list govuk-list--bullet">
+    <li>Google analysts Is set up to record and capture interaction with next pilot</li>
+    <li>Follow up with users of the pilot who experienced timeout</li>
+</ul>
+
+<h2 class="govuk-heading-m">Accessibility</h2>
+
+<h3 class="govuk-heading-s">Trapping focus</h3>
+
+<p class="govuk-body">Trapping focus is one of the important issues concerning accessibility. In case of assistive technology (like screen readers) users, or keyboard users, trapping focus is a must. This will stop users tabbing behind the component and missing the timeout warning.</p>
+
+<h3 class="govuk-heading-s">Accessibility testing</h3>
+
+<p class="govuk-body">The warning has not been tested with all recommended browsers. It has not been lab tested with most assistive technology including:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+    <li>JAWS </li>
+    <li>ZoomText</li>
+    <li>NVDA</li>
+    <li>VoiceOver on MacOS and iOS</li>
+    <li>Dragon NaturallySpeaking.</li>
+</ul>
+
+<p class="govuk-body"> </p>
+<p class="govuk-body"> </p>
+<p class="govuk-body"> </p>
+<p class="govuk-body"> </p>
+
+
+

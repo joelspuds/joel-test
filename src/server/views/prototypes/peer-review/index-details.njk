@@ -1,0 +1,95 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+
+{% set pageTitle = 'Peer review' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            {{ components.captionHeading(text='Expert review journey') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+
+            <ol class="govuk-list ">
+
+                <li>
+                    <strong>Setting up an Opportunity</strong>
+                    <br>
+                    <a href="/prototypes/peer-review/opportunity-setup" class="govuk-link">Opportunity set-up page</a>
+                    <br><br>
+                </li>
+
+                <li>
+                    <strong>Create invite list:</strong> Generic list of all Opportunities
+                    <br>
+                    <a href="/prototypes/peer-review/all-opportunities" class="govuk-link">All Opportunities list</a>
+                    <br><br>
+                </li>
+
+                <li>
+                    <strong>Create invite list:</strong>  Shortcut to list of all applications for one Opportunity
+                    <br>
+                    <a href="/prototypes/peer-review/applications-list" class="govuk-link">All applications list</a>
+                    <br>
+                    <br>
+                </li>
+
+                <li>
+                    <strong>Create invite list:</strong> Empty list of expert reviewers
+                    <br>
+                    <a href="/prototypes/peer-review/application-overview" class="govuk-link">Manage reviewers page, empty</a>
+                    <br><br>
+                </li>
+
+                <li>
+                    <strong>Create invite list:</strong> Reviewers list with some reviewers added, but none invited
+                    <br>
+                    <a href="/prototypes/peer-review/application-overview?inviteSome=true" class="govuk-link">Manage reviewers page, not invited</a>
+                    <br><br>
+                </li>
+
+                <li>
+                    <strong>Create and manage invite list:</strong> Reviewers list with some reviewers added in various states
+                    <br>
+                    <a href="/prototypes/peer-review/application-overview-2" class="govuk-link">Manage reviewers page, pre-populated</a>
+                    <br>
+                    <hr>
+                </li>
+
+                <li>
+                    <strong>Manage and send reviews:</strong> Reviewers list with 4 accepted and ready to check
+                    <br>
+                    <a href="/prototypes/peer-review/application-overview-3" class="govuk-link">Manage reviewers page in "ready" state</a>
+                    <br><br>
+                </li>
+
+            </ol>
+
+            <hr>
+
+            <p class="govuk-body">
+                <a href="/prototypes/peer-review?clearSession=true" class="govuk-link">Clear all stored data</a>
+            </p>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+{% block bodyScripts %}
+    {#<script>
+      Zepto(function($){
+        $('#thing').on('click', function() {
+        });
+      });
+    </script>#}
+{% endblock %}
+
+

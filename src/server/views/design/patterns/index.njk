@@ -1,0 +1,53 @@
+{% set activeNavItem = 'patterns' %}
+
+{% extends 'layouts/design.layout.njk' %}
+
+{% set backLinkContents =  [{url:'/design', text:'Back to UKRI Design system home'}] %}
+{% set pageTitle = 'Styles' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% set sideNavItems = [
+    { text: 'Colour', url: '/design/styles/colour'},
+    { text: 'Page templates', url: '#', isActive:false },
+    { text: 'Typography', url: '#', isActive:false }
+] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            {{ components.captionHeading(text='Patterns') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                {#<nav class="sticky-nav">
+                    #}{# {{ components.linkHeading(text='Profile sections', tag='h2', size='s')}} #}{#
+                    {{ components.list(items=sideNavItems, parentClass='')}}
+                </nav>#}
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                <p class="govuk-body">Make your service look and feel like a UKRI service.</p>
+
+                <p class="govuk-body">If you need to apply styles manually, you should still follow existing GOV.UK conventions. For example, do not assign new meanings to colours, do not change the style of buttons or adjust the thickness of borders on form inputs.</p>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+
+    </section>
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+

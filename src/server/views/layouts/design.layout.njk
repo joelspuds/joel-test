@@ -1,0 +1,17 @@
+{#   Is the same as ufs-default.layout.njk #}
+{% extends './design-base.layout.njk' %}
+{% set mainContainerClass = '' %}
+
+{% block bodyContentWrapper %}
+    {% include './partials/ufs-breadcrumbs.njk' %}
+
+    {% include './partials/bulma-ufs-backlink.njk' %}
+
+    <main id="" class="u-space-t30 u-space-b30 {{ mainContainerClass if mainContainerClass }}">
+      {#{% filter prismFullpage %}#}
+        {% block content %}{% endblock %}
+      {#{% endfilter %}#}
+    </main>
+
+{% endblock %}
+
