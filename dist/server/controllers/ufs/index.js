@@ -327,3 +327,15 @@ Object.keys(_designController).forEach(function (key) {
     }
   });
 });
+
+var _motherLoadController = require('./motherLoadController');
+
+Object.keys(_motherLoadController).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _motherLoadController[key];
+    }
+  });
+});

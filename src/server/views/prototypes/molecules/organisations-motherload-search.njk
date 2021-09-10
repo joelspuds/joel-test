@@ -1,0 +1,53 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{%  set loggedOut = false %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+
+{% set newHeader = true %}
+
+{% set pageTitle = 'Search organisations' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            {{ components.captionHeading(text='Search organisations', caption='') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='motherLoad') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-half', customID='mainContent') %}
+
+                {#{{ components.captionHeading(text='Reviews', tag='h2', size='m') }}#}
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-visually-hidden">Question details</legend>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="searchTerm">Search for an organisation, company or other eligible entity</label>
+                        {#<span class="govuk-hint">Enter a short description of the subject matter of this section – it will appear above as the section title. For example, 'Economic benefits'</span>#}
+                        <input class="govuk-input" id="searchTerm" name="searchTerm" type="text">
+                    </div>
+                </fieldset>
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="application-controls govuk-clearfix">
+                    {{ components.button(text='Search', extraClass="application-controls__submit")}}
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+
+{% endblock %}
+
+

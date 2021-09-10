@@ -278,6 +278,10 @@ router.get('/prototypes/molecules/user-dashboard-filters', demosController.userD
 router.get('/prototypes/molecules/top-nav', demosController.topNavGet);
 router.get('/prototypes/molecules/sortable-tables', demosController.sortableTablesGet);
 router.get('/prototypes/molecules/colours', demosController.colourPaletteGet);
+// organisations mother load
+router.get('/prototypes/molecules/organisations-motherload-search', demosController.motherloadSearchGet);
+router.post('/prototypes/molecules/organisations-motherload-search', demosController.motherloadSearchPost);
+router.get('/prototypes/molecules/organisations-motherload-results', demosController.motherloadResultsGet);
 
 /* *************************************************************** *
 

@@ -1,0 +1,75 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{%  set loggedOut = false %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+
+{% set resultArray = resultArray if resultArray %}
+{% set searchTerm = searchTerm if searchTerm %}
+{% set searchFail = searchFail if searchFail %}
+
+{% set newHeader = true %}
+
+{% set pageTitle = 'Search results' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            {{ components.captionHeading(text='Search results', caption='') }}
+        {%- endcall %}
+    {%- endcall %}
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-half', customID='mainContent') %}
+
+                {% if searchFail %}
+
+                    <p class="govuk-body">There are organisations matching your search term.</p>
+                    <p class="govuk-body">You can <a href="#">add a new record</a>.</p>
+
+                {% else %}
+                    <p class="govuk-body">You search for "<strong>{{ searchTerm }}</strong>"</p>
+
+                    <p class="govuk-body">Add the appropriate organisation from the search results.</p>
+
+                    <table class="govuk-table">
+
+                        <thead class="govuk-table__header">
+                        <th>Organisation name</th>
+                        <th class="govuk-table__header--numeric"><span class="govuk-visually-hidden">Add organisation</span></th>
+                        </thead>
+                        <tbody>
+                        {% for item in resultArray %}
+                            <tr class="">
+                                <td class="govuk-table__cell">{{ item }}</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric"><a href="#">Add <span class="govuk-visually-hidden">as my organisation</span></a> </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                {% endif %}
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <p class="govuk-body">
+                    <a href="/prototypes/molecules/organisations-motherload-search">Return to search page</a>
+                </p>
+
+            {%- endcall %}
+        {%- endcall %}
+
+
+{% endblock %}
+{% block bodyScripts %}
+
+
+{% endblock %}
+
+
