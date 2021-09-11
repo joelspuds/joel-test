@@ -58,6 +58,10 @@ export function motherloadSearchPost(req, res) {
 
   // console.log('search term = ' + searchTerm);
 
+  if (resultArray.length === 0) {
+    searchFail = true;
+  }
+
   req.session.resultArray = resultArray;
   req.session.searchTerm = searchTerm;
   req.session.searchFail = searchFail;
