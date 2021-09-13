@@ -262,6 +262,7 @@ router.get('/prototypes/molecules/colours', demosController.colourPaletteGet);
 router.get('/prototypes/molecules/organisations-motherload-search', demosController.motherloadSearchGet);
 router.post('/prototypes/molecules/organisations-motherload-search', demosController.motherloadSearchPost);
 router.get('/prototypes/molecules/organisations-motherload-results', demosController.motherloadResultsGet);
+router.get('/prototypes/molecules/organisations-typeahead', demosController.motherloadTypeaheadGet);
 
 /* *************************************************************** *
 

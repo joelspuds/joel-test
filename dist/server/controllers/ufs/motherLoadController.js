@@ -6,9 +6,11 @@ Object.defineProperty(exports, "__esModule", {
 exports.motherloadSearchGet = motherloadSearchGet;
 exports.motherloadSearchPost = motherloadSearchPost;
 exports.motherloadResultsGet = motherloadResultsGet;
+exports.motherloadTypeaheadGet = motherloadTypeaheadGet;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 let motherLoadData = require('./motherLoad3');
+let miniMotherLoadData = require('./miniMotherLoad');
 
 // ************************************************************************
 //
@@ -92,10 +94,23 @@ function motherloadResultsGet(req, res) {
   return res.render('prototypes/molecules/organisations-motherload-results', viewData);
 }
 
-/*export function motherloadSearchPost(req, res) {
-    const {} = req.body;
+// ************************************************************************
+//
+//       AHRC opportunity load all 55k records into the DOM
+//
+// ************************************************************************
 
-    let tempRefreshCounter = req.session.refreshCounter + 1;
-    req.session.refreshCounter = tempRefreshCounter;
-    return res.redirect('/prototypes/molecules/organisations-motherload-results');
-}*/
+// let refreshCounter = 0;
+
+function motherloadTypeaheadGet(req, res) {
+  let viewData;
+
+  let motherLoad = motherLoadData.organisationsMotherLoad;
+  // let motherLoad = miniMotherLoadData.organisationsMiniMotherLoad;
+  console.log(motherLoad);
+  viewData = {
+    motherLoad
+  };
+
+  return res.render('prototypes/molecules/organisations-typeahead', viewData);
+}
