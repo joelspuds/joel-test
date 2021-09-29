@@ -1,0 +1,88 @@
+{#{% set showExternalNav = true %}#}
+{% set activeNavItem = 'opportunities' %}
+{% set showInternalNav = true %}
+
+{% set navArea = 'personal' %}
+{% set applicationsLink = '/prototypes/external-users/applications' %}
+{% set homeLink = '/prototypes/award' %}
+{% set reviewsLink = '/prototypes/external-users/reviews' %}
+{% set userName = 'Arden Pimenta' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = true %}
+{% set navType = 'admin' %}
+{%  set loggedOut = false %}
+
+{% set backLinkContents =  [{url:'#', text:'Back to Opportunities'}] %}
+{% set pageTitle = 'Opportunities' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Opportunities') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <a href="/prototypes/opportunity-v3/create" class="govuk-button ">Create new Opportunity</a>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                <table class="govuk-table responsive-table__table">
+                    <thead>
+                    <tr class="govuk-table__header">
+                        <th class="govuk-table__header">Opportunity<br>referencee</th>
+                        <th class="govuk-table__header">Opportunity<br>name</th>
+                        <th class="govuk-table__header">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="govuk-table__cell"><a href="/prototypes/award/opportunity-setup" class="govuk-link">OPP561</a></td>
+                        <td class="govuk-table__cell">UK-Canada Social Research Team Grants</td>
+                        <td class="govuk-table__cell">Draft</td>
+
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">OPP8962</a></td>
+                        <td class="govuk-table__cell">Strength in places Round 3</td>
+                        <td class="govuk-table__cell">Open</td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">OPP563</a></td>
+                        <td class="govuk-table__cell">UK social research for the next decade Part III</td>
+                        <td class="govuk-table__cell">Open</td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">OPP56</a></td>
+                        <td class="govuk-table__cell">UK-Canada Diabetes Research Team Grants</td>
+                        <td class="govuk-table__cell">Closed</td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+
+

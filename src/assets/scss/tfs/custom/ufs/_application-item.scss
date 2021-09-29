@@ -71,6 +71,23 @@ $module: 'application-item';
         }
     }
 
+    &--file {
+        /*background-color: govuk-colour("white");
+        border: 1px solid govuk-colour("light-grey");*/
+
+        .#{$module}__contents {
+            background-color: govuk-colour("white");
+            border: 2px solid govuk-colour("mid-grey");
+        }
+
+        @include touch {
+            /*position: relative;
+            display: block;
+            left: auto;
+            top: auto;*/
+        }
+    }
+
     &__status,
     &__meta {
         display: block;

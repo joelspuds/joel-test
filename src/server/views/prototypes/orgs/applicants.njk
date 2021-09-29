@@ -1,0 +1,135 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '/prototypes/external-users/applications' %}
+{% set homeLink = '/prototypes/external-users/home' %}
+{% set reviewsLink = '/prototypes/external-users/reviews' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Applicants' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/orgs/', text:'Back to Application'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Applicants', caption='APP171: Bio-detoxification of Ricin in castor bean') }}
+        {%- endcall %}
+    {%- endcall %}
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <p class="govuk-body">Add the details of people who will contribute to the work if your application is successful.</p>
+
+                <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
+                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                        <span class="govuk-details__summary-text">Guidance on adding and managing applicants</span>
+                    </summary>
+                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                        <p class="govuk-body">...</p>
+                    </div>
+                </details>
+
+                <p class="govuk-body">
+                    <a class="govuk-button govuk-button--secondary" href="/prototypes/orgs/select-role">Add applicant</a>
+                </p>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full', extraClass='u-space-t20') %}
+
+                <table class="govuk-table">
+                    <caption class="govuk-visually-hidden">Applicants</caption>
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header">Name</th>
+                            <th scope="col" class="govuk-table__header">Email</th>
+                            <th scope="col" class="govuk-table__header">Role</th>
+                            <th scope="col" class="govuk-table__header">Organisation</th>
+                            <th scope="col" class="govuk-table__header"><span class="govuk-visually-hidden">Action</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">Dr. Jane Doe</td>
+                            <td class="govuk-table__cell">jdoe@cardiffuniversity.ac.uk</td>
+                            <td class="govuk-table__cell">Lead applicant</td>
+                            <td class="govuk-table__cell">Cardiff University</td>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Remove</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen') %}
+
+                {% call components.formGroup() %}
+                    <div class="application-item">
+                        <div class="application-item__contents application-item__contents--mac">
+                            <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                    <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                </legend>
+                                <div class="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if allResourcesValues.isComplete == 'on' %} checked{% endif %}>
+                                        <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <div class="application-controls govuk-clearfix">
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Submit</button>
+
+                </div>
+
+            {%- endcall %}
+
+
+        {%- endcall %}
+
+    {%- endcall %}
+    {% include '../../layouts/partials/user-contact.njk' %}
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        Zepto(function($){
+            $(window).on('load', function() {
+                console.log('window loaded');
+                $('.govuk-tabs__tab').attr('tabindex', '');
+            });
+        });
+    </script>
+{% endblock %}
+

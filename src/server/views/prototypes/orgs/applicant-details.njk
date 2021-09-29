@@ -1,0 +1,106 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '/prototypes/external-users/applications' %}
+{% set homeLink = '/prototypes/external-users/home' %}
+{% set reviewsLink = '/prototypes/external-users/reviews' %}
+{% set orgsSessionData = orgsSessionData if orgsSessionData %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set limitedOrgList = limitedOrgList if limitedOrgList %}
+
+{% set pageTitle = 'Applicant details' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/orgs/', text:'Back to Application'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Applicant details', caption='Add an applicant') }}
+        {%- endcall %}
+    {%- endcall %}
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <p>orgsSessionData.roles = {{ orgsSessionData.roles }} </p>
+
+                <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
+                    <label class="govuk-label govuk-label--s" for="firstName" id="firstNameLabel">First name
+                        {% if firstNameError %}
+                            <span class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> You must enter a first name
+                            </span>
+                        {% endif %}
+                    </label>
+                    <input class="govuk-input govuk-input--width-20 {% if firstNameError %}govuk-input--error{% endif %}" id="firstName" type="text" name="firstName" value="{{ firstName }}">
+                </div>
+
+                <div class="govuk-form-group {% if lastNameError %}govuk-form-group--error{% endif %}">
+                    <label class="govuk-label govuk-label--s" for="lastName" id="lastNameLabel">Last name
+                        {% if lastNameError %}
+                            <span class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> You must enter a last name
+                            </span>
+                        {% endif %}
+                    </label>
+                    <input class="govuk-input govuk-input--width-20 {% if lastNameError %}govuk-input--error{% endif %}" id="lastName" type="text" name="lastName" value="{{ lastName }}">
+                </div>
+
+                <div class="govuk-form-group {% if signinError %} govuk-form-group--error{% endif %}">
+                    <label class="govuk-label govuk-label--s" for="email" id="emailAddressInput">Email address</label>
+                    <input class="govuk-input {% if signinError %} govuk-input--error{% endif %} govuk-input--width-20" id="email" name="email" type="text" value="{{ savedEmail }}">
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="organisation">Organisation</label>
+                    <span class="govuk-hint">Start entering, then select the organisation's name</span>
+                    <select name="organisation" class="govuk-select control" id="organisation">
+                        <option></option>
+                        {% for item in limitedOrgList %}
+                            <option value="{{ item.n }}">{{ item.n }}</option>
+                        {% endfor %}
+                    </select>
+                    <p class="govuk-body govuk-!-font-size-16 u-space-t10">No results? Try a wider <a href="/prototypes/orgs/organisation-search" class="govuk-link">organisation search</a></p>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <div class="application-controls govuk-clearfix">
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Add applicant</button>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        var selectEl = document.querySelector('#organisation');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 3,
+            selectElement: selectEl
+        });
+    </script>
+{% endblock %}
+

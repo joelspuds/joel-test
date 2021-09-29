@@ -1,0 +1,68 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{%  set loggedOut = false %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+
+{% set newHeader = true %}
+
+{% set motherLoad = motherLoad if motherLoad %}
+
+{% set pageTitle = 'How many organisations to search' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            {{ components.captionHeading(text='How many organisations to search', caption='') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='motherLoad') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-9', customID='mainContent') %}
+
+                <p class="govuk-body">How many of these bad boys can your browser handle?</p>
+
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-visually-hidden">Enter a number between 1 and 55000</legend>
+
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="orgNumber">Total number of records to spew out</label>
+                        <div id="account-number-hint" class="govuk-hint">Enter a custom number or select a shortcut from the links below</div>
+                        <input class="govuk-input govuk-input--width-10" id="orgNumber" name="orgNumber" type="number" >
+                    </div>
+                </fieldset>
+                <p class="govuk-body">Save yourself some typing: <a href="#" id="thousand" class="govuk-link auto-orgnumber" data-number="1000">1,000</a> | <a href="#" id="tenThousand" class="govuk-link auto-orgnumber" data-number="10000">10,000</a> | <a href="#" id="twentyFiveThousand" class="govuk-link auto-orgnumber" data-number="25000">25,000</a> | <a href="#" id="all" class="govuk-link auto-orgnumber" data-number="55052">ALL (55,052)</a></p>
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="application-controls govuk-clearfix">
+                    {{ components.button(text='Crash my browser', extraClass="application-controls__submit")}}
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script type="text/javascript">
+        var ready = (callback) => {
+            if (document.readyState != 'loading') callback();
+            else document.addEventListener('DOMContentLoaded', callback);
+        }
+        ready(() => {
+            $('.auto-orgnumber').on('click', function(e) {
+                e.preventDefault();
+                $('#orgNumber').val(this.getAttribute('data-number'));
+            });
+        });
+    </script>
+{% endblock %}
+
+

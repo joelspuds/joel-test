@@ -1,0 +1,71 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '/prototypes/external-users/applications' %}
+{% set homeLink = '/prototypes/external-users/home' %}
+{% set reviewsLink = '/prototypes/external-users/reviews' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Find co-applicant\'s organisation' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/orgs/', text:'Back to Application'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Find co-applicant\'s organisation', caption='Add an applicant') }}
+        {%- endcall %}
+    {%- endcall %}
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-half', customID='mainContent') %}
+
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-visually-hidden">Find your organisation</legend>
+
+                    <div class="govuk-form-group">
+                        {#<label class="govuk-label govuk-label--s" for="organisation">Organisation name</label>
+                        <select name="organisation" class="govuk-select control" id="organisation">
+                            <option></option>
+                            {% for item in motherLoad %}
+                                <option value="{{ item.id }}">{{ item.n }}</option>
+                            {% endfor %}
+                        </select>#}
+                        <label class="govuk-label govuk-label--s" for="searchTerm">Search for an organisation, company or other eligible entity</label>
+                        {#<span class="govuk-hint">Enter a short description of the subject matter of this section – it will appear above as the section title. For example, 'Economic benefits'</span>#}
+                        <input class="govuk-input" id="searchTerm" name="searchTerm" type="text">
+                    </div>
+                </fieldset>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='__u-space-t20') %}
+
+                <div class="application-controls govuk-clearfix">
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Find organisation</button>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+    </script>
+{% endblock %}
+

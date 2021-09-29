@@ -259,10 +259,12 @@ router.get('/prototypes/molecules/top-nav', demosController.topNavGet);
 router.get('/prototypes/molecules/sortable-tables', demosController.sortableTablesGet);
 router.get('/prototypes/molecules/colours', demosController.colourPaletteGet);
 // organisations mother load
-router.get('/prototypes/molecules/organisations-motherload-search', demosController.motherloadSearchGet);
+/*router.get('/prototypes/molecules/organisations-motherload-search', demosController.motherloadSearchGet);
 router.post('/prototypes/molecules/organisations-motherload-search', demosController.motherloadSearchPost);
 router.get('/prototypes/molecules/organisations-motherload-results', demosController.motherloadResultsGet);
 router.get('/prototypes/molecules/organisations-typeahead', demosController.motherloadTypeaheadGet);
+router.get('/prototypes/molecules/organisations-typeahead-config', demosController.motherloadTypeaheadConfigGet);
+router.post('/prototypes/molecules/organisations-typeahead-config', demosController.motherloadTypeaheadConfigPost);*/
 
 /* *************************************************************** *
 
@@ -273,6 +275,16 @@ router.get('/prototypes/awards', demosController.awardStartGet);
 router.post('/prototypes/awards', demosController.awardStartPost);
 router.get('/prototypes/awards/create', demosController.createAwardGet);
 router.post('/prototypes/awards/create', demosController.createAwardPost);
+
+/* *************************************************************** *
+
+  Award
+
+* *************************************************************** */
+// router.get('/prototypes/award', demosController.award2StartGet);
+// router.post('/prototypes/award', demosController.award2StartPost);
+// router.get('/prototypes/award/create', demosController.createAwardGet);
+// router.post('/prototypes/award/create', demosController.createAwardPost);
 
 /* *************************************************************** *
 
@@ -538,6 +550,32 @@ router.get('/prototypes/submission-control/applicant/justification-of-resources'
 router.post('/prototypes/submission-control/applicant/justification-of-resources', demosController.submissionApplicantJustificationPost);
 router.get('/prototypes/submission-control/applicant/resources-and-costs', demosController.submissionApplicantResourcesGet);
 router.post('/prototypes/submission-control/applicant/resources-and-costs', demosController.submissionApplicantResourcesPost);
+
+/* *************************************************************** *
+
+  Organisations list
+
+* *************************************************************** */
+router.get('/prototypes/orgs', demosController.orgsIndexGet);
+router.post('/prototypes/orgs', demosController.orgsIndexPost);
+
+router.get('/prototypes/orgs/applicants', demosController.orgsApplicantsGet);
+router.post('/prototypes/orgs/applicants', demosController.orgsApplicantsPost);
+
+router.get('/prototypes/orgs/select-role', demosController.orgsSelectRoleGet);
+router.post('/prototypes/orgs/select-role', demosController.orgsSelectRolePost);
+
+router.get('/prototypes/orgs/applicant-details', demosController.orgsDetailsGet);
+router.post('/prototypes/orgs/applicant-details', demosController.orgsDetailsPost);
+
+router.get('/prototypes/orgs/organisation-search', demosController.orgsSearchGet);
+router.post('/prototypes/orgs/organisation-search', demosController.orgsSearchPost);
+
+router.get('/prototypes/orgs/search-results', demosController.orgsSearchResultsGet);
+router.post('/prototypes/orgs/search-results', demosController.orgsSearchResultsPost);
+
+router.get('/prototypes/orgs/add-manually', demosController.orgsAddManuallyGet);
+router.post('/prototypes/orgs/add-manually', demosController.orgsAddManuallyPost);
 
 /* *************************************************************** *
 

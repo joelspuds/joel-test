@@ -328,14 +328,14 @@ Object.keys(_designController).forEach(function (key) {
   });
 });
 
-var _motherLoadController = require('./motherLoadController');
+var _orgsController = require('./orgsController');
 
-Object.keys(_motherLoadController).forEach(function (key) {
+Object.keys(_orgsController).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function () {
-      return _motherLoadController[key];
+      return _orgsController[key];
     }
   });
 });

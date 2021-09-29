@@ -1,0 +1,159 @@
+{#{% set applicationsLink = applicationsLink if applicationsLink '/prototypes/external-users/applications' %}#}
+
+{#{% set accountSettingsLink = '/prototypes/edi/home'  %}#}
+{% set accountSettingsLink = altProfilePagelink if altProfilePagelink else '/prototypes/edi/home' %}
+
+{#{% set signInURL = signInLink if signInLink else '#' %}#}
+{% set signInURL = signInLink if signInLink else '/prototypes/external-users/sign-in' %}
+{% set userName = userName if userName else 'Arden Pimenta' %}
+
+{% set signOutLink = signOutLink if signOutLink else '/prototypes/external-users/index' %}
+{#{% set accountSettingsLink = accountSettingsLink if accountSettingsLink else 'Dr. Jane Doeington-Longname' %}#}
+
+
+
+<header class="new-header {% if navType == 'admin' %} new-header--admin {% else %} new-header--external {% endif %}" role="banner">
+    <div class="container new-header__top">
+        <div class="columns">
+            <div class="column {#column-one-quarter#}">
+                <a href="#" class="new-header__brand" title="UKRI Funding Service homepage" aria-label="Return to UKRI Funding Service homepage">
+                    <img src="/images/ufs/ukri_logo_new.svg" alt="UKRI logo">
+                </a>
+                {#{% if not loggedOut %}#}
+                    <button class="mobile-menu" type="button" aria-controls="mobile-nav" aria-expanded="false">Menu <span>&#9660;</span></button>
+                {#{% endif %}#}
+
+                {% if not loggedOut %}
+                <nav class="new-header__nav new-header__nav--touch-hide">
+                    <ul class="new-header__nav-list">
+                        <li class="new-header__nav-item">
+                            <a href="{{ homeLink }}" class="new-header__nav-link {% if activeNavItem == 'home' %} new-header__nav-link--active {% endif %}">Home</a>
+                        </li>
+                        <li class="new-header__nav-item">
+                            <a href="{{ opportunitiesLink }}" class="new-header__nav-link {% if activeNavItem == 'opportunities' %} new-header__nav-link--active {% endif %}">Opportunities</a>
+                        </li>
+
+                        <li class="new-header__nav-item">
+                            <a href="{{ awardSetUpLink }}" class="new-header__nav-link {% if activeNavItem == 'awardSetUp' %} new-header__nav-link--active {% endif %}">Award setup</a>
+                        </li>
+
+
+                        <li class="new-header__nav-item new-header__nav-item--user">
+                            <a href="{{ accountSettingsLink }}" class="new-header__nav-link {% if activeNavItem == 'profile' %}new-header__nav-link--active{% endif %}">Account settings</a>
+                        </li>
+                        <li class="new-header__nav-item new-header__nav-item--user">
+                            <a href="{{ signOutLink }}" class="new-header__nav-link">Sign out</a>
+                        </li>
+                        <li class="new-header__nav-item new-header__nav-item--user">
+                            <span class="new-header__nav-link-not">Account view</span>
+                        </li>
+                        <li class="new-header__nav-item new-header__nav-item--user">
+                            <a href="/prototypes/external-users/home" class="new-header__nav-link {% if navArea == 'personal' %}new-header__nav-link--active{% endif %}">Personal {% if navArea == 'personal' %}(current){% endif %}</a>
+                        </li>
+                        {#<li class="new-header__nav-item new-header__nav-item--user">
+                            <a href="/prototypes/external-users/home-organisation" class="new-header__nav-link {% if navArea == 'organisation' %}new-header__nav-link--active{% endif %}">University of Manchester {% if navArea == 'organisation' %}(current){% endif %}</a>
+                        </li>#}
+                        {#<li class="new-header__nav-item new-header__nav-item--user">
+                            <a href="/prototypes/external-users/home-business" class="new-header__nav-link {% if navArea == 'business' %}new-header__nav-link--active{% endif %}">Cyberdine Systems Ltd {% if navArea == 'business' %}(current){% endif %}</a>
+                        </li>#}
+                        <li class="new-header__nav-item new-header__nav-item--user">
+                            <a href="#" class="new-header__nav-link {% if navArea == 'organisation' %}new-header__nav-link--active{% endif %}">MRC {% if navArea == 'organisation' %}(current){% endif %}</a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+                {% else %}
+                <nav class="new-header__nav new-header__nav--touch-hide">
+                    <ul class="new-header__nav-list">
+                        <li class="new-header__nav-item new-header__nav-item--user">
+                            <a href="{{ signInURL }}" class="new-header__nav-link ">Sign in</a>
+                        </li>
+                    </ul>
+                </nav>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+    {% if not showExternalFurniture %}
+
+        <div class="new-header__bar">
+            <div class="container">
+                <div class="columns">
+                    <div class="column">
+                        <span class="new-header__service">Funding Service</span>
+                        {% if not loggedOut %}
+                            <div class="nav-wrapper">
+                                {% if not hideAccountLinks %}
+                                <div class="nav-bar" aria-label="Organisation Navigation">
+                                    <ul class="nav-bar__list">
+                                        <li class="dropdown">
+                                            <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="organisation-dropdown">Account view</button>
+                                            <ul class="dropdown__menu" id="organisation-dropdown">
+                                                <li><a href="#" class="{% if navArea == 'personal' %}dropdown__link--active{% endif %}">MRC</a></li>
+                                                {#<li><a href="/prototypes/external-users/home" class="{% if navArea == 'personal' %}dropdown__link--active{% endif %}">Personal {% if navArea == 'personal' %}(current){% endif %}</a></li>
+                                                <li><a href="/prototypes/external-users/home-organisation" class="{% if navArea == 'organisation' %}dropdown__link--active{% endif %}">University of Manchester {% if navArea == 'organisation' %}(current){% endif %}</a></li>
+                                                <li><a href="/prototypes/external-users/home-business" class="{% if navArea == 'business' %}dropdown__link--active{% endif %}">Cyberdine Systems Internal Ltd {% if navArea == 'business' %}(current){% endif %}</a></li>#}
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                {% endif %}
+
+                                <div class="nav-bar" aria-label="User Navigation">
+                                    <ul class="nav-bar__list">
+                                        <li class="dropdown">
+                                            <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="user-dropdown">{{ userName }}</button>
+                                            <ul class="dropdown__menu" id="user-dropdown">
+                                                <li><a href="{{ accountSettingsLink }}" class="{% if navArea == 'profile' %}dropdown__link--active{% endif %}">Account settings</a></li>
+                                                <li><a href="{{ signOutLink }}">Sign out</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="nav-wrapper">
+                                <div class="nav-bar" aria-label="User Navigation">
+                                    <ul class="nav-bar__list">
+                                        <li class="dropdown">
+                                            <a href="{{ signInURL }}">Sign in</a>
+                                            {#<button type="button" class="dropdown__title" aria-expanded="false" aria-controls="user-dropdown">Dr. Jane Doe</button>
+                                            <ul class="dropdown__menu" id="user-dropdown">
+                                                <li><a href="#">Account settings</a></li>
+                                                <li><a href="#">Sign out</a></li>
+                                            </ul>#}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+</header>
+{#{% if not loggedOut %}#}
+    <script>
+        window.onload = function(){
+            // let topNavSwitcher = document.getElementsByClassName('new-header__nav');
+            let topNavMenu = document.getElementsByClassName('new-header__nav')[0];
+            document.querySelector('.mobile-menu').onclick = function(){
+                // topNavMenu.classList.toggle('new-header__nav--touch-hide');
+                // this.setAttribute('aria-expanded', 'true');
+                if(topNavMenu.classList.contains('new-header__nav--touch-hide')) {
+                    topNavMenu.classList.remove('new-header__nav--touch-hide');
+                    this.setAttribute('aria-expanded', true);
+                } else {
+                    topNavMenu.classList.add('new-header__nav--touch-hide');
+                    this.setAttribute('aria-expanded', false);
+                }
+            };
+        };
+    </script>
+{#{% endif %}#}

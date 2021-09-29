@@ -25,5 +25,9 @@ export * from './externalUsersController';
 export * from './ediController';
 export * from './submissionController';
 export * from './designController';
+
+// these two slow everything dow as they're loading in a megaton of data
 // export * from './organisationMotherLoad';
-export * from './motherLoadController';
+// export * from './motherLoadController';
+
+export * from './orgsController';

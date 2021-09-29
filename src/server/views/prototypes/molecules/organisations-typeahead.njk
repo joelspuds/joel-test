@@ -46,6 +46,10 @@
             {% call components.bulmaColumnAny(size='is-full') %}
                 <div class="application-controls govuk-clearfix">
                     {{ components.button(text='Search', extraClass="application-controls__submit")}}
+
+                    <span class="_sub-button">
+                        {{ components.link(text='Customise number of results', url='/prototypes/molecules/organisations-typeahead-config')}}
+                    </span>
                 </div>
             {%- endcall %}
         {%- endcall %}

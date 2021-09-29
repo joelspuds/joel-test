@@ -68,7 +68,11 @@ export function motherloadSearchPost(req, res) {
   req.session.searchFail = searchFail;
   return res.redirect('/prototypes/molecules/organisations-motherload-results');
 }
-
+/*
+*
+*   Results page
+*
+* */
 export function motherloadResultsGet(req, res) {
   let viewData;
 
@@ -96,12 +100,90 @@ export function motherloadResultsGet(req, res) {
 export function motherloadTypeaheadGet(req, res) {
   let viewData;
 
+  let orgNumber = parseInt(req.session.orgNumber);
+  req.session.orgNumber = null;
+  if (orgNumber < 1) {
+    orgNumber = 55052;
+  }
+
+  console.log('orgNumber = ' + orgNumber);
+
+  let newOrgsArray = [];
   let motherLoad = motherLoadData.organisationsMotherLoad;
   // let motherLoad = miniMotherLoadData.organisationsMiniMotherLoad;
-  console.log(motherLoad);
+  // console.log(motherLoad);
+
+  function getRandomNumber(max) {
+    return Math.floor(Math.random() * max);
+  }
+  // getRandomNumber(50);
+
+  // let randomNumber  = Math.floor(Math.random() * 20);
+  // getRandomNumber(100);
+
+  /*if (orgNumber > 1 && orgNumber < 10000 ) {
+    for (let i = 1; i < motherLoad.length; i + getRandomNumber(10) ) {
+      motherLoad.splice(1, getRandomNumber(5));
+    }
+    if (motherLoad.length >= orgNumber) {
+      return;
+    }
+  } else if (orgNumber > 10001 && orgNumber < 40000 ) {
+    for (let i = 1; i < motherLoad.length; i + getRandomNumber(5) ) {
+      motherLoad.splice(1, getRandomNumber(2));
+    }
+    if (motherLoad.length >= orgNumber) {
+      return;
+    }
+  } else if (orgNumber > 40001 ) {
+    for (let i = 1; i < motherLoad.length; i + getRandomNumber(5) ) {
+      motherLoad.splice(1, getRandomNumber(2));
+    }
+    if (motherLoad.length >= orgNumber) {
+      return;
+    }
+  }*/
+
+  if (orgNumber > 1) {
+    for (let i = 1; i <= motherLoad.length; i + getRandomNumber(10)) {
+      motherLoad.splice(i, getRandomNumber(5));
+    }
+    if (motherLoad.length >= orgNumber) {
+      return;
+    }
+  }
+
   viewData = {
     motherLoad,
   };
 
   return res.render('prototypes/molecules/organisations-typeahead', viewData);
+}
+
+// ************************************************************************
+//
+//       motherloadTypeaheadConfigGet
+//
+// ************************************************************************
+
+// let refreshCounter = 0;
+
+export function motherloadTypeaheadConfigGet(req, res) {
+  let viewData;
+
+  viewData = {};
+
+  return res.render('prototypes/molecules/organisations-typeahead-config', viewData);
+}
+
+export function motherloadTypeaheadConfigPost(req, res) {
+  const { orgNumber } = req.body;
+
+  // let orgNumber = orgNumber;
+
+  console.log(orgNumber);
+
+  req.session.orgNumber = orgNumber;
+
+  return res.redirect('/prototypes/molecules/organisations-typeahead');
 }

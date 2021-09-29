@@ -23,17 +23,24 @@
     {% include './partials/cookie-message.njk' %}
 
     {% if showFancyNav === 'yes' %}
+
         {% include './partials/bulma-ufs-header-menus-2.njk' %}
 
-    {% elseif showExternalNav %}
-
-        {% include './partials/bulma-ufs-header-menus-external-only.njk' %}
-
-    {% elseif designSystemConceptNav %}
-
-        {% include './partials/bulma-ufs-header-menus-design-nav.njk' %}
-
     {% else %}
+
+        {% if showExternalNav %}
+            {% include './partials/bulma-ufs-header-menus-external-only.njk' %}
+        {#{% endif %}
+        {% if showInternalNav %}#}
+        {% else %}
+            {% include './partials/bulma-ufs-header-menus-internal-only.njk' %}
+        {% endif %}
+        {% if designSystemConceptNav %}
+            {% include './partials/bulma-ufs-header-menus-design-nav.njk' %}
+        {% endif %}
+    {% endif %}
+
+    {% if showSomeOtherNave %}
         {% include './partials/bulma-ufs-new-header.njk' %}
         {#{% include './partials/bulma-ufs-new-header.njk' %}#}
     {% endif %}
