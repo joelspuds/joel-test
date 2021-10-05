@@ -286,3 +286,8 @@ td.u-align-right {
   left: 160px;
   top:0;
 }
+
+// for some reason, the coloured heading is putting in a 1px margin ??
+.govuk-notification-banner__header {
+  margin:-1px -1px 0;
+}

@@ -10,19 +10,56 @@
 {% set isAdminUser = false %}
 {%  set loggedOut = false %}
 
+{% set orgsSessionData = orgsSessionData if orgsSessionData %}
+{% set userOne = userOne if userOne %}
+
 {% set pageTitle = 'Applicants' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/orgs/', text:'Back to Application'}] %}
 
 {% block content %}
+   {# {{ userOne }}
+    {{ userOne.firstName }}#}
+    {% if userOne.firstName %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full', extraClass='u-space-t20') %}
+
+                <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                            Success
+                        </h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <h3 class="govuk-notification-banner__heading">
+                            The applicant has been added to the project.
+                        </h3>
+                        {#<p class="govuk-body">Contact <a class="govuk-notification-banner__link" href="#">example@department.gov.uk</a> if you think there's a problem.</p>#}
+                    </div>
+
+                </div>
+
+                {#<div class="govuk-notification-banner govuk-notification-banner--info" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header" style="margin: 0 -1px;">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">
+                        You must complete your Equality, Diversity and Inclusion (EDI) profile before any applications you contribute to can be submitted to UKRI.
+                    </p>
+                </div>
+            </div>#}
+
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
             {{ components.captionHeading(text='Applicants', caption='APP171: Bio-detoxification of Ricin in castor bean') }}
         {%- endcall %}
     {%- endcall %}
+
     {% call components.form(action='#', method='POST',name='submitForm') %}
-
-
 
         {% call components.bulmaRow() %}
 
@@ -70,6 +107,38 @@
                             <td class="govuk-table__cell">Cardiff University</td>
                             <td class="govuk-table__cell"><a href="#" class="govuk-link">Remove</a></td>
                         </tr>
+                    {% if userOne.firstName %}
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">{{ userOne.firstName }} {{ userOne.lastName }}</td>
+                            <td class="govuk-table__cell">{{ userOne.email }}</td>
+                            <td class="govuk-table__cell">{{ userOne.roles }}</td>
+                            <td class="govuk-table__cell">
+                                {% if userOne.organisation %}
+                                    {{ userOne.organisation }}
+                                {% else %}
+                                    {% if userOne.newOrgName %}
+                                        {% if userOne.organisation %}
+                                            <br>
+                                        {% endif %}
+                                        {{ userOne.newOrgName }}
+                                    {% endif %}
+                                    {% if userOne.countries %}
+                                        {% if userOne.newOrgName %}
+                                            <br>
+                                        {% endif %}
+                                        {{ userOne.countries }}
+                                    {% endif %}
+                                    {% if userOne.newOrgWebsite %}
+                                        {% if userOne.countries %}
+                                            <br>
+                                        {% endif %}
+                                        <a href="{{ userOne.newOrgWebsite }}" class="govuk-link">{{ userOne.newOrgWebsite }}</a>
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Remove</a></td>
+                        </tr>
+                    {% endif %}
                     </tbody>
                 </table>
 
@@ -111,7 +180,7 @@
 
                 <div class="application-controls govuk-clearfix">
                     <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Submit</button>
-
+                    <a href="/prototypes/orgs" class="govuk-link application-controls__cancel">Return to application</a>
                 </div>
 
             {%- endcall %}

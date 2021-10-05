@@ -25,6 +25,7 @@ let genericFunctions = require('./generic');
 // let allOrgs = require('./orgsListCleaned');
 let allOrgs = require('./orgsListCleanedDupesRemoved');
 let limitedOrgs = require('./orgs400');
+let allCountries = require('./countries');
 let orgsSessionData = [];
 
 // ************************************************************************
@@ -34,6 +35,18 @@ let orgsSessionData = [];
 // ************************************************************************
 function orgsIndexGet(req, res) {
   let viewData;
+  // console.log(orgsSessionData);
+  let clearSession = req.param('clearSession');
+  if (clearSession === 'true') {
+    req.session.destroy();
+    orgsSessionData.firstName = null;
+    orgsSessionData.lastName = null;
+    orgsSessionData.roles = null;
+    orgsSessionData.organisation = null;
+    orgsSessionData.detailsAdded = null;
+    return res.redirect('/prototypes/orgs/');
+    //
+  }
 
   /*let projectName = req.session.storedProjectName;
     if (!projectName) {
@@ -62,8 +75,56 @@ function orgsIndexPost(req, res) {
 // ************************************************************************
 function orgsApplicantsGet(req, res) {
   let viewData;
+  // console.log(orgsSessionData);
 
-  viewData = {};
+  /*if (orgsSessionData === null) {
+    orgsSessionData = [];
+  }*/
+
+  // let userOne = [].concat(orgsSessionData);
+  // let userOne = [...orgsSessionData];
+  // const userOne = orgsSessionData.slice();
+  let userOne = [];
+  // userOne = JSON.parse(JSON.stringify(orgsSessionData));
+  // console.log(userOne);
+  // userOne = orgsSessionData;
+  // userOne = [...orgsSessionData];
+  /*userOne = orgsSessionData.slice();
+  for(let i = 0; i < orgsSessionData.length; i++ ) {
+    userOne.push(orgsSessionData[i]);
+  }*/
+
+  // clear data
+  /*orgsSessionData.firstName = null;
+  orgsSessionData.lastName = null;
+  orgsSessionData.roles = null;
+  orgsSessionData.organisation = null;
+  orgsSessionData.detailsAdded = null;
+  orgsSessionData.email = null;
+  orgsSessionData.newOrgName = null;
+  orgsSessionData.countries = null;
+  orgsSessionData.newOrgWebsite = null;*/
+
+  function copy(mainObject) {
+    let objectCopy = {}; // objectCopy will store a copy of the mainObject
+    let key;
+    for (key in mainObject) {
+      userOne[key] = mainObject[key]; // copies each property to the objectCopy object
+    }
+    return objectCopy;
+  }
+
+  console.log(copy(orgsSessionData));
+
+  console.log('userOne = ');
+  console.log(userOne);
+  console.log('orgsSessionData = ');
+  console.log(orgsSessionData);
+
+  viewData = {
+    orgsSessionData,
+    userOne
+  };
 
   return res.render('prototypes/orgs/applicants', viewData);
 }
@@ -108,8 +169,8 @@ function orgsDetailsGet(req, res) {
   let viewData;
 
   let limitedOrgList = limitedOrgs.limitedOrgList;
-  console.log('limitedOrgList: ');
-  console.log(limitedOrgList);
+  // console.log('limitedOrgList: ');
+  // console.log(limitedOrgList);
   viewData = {
     limitedOrgList,
     orgsSessionData
@@ -119,11 +180,25 @@ function orgsDetailsGet(req, res) {
 }
 
 function orgsDetailsPost(req, res) {
-  const {} = req.body;
+  const { firstName, lastName, email, organisation, widerSearch } = req.body;
 
-  // req.session.firstName = firstName;
+  let redirectURL = '/prototypes/orgs/applicants';
 
-  return res.redirect('/prototypes/orgs/');
+  // console.log(req.body);
+  // console.log(req.params.id);
+  // console.log('widerSearch = ' + widerSearch);
+  orgsSessionData.firstName = firstName;
+  orgsSessionData.lastName = lastName;
+  orgsSessionData.email = email;
+  orgsSessionData.organisation = organisation;
+  orgsSessionData.detailsAdded = true;
+  // console.log(orgsSessionData);
+
+  if (widerSearch === 'true') {
+    redirectURL = '/prototypes/orgs/organisation-search';
+  }
+
+  return res.redirect(redirectURL);
 }
 
 // ************************************************************************
@@ -198,11 +273,14 @@ function orgsSearchResultsGet(req, res) {
 }
 
 function orgsSearchResultsPost(req, res) {
-  const {} = req.body;
+  const { organisation } = req.body;
+
+  orgsSessionData.organisation = organisation;
+  // console.log(orgsSessionData);
 
   // req.session.firstName = firstName;
 
-  return res.redirect('/prototypes/orgs/search-results');
+  return res.redirect('/prototypes/orgs/applicants');
 }
 
 // ************************************************************************
@@ -213,15 +291,22 @@ function orgsSearchResultsPost(req, res) {
 function orgsAddManuallyGet(req, res) {
   let viewData;
 
-  viewData = {};
+  let countries = allCountries.allCountries;
+
+  viewData = {
+    countries
+  };
 
   return res.render('prototypes/orgs/add-manually', viewData);
 }
 
 function orgsAddManuallyPost(req, res) {
-  const {} = req.body;
+  const { newOrgName, countries, newOrgWebsite } = req.body;
 
-  // req.session.firstName = firstName;
+  orgsSessionData.newOrgName = newOrgName;
+  orgsSessionData.countries = countries;
+  orgsSessionData.newOrgWebsite = newOrgWebsite;
+  orgsSessionData.detailsAdded = true;
 
-  return res.redirect('/prototypes/orgs/search-results');
+  return res.redirect('/prototypes/orgs/applicants');
 }

@@ -30,15 +30,7 @@
                     <legend class="govuk-fieldset__legend govuk-visually-hidden">Find your organisation</legend>
 
                     <div class="govuk-form-group">
-                        {#<label class="govuk-label govuk-label--s" for="organisation">Organisation name</label>
-                        <select name="organisation" class="govuk-select control" id="organisation">
-                            <option></option>
-                            {% for item in motherLoad %}
-                                <option value="{{ item.id }}">{{ item.n }}</option>
-                            {% endfor %}
-                        </select>#}
                         <label class="govuk-label govuk-label--s" for="searchTerm">Search for an organisation, company or other eligible entity</label>
-                        {#<span class="govuk-hint">Enter a short description of the subject matter of this section – it will appear above as the section title. For example, 'Economic benefits'</span>#}
                         <input class="govuk-input" id="searchTerm" name="searchTerm" type="text">
                     </div>
                 </fieldset>
@@ -53,6 +45,7 @@
 
                 <div class="application-controls govuk-clearfix">
                     <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Find organisation</button>
+                    <a href="/prototypes/orgs/applicant-details" class="govuk-link application-controls__cancel">Return to applicant details</a>
                 </div>
 
             {%- endcall %}

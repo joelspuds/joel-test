@@ -29,7 +29,7 @@
 
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
-                <p>orgsSessionData.roles = {{ orgsSessionData.roles }} </p>
+                {#<p>orgsSessionData.roles = {{ orgsSessionData.roles }} </p>#}
 
                 <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
                     <label class="govuk-label govuk-label--s" for="firstName" id="firstNameLabel">First name
@@ -67,7 +67,7 @@
                             <option value="{{ item.n }}">{{ item.n }}</option>
                         {% endfor %}
                     </select>
-                    <p class="govuk-body govuk-!-font-size-16 u-space-t10">No results? Try a wider <a href="/prototypes/orgs/organisation-search" class="govuk-link">organisation search</a></p>
+                    <p class="govuk-body govuk-!-font-size-16 u-space-t10">No results? Try a wider <button type="submit" class="govuk-button govuk-button--link govuk-!-font-size-16" name="widerSearch" value="true">organisation search</button></p>
                 </div>
 
             {%- endcall %}
@@ -80,6 +80,7 @@
 
                 <div class="application-controls govuk-clearfix">
                     <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Add applicant</button>
+                    <a href="/prototypes/orgs/applicants" class="govuk-link application-controls__cancel">Return to applicants</a>
                 </div>
 
             {%- endcall %}

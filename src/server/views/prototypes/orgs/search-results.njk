@@ -42,7 +42,7 @@
                 {% if searchFail %}
 
                     <p class="govuk-body">There are no organisations matching your search term.</p>
-                    <p class="govuk-body">You can <a href="#">add a new record</a>.</p>
+                    {#<p class="govuk-body">You can <a href="#">add a new record</a>.</p>#}
 
                 {% else %}
                     <p class="govuk-body">You searched  for "<strong>{{ searchTerm }}</strong>"</p>
@@ -59,13 +59,22 @@
                         {% for item in resultArray %}
                             <tr class="">
                                 <td class="govuk-table__cell">{{ item }}</td>
-                                <td class="govuk-table__cell govuk-table__cell--numeric"><a href="#">Add <span class="govuk-visually-hidden">as my organisation</span></a> </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric"><button type="submit" class="govuk-button govuk-button--link" name="organisation" value="{{ item }}" href="#">Add <span class="govuk-visually-hidden">as my organisation</span></button> </td>
                             </tr>
                         {% endfor %}
                         </tbody>
                     </table>
 
                 {% endif %}
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-half', customID='mainContent') %}
+
+              <p class="govuk-body"><a href="/prototypes/orgs/organisation-search" class="govuk-link">Try and search again</a> </p>
+
             {%- endcall %}
         {%- endcall %}
 

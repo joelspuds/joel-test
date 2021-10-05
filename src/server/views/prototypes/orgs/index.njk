@@ -53,7 +53,7 @@
 
         {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
-            <div class="application-item application-item--complete application-item--skinny application-item--skinny-last">
+            <div class="application-item application-item--incomplete application-item--skinny application-item--skinny-last">
                 <div class="application-item__contents govuk-clearfix">
                     <div class="application-item__left">{{ components.link(text='1. Details and summary', url='#')}}</div>
                     <div class="application-item__right">
@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-            <div class="application-item application-item--complete application-item--skinny application-item--skinny-last">
+            <div class="application-item application-item--incomplete application-item--skinny application-item--skinny-last">
                 <div class="application-item__contents govuk-clearfix">
                     <div class="application-item__left">{{ components.link(text='2. Applicants', url='/prototypes/orgs/applicants')}}</div>
                     <div class="application-item__right">
@@ -71,7 +71,7 @@
                 </div>
             </div>
 
-            <div class="application-item application-item--complete application-item--skinny application-item--skinny-last">
+            <div class="application-item application-item--incomplete application-item--skinny application-item--skinny-last">
                 <div class="application-item__contents govuk-clearfix">
                     <div class="application-item__left">{{ components.link(text='3. Case for support', url='#')}}</div>
                     <div class="application-item__right">
@@ -80,7 +80,7 @@
                 </div>
             </div>
 
-            <div class="application-item application-item--complete application-item--skinny application-item--skinny-last">
+            <div class="application-item application-item--incomplete application-item--skinny application-item--skinny-last">
                 <div class="application-item__contents govuk-clearfix">
                     <div class="application-item__left">{{ components.link(text='4. Resources and costs', url='#')}}</div>
                     <div class="application-item__right">
@@ -89,7 +89,7 @@
                 </div>
             </div>
 
-            <div class="application-item application-item--complete application-item--skinny application-item--skinny-last">
+            <div class="application-item application-item--incomplete application-item--skinny application-item--skinny-last">
                 <div class="application-item__contents govuk-clearfix">
                     <div class="application-item__left">{{ components.link(text='5. Justification for resources', url='#')}}</div>
                     <div class="application-item__right">
@@ -106,7 +106,7 @@
                     Only your Research Office can submit this application to UKRI.
                 </p>
                 {% call components.form(action='/prototypes/application-v2/', method='POST',name='submitApplication') %}
-                    {% set progressPercentage = 100 %}
+                    {% set progressPercentage = 0 %}
                     <button type="submit" class="govuk-button application-controls__submit" name="submitButton" {% if progressPercentage != 100 %}disabled{% endif %}>Submit to Research Office</button>
                 {%- endcall %}
             </div>
@@ -114,11 +114,23 @@
         {%- endcall %}
 
         {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
-
-            <div class="progress-meter">
-                <div class="progress-meter__text progress-meter__text--back" role="progress-bar" aria-valuenow="100%"><span class="govuk-visually-hidden">Your application is</span> 100% complete</div>
-                <div class="progress-meter__clipper" aria-hidden="true" style="clip-path: inset(0% 100% 0% 0%); -webkit-clip-path: inset(0% 0% 0% 0%)">
+            {% set reverseProgressPercentage = 100 %}
+            {% set progressPercentage = 0 %}
+            {#<div class="progress-meter">
+                <div class="progress-meter__text progress-meter__text--back" role="progress-bar" aria-valuenow="100%"><span class="govuk-visually-hidden">Your application is</span> 0% complete</div>
+                <div class="progress-meter__clipper" aria-hidden="true" style="clip-path: inset(0% 0% 0% 0%); -webkit-clip-path: inset(0% 100% 0% 0%)">
                     <div class="progress-meter__text progress-meter__text--front"><strong>Ready to submit</strong></div>
+                </div>
+            </div>#}
+            <div class="progress-meter">
+                <div class="progress-meter__text progress-meter__text--back" role="progress-bar" aria-valuenow="27%"><span class="govuk-visually-hidden">Your application is</span> {{ progressPercentage }}% complete</div>
+                <div class="progress-meter__clipper" aria-hidden="true" style="clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%); -webkit-clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%)">
+                    {% if progressPercentage == 100 %}
+                        <div class="progress-meter__text progress-meter__text--front"><strong>Ready to submit</strong></div>
+                    {% else %}
+                        <div class="progress-meter__text progress-meter__text--front">{{ progressPercentage }}% complete</div>
+                    {% endif %}
+
                 </div>
             </div>
             <div class="application-data">
@@ -138,6 +150,10 @@
                     <dd class="application-data__value">BBSRC</dd>
                 </dl>
             </div>
+
+            {#<div>
+                <input type="file" accept="application/pdf" size="2">
+            </div>#}
 
         {%- endcall %}
 
