@@ -1,54 +1,85 @@
 {% set showExternalNav = true %}
 {% set activeNavItem = 'applications' %}
 {% set navArea = 'personal' %}
-{% set applicationsLink = '/prototypes/external-users/applications' %}
-{% set homeLink = '/prototypes/external-users/home' %}
-{% set reviewsLink = '/prototypes/external-users/reviews' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set accountSettingsLink = '#' %}
+
+{% set hideAccountLinks = true %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
-
+{% set userName = 'Dr. Jonathan Doe' %}
 {% set isAdminUser = false %}
-{%  set loggedOut = false %}
+{% set loggedOut = false %}
 
 {% set orgsSessionData = orgsSessionData if orgsSessionData %}
 {% set userOne = userOne if userOne %}
+{% set userTwo = userTwo if userTwo %}
+{% set userThree = userThree if userThree %}
+{% set userFour = userFour if userFour %}
 
 {% set pageTitle = 'Applicants' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/orgs/', text:'Back to Application'}] %}
 
 {% block content %}
-   {# {{ userOne }}
-    {{ userOne.firstName }}#}
-    {% if userOne.firstName %}
+
+   {# {% if userOne.firstName %}
         {% call components.bulmaRow() %}
             {% call components.bulmaColumnAny(size='is-full', extraClass='u-space-t20') %}
-
                 <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
                     <div class="govuk-notification-banner__header">
-                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-                            Success
-                        </h2>
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
                     </div>
                     <div class="govuk-notification-banner__content">
-                        <h3 class="govuk-notification-banner__heading">
-                            The applicant has been added to the project.
-                        </h3>
-                        {#<p class="govuk-body">Contact <a class="govuk-notification-banner__link" href="#">example@department.gov.uk</a> if you think there's a problem.</p>#}
+                        <h3 class="govuk-notification-banner__heading">{{ userOne.firstName }} {{ userOne.lastName }} has been added to the project.</h3>
                     </div>
-
                 </div>
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}#}
 
-                {#<div class="govuk-notification-banner govuk-notification-banner--info" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-                <div class="govuk-notification-banner__header" style="margin: 0 -1px;">
-                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+    {% if userTwo.detailsAdded %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full', extraClass='u-space-t20') %}
+                <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <h3 class="govuk-notification-banner__heading">{{ userTwo.firstName }} {{ userTwo.lastName }} has been added to the project.</h3>
+                    </div>
                 </div>
-                <div class="govuk-notification-banner__content">
-                    <p class="govuk-notification-banner__heading">
-                        You must complete your Equality, Diversity and Inclusion (EDI) profile before any applications you contribute to can be submitted to UKRI.
-                    </p>
-                </div>
-            </div>#}
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
 
+    {% if userThree.detailsAdded %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full', extraClass='u-space-t20') %}
+                <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <h3 class="govuk-notification-banner__heading">{{ userThree.firstName }} {{ userThree.lastName }} has been added to the project.</h3>
+                    </div>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
+
+    {% if userFour.detailsAdded %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full', extraClass='u-space-t20') %}
+                <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <h3 class="govuk-notification-banner__heading">{{ userFour.firstName }} {{ userFour.lastName }} has been added to the project.</h3>
+                    </div>
+                </div>
             {%- endcall %}
         {%- endcall %}
     {% endif %}
@@ -67,14 +98,14 @@
 
                 <p class="govuk-body">Add the details of people who will contribute to the work if your application is successful.</p>
 
-                <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
+                {#<details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
                     <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
                         <span class="govuk-details__summary-text">Guidance on adding and managing applicants</span>
                     </summary>
                     <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
                         <p class="govuk-body">...</p>
                     </div>
-                </details>
+                </details>#}
 
                 <p class="govuk-body">
                     <a class="govuk-button govuk-button--secondary" href="/prototypes/orgs/select-role">Add applicant</a>
@@ -86,8 +117,7 @@
 
         {% call components.bulmaRow() %}
 
-            {% call components.bulmaColumnAny(size='is-full', extraClass='u-space-t20') %}
-
+            {% call components.bulmaColumnAny(size='is-full', extraClass='u-space-b45') %}
                 <table class="govuk-table">
                     <caption class="govuk-visually-hidden">Applicants</caption>
                     <thead class="govuk-table__head">
@@ -101,7 +131,7 @@
                     </thead>
                     <tbody class="govuk-table__body">
                         <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">Dr. Jane Doe</td>
+                            <td class="govuk-table__cell">Dr. Jonathan Doe</td>
                             <td class="govuk-table__cell">jdoe@cardiffuniversity.ac.uk</td>
                             <td class="govuk-table__cell">Lead applicant</td>
                             <td class="govuk-table__cell">Cardiff University</td>
@@ -113,7 +143,8 @@
                             <td class="govuk-table__cell">{{ userOne.email }}</td>
                             <td class="govuk-table__cell">{{ userOne.roles }}</td>
                             <td class="govuk-table__cell">
-                                {% if userOne.organisation %}
+                                {{ userOne.organisation }}
+                                {#{% if userOne.organisation %}
                                     {{ userOne.organisation }}
                                 {% else %}
                                     {% if userOne.newOrgName %}
@@ -122,7 +153,7 @@
                                         {% endif %}
                                         {{ userOne.newOrgName }}
                                     {% endif %}
-                                    {% if userOne.countries %}
+                                    #}{#{% if userOne.countries %}
                                         {% if userOne.newOrgName %}
                                             <br>
                                         {% endif %}
@@ -133,12 +164,45 @@
                                             <br>
                                         {% endif %}
                                         <a href="{{ userOne.newOrgWebsite }}" class="govuk-link">{{ userOne.newOrgWebsite }}</a>
-                                    {% endif %}
-                                {% endif %}
+                                    {% endif %}#}{#
+                                {% endif %}#}
                             </td>
                             <td class="govuk-table__cell"><a href="#" class="govuk-link">Remove</a></td>
                         </tr>
                     {% endif %}
+                    {% if userTwo.firstName %}
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">{{ userTwo.firstName }} {{ userTwo.lastName }}</td>
+                            <td class="govuk-table__cell">{{ userTwo.email }}</td>
+                            <td class="govuk-table__cell">{{ userTwo.roles }}</td>
+                            <td class="govuk-table__cell">
+                                {{ userTwo.organisation }}
+                            </td>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Remove</a></td>
+                        </tr>
+                    {% endif %}
+                    {% if userThree.firstName %}
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">{{ userThree.firstName }} {{ userThree.lastName }}</td>
+                            <td class="govuk-table__cell">{{ userThree.email }}</td>
+                            <td class="govuk-table__cell">{{ userThree.roles }}</td>
+                            <td class="govuk-table__cell">
+                                {{ userThree.organisation }}
+                            </td>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Remove</a></td>
+                        </tr>
+                    {% endif %}
+                        {% if userFour.firstName %}
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">{{ userFour.firstName }} {{ userFour.lastName }}</td>
+                                <td class="govuk-table__cell">{{ userFour.email }}</td>
+                                <td class="govuk-table__cell">{{ userFour.roles }}</td>
+                                <td class="govuk-table__cell">
+                                    {{ userFour.organisation }}
+                                </td>
+                                <td class="govuk-table__cell"><a href="#" class="govuk-link">Remove</a></td>
+                            </tr>
+                        {% endif %}
                     </tbody>
                 </table>
 
@@ -179,7 +243,7 @@
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
                 <div class="application-controls govuk-clearfix">
-                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Submit</button>
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Save and Return</button>
                     <a href="/prototypes/orgs" class="govuk-link application-controls__cancel">Return to application</a>
                 </div>
 

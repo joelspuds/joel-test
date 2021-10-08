@@ -7,7 +7,10 @@ let allOrgs = require('./orgsListCleanedDupesRemoved');
 let limitedOrgs = require('./orgs400');
 let allCountries = require('./countries');
 let orgsSessionData = [];
-
+let userOne = [];
+let userTwo = [];
+let userThree = [];
+let userFour = [];
 // ************************************************************************
 //
 //        index
@@ -24,7 +27,11 @@ export function orgsIndexGet(req, res) {
     orgsSessionData.roles = null;
     orgsSessionData.organisation = null;
     orgsSessionData.detailsAdded = null;
-    return res.redirect('/prototypes/orgs/');
+    userOne = [];
+    userTwo = [];
+    userThree = [];
+    userFour = [];
+    return res.redirect('/prototypes/orgs/start');
     //
   }
 
@@ -64,7 +71,7 @@ export function orgsApplicantsGet(req, res) {
   // let userOne = [].concat(orgsSessionData);
   // let userOne = [...orgsSessionData];
   // const userOne = orgsSessionData.slice();
-  let userOne = [];
+
   // userOne = JSON.parse(JSON.stringify(orgsSessionData));
   // console.log(userOne);
   // userOne = orgsSessionData;
@@ -85,7 +92,18 @@ export function orgsApplicantsGet(req, res) {
   orgsSessionData.countries = null;
   orgsSessionData.newOrgWebsite = null;*/
 
-  function copy(mainObject) {
+  function resetOrgsSession() {
+    orgsSessionData.firstName = null;
+    orgsSessionData.lastName = null;
+    orgsSessionData.roles = null;
+    orgsSessionData.organisation = null;
+    orgsSessionData.detailsAdded = null;
+    orgsSessionData.email = null;
+    orgsSessionData.countries = null;
+    orgsSessionData.newOrgWebsite = null;
+  }
+
+  function copyUserOne(mainObject) {
     let objectCopy = {}; // objectCopy will store a copy of the mainObject
     let key;
     for (key in mainObject) {
@@ -94,16 +112,107 @@ export function orgsApplicantsGet(req, res) {
     return objectCopy;
   }
 
-  console.log(copy(orgsSessionData));
+  function copyUserTwo(mainObject) {
+    let objectCopy = {}; // objectCopy will store a copy of the mainObject
+    let key;
+    for (key in mainObject) {
+      userTwo[key] = mainObject[key]; // copies each property to the objectCopy object
+    }
+    return objectCopy;
+  }
+
+  function copyUserThree(mainObject) {
+    let objectCopy = {}; // objectCopy will store a copy of the mainObject
+    let key;
+    for (key in mainObject) {
+      userThree[key] = mainObject[key]; // copies each property to the objectCopy object
+    }
+    return objectCopy;
+  }
+
+  function copyUserFour(mainObject) {
+    let objectCopy = {}; // objectCopy will store a copy of the mainObject
+    let key;
+    for (key in mainObject) {
+      userFour[key] = mainObject[key]; // copies each property to the objectCopy object
+    }
+    return objectCopy;
+  }
+
+  /*const getLengthOfObject = (obj) => {
+    let lengthOfObject = Object.keys(obj).length;
+    console.log(lengthOfObject);
+  }
+
+  let testVar = getLengthOfObject(userOne);
+  console.log('testVar = ' + testVar);
+
+  console.log('Object.keys(userOne).length = ');
+  console.log(Object.keys(userOne).length);
+*/
+
+  // copyUserOne(orgsSessionData);
+
+  console.log('userOne.firstName = ' + userOne.firstName);
+  // if (userOne.firstName === '' || userOne.firstName === undefined || userOne.firstName === 'null') {
+  // if (userOne.firstName === undefined userOne.firstName === 'null' && userTwo.firstName === undefined && userThree.firstName === undefined) {
+  if (userOne.firstName === undefined || userOne.firstName === 'null') {
+    console.log('userOne is empty ');
+    copyUserOne(orgsSessionData);
+    resetOrgsSession();
+  } else if (userOne.firstName !== undefined && userTwo.firstName === undefined && userThree.firstName === undefined) {
+    console.log('userTwo is empty ');
+    copyUserTwo(orgsSessionData);
+    resetOrgsSession();
+    userOne.detailsAdded = false;
+    // userTwo.detailsAdded = false;
+    userThree.detailsAdded = false;
+    userFour.detailsAdded = false;
+  } else if (userOne.firstName !== undefined && userTwo.firstName !== undefined && userThree.firstName === undefined) {
+    console.log('userThree is empty ');
+    copyUserThree(orgsSessionData);
+    resetOrgsSession();
+    userOne.detailsAdded = false;
+    userTwo.detailsAdded = false;
+    userFour.detailsAdded = false;
+  } else if (
+    userOne.firstName !== undefined &&
+    userTwo.firstName !== undefined &&
+    userThree.firstName !== undefined &&
+    userFour.firstName === undefined
+  ) {
+    console.log('userFour is empty ');
+    copyUserFour(orgsSessionData);
+    resetOrgsSession();
+    userOne.detailsAdded = false;
+    userTwo.detailsAdded = false;
+    userThree.detailsAdded = false;
+  } else {
+    console.log('all full ');
+  }
+
+  /*console.log(copy(orgsSessionData));
+  console.log('userOne = ');
+  console.log(userOne);
+  console.log('orgsSessionData = ');
+  console.log(orgsSessionData);*/
 
   console.log('userOne = ');
   console.log(userOne);
+  console.log('userTwo = ');
+  console.log(userTwo);
+  console.log('userThree = ');
+  console.log(userThree);
+
   console.log('orgsSessionData = ');
   console.log(orgsSessionData);
 
   viewData = {
-    orgsSessionData,
+    //orgsSessionData,
     userOne,
+    userTwo,
+    userThree,
+    userFour,
   };
 
   return res.render('prototypes/orgs/applicants', viewData);
@@ -124,8 +233,10 @@ export function orgsApplicantsPost(req, res) {
 // ************************************************************************
 export function orgsSelectRoleGet(req, res) {
   let viewData;
-
-  viewData = {};
+  console.log(orgsSessionData);
+  viewData = {
+    orgsSessionData,
+  };
 
   return res.render('prototypes/orgs/select-role', viewData);
 }
@@ -189,7 +300,9 @@ export function orgsDetailsPost(req, res) {
 export function orgsSearchGet(req, res) {
   let viewData;
 
-  viewData = {};
+  viewData = {
+    orgsSessionData,
+  };
 
   return res.render('prototypes/orgs/organisation-search', viewData);
 }
@@ -204,18 +317,23 @@ export function orgsSearchPost(req, res) {
   let motherLoad = allOrgs.organisationsMotherLoadDupesRemoved;
   let resultArray = [];
   let searchFail;
+  let finalNumber;
 
   if (searchTermTemp === ' ' || searchTermTemp === '' || searchTermTemp === null) {
     searchFail = true;
   } else {
     searchFail = false;
+    let iterationNumber = 0;
     for (let i = 0; i < motherLoad.length; i++) {
       // let item = motherLoad[i];
       // let tempName = item.n;
+
       let tempName = motherLoad[i];
       if (tempName.toLowerCase().includes(searchTermTemp.toLowerCase())) {
         resultArray.push(tempName);
+        iterationNumber++;
       }
+      finalNumber = iterationNumber;
     }
   }
   // console.log('search term = ' + searchTerm);
@@ -224,6 +342,7 @@ export function orgsSearchPost(req, res) {
     searchFail = true;
   }
 
+  req.session.finalNumber = finalNumber;
   req.session.resultArray = resultArray;
   req.session.searchTerm = searchTerm;
   req.session.searchFail = searchFail;
@@ -240,6 +359,8 @@ export function orgsSearchResultsGet(req, res) {
   let viewData;
 
   let resultArray = req.session.resultArray;
+  let searchResultsNumber = req.session.finalNumber;
+  // let searchResultsNumber = '10';
   let searchTerm = req.session.searchTerm;
   let searchFail = req.session.searchFail;
 
@@ -247,6 +368,7 @@ export function orgsSearchResultsGet(req, res) {
     resultArray,
     searchTerm,
     searchFail,
+    searchResultsNumber,
   };
 
   return res.render('prototypes/orgs/search-results', viewData);
@@ -260,7 +382,7 @@ export function orgsSearchResultsPost(req, res) {
 
   // req.session.firstName = firstName;
 
-  return res.redirect('/prototypes/orgs/applicants');
+  return res.redirect('/prototypes/orgs/applicant-details');
 }
 
 // ************************************************************************
@@ -275,18 +397,19 @@ export function orgsAddManuallyGet(req, res) {
 
   viewData = {
     countries,
+    orgsSessionData,
   };
 
   return res.render('prototypes/orgs/add-manually', viewData);
 }
 
 export function orgsAddManuallyPost(req, res) {
-  const { newOrgName, countries, newOrgWebsite } = req.body;
+  const { organisation, countries, newOrgWebsite } = req.body;
 
-  orgsSessionData.newOrgName = newOrgName;
+  orgsSessionData.organisation = organisation;
   orgsSessionData.countries = countries;
   orgsSessionData.newOrgWebsite = newOrgWebsite;
   orgsSessionData.detailsAdded = true;
 
-  return res.redirect('/prototypes/orgs/applicants');
+  return res.redirect('/prototypes/orgs/applicant-details');
 }

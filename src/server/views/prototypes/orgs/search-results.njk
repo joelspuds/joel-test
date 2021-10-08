@@ -1,11 +1,20 @@
 {% set showExternalNav = true %}
 {% set activeNavItem = 'applications' %}
 {% set navArea = 'personal' %}
-{% set applicationsLink = '/prototypes/external-users/applications' %}
-{% set homeLink = '/prototypes/external-users/home' %}
-{% set reviewsLink = '/prototypes/external-users/reviews' %}
-
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set userName = 'Dr. Jonathan Doe' %}
+{% set hideAccountLinks = true %}
 {% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set orgsSessionData = orgsSessionData if orgsSessionData %}
+
+{% if orgsSessionData.roles  %}
+    {% set captionTitle = 'New ' + orgsSessionData.roles %}
+{% else %}
+    {% set captionTitle = 'New person' %}
+{% endif %}
 
 {% set isAdminUser = false %}
 {%  set loggedOut = false %}
@@ -14,14 +23,21 @@
 {% set backLinkContents =  [{url:'/prototypes/orgs/', text:'Back to Application'}] %}
 
 {% set resultArray = resultArray if resultArray %}
-{% set searchTerm = searchTerm if searchTerm %}
+{#{% set searchTerm = searchTerm if searchTerm %}#}
 {% set searchFail = searchFail if searchFail %}
+{% set searchResultsText = searchResultsNumber + ' results' if searchResultsNumber else '' %}
+
+{% if searchTerm  %}
+    {% set displayTitle = 'Search results for \'' + searchTerm + '\'' %}
+{% else %}
+    {% set displayTitle = 'Search results' %}
+{% endif %}
 
 {% block content %}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Search results', caption='Add an applicant') }}
+            {{ components.captionHeading(text=displayTitle, caption=captionTitle) }}
         {%- endcall %}
     {%- endcall %}
     {% call components.form(action='#', method='POST',name='submitForm') %}
@@ -37,29 +53,28 @@
 
         {% call components.bulmaRow() %}
 
-            {% call components.bulmaColumnAny(size='column is-half', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column is-9', customID='mainContent') %}
 
                 {% if searchFail %}
 
                     <p class="govuk-body">There are no organisations matching your search term.</p>
-                    {#<p class="govuk-body">You can <a href="#">add a new record</a>.</p>#}
 
                 {% else %}
-                    <p class="govuk-body">You searched  for "<strong>{{ searchTerm }}</strong>"</p>
-
-                    <p class="govuk-body">Add the appropriate organisation from the search results.</p>
 
                     <table class="govuk-table">
 
                         <thead class="govuk-table__header">
-                        <th class="govuk-table__header">Organisation name</th>
-                        <th class="govuk-table__header--numeric"><span class="govuk-visually-hidden">Add organisation</span></th>
+
+                            <tr>
+                                <th class="govuk-table__header">{{ searchResultsText }}{#Organisation name#}</th>
+                                <th class="govuk-table__header--numeric"><span class="govuk-visually-hidden">Add organisation</span></th>
+                            </tr>
                         </thead>
                         <tbody>
                         {% for item in resultArray %}
                             <tr class="">
                                 <td class="govuk-table__cell">{{ item }}</td>
-                                <td class="govuk-table__cell govuk-table__cell--numeric"><button type="submit" class="govuk-button govuk-button--link" name="organisation" value="{{ item }}" href="#">Add <span class="govuk-visually-hidden">as my organisation</span></button> </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric"><button type="submit" class="govuk-button govuk-button--link" name="organisation" value="{{ item }}">Select organisation</button> </td>
                             </tr>
                         {% endfor %}
                         </tbody>

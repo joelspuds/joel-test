@@ -1,23 +1,37 @@
 {% set showExternalNav = true %}
 {% set activeNavItem = 'applications' %}
 {% set navArea = 'personal' %}
-{% set applicationsLink = '/prototypes/external-users/applications' %}
-{% set homeLink = '/prototypes/external-users/home' %}
-{% set reviewsLink = '/prototypes/external-users/reviews' %}
+',{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set hideAccountLinks = true %}
+{% set userName = 'Dr. Jonathan Doe' %}
 
 {% set isAdminUser = false %}
-{%  set loggedOut = false %}
+{% set loggedOut = false %}
 {% set countries = countries if countries %}
 {% set pageTitle = 'Add organisation manually' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/orgs/', text:'Back to Application'}] %}
+{% set orgsSessionData = orgsSessionData if orgsSessionData %}
+{% if orgsSessionData.roles  %}
+    {% set captionTitle = 'New ' + orgsSessionData.roles %}
+{% else %}
+    {% set captionTitle = 'New person' %}
+{% endif %}
+
+{% if orgsSessionData.firstName  %}
+    {% set displayTitle = 'Enter ' + orgsSessionData.firstName + ' ' +  orgsSessionData.lastName + '\'s organisation details' %}
+{% else %}
+    {% set displayTitle = 'Enter new person\'s organisation name' %}
+{% endif %}
 
 {% block content %}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Add a new organisation manually', caption='Add an applicant') }}
+            {{ components.captionHeading(text=displayTitle, caption=captionTitle) }}
         {%- endcall %}
     {%- endcall %}
     {% call components.form(action='#', method='POST',name='submitForm') %}
@@ -30,20 +44,20 @@
                     <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
                     <strong class="govuk-warning-text__text">
                         <span class="govuk-warning-text__assistive">Warning</span>
-                        Please ensure all details are correct. If we cannot identify the organisation, it may cause delays to your application.
+                        Please ensure all details are correct. If we cannot identify the<br> organisation, it may cause delays to your application.
                     </strong>
                 </div>
 
-                <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
-                    <label class="govuk-label govuk-label--s" for="newOrg" id="newOrgName">Organisation name
-                        {% if firstNameError %}
-                            <span class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> You must enter a first name
-                            </span>
-                        {% endif %}
-                    </label>
-                    <input class="govuk-input govuk-input--width-20 {% if firstNameError %}govuk-input--error{% endif %}" id="newOrgName" type="text" name="newOrgName" value="{{ firstName }}">
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="newOrg" id="organisation">Organisation name</label>
+                    <input class="govuk-input govuk-input--width-20 " id="organisation" type="text" name="organisation" value="">
                 </div>
+
+                <style>
+                    .autocomplete__wrapper {
+                        max-width: 500px;
+                    }
+                </style>
 
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="countries">Country</label>
@@ -75,7 +89,7 @@
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
                 <div class="application-controls govuk-clearfix">
-                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Save new organisation</button>
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Continue</button>
                     <a href="/prototypes/orgs/organisation-search" class="govuk-link application-controls__cancel">Return to search</a>
                 </div>
 

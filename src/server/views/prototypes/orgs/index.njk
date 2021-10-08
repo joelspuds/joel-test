@@ -1,9 +1,11 @@
 {% set showExternalNav = true %}
 {% set activeNavItem = 'applications' %}
 {% set navArea = 'personal' %}
-{% set applicationsLink = '/prototypes/external-users/applications' %}
-{% set homeLink = '/prototypes/external-users/home' %}
-{% set reviewsLink = '/prototypes/external-users/reviews' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set userName = 'Dr. Jonathan Doe' %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
@@ -11,13 +13,13 @@
 {%  set loggedOut = false %}
 
 {% set pageTitle = 'Application' + GLOBAL_TAG_TITLE_SUFFIX %}
-{#{% set backLinkContents =  [{url:'/prototypes/application-v2/opportunity', text:'Back to Opportunity'}] %}#}
+{% set backLinkContents =  [{url:'#', text:'Back to applications'}] %}
 
 {% block content %}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text=APPLICATION_OVERVIEW_TITLE_TAG, caption=projectName) }}
+            {{ components.captionHeading(text='Application', caption='APP171: Bio-detoxification of Ricin in castor bean') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -57,7 +59,7 @@
                 <div class="application-item__contents govuk-clearfix">
                     <div class="application-item__left">{{ components.link(text='1. Details and summary', url='#')}}</div>
                     <div class="application-item__right">
-                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
                     </div>
                 </div>
             </div>
@@ -66,7 +68,7 @@
                 <div class="application-item__contents govuk-clearfix">
                     <div class="application-item__left">{{ components.link(text='2. Applicants', url='/prototypes/orgs/applicants')}}</div>
                     <div class="application-item__right">
-                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
                     </div>
                 </div>
             </div>
@@ -75,7 +77,7 @@
                 <div class="application-item__contents govuk-clearfix">
                     <div class="application-item__left">{{ components.link(text='3. Case for support', url='#')}}</div>
                     <div class="application-item__right">
-                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
                     </div>
                 </div>
             </div>
@@ -84,7 +86,7 @@
                 <div class="application-item__contents govuk-clearfix">
                     <div class="application-item__left">{{ components.link(text='4. Resources and costs', url='#')}}</div>
                     <div class="application-item__right">
-                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
                     </div>
                 </div>
             </div>
@@ -93,7 +95,7 @@
                 <div class="application-item__contents govuk-clearfix">
                     <div class="application-item__left">{{ components.link(text='5. Justification for resources', url='#')}}</div>
                     <div class="application-item__right">
-                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
                     </div>
                 </div>
             </div>
@@ -136,13 +138,13 @@
             <div class="application-data">
                 <dl class="application-data__list">
                     <dt class="application-data__key">Funding Opportunity:</dt>
-                    <dd class="application-data__value">OPP334: OPP546: Development of a Novel Inhibitor of Ricin</dd>
+                    <dd class="application-data__value">OPP334: Development of a Novel Inhibitor of Ricin</dd>
 
                     <dt class="application-data__key">Application reference:</dt>
                     <dd class="application-data__value">APP00171</dd>
 
                     <dt class="application-data__key">Application deadline:</dt>
-                    <dd class="application-data__value">Tuesday 18 October 2021, 4:00pm
+                    <dd class="application-data__value">Tuesday 18 November 2021, 4:00pm
                         {#<br><span class="danger-text">You have x days until deadline</span>#}
                     </dd>
 

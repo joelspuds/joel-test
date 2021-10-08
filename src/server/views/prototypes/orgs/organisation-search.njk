@@ -1,11 +1,26 @@
 {% set showExternalNav = true %}
 {% set activeNavItem = 'applications' %}
 {% set navArea = 'personal' %}
-{% set applicationsLink = '/prototypes/external-users/applications' %}
-{% set homeLink = '/prototypes/external-users/home' %}
-{% set reviewsLink = '/prototypes/external-users/reviews' %}
-
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set userName = 'Dr. Jonathan Doe' %}
+{% set hideAccountLinks = true %}
 {% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set orgsSessionData = orgsSessionData if orgsSessionData %}
+
+{% if orgsSessionData.firstName  %}
+    {% set displayTitle = 'Enter ' + orgsSessionData.firstName + ' ' +  orgsSessionData.lastName + '\'s organisation name' %}
+{% else %}
+    {% set displayTitle = 'Enter new person\'s organisation name' %}
+{% endif %}
+
+{% if orgsSessionData.roles  %}
+    {% set captionTitle = 'New ' + orgsSessionData.roles %}
+{% else %}
+    {% set captionTitle = 'New person' %}
+{% endif %}
 
 {% set isAdminUser = false %}
 {%  set loggedOut = false %}
@@ -17,7 +32,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Find co-applicant\'s organisation', caption='Add an applicant') }}
+            {{ components.captionHeading(text='Organisation search', caption=captionTitle) }}
         {%- endcall %}
     {%- endcall %}
     {% call components.form(action='#', method='POST',name='submitForm') %}
@@ -27,10 +42,10 @@
             {% call components.bulmaColumnAny(size='column is-half', customID='mainContent') %}
 
                 <fieldset class="govuk-fieldset">
-                    <legend class="govuk-fieldset__legend govuk-visually-hidden">Find your organisation</legend>
+                    <legend class="govuk-fieldset__legend govuk-visually-hidden">Find organisation</legend>
 
                     <div class="govuk-form-group">
-                        <label class="govuk-label govuk-label--s" for="searchTerm">Search for an organisation, company or other eligible entity</label>
+                        <label class="govuk-label govuk-label--s" for="searchTerm">{{ displayTitle }}{#Search for an organisation, company or other eligible entity#}</label>
                         <input class="govuk-input" id="searchTerm" name="searchTerm" type="text">
                     </div>
                 </fieldset>
@@ -44,7 +59,7 @@
             {% call components.bulmaColumnAny(size='is-7', extraClass='__u-space-t20') %}
 
                 <div class="application-controls govuk-clearfix">
-                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Find organisation</button>
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Search</button>
                     <a href="/prototypes/orgs/applicant-details" class="govuk-link application-controls__cancel">Return to applicant details</a>
                 </div>
 

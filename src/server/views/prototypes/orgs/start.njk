@@ -1,0 +1,149 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set userName = 'Dr. Jonathan Doe' %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Application' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'#', text:'Back to applications'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            {{ components.captionHeading(text='Applications') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full {#is-9-desktop is-9-widescreen#}') %}
+
+            <ul class="overview-items overview-items--plain">
+
+                <li class="overview-item ">
+                    <div class="columns">
+                        <div class="column is-8">
+                            <h3 class="overview-item__title">
+                                <a href="/prototypes/orgs" class="govuk-link">APP171: Bio-detoxification of Ricin in castor bean</a>
+                            </h3>
+                            <ul class="overview-item__meta-list">
+
+                                <li class="overview-item__meta-item"><strong>Opportunity: </strong>OPP591: Development of a Novel Inhibitor of Ricin<br></li>
+                                <li class="overview-item__meta-item"><strong>Application reference:</strong> APP171<br></li>
+                                <li class="overview-item__meta-item"><strong>Organisation:</strong> University of Cardiff</li>
+                            </ul>
+                        </div>
+                        <div class="column is-2">
+                            <div class="u-align-setup-vertical u-align-center">
+                                <div class="u-align-cell">
+                                        <span class="overview-item__meta">
+                                            <strong><span class="govuk-!-font-size-24">34</span>
+                                            <br>days left</strong>
+                                            <br>
+                                            <span class="govuk-body-s">Deadline 18 Nov 2021</span>
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-2">
+                            <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                <div class="u-align-cell">
+                                    <strong>In progress</strong>
+                                    <span class="meta"><br>0% complete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="overview-item ">
+                    <div class="columns">
+                        <div class="column is-8">
+                            <h3 class="overview-item__title">
+                                <a href="#" class="govuk-link">Linear field waves in liquids</a>
+                            </h3>
+                            <ul class="overview-item__meta-list">
+                                <li class="overview-item__meta-item"><strong>Opportunity: </strong>OPP422: Electromagnetic waves in liquids<br></li>
+                                <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA97<br></li>
+                                <li class="overview-item__meta-item"><strong>Organisation:</strong> University of Cardiff</li>
+                            </ul>
+                        </div>
+                        <div class="column is-2">
+                            <div class="u-align-setup-vertical u-align-center">
+                                <div class="u-align-cell">
+                                        <span class="overview-item__meta">
+                                            <span class="govuk-body-s">Deadline 14 May 2021</span>
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-2">
+                            <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                <div class="u-align-cell">
+                                    <strong>Submitted</strong>
+                                    {#<span class="meta"><br>100% complete</span>#}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="overview-item ">
+                    <div class="columns">
+                        <div class="column is-8">
+                            <h3 class="overview-item__title">
+                                <a href="#" class="govuk-link">Viral pandemic: distributed societal issues and news shaping</a>
+                            </h3>
+                            <ul class="overview-item__meta-list">
+                                <li class="overview-item__meta-item"><strong>Opportunity: </strong>OPP732: Electric battery innovation for land-based travel<br></li>
+                                <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA124<br></li>
+                                <li class="overview-item__meta-item"><strong>Organisation:</strong> University of Cardiff</li>
+                            </ul>
+                        </div>
+                        <div class="column is-2">
+                            <div class="u-align-setup-vertical u-align-center">
+                                <div class="u-align-cell">
+                                        <span class="overview-item__meta {#overview-item__meta--danger#}">
+                                            {#<strong><span class="govuk-!-font-size-24">1</span>
+                                            <br>days left</strong>
+                                            <br>#}
+                                            <span class="govuk-body-s">Deadline 21 Feb 2021</span>
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-2">
+                            <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                <div class="u-align-cell">
+                                    <strong>Submitted</strong>
+                                    {#<span class="meta"><br>100% complete</span>#}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        {%- endcall %}
+    {%- endcall %}
+
+
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        Zepto(function($){
+            $(window).on('load', function() {
+                console.log('window loaded');
+                $('.govuk-tabs__tab').attr('tabindex', '');
+            });
+        });
+    </script>
+{% endblock %}
+

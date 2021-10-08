@@ -1,11 +1,17 @@
 {% set showExternalNav = true %}
 {% set activeNavItem = 'applications' %}
 {% set navArea = 'personal' %}
-{% set applicationsLink = '/prototypes/external-users/applications' %}
-{% set homeLink = '/prototypes/external-users/home' %}
-{% set reviewsLink = '/prototypes/external-users/reviews' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set userName = 'Dr. Jonathan Doe' %}
+{% set hideAccountLinks = true %}
 {% set orgsSessionData = orgsSessionData if orgsSessionData %}
-
+{% if orgsSessionData.roles  %}
+    {% set captionTitle = 'New ' + orgsSessionData.roles %}
+{% else %}
+    {% set captionTitle = 'New person' %}
+{% endif %}
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set isAdminUser = false %}
@@ -20,7 +26,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Applicant details', caption='Add an applicant') }}
+            {{ components.captionHeading(text='Applicant details', caption=captionTitle) }}
         {%- endcall %}
     {%- endcall %}
     {% call components.form(action='#', method='POST',name='submitForm') %}
@@ -29,7 +35,23 @@
 
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
+                <style>
+                    .autocomplete__wrapper {
+                        max-width: 500px;
+                    }
+                </style>
+
                 {#<p>orgsSessionData.roles = {{ orgsSessionData.roles }} </p>#}
+
+                <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
+                    <p class="govuk-body u-space-b5"><span class="govuk-label govuk-label--s">Role</span></p>
+                    <p class="govuk-body u-space-b5" style="max-width: 41ex;">
+                        <span class="govuk-!-display-inline u-float-left">{{orgsSessionData.roles }}</span>
+                        <span class="govuk-!-display-inline u-float-right"><a href="/prototypes/orgs/select-role" class="govuk-link u-align-right">Change <span class="govuk-visually-hidden">role</span></a></span>
+                    </p>
+
+                </div>
+
 
                 <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
                     <label class="govuk-label govuk-label--s" for="firstName" id="firstNameLabel">First name
@@ -39,7 +61,7 @@
                             </span>
                         {% endif %}
                     </label>
-                    <input class="govuk-input govuk-input--width-20 {% if firstNameError %}govuk-input--error{% endif %}" id="firstName" type="text" name="firstName" value="{{ firstName }}">
+                    <input class="govuk-input govuk-input--width-20" id="firstName" type="text" name="firstName" value="{{orgsSessionData.firstName }}">
                 </div>
 
                 <div class="govuk-form-group {% if lastNameError %}govuk-form-group--error{% endif %}">
@@ -50,24 +72,39 @@
                             </span>
                         {% endif %}
                     </label>
-                    <input class="govuk-input govuk-input--width-20 {% if lastNameError %}govuk-input--error{% endif %}" id="lastName" type="text" name="lastName" value="{{ lastName }}">
+                    <input class="govuk-input govuk-input--width-20 " id="lastName" type="text" name="lastName" value="{{orgsSessionData.lastName }}">
                 </div>
 
                 <div class="govuk-form-group {% if signinError %} govuk-form-group--error{% endif %}">
                     <label class="govuk-label govuk-label--s" for="email" id="emailAddressInput">Email address</label>
-                    <input class="govuk-input {% if signinError %} govuk-input--error{% endif %} govuk-input--width-20" id="email" name="email" type="text" value="{{ savedEmail }}">
+                    <input class="govuk-input {% if signinError %} govuk-input--error{% endif %} govuk-input--width-20" id="email" name="email" type="text" value="{{orgsSessionData.email }}">
                 </div>
 
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="organisation">Organisation</label>
-                    <span class="govuk-hint">Start entering, then select the organisation's name</span>
-                    <select name="organisation" class="govuk-select control" id="organisation">
-                        <option></option>
-                        {% for item in limitedOrgList %}
-                            <option value="{{ item.n }}">{{ item.n }}</option>
-                        {% endfor %}
-                    </select>
-                    <p class="govuk-body govuk-!-font-size-16 u-space-t10">No results? Try a wider <button type="submit" class="govuk-button govuk-button--link govuk-!-font-size-16" name="widerSearch" value="true">organisation search</button></p>
+
+                    {% if orgsSessionData.organisation %}
+
+                        <input type="input" class="govuk-input govuk-input--width-20" name="organisation2" value="{{ orgsSessionData.organisation }}" disabled>
+                        <input type="hidden" name="organisation" value="{{ orgsSessionData.organisation }}">
+                        <p class="govuk-body u-space-t10">Still not right? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="true">Search again</button></p>
+                    {% else %}
+
+                        <span class="govuk-hint">Start entering, then select the organisation's name</span>
+                        <select name="organisation" class="govuk-select control" id="organisation">
+                            <option></option>
+                            {% for item in limitedOrgList %}
+                                <option value="{{ item.n }}">{{ item.n }}</option>
+                            {% endfor %}
+                        </select>
+                        {% if orgsSessionData.roles != 'Principle investigator' %}
+                            <p class="govuk-body {#govuk-!-font-size-16#} u-space-t10">No results? Try a wider <button type="submit" class="govuk-button govuk-button--link {#govuk-!-font-size-16#}" name="widerSearch" value="true">organisation search</button></p>
+                        {% endif %}
+
+
+                    {% endif %}
+
+
                 </div>
 
             {%- endcall %}
@@ -99,7 +136,7 @@
         accessibleAutocomplete.enhanceSelectElement({
             autoselect: true,
             defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
-            minLength: 3,
+            minLength: 1,
             selectElement: selectEl
         });
     </script>
