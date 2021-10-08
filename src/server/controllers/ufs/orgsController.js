@@ -285,7 +285,17 @@ export function orgsDetailsPost(req, res) {
   orgsSessionData.detailsAdded = true;
   // console.log(orgsSessionData);
 
-  if (widerSearch === 'true') {
+  /*if (widerSearch === 'true') {
+    if (orgsSessionData.wasManual === true) {
+      redirectURL = '/prototypes/orgs/add-manually';
+    } else {
+      redirectURL = '/prototypes/orgs/organisation-search';
+    }
+  }*/
+
+  if (widerSearch === 'manual') {
+    redirectURL = '/prototypes/orgs/add-manually';
+  } else if (widerSearch === 'search') {
     redirectURL = '/prototypes/orgs/organisation-search';
   }
 
@@ -404,12 +414,13 @@ export function orgsAddManuallyGet(req, res) {
 }
 
 export function orgsAddManuallyPost(req, res) {
-  const { organisation, countries, newOrgWebsite } = req.body;
+  const { organisation, countries, newOrgWebsite, wasManual } = req.body;
 
   orgsSessionData.organisation = organisation;
   orgsSessionData.countries = countries;
   orgsSessionData.newOrgWebsite = newOrgWebsite;
   orgsSessionData.detailsAdded = true;
+  orgsSessionData.wasManual = wasManual;
 
   return res.redirect('/prototypes/orgs/applicant-details');
 }

@@ -84,10 +84,14 @@
                     <label class="govuk-label govuk-label--s" for="organisation">Organisation</label>
 
                     {% if orgsSessionData.organisation %}
-
                         <input type="input" class="govuk-input govuk-input--width-20" name="organisation2" value="{{ orgsSessionData.organisation }}" disabled>
                         <input type="hidden" name="organisation" value="{{ orgsSessionData.organisation }}">
-                        <p class="govuk-body u-space-t10">Still not right? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="true">Search again</button></p>
+
+                        {% if orgsSessionData.wasManual %}
+                            <p class="govuk-body u-space-t10">Made a mistake? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="manual">Edit organisation</button></p>
+                        {% else %}
+                            <p class="govuk-body u-space-t10">Still not right? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="search">Search again</button></p>
+                        {% endif %}
                     {% else %}
 
                         <span class="govuk-hint">Start entering, then select the organisation's name</span>
@@ -98,7 +102,7 @@
                             {% endfor %}
                         </select>
                         {% if orgsSessionData.roles != 'Principle investigator' %}
-                            <p class="govuk-body {#govuk-!-font-size-16#} u-space-t10">No results? Try a wider <button type="submit" class="govuk-button govuk-button--link {#govuk-!-font-size-16#}" name="widerSearch" value="true">organisation search</button></p>
+                            <p class="govuk-body {#govuk-!-font-size-16#} u-space-t10">No results? Try a wider <button type="submit" class="govuk-button govuk-button--link {#govuk-!-font-size-16#}" name="widerSearch" value="search">organisation search</button></p>
                         {% endif %}
 
 

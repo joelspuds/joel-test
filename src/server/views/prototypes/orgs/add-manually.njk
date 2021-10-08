@@ -50,7 +50,7 @@
 
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="newOrg" id="organisation">Organisation name</label>
-                    <input class="govuk-input govuk-input--width-20 " id="organisation" type="text" name="organisation" value="">
+                    <input class="govuk-input govuk-input--width-20 " id="organisation" type="text" name="organisation" value="{{ orgsSessionData.organisation }}">
                 </div>
 
                 <style>
@@ -65,14 +65,14 @@
                     <select name="countries" class="govuk-select control" id="countries">
                         <option></option>
                         {% for item in countries %}
-                            <option value="{{ item.name }}">{{ item.name }}</option>
+                            <option value="{{ item.name }}" {% if orgsSessionData.countries == item.name %} selected {% endif %}>{{ item.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
 
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="newOrgWebsite" id="">Website address</label>
-                    <input class="govuk-input govuk-input--width-20" id="newOrgWebsite" name="newOrgWebsite" type="text" value="{{ newOrgWebsite }}">
+                    <input class="govuk-input govuk-input--width-20" id="newOrgWebsite" name="newOrgWebsite" type="text" value="{{ orgsSessionData.newOrgWebsite }}">
                 </div>
 
             {%- endcall %}
@@ -89,6 +89,7 @@
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
                 <div class="application-controls govuk-clearfix">
+                    <input type="hidden" value="true" name="wasManual">
                     <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Continue</button>
                     <a href="/prototypes/orgs/organisation-search" class="govuk-link application-controls__cancel">Return to search</a>
                 </div>
