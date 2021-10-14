@@ -1,0 +1,695 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = '_admin' %}
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+
+{% set newHeader = true %}
+
+{% set pageTitle = 'File upload components' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            {{ components.captionHeading(text='File upload components') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='uploadFileAdminSimple') %}
+
+       {# {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="textarea1">Write your content here</label>
+                    <span id="more-detail-hint" class="govuk-hint ">Use this text area to give a brief description of the file your are uploading and and further details you might think are relevant or important.</span>
+
+                    <textarea class="govuk-textarea govuk-js-character-count" name="textarea1" id="textarea1" rows="18"></textarea>
+                    <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message govuk-visually-hidden" aria-live="polite">You have 250 words remaining</span></p>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}#}
+
+       {# {% call components.bulmaRow(extraClass='u-space-t30') %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+
+                {{ components.captionHeading(text='Non JS file upload, nothing uploaded', tag='h2', size='m') }}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+      {% call components.bulmaRow(extraClass='_u-space-t30') %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+
+                {{ components.captionHeading(text='File upload', tag='h2', size='s') }}
+
+                <details class="govuk-details u-space-b10 " data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">Guidance for file upload</span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        <p class="govuk-body">Include all the academic institutions for whom you have carried out research. Start with the most recent; describe what you did and how you did it, providing any interesting outcomes. You should set this out in the same way you might set out a CV.</p>
+
+                        <p class="govuk-body">The assessors are particularly looking for:</p>
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>a breadth of research interest</li>
+                            <li>high standards of scholarship.</li>
+                        </ul>
+
+                        {{ components.captionHeading(text='Accepted file types', tag='h3', size='s') }}
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>PDF (.pdf)</li>
+                        </ul>
+
+                        <p class="govuk-body">Each file must be less than 20MB</p>
+
+                    </div>
+                </details>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='') %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="file-upload-1">Upload a file</label>
+                    <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+                </div>
+            {%- endcall %}
+        {%- endcall %}#}
+
+        {# ************************************************************* #}
+
+        {% call components.bulmaRow(extraClass='u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+                {{ components.captionHeading(text='MVP, non-JS file upload', tag='h2', size='m') }}
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='_u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+
+            <div class="file-upload">
+                {{ components.captionHeading(text='File upload', tag='h2', size='s') }}
+                <details class="govuk-details u-space-b10 " data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">Guidance for file upload</span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        <p class="govuk-body">Include all the academic institutions for whom you have carried out research. Start with the most recent; describe what you did and how you did it, providing any interesting outcomes. You should set this out in the same way you might set out a CV.</p>
+                        <p class="govuk-body">The assessors are particularly looking for:</p>
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>a breadth of research interest</li>
+                            <li>high standards of scholarship.</li>
+                        </ul>
+                        {{ components.captionHeading(text='Accepted file types', tag='h3', size='s') }}
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>PDF (.pdf)</li>
+                        </ul>
+                        <p class="govuk-body">Each file must be less than 20MB</p>
+                    </div>
+                </details>
+
+                <div class="files">
+                    <div class="files__item">
+                        <div class="govuk-form-group u-space-b0">
+                            <div class="">
+                                <label class="govuk-label govuk-visually-hidden" for="fileUpload4">Upload a file</label>
+                                <input class="govuk-file-upload" id="fileUpload4" name="fileUpload4" type="file">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {%- endcall %}
+        {%- endcall %}
+
+        {# ************************************************************* #}
+
+        {% call components.bulmaRow(extraClass='u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+                {{ components.captionHeading(text='MVP, non-JS file upload with error message', tag='h2', size='m') }}
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='_u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+
+                <div class="file-upload file-upload--error">
+
+                    {{ components.captionHeading(text='File upload', tag='h2', size='s') }}
+                    <details class="govuk-details u-space-b10 " data-module="govuk-details">
+                        <summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text">Guidance for file upload</span>
+                        </summary>
+                        <div class="govuk-details__text">
+                            <p class="govuk-body">Include all the academic institutions for whom you have carried out research. Start with the most recent; describe what you did and how you did it, providing any interesting outcomes. You should set this out in the same way you might set out a CV.</p>
+                            <p class="govuk-body">The assessors are particularly looking for:</p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>a breadth of research interest</li>
+                                <li>high standards of scholarship.</li>
+                            </ul>
+                            {{ components.captionHeading(text='Accepted file types', tag='h3', size='s') }}
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>PDF (.pdf)</li>
+                            </ul>
+                            <p class="govuk-body">Each file must be less than 20MB</p>
+                        </div>
+                    </details>
+
+                    <div class="files">
+
+                        <span class="govuk-error-message">The selected file must be smaller than 8MB</span>
+
+                        <div class="files__item">
+                            <div class="govuk-form-group u-space-b0">
+
+                                <div class="">
+                                    <label class="govuk-label govuk-visually-hidden" for="fileUpload4">Upload a file</label>
+                                    <input class="govuk-file-upload" id="fileUpload4" name="fileUpload4" type="file">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {# ************************************************************* #}
+
+        {% call components.bulmaRow(extraClass='u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+                {{ components.captionHeading(text='MVP, non-JS file uploaded but not scanned', tag='h2', size='m') }}
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='_u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+
+                <div class="file-upload">
+
+                    {{ components.captionHeading(text='File upload', tag='h2', size='s') }}
+                    <details class="govuk-details u-space-b10 " data-module="govuk-details">
+                        <summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text">Guidance for file upload</span>
+                        </summary>
+                        <div class="govuk-details__text">
+                            <p class="govuk-body">Include all the academic institutions for whom you have carried out research. Start with the most recent; describe what you did and how you did it, providing any interesting outcomes. You should set this out in the same way you might set out a CV.</p>
+                            <p class="govuk-body">The assessors are particularly looking for:</p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>a breadth of research interest</li>
+                                <li>high standards of scholarship.</li>
+                            </ul>
+                            {{ components.captionHeading(text='Accepted file types', tag='h3', size='s') }}
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>PDF (.pdf)</li>
+                            </ul>
+                            <p class="govuk-body">Each file must be less than 20MB</p>
+                        </div>
+                    </details>
+
+                    <div class="govuk-inset-text">
+                        Your attachment is being scanned for viruses. This should take no more than a few minutes.
+                        You can save this page and come back later.
+                    </div>
+
+                    <div class="files">
+                        <div class="files__item">
+                            <div class="files__name">
+                                dr_appi_meall_CV.PDF
+                                <strong class="govuk-tag govuk-tag--yellow">
+                                    pending
+                                </strong>
+                            </div>
+                            <div class="files__meta">
+                                <span class="files__size">4.18MB</span>
+                                <span class="files__action">
+                                <a href="#" class="govuk-link">Cancel <span class="govuk-visually-hidden"> this upload and scan</span></a>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {%- endcall %}
+        {%- endcall %}
+
+
+        {# ************************************************************* #}
+
+        {% call components.bulmaRow(extraClass='u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+                {{ components.captionHeading(text='MVP, non-JS file uploaded and scanned', tag='h2', size='m') }}
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='_u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+
+                <div class="file-upload">
+
+                    {{ components.captionHeading(text='File upload', tag='h2', size='s') }}
+                    <details class="govuk-details u-space-b10 " data-module="govuk-details">
+                        <summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text">Guidance for file upload</span>
+                        </summary>
+                        <div class="govuk-details__text">
+                            <p class="govuk-body">Include all the academic institutions for whom you have carried out research. Start with the most recent; describe what you did and how you did it, providing any interesting outcomes. You should set this out in the same way you might set out a CV.</p>
+                            <p class="govuk-body">The assessors are particularly looking for:</p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>a breadth of research interest</li>
+                                <li>high standards of scholarship.</li>
+                            </ul>
+                            {{ components.captionHeading(text='Accepted file types', tag='h3', size='s') }}
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>PDF (.pdf)</li>
+                            </ul>
+                            <p class="govuk-body">Each file must be less than 20MB</p>
+                        </div>
+                    </details>
+
+                    <div class="files">
+                        <div class="files__item">
+                            <div class="files__name">
+                                <a href="#" class="govuk-link"> dr_appi_meall_CV.PDF</a>
+                                <strong class="govuk-tag govuk-tag--green">
+                                    uploaded
+                                </strong>
+                            </div>
+                            <div class="files__meta">
+                                <span class="files__size">2.4MB</span>
+                                <span class="files__action">
+                                <a href="#" class="govuk-link">Remove <span class="govuk-visually-hidden"> this file</span></a>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {# ************************************************************* #}
+
+        {% call components.bulmaRow(extraClass='u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+                {{ components.captionHeading(text='MVP, non-JS file uploaded but not scanned on read-view page', tag='h2', size='m') }}
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='_u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+
+                <div class="file-upload">
+
+                    {{ components.captionHeading(text='CV for applicant(s)', tag='h2', size='s') }}
+
+                    <p class="govuk-body">My CV is attached below and includes some stuff about things that are relevant to my application.</p>
+
+                    <div class="govuk-inset-text">
+                        The attachment is being scanned for viruses. This should take no more than a few minutes.
+                    </div>
+
+                    <div class="files">
+                        <div class="files__item">
+                            <div class="files__name">
+                                dr_appi_meall_CV.PDF
+                                <strong class="govuk-tag govuk-tag--yellow">
+                                    pending
+                                </strong>
+                            </div>
+                            <div class="files__meta">
+                                <span class="files__size">2.4MB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {# ************************************************************* #}
+
+        {% call components.bulmaRow(extraClass='u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+                {{ components.captionHeading(text='MVP, non-JS file uploaded but not scanned on read-view page', tag='h2', size='m') }}
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='_u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+
+                <div class="file-upload">
+
+                    {{ components.captionHeading(text='CV for applicant(s)', tag='h2', size='s') }}
+
+                    <p class="govuk-body">My CV is attached below and includes some stuff about things that are relevant to my application.</p>
+
+                    <div class="files">
+                        <div class="files__item">
+                            <div class="files__name">
+                                <a href="#" class="govuk-link"> dr_appi_meall_CV.PDF</a>
+                                {#<strong class="govuk-tag govuk-tag--green">
+                                    uploaded
+                                </strong>#}
+                            </div>
+                            <div class="files__meta">
+                                <span class="files__size">2.4MB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {# ************************************************************* #}
+        {# ************************************************************* #}
+        {# ************************************************************* #}
+        {# ************************************************************* #}
+
+        {% call components.bulmaRow(extraClass='u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+                <hr class="">
+
+                {{ components.captionHeading(text='Everything below for progressively-enhanced JS version', tag='h2', size='l') }}
+                {{ components.captionHeading(text='Still WIP - Ignore for now', tag='h3', size='m') }}
+            {%- endcall %}
+        {%- endcall %}
+
+
+        {% call components.bulmaRow(extraClass='u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+                {{ components.captionHeading(text='Progressively-enhanced JS file upload, nothing uploaded', tag='h2', size='m') }}
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='_u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+                {{ components.captionHeading(text='File upload', tag='h2', size='s') }}
+
+                <details class="govuk-details u-space-b10 " data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">Guidance for file upload</span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        <p class="govuk-body">Include all the academic institutions for whom you have carried out research. Start with the most recent; describe what you did and how you did it, providing any interesting outcomes. You should set this out in the same way you might set out a CV.</p>
+                        <p class="govuk-body">The assessors are particularly looking for:</p>
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>a breadth of research interest</li>
+                            <li>high standards of scholarship.</li>
+                        </ul>
+                        {{ components.captionHeading(text='Accepted file types', tag='h3', size='s') }}
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>PDF (.pdf)</li>
+                        </ul>
+                        <p class="govuk-body">Each file must be less than 20MB</p>
+                    </div>
+                </details>
+
+                <div class="files">
+                    <div class="files__item files__item--drag">
+                        <div class="govuk-form-group u-space-b0">
+                            <div class="js-hidden">
+                                <label class="govuk-label " for="fileUpload2">Upload a file</label>
+                                <span class="govuk-hint">You can only upload one file</span>
+                                <input class="govuk-file-upload" id="fileUpload2" name="file-upload-1" type="file">
+                            </div>
+                            <div class="js-only">
+                                <label for="fileUpload2" class="govuk-visually-hidden">Upload a file</label>
+                                <input type="file" id="fileUpload3" class="govuk-visually-hidden" multiple />
+                                <button type="button" class="govuk-button govuk-button--secondary u-space-b0" name="" id="jsUploadButton">Upload a file</button>
+                                <span class="meta govuk-!-display-inline-block u-space-t10 u-space-x20" id="spanFilePath">{#Click the button or drag up to three files into this space to upload. #}</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {# ************************************************************* #}
+
+
+        {% call components.bulmaRow(extraClass='u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+                {{ components.captionHeading(text='Currently uploading activity', tag='h2', size='m') }}
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='_u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+                {{ components.captionHeading(text='Attaching file with "activity bar"', tag='h2', size='s') }}
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+                <div class="files">
+                    <div class="files__item">
+                        <div class="files__name">
+                            dr_ivor_phylle_CV.PDF
+                            <strong class="govuk-tag govuk-tag--red">
+                                uploading
+                            </strong>
+                        </div>
+                        <div class="files__meta">
+                            <span class="files__size">578kb</span>
+                            <span class="files__action">
+                            <a href="#" class="govuk-link">Cancel <span class="govuk-visually-hidden"> this upload</span></a>
+                        </span>
+                        </div>
+                        <div class="files__activity"><span class="govuk-visually-hidden">Your file is uploading</span></div>
+                    </div>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+
+        {# ************************************************************* #}
+
+        {% call components.bulmaRow(extraClass='u-space-t30') %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+
+                {{ components.captionHeading(text='JS file upload, only one of multiple files uploaded', tag='h2', size='m') }}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='_u-space-t30') %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+
+                {{ components.captionHeading(text='File upload', tag='h2', size='s') }}
+
+                <details class="govuk-details u-space-b10 " data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">Guidance for file upload</span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        <p class="govuk-body">Include all the academic institutions for whom you have carried out research. Start with the most recent; describe what you did and how you did it, providing any interesting outcomes. You should set this out in the same way you might set out a CV.</p>
+
+                        <p class="govuk-body">The assessors are particularly looking for:</p>
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>a breadth of research interest</li>
+                            <li>high standards of scholarship.</li>
+                        </ul>
+
+                        {{ components.captionHeading(text='Accepted file types', tag='h3', size='s') }}
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>PDF (.pdf)</li>
+                        </ul>
+
+                        <p class="govuk-body">Each file must be less than 20MB</p>
+
+                    </div>
+                </details>
+
+                <div class="govuk-inset-text">
+                    You can upload two more files.
+                </div>
+
+                <div class="files">
+                    <div class="files__item files__item--drag">
+                        <div class="govuk-form-group u-space-b0">
+                            <div class="js-hidden">
+                                <label class="govuk-label " for="fileUpload5">Upload a file</label>
+                                <span class="govuk-hint">You can only upload one file</span>
+                                <input class="govuk-file-upload" id="fileUpload5" name="fileUpload5" type="file">
+                            </div>
+                            <div class="js-only">
+                                <label for="fileUpload6" class="govuk-visually-hidden">Upload a file</label>
+                                <input type="file" id="fileUpload6" class="govuk-visually-hidden" name="fileUpload6" multiple />
+                                <button type="button" class="govuk-button govuk-button--secondary u-space-b0" name="" id="jsUploadButton2">Upload a file</button>
+                                <span class="meta govuk-!-display-inline-block u-space-t10 u-space-x20" id="spanFilePath2">{#Click the button or drag up to three files into this space to upload. #}</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='') %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+                <div class="files">
+                    <div class="files__item">
+                        <div class="files__name">
+                            prof_ellen_ripley_CV.PDF
+                        </div>
+                        <div class="files__meta">
+                            <span class="files__size">7.9MB</span>
+                            <span class="files__action">
+                                <a href="#" class="govuk-link">Remove <span class="govuk-visually-hidden"> this file</span></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+    {# ************************************************************* #}
+
+        {% call components.bulmaRow(extraClass='u-space-t30') %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+
+                {{ components.captionHeading(text='JS file upload, multiple files uploaded', tag='h2', size='m') }}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='_u-space-t30') %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+
+                {{ components.captionHeading(text='File upload', tag='h2', size='s') }}
+
+                <details class="govuk-details u-space-b10 " data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">Guidance for file upload</span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        <p class="govuk-body">Include all the academic institutions for whom you have carried out research. Start with the most recent; describe what you did and how you did it, providing any interesting outcomes. You should set this out in the same way you might set out a CV.</p>
+
+                        <p class="govuk-body">The assessors are particularly looking for:</p>
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>a breadth of research interest</li>
+                            <li>high standards of scholarship.</li>
+                        </ul>
+
+                        {{ components.captionHeading(text='Accepted file types', tag='h3', size='s') }}
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>PDF (.pdf)</li>
+                        </ul>
+
+                        <p class="govuk-body">Each file must be less than 20MB</p>
+
+                    </div>
+                </details>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='') %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+                <div class="files">
+                    <div class="files__item">
+                        <div class="files__name">
+                            dr_danny_camberwell_CV.PDF
+                        </div>
+                        <div class="files__meta">
+                            <span class="files__size">1.3MB</span>
+                            <span class="files__action">
+                                <a href="#" class="govuk-link">Remove <span class="govuk-visually-hidden"> this file</span></a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="files__item">
+                        <div class="files__name">
+                            prof_montague_withnail_CV.PDF
+                        </div>
+                        <div class="files__meta">
+                            <span class="files__size">783kb</span>
+                            <span class="files__action">
+                                <a href="#" class="govuk-link">Remove <span class="govuk-visually-hidden"> this file</span></a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="files__item">
+                        <div class="files__name">
+                            prof_dennis_marwood_CV.PDF
+                        </div>
+                        <div class="files__meta">
+                            <span class="files__size">2MB</span>
+                            <span class="files__action">
+                                <a href="#" class="govuk-link">Remove <span class="govuk-visually-hidden"> this file</span></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+
+    {%- endcall %}
+
+
+
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        window.onload = function () {
+            let fileUpload = document.getElementById('fileUpload3');
+            let filePath = document.getElementById('spanFilePath');
+            let button = document.getElementById('jsUploadButton');
+            button.onclick = function () {
+                fileUpload.click();
+            };
+            fileUpload.onchange = function () {
+                console.log(fileUpload.value);
+                let fileList = document.getElementById('fileUpload3').files;
+                // console.log('fileList = ' + fileList);
+                // console.log(fileList);
+                let fileName = '';
+                for(let i=0; i < fileList.length; i++) {
+                    console.log('fileList[' + i + '] =' + fileList[i].name);
+                    if ( fileList.length - i !== 1) {
+                        fileName += fileList[i].name + ', ';
+                    } else {
+                        fileName += fileList[i].name;
+                    }
+
+                }
+                // let fileName = fileUpload.value.split('\\')[fileUpload.value.split('\\').length - 1];
+                filePath.innerHTML = "<!--<b>Selected File: </b>-->" + fileName;
+            };
+        };
+    </script>
+
+{% endblock %}
