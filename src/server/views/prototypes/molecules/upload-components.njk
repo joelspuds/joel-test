@@ -10,6 +10,25 @@
 
 {% block content %}
 
+
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+                <h2 class="govuk-error-summary__title" id="error-summary-title">
+                    There is a problem
+                </h2>
+                <div class="govuk-error-summary__body">
+                    <ul class="govuk-list govuk-error-summary__list">
+                        <li>
+                            <a href="#fileUpload7">The selected file must be smaller than 8MB</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
             {{ components.captionHeading(text='File upload components') }}
@@ -35,7 +54,7 @@
 
        {# {% call components.bulmaRow(extraClass='u-space-t30') %}
 
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
 
                 {{ components.captionHeading(text='Non JS file upload, nothing uploaded', tag='h2', size='m') }}
 
@@ -45,7 +64,7 @@
 
       {% call components.bulmaRow(extraClass='_u-space-t30') %}
 
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
 
                 {{ components.captionHeading(text='File upload', tag='h2', size='s') }}
 
@@ -90,13 +109,13 @@
         {# ************************************************************* #}
 
         {% call components.bulmaRow(extraClass='u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
                 {{ components.captionHeading(text='Non-JS file upload', tag='h2', size='m') }}
             {%- endcall %}
         {%- endcall %}
 
         {% call components.bulmaRow(extraClass='_u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="mainContent") %}
 
             <div class="file-upload">
                 {{ components.captionHeading(text='File upload', tag='h2', size='s') }}
@@ -123,7 +142,7 @@
                     <div class="files__item">
                         <div class="govuk-form-group u-space-b0">
                             <div class="">
-                                <label class="govuk-label govuk-visually-hidden" for="fileUpload4">Upload a file</label>
+                                <label class="govuk-label" for="fileUpload4">Upload a file</label>
                                 <input class="govuk-file-upload" id="fileUpload4" name="fileUpload4" type="file">
                             </div>
                         </div>
@@ -137,13 +156,13 @@
         {# ************************************************************* #}
 
         {% call components.bulmaRow(extraClass='u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
                 {{ components.captionHeading(text='Non-JS file upload with error message', tag='h2', size='m') }}
             {%- endcall %}
         {%- endcall %}
 
         {% call components.bulmaRow(extraClass='_u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
 
                 <div class="file-upload file-upload--error">
 
@@ -175,8 +194,8 @@
                             <div class="govuk-form-group u-space-b0">
 
                                 <div class="">
-                                    <label class="govuk-label govuk-visually-hidden" for="fileUpload4">Upload a file</label>
-                                    <input class="govuk-file-upload" id="fileUpload4" name="fileUpload4" type="file">
+                                    <label class="govuk-label" for="fileUpload7">Upload a file</label>
+                                    <input class="govuk-file-upload" id="fileUpload7" name="fileUpload7" type="file">
                                 </div>
                             </div>
                         </div>
@@ -187,16 +206,38 @@
             {%- endcall %}
         {%- endcall %}
 
+        {% call components.bulmaRow(extraClass='u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
+                {{ components.captionHeading(text='Other erros messages', tag='h2', size='m') }}
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='_u-space-t30') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
+
+                <span class="govuk-error-message">The selected file could not be uploaded – try again</span>
+
+                <span class="govuk-error-message">The selected file must be smaller than 8MB</span>
+
+                <span class="govuk-error-message">The selected file must be a PDF</span>
+
+                <span class="govuk-error-message">Select a PDF</span>
+
+                <span class="govuk-error-message">The selected file contains a virus – upload a new file</span>
+
+            {%- endcall %}
+        {%- endcall %}
+
         {# ************************************************************* #}
 
         {% call components.bulmaRow(extraClass='u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
                 {{ components.captionHeading(text='Non-JS file uploaded but not scanned', tag='h2', size='m') }}
             {%- endcall %}
         {%- endcall %}
 
         {% call components.bulmaRow(extraClass='_u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
 
                 <div class="file-upload">
 
@@ -221,8 +262,7 @@
                     </details>
 
                     <div class="govuk-inset-text">
-                        Your attachment is being scanned for viruses. This should take no more than a few minutes.
-                        You can save this page and come back later.
+                        Your selected file is being scanned for viruses. This should take no more than a few minutes.
                     </div>
 
                     <div class="files">
@@ -250,13 +290,13 @@
         {# ************************************************************* #}
 
         {% call components.bulmaRow(extraClass='u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
                 {{ components.captionHeading(text='Non-JS file uploaded and scanned', tag='h2', size='m') }}
             {%- endcall %}
         {%- endcall %}
 
         {% call components.bulmaRow(extraClass='_u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
 
                 <div class="file-upload">
 
@@ -304,13 +344,13 @@
         {# ************************************************************* #}
 
         {% call components.bulmaRow(extraClass='u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
                 {{ components.captionHeading(text='Non-JS file uploaded but not scanned on read-view page', tag='h2', size='m') }}
             {%- endcall %}
         {%- endcall %}
 
         {% call components.bulmaRow(extraClass='_u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
 
                 <div class="file-upload">
 
@@ -319,7 +359,7 @@
                     <p class="govuk-body">My CV is attached below and includes some stuff about things that are relevant to my application.</p>
 
                     <div class="govuk-inset-text">
-                        The attachment is being scanned for viruses. This should take no more than a few minutes.
+                        Your selected file is being scanned for viruses. This should take no more than a few minutes.
                     </div>
 
                     <div class="files">
@@ -343,13 +383,13 @@
         {# ************************************************************* #}
 
         {% call components.bulmaRow(extraClass='u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
                 {{ components.captionHeading(text='Non-JS file uploaded but not scanned on read-view page', tag='h2', size='m') }}
             {%- endcall %}
         {%- endcall %}
 
         {% call components.bulmaRow(extraClass='_u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
 
                 <div class="file-upload">
 
@@ -381,7 +421,7 @@
         {# ************************************************************* #}
 
         {% call components.bulmaRow(extraClass='u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
                 <hr class="">
 
                 {{ components.captionHeading(text='Everything below for progressively-enhanced JS version', tag='h2', size='l') }}
@@ -391,13 +431,13 @@
 
 
         {% call components.bulmaRow(extraClass='u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
                 {{ components.captionHeading(text='Progressively-enhanced JS file upload, nothing uploaded', tag='h2', size='m') }}
             {%- endcall %}
         {%- endcall %}
 
         {% call components.bulmaRow(extraClass='_u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
                 {{ components.captionHeading(text='File upload', tag='h2', size='s') }}
 
                 <details class="govuk-details u-space-b10 " data-module="govuk-details">
@@ -445,13 +485,13 @@
 
 
         {% call components.bulmaRow(extraClass='u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
                 {{ components.captionHeading(text='Currently uploading activity', tag='h2', size='m') }}
             {%- endcall %}
         {%- endcall %}
 
         {% call components.bulmaRow(extraClass='_u-space-t30') %}
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
                 {{ components.captionHeading(text='Attaching file with "activity bar"', tag='h2', size='s') }}
             {%- endcall %}
         {%- endcall %}
@@ -467,7 +507,7 @@
                             </strong>
                         </div>
                         <div class="files__meta">
-                            <span class="files__size">578kb</span>
+                            <span class="files__size">578KB</span>
                             <span class="files__action">
                             <a href="#" class="govuk-link">Cancel <span class="govuk-visually-hidden"> this upload</span></a>
                         </span>
@@ -483,7 +523,7 @@
 
         {% call components.bulmaRow(extraClass='u-space-t30') %}
 
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
 
                 {{ components.captionHeading(text='JS file upload, only one of multiple files uploaded', tag='h2', size='m') }}
 
@@ -493,7 +533,7 @@
 
         {% call components.bulmaRow(extraClass='_u-space-t30') %}
 
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
 
                 {{ components.captionHeading(text='File upload', tag='h2', size='s') }}
 
@@ -570,7 +610,7 @@
 
         {% call components.bulmaRow(extraClass='u-space-t30') %}
 
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
 
                 {{ components.captionHeading(text='JS file upload, multiple files uploaded', tag='h2', size='m') }}
 
@@ -580,7 +620,7 @@
 
         {% call components.bulmaRow(extraClass='_u-space-t30') %}
 
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID="") %}
 
                 {{ components.captionHeading(text='File upload', tag='h2', size='s') }}
 
@@ -631,7 +671,7 @@
                             prof_montague_withnail_CV.PDF
                         </div>
                         <div class="files__meta">
-                            <span class="files__size">783kb</span>
+                            <span class="files__size">783KB</span>
                             <span class="files__action">
                                 <a href="#" class="govuk-link">Remove <span class="govuk-visually-hidden"> this file</span></a>
                             </span>
