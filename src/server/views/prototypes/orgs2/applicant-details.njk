@@ -1,0 +1,160 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set userName = 'Dr. Jonathan Doe' %}
+{% set hideAccountLinks = true %}
+{% set orgs2SessionData = orgs2SessionData if orgs2SessionData %}
+{% if orgs2SessionData.roles  %}
+    {% set captionTitle = 'New ' + orgs2SessionData.roles %}
+{% else %}
+    {% set captionTitle = 'New person' %}
+{% endif %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set limitedOrgList = limitedOrgList if limitedOrgList %}
+
+{% set pageTitle = 'Applicant details' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/orgs2/', text:'Back to Application'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Applicant details', caption=captionTitle) }}
+        {%- endcall %}
+    {%- endcall %}
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <style>
+                    .autocomplete__wrapper {
+                        max-width: 500px;
+                    }
+                </style>
+
+                {#<p>orgs2SessionData.roles = {{ orgs2SessionData.roles }} </p>#}
+
+                <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
+                    <p class="govuk-body u-space-b5"><span class="govuk-label govuk-label--s">Role</span></p>
+                    <p class="govuk-body u-space-b5" style="max-width: 41ex;">
+                        <span class="govuk-!-display-inline u-float-left">{{orgs2SessionData.roles }}</span>
+                        <span class="govuk-!-display-inline u-float-right"><a href="/prototypes/orgs2/select-role" class="govuk-link u-align-right">Change <span class="govuk-visually-hidden">role</span></a></span>
+                    </p>
+
+                </div>
+
+
+                <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
+                    <label class="govuk-label govuk-label--s" for="firstName" id="firstNameLabel">First name
+                        {% if firstNameError %}
+                            <span class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> You must enter a first name
+                            </span>
+                        {% endif %}
+                    </label>
+                    <input class="govuk-input govuk-input--width-20" id="firstName" type="text" name="firstName" value="{{orgs2SessionData.firstName }}">
+                </div>
+
+                <div class="govuk-form-group {% if lastNameError %}govuk-form-group--error{% endif %}">
+                    <label class="govuk-label govuk-label--s" for="lastName" id="lastNameLabel">Last name
+                        {% if lastNameError %}
+                            <span class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> You must enter a last name
+                            </span>
+                        {% endif %}
+                    </label>
+                    <input class="govuk-input govuk-input--width-20 " id="lastName" type="text" name="lastName" value="{{orgs2SessionData.lastName }}">
+                </div>
+
+                <div class="govuk-form-group {% if signinError %} govuk-form-group--error{% endif %}">
+                    <label class="govuk-label govuk-label--s" for="email" id="emailAddressInput">Email address</label>
+                    <input class="govuk-input {% if signinError %} govuk-input--error{% endif %} govuk-input--width-20" id="email" name="email" type="text" value="{{orgs2SessionData.email }}">
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="organisation">Organisation</label>
+
+                    {#{% if orgs2SessionData.organisation %}
+                        <input type="input" class="govuk-input govuk-input--width-20" name="organisation2" value="{{ orgs2SessionData.organisation }}" disabled>
+                        <input type="hidden" name="organisation" value="{{ orgs2SessionData.organisation }}">
+
+                        #}{#{% if orgs2SessionData.wasManual %}
+                            <p class="govuk-body u-space-t10">Made a mistake? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="manual">Edit organisation</button></p>
+                        {% else %}
+                            <p class="govuk-body u-space-t10">Still not right? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="true">Search again</button></p>
+                        {% endif %}#}{#
+                        <p class="govuk-body u-space-t10">Still not right? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="manual">Search again</button></p>
+                    {% else %}
+
+                        <span class="govuk-hint">Start entering, then select the organisation's name</span>
+                        <select name="organisation" class="govuk-select control" id="organisation">
+                            <option></option>
+                            {% for item in limitedOrgList %}
+                                <option value="{{ item.n }}">{{ item.n }}</option>
+                            {% endfor %}
+                        </select>
+                        #}{#{% if orgs2SessionData.roles != 'Project lead' %}
+                            <p class="govuk-body #}{##}{#govuk-!-font-size-16#}{##}{# u-space-t10">No results? Try a wider <button type="submit" class="govuk-button govuk-button--link #}{##}{#govuk-!-font-size-16#}{##}{#" name="widerSearch" value="search">organisation search</button></p>
+                        {% endif %}#}{#
+
+
+                    {% endif %}#}
+
+                    <input type="input" class="govuk-input govuk-input--width-20" name="organisation2" value="{{ orgs2SessionData.organisation }}" disabled>
+                    <input type="hidden" name="organisation" value="{{ orgs2SessionData.organisation }}">
+                    {#<p class="govuk-body u-space-t10">Still not right? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="true">Search again</button></p>#}
+
+
+                    {% if orgs2SessionData.wasManual %}
+                    <p class="govuk-body u-space-t10">Made a mistake? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="manual">Edit organisation</button></p>
+                    {% else %}
+                        <p class="govuk-body u-space-t10">Still not right? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="true">Search again</button></p>
+                    {% endif %}
+
+
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <div class="application-controls govuk-clearfix">
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Add applicant</button>
+                    <a href="/prototypes/orgs2/applicants" class="govuk-link application-controls__cancel">Return to applicants</a>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        var selectEl = document.querySelector('#organisation');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 1,
+            selectElement: selectEl
+        });
+    </script>
+{% endblock %}
+

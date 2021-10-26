@@ -1,0 +1,175 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set userName = 'Dr. Jonathan Doe' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Application' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'#', text:'Back to applications'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Application', caption='APP171: Bio-detoxification of Ricin in castor bean') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% if hasBeenUpdated %}
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                {{ components.alerts(text='You have successfully updated your application', type='success')}}
+
+            {%- endcall %}
+
+        {%- endcall %}
+    {% endif %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#">Write application</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#">Read application</a>
+                    </li>
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+            <div class="application-item application-item--incomplete application-item--skinny application-item--skinny-last">
+                <div class="application-item__contents govuk-clearfix">
+                    <div class="application-item__left">{{ components.link(text='1. Details and summary', url='#')}}</div>
+                    <div class="application-item__right">
+                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="application-item application-item--incomplete application-item--skinny application-item--skinny-last">
+                <div class="application-item__contents govuk-clearfix">
+                    <div class="application-item__left">{{ components.link(text='2. Applicants', url='/prototypes/orgs2/applicants')}}</div>
+                    <div class="application-item__right">
+                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="application-item application-item--incomplete application-item--skinny application-item--skinny-last">
+                <div class="application-item__contents govuk-clearfix">
+                    <div class="application-item__left">{{ components.link(text='3. Case for support', url='#')}}</div>
+                    <div class="application-item__right">
+                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="application-item application-item--incomplete application-item--skinny application-item--skinny-last">
+                <div class="application-item__contents govuk-clearfix">
+                    <div class="application-item__left">{{ components.link(text='4. Resources and costs', url='#')}}</div>
+                    <div class="application-item__right">
+                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="application-item application-item--incomplete application-item--skinny application-item--skinny-last">
+                <div class="application-item__contents govuk-clearfix">
+                    <div class="application-item__left">{{ components.link(text='5. Justification for resources', url='#')}}</div>
+                    <div class="application-item__right">
+                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="application-controls govuk-clearfix">
+                <p class="govuk-body"><strong>Send application to your Research Office. </strong>
+                <br>
+                    You will not be able to make further edits, unless they return it to you.
+                    Only your Research Office can submit this application to UKRI.
+                </p>
+                {% call components.form(action='/prototypes/application-v2/', method='POST',name='submitApplication') %}
+                    {% set progressPercentage = 0 %}
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton" {% if progressPercentage != 100 %}disabled{% endif %}>Submit to Research Office</button>
+                {%- endcall %}
+            </div>
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
+            {% set reverseProgressPercentage = 100 %}
+            {% set progressPercentage = 0 %}
+            {#<div class="progress-meter">
+                <div class="progress-meter__text progress-meter__text--back" role="progress-bar" aria-valuenow="100%"><span class="govuk-visually-hidden">Your application is</span> 0% complete</div>
+                <div class="progress-meter__clipper" aria-hidden="true" style="clip-path: inset(0% 0% 0% 0%); -webkit-clip-path: inset(0% 100% 0% 0%)">
+                    <div class="progress-meter__text progress-meter__text--front"><strong>Ready to submit</strong></div>
+                </div>
+            </div>#}
+            <div class="progress-meter">
+                <div class="progress-meter__text progress-meter__text--back" role="progress-bar" aria-valuenow="27%"><span class="govuk-visually-hidden">Your application is</span> {{ progressPercentage }}% complete</div>
+                <div class="progress-meter__clipper" aria-hidden="true" style="clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%); -webkit-clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%)">
+                    {% if progressPercentage == 100 %}
+                        <div class="progress-meter__text progress-meter__text--front"><strong>Ready to submit</strong></div>
+                    {% else %}
+                        <div class="progress-meter__text progress-meter__text--front">{{ progressPercentage }}% complete</div>
+                    {% endif %}
+
+                </div>
+            </div>
+            <div class="application-data">
+                <dl class="application-data__list">
+                    <dt class="application-data__key">Funding Opportunity:</dt>
+                    <dd class="application-data__value">OPP334: Development of a Novel Inhibitor of Ricin</dd>
+
+                    <dt class="application-data__key">Application reference:</dt>
+                    <dd class="application-data__value">APP00171</dd>
+
+                    <dt class="application-data__key">Application deadline:</dt>
+                    <dd class="application-data__value">Tuesday 18 November 2021, 4:00pm
+                        {#<br><span class="danger-text">You have x days until deadline</span>#}
+                    </dd>
+
+                    <dt class="application-data__key">Funder:</dt>
+                    <dd class="application-data__value">BBSRC</dd>
+                </dl>
+            </div>
+
+            {#<div>
+                <input type="file" accept="application/pdf" size="2">
+            </div>#}
+
+        {%- endcall %}
+
+    {%- endcall %}
+    {% include '../../layouts/partials/user-contact.njk' %}
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        Zepto(function($){
+            $(window).on('load', function() {
+                console.log('window loaded');
+                $('.govuk-tabs__tab').attr('tabindex', '');
+            });
+        });
+    </script>
+{% endblock %}
+

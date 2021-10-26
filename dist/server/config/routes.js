@@ -599,6 +599,36 @@ router.post('/prototypes/orgs/add-manually', demosController.orgsAddManuallyPost
 
 /* *************************************************************** *
 
+  Organisations list VERSION 2
+
+* *************************************************************** */
+
+router.get('/prototypes/orgs2/config', demosController.orgs2ConfigGet);
+router.post('/prototypes/orgs2/config', demosController.orgs2ConfigPost);
+
+router.get('/prototypes/orgs2', demosController.orgs2IndexGet);
+router.post('/prototypes/orgs2', demosController.orgs2IndexPost);
+
+router.get('/prototypes/orgs2/applicants', demosController.orgs2ApplicantsGet);
+router.post('/prototypes/orgs2/applicants', demosController.orgs2ApplicantsPost);
+
+router.get('/prototypes/orgs2/select-role', demosController.orgs2SelectRoleGet);
+router.post('/prototypes/orgs2/select-role', demosController.orgs2SelectRolePost);
+
+router.get('/prototypes/orgs2/applicant-details', demosController.orgs2DetailsGet);
+router.post('/prototypes/orgs2/applicant-details', demosController.orgs2DetailsPost);
+
+router.get('/prototypes/orgs2/organisation-search', demosController.orgs2SearchGet);
+router.post('/prototypes/orgs2/organisation-search', demosController.orgs2SearchPost);
+
+router.get('/prototypes/orgs2/search-results', demosController.orgs2SearchResultsGet);
+router.post('/prototypes/orgs2/search-results', demosController.orgs2SearchResultsPost);
+
+router.get('/prototypes/orgs2/add-manually', demosController.orgs2AddManuallyGet);
+router.post('/prototypes/orgs2/add-manually', demosController.orgs2AddManuallyPost);
+
+/* *************************************************************** *
+
   Design section
 
 * *************************************************************** */

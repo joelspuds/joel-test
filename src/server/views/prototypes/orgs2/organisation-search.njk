@@ -1,0 +1,79 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set userName = 'Dr. Jonathan Doe' %}
+{% set hideAccountLinks = true %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set orgs2SessionData = orgs2SessionData if orgs2SessionData %}
+
+{#{% if orgs2SessionData.firstName  %}
+    {% set displayTitle = 'Enter ' + orgs2SessionData.firstName + ' ' +  orgs2SessionData.lastName + '\'s organisation name' %}
+{% else %}
+    {% set displayTitle = 'Enter new person\'s organisation name' %}
+{% endif %}#}
+
+{% if orgs2SessionData.roles  %}
+    {% set captionTitle = 'New ' + orgs2SessionData.roles %}
+{% else %}
+    {% set captionTitle = 'New person' %}
+{% endif %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Find co-applicant\'s organisation' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/orgs2/', text:'Back to Application'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Organisation search', caption=captionTitle) }}
+        {%- endcall %}
+    {%- endcall %}
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-half', customID='mainContent') %}
+
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-visually-hidden">Find organisation</legend>
+
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="searchTerm">{#  [{ displayTitle }}#} Search for their organisation, company or other eligible entity</label>
+                        <input class="govuk-input" id="searchTerm" name="searchTerm" type="text">
+                    </div>
+                </fieldset>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='__u-space-t20') %}
+
+                <div class="application-controls govuk-clearfix">
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Search</button>
+                    <a href="/prototypes/orgs2/applicant-details" class="govuk-link application-controls__cancel">Return to applicant details</a>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+    </script>
+{% endblock %}
+

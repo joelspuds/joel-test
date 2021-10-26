@@ -1,0 +1,119 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'personal' %}
+',{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set hideAccountLinks = true %}
+{% set userName = 'Dr. Jonathan Doe' %}
+
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+{% set countries = countries if countries %}
+{% set pageTitle = 'Add organisation manually' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/orgs2/', text:'Back to Application'}] %}
+{% set orgs2SessionData = orgs2SessionData if orgs2SessionData %}
+{% if orgs2SessionData.roles  %}
+    {% set captionTitle = 'New ' + orgs2SessionData.roles %}
+{% else %}
+    {% set captionTitle = 'New person' %}
+{% endif %}
+
+{% if orgs2SessionData.firstName  %}
+    {% set displayTitle = 'Enter ' + orgs2SessionData.firstName + ' ' +  orgs2SessionData.lastName + '\'s organisation details' %}
+{% else %}
+    {% set displayTitle = 'Enter new person\'s organisation name' %}
+{% endif %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text=displayTitle, caption=captionTitle) }}
+        {%- endcall %}
+    {%- endcall %}
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <div class="govuk-warning-text">
+                    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                    <strong class="govuk-warning-text__text">
+                        <span class="govuk-warning-text__assistive">Warning</span>
+                        Please ensure all details are correct. If we cannot identify the<br> organisation, it may cause delays to your application.
+                    </strong>
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="newOrg" id="organisation">Organisation name</label>
+                    <input class="govuk-input govuk-input--width-20 " id="organisation" type="text" name="organisation" value="{{ orgs2SessionData.organisation }}">
+                </div>
+
+                <style>
+                    .autocomplete__wrapper {
+                        max-width: 500px;
+                    }
+                </style>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="countries">Country</label>
+                    <span class="govuk-hint">Start entering, then select the country</span>
+                    <select name="countries" class="govuk-select control" id="countries">
+                        <option></option>
+                        {% for item in countries %}
+                            <option value="{{ item.name }}" {% if orgs2SessionData.countries == item.name %} selected {% endif %}>{{ item.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="newOrgWebsite" id="">Website address</label>
+                    <input class="govuk-input govuk-input--width-20" id="newOrgWebsite" name="newOrgWebsite" type="text" value="{{ orgs2SessionData.newOrgWebsite }}">
+                </div>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <div class="application-controls govuk-clearfix">
+                    <input type="hidden" value="true" name="wasManual">
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Continue</button>
+                    <a href="/prototypes/orgs2/organisation-search" class="govuk-link application-controls__cancel">Return to search</a>
+                </div>
+
+            {%- endcall %}
+
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        var selectEl = document.querySelector('#countries');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 1,
+            selectElement: selectEl
+        });
+    </script>
+{% endblock %}
+

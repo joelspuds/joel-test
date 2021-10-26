@@ -31,3 +31,4 @@ export * from './designController';
 // export * from './motherLoadController';
 
 export * from './orgsController';
+export * from './orgs2Controller';
