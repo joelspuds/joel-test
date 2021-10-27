@@ -49,7 +49,7 @@
                     <div class="govuk-notification-banner__content">
                         <h3 class="govuk-notification-banner__heading">
                             {% if userTwoV2.firstName !== '-' %}
-                            {{ userTwoV2.firstName }} {{ userTwoV2.lastName }}
+                            {{ userTwoV2.titleName }} {{ userTwoV2.firstName }} {{ userTwoV2.lastName }}
                             {% else %}
                                {{ userTwoV2.roles }}
                             {%  endif %}
@@ -71,7 +71,7 @@
                         <h3 class="govuk-notification-banner__heading">
                             {#{{ userThreeV2.firstName }} {{ userThreeV2.lastName }}#}
                             {% if userThreeV2.firstName !== '-' %}
-                                {{ userThreeV2.firstName }} {{ userThreeV2.lastName }}
+                                {{ userThreeV2.titleName }} {{ userThreeV2.firstName }} {{ userThreeV2.lastName }}
                             {% else %}
                                 {{ userThreeV2.roles }}
                             {%  endif %}
@@ -93,7 +93,7 @@
                         <h3 class="govuk-notification-banner__heading">
                             {#{{ userFourV2.firstName }} {{ userFourV2.lastName }}#}
                             {% if userFourV2.firstName !== '-' %}
-                                {{ userFourV2.firstName }} {{ userFourV2.lastName }}
+                                {{ userFourV2.titleName }} {{ userFourV2.firstName }} {{ userFourV2.lastName }}
                             {% else %}
                                 {{ userFourV2.roles }}
                             {%  endif %}
@@ -184,9 +184,12 @@
                     {% endif %}
                     {% if userTwoV2.firstName %}
                         <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">{{ userTwoV2.firstName }} {{ userTwoV2.lastName }}</td>
+                            <td class="govuk-table__cell">{{ userTwoV2.titleName }} {{ userTwoV2.firstName }} {{ userTwoV2.lastName }}</td>
                             <td class="govuk-table__cell">{{ userTwoV2.email }}</td>
-                            <td class="govuk-table__cell">{{ userTwoV2.roles }}</td>
+                            <td class="govuk-table__cell">
+                                {{ userTwoV2.roles }}
+                                {% if userTwoV2.otherRole %} - {{ userTwoV2.otherRole }}{% endif %}
+                            </td>
                             <td class="govuk-table__cell">
                                 {{ userTwoV2.organisation }}
                             </td>
@@ -195,9 +198,9 @@
                     {% endif %}
                     {% if userThreeV2.firstName %}
                         <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">{{ userThreeV2.firstName }} {{ userThreeV2.lastName }}</td>
+                            <td class="govuk-table__cell">{{ userThreeV2.titleName }} {{ userThreeV2.firstName }} {{ userThreeV2.lastName }}</td>
                             <td class="govuk-table__cell">{{ userThreeV2.email }}</td>
-                            <td class="govuk-table__cell">{{ userThreeV2.roles }}</td>
+                            <td class="govuk-table__cell">{{ userThreeV2.roles }} {% if userThreeV2.otherRole %} - {{ userThreeV2.otherRole }}{% endif %}</td>
                             <td class="govuk-table__cell">
                                 {{ userThreeV2.organisation }}
                             </td>
@@ -206,9 +209,9 @@
                     {% endif %}
                         {% if userFourV2.firstName %}
                             <tr class="govuk-table__row">
-                                <td class="govuk-table__cell">{{ userFourV2.firstName }} {{ userFourV2.lastName }}</td>
+                                <td class="govuk-table__cell">{{ userFourV2.titleName }} {{ userFourV2.firstName }} {{ userFourV2.lastName }}</td>
                                 <td class="govuk-table__cell">{{ userFourV2.email }}</td>
-                                <td class="govuk-table__cell">{{ userFourV2.roles }}</td>
+                                <td class="govuk-table__cell">{{ userFourV2.roles }} {% if userFourV2.otherRole %} - {{ userFourV2.otherRole }}{% endif %}</td>
                                 <td class="govuk-table__cell">
                                     {{ userFourV2.organisation }}
                                 </td>
