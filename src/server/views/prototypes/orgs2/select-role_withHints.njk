@@ -1,0 +1,168 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set orgs2SessionData = orgs2SessionData if orgs2SessionData %}
+{% set journeyConfig = journeyConfig if journeyConfig %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+{% set hideAccountLinks = true %}
+{% set userName = 'Dr. Jane  Doe' %}
+{% set pageTitle = 'Select role' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/orgs2/', text:'Back to Application'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Select role', caption='Add an applicant') }}
+        {%- endcall %}
+    {%- endcall %}
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="roles-hint">
+                        <legend class="govuk-visually-hidden">Select new user's role </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+
+
+                            {% if journeyConfig == 'complex' %}
+
+                                <style>
+                                    .govuk-radios__label {
+                                        font-weight: bold;
+                                    }
+                                </style>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles1" name="roles" type="radio" value="Project lead" {% if orgs2SessionData.roles == 'Project lead' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles1" >Project lead</label>
+                                <span class="govuk-hint govuk-radios__hint">Responsible for the intellectual leadership of the project and its overall management. If the intellectual leadership is shared, the Project Lead is the individual who will be the main contact for UKRI.</span>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles2" name="roles" type="radio" value="Co-lead" {% if orgs2SessionData.roles == 'Co-lead' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles2">Co-lead</label>
+                                <span class="govuk-hint govuk-radios__hint">Helps the Project Lead with the management and leadership of the project, and may deputise or take over the leadership of the project if needed. A project can have more than one Co-Lead.</span>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles3" name="roles" type="radio" value="Fellow" {% if orgs2SessionData.roles == 'Fellow' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles3">Fellow</label>
+                                <span class="govuk-hint govuk-radios__hint">An individual with a personal Fellowship, who is responsible for the intellectual leadership of the project and its overall management. Leadership of the project cannot be transferred from a Fellow to another individual.</span>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles4" name="roles" type="radio" value="Team Grant Manager" {% if orgs2SessionData.roles == '●	Team Grant Manager' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles4">Team Grant Manager</label>
+                                <span class="govuk-hint govuk-radios__hint">Manages the administration and delivery of the project</span>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles5" name="roles" type="radio" value="Technician" {% if orgs2SessionData.roles == 'Team R&amp;I Associate' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles5">Team R&amp;I Associate</label>
+                                <span class="govuk-hint govuk-radios__hint">Carries out the proposed research or innovation activity</span>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles6" name="roles" type="radio" value="Visiting Researcher" {% if orgs2SessionData.roles == 'Visiting Researcher' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles6">Visiting Researcher</label>
+                                <span class="govuk-hint govuk-radios__hint">Temporarily visits a participating organisation and contributes to the project</span>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles7" name="roles" type="radio" value="Specialist Team Technology/Skills Associate" {% if orgs2SessionData.roles == 'Specialist Team Technology/Skills Associate' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles7">Specialist Team Technology/Skills Associate</label>
+                                <span class="govuk-hint govuk-radios__hint">Make critical underpinning contributions to the project by providing core technical excellence, and in maintaining and developing new technologies and methodologies.</span>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles8" name="roles" type="radio" value="Technician" {% if orgs2SessionData.roles == 'Technician' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles8">Technician</label>
+                                <span class="govuk-hint govuk-radios__hint">Providing general support to the project as needed</span>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles9" name="roles" type="radio" value="Student" {% if orgs2SessionData.roles == 'Student' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles9">Student</label>
+                                <span class="govuk-hint govuk-radios__hint">Postgraduate candidates funded through the Training Grant or on a specific project </span>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles10" name="roles" type="radio" value="Team Project Partner" {% if orgs2SessionData.roles == 'Team Project Partner' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles10">Team Project Partner</label>
+                                <span class="govuk-hint govuk-radios__hint">Provides specific contributions to the project, but does not normally receive direct funding other than minor funds, such as travel and subsistence. A Team Project Partner can be an organisation or named individual.</span>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles11" name="roles" type="radio" value="wefwefwef" {% if orgs2SessionData.roles == 'Project Subcontractor' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles11">Project Subcontractor</label>
+                                <span class="govuk-hint govuk-radios__hint">A third-party delivering a specific piece of work. A Project Subcontractor can be an individual or organisation.</span>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles12" name="roles" type="radio" value="Other" {% if orgs2SessionData.roles == 'Other' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles12">Other</label>
+                                <span class="govuk-hint govuk-radios__hint">Any other individual who is supporting or taking part in the project</span>
+                            </div>
+
+                            {% else %}
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles1" name="roles" type="radio" value="Principle investigator" {% if orgs2SessionData.roles == 'Principle investigator' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles1" >Principle investigator</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles2" name="roles" type="radio" value="Co-investigator" {% if orgs2SessionData.roles == 'Co-investigator' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles2">Co-investigator</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles3" name="roles" type="radio" value="Researcher" {% if orgs2SessionData.roles == 'Researcher' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles3">Researcher</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles4" name="roles" type="radio" value="Business partner" {% if orgs2SessionData.roles == 'Business partner' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles4">Business partner</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles5" name="roles" type="radio" value="Technician" {% if orgs2SessionData.roles == 'Technician' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles5">Technician</label>
+                            </div>
+
+                            {% endif %}
+
+                        </div>
+                    </fieldset>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <div class="application-controls govuk-clearfix">
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Continue</button>
+                    <a href="/prototypes/orgs2/applicants" class="govuk-link application-controls__cancel">Return to applicants</a>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+    {% include '../../layouts/partials/user-contact.njk' %}
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        Zepto(function($){
+            $(window).on('load', function() {
+                console.log('window loaded');
+                $('.govuk-tabs__tab').attr('tabindex', '');
+            });
+        });
+    </script>
+{% endblock %}
+

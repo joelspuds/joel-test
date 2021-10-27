@@ -4,7 +4,7 @@
 {% set applicationsLink = '#' %}
 {% set homeLink = '#' %}
 {% set reviewsLink = '#' %}
-{% set userName = 'Dr. Jonathan Doe' %}
+{% set userName = 'Dr. Jane  Doe' %}
 {% set hideAccountLinks = true %}
 {% set orgs2SessionData = orgs2SessionData if orgs2SessionData %}
 {% if orgs2SessionData.roles  %}
@@ -52,7 +52,7 @@
 
                 </div>
 
-
+                {% if orgs2SessionData.collectNoName != true %}
                 <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
                     <label class="govuk-label govuk-label--s" for="firstName" id="firstNameLabel">First name
                         {% if firstNameError %}
@@ -74,6 +74,8 @@
                     </label>
                     <input class="govuk-input govuk-input--width-20 " id="lastName" type="text" name="lastName" value="{{orgs2SessionData.lastName }}">
                 </div>
+
+                {% endif %}
 
                 <div class="govuk-form-group {% if signinError %} govuk-form-group--error{% endif %}">
                     <label class="govuk-label govuk-label--s" for="email" id="emailAddressInput">Email address</label>

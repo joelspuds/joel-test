@@ -28,7 +28,7 @@ let generalData = require('./data');
 let genericFunctions = require('./generic');
 // let allOrgs = require('./orgsListCleaned');
 let allOrgs = require('./orgsListCleanedDupesRemovedWith400');
-let limitedOrgs = require('./orgs400');
+let limitedOrgs = require('./orgs400asArray');
 let allCountries = require('./countries');
 let orgs2SessionData = [];
 let userOneV2 = [];
@@ -300,8 +300,25 @@ function orgs2SelectRoleGet(req, res) {
 }
 
 function orgs2SelectRolePost(req, res) {
-  const { roles } = req.body;
+  const { roles, otherRole } = req.body;
 
+  // check for asking for firstName and lastName
+  if (roles === 'Team Project Partner' || roles === 'Project Subcontractor' || roles === 'Project partner/collaborator' || roles === 'Subcontractor/collaborator') {
+    orgs2SessionData.collectNoName = true;
+    orgs2SessionData.firstName = '-';
+    orgs2SessionData.lastName = '-';
+  } else {
+    orgs2SessionData.collectNoName = false;
+  }
+
+  // check to restrict search
+  if (roles === 'Principle investigator' || roles === 'Co-investigator' || roles === 'Fellow' || roles === 'Project lead' || roles === 'Co-lead') {
+    orgs2SessionData.approved400Only = true;
+  } else {
+    orgs2SessionData.approved400Only = false;
+  }
+
+  orgs2SessionData.otherRole = otherRole;
   orgs2SessionData.roles = roles;
 
   // req.session.firstName = firstName;
@@ -353,7 +370,7 @@ function orgs2DetailsPost(req, res) {
 
   if (widerSearch === 'manual') {
     redirectURL = '/prototypes/orgs2/add-manually';
-  } else if (widerSearch === 'search') {
+  } else if (widerSearch === 'true') {
     redirectURL = '/prototypes/orgs2/organisation-search';
   }
 
@@ -382,7 +399,15 @@ function orgs2SearchPost(req, res) {
   console.log('searchTerm = ' + searchTerm);
 
   let searchTermTemp = searchTerm;
-  let motherLoad = allOrgs.organisationsMotherLoadDupesRemovedAnd400;
+  let motherLoad;
+  let approved400Only = orgs2SessionData.approved400Only;
+  if (approved400Only === true) {
+    // limit to approved 400 only;
+    motherLoad = limitedOrgs.limitedOrgList2;
+  } else {
+    motherLoad = allOrgs.organisationsMotherLoadDupesRemovedAnd400;
+  }
+
   let resultArray = [];
   let searchFail;
   let finalNumber;

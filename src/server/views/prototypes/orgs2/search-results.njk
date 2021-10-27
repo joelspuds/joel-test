@@ -4,7 +4,7 @@
 {% set applicationsLink = '#' %}
 {% set homeLink = '#' %}
 {% set reviewsLink = '#' %}
-{% set userName = 'Dr. Jonathan Doe' %}
+{% set userName = 'Dr. Jane  Doe' %}
 {% set hideAccountLinks = true %}
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
@@ -20,7 +20,7 @@
 {%  set loggedOut = false %}
 
 {% set pageTitle = 'Search results' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/orgs2/', text:'Back to Application'}] %}
+{% set backLinkContents =  [{url:'/prototypes/orgs2/organisation-search', text:'Back to find organisation'}] %}
 
 {% set resultArray = resultArray if resultArray %}
 {#{% set searchTerm = searchTerm if searchTerm %}#}
@@ -53,6 +53,51 @@
 
         {% call components.bulmaRow() %}
 
+            {% call components.bulmaColumnAny(size='column is-3', customID='mainContent') %}
+                <div class="_govuk-related-items govuk-related-items--flush">
+
+                {#{{ components.captionHeading(text='Filters and sorting', tag='h2', size='s') }}#}
+
+                    <div class="filter">
+                        <h2 class="filter__title">Filter by location</h2>
+                        <span class="filter__toggle"></span>
+                        <ul class="filter__list u-clearfix">
+                            <li class="filter__item filter__item--small">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="filterDraft" type="checkbox" name="filterDraft" value="draft">
+                                    <label for="filterDraft" class="govuk-checkboxes__label u-display-ib">UK</label>
+                                </div>
+                            </li>
+                            <li class="filter__item filter__item--small">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="filterReady" type="checkbox" name="filterReady" value="ready">
+                                    <label for="filterReady" class="govuk-checkboxes__label u-display-ib">Europe</label>
+                                </div>
+                            </li>
+                            <li class="filter__item filter__item--small">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="filterOpen" type="checkbox" name="filterOpen" value="open">
+                                    <label for="filterOpen" class="govuk-checkboxes__label u-display-ib">Americas</label>
+                                </div>
+                            </li>
+                            <li class="filter__item filter__item--small">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="filterPrePanel" type="checkbox" name="prePanel" value="prePanel">
+                                    <label for="filterPrePanel" class="govuk-checkboxes__label u-display-ib">Awarded</label>
+                                </div>
+                            </li>
+                            <li class="filter__item filter__item--small">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="uns" type="checkbox" name="uns" value="uns">
+                                    <label for="uns" class="govuk-checkboxes__label u-display-ib">Unsuccessful</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            {%- endcall %}
+
             {% call components.bulmaColumnAny(size='column is-9', customID='mainContent') %}
 
                 {% if searchFail %}
@@ -66,7 +111,7 @@
                         <thead class="govuk-table__header">
 
                             <tr>
-                                <th class="govuk-table__header">{{ searchResultsText }}{#Organisation name#}</th>
+                                <th class="govuk-table__header">{#{{ searchResultsText }}#}Organisation name and details</th>
                                 <th class="govuk-table__header--numeric"><span class="govuk-visually-hidden">Add organisation</span></th>
                             </tr>
                         </thead>

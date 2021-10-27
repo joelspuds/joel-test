@@ -9,7 +9,7 @@
 {% set hideAccountLinks = true %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
-{% set userName = 'Dr. Jonathan Doe' %}
+{% set userName = 'Dr. Jane  Doe' %}
 {% set isAdminUser = false %}
 {% set loggedOut = false %}
 
@@ -20,7 +20,7 @@
 {% set userFourV2V2 = userFourV2 if userFourV2 %}
 
 {% set pageTitle = 'Applicants' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/orgs2/', text:'Back to Application'}] %}
+{% set backLinkContents =  [{url:'/prototypes/orgs2/', text:'Back to application'}] %}
 
 {% block content %}
 
@@ -47,7 +47,13 @@
                         <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
                     </div>
                     <div class="govuk-notification-banner__content">
-                        <h3 class="govuk-notification-banner__heading">{{ userTwoV2.firstName }} {{ userTwoV2.lastName }} has been added to the project.</h3>
+                        <h3 class="govuk-notification-banner__heading">
+                            {% if userTwoV2.firstName !== '-' %}
+                            {{ userTwoV2.firstName }} {{ userTwoV2.lastName }}
+                            {% else %}
+                               {{ userTwoV2.roles }}
+                            {%  endif %}
+                            has been added to the project.</h3>
                     </div>
                 </div>
             {%- endcall %}
@@ -62,7 +68,14 @@
                         <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
                     </div>
                     <div class="govuk-notification-banner__content">
-                        <h3 class="govuk-notification-banner__heading">{{ userThreeV2.firstName }} {{ userThreeV2.lastName }} has been added to the project.</h3>
+                        <h3 class="govuk-notification-banner__heading">
+                            {#{{ userThreeV2.firstName }} {{ userThreeV2.lastName }}#}
+                            {% if userThreeV2.firstName !== '-' %}
+                                {{ userThreeV2.firstName }} {{ userThreeV2.lastName }}
+                            {% else %}
+                                {{ userThreeV2.roles }}
+                            {%  endif %}
+                            has been added to the project.</h3>
                     </div>
                 </div>
             {%- endcall %}
@@ -77,7 +90,15 @@
                         <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
                     </div>
                     <div class="govuk-notification-banner__content">
-                        <h3 class="govuk-notification-banner__heading">{{ userFourV2.firstName }} {{ userFourV2.lastName }} has been added to the project.</h3>
+                        <h3 class="govuk-notification-banner__heading">
+                            {#{{ userFourV2.firstName }} {{ userFourV2.lastName }}#}
+                            {% if userFourV2.firstName !== '-' %}
+                                {{ userFourV2.firstName }} {{ userFourV2.lastName }}
+                            {% else %}
+                                {{ userFourV2.roles }}
+                            {%  endif %}
+                            has been added to the project.
+                        </h3>
                     </div>
                 </div>
             {%- endcall %}
@@ -94,9 +115,9 @@
 
         {% call components.bulmaRow() %}
 
-            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+            {% call components.bulmaColumnAny(size='is-9', extraClass='u-space-t20') %}
 
-                <p class="govuk-body">Add the details of people who will contribute to the work if your application is successful.</p>
+                <p class="govuk-body">Add details of who will be leading, supporting, taking part in or contributing to your proposed project</p>
 
                 {#<details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
                     <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
@@ -131,7 +152,7 @@
                     </thead>
                     <tbody class="govuk-table__body">
                         <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">Dr. Jonathan Doe</td>
+                            <td class="govuk-table__cell">Dr. Jane  Doe</td>
                             <td class="govuk-table__cell">jdoe@cardiffuniversity.ac.uk</td>
                             <td class="govuk-table__cell">Lead applicant</td>
                             <td class="govuk-table__cell">Cardiff University</td>
