@@ -52,30 +52,35 @@
 
                 </div>
 
-                {% if orgs2SessionData.collectNoName != true %}
+                {% if orgs2SessionData.collectNoName === true %}
+
+                    <div class="govuk-inset-text">
+                        Enter the details of the contact within the <strong>{{orgs2SessionData.roles }}</strong> organisation even if they will not directly be doing any work on the project
+                    </div>
+
+
+                {% endif %}
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="titleName" id="titleNameLabel">Title</label>
+                    <input class="govuk-input govuk-input--width-20" id="titleName" type="text" name="titleName" value="{{orgs2SessionData.titleName }}">
+                </div>
+
                 <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
                     <label class="govuk-label govuk-label--s" for="firstName" id="firstNameLabel">First name
-                        {% if firstNameError %}
-                            <span class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> You must enter a first name
-                            </span>
-                        {% endif %}
+
                     </label>
                     <input class="govuk-input govuk-input--width-20" id="firstName" type="text" name="firstName" value="{{orgs2SessionData.firstName }}">
                 </div>
 
                 <div class="govuk-form-group {% if lastNameError %}govuk-form-group--error{% endif %}">
                     <label class="govuk-label govuk-label--s" for="lastName" id="lastNameLabel">Last name
-                        {% if lastNameError %}
-                            <span class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> You must enter a last name
-                            </span>
-                        {% endif %}
+
                     </label>
                     <input class="govuk-input govuk-input--width-20 " id="lastName" type="text" name="lastName" value="{{orgs2SessionData.lastName }}">
                 </div>
 
-                {% endif %}
+
 
                 <div class="govuk-form-group {% if signinError %} govuk-form-group--error{% endif %}">
                     <label class="govuk-label govuk-label--s" for="email" id="emailAddressInput">Email address</label>

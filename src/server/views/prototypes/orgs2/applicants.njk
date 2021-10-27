@@ -17,7 +17,7 @@
 {% set userOneV2 = userOneV2 if userOneV2 %}
 {% set userTwoV2 = userTwoV2 if userTwoV2 %}
 {% set userThreeV2 = userThreeV2 if userThreeV2 %}
-{% set userFourV2V2 = userFourV2 if userFourV2 %}
+{% set userFourV2 = userFourV2 if userFourV2 %}
 
 {% set pageTitle = 'Applicants' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/orgs2/', text:'Back to application'}] %}
@@ -118,15 +118,6 @@
             {% call components.bulmaColumnAny(size='is-9', extraClass='u-space-t20') %}
 
                 <p class="govuk-body">Add details of who will be leading, supporting, taking part in or contributing to your proposed project</p>
-
-                {#<details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
-                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
-                        <span class="govuk-details__summary-text">Guidance on adding and managing applicants</span>
-                    </summary>
-                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
-                        <p class="govuk-body">...</p>
-                    </div>
-                </details>#}
 
                 <p class="govuk-body">
                     <a class="govuk-button govuk-button--secondary" href="/prototypes/orgs2/select-role">Add applicant</a>

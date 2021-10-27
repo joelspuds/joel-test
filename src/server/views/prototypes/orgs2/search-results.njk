@@ -44,9 +44,9 @@
 
         {% call components.bulmaRow() %}
 
-            {% call components.bulmaColumnAny(size='column is-half', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column is-full', customID='mainContent') %}
 
-                <p class="govuk-body">If you can't find a match, <a href="/prototypes/orgs2/add-manually">enter organisation details manually</a>. </p>
+                <p class="govuk-body">If you can't find a match, <a href="/prototypes/orgs2/organisation-search" class="govuk-link">try and search again</a> or <a href="/prototypes/orgs2/add-manually">enter organisation details manually</a>. </p>
 
             {%- endcall %}
         {%- endcall %}
@@ -60,6 +60,13 @@
 
                     <div class="filter">
                         <h2 class="filter__title">Filter by location</h2>
+
+                        {% if searchFail %}
+
+                            <span class="govuk-!-display-inline-block u-pad-10 meta">There are no relevant filters for this search</span>
+
+                        {% else %}
+
                         <span class="filter__toggle"></span>
                         <ul class="filter__list u-clearfix">
                             <li class="filter__item filter__item--small">
@@ -71,28 +78,24 @@
                             <li class="filter__item filter__item--small">
                                 <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
                                     <input class="govuk-checkboxes__input" id="filterReady" type="checkbox" name="filterReady" value="ready">
-                                    <label for="filterReady" class="govuk-checkboxes__label u-display-ib">Europe</label>
+                                    <label for="filterReady" class="govuk-checkboxes__label u-display-ib">France</label>
                                 </div>
                             </li>
                             <li class="filter__item filter__item--small">
                                 <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
                                     <input class="govuk-checkboxes__input" id="filterOpen" type="checkbox" name="filterOpen" value="open">
-                                    <label for="filterOpen" class="govuk-checkboxes__label u-display-ib">Americas</label>
+                                    <label for="filterOpen" class="govuk-checkboxes__label u-display-ib">Germany</label>
                                 </div>
                             </li>
                             <li class="filter__item filter__item--small">
                                 <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
                                     <input class="govuk-checkboxes__input" id="filterPrePanel" type="checkbox" name="prePanel" value="prePanel">
-                                    <label for="filterPrePanel" class="govuk-checkboxes__label u-display-ib">Awarded</label>
-                                </div>
-                            </li>
-                            <li class="filter__item filter__item--small">
-                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                    <input class="govuk-checkboxes__input" id="uns" type="checkbox" name="uns" value="uns">
-                                    <label for="uns" class="govuk-checkboxes__label u-display-ib">Unsuccessful</label>
+                                    <label for="filterPrePanel" class="govuk-checkboxes__label u-display-ib">Italy</label>
                                 </div>
                             </li>
                         </ul>
+
+                        {% endif %}
                     </div>
                 </div>
 
@@ -129,14 +132,14 @@
             {%- endcall %}
         {%- endcall %}
 
-        {% call components.bulmaRow() %}
+        {#{% call components.bulmaRow() %}
 
             {% call components.bulmaColumnAny(size='column is-half', customID='mainContent') %}
 
               <p class="govuk-body"><a href="/prototypes/orgs2/organisation-search" class="govuk-link">Try and search again</a> </p>
 
             {%- endcall %}
-        {%- endcall %}
+        {%- endcall %}#}
 
     {%- endcall %}
 

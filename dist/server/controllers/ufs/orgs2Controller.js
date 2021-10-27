@@ -96,13 +96,6 @@ function orgs2IndexGet(req, res) {
     //
   }
 
-  /*let projectName = req.session.storedProjectName;
-    if (!projectName) {
-        projectName = untitledProjectName;
-    }*/
-
-  // const allOrgs = generalData.allOrgs2;
-
   viewData = {};
 
   return res.render('prototypes/orgs2/index', viewData);
@@ -123,35 +116,6 @@ function orgs2IndexPost(req, res) {
 // ************************************************************************
 function orgs2ApplicantsGet(req, res) {
   let viewData;
-  // console.log(orgs2SessionData);
-
-  /*if (orgs2SessionData === null) {
-    orgs2SessionData = [];
-  }*/
-
-  // let userOneV2 = [].concat(orgs2SessionData);
-  // let userOneV2 = [...orgs2SessionData];
-  // const userOneV2 = orgs2SessionData.slice();
-
-  // userOneV2 = JSON.parse(JSON.stringify(orgs2SessionData));
-  // console.log(userOneV2);
-  // userOneV2 = orgs2SessionData;
-  // userOneV2 = [...orgs2SessionData];
-  /*userOneV2 = orgs2SessionData.slice();
-  for(let i = 0; i < orgs2SessionData.length; i++ ) {
-    userOneV2.push(orgs2SessionData[i]);
-  }*/
-
-  // clear data
-  /*orgs2SessionData.firstName = null;
-  orgs2SessionData.lastName = null;
-  orgs2SessionData.roles = null;
-  orgs2SessionData.organisation = null;
-  orgs2SessionData.detailsAdded = null;
-  orgs2SessionData.email = null;
-  orgs2SessionData.newOrgName = null;
-  orgs2SessionData.countries = null;
-  orgs2SessionData.newOrgWebsite = null;*/
 
   function resetOrgsSession() {
     orgs2SessionData.firstName = null;
@@ -162,59 +126,51 @@ function orgs2ApplicantsGet(req, res) {
     orgs2SessionData.email = null;
     orgs2SessionData.countries = null;
     orgs2SessionData.newOrgWebsite = null;
+    orgs2SessionData.titleName = null;
+    orgs2SessionData.collectNoName = null;
+    orgs2SessionData.approved400Only = null;
+    orgs2SessionData.otherRole = null;
+    orgs2SessionData.wasManual = null;
   }
 
   function copyUserOneV2(mainObject) {
-    let objectCopy = {}; // objectCopy will store a copy of the mainObject
+    let objectCopy = {};
     let key;
     for (key in mainObject) {
-      userOneV2[key] = mainObject[key]; // copies each property to the objectCopy object
+      userOneV2[key] = mainObject[key];
     }
     return objectCopy;
   }
 
   function copyUserTwoV2(mainObject) {
-    let objectCopy = {}; // objectCopy will store a copy of the mainObject
+    let objectCopy = {};
     let key;
     for (key in mainObject) {
-      userTwoV2[key] = mainObject[key]; // copies each property to the objectCopy object
+      userTwoV2[key] = mainObject[key];
     }
     return objectCopy;
   }
 
   function copyUserThreeV2(mainObject) {
-    let objectCopy = {}; // objectCopy will store a copy of the mainObject
+    let objectCopy = {};
     let key;
     for (key in mainObject) {
-      userThreeV2[key] = mainObject[key]; // copies each property to the objectCopy object
+      userThreeV2[key] = mainObject[key];
     }
     return objectCopy;
   }
 
   function copyUserFourV2(mainObject) {
-    let objectCopy = {}; // objectCopy will store a copy of the mainObject
+    let objectCopy = {};
     let key;
     for (key in mainObject) {
-      userFourV2[key] = mainObject[key]; // copies each property to the objectCopy object
+      userFourV2[key] = mainObject[key];
     }
     return objectCopy;
   }
 
-  /*const getLengthOfObject = (obj) => {
-    let lengthOfObject = Object.keys(obj).length;
-    console.log(lengthOfObject);
-  }
-   let testVar = getLengthOfObject(userOneV2);
-  console.log('testVar = ' + testVar);
-   console.log('Object.keys(userOneV2).length = ');
-  console.log(Object.keys(userOneV2).length);
-  */
-
-  // copyUserOneV2(orgs2SessionData);
-
   console.log('userOneV2.firstName = ' + userOneV2.firstName);
-  // if (userOneV2.firstName === '' || userOneV2.firstName === undefined || userOneV2.firstName === 'null') {
-  // if (userOneV2.firstName === undefined userOneV2.firstName === 'null' && userTwoV2.firstName === undefined && userThreeV2.firstName === undefined) {
+
   if (userOneV2.firstName === undefined || userOneV2.firstName === 'null') {
     console.log('userOneV2 is empty ');
     copyUserOneV2(orgs2SessionData);
@@ -244,13 +200,6 @@ function orgs2ApplicantsGet(req, res) {
   } else {
     console.log('all full ');
   }
-
-  /*console.log(copy(orgs2SessionData));
-  console.log('userOneV2 = ');
-  console.log(userOneV2);
-  console.log('orgs2SessionData = ');
-  console.log(orgs2SessionData);*/
-
   console.log('userOneV2 = ');
   console.log(userOneV2);
   console.log('userTwoV2 = ');
@@ -262,7 +211,6 @@ function orgs2ApplicantsGet(req, res) {
   console.log(orgs2SessionData);
 
   viewData = {
-    //orgs2SessionData,
     userOneV2,
     userTwoV2,
     userThreeV2,
@@ -274,9 +222,6 @@ function orgs2ApplicantsGet(req, res) {
 
 function orgs2ApplicantsPost(req, res) {
   const {} = req.body;
-
-  // req.session.firstName = firstName;
-
   return res.redirect('/prototypes/orgs2/');
 }
 
@@ -305,8 +250,8 @@ function orgs2SelectRolePost(req, res) {
   // check for asking for firstName and lastName
   if (roles === 'Team Project Partner' || roles === 'Project Subcontractor' || roles === 'Project partner/collaborator' || roles === 'Subcontractor/collaborator') {
     orgs2SessionData.collectNoName = true;
-    orgs2SessionData.firstName = '-';
-    orgs2SessionData.lastName = '-';
+    // orgs2SessionData.firstName = '-';
+    // orgs2SessionData.lastName = '-';
   } else {
     orgs2SessionData.collectNoName = false;
   }
@@ -346,13 +291,15 @@ function orgs2DetailsGet(req, res) {
 }
 
 function orgs2DetailsPost(req, res) {
-  const { firstName, lastName, email, organisation, widerSearch } = req.body;
+  const { titleName, firstName, lastName, email, organisation, widerSearch } = req.body;
 
   let redirectURL = '/prototypes/orgs2/applicants';
 
   // console.log(req.body);
   // console.log(req.params.id);
   // console.log('widerSearch = ' + widerSearch);
+
+  orgs2SessionData.titleName = titleName;
   orgs2SessionData.firstName = firstName;
   orgs2SessionData.lastName = lastName;
   orgs2SessionData.email = email;
