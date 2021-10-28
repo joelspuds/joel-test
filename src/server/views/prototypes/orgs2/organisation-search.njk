@@ -26,7 +26,7 @@
 {%  set loggedOut = false %}
 
 {% set pageTitle = 'Find co-applicant\'s organisation' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/orgs2/', text:'Back to Application'}] %}
+{% set backLinkContents =  [{url:'/prototypes/orgs2/applicants', text:'Back to Applicants'}] %}
 
 {% block content %}
 
@@ -40,6 +40,12 @@
         {% call components.bulmaRow() %}
 
             {% call components.bulmaColumnAny(size='column is-half', customID='mainContent') %}
+
+                {% if orgs2SessionData.approved400Only === true %}
+                    <div class="govuk-inset-text">
+                        As you've selected <strong>{{orgs2SessionData.roles }}</strong>, you can only search registered academic and research organisations.
+                    </div>
+                {% endif %}
 
                 <fieldset class="govuk-fieldset">
                     <legend class="govuk-fieldset__legend govuk-visually-hidden">Find organisation</legend>
@@ -60,7 +66,7 @@
 
                 <div class="application-controls govuk-clearfix">
                     <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Search</button>
-                    <a href="/prototypes/orgs2/applicant-details" class="govuk-link application-controls__cancel">Return to applicant details</a>
+                    <a href="/prototypes/orgs2/select-role" class="govuk-link application-controls__cancel">Return to Select role</a>
                 </div>
 
             {%- endcall %}

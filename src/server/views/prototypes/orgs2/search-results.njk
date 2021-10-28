@@ -105,7 +105,11 @@
 
                 {% if searchFail %}
 
-                    <p class="govuk-body">There are no organisations matching your search term.</p>
+                    {% if orgs2SessionData.approved400Only %}
+                        <p class="govuk-body">There are no registered academic or research organisations that match your search term.</p>
+                    {% else %}
+                        <p class="govuk-body">There are no organisations matching your search term.</p>
+                    {% endif %}
 
                 {% else %}
 
