@@ -244,13 +244,9 @@ export function orgs2SelectRolePost(req, res) {
   }
 
   // check to restrict search
-  if (
-    roles === 'Principle investigator' ||
-    roles === 'Co-investigator' ||
-    roles === 'Fellow' ||
-    roles === 'Project lead' ||
-    roles === 'Co-lead'
-  ) {
+  // roles === 'Co-investigator' ||
+  // roles === 'Co-lead'
+  if (roles === 'Principle investigator' || roles === 'Fellow' || roles === 'Project lead') {
     orgs2SessionData.approved400Only = true;
   } else {
     orgs2SessionData.approved400Only = false;
