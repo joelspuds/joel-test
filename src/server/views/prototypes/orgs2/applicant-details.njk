@@ -46,23 +46,20 @@
                 <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
                     <p class="govuk-body u-space-b5"><span class="govuk-label govuk-label--s">Role</span></p>
                     <p class="govuk-body u-space-b5" style="max-width: 41ex;">
-                        <span class="govuk-!-display-inline u-float-left">{{orgs2SessionData.roles }}</span>
+                        <span class="govuk-!-display-inline u-float-left">{{orgs2SessionData.roles }} {% if orgs2SessionData.otherRole %} - {{ orgs2SessionData.otherRole }}{% endif %}</span>
                         <span class="govuk-!-display-inline u-float-right"><a href="/prototypes/orgs2/select-role" class="govuk-link u-align-right">Change <span class="govuk-visually-hidden">role</span></a></span>
                     </p>
 
                 </div>
 
-                {% if orgs2SessionData.collectNoName === true %}
-
+                {#{% if orgs2SessionData.collectNoName === true %}
                     <div class="govuk-inset-text">
                         Enter the details of the contact within the <strong>{{orgs2SessionData.roles }}</strong> organisation even if they will not directly be doing any work on the project
                     </div>
-
-
-                {% endif %}
+                {% endif %}#}
 
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="titleName" id="titleNameLabel">Title</label>
+                    <label class="govuk-label govuk-label--s" for="titleName" id="titleNameLabel">Title (optional)</label>
                     <input class="govuk-input govuk-input--width-20" id="titleName" type="text" name="titleName" value="{{orgs2SessionData.titleName }}">
                 </div>
 
