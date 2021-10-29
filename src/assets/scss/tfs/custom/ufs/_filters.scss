@@ -39,8 +39,9 @@ $filterPadding: 5px;
     background-color: govuk-colour("light-grey");
     padding: $filterPadding;
     text-align: left;
-    margin-top:-1px;
+    /*margin-top:-1px;
     margin-left:-1px;
+    margin-right:-1px;*/
   }
 
   @include e('item') {

@@ -46,7 +46,32 @@
 
             {% call components.bulmaColumnAny(size='column is-full', customID='mainContent') %}
 
-                <p class="govuk-body">If you can't find a match, <a href="/prototypes/orgs2/organisation-search" class="govuk-link">try and search again</a> or <a href="/prototypes/orgs2/add-manually">enter organisation details manually</a>. </p>
+              {% if searchFail %}
+
+                    {% if orgs2SessionData.approved400Only %}
+                        <p class="govuk-body">
+                            There are no registered academic or research organisations that match your search term.
+                            You can <a href="/prototypes/orgs2/organisation-search" class="govuk-link">try and search again</a>.
+                        </p>
+                    {% else %}
+                        <p class="govuk-body">
+                            There are no organisations that match your search term.
+                            You can <a href="/prototypes/orgs2/organisation-search" class="govuk-link">try and search again</a> or <a href="/prototypes/orgs2/add-manually">enter organisation details manually</a>.
+                        </p>
+                    {% endif %}
+
+                {% else %}
+
+                    {% if orgs2SessionData.approved400Only %}
+                        <p class="govuk-body">
+                            If your organisation has not been found, you can <a href="/prototypes/orgs2/organisation-search" class="govuk-link">try and search again</a>.
+                        </p>
+                    {% else %}
+                        <p class="govuk-body">If your organisation has not been found, you can <a href="/prototypes/orgs2/organisation-search" class="govuk-link">try and search again</a> or <a href="/prototypes/orgs2/add-manually">enter organisation details manually</a>.</p>
+                    {% endif %}
+
+                {%  endif %}
+
 
             {%- endcall %}
         {%- endcall %}
@@ -103,36 +128,41 @@
 
             {% call components.bulmaColumnAny(size='column is-9', customID='mainContent') %}
 
-                {% if searchFail %}
 
-                    {% if orgs2SessionData.approved400Only %}
-                        <p class="govuk-body">There are no registered academic or research organisations that match your search term.</p>
-                    {% else %}
-                        <p class="govuk-body">There are no organisations matching your search term.</p>
-                    {% endif %}
-
-                {% else %}
 
                     <table class="govuk-table">
 
                         <thead class="govuk-table__header">
-
                             <tr>
                                 <th class="govuk-table__header">{#{{ searchResultsText }}#}Organisation name and details</th>
                                 <th class="govuk-table__header--numeric"><span class="govuk-visually-hidden">Add organisation</span></th>
                             </tr>
                         </thead>
                         <tbody>
-                        {% for item in resultArray %}
+
+                        {% if searchFail %}
                             <tr class="">
-                                <td class="govuk-table__cell">{{ item }}</td>
-                                <td class="govuk-table__cell govuk-table__cell--numeric"><button type="submit" class="govuk-button govuk-button--link" name="organisation" value="{{ item }}">Select organisation</button> </td>
+                                <td class="govuk-table__cell" colspan="2">No results <results></results></td>
                             </tr>
-                        {% endfor %}
+
+                        {% else %}
+
+                            {% for item in resultArray %}
+                                <tr class="">
+                                    <td class="govuk-table__cell">{{ item }}</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric"><button type="submit" class="govuk-button govuk-button--link" name="organisation" value="{{ item }}">Select organisation</button> </td>
+                                </tr>
+                            {% endfor %}
+
+                        {%  endif %}
+
                         </tbody>
                     </table>
 
-                {% endif %}
+
+
+
+
             {%- endcall %}
         {%- endcall %}
 

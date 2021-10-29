@@ -447,9 +447,10 @@ function orgs2AddManuallyGet(req, res) {
 }
 
 function orgs2AddManuallyPost(req, res) {
-  const { organisation, countries, newOrgWebsite, wasManual } = req.body;
+  const { organisation, countries, newOrgWebsite, wasManual, city } = req.body;
 
   orgs2SessionData.organisation = organisation;
+  orgs2SessionData.city = city;
   orgs2SessionData.countries = countries;
   orgs2SessionData.newOrgWebsite = newOrgWebsite;
   orgs2SessionData.detailsAdded = true;

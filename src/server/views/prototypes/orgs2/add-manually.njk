@@ -60,6 +60,11 @@
                 </style>
 
                 <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="newOrg" id="city">Town or city</label>
+                    <input class="govuk-input govuk-input--width-20 " id="city" type="text" name="city" value="{{ orgs2SessionData.city }}">
+                </div>
+
+                <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="countries">Country</label>
                     <span class="govuk-hint">Start entering, then select the country</span>
                     <select name="countries" class="govuk-select control" id="countries">
