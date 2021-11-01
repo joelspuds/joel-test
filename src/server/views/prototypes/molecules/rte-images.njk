@@ -1,0 +1,68 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set pageTitle = 'RTE images' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set projectName = projectName if projectName %}
+{% set ethicalReasons = ethicalReasons if ethicalReasons %}
+{% set allEthicalAndSocietal = allEthicalAndSocietal if allEthicalAndSocietal %}
+{#{% set showTinyMCEScripts = true %}#}
+{% set backLinkContents =  [{url:'/prototypes/example-journey/application/', text:'Back to application'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='RTE images', caption=projectName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='formProjectTeam') %}
+
+
+        {% call components.bulmaRow(extraClass='u-space-b30') %}
+
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                <textarea class="form-control " name="ethicalNotes" id="ethicalNotes" rows="18"></textarea>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="application-controls govuk-clearfix">
+                    {{ components.button(text='Save and return', extraClass="application-controls__submit")}}
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+    {%- endcall %}
+
+<script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>
+      /*tinymce.init({
+          selector: 'textarea',
+          plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak powerpaste',
+          toolbar_mode: 'floating',
+      });*/
+      tinymce.init({
+          selector: 'textarea',
+          height: 400,
+          menubar: true,
+          plugins: [
+              'advlist autolink lists link image charmap print preview anchor',
+              'searchreplace visualblocks fullscreen',
+              'insertdatetime media table powerpaste hr code'
+          ],
+          toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code',
+          tinydrive_dropbox_app_key: 'socw0soabe8fvpv',
+          tinydrive_token_provider: '/prototypes/jwt',
+          powerpaste_allow_local_images: true,
+          powerpaste_word_import: 'prompt',
+          powerpaste_html_import: 'prompt',
+          content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+      });
+  </script>
+
+{% endblock %}
