@@ -4,11 +4,11 @@
 {% set applicationsLink = '#' %}
 {% set homeLink = '#' %}
 {% set reviewsLink = '#' %}
-{% set userName = 'Dr. Jonathan Doe' %}
+{% set userName = 'Dr. John  Doe' %}
 {% set hideAccountLinks = true %}
-{% set orgsSessionData = orgsSessionData if orgsSessionData %}
-{% if orgsSessionData.roles  %}
-    {% set captionTitle = 'New ' + orgsSessionData.roles %}
+{% set orgs3SessionData = orgs3SessionData if orgs3SessionData %}
+{% if orgs3SessionData.roles  %}
+    {% set captionTitle = 'New ' + orgs3SessionData.roles %}
 {% else %}
     {% set captionTitle = 'New person' %}
 {% endif %}
@@ -20,7 +20,7 @@
 {% set limitedOrgList = limitedOrgList if limitedOrgList %}
 
 {% set pageTitle = 'Applicant details' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/orgs/', text:'Back to Application'}] %}
+{% set backLinkContents =  [{url:'/prototypes/orgs3/', text:'Back to Application'}] %}
 
 {% block content %}
 
@@ -41,57 +41,61 @@
                     }
                 </style>
 
-                {#<p>orgsSessionData.roles = {{ orgsSessionData.roles }} </p>#}
+                {#<p>orgs3SessionData.roles = {{ orgs3SessionData.roles }} </p>#}
 
                 <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
                     <p class="govuk-body u-space-b5"><span class="govuk-label govuk-label--s">Role</span></p>
                     <p class="govuk-body u-space-b5" style="max-width: 41ex;">
-                        <span class="govuk-!-display-inline u-float-left">{{orgsSessionData.roles }}</span>
-                        <span class="govuk-!-display-inline u-float-right"><a href="/prototypes/orgs/select-role" class="govuk-link u-align-right">Change <span class="govuk-visually-hidden">role</span></a></span>
+                        <span class="govuk-!-display-inline u-float-left">{{orgs3SessionData.roles }} {% if orgs3SessionData.otherRole %} - {{ orgs3SessionData.otherRole }}{% endif %}</span>
+                        <span class="govuk-!-display-inline u-float-right"><a href="/prototypes/orgs3/select-role" class="govuk-link u-align-right">Change <span class="govuk-visually-hidden">role</span></a></span>
                     </p>
 
                 </div>
 
+                {#{% if orgs3SessionData.collectNoName === true %}
+                    <div class="govuk-inset-text">
+                        Enter the details of the contact within the <strong>{{orgs3SessionData.roles }}</strong> organisation even if they will not directly be doing any work on the project
+                    </div>
+                {% endif %}#}
 
+                {#<div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="titleName" id="titleNameLabel">Title (optional)</label>
+                    <input class="govuk-input govuk-input--width-20" id="titleName" type="text" name="titleName" value="{{orgs3SessionData.titleName }}">
+                </div> #}
                 <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
                     <label class="govuk-label govuk-label--s" for="firstName" id="firstNameLabel">First name
-                        {% if firstNameError %}
-                            <span class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> You must enter a first name
-                            </span>
-                        {% endif %}
+
                     </label>
-                    <input class="govuk-input govuk-input--width-20" id="firstName" type="text" name="firstName" value="{{orgsSessionData.firstName }}">
+                    <input class="govuk-input govuk-input--width-20" id="firstName" type="text" name="firstName" value="{{orgs3SessionData.firstName }}">
                 </div>
 
                 <div class="govuk-form-group {% if lastNameError %}govuk-form-group--error{% endif %}">
                     <label class="govuk-label govuk-label--s" for="lastName" id="lastNameLabel">Last name
-                        {% if lastNameError %}
-                            <span class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> You must enter a last name
-                            </span>
-                        {% endif %}
+
                     </label>
-                    <input class="govuk-input govuk-input--width-20 " id="lastName" type="text" name="lastName" value="{{orgsSessionData.lastName }}">
+                    <input class="govuk-input govuk-input--width-20 " id="lastName" type="text" name="lastName" value="{{orgs3SessionData.lastName }}">
                 </div>
+
+
 
                 <div class="govuk-form-group {% if signinError %} govuk-form-group--error{% endif %}">
                     <label class="govuk-label govuk-label--s" for="email" id="emailAddressInput">Email address</label>
-                    <input class="govuk-input {% if signinError %} govuk-input--error{% endif %} govuk-input--width-20" id="email" name="email" type="text" value="{{orgsSessionData.email }}">
+                    <input class="govuk-input {% if signinError %} govuk-input--error{% endif %} govuk-input--width-20" id="email" name="email" type="text" value="{{orgs3SessionData.email }}">
                 </div>
 
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="organisation">Organisation</label>
 
-                    {% if orgsSessionData.organisation %}
-                        <input type="input" class="govuk-input govuk-input--width-20" name="organisation2" value="{{ orgsSessionData.organisation }}" disabled>
-                        <input type="hidden" name="organisation" value="{{ orgsSessionData.organisation }}">
+                    {#{% if orgs3SessionData.organisation %}
+                        <input type="input" class="govuk-input govuk-input--width-20" name="organisation2" value="{{ orgs3SessionData.organisation }}" disabled>
+                        <input type="hidden" name="organisation" value="{{ orgs3SessionData.organisation }}">
 
-                        {% if orgsSessionData.wasManual %}
+                        #}{#{% if orgs3SessionData.wasManual %}
                             <p class="govuk-body u-space-t10">Made a mistake? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="manual">Edit organisation</button></p>
                         {% else %}
                             <p class="govuk-body u-space-t10">Still not right? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="true">Search again</button></p>
-                        {% endif %}
+                        {% endif %}#}{#
+                        <p class="govuk-body u-space-t10">Still not right? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="manual">Search again</button></p>
                     {% else %}
 
                         <span class="govuk-hint">Start entering, then select the organisation's name</span>
@@ -101,11 +105,22 @@
                                 <option value="{{ item.n }}">{{ item.n }}</option>
                             {% endfor %}
                         </select>
-                        {% if orgsSessionData.roles != 'Principal investigator' %}
-                            <p class="govuk-body {#govuk-!-font-size-16#} u-space-t10">No results? Try a wider <button type="submit" class="govuk-button govuk-button--link {#govuk-!-font-size-16#}" name="widerSearch" value="search">organisation search</button></p>
-                        {% endif %}
+                        #}{#{% if orgs3SessionData.roles != 'Project lead' %}
+                            <p class="govuk-body #}{##}{#govuk-!-font-size-16#}{##}{# u-space-t10">No results? Try a wider <button type="submit" class="govuk-button govuk-button--link #}{##}{#govuk-!-font-size-16#}{##}{#" name="widerSearch" value="search">organisation search</button></p>
+                        {% endif %}#}{#
 
 
+                    {% endif %}#}
+
+                    <input type="input" class="govuk-input govuk-input--width-20" name="organisation2" value="{{ orgs3SessionData.organisation }}" disabled>
+                    <input type="hidden" name="organisation" value="{{ orgs3SessionData.organisation }}">
+                    {#<p class="govuk-body u-space-t10">Still not right? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="true">Search again</button></p>#}
+
+
+                    {% if orgs3SessionData.wasManual %}
+                    <p class="govuk-body u-space-t10">Made a mistake? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="manual">Edit organisation</button></p>
+                    {% else %}
+                        <p class="govuk-body u-space-t10">Still not right? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="true">Search again</button></p>
                     {% endif %}
 
 
@@ -121,7 +136,7 @@
 
                 <div class="application-controls govuk-clearfix">
                     <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Add applicant</button>
-                    <a href="/prototypes/orgs/applicants" class="govuk-link application-controls__cancel">Return to applicants</a>
+                    <a href="/prototypes/orgs3/applicants" class="govuk-link application-controls__cancel">Return to applicants</a>
                 </div>
 
             {%- endcall %}

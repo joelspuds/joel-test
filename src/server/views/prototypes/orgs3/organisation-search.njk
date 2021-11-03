@@ -1,0 +1,85 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set userName = 'Dr. John  Doe' %}
+{% set hideAccountLinks = true %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set orgs3SessionData = orgs3SessionData if orgs3SessionData %}
+
+{#{% if orgs3SessionData.firstName  %}
+    {% set displayTitle = 'Enter ' + orgs3SessionData.firstName + ' ' +  orgs3SessionData.lastName + '\'s organisation name' %}
+{% else %}
+    {% set displayTitle = 'Enter new person\'s organisation name' %}
+{% endif %}#}
+
+{% if orgs3SessionData.roles  %}
+    {% set captionTitle = 'New ' + orgs3SessionData.roles %}
+{% else %}
+    {% set captionTitle = 'New person' %}
+{% endif %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Find co-applicant\'s organisation' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/orgs3/applicants', text:'Back to Applicants'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Organisation search', caption=captionTitle) }}
+        {%- endcall %}
+    {%- endcall %}
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-half', customID='mainContent') %}
+
+                {% if orgs3SessionData.approved400Only === true %}
+                    <div class="govuk-inset-text">
+                        As you've selected <strong>{{orgs3SessionData.roles }}</strong>, you can only search registered, UK-based academic and research organisations.
+                    </div>
+                {% endif %}
+
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-visually-hidden">Find organisation</legend>
+
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="searchTerm">{#  [{ displayTitle }}#} Search for their organisation, company or other eligible entity</label>
+                        <input class="govuk-input" id="searchTerm" name="searchTerm" type="text">
+                    </div>
+                </fieldset>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='__u-space-t20') %}
+
+                <div class="application-controls govuk-clearfix">
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Search</button>
+                    <a href="/prototypes/orgs3/select-role" class="govuk-link application-controls__cancel">Return to Select role</a>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+    </script>
+{% endblock %}
+

@@ -1,0 +1,187 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set userName = 'Dr. John  Doe' %}
+{% set hideAccountLinks = true %}
+{% set orgs3SessionData = orgs3SessionData if orgs3SessionData %}
+{% if orgs3SessionData.roles  %}
+    {% set captionTitle = 'New Student'  %}
+{% else %}
+    {% set captionTitle = 'New person' %}
+{% endif %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set limitedOrgList = limitedOrgList if limitedOrgList %}
+
+{% set pageTitle = 'Applicant details' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/orgs3/', text:'Back to Application'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Applicant details', caption='New Student') }}
+        {%- endcall %}
+    {%- endcall %}
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <style>
+                    .autocomplete__wrapper {
+                        max-width: 500px;
+                    }
+                </style>
+
+                <div class="govuk-form-group">
+                    <p class="govuk-body u-space-b5"><span class="govuk-label govuk-label--s">Role</span></p>
+                    <p class="govuk-body u-space-b5" style="max-width: 41ex;">
+                        <span class="govuk-!-display-inline u-float-left">Student</span>
+                        <span class="govuk-!-display-inline u-float-right"><a href="#" class="govuk-link u-align-right">Change <span class="govuk-visually-hidden">role</span></a></span>
+                    </p>
+                </div>
+
+                <div class="govuk-form-group">
+                    <p class="govuk-body u-space-b5"><span class="govuk-label govuk-label--s">Organisation</span></p>
+                    <p class="govuk-body u-space-b5" style="max-width: 41ex;">
+                        <span class="govuk-!-display-inline u-float-left">University of Bath</span>
+                        <span class="govuk-!-display-inline u-float-right"><a href="#" class="govuk-link u-align-right">Change <span class="govuk-visually-hidden">organisation</span></a></span>
+                    </p>
+                </div>
+
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="roles-hint">
+                        <legend class="govuk-fieldset__legend">
+                            Do you want to add a named individual for the new <strong>Student</strong> role?
+                        </legend>
+                        <div id="" class="govuk-hint">
+                            You can add unnamed individuals if you do not know who will perform the role if your application is successful. You can also add the name of a contact at, for example, a commercial organisation, even if they will not actively be taking part in the project.
+                        </div>
+                        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="detailsYes" name="optionalDetails" type="radio" value="detailsYes"  data-aria-controls="conditional-yes">
+                                <label class="govuk-label govuk-radios__label" for="detailsYes" >Yes</label>
+                            </div>
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-label--s" for="titleName" id="titleNameLabel">Title (optional)</label>
+                                    <input class="govuk-input govuk-input--width-20" id="titleName" type="text" name="titleName" value="{{orgs3SessionData.titleName }}">
+                                </div>
+
+                                <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
+                                    <label class="govuk-label govuk-label--s" for="firstName" id="firstNameLabel">First name
+
+                                    </label>
+                                    <input class="govuk-input govuk-input--width-20" id="firstName" type="text" name="firstName" value="{{orgs3SessionData.firstName }}">
+                                </div>
+
+                                <div class="govuk-form-group {% if lastNameError %}govuk-form-group--error{% endif %}">
+                                    <label class="govuk-label govuk-label--s" for="lastName" id="lastNameLabel">Last name
+
+                                    </label>
+                                    <input class="govuk-input govuk-input--width-20 " id="lastName" type="text" name="lastName" value="{{orgs3SessionData.lastName }}">
+                                </div>
+                                <div class="govuk-form-group {% if signinError %} govuk-form-group--error{% endif %}">
+                                    <label class="govuk-label govuk-label--s" for="email" id="emailAddressInput">Email address</label>
+                                    <input class="govuk-input {% if signinError %} govuk-input--error{% endif %} govuk-input--width-20" id="email" name="email" type="text" value="{{orgs3SessionData.email }}">
+                                </div>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="detailsNo" name="optionalDetails" type="radio" value="detailsNo" data-aria-controls="_conditional-no">
+                                <label class="govuk-label govuk-radios__label" for="detailsNo">No</label>
+                            </div>
+                            {#<div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-no">
+                                <p class="govuk-body">no details</p>
+                            </div>#}
+                        </div>
+                    </fieldset>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {#<div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="organisation">Organisation</label>
+
+                    <input type="input" class="govuk-input govuk-input--width-20" name="organisation2" value="University of Bath" disabled>
+                    <input type="hidden" name="organisation" value="{{ orgs3SessionData.organisation }}">
+                    #}{#<p class="govuk-body u-space-t10">Still not right? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="true">Search again</button></p>#}{#
+
+                    {% if orgs3SessionData.wasManual %}
+                    <p class="govuk-body u-space-t10">Made a mistake? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="manual">Edit organisation</button></p>
+                    {% else %}
+                        <p class="govuk-body u-space-t10">Still not right? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="true">Search again</button></p>
+                    {% endif %}
+
+                </div>#}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <div class="application-controls govuk-clearfix">
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Add applicant</button>
+                    <a href="/prototypes/orgs3/applicants" class="govuk-link application-controls__cancel">Return to applicants</a>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        var selectEl = document.querySelector('#organisation');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 1,
+            selectElement: selectEl
+        });
+    </script>
+{% endblock %}
+

@@ -6,7 +6,7 @@
 {% set reviewsLink = '#' %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
-{% set orgs2SessionData = orgs2SessionData if orgs2SessionData %}
+{% set orgs3SessionData = orgs3SessionData if orgs3SessionData %}
 {% set journeyConfig = journeyConfig if journeyConfig %}
 
 {% set isAdminUser = false %}
@@ -14,7 +14,7 @@
 {% set hideAccountLinks = true %}
 {% set userName = 'Dr. John  Doe' %}
 {% set pageTitle = 'Select role' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/orgs2/', text:'Back to Applicants'}] %}
+{% set backLinkContents =  [{url:'/prototypes/orgs3/', text:'Back to Applicants'}] %}
 
 {% block content %}
 
@@ -48,45 +48,45 @@
                             #}
 
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles1" name="roles" type="radio" value="Project lead" {% if orgs2SessionData.roles == 'Project lead' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles1" name="roles" type="radio" value="Project lead" {% if orgs3SessionData.roles == 'Project lead' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles1" >Project lead</label>
                             </div>
 
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles2" name="roles" type="radio" value="Co-lead" {% if orgs2SessionData.roles == 'Co-lead' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles2" name="roles" type="radio" value="Co-lead" {% if orgs3SessionData.roles == 'Co-lead' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles2">Co-lead</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles3" name="roles" type="radio" value="Fellow" {% if orgs2SessionData.roles == 'Fellow' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles3" name="roles" type="radio" value="Fellow" {% if orgs3SessionData.roles == 'Fellow' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles3">Fellow</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles4" name="roles" type="radio" value="Team Grant Manager" {% if orgs2SessionData.roles == '●	Team Grant Manager' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles4" name="roles" type="radio" value="Team Grant Manager" {% if orgs3SessionData.roles == '●	Team Grant Manager' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles4">Team Grant Manager</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles5" name="roles" type="radio" value="Technician" {% if orgs2SessionData.roles == 'Team R&amp;I Associate' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles5" name="roles" type="radio" value="Technician" {% if orgs3SessionData.roles == 'Team R&amp;I Associate' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles5">Team R&amp;I Associate</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles6" name="roles" type="radio" value="Visiting Researcher" {% if orgs2SessionData.roles == 'Visiting Researcher' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles6" name="roles" type="radio" value="Visiting Researcher" {% if orgs3SessionData.roles == 'Visiting Researcher' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles6">Visiting Researcher</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles7" name="roles" type="radio" value="Specialist Team Technology/Skills Associate" {% if orgs2SessionData.roles == 'Specialist Team Technology/Skills Associate' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles7" name="roles" type="radio" value="Specialist Team Technology/Skills Associate" {% if orgs3SessionData.roles == 'Specialist Team Technology/Skills Associate' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles7">Specialist Team Technology/Skills Associate</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles8" name="roles" type="radio" value="Technician" {% if orgs2SessionData.roles == 'Technician' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles8" name="roles" type="radio" value="Technician" {% if orgs3SessionData.roles == 'Technician' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles8">Technician</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles9" name="roles" type="radio" value="Student" {% if orgs2SessionData.roles == 'Student' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles9" name="roles" type="radio" value="Student" {% if orgs3SessionData.roles == 'Student' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles9">Student</label>
                             </div>
 
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles10" name="roles" type="radio" value="Team Project Partner" {% if orgs2SessionData.roles == 'Team Project Partner' %} checked {% endif %} data-aria-controls="_conditional-1">
+                                <input class="govuk-radios__input" id="roles10" name="roles" type="radio" value="Team Project Partner" {% if orgs3SessionData.roles == 'Team Project Partner' %} checked {% endif %} data-aria-controls="_conditional-1">
                                 <label class="govuk-label govuk-radios__label" for="roles10">Team Project Partner</label>
                             </div>
                             {#<div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-1">
@@ -97,7 +97,7 @@
                             </div>#}
 
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles11" name="roles" type="radio" value="Project Subcontractor" {% if orgs2SessionData.roles == 'Project Subcontractor' %} checked {% endif %} data-aria-controls="_conditional-2">
+                                <input class="govuk-radios__input" id="roles11" name="roles" type="radio" value="Project Subcontractor" {% if orgs3SessionData.roles == 'Project Subcontractor' %} checked {% endif %} data-aria-controls="_conditional-2">
                                 <label class="govuk-label govuk-radios__label" for="roles11">Project Subcontractor</label>
                             </div>
                             {#<div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-2">
@@ -108,13 +108,13 @@
                             </div>#}
 
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles12" name="roles" type="radio" value="Other" {% if orgs2SessionData.roles == 'Other' %} checked {% endif %} data-aria-controls="conditional-3">
+                                <input class="govuk-radios__input" id="roles12" name="roles" type="radio" value="Other" {% if orgs3SessionData.roles == 'Other' %} checked {% endif %} data-aria-controls="conditional-3">
                                 <label class="govuk-label govuk-radios__label" for="roles12">Other</label>
                             </div>
                             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-3">
                                 <div class="govuk-form-group">
                                     <label class="govuk-label" for="otherRole">Enter their role</label>
-                                    <input class="govuk-input govuk-!-width-one-third" id="otherRole" name="otherRole" type="text" spellcheck="false" value="{{ orgs2SessionData.otherRole }}">
+                                    <input class="govuk-input govuk-!-width-one-third" id="otherRole" name="otherRole" type="text" spellcheck="false" value="{{ orgs3SessionData.otherRole }}">
                                 </div>
                             </div>
 
@@ -125,44 +125,59 @@
                             *     SIMPLER OLD STUFF
                             *
                             #}
+                            {{ components.captionHeading(text='Lead roles', size='m', tag='h2') }}
+                            <p class="govuk-body">
+                                These roles must have a named person associated with them, from an approved UK-based academic or research organisation.
+                            </p>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles1" name="roles" type="radio" value="Principal investigator" {% if orgs2SessionData.roles == 'Principal investigator' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles1" name="roles" type="radio" value="Principal investigator" {% if orgs3SessionData.roles == 'Principal investigator' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles1" >Principal investigator</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles2" name="roles" type="radio" value="Co-investigator" {% if orgs2SessionData.roles == 'Co-investigator' %} checked {% endif %}>
-                                <label class="govuk-label govuk-radios__label" for="roles2">Co-investigator</label>
-                            </div>
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles3" name="roles" type="radio" value="Fellow" {% if orgs2SessionData.roles == 'Fellow' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles3" name="roles" type="radio" value="Fellow" {% if orgs3SessionData.roles == 'Fellow' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles3">Fellow</label>
                             </div>
+
+                            {{ components.captionHeading(text='Co-lead role', size='m', tag='h2', extraClass='u-space-t20') }}
+                            <p class="govuk-body">
+                                This role must have a named person associated with them, but can come from any academic, research or commercial organisation.
+                            </p>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles4" name="roles" type="radio" value="Training grant holder" {% if orgs2SessionData.roles == 'Training grant holder' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles2" name="roles" type="radio" value="Co-investigator" {% if orgs3SessionData.roles == 'Co-investigator' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="roles2">Co-investigator</label>
+                            </div>
+
+                            {{ components.captionHeading(text='Other roles', size='m', tag='h2', extraClass='u-space-t20') }}
+                            <p class="govuk-body">
+                                These roles can optionally have a named person or contact associated with them, and can come from any academic, research or commercial organisation.
+                            </p>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="roles4" name="roles" type="radio" value="Training grant holder" {% if orgs3SessionData.roles == 'Training grant holder' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles4">Training grant holder</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles5" name="roles" type="radio" value="Programme manager" {% if orgs2SessionData.roles == 'Programme manager' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles5" name="roles" type="radio" value="Programme manager" {% if orgs3SessionData.roles == 'Programme manager' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles5">Programme manager</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles6" name="roles" type="radio" value="Researcher" {% if orgs2SessionData.roles == 'Researcher' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles6" name="roles" type="radio" value="Researcher" {% if orgs3SessionData.roles == 'Researcher' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles6">Researcher</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles7" name="roles" type="radio" value="Visiting Researcher" {% if orgs2SessionData.roles == 'Visiting Researcher' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles7" name="roles" type="radio" value="Visiting Researcher" {% if orgs3SessionData.roles == 'Visiting Researcher' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles7">Visiting Researcher</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles8" name="roles" type="radio" value="Technician" {% if orgs2SessionData.roles == 'Technician' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles8" name="roles" type="radio" value="Technician" {% if orgs3SessionData.roles == 'Technician' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles8">Technician</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles9" name="roles" type="radio" value="Student" {% if orgs2SessionData.roles == 'Student' %} checked {% endif %}>
+                                <input class="govuk-radios__input" id="roles9" name="roles" type="radio" value="Student" {% if orgs3SessionData.roles == 'Student' %} checked {% endif %}>
                                 <label class="govuk-label govuk-radios__label" for="roles9">Student</label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles10" name="roles" type="radio" value="Project partner/collaborator" {% if orgs2SessionData.roles == 'Project partner/collaborator' %} checked {% endif %} data-aria-controls="_conditional-1">
+                                <input class="govuk-radios__input" id="roles10" name="roles" type="radio" value="Project partner/collaborator" {% if orgs3SessionData.roles == 'Project partner/collaborator' %} checked {% endif %} data-aria-controls="_conditional-1">
                                 <label class="govuk-label govuk-radios__label" for="roles10">Project partner/collaborator</label>
                             </div>
                             {#<div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-1">
@@ -172,7 +187,7 @@
                                 </ul>
                             </div>#}
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles11" name="roles" type="radio" value="Subcontractor/collaborator" {% if orgs2SessionData.roles == 'Subcontractor/collaborator' %} checked {% endif %} data-aria-controls="_conditional-2">
+                                <input class="govuk-radios__input" id="roles11" name="roles" type="radio" value="Subcontractor/collaborator" {% if orgs3SessionData.roles == 'Subcontractor/collaborator' %} checked {% endif %} data-aria-controls="_conditional-2">
                                 <label class="govuk-label govuk-radios__label" for="roles11">Subcontractor/collaborator</label>
                             </div>
                            {# <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-2">
@@ -182,13 +197,13 @@
                                 </ul>
                             </div>#}
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="roles12" name="roles" type="radio" value="Other" {% if orgs2SessionData.roles == 'Other' %} checked {% endif %} data-aria-controls="conditional-3">
+                                <input class="govuk-radios__input" id="roles12" name="roles" type="radio" value="Other" {% if orgs3SessionData.roles == 'Other' %} checked {% endif %} data-aria-controls="conditional-3">
                                 <label class="govuk-label govuk-radios__label" for="roles12">Other</label>
                             </div>
                             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-3">
                                 <div class="govuk-form-group">
                                     <label class="govuk-label" for="otherRole">Enter their role</label>
-                                    <input class="govuk-input govuk-!-width-one-third" id="otherRole" name="otherRole" type="text" spellcheck="false" value="{{ orgs2SessionData.otherRole }}">
+                                    <input class="govuk-input govuk-!-width-one-third" id="otherRole" name="otherRole" type="text" spellcheck="false" value="{{ orgs3SessionData.otherRole }}">
                                 </div>
                             </div>
                             {% endif %}
@@ -206,7 +221,7 @@
 
                 <div class="application-controls govuk-clearfix">
                     <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Continue</button>
-                    <a href="/prototypes/orgs2/applicants" class="govuk-link application-controls__cancel">Return to applicants</a>
+                    <a href="/prototypes/orgs3/applicants" class="govuk-link application-controls__cancel">Return to applicants</a>
                 </div>
 
             {%- endcall %}

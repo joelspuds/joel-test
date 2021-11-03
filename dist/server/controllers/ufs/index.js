@@ -351,3 +351,15 @@ Object.keys(_orgs2Controller).forEach(function (key) {
     }
   });
 });
+
+var _orgs3Controller = require('./orgs3Controller');
+
+Object.keys(_orgs3Controller).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _orgs3Controller[key];
+    }
+  });
+});

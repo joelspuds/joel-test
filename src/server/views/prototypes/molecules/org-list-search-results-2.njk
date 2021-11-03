@@ -1,0 +1,252 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set userName = 'Dr. John  Doe' %}
+{% set hideAccountLinks = true %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'external' %}
+{% set isAdminUser = false %}
+{% set pageTitle = OPPORTUNITY_TITLE_TAG + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow(extraClass='') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Search results for \'Oxford\'', caption='Add new Principal investigator') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='', customID='main-content') %}
+
+
+        {% call components.bulmaColumnAny(size='is-9') %}
+
+
+
+            <p class="govuk-body">
+                If you can't find a match{#, <a href="#" class="govuk-link">enter organisation details manually</a> or#} <a href="#" class="govuk-link">try and search again</a>.
+            </p>
+
+        {%- endcall %}
+    {%- endcall %}
+
+
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-3') %}
+
+            <div class="{#govuk-related-items govuk-related-items--flush#} u-space-t15">
+
+                 <div class="filter">
+                    <h2 class="filter__title">Filter by country</h2>
+                    <span class="filter__toggle"></span>
+                    <ul class="filter__list u-clearfix ">
+                        <li class="filter__item filter__item--small ">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input " id="filterOne" type="checkbox" name="filterOne" value="one">
+                                <label for="filterOne" class="govuk-checkboxes__label u-display-ib">France</label>
+                            </div>
+                        </li>
+                        <li class="filter__item filter__item--small">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input " id="filterTwo" type="checkbox" name="filterTwo" value="two">
+                                <label for="filterTwo" class="govuk-checkboxes__label u-display-ib">Switzerland</label>
+                            </div>
+                        </li>
+                        <li class="filter__item filter__item--small ">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input " id="filterThree" type="checkbox" name="filterThree" value="one">
+                                <label for="filtfilterThreeerOne" class="govuk-checkboxes__label u-display-ib">UK</label>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div>
+                    {% call components.formGroup() %}
+                        {{ components.button(text='Apply filters', extraClass='')}}
+                    {%- endcall %}
+                </div>
+
+            </div>
+
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-9') %}
+
+            <div class="responsive-table">
+
+                {#<div class="govuk-inset-text  " style="">
+                    <span class=""> You cannot add some of the organisations in the search results because a <strong>Principal investigator</strong> must be associated with an approved UK-based academic organisation. You can <a href="#">change their role</a> to add non-approved organisations.</span>
+                </div>#}
+
+                <table class="govuk-table _mega-table responsive-table__table">
+                    <thead>
+                    <tr class="govuk-table__header">
+                        <th class="govuk-table__header">Organisation name and details</th>
+                        <th class="govuk-table__header"><span class="govuk-visually-hidden">Action</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="govuk-table__cell">
+                            <strong>There are no eligible organisations that match your search criteria</strong>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            {#<a href="#" class="govuk-link">Select organisation</a>#}&nbsp;
+                        </td>
+                    </tr>
+                    {#<tr>
+                        <td class="govuk-table__cell">
+                            <span class="govuk-!-display-block"><strong>University of Oxford</strong></span>
+                            <span class="meta">
+                                    #}{#Rämistrasse 101, 8092 #}{#Oxford, UK
+                                    #}{#<br>
+                                    <a href="#" class="govuk-link">www.ibm.ch</a>#}{#
+                                </span>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            <a href="#" class="govuk-link">Select organisation</a>
+                        </td>
+                    </tr>#}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="responsive-table">
+
+                <div class="govuk-inset-text " style="">
+                    <h2 class="govuk-heading-s">Ineligible organisations that match your search criteria</h2>
+                    You cannot add some of the organisations in the search results because a <strong>Principal investigator</strong> must be associated with an approved UK-based academic organisation. You can <a href="#">change their role</a> to add non-approved organisations.
+                </div>
+
+                <table class="govuk-table _mega-table responsive-table__table">
+                    <thead>
+                        <tr class="govuk-table__header">
+                            <th class="govuk-table__header">Organisation name and details</th>
+                            <th class="govuk-table__header"><span class="govuk-visually-hidden">Action</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr class="govuk-table__row--disabled">
+                            <td class="govuk-table__cell">
+                                <span class="govuk-!-display-block"><strong>Center for Nanotechnology, Oxford</strong></span>
+                                <span class="meta">
+                                        {#Rämistrasse 101, 8092 #}Oxford, UK
+                                        {#<br>
+                                        <a href="#" class="govuk-link">www.cpe.ch</a>#}
+                                    </span>
+                            </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                {#<a class="govuk-link govuk-link--disabled" disabled="disabled">Select organisation</a>#}
+                                <span class="meta govuk-!-font-size-16">&nbsp;</span>
+                            </td>
+                        </tr>
+                        <tr class="govuk-table__row--disabled">
+                            <td class="govuk-table__cell">
+                                <span class="govuk-!-display-block"><strong>Cromley Oxford Dynamics Limited</strong></span>
+                                <span class="meta">
+                                        {#Rämistrasse 101, 8092 #}Reading, UK
+                                        {#<br>
+                                        <a href="#" class="govuk-link">www.zurich-canton-health.ch</a>#}
+                                    </span>
+                            </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="meta govuk-!-font-size-16">&nbsp;</span>
+                            </td>
+                        </tr>
+                        <tr class="govuk-table__row--disabled">
+                            <td class="govuk-table__cell">
+                                <span class="govuk-!-display-block"><strong>Life Science Oxford, Zurich Office</strong></span>
+                                <span class="meta">
+                                    {#Rämistrasse 101, 8092 #}Zurich, Switzerland
+                                    {#<br>
+                                    <a href="#" class="govuk-link">www.life-science-zurish.ch</a>#}
+                                </span>
+                            </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="meta govuk-!-font-size-16">&nbsp;</span>
+                            </td>
+                        </tr>
+                        <tr class="govuk-table__row--disabled">
+                            <td class="govuk-table__cell">
+                                <span class="govuk-!-display-block"><strong>Oxford Zurich Hypermaterials Technology, Zurich</strong></span>
+                                <span class="meta">
+                                    {#Rämistrasse 101, 8092 #}Zurich, Switzerland
+                                    {#<br>
+                                    <a href="#" class="govuk-link">www.ethz.ch</a>#}
+                                </span>
+                            </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="meta govuk-!-font-size-16">&nbsp;</span>
+                            </td>
+                        </tr>
+                        <tr class="govuk-table__row--disabled">
+                            <td class="govuk-table__cell">
+                                <span class="govuk-!-display-block"><strong>Oxford Paris Plastics</strong></span>
+                                <span class="meta">
+                                    {#Rämistrasse 101, 8092 #}Paris, France
+                                    {#<br>
+                                    <a href="#" class="govuk-link">www.life-science-zurish.ch</a>#}
+                                </span>
+                            </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="meta govuk-!-font-size-16">&nbsp;</span>
+                            </td>
+                        </tr>
+                        <tr class="govuk-table__row--disabled">
+                            <td class="govuk-table__cell">
+                                <span class="govuk-!-display-block"><strong>Systems Research, Oxford</strong></span>
+                                <span class="meta">
+                                    {#Rämistrasse 101, 8092 #}Wallingford, UK
+                                    {#<br>
+                                    <a href="#" class="govuk-link">www.life-science-zurish.ch</a>#}
+                                </span>
+                            </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="meta govuk-!-font-size-16">&nbsp;</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    <script>
+      function toggleVisibility(_this, id, className) {
+        // event.preventDefault();
+        let toggleSwitch = _this;
+        let toggleItem = document.getElementById(id);
+        if (hasClass(toggleItem, className)) {
+          toggleSwitch.classList.add('filter__title--closed');
+          toggleItem.classList.remove(className);
+          toggleSwitch.setAttribute('aria-expanded', true);
+        }
+        else  {
+          toggleSwitch.classList.remove('filter__title--closed');
+          toggleItem.classList.add(className);
+          toggleSwitch.setAttribute('aria-expanded', false);
+        }
+        // return false;
+      }
+      function hasClass(target, className) {
+        return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+      }
+    </script>
+{% endblock %}

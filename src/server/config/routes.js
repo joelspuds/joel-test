@@ -609,6 +609,36 @@ router.post('/prototypes/orgs2/add-manually', demosController.orgs2AddManuallyPo
 
 /* *************************************************************** *
 
+  Organisations list VERSION 3
+
+* *************************************************************** */
+
+router.get('/prototypes/orgs3/config', demosController.orgs3ConfigGet);
+router.post('/prototypes/orgs3/config', demosController.orgs3ConfigPost);
+
+router.get('/prototypes/orgs3', demosController.orgs3IndexGet);
+router.post('/prototypes/orgs3', demosController.orgs3IndexPost);
+
+router.get('/prototypes/orgs3/applicants', demosController.orgs3ApplicantsGet);
+router.post('/prototypes/orgs3/applicants', demosController.orgs3ApplicantsPost);
+
+router.get('/prototypes/orgs3/select-role', demosController.orgs3SelectRoleGet);
+router.post('/prototypes/orgs3/select-role', demosController.orgs3SelectRolePost);
+
+router.get('/prototypes/orgs3/applicant-details', demosController.orgs3DetailsGet);
+router.post('/prototypes/orgs3/applicant-details', demosController.orgs3DetailsPost);
+
+router.get('/prototypes/orgs3/organisation-search', demosController.orgs3SearchGet);
+router.post('/prototypes/orgs3/organisation-search', demosController.orgs3SearchPost);
+
+router.get('/prototypes/orgs3/search-results', demosController.orgs3SearchResultsGet);
+router.post('/prototypes/orgs3/search-results', demosController.orgs3SearchResultsPost);
+
+router.get('/prototypes/orgs3/add-manually', demosController.orgs3AddManuallyGet);
+router.post('/prototypes/orgs3/add-manually', demosController.orgs3AddManuallyPost);
+
+/* *************************************************************** *
+
   Design section
 
 * *************************************************************** */

@@ -1,0 +1,190 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set userName = 'Dr. John  Doe' %}
+{% set hideAccountLinks = true %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set orgs3SessionData = orgs3SessionData if orgs3SessionData %}
+
+{% if orgs3SessionData.roles  %}
+    {% set captionTitle = 'New ' + orgs3SessionData.roles %}
+{% else %}
+    {% set captionTitle = 'New person' %}
+{% endif %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Search results' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/orgs3/organisation-search', text:'Back to find organisation'}] %}
+
+{% set resultArray = resultArray if resultArray %}
+{#{% set searchTerm = searchTerm if searchTerm %}#}
+{% set searchFail = searchFail if searchFail %}
+{% set searchResultsText = searchResultsNumber + ' results' if searchResultsNumber else '' %}
+
+{% if searchTerm  %}
+    {% set displayTitle = 'Search results for \'' + searchTerm + '\'' %}
+{% else %}
+    {% set displayTitle = 'Search results' %}
+{% endif %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text=displayTitle, caption=captionTitle) }}
+        {%- endcall %}
+    {%- endcall %}
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full', customID='mainContent') %}
+
+              {% if searchFail %}
+
+                    {% if orgs3SessionData.approved400Only %}
+                        <p class="govuk-body">
+                            There are no registered, UK-based academic or research organisations that match your search term.
+                            You can <a href="/prototypes/orgs3/organisation-search" class="govuk-link">try and search again</a>.
+                        </p>
+                    {% else %}
+                        <p class="govuk-body">
+                            There are no organisations that match your search term.
+                            You can <a href="/prototypes/orgs3/organisation-search" class="govuk-link">try and search again</a> or <a href="/prototypes/orgs3/add-manually">enter organisation details manually</a>.
+                        </p>
+                    {% endif %}
+
+                {% else %}
+
+                    {% if orgs3SessionData.approved400Only %}
+                        <p class="govuk-body">
+                            If your organisation has not been found, you can <a href="/prototypes/orgs3/organisation-search" class="govuk-link">try and search again</a>.
+                        </p>
+                    {% else %}
+                        <p class="govuk-body">If your organisation has not been found, you can <a href="/prototypes/orgs3/organisation-search" class="govuk-link">try and search again</a> or <a href="/prototypes/orgs3/add-manually">enter organisation details manually</a>.</p>
+                    {% endif %}
+
+                {%  endif %}
+
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-3', customID='mainContent') %}
+                <div class="_govuk-related-items govuk-related-items--flush">
+
+                {#{{ components.captionHeading(text='Filters and sorting', tag='h2', size='s') }}#}
+
+                    <div class="filter">
+                        <h2 class="filter__title">Filter by country</h2>
+
+                        {% if searchFail %}
+
+                            <span class="govuk-!-display-inline-block u-pad-10 meta">There are no relevant filters for this search</span>
+
+                        {% else %}
+
+                        <span class="filter__toggle"></span>
+                        <ul class="filter__list u-clearfix">
+                            <li class="filter__item filter__item--small">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="filterDraft" type="checkbox" name="filterDraft" value="draft">
+                                    <label for="filterDraft" class="govuk-checkboxes__label u-display-ib">UK</label>
+                                </div>
+                            </li>
+                            <li class="filter__item filter__item--small">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="filterReady" type="checkbox" name="filterReady" value="ready">
+                                    <label for="filterReady" class="govuk-checkboxes__label u-display-ib">France</label>
+                                </div>
+                            </li>
+                            <li class="filter__item filter__item--small">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="filterOpen" type="checkbox" name="filterOpen" value="open">
+                                    <label for="filterOpen" class="govuk-checkboxes__label u-display-ib">Germany</label>
+                                </div>
+                            </li>
+                            <li class="filter__item filter__item--small">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="filterPrePanel" type="checkbox" name="prePanel" value="prePanel">
+                                    <label for="filterPrePanel" class="govuk-checkboxes__label u-display-ib">Italy</label>
+                                </div>
+                            </li>
+                        </ul>
+
+                        {% endif %}
+                    </div>
+                </div>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-9', customID='mainContent') %}
+
+
+
+                    <table class="govuk-table">
+
+                        <thead class="govuk-table__header">
+                            <tr>
+                                <th class="govuk-table__header">{#{{ searchResultsText }}#}Organisation name and details</th>
+                                <th class="govuk-table__header--numeric"><span class="govuk-visually-hidden">Add organisation</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        {% if searchFail %}
+                            <tr class="">
+                                <td class="govuk-table__cell" colspan="2">No results</td>
+                            </tr>
+
+                        {% else %}
+
+                            {% for item in resultArray %}
+                                <tr class="">
+                                    <td class="govuk-table__cell">
+                                        <span class="govuk-!-display-block"><strong>{{ item }}</strong></span>
+                                        <span class="meta">[City], [Country]</span>
+                                    </td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric"><button type="submit" class="govuk-button govuk-button--link" name="organisation" value="{{ item }}">Select organisation</button> </td>
+                                </tr>
+                            {% endfor %}
+
+                        {%  endif %}
+
+                        </tbody>
+                    </table>
+
+
+
+
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {#{% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-half', customID='mainContent') %}
+
+              <p class="govuk-body"><a href="/prototypes/orgs3/organisation-search" class="govuk-link">Try and search again</a> </p>
+
+            {%- endcall %}
+        {%- endcall %}#}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+    </script>
+{% endblock %}
+
