@@ -35,11 +35,32 @@
 
 {% block content %}
 
+   {# {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+                <h2 class="govuk-error-summary__title" id="error-summary-title">
+                    There is a problem
+                </h2>
+                <div class="govuk-error-summary__body">
+                    <ul class="govuk-list govuk-error-summary__list">
+                        <li>
+                            <span class="govuk-error-message">You have searched for an organisation that cannot be assigned to this role. You must add an approved, UK-based academic or research organisation for the role of Principal investigator.
+                            <br>You can <a href="/prototypes/orgs3/organisation-search" class="govuk-link">try and search again</a>.
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}#}
+
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
             {{ components.captionHeading(text=displayTitle, caption=captionTitle) }}
         {%- endcall %}
     {%- endcall %}
+
     {% call components.form(action='#', method='POST',name='submitForm') %}
 
         {% call components.bulmaRow() %}
@@ -128,8 +149,6 @@
 
             {% call components.bulmaColumnAny(size='column is-9', customID='mainContent') %}
 
-
-
                     <table class="govuk-table">
 
                         <thead class="govuk-table__header">
@@ -161,6 +180,90 @@
 
                         </tbody>
                     </table>
+
+
+
+                {% if searchFail %}
+
+                    {% if orgs3SessionData.approved400Only %}
+
+                        <div class="responsive-table">
+
+                        <div class="govuk-inset-text " style="">
+                            <h2 class="govuk-heading-s">Ineligible organisations that match your search criteria </h2>
+                            You cannot add some of the organisations in the search results because a <strong>Principal investigator</strong> must be associated with an approved UK-based academic organisation. You can <a href="#">change their role</a> to add non-approved organisations.
+                        </div>
+
+                        <table class="govuk-table _mega-table responsive-table__table">
+                            <thead>
+                            <tr class="govuk-table__header">
+                                <th class="govuk-table__header">Organisation name and details</th>
+                                <th class="govuk-table__header"><span class="govuk-visually-hidden">Action</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr class="govuk-table__row--disabled">
+                                <td class="govuk-table__cell">
+                                    <span class="govuk-!-display-block"><strong>Center for Nanotechnology, Oxford</strong></span>
+                                    <span class="meta">Oxford, UK</span>
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">
+                                    <span class="meta govuk-!-font-size-16">&nbsp;</span>
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row--disabled">
+                                <td class="govuk-table__cell">
+                                    <span class="govuk-!-display-block"><strong>Cromley Oxford Dynamics Limited</strong></span>
+                                    <span class="meta">Reading, UK</span>
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">
+                                    <span class="meta govuk-!-font-size-16">&nbsp;</span>
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row--disabled">
+                                <td class="govuk-table__cell">
+                                    <span class="govuk-!-display-block"><strong>Life Science Oxford, Zurich Office</strong></span>
+                                    <span class="meta">Zurich, Switzerland</span>
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">
+                                    <span class="meta govuk-!-font-size-16">&nbsp;</span>
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row--disabled">
+                                <td class="govuk-table__cell">
+                                    <span class="govuk-!-display-block"><strong>Oxford Zurich Hypermaterials Technology, Zurich</strong></span>
+                                    <span class="meta">Zurich, Switzerland</span>
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">
+                                    <span class="meta govuk-!-font-size-16">&nbsp;</span>
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row--disabled">
+                                <td class="govuk-table__cell">
+                                    <span class="govuk-!-display-block"><strong>Oxford Paris Plastics</strong></span>
+                                    <span class="meta">Paris, France</span>
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">
+                                    <span class="meta govuk-!-font-size-16">&nbsp;</span>
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row--disabled">
+                                <td class="govuk-table__cell">
+                                    <span class="govuk-!-display-block"><strong>Systems Research, Oxford</strong></span>
+                                    <span class="meta">Wallingford, UK</span>
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">
+                                    <span class="meta govuk-!-font-size-16">&nbsp;</span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </div>
+
+                    {% endif %}
+
+                {% endif %}
 
 
 

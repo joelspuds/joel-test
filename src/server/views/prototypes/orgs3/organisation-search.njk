@@ -43,15 +43,23 @@
 
                 {% if orgs3SessionData.approved400Only === true %}
                     <div class="govuk-inset-text">
-                        As you've selected <strong>{{orgs3SessionData.roles }}</strong>, you can only search registered, UK-based academic and research organisations.
+                        As you've selected <strong>{{orgs3SessionData.roles }}</strong>, you can only search for a registered{#, UK-based academic and research#} organisation. This includes most UK-based universities and educational institutes, plus <a href="https://www.gov.uk/government/publications/ukri-endorsement-employing-or-hosting-institutions-global-talent-visa/ukri-list-of-approved-research-organisations" target="_blank">approved research organisations</a>.
                     </div>
+
+                    {#<div class="govuk-warning-text">
+                        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                        <strong class="govuk-warning-text__text">
+                            <span class="govuk-warning-text__assistive">Warning</span>
+                            As you've selected <strong>{{orgs3SessionData.roles }}</strong>, you can only search registered, UK-based academic and research organisations.
+                        </strong>
+                    </div>#}
                 {% endif %}
 
                 <fieldset class="govuk-fieldset">
                     <legend class="govuk-fieldset__legend govuk-visually-hidden">Find organisation</legend>
 
                     <div class="govuk-form-group">
-                        <label class="govuk-label govuk-label--s" for="searchTerm">{#  [{ displayTitle }}#} Search for their organisation, company or other eligible entity</label>
+                        <label class="govuk-label govuk-label--s" for="searchTerm">{#  [{ displayTitle }}#} Search for their organisation, company or other eligible entity </label>
                         <input class="govuk-input" id="searchTerm" name="searchTerm" type="text">
                     </div>
                 </fieldset>

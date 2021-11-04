@@ -6,7 +6,7 @@
 
 {% set newHeader = true %}
 
-{% set pageTitle = 'File upload; external, simple' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'File upload; external, complex' + GLOBAL_TAG_TITLE_SUFFIX %}
 
 {% block content %}
 
@@ -16,7 +16,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
-            {{ components.captionHeading(text='CV', caption='Title of application') }}
+            {{ components.captionHeading(text='Finance documents', caption='Title of application') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -27,7 +27,7 @@
             {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="textarea1">Write your content here</label>
-                    <span id="more-detail-hint" class="govuk-hint ">Use this text area to give a brief description of the document your are uploading and further details you might think are relevant or important.</span>
+                    <span id="more-detail-hint" class="govuk-hint ">Use this text area to give a brief description of the files your are uploading and any further details you might think are relevant or important.</span>
 
                     <textarea class="govuk-textarea govuk-js-character-count" name="textarea1" id="textarea1" rows="18"></textarea>
                     <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message govuk-visually-hidden" aria-live="polite">You have 250 words remaining</span></p>
@@ -48,20 +48,16 @@
                         <span class="govuk-details__summary-text">Guidance for file upload</span>
                     </summary>
                     <div class="govuk-details__text">
-                        <p class="govuk-body">Include all the academic institutions for whom you have carried out research. Start with the most recent; describe what you did and how you did it, providing any interesting outcomes. You should set this out in the same way you might set out a CV.</p>
-
-                        <p class="govuk-body">The assessors are particularly looking for:</p>
-                        <ul class="govuk-list govuk-list--bullet">
-                            <li>a breadth of research interest</li>
-                            <li>high standards of scholarship.</li>
-                        </ul>
+                        <p class="govuk-body">You must upload a spreadsheet containing all the financial details for your project. Include direct and indirect costs and projections for all the roles, equipment, and support you require. You may upload up to three documents.</p>
 
                         {{ components.captionHeading(text='Accepted document types', tag='h3', size='s') }}
                         <ul class="govuk-list govuk-list--bullet">
                             <li>PDF (.pdf)</li>
+                            <li>Text document (.doc, .docx, .odt, .words)</li>
+                            <li>Spreadsheet (.xls, .xlsx, .ods or .numbers)</li>
                         </ul>
 
-                        <p class="govuk-body">Each document must be less than 20MB</p>
+                        <p class="govuk-body">Each document must be less than 8MB</p>
 
                     </div>
                 </details>
@@ -73,10 +69,30 @@
         {% call components.bulmaRow(extraClass='') %}
 
             {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
-
-                <div class="govuk-form-group">
-                    <label class="govuk-label" for="file-upload-1">Upload a file</label>
-                    <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+                <noscript>
+                    <div class="files">
+                        <div class="files__item">
+                            <div class="govuk-form-group u-space-b0">
+                                <label class="govuk-label" for="file1">Upload file 1</label>
+                                <input class="govuk-file-upload" id="file1" name="file1" type="file">
+                            </div>
+                        </div>
+                        <div class="files__item">
+                            <div class="govuk-form-group u-space-b0">
+                                <label class="govuk-label" for="file1">Upload file 2</label>
+                                <input class="govuk-file-upload" id="file2" name="file2" type="file">
+                            </div>
+                        </div>
+                        <div class="files__item">
+                            <div class="govuk-form-group u-space-b0">
+                                <label class="govuk-label" for="file3">Upload file 3</label>
+                                <input class="govuk-file-upload" id="file3" name="file3" type="file">
+                            </div>
+                        </div>
+                    </div>
+                </noscript>
+                <div class="js-only">
+                    qfdweff
                 </div>
             {%- endcall %}
         {%- endcall %}
@@ -165,6 +181,35 @@
             ],
             menubar: false,
         });
+    </script>
+
+    <script>
+        window.onload = function () {
+            let fileUpload = document.getElementById('fileUpload3');
+            let filePath = document.getElementById('spanFilePath');
+            let button = document.getElementById('jsUploadButton');
+            button.onclick = function () {
+                fileUpload.click();
+            };
+            fileUpload.onchange = function () {
+                console.log(fileUpload.value);
+                let fileList = document.getElementById('fileUpload3').files;
+                // console.log('fileList = ' + fileList);
+                // console.log(fileList);
+                let fileName = '';
+                for(let i=0; i < fileList.length; i++) {
+                    console.log('fileList[' + i + '] =' + fileList[i].name);
+                    if ( fileList.length - i !== 1) {
+                        fileName += fileList[i].name + ', ';
+                    } else {
+                        fileName += fileList[i].name;
+                    }
+
+                }
+                // let fileName = fileUpload.value.split('\\')[fileUpload.value.split('\\').length - 1];
+                filePath.innerHTML = "<!--<b>Selected File: </b>-->" + fileName;
+            };
+        };
     </script>
 
 {% endblock %}

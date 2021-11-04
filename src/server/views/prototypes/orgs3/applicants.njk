@@ -117,7 +117,12 @@
 
             {% call components.bulmaColumnAny(size='is-9', extraClass='u-space-t20') %}
 
-                <p class="govuk-body">Add details of who will be leading, supporting, taking part in or contributing to your proposed project</p>
+               {# <p class="govuk-body">Add details of who will be leading, supporting, taking part in or contributing to your proposed project. </p>#}
+                <p class="govuk-body">
+                    {#Tell us who will be contributing to this application.#}
+                    You should only add people who will be contributing to this application.
+                </p>
+
 
                 <p class="govuk-body">
                     <a class="govuk-button govuk-button--secondary" href="/prototypes/orgs3/select-role">Add applicant</a>
