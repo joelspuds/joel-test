@@ -4,7 +4,7 @@
 {% set applicationsLink = '#' %}
 {% set homeLink = '#' %}
 {% set reviewsLink = '#' %}
-{% set userName = 'Dr. John  Doe' %}
+{% set userName = 'John  Doe' %}
 {% set hideAccountLinks = true %}
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
@@ -43,7 +43,8 @@
 
                 {% if orgs3SessionData.approved400Only === true %}
                     <div class="govuk-inset-text">
-                        As you've selected <strong>{{orgs3SessionData.roles }}</strong>, you can only search for a registered{#, UK-based academic and research#} organisation. This includes most UK-based universities and educational institutes, plus <a href="https://www.gov.uk/government/publications/ukri-endorsement-employing-or-hosting-institutions-global-talent-visa/ukri-list-of-approved-research-organisations" target="_blank">approved research organisations</a>.
+                        {#As you've selected <strong>{{orgs3SessionData.roles }}</strong>, you can only search for a registered#}{#, UK-based academic and research#}{# organisation. This includes most UK-based universities and educational institutes, plus <a href="https://www.gov.uk/government/publications/ukri-endorsement-employing-or-hosting-institutions-global-talent-visa/ukri-list-of-approved-research-organisations" target="_blank">approved research organisations</a>.#}
+                        As you've selected <strong>{{orgs3SessionData.roles }}</strong>, you can only search registered academic and research organisations.
                     </div>
 
                     {#<div class="govuk-warning-text">

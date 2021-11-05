@@ -12,7 +12,7 @@
 {% set isAdminUser = false %}
 {%  set loggedOut = false %}
 {% set hideAccountLinks = true %}
-{% set userName = 'Dr. John  Doe' %}
+{% set userName = 'John  Doe' %}
 {% set pageTitle = 'Select role' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/orgs3/', text:'Back to Applicants'}] %}
 
@@ -127,7 +127,7 @@
                             #}
                             {{ components.captionHeading(text='Lead roles', size='m', tag='h2') }}
                             <p class="govuk-body">
-                                These roles must have a named person associated with them, from an approved UK-based academic or research organisation.
+                                These roles must have a named person associated with them, from a register academic or research organisation.
                             </p>
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="roles1" name="roles" type="radio" value="Principal investigator" {% if orgs3SessionData.roles == 'Principal investigator' %} checked {% endif %}>
