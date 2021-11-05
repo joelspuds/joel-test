@@ -48,12 +48,13 @@
                     </div>
                     <div class="govuk-notification-banner__content">
                         <h3 class="govuk-notification-banner__heading">
+                            You've added
                             {% if userTwoV3.firstName !== '-' %}
                             {{ userTwoV3.titleName }} {{ userTwoV3.firstName }} {{ userTwoV3.lastName }}
                             {% else %}
                                {{ userTwoV3.roles }}
                             {%  endif %}
-                            has been added to the project.</h3>
+                            to this application.</h3>
                     </div>
                 </div>
             {%- endcall %}
@@ -70,12 +71,13 @@
                     <div class="govuk-notification-banner__content">
                         <h3 class="govuk-notification-banner__heading">
                             {#{{ userThreeV3.firstName }} {{ userThreeV3.lastName }}#}
+                            You've added
                             {% if userThreeV3.firstName !== '-' %}
                                 {{ userThreeV3.titleName }} {{ userThreeV3.firstName }} {{ userThreeV3.lastName }}
                             {% else %}
                                 {{ userThreeV3.roles }}
                             {%  endif %}
-                            has been added to the project.</h3>
+                           to this application.</h3>
                     </div>
                 </div>
             {%- endcall %}
@@ -92,12 +94,13 @@
                     <div class="govuk-notification-banner__content">
                         <h3 class="govuk-notification-banner__heading">
                             {#{{ userFourV3.firstName }} {{ userFourV3.lastName }}#}
+                            You've added
                             {% if userFourV3.firstName !== '-' %}
                                 {{ userFourV3.titleName }} {{ userFourV3.firstName }} {{ userFourV3.lastName }}
                             {% else %}
                                 {{ userFourV3.roles }}
                             {%  endif %}
-                            has been added to the project.
+                            to this application.
                         </h3>
                     </div>
                 </div>
@@ -121,6 +124,7 @@
                 <p class="govuk-body">
                     {#Tell us who will be contributing to this application.#}
                     You should only add people who will be contributing to this application.
+                    {#Add the co-researchers who will make significant contributions to your proposal, if this application is successful. You should seek permission to share their details with UKRI.#}
                 </p>
 
 
@@ -152,7 +156,7 @@
                             <td class="govuk-table__cell">jdoe@cardiffuniversity.ac.uk</td>
                             <td class="govuk-table__cell">Lead applicant</td>
                             <td class="govuk-table__cell">Cardiff University</td>
-                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Remove</a></td>
+                            <td class="govuk-table__cell u-align-right"><a href="#" class="govuk-link">Remove</a></td>
                         </tr>
                     {% if userOneV3.firstName %}
                         <tr class="govuk-table__row">
@@ -198,7 +202,7 @@
                             <td class="govuk-table__cell">
                                 {{ userTwoV3.organisation }}
                             </td>
-                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Remove</a></td>
+                            <td class="govuk-table__cell u-align-right"><a href="#" class="govuk-link">Remove</a></td>
                         </tr>
                     {% endif %}
                     {% if userThreeV3.firstName %}
@@ -209,7 +213,7 @@
                             <td class="govuk-table__cell">
                                 {{ userThreeV3.organisation }}
                             </td>
-                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Remove</a></td>
+                            <td class="govuk-table__cell u-align-right"><a href="#" class="govuk-link">Remove</a></td>
                         </tr>
                     {% endif %}
                         {% if userFourV3.firstName %}
@@ -220,7 +224,7 @@
                                 <td class="govuk-table__cell">
                                     {{ userFourV3.organisation }}
                                 </td>
-                                <td class="govuk-table__cell"><a href="#" class="govuk-link">Remove</a></td>
+                                <td class="govuk-table__cell u-align-right"><a href="#" class="govuk-link">Remove</a></td>
                             </tr>
                         {% endif %}
                     </tbody>

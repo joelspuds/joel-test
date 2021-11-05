@@ -25,6 +25,7 @@
 {% set resultArray = resultArray if resultArray %}
 {#{% set searchTerm = searchTerm if searchTerm %}#}
 {% set searchFail = searchFail if searchFail %}
+{% set randomValue = randomValue if randomValue %}
 {% set searchResultsText = searchResultsNumber + ' results' if searchResultsNumber else '' %}
 
 {% if searchTerm  %}
@@ -71,13 +72,20 @@
 
                     {% if orgs3SessionData.approved400Only %}
                         <p class="govuk-body">
-                            There are no registered, UK-based academic or research organisations that match your search term.
-                            You can <a href="/prototypes/orgs3/organisation-search" class="govuk-link">try and search again</a>.
+                            There are no registered academic or research organisations that match your search term. You can use different terms and <a href="/prototypes/orgs3/organisation-search" class="govuk-link">try and search again</a>.
                         </p>
+
+                        {% if not randomValue %}
+                        <p class="govuk-body">
+                            We found [number] non-registered organisations.
+                            {#There are no registered, UK-based academic or research organisations that match your search term.
+                            You can <a href="/prototypes/orgs3/organisation-search" class="govuk-link">try and search again</a>.#}
+                        </p>
+                        {% endif %}
                     {% else %}
                         <p class="govuk-body">
                             There are no organisations that match your search term.
-                            You can <a href="/prototypes/orgs3/organisation-search" class="govuk-link">try and search again</a> or <a href="/prototypes/orgs3/add-manually">enter organisation details manually</a>.
+                            You can use different terms and <a href="/prototypes/orgs3/organisation-search" class="govuk-link">try to search again</a> or <a href="/prototypes/orgs3/add-manually">enter the organisation's details manually</a>.
                         </p>
                     {% endif %}
 
@@ -85,10 +93,10 @@
 
                     {% if orgs3SessionData.approved400Only %}
                         <p class="govuk-body">
-                            If your organisation has not been found, you can <a href="/prototypes/orgs3/organisation-search" class="govuk-link">try and search again</a>.
+                            If your organisation has not been found, you can  use different terms and <a href="/prototypes/orgs3/organisation-search" class="govuk-link">try to search again</a>.
                         </p>
                     {% else %}
-                        <p class="govuk-body">If your organisation has not been found, you can <a href="/prototypes/orgs3/organisation-search" class="govuk-link">try and search again</a> or <a href="/prototypes/orgs3/add-manually">enter organisation details manually</a>.</p>
+                        <p class="govuk-body">If your organisation has not been found, you can use different terms and <a href="/prototypes/orgs3/organisation-search" class="govuk-link">try to search again</a> or <a href="/prototypes/orgs3/add-manually">enter the organisation's details manually</a>.</p>
                     {% endif %}
 
                 {%  endif %}
@@ -149,11 +157,186 @@
 
             {% call components.bulmaColumnAny(size='column is-9', customID='mainContent') %}
 
+                {#<p class="govuk-body">{% if randomValue %} TRUE! {% else %} false boo! {% endif %}</p>
+#}
+
+                {% if searchFail %}
+
+                    {% if orgs3SessionData.approved400Only %}
+
+                        {#
+                            APPROVED 400 ONLY, TOTAL FAIL
+                        #}
+
+                        {% if randomValue %}
+
+                            <table class="govuk-table">
+
+                                <thead class="govuk-table__header">
+                                <tr>
+                                    <th class="govuk-table__header">{#{{ searchResultsText }}#}Organisation name and details</th>
+                                    <th class="govuk-table__header--numeric"><span class="govuk-visually-hidden">Add organisation</span></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="">
+                                        <td class="govuk-table__cell" colspan="2">No results</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                        {% else %}
+
+                            {#
+                                APPROVED 400 ONLY, FOUND OTHER STUFF
+                            #}
+
+                            <div class="responsive-table">
+                                <div class="govuk-inset-text u-space-t0">
+                                    <h2 class="govuk-heading-s">Non-registered organisations we found</h2>
+                                    {#You cannot add some of the organisations in the search results because a <strong>Principal investigator</strong> must be associated with an approved UK-based academic organisation. You can <a href="#">change their role</a> to add non-approved organisations.#}
+                                    You cannot add any of the following organisations because a <strong>Principal investigator</strong> must be associated with a registered academic or research organisation.
+                                    <br><br>
+                                    To add one of these organisations, you must <a href="#">change this applicant's role</a>.
+                                </div>
+
+                                <table class="govuk-table _mega-table responsive-table__table">
+                                    <thead>
+                                    <tr class="govuk-table__header">
+                                        <th class="govuk-table__header">Organisation name and details</th>
+                                        <th class="govuk-table__header"><span class="govuk-visually-hidden">Action</span></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr class="govuk-table__row--disabled">
+                                        <td class="govuk-table__cell">
+                                            <span class="govuk-!-display-block"><strong>Center for Nanotechnology, Oxford</strong></span>
+                                            <span class="meta">Oxford, UK</span>
+                                        </td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                            <span class="meta govuk-!-font-size-16">&nbsp;</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="govuk-table__row--disabled">
+                                        <td class="govuk-table__cell">
+                                            <span class="govuk-!-display-block"><strong>Cromley Oxford Dynamics Limited</strong></span>
+                                            <span class="meta">Reading, UK</span>
+                                        </td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                            <span class="meta govuk-!-font-size-16">&nbsp;</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="govuk-table__row--disabled">
+                                        <td class="govuk-table__cell">
+                                            <span class="govuk-!-display-block"><strong>Life Science Oxford, Zurich Office</strong></span>
+                                            <span class="meta">Zurich, Switzerland</span>
+                                        </td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                            <span class="meta govuk-!-font-size-16">&nbsp;</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="govuk-table__row--disabled">
+                                        <td class="govuk-table__cell">
+                                            <span class="govuk-!-display-block"><strong>Oxford Zurich Hypermaterials Technology, Zurich</strong></span>
+                                            <span class="meta">Zurich, Switzerland</span>
+                                        </td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                            <span class="meta govuk-!-font-size-16">&nbsp;</span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
+                        {% endif %}
+
+                    {% else %}
+
+                        {#
+                            FULL LISTS, COMPLETE FAIL
+                        #}
+
+                        <table class="govuk-table">
+
+                            <thead class="govuk-table__header">
+                            <tr>
+                                <th class="govuk-table__header">{#{{ searchResultsText }}#}Organisation name and details</th>
+                                <th class="govuk-table__header--numeric"><span class="govuk-visually-hidden">Add organisation</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="">
+                                <td class="govuk-table__cell" colspan="2">No results</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    {% endif %}
+
+                {% else %}
+
+                    {#
+                        SUCCESS!
+                    #}
+
+                    {#{% if orgs3SessionData.approved400Only %}
+
+                    {% else %}
+
+                    {% endif %}#}
+
+                    <table class="govuk-table">
+
+                        <thead class="govuk-table__header">
+                        <tr>
+                            <th class="govuk-table__header">{#{{ searchResultsText }}#}Organisation name and details</th>
+                            <th class="govuk-table__header--numeric"><span class="govuk-visually-hidden">Add organisation</span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for item in resultArray %}
+                            <tr class="">
+                                <td class="govuk-table__cell">
+                                    <span class="govuk-!-display-block"><strong>{{ item }}</strong></span>
+                                    <span class="meta">[City], [Country]</span>
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric "><button type="submit" class="govuk-button govuk-button--link govuk-button--180 u-align-right" name="organisation" value="{{ item }}">Select organisation</button> </td>
+                            </tr>
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>
+
+                    {{ components.pagination(totalItems=99,itemsPerPage=10,currentPage=4) }}
+
+
+                {% endif %}
+
+
+
+
+
+
+
+
+
+
+               {# <h1 class="govuk-heading-xl">OLD STUFF BELOW</h1>
+
+                #}{#{% if not orgs3SessionData.approved400Only %}#}{#
+
+                <div class="responsive-table">
                     <table class="govuk-table">
 
                         <thead class="govuk-table__header">
                             <tr>
-                                <th class="govuk-table__header">{#{{ searchResultsText }}#}Organisation name and details</th>
+                                <th class="govuk-table__header">#}{#{{ searchResultsText }}#}{#Organisation name and details</th>
                                 <th class="govuk-table__header--numeric"><span class="govuk-visually-hidden">Add organisation</span></th>
                             </tr>
                         </thead>
@@ -172,7 +355,7 @@
                                         <span class="govuk-!-display-block"><strong>{{ item }}</strong></span>
                                         <span class="meta">[City], [Country]</span>
                                     </td>
-                                    <td class="govuk-table__cell govuk-table__cell--numeric"><button type="submit" class="govuk-button govuk-button--link" name="organisation" value="{{ item }}">Select organisation</button> </td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric "><button type="submit" class="govuk-button govuk-button--link govuk-button--180 u-align-right" name="organisation" value="{{ item }}">Select organisation</button> </td>
                                 </tr>
                             {% endfor %}
 
@@ -181,6 +364,12 @@
                         </tbody>
                     </table>
 
+                </div>
+
+
+
+                #}{#{% endif %}#}{#
+
 
 
                 {% if searchFail %}
@@ -188,10 +377,12 @@
                     {% if orgs3SessionData.approved400Only %}
 
                         <div class="responsive-table">
-
-                        <div class="govuk-inset-text " style="">
-                            <h2 class="govuk-heading-s">Ineligible organisations that match your search criteria </h2>
-                            You cannot add some of the organisations in the search results because a <strong>Principal investigator</strong> must be associated with an approved UK-based academic organisation. You can <a href="#">change their role</a> to add non-approved organisations.
+                        <div class="govuk-inset-text u-space-t0">
+                            <h2 class="govuk-heading-s">Non-registered organisations we found</h2>
+                            #}{#You cannot add some of the organisations in the search results because a <strong>Principal investigator</strong> must be associated with an approved UK-based academic organisation. You can <a href="#">change their role</a> to add non-approved organisations.#}{#
+                            You cannot add any of the following organisations because a <strong>Principal investigator</strong> must be associated with a registered academic or research organisation.
+                            <br><br>
+                            To add one of these organisations, you must <a href="#">change this applicant's role</a>.
                         </div>
 
                         <table class="govuk-table _mega-table responsive-table__table">
@@ -239,31 +430,13 @@
                                     <span class="meta govuk-!-font-size-16">&nbsp;</span>
                                 </td>
                             </tr>
-                            <tr class="govuk-table__row--disabled">
-                                <td class="govuk-table__cell">
-                                    <span class="govuk-!-display-block"><strong>Oxford Paris Plastics</strong></span>
-                                    <span class="meta">Paris, France</span>
-                                </td>
-                                <td class="govuk-table__cell govuk-table__cell--numeric">
-                                    <span class="meta govuk-!-font-size-16">&nbsp;</span>
-                                </td>
-                            </tr>
-                            <tr class="govuk-table__row--disabled">
-                                <td class="govuk-table__cell">
-                                    <span class="govuk-!-display-block"><strong>Systems Research, Oxford</strong></span>
-                                    <span class="meta">Wallingford, UK</span>
-                                </td>
-                                <td class="govuk-table__cell govuk-table__cell--numeric">
-                                    <span class="meta govuk-!-font-size-16">&nbsp;</span>
-                                </td>
-                            </tr>
                             </tbody>
                         </table>
                         </div>
 
                     {% endif %}
 
-                {% endif %}
+                {% endif %}#}
 
 
 

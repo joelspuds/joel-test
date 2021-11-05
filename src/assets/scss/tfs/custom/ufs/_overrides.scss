@@ -193,6 +193,10 @@ table td:not([align]), table th:not([align]) {
   @include govuk-font($size: 16);
 }
 
+.govuk-button--180 {
+  min-width: 180px;
+}
+
 html {
   // background-color: govuk-colour("black");
   background-color: ufs-colour("midnight");

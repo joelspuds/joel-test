@@ -393,12 +393,18 @@ export function orgs3SearchResultsGet(req, res) {
   let searchTerm = req.session.searchTerm;
   let searchFail = req.session.searchFail;
 
+  let randomValue;
+  if (Math.random() < 0.5) {
+    randomValue = true;
+  }
+
   viewData = {
     orgs3SessionData,
     resultArray,
     searchTerm,
     searchFail,
     searchResultsNumber,
+    randomValue,
   };
 
   return res.render('prototypes/orgs3/search-results', viewData);

@@ -118,9 +118,11 @@
 
 
                     {% if orgs3SessionData.wasManual %}
-                    <p class="govuk-body u-space-t10">Made a mistake? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="manual">Edit organisation</button></p>
+                    {#<p class="govuk-body u-space-t10">If this is not right, you can <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="manual">edit the organisation</button>.</p>#}
+                        <p class="govuk-body u-space-t10">{#If this is not right, you can #}<button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="manual">Change organisation</button></p>
                     {% else %}
-                        <p class="govuk-body u-space-t10">Still not right? <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="true">Search again</button></p>
+                        {#<p class="govuk-body u-space-t10">If this is not right, you can <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="true">search again</button>.</p>#}
+                        <p class="govuk-body u-space-t10">{#If this is not right, you can#} <button type="submit" class="govuk-button govuk-button--link" name="widerSearch" value="true">Change organisation</button></p>
                     {% endif %}
 
 

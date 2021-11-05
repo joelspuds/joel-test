@@ -40,14 +40,6 @@
 
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
-                <div class="govuk-warning-text">
-                    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-                    <strong class="govuk-warning-text__text">
-                        <span class="govuk-warning-text__assistive">Warning</span>
-                        Please ensure all details are correct. If we cannot identify the<br> organisation, it may cause delays to your application.
-                    </strong>
-                </div>
-
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-label--s" for="newOrg" id="organisation">Organisation name</label>
                     <input class="govuk-input govuk-input--width-20 " id="organisation" type="text" name="organisation" value="{{ orgs3SessionData.organisation }}">
@@ -76,7 +68,7 @@
                 </div>
 
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="newOrgWebsite" id="">Website address</label>
+                    <label class="govuk-label govuk-label--s" for="newOrgWebsite" id="">Website address (optional)</label>
                     <input class="govuk-input govuk-input--width-20" id="newOrgWebsite" name="newOrgWebsite" type="text" value="{{ orgs3SessionData.newOrgWebsite }}">
                 </div>
 
@@ -92,6 +84,14 @@
         {% call components.bulmaRow() %}
 
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <div class="govuk-warning-text">
+                    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                    <strong class="govuk-warning-text__text">
+                        <span class="govuk-warning-text__assistive">Warning</span>
+                        Check all of these details are correct. If we cannot identify the organisation, it may cause delays to your application.
+                    </strong>
+                </div>
 
                 <div class="application-controls govuk-clearfix">
                     <input type="hidden" value="true" name="wasManual">
