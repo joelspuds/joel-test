@@ -21,17 +21,17 @@
     {% set captionTitle = 'New person' %}
 {% endif %}
 
-{% if orgs3SessionData.firstName  %}
+{#{% if orgs3SessionData.firstName  %}
     {% set displayTitle = 'Enter ' + orgs3SessionData.firstName + ' ' +  orgs3SessionData.lastName + '\'s organisation details' %}
 {% else %}
     {% set displayTitle = 'Enter new person\'s organisation name' %}
-{% endif %}
+{% endif %}#}
 
 {% block content %}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text=displayTitle, caption=captionTitle) }}
+            {{ components.captionHeading(text='Enter the organisation\'s details', caption=captionTitle) }}
         {%- endcall %}
     {%- endcall %}
     {% call components.form(action='#', method='POST',name='submitForm') %}

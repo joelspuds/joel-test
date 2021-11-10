@@ -76,10 +76,10 @@ $module: 'files';
 
 .js-enabled .files__item--drag {
 
-  &:hover {
+  /*&:hover {
     background-color: ufs-colour("light-grey");
     border:2px dashed govuk-colour("dark-grey");
-  }
+  }*/
 }
 
 .file-upload {

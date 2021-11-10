@@ -92,7 +92,21 @@
                     </div>
                 </noscript>
                 <div class="js-only">
-                    qfdweff
+                    <div class="govuk-inset-text">
+                        You can upload two more files.
+                    </div>
+
+                    <div class="files">
+                        <div class="files__item files__item--drag">
+                            <div class="govuk-form-group u-space-b0">
+                                <label for="fileUpload2" class="govuk-visually-hidden">Upload a file</label>
+                                <input type="file" id="fileUpload3" class="govuk-visually-hidden" multiple />
+                                <button type="button" class="govuk-button govuk-button--secondary u-space-b0" name="" id="jsUploadButton">Upload a file</button>
+                                <span class="meta govuk-!-display-inline-block u-space-t10 u-space-x20" id="spanFilePath"></span>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             {%- endcall %}
         {%- endcall %}
@@ -134,7 +148,7 @@
 
 {% endblock %}
 {% block bodyScripts %}
-    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    {#<script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         const counteroutputFoot = document.getElementById('wordCount');
         let words = 0;
@@ -181,7 +195,36 @@
             ],
             menubar: false,
         });
-    </script>
+    </script>#}
+
+    {#<script>
+        window.onload = function () {
+            let fileUpload = document.getElementById('fileUpload3');
+            let filePath = document.getElementById('spanFilePath');
+            let button = document.getElementById('jsUploadButton');
+            button.onclick = function () {
+                fileUpload.click();
+            };
+            fileUpload.onchange = function () {
+                console.log(fileUpload.value);
+                let fileList = document.getElementById('fileUpload3').files;
+                // console.log('fileList = ' + fileList);
+                // console.log(fileList);
+                let fileName = '';
+                for(let i=0; i < fileList.length; i++) {
+                    console.log('fileList[' + i + '] =' + fileList[i].name);
+                    if ( fileList.length - i !== 1) {
+                        fileName += fileList[i].name + ', ';
+                    } else {
+                        fileName += fileList[i].name;
+                    }
+
+                }
+                // let fileName = fileUpload.value.split('\\')[fileUpload.value.split('\\').length - 1];
+                filePath.innerHTML = "<!--<b>Selected File: </b>-->" + fileName;
+            };
+        };
+    </script>#}
 
     <script>
         window.onload = function () {

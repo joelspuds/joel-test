@@ -565,21 +565,52 @@
                 </div>
 
                 <div class="files">
-                    <div class="files__item files__item--drag">
-                        <div class="govuk-form-group u-space-b0">
-                            <div class="js-hidden">
+                    <div class="js-hidden">
+                        <div class="files__item">
+                            <div class="govuk-form-group u-space-b0">
                                 <label class="govuk-label " for="fileUpload5">Upload a file</label>
                                 <span class="govuk-hint">You can only upload one file</span>
                                 <input class="govuk-file-upload" id="fileUpload5" name="fileUpload5" type="file">
                             </div>
-                            <div class="js-only">
+                        </div>
+                    </div>
+
+
+
+                    <div class="js-only">
+                        <div class="files__item files__item--drag">
+                            <div class="govuk-form-group u-space-b0">
                                 <label for="fileUpload6" class="govuk-visually-hidden">Upload a file</label>
                                 <input type="file" id="fileUpload6" class="govuk-visually-hidden" name="fileUpload6" multiple />
                                 <button type="button" class="govuk-button govuk-button--secondary u-space-b0" name="" id="jsUploadButton2">Upload a file</button>
                                 <span class="meta govuk-!-display-inline-block u-space-t10 u-space-x20" id="spanFilePath2">{#Click the button or drag up to three files into this space to upload. #}</span>
                             </div>
-
                         </div>
+
+                        <div class="files__item govuk-visually-hidden" id="fileUploading1">
+                            <div class="files__name">
+                                dr_ivor_phylle_CV.PDF
+                                <strong class="govuk-tag govuk-tag--red">
+                                    uploading
+                                </strong>
+                            </div>
+                            <div class="files__meta">
+                                <span class="files__size">578KB</span>
+                                <span class="files__action">
+                            <a href="#" class="govuk-link">Cancel <span class="govuk-visually-hidden"> this upload</span></a>
+                        </span>
+                            </div>
+                            <div class="files__activity"><span class="govuk-visually-hidden">Your file is uploading</span></div>
+                        </div>
+
+
+
+
+
+
+
+
+
                     </div>
                 </div>
 
