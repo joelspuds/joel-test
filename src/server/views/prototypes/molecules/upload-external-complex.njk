@@ -68,7 +68,7 @@
 
         {% call components.bulmaRow(extraClass='') %}
 
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+            {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen', customID='main-content', extraClass='u-space-b45') %}
                 <noscript>
                     <div class="files">
                         <div class="files__item">
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                 </noscript>
-                <div class="js-only">
+                <div class="js-only--block">
                     <div class="govuk-inset-text">
                         You can upload two more files.
                     </div>
@@ -104,8 +104,42 @@
                                 <button type="button" class="govuk-button govuk-button--secondary u-space-b0" name="" id="jsUploadButton">Upload a file</button>
                                 <span class="meta govuk-!-display-inline-block u-space-t10 u-space-x20" id="spanFilePath"></span>
                             </div>
-
                         </div>
+
+
+
+                        <div class="files__item" id="uploading1">
+                            <div class="files__name">
+                                dr_ivor_phylle_CV.PDF
+                                <strong class="govuk-tag govuk-tag--red">
+                                    uploading
+                                </strong>
+                            </div>
+                            <div class="files__meta">
+                                <span class="files__size">578KB</span>
+                                <span class="files__action">
+                            <a href="#" class="govuk-link">Cancel <span class="govuk-visually-hidden"> this upload</span></a>
+                        </span>
+                            </div>
+                            <div class="files__activity"><span class="govuk-visually-hidden">Your file is uploading</span></div>
+                        </div>
+
+                        <div class="files__item" id="uploading2">
+                            <div class="files__name">
+                                dr_appi_meall_CV.PDF
+                                <strong class="govuk-tag govuk-tag--yellow">
+                                    pending
+                                </strong>
+                            </div>
+                            <div class="files__meta">
+                                <span class="files__size">4.18MB</span>
+                                <span class="files__action">
+                                <a href="#" class="govuk-link">Cancel <span class="govuk-visually-hidden"> this upload and scan</span></a>
+                            </span>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             {%- endcall %}
@@ -231,6 +265,9 @@
             let fileUpload = document.getElementById('fileUpload3');
             let filePath = document.getElementById('spanFilePath');
             let button = document.getElementById('jsUploadButton');
+            let uploading1 = document.getElementById('uploading1');
+            let uploading2 = document.getElementById('uploading2');
+            let uploading3 = document.getElementById('uploading3');
             button.onclick = function () {
                 fileUpload.click();
             };
@@ -247,7 +284,6 @@
                     } else {
                         fileName += fileList[i].name;
                     }
-
                 }
                 // let fileName = fileUpload.value.split('\\')[fileUpload.value.split('\\').length - 1];
                 filePath.innerHTML = "<!--<b>Selected File: </b>-->" + fileName;
