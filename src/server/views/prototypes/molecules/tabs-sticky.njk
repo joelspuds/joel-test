@@ -37,6 +37,10 @@
             .menu.sticky {
                 position: fixed;
                 top: 0;
+                /*border-bottom: 0;*/
+                width: 100%;
+                max-width: 1152px;
+                padding-right: 1.5rem;
             }
 
             .sticky-tabs + .govuk-tabs__panel {
@@ -47,25 +51,25 @@
         {% call components.bulmaRow() %}
 
             {% call components.bulmaColumnAny(size='column is-full') %}
-                <div class="govuk-tabs" data-module="govuk-tabs">
+                <div class="govuk-tabs" data-module="_govuk-tabs">
                     <ul class="govuk-tabs__list sticky-tabs menu" id="stickyBar" style="background-color:white;">
                         <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-                            <a class="govuk-tabs__tab" id="clicker1" href="#one">
+                            <a class="govuk-tabs__tab" id="link_one" href="#one"  data-tab="one" data-scroll="">
                                 Tab one
                             </a>
                         </li>
                         <li class="govuk-tabs__list-item">
-                            <a class="govuk-tabs__tab"  id="clicker1" href="#two">
+                            <a class="govuk-tabs__tab"  id="link_two" href="#two" data-tab="two" data-scroll="">
                                 Tab two
                             </a>
                         </li>
                         <li class="govuk-tabs__list-item">
-                            <a class="govuk-tabs__tab" href="#three">
+                            <a class="govuk-tabs__tab" id="link_three" href="#three"  data-tab="three" data-scroll="">
                                 Tab three
                             </a>
                         </li>
                         <li class="govuk-tabs__list-item">
-                            <a class="govuk-tabs__tab" href="#four">
+                            <a class="govuk-tabs__tab" id="link_four" href="#four" data-tab="four" data-scroll="">
                                 Tab four
                             </a>
                         </li>
@@ -339,6 +343,56 @@
             } else {
                 $('.menu').removeClass('sticky');
             }
+        });
+
+        /*let previousPosition = 0;
+        let previousTab = 'one';
+        let currentTab = '';
+        let scrollOne, scrollTwo, scrollThree, scrollFour = 0;*/
+
+
+        $('a').each(function(index){
+            $(this).on('click', function(e){
+                e.preventDefault();
+
+                // set previous scroll before doing anything
+                $('.govuk-tabs__list-item--selected a').attr('data-scroll', $(document).scrollTop());
+
+                // hide all tabs
+                $('.govuk-tabs__panel').addClass('govuk-tabs__panel--hidden');
+                $('.govuk-tabs__list-item').removeClass('govuk-tabs__list-item--selected');
+
+                // activate desired tab
+                $('#' + $(this).data('tab')).removeClass('govuk-tabs__panel--hidden');
+                $(this).parent().addClass('govuk-tabs__list-item--selected');
+                // scroll to active tab
+                $(document).scrollTop(parseInt($(this).attr('data-scroll')));
+
+                // setup previousTab new scroll value
+                /*let tempScrollTop = $(document).scrollTop();
+                console.log('scrollTop = '  + tempScrollTop);
+                console.log('previousTab = ' + previousTab);
+                // $('#link_one').data('scroll', 'test');
+                $('#link_' + previousTab).attr('data-scroll', tempScrollTop);
+                previousTab = $(this).data('tab');*/
+
+                /*if(previousTab == $(this).data('tab')) {
+
+                }*/
+                // set dataScroll pos of previous
+                // previousPosition
+                //$('#link_' + previousTab).data('scroll', $(document).scrollTop());
+                // return to scroll pos
+                //$(document).scrollTop($(this).data('scroll'));
+
+
+                /*// For the boolean value
+                var boolKey = $(this).data('selected');
+                // For the mammal value
+                var mammalKey = $(this).attr('id');*/
+                // previousTab = $(this).data('tab');
+
+            });
         });
 
     </script>

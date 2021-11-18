@@ -89888,6 +89888,5 @@ let motherLoad = [
   'York St John University',
   'Young Foundation',
   'Zoological Society of London',
-  'ZORG',
 ];
 export const organisationsMotherLoadDupesRemovedAnd400 = motherLoad;
