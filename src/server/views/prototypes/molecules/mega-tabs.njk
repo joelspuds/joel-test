@@ -1,0 +1,402 @@
+{% set loggedOut = false %}
+{% set isAdminUser = false %}
+{% set showExternalNav = true %}
+{% set signInLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set activeNavItem = 'reviews' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/peer-review-external/user-home' %}
+{% set reviewsLink = '/prototypes/peer-review-external/user-reviews' %}
+{% set awardsSetupLinkHide = true %}
+{% set awardsLinkHide = true %}
+{% set signOutLink = '#' %}
+{% set altProfilePagelink = '#' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set pageTitle = 'Application review' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/peer-review-external/user-reviews', text:'Back to all reviews'}] %}
+
+{% set review = review if review %}
+{% set rating = rating if rating %}
+{% set isComplete = isComplete if isComplete %}
+
+{% set showStickyNavscripts = true %}
+{% set listItems = [
+    { text: 'Case for support', url: '#case', class:'canScroll' },
+    { text: 'Capability to deliver', url: '#capability', class:'canScroll' },
+    { text: 'Pathways to impact', url: '#pathways', class:'canScroll' },
+    { text: 'Data impact statement', url: '#data', class:'canScroll' },
+    { text: 'Finances', url: '#finances', class:'canScroll' },
+    { text: 'Letters of support', url: '#letters', class:'canScroll' }
+] %}
+
+{% block content %}
+
+    <style>
+        .tox-statusbar__wordcount, .tox-statusbar__branding { display: none!important}
+    </style>
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Bio-detoxification of Ricin in castor bean', caption='Development of a Novel Inhibitor of Ricin') }}
+        {%- endcall %}
+    {%- endcall %}
+{#
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+
+
+        {%- endcall %}
+    {%- endcall %}#}
+
+    <section class="section" id="main-content">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full') %}
+                <div class="govuk-tabs" data-module="govuk-tabs">
+                    <h2 class="govuk-tabs__title">
+                        Contents
+                    </h2>
+                    <ul class="govuk-tabs__list">
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                            <a class="govuk-tabs__tab" href="#overview">
+                                Application overview
+                            </a>
+                        </li>
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="#read">
+                                Read application
+                            </a>
+                        </li>
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="#write">
+                                Write your review
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tabs-cta">
+                        <a href="/prototypes/peer-review-external/download-files" class="govuk-button govuk-button--secondary">Download review material</a>
+                    </div>
+
+                    <div class="govuk-tabs__panel govuk-tabs__panel--borderless" id="overview">
+
+                        {% call components.bulmaRow() %}
+
+                            {% call components.bulmaColumnAny(size='is-8') %}
+
+                                {{ components.captionHeading(text='Review deadline',tag='h2', size='s', extraClass='u-space-b5') }}
+
+                           {#     <p class="govuk-body">
+                                    14 May 2021
+                                </p>#}
+
+                                <p class="govuk-body">
+                                    14 May 2021 (21 days left) <br>
+                                    <a href="#" class="govuk-link">Request extension</a>
+                                </p>
+
+                                {{ components.captionHeading(text='Opportunity',tag='h2', size='s', extraClass='u-space-b5') }}
+
+                                <p class="govuk-body">
+                                    <a href="#">Development of a Novel Inhibitor of Ricin</a>
+                                </p>
+
+                                {#{{ components.captionHeading(text='Application title',tag='h2', size='s', extraClass='u-space-b5') }}
+
+                                <p class="govuk-body">
+                                    Bio-detoxification of Ricin in castor bean
+                                </p>#}
+
+                                {#{{ components.captionHeading(text='Team',tag='h2', size='s', extraClass='u-space-b5') }}
+
+                                <p class="govuk-body">
+                                    <strong>Principal investigator:</strong> Prof Giles Dexter, Coventry University<br>
+                                    <strong>Co-investigator:</strong> Prof Ian Charles,  Coventry University<br>
+                                    <strong>Researcher:</strong> Dr Maxwell Peterson,  Coventry University<br>
+                                </p>#}
+
+                                {{ components.captionHeading(text='Grant size',tag='h2', size='s', extraClass='u-space-b5') }}
+
+                                <p class="govuk-body">
+                                    £80,000
+                                </p>
+
+                                {{ components.captionHeading(text='Summary',tag='h2', size='s', extraClass='u-space-b5') }}
+
+                                <p class="govuk-body">
+                                    The PI proposes a high-impact collaborative research project to develop new inhibitors for ribosome inactivating proteins (RIPs), such as ricin and Shiga toxin. Ricin toxin, produced by the castor bean plant, has a nefarious past. Ricin is a well-known homicidal poison and has been used in several bioterrorist attacks. Shiga toxin is a deadly product of enterobacterial Escherichia coli. RIPs are RNA N-glycosidases that enzymatically remove specific purine residues from the universally conserved sarcin/ricin loop (S/R loop) of large ribosomal RNA, causing cellular death.
+                                </p>
+
+                                <p class="govuk-body">
+                                    Phasellus ac risus lectus. Proin quis vehicula metus. Suspendisse eget odio metus. Maecenas vehicula quam ut accumsan dapibus. Phasellus sit amet nibh a lectus commodo viverra in id risus. Maecenas at sem nec dolor consectetur accumsan. Morbi non eros magna. Sed et mauris libero. Donec sollicitudin, risus non pulvinar consectetur, nibh lacus venenatis nunc, eget laoreet libero quam et lacus. Proin eros tortor, tempor quis dui quis, consequat ultricies arcu. Sed congue turpis at elit posuere, quis iaculis elit consequat. In maximus eu mi id euismod.
+                                </p>
+
+                                <p class="govuk-body u-space-t45">
+                                    <a href="/prototypes/peer-review-external/invite-reject" class="govuk-link">Unable to review this application?</a>
+                                </p>
+
+
+                            {%- endcall %}
+
+                        {%- endcall %}
+
+                    </div>
+                    {#
+
+
+                            END TAB ONE
+
+
+                    #}
+
+                    <div class="govuk-tabs__panel govuk-tabs__panel--borderless govuk-tabs__panel--hidden" id="read">
+
+                        {% call components.bulmaRow() %}
+
+                            {% call components.bulmaColumnAny(size='is-3') %}
+                                <nav class="sticky-nav">
+                                    {{ components.linkHeading(text='Contents', tag='h2', size='s')}}
+
+                                    {{ components.list(items=listItems, parentClass='sticky-nav')}}
+
+                                    {#<a href="#" class="govuk-link js-only print-link print-link--tabs" id="printThis" onclick="window.print();return false;">Print this page</a>#}
+                                </nav>
+                            {%- endcall %}
+
+                            {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
+
+                                {% include '../generic-includes/review-content.njk' %}
+
+                                <p class="govuk-body u-space-t45">
+                                    <a href="/prototypes/peer-review-external/invite-reject" class="govuk-link">Unable to review this application?</a>
+                                </p>
+
+                            {%- endcall %}
+
+                        {%- endcall %}
+                    </div>
+                    {#
+
+
+                            END TAB TWO
+
+
+                    #}
+                    <div class="govuk-tabs__panel govuk-tabs__panel--borderless govuk-tabs__panel--hidden" id="write">
+
+                        {% call components.bulmaRow() %}
+
+                            {% call components.bulmaColumnAny(size='is-8', extraClass='') %}
+
+                                {#{{ components.captionHeading(text='Your review',tag='h2', size='m') }}#}
+
+                                <p class="govuk-body">The applicant will be able to read your review and respond to what you have written. Their comments and your review are both submitted to panel to help shape funding decisions.</p>
+
+                                <div class="application-items u-space-b30">
+                                    <div class="application-item application-item--skinny {% if isComplete %} application-item--complete {% else%} application-item--incomplete {% endif %} ">
+                                        <div class="application-item__contents govuk-clearfix">
+                                            <div class="application-item__left">
+                                                <a href="/prototypes/peer-review-external/write-review" class="govuk-link">Write your review</a>
+                                            </div>
+                                            <div class="application-item__right">
+                                                {% if isComplete %}
+                                                <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                                                {% else %}
+                                                <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {% call components.form(action='#', method='POST',name='formAddApplicant') %}
+                                <div class="application-controls govuk-clearfix">
+
+                                    <input class="govuk-button application-controls__submit" type="submit" value="Save as draft" {% if not isComplete %} disabled {% endif %}>
+
+                                </div>
+                                {%- endcall %}
+
+
+
+                            {%- endcall %}
+
+                        {%- endcall %}
+                    </div>
+                    {#
+
+
+
+                            END TAB THREE
+
+
+
+                    #}
+
+                </div>
+            {%- endcall %}
+
+        {%- endcall %}
+    </section>
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    {#<script>
+    </script>#}
+    <script type="text/javascript">
+        /* smooth-scroll.js v1.3.1 */
+        /*
+        n=0,
+        r=500,
+        i=15,
+        */
+        (function(e,t){
+            "use strict";
+            var n=0,
+                r=250,
+                i=15,
+                /*s=document.getElementsByTagName("a"),*/
+                s=document.getElementsByClassName('canScroll'),
+                o;
+            for(var u=0;u<s.length;u++){
+                o=s[u].attributes.href===t?null:s[u].attributes.href.nodeValue.toString();
+                if(o!==null&&o.length>1&&o.indexOf("#")!=-1){
+                    s[u].onclick=function(){
+                        var n,s=this.attributes.href.nodeValue.toString(),o=s.substr(0,s.indexOf("#")),u=s.substr(s.indexOf("#")+1);if(n=document.getElementById(u)){var l=(r-r%i)/i,c=f(),h=(a(n)-c)/l;if(e.history&&typeof e.history.pushState=="function")e.history.pushState({},t,o+"#"+u);for(var p=1;p<=l;p++){(function(){var t=h*p;setTimeout(function(){e.scrollTo(0,t+c)},i*p)})()}return false}}}}var a=function(e){var r=n*-1;while(e.offsetParent!=t&&e.offsetParent!=null){r+=e.offsetTop+(e.clientTop!=null?e.clientTop:0);e=e.offsetParent}return r};var f=function(){return e.pageYOffset!==t?e.pageYOffset:document.documentElement.scrollTop!==t?document.documentElement.scrollTop:document.body.scrollTop}})(window)
+    </script>
+
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        const counteroutputFoot = document.getElementById('wordCount');
+        let words = 0;
+        const limit = 2500;
+        let tinyMCEWordCount;
+
+        tinymce.init({
+            selector: '#tinyMCEInput',
+            height: 500,
+            {% if readOnly %} readonly : 1, {% endif %}
+            plugins: [
+                'advlist autolink lists link image preview anchor',
+                'media table paste  wordcount'
+            ],
+            setup: function(editor) {
+
+                editor.on('keyup', function(e) {
+                    tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                    console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                    words = tinyMCEWordCount;
+                    let remainder = limit - words;
+                    if (words < limit) {
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    } else {
+                        let overCount = words - limit;
+                        counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+                    }
+                });
+
+                editor.on('init', function(e) {
+                    setTimeout(function(){
+                        tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                        console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                        words = tinyMCEWordCount;
+                        let remainder = limit - words;
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    }, 500);
+                });
+            },
+            toolbar: 'formatselect | bold italic | bullist numlist | align | indent outdent | link | table |',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ],
+            menubar: false,
+        });
+    </script>
+
+    {#<script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        /*
+      tinyMCE.init({
+          setup: function(editor) {
+              editor.on("init", function(){
+              editor.addShortcut("ctrl+u", "", "");
+          });
+          }
+      })
+      oninit : "disableShortcuts",
+          setup: function(editor) {
+            editor.on('init', function(){
+              editor.addShortcut('Command+I', '', '');
+            });
+          },
+
+      */
+
+        tinymce.init({
+            selector: '#tinyMCEInput',
+            height: 500,
+            plugins: [
+                'advlist autolink lists link anchor',
+                'wordcount'
+            ],
+            content_style: '.red-text {color: red}',
+            formats :{
+                //redText: { selector: 'p', classes: 'red-text' },
+                redText: { inline: 'span', classes: 'red-text' },
+                para: { selector: 'p,h2,h3,h4,li', classes: 'govuk-body' },
+                heading2: { selector: 'p,h2,h3,h4,li', classes: 'govuk-heading-l', exact: true },
+                heading3: { selector: 'p,h2,h3,h4', classes: 'govuk-heading-m', exact: true },
+                heading4: { selector: 'p,h2,h3,h4', classes: 'govuk-heading-s', exact: true },
+                unorderedList: { selector: 'ul, ol, p,h2,h3,h4', classes: 'govuk-list govuk-list--bullets'},
+            },
+            style_formats: [
+                /*{title: 'Red text', format: 'redText', styles: { color: '#ff0000' }},*/
+                {title: 'Paragraph', format: 'para'},
+                /*{title: 'Heading 2', format: 'heading2', block: 'h2', /!*styles: { color: 'lime' },*!/ classes: 'govuk-heading-l'},*/
+                {title: 'Heading 2', format: 'heading2', remove: 'all', block: 'h2', classes: 'govuk-heading-l'},
+                {title: 'Heading 3', format: 'heading3', block: 'h3', classes: 'govuk-heading-m'},
+                {title: 'Heading 4', format: 'heading4', block: 'h4', classes: 'govuk-heading-s'},
+                {title: 'Unordered list', format: 'unorderedList', block: 'ul'},
+            ],
+            advlist_bullet_styles: 'disc',
+            advlist_number_styles: 'default',
+            // toolbar: 'formatselect | bold italic | bullist numlist | align | indent outdent | link',
+            // toolbar: 'formatselect | bold | bullist numlist | link',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ],
+            menubar: false,
+        });
+    </script>
+    <script>
+        ;(function(){
+            let wordcounter = document.getElementById('codeOutput');
+            let counteroutputFoot = document.getElementById('wordCount2');
+            let words;
+            const limit = 50;
+            function countemwords(){
+                words = (wordcounter.value == '')? 0 : wordcounter.value.split(' ').length;
+                let remainder = limit - words;
+                counteroutputFoot.innerHTML = 'You have ' + words + ' words';
+            }
+            wordcounter.addEventListener('input', function(e){
+                countemwords()
+            }, false);
+            document.addEventListener("DOMContentLoaded", function(event) {
+                countemwords()
+            }, false);
+            window.addEventListener("load", function(event) {
+                countemwords();
+            }, false)
+        })();
+    </script>#}
+{% endblock %}

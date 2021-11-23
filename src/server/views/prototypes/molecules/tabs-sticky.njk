@@ -55,12 +55,12 @@
                     <ul class="govuk-tabs__list sticky-tabs menu" id="stickyBar" style="background-color:white;">
                         <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
                             <a class="govuk-tabs__tab" id="link_one" href="#one"  data-tab="one" data-scroll="">
-                                Tab one
+                                Application overview
                             </a>
                         </li>
                         <li class="govuk-tabs__list-item">
                             <a class="govuk-tabs__tab"  id="link_two" href="#two" data-tab="two" data-scroll="">
-                                Tab two
+                                Read application
                             </a>
                         </li>
                         <li class="govuk-tabs__list-item">
@@ -306,25 +306,8 @@
 {% endblock %}
 
 {% block bodyScripts %}
-    <script>
-       /* window.onscroll = function() {doTheStick()};
-        let navbar = document.getElementById('stickyBar');
-        let sticky;
-
-        function doTheStick() {
-            sticky = navbar.offsetTop;
-            console.log('sticky = ' + sticky);
-            console.log('window.pageYOffset = ' + window.pageYOffset);
-            /!*if (window.pageYOffset >= sticky) {
-                navbar.classList.add('sticky-tabs--stuck')
-            } else {
-                navbar.classList.remove('sticky-tabs--stuck');
-            }*!/
-        }*/
-    </script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script>
-
         /*$(document).ready(function() {
             var div_top = $('.menu').offset().top;
         });*/
@@ -333,7 +316,6 @@
             // let div_top = $('.menu').offset().top;
             console.log($('.menu').offset().top);
         });
-
         $(window).scroll(function () {
             var window_top = $(window).scrollTop() - 0;
             if (window_top > div_top) {
@@ -350,24 +332,19 @@
         let currentTab = '';
         let scrollOne, scrollTwo, scrollThree, scrollFour = 0;*/
 
-
         $('a').each(function(index){
             $(this).on('click', function(e){
                 e.preventDefault();
-
                 // set previous scroll before doing anything
                 $('.govuk-tabs__list-item--selected a').attr('data-scroll', $(document).scrollTop());
-
                 // hide all tabs
                 $('.govuk-tabs__panel').addClass('govuk-tabs__panel--hidden');
                 $('.govuk-tabs__list-item').removeClass('govuk-tabs__list-item--selected');
-
                 // activate desired tab
                 $('#' + $(this).data('tab')).removeClass('govuk-tabs__panel--hidden');
                 $(this).parent().addClass('govuk-tabs__list-item--selected');
                 // scroll to active tab
                 $(document).scrollTop(parseInt($(this).attr('data-scroll')));
-
                 // setup previousTab new scroll value
                 /*let tempScrollTop = $(document).scrollTop();
                 console.log('scrollTop = '  + tempScrollTop);
@@ -385,16 +362,13 @@
                 // return to scroll pos
                 //$(document).scrollTop($(this).data('scroll'));
 
-
                 /*// For the boolean value
                 var boolKey = $(this).data('selected');
                 // For the mammal value
                 var mammalKey = $(this).attr('id');*/
                 // previousTab = $(this).data('tab');
-
             });
         });
-
     </script>
 {% endblock %}
 

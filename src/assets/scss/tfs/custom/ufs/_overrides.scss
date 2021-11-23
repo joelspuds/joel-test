@@ -296,6 +296,15 @@ td.u-align-right {
   margin:-1px -1px 0;
 }
 
+// allow stacked banners with less heading
+.govuk-notification-banner {
+  margin-bottom: 20px;
+
+  &:last-of-type {
+    margin-bottom: 50px;
+  }
+}
+
 .govuk-table__row--disabled {
 
   td:first-of-type {

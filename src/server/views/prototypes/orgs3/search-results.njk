@@ -83,10 +83,27 @@
                         </p>
                         {% endif %}
                     {% else %}
-                        <p class="govuk-body">
+
+                        <div class="govuk-inset-text u-space-t0">
+                            <h2 class="govuk-heading-s">If you cannot find your organisation</h2>
+                            <p class="govuk-body">
+                                There are no organisations that match your search term. You can use different terms and <a href="/prototypes/orgs3/organisation-search" class="govuk-link">try to search again</a>.
+                            </p>
+                            <p class="govuk-body">
+                                If you cannot find your organisation, email the help desk at  <a href="mailto:support@funding-service.ukri.org" class="govuk-link">support@funding-service.ukri.org</a> so they can add it for you.</p>
+                        </div>
+
+                        {#
+                        original below
+
+                        #}
+
+                        {#<p class="govuk-body">
                             There are no organisations that match your search term.
                             You can use different terms and <a href="/prototypes/orgs3/organisation-search" class="govuk-link">try to search again</a> or <a href="/prototypes/orgs3/add-manually">enter the organisation's details manually</a>.
-                        </p>
+                        </p>#}
+
+
                     {% endif %}
 
                 {% else %}
