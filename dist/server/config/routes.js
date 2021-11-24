@@ -588,6 +588,9 @@ router.post('/prototypes/orgs/select-role', demosController.orgsSelectRolePost);
 router.get('/prototypes/orgs/applicant-details', demosController.orgsDetailsGet);
 router.post('/prototypes/orgs/applicant-details', demosController.orgsDetailsPost);
 
+router.get('/prototypes/orgs/applicant-interim', demosController.orgsApplicantInterimGet);
+// router.post('/prototypes/orgs/applicant-details', demosController.orgsDetailsPost);
+
 router.get('/prototypes/orgs/organisation-search', demosController.orgsSearchGet);
 router.post('/prototypes/orgs/organisation-search', demosController.orgsSearchPost);
 

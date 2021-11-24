@@ -11,6 +11,7 @@ exports.orgsSelectRoleGet = orgsSelectRoleGet;
 exports.orgsSelectRolePost = orgsSelectRolePost;
 exports.orgsDetailsGet = orgsDetailsGet;
 exports.orgsDetailsPost = orgsDetailsPost;
+exports.orgsApplicantInterimGet = orgsApplicantInterimGet;
 exports.orgsSearchGet = orgsSearchGet;
 exports.orgsSearchPost = orgsSearchPost;
 exports.orgsSearchResultsGet = orgsSearchResultsGet;
@@ -273,8 +274,8 @@ function orgsDetailsGet(req, res) {
   let viewData;
 
   let limitedOrgList = limitedOrgs.limitedOrgList;
-  // console.log('limitedOrgList: ');
-  // console.log(limitedOrgList);
+  //console.log('limitedOrgList: ');
+  //console.log(limitedOrgList);
   viewData = {
     limitedOrgList,
     orgsSessionData
@@ -313,6 +314,26 @@ function orgsDetailsPost(req, res) {
   }
 
   return res.redirect(redirectURL);
+}
+
+// orgsApplicantInterimGet
+// ************************************************************************
+//
+//        Add applicants, details
+//
+// ************************************************************************
+function orgsApplicantInterimGet(req, res) {
+  let viewData;
+
+  let limitedOrgList = limitedOrgs.limitedOrgList;
+
+  //console.log(limitedOrgList);
+
+  viewData = {
+    limitedOrgList
+  };
+
+  return res.render('prototypes/orgs/applicant-interim', viewData);
 }
 
 // ************************************************************************

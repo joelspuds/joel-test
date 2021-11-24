@@ -308,12 +308,8 @@
 {% block bodyScripts %}
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script>
-        /*$(document).ready(function() {
-            var div_top = $('.menu').offset().top;
-        });*/
         let div_top = $('.menu').offset().top;
         $(window).load(function () {
-            // let div_top = $('.menu').offset().top;
             console.log($('.menu').offset().top);
         });
         $(window).scroll(function () {
@@ -326,11 +322,6 @@
                 $('.menu').removeClass('sticky');
             }
         });
-
-        /*let previousPosition = 0;
-        let previousTab = 'one';
-        let currentTab = '';
-        let scrollOne, scrollTwo, scrollThree, scrollFour = 0;*/
 
         $('a').each(function(index){
             $(this).on('click', function(e){
@@ -345,28 +336,6 @@
                 $(this).parent().addClass('govuk-tabs__list-item--selected');
                 // scroll to active tab
                 $(document).scrollTop(parseInt($(this).attr('data-scroll')));
-                // setup previousTab new scroll value
-                /*let tempScrollTop = $(document).scrollTop();
-                console.log('scrollTop = '  + tempScrollTop);
-                console.log('previousTab = ' + previousTab);
-                // $('#link_one').data('scroll', 'test');
-                $('#link_' + previousTab).attr('data-scroll', tempScrollTop);
-                previousTab = $(this).data('tab');*/
-
-                /*if(previousTab == $(this).data('tab')) {
-
-                }*/
-                // set dataScroll pos of previous
-                // previousPosition
-                //$('#link_' + previousTab).data('scroll', $(document).scrollTop());
-                // return to scroll pos
-                //$(document).scrollTop($(this).data('scroll'));
-
-                /*// For the boolean value
-                var boolKey = $(this).data('selected');
-                // For the mammal value
-                var mammalKey = $(this).attr('id');*/
-                // previousTab = $(this).data('tab');
             });
         });
     </script>

@@ -260,8 +260,8 @@ export function orgsDetailsGet(req, res) {
   let viewData;
 
   let limitedOrgList = limitedOrgs.limitedOrgList;
-  // console.log('limitedOrgList: ');
-  // console.log(limitedOrgList);
+  //console.log('limitedOrgList: ');
+  //console.log(limitedOrgList);
   viewData = {
     limitedOrgList,
     orgsSessionData,
@@ -300,6 +300,26 @@ export function orgsDetailsPost(req, res) {
   }
 
   return res.redirect(redirectURL);
+}
+
+// orgsApplicantInterimGet
+// ************************************************************************
+//
+//        Add applicants, details
+//
+// ************************************************************************
+export function orgsApplicantInterimGet(req, res) {
+  let viewData;
+
+  let limitedOrgList = limitedOrgs.limitedOrgList;
+
+  //console.log(limitedOrgList);
+
+  viewData = {
+    limitedOrgList,
+  };
+
+  return res.render('prototypes/orgs/applicant-interim', viewData);
 }
 
 // ************************************************************************

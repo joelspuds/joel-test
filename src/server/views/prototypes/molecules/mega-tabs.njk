@@ -37,42 +37,69 @@
         .tox-statusbar__wordcount, .tox-statusbar__branding { display: none!important}
     </style>
 
+    <style>
+        .sticky-tabs {
+            /*overflow: hidden;*/
+        }
+        .sticky-tabs--stuck {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .menu {
+            width: 100%;
+            z-index: 99;
+            position: static;
+        }
+
+        .menu.sticky {
+            position: fixed;
+            top: 0;
+            /*border-bottom: 0;*/
+            width: 100%;
+            max-width: 1152px;
+            padding-right: 1.5rem;
+        }
+
+        .sticky-tabs + .govuk-tabs__panel {
+            padding-top: 60px;
+        }
+    </style>
+
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
             {{ components.captionHeading(text='Bio-detoxification of Ricin in castor bean', caption='Development of a Novel Inhibitor of Ricin') }}
         {%- endcall %}
     {%- endcall %}
-{#
-    {% call components.bulmaRow() %}
-
-        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
-
-
-        {%- endcall %}
-    {%- endcall %}#}
 
     <section class="section" id="main-content">
 
         {% call components.bulmaRow() %}
 
             {% call components.bulmaColumnAny(size='column is-full') %}
-                <div class="govuk-tabs" data-module="govuk-tabs">
+                <div class="govuk-tabs" data-module="_govuk-tabs">
                     <h2 class="govuk-tabs__title">
                         Contents
                     </h2>
+
+                    {#<a class="govuk-tabs__tab" id="link_one" href="#one"  data-tab="one" data-scroll="">
+                        Application overview
+                    </a>#}
+
                     <ul class="govuk-tabs__list">
                         <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-                            <a class="govuk-tabs__tab" href="#overview">
+                            <a class="govuk-tabs__tab" id="link_one" data-tab="one" href="#one" data-scroll="">
                                 Application overview
                             </a>
                         </li>
                         <li class="govuk-tabs__list-item">
-                            <a class="govuk-tabs__tab" href="#read">
+                            <a class="govuk-tabs__tab" id="link_two" data-tab="two" href="#two" data-scroll="">
                                 Read application
                             </a>
                         </li>
                         <li class="govuk-tabs__list-item">
-                            <a class="govuk-tabs__tab" href="#write">
+                            <a class="govuk-tabs__tab" id="link_three" data-tab="three" href="#three" data-scroll="">
                                 Write your review
                             </a>
                         </li>
@@ -81,7 +108,7 @@
                         <a href="/prototypes/peer-review-external/download-files" class="govuk-button govuk-button--secondary">Download review material</a>
                     </div>
 
-                    <div class="govuk-tabs__panel govuk-tabs__panel--borderless" id="overview">
+                    <div class="govuk-tabs__panel govuk-tabs__panel--borderless" id="one">
 
                         {% call components.bulmaRow() %}
 
@@ -152,7 +179,7 @@
 
                     #}
 
-                    <div class="govuk-tabs__panel govuk-tabs__panel--borderless govuk-tabs__panel--hidden" id="read">
+                    <div class="govuk-tabs__panel govuk-tabs__panel--borderless govuk-tabs__panel--hidden" id="two">
 
                         {% call components.bulmaRow() %}
 
@@ -185,15 +212,62 @@
 
 
                     #}
-                    <div class="govuk-tabs__panel govuk-tabs__panel--borderless govuk-tabs__panel--hidden" id="write">
+                    <div class="govuk-tabs__panel govuk-tabs__panel--borderless govuk-tabs__panel--hidden" id="three">
 
                         {% call components.bulmaRow() %}
 
                             {% call components.bulmaColumnAny(size='is-8', extraClass='') %}
 
-                                {#{{ components.captionHeading(text='Your review',tag='h2', size='m') }}#}
+                                <p class="govuk-body">The content in this section will be written by the Opportunity author at the hosting Council. They will provide specific guidance to help you review applications for this funding.</p>
 
-                                <p class="govuk-body">The applicant will be able to read your review and respond to what you have written. Their comments and your review are both submitted to panel to help shape funding decisions.</p>
+                                <p class="govuk-body">
+                                    <strong>(Example)</strong> Please comment on the importance and competitiveness of the proposed research, including:
+                                </p>
+
+                                <ol class="govuk-list govuk-list--number">
+                                    <li>strength of medical or scientific case
+                                    <li>level of innovation, and whether this is likely to lead to significant new
+                                        understanding</li>
+                                    <li>management strategy proposed, including equitable access to any shared resources</li>
+                                    <li>feasibility of experimental plans, statistics, methodology and design, including provision of sample size calculations, strategies to avoid bias, and preliminary data where appropriate</li>
+                                    <li>how well risks have been identified, and will be mitigated.</li>
+                                </ol>
+
+                                <noscript>
+                                    <div class="alerts  alerts--danger ">
+                                        <strong>JavaScript is not enabled</strong> This means anything you enter or paste into the box below will appear without formatting. To use 'rich text editing' functions, like bold text or lists, you will need <a href="https://www.enable-javascript.com/" class="govuk-link" target="_blank">to enable JavaScript</a> in your device or browser's security settings. If you did not disable JavaScript, try refreshing this page in a few minutes.
+                                    </div>
+                                </noscript>
+                                {#{{ components.textarea(options=selectOptions, label='Enter your case for support', labelBold=true, name='htmlTest', id='tinyMCEInput', hint='', group=true, rows='12', size='', value=exampleHTML, extraClass='', visuallyHidden=true) }}#}
+                                <div class="form-group ">
+                                    <label class="govuk-visually-hidden" for="tinyMCEInput">Enter your review</label>
+                                    <textarea class="form-control " name="review" id="tinyMCEInput" rows="12">{{ review }}</textarea>
+                                    <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 2500 words remaining</span></p>
+                                </div>
+
+
+                                <p>
+                                    <span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite"></span>
+                                </p>
+
+
+                                {{ components.captionHeading(text='You must:', tag='h3', size='s', extraClass='u-space-t20') }}
+
+                                <ul class="govuk-list govuk-list--bullet bull">
+                                    <li>cover strengths and weaknesses</li>
+                                    <li>cover all application criteria: the idea, importance, timeliness, approach, impact</li>
+                                    <li>be objective, evidenced based and justified</li>
+                                    <li>challenge the applicant constructively</li>
+                                </ul>
+
+                                {{ components.captionHeading(text='Do not:', tag='h3', size='s', extraClass='u-space-y5') }}
+
+                                <ul class="govuk-list govuk-list--bullet bull">
+                                    <li>share personal information</li>
+                                    <li>base on rumour or opinion</li>
+                                </ul>
+
+                                {#<p class="govuk-body">The applicant will be able to read your review and respond to what you have written. Their comments and your review are both submitted to panel to help shape funding decisions.</p>
 
                                 <div class="application-items u-space-b30">
                                     <div class="application-item application-item--skinny {% if isComplete %} application-item--complete {% else%} application-item--incomplete {% endif %} ">
@@ -219,7 +293,7 @@
                                     <input class="govuk-button application-controls__submit" type="submit" value="Save as draft" {% if not isComplete %} disabled {% endif %}>
 
                                 </div>
-                                {%- endcall %}
+                                {%- endcall %}#}
 
 
 
@@ -321,82 +395,40 @@
         });
     </script>
 
-    {#<script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script>
-        /*
-      tinyMCE.init({
-          setup: function(editor) {
-              editor.on("init", function(){
-              editor.addShortcut("ctrl+u", "", "");
-          });
-          }
-      })
-      oninit : "disableShortcuts",
-          setup: function(editor) {
-            editor.on('init', function(){
-              editor.addShortcut('Command+I', '', '');
+        let div_top = $('.menu').offset().top;
+        $(window).load(function () {
+            console.log($('.menu').offset().top);
+        });
+        $(window).scroll(function () {
+            var window_top = $(window).scrollTop() - 0;
+            if (window_top > div_top) {
+                if (!$('.menu').is('.sticky')) {
+                    $('.menu').addClass('sticky');
+                }
+            } else {
+                $('.menu').removeClass('sticky');
+            }
+        });
+
+        $('.govuk-tabs__tab').each(function(index){
+            $(this).on('click', function(e){
+                e.preventDefault();
+                console.log('clicking');
+                // set previous scroll before doing anything
+                $('.govuk-tabs__list-item--selected a').attr('data-scroll', $(document).scrollTop());
+                // hide all tabs
+                $('.govuk-tabs__panel').addClass('govuk-tabs__panel--hidden');
+                $('.govuk-tabs__list-item').removeClass('govuk-tabs__list-item--selected');
+                // activate desired tab
+                $('#' + $(this).data('tab')).removeClass('govuk-tabs__panel--hidden');
+                $(this).parent().addClass('govuk-tabs__list-item--selected');
+                // scroll to active tab
+                $(document).scrollTop(parseInt($(this).attr('data-scroll')));
             });
-          },
-
-      */
-
-        tinymce.init({
-            selector: '#tinyMCEInput',
-            height: 500,
-            plugins: [
-                'advlist autolink lists link anchor',
-                'wordcount'
-            ],
-            content_style: '.red-text {color: red}',
-            formats :{
-                //redText: { selector: 'p', classes: 'red-text' },
-                redText: { inline: 'span', classes: 'red-text' },
-                para: { selector: 'p,h2,h3,h4,li', classes: 'govuk-body' },
-                heading2: { selector: 'p,h2,h3,h4,li', classes: 'govuk-heading-l', exact: true },
-                heading3: { selector: 'p,h2,h3,h4', classes: 'govuk-heading-m', exact: true },
-                heading4: { selector: 'p,h2,h3,h4', classes: 'govuk-heading-s', exact: true },
-                unorderedList: { selector: 'ul, ol, p,h2,h3,h4', classes: 'govuk-list govuk-list--bullets'},
-            },
-            style_formats: [
-                /*{title: 'Red text', format: 'redText', styles: { color: '#ff0000' }},*/
-                {title: 'Paragraph', format: 'para'},
-                /*{title: 'Heading 2', format: 'heading2', block: 'h2', /!*styles: { color: 'lime' },*!/ classes: 'govuk-heading-l'},*/
-                {title: 'Heading 2', format: 'heading2', remove: 'all', block: 'h2', classes: 'govuk-heading-l'},
-                {title: 'Heading 3', format: 'heading3', block: 'h3', classes: 'govuk-heading-m'},
-                {title: 'Heading 4', format: 'heading4', block: 'h4', classes: 'govuk-heading-s'},
-                {title: 'Unordered list', format: 'unorderedList', block: 'ul'},
-            ],
-            advlist_bullet_styles: 'disc',
-            advlist_number_styles: 'default',
-            // toolbar: 'formatselect | bold italic | bullist numlist | align | indent outdent | link',
-            // toolbar: 'formatselect | bold | bullist numlist | link',
-            content_css: [
-                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
-                '/stylesheets/tinymce.css'
-            ],
-            menubar: false,
         });
     </script>
-    <script>
-        ;(function(){
-            let wordcounter = document.getElementById('codeOutput');
-            let counteroutputFoot = document.getElementById('wordCount2');
-            let words;
-            const limit = 50;
-            function countemwords(){
-                words = (wordcounter.value == '')? 0 : wordcounter.value.split(' ').length;
-                let remainder = limit - words;
-                counteroutputFoot.innerHTML = 'You have ' + words + ' words';
-            }
-            wordcounter.addEventListener('input', function(e){
-                countemwords()
-            }, false);
-            document.addEventListener("DOMContentLoaded", function(event) {
-                countemwords()
-            }, false);
-            window.addEventListener("load", function(event) {
-                countemwords();
-            }, false)
-        })();
-    </script>#}
+
+
 {% endblock %}
