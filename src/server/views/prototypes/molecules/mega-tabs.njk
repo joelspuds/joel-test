@@ -73,7 +73,7 @@
         {%- endcall %}
     {%- endcall %}
 
-    <section class="section" id="main-content">
+    <section class="section" id="mainContent">
 
         {% call components.bulmaRow() %}
 
@@ -219,6 +219,8 @@
 
                             {% call components.bulmaColumnAny(size='is-8', extraClass='') %}
 
+                                <h2 class="govuk-heading-m">Write your review</h2>
+
                                 <p class="govuk-body">The content in this section will be written by the Opportunity author at the hosting Council. They will provide specific guidance to help you review applications for this funding.</p>
 
                                 <p class="govuk-body">
@@ -242,7 +244,7 @@
                                 {#{{ components.textarea(options=selectOptions, label='Enter your case for support', labelBold=true, name='htmlTest', id='tinyMCEInput', hint='', group=true, rows='12', size='', value=exampleHTML, extraClass='', visuallyHidden=true) }}#}
                                 <div class="form-group ">
                                     <label class="govuk-visually-hidden" for="tinyMCEInput">Enter your review</label>
-                                    <textarea class="form-control " name="review" id="tinyMCEInput" rows="12">{{ review }}</textarea>
+                                    <textarea class="govuk-textarea form-control " name="review" id="tinyMCEInput" rows="12">{{ review }}</textarea>
                                     <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 2500 words remaining</span></p>
                                 </div>
 
