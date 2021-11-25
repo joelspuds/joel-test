@@ -316,7 +316,6 @@ function orgsDetailsPost(req, res) {
   return res.redirect(redirectURL);
 }
 
-// orgsApplicantInterimGet
 // ************************************************************************
 //
 //        Add applicants, details
