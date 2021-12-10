@@ -4,6 +4,7 @@
     @include desktop {
       position: fixed;
       top: 10px;
+      max-width:240px;
     }
   }
 
@@ -20,3 +21,5 @@
     }
   }
 }
+
+

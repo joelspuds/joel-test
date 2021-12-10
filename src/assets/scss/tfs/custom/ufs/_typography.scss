@@ -71,6 +71,7 @@ h1.govuk-heading-xl {
 
 .govuk-heading--link {
   position: relative;
+  padding-right: 105px;
 }
 .govuk-heading_additional-link {
   @include govuk-font($size: 19);

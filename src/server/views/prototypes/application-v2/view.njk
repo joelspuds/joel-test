@@ -3,10 +3,11 @@
 {#{% set showSmoothScrollscripts = true %}#}
 {% set showStickyNavscripts = true %}
 
+{% set projectName = 'Very long project name which will induce some degree of wrapping' %}
 {% set projectName = projectName if projectName %}
 
 {% set listItems = [
-    { text: '1. Details and summary', url: '#details' },
+    { text: '1. Details and summary but with a much longer title, actually longer is needed', url: '#details' },
     { text: '2. Personal eligibility', url: '#applicant' },
     { text: '3. Topic eligibility', url: '#area' },
     { text: '4. Your current research activity', url: '#current' },
@@ -67,9 +68,9 @@
 
             {#{{ components.linkHeading(text='1. Details and summary', tag='h2', size='m', extraClass='serif', id='details', additionalLinkText=actionText, additionalLinkTextHidden=' Details and summary', additionalLinkurl='/prototypes/application-v2/details') }}#}
             <h2 class="govuk-heading-m serif govuk-heading--link" id="details">
-               1. Details and summary
+                1. Details and summary but with a much longer title, actually longer is needed
                <span class="govuk-heading_additional-link govuk-heading-m">
-                   <a href="/prototypes/application-v2/details" class="govuk-link">Edit <span class="govuk-visually-hidden"> Details and summary</span>
+                   <a href="/prototypes/application-v2/details" class="govuk-link">Edit this section {#<span class="govuk-visually-hidden"> Details and summary</span>#}
                    </a>
                 </span>
             </h2>
