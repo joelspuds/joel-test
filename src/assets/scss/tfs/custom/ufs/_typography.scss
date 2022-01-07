@@ -161,15 +161,15 @@ body.ufs .govuk-heading_additional-link a span {
   font-weight: bold;
 
   &--blue {
-    color: govuk-colour("blue");
+    color: govuk-colour("blue")!important;
   }
 
   &--green {
-    color: govuk-colour("green");
+    color: govuk-colour("green")!important;
   }
 
   &--red {
-    color: govuk-colour("red");
+    color: govuk-colour("red")!important;
   }
 
 }

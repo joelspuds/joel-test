@@ -1,0 +1,305 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{% set pageTitle = 'Expert review components '  + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/molecules/', text:'Back to molecules'}] %}
+{#{% set allOrgs = allOrgs if allOrgs %}
+{% set namesArray = namesArray if namesArray %}#}
+
+
+{% block content %}
+
+    {% call components.bulmaRow(extraClass='') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Expert review components ', caption='Name of the application') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='expertReview') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                {{ components.captionHeading(text='Reviewer shortlist', tag='h2', size='m') }}
+
+                <table class="govuk-table mega-table">
+                    <caption class="govuk-table__caption govuk-visually-hidden">Details of expert reviews assigned to this application </caption>
+                    <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">Name</th>
+                        <th scope="col" class="govuk-table__header">Organisation</th>
+                        <th scope="col" class="govuk-table__header govuk-table__header--numeric">Invitation status</th>
+                    </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row ">
+                        <td class="govuk-table__cell">Dr. Uel Fandango</td>
+                        <td class="govuk-table__cell">Arden University</td>
+                        <td class="govuk-table__cell u-align-right">
+                            <a href="#" class="govuk-link status-text status-text--green">Accepted</a> <span class="meta">Mon 12 Jan 2022 (today)</span>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row ">
+                        <td class="govuk-table__cell">Dr. Johann Aaron-James</td>
+                        <td class="govuk-table__cell">Bristol University</td>
+                        <td class="govuk-table__cell u-align-right">
+                            <a href="#" class="govuk-link govuk-!-font-weight-bold">Sent</a> <span class="meta">Friday 8 Jan 2022 (4 days ago)</span>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row ">
+                        <td class="govuk-table__cell">Prof Wendy Richards</td>
+                        <td class="govuk-table__cell">Essex University</td>
+                        <td class="govuk-table__cell u-align-right">
+                            <a href="#" class="govuk-link">Invite</a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row ">
+                        <td class="govuk-table__cell">Dr. Barbara Vickers</td>
+                        <td class="govuk-table__cell">University of East Anglia</td>
+                        <td class="govuk-table__cell u-align-right">
+                            <a href="#" class="govuk-link">Invite</a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row ">
+                        <td class="govuk-table__cell">Dr. Everrard Chumney-Warner</td>
+                        <td class="govuk-table__cell">University of Newquay and Padstow</td>
+                        <td class="govuk-table__cell u-align-right">
+                            <a href="#" class="govuk-link status-text status-text--red">Declined</a> <span class="meta">Mon 12 Jan 2022 (today)</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                {{ components.captionHeading(text='Reviews overview', tag='h2', size='m') }}
+
+                <table class="govuk-table mega-table">
+                    <caption class="govuk-table__caption govuk-visually-hidden">Details of expert reviews assigned to this application </caption>
+                    <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">Review</th>
+                        <th scope="col" class="govuk-table__header">Name</th>
+                        <th scope="col" class="govuk-table__header">Reviewer deadline</th>
+                        <th scope="col" class="govuk-table__header govuk-table__header--numeric">Score</th>
+                        <th scope="col" class="govuk-table__header govuk-table__header--numeric">Invitation status</th>
+                    </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row ">
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Review 1</a></td>
+                            <td class="govuk-table__cell">Dr. Uel Fandango</td>
+                            <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold">12 days left</span> 12 Jan 2022</td>
+                            <td class="govuk-table__cell u-align-right">
+                                4
+                            </td>
+                            <td class="govuk-table__cell u-align-right">
+                                <span class="status-text status-text--blue">Recieved</span>
+                            </td>
+                        </tr>
+                        <tr class="govuk-table__row ">
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Review 2</a></td>
+                            <td class="govuk-table__cell">Dr. Clair Spalding</td>
+                            <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold">21 days left</span> 23 Jan 2022</td>
+                            <td class="govuk-table__cell u-align-right">
+                                -
+                            </td>
+                            <td class="govuk-table__cell u-align-right">
+                                <span class="">Incomplete</span>
+                            </td>
+                        </tr>
+                        <tr class="govuk-table__row ">
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Review 3</a></td>
+                            <td class="govuk-table__cell">Prof. Trixie Malfoy</td>
+                            <td class="govuk-table__cell"><span class="status-text status-text--red">3 days left</span> <span class="status-text--red">23 Jan 2022</span></td>
+                            <td class="govuk-table__cell u-align-right">
+                                -
+                            </td>
+                            <td class="govuk-table__cell u-align-right">
+                                <span class="">Incomplete</span>
+                            </td>
+                        </tr>
+                        <tr class="govuk-table__row ">
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Review 4</a></td>
+                            <td class="govuk-table__cell">Dr. Mirabelle Piste</td>
+                            <td class="govuk-table__cell"><span class="status-text status-text--red">0 days left</span> <span class="status-text--red">9 Jan 2022</span></td>
+                            <td class="govuk-table__cell u-align-right">
+                                5 - Excellent
+                            </td>
+                            <td class="govuk-table__cell u-align-right">
+                                <span class="status-text status-text--red">&#10006; Unusable</span>
+                            </td>
+                        </tr>
+                        <tr class="govuk-table__row ">
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Review 5</a></td>
+                            <td class="govuk-table__cell">Dr. Vlad Tynemouth</td>
+                            <td class="govuk-table__cell"><span class="status-text">6 days left</span> <span class="">9 Jan 2022</span></td>
+                            <td class="govuk-table__cell u-align-right">
+                                5 - Excellent
+                            </td>
+                            <td class="govuk-table__cell u-align-right">
+                                <span class="status-text status-text--green">&#10004; Usable</span>
+                            </td>
+                        </tr>
+                        <tr class="govuk-table__row ">
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Review 6</a></td>
+                            <td class="govuk-table__cell">Dr. Mauritania Batanna-Smyth</td>
+                            <td class="govuk-table__cell"><span class="status-text">14 days left</span> <span class="">29 Jan 2022</span></td>
+                            <td class="govuk-table__cell u-align-right">
+                                5 - Excellent
+                            </td>
+                            <td class="govuk-table__cell u-align-right">
+                                <span class="status-text">Sent for response</span>
+                                <br><span class="meta">21 Jan 2022</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                {{ components.captionHeading(text='Score widget', tag='h2', size='m') }}
+
+                <div class="score">
+                    {{ components.captionHeading(text='Expert review score', tag='h2', size='s', extraClass='u-space-b10') }}
+                    <span class="govuk-!-font-size-36">5</span> / 6
+                </div>
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                {{ components.captionHeading(text='Review usability box', tag='h2', size='m') }}
+
+                <div class="boxed-content">
+                    <h3 class="govuk-heading-s ">Usability check</h3>
+                    <p class="govuk-body">Can this review be used to help inform a funding decision? </p>
+
+                    <details class="govuk-details u-space-t20" data-module="govuk-details" role="group">
+                        <summary class="govuk-details__summary" role="button" aria-controls="details-content-1" aria-expanded="false">
+                            <span class="govuk-details__summary-text">Guidelines for marking a review as usable</span>
+                        </summary>
+                        <div class="govuk-details__text" id="details-content-1" aria-hidden="true">
+                            <p class="govuk-body"><strong>The review must:</strong></p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>Cover strengths and weaknesses</li>
+                                <li>Cover all application criteria: The idea, Importance, Timeliness, Approach, Impact.</li>
+                                <li>Be objective, evidenced based and justified</li>
+                                <li>Challenge the applicant constructively</li>
+                            </ul>
+
+                            <p class="govuk-body"><strong>The review must not:</strong></p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>Share personal information</li>
+                                <li>Base on rumour or opinion.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="govuk-form-group">
+                        <fieldset aria-describedby="contact-hint" class="govuk-fieldset">
+                            <h2 class="govuk-fieldset__heading">
+                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Is this review usable?</legend>
+                            </h2>
+
+                            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="review4_yes" name="review4_reviewUsability" type="radio" value="yes" aria-controls="review4_conditional-1" aria-expanded="false"> <label class="govuk-label govuk-radios__label" for="review4_yes">Yes, mark review as usable</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="review4_no" name="review4_reviewUsability" type="radio" value="no" aria-controls="review4_conditional-2" aria-expanded="false"> <label class="govuk-label govuk-radios__label" for="review4_no">No, mark review as unusable </label>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+
+                    <div class="application-controls govuk-clearfix _u-space-t45">
+
+                        <button type="submit" id="saveTableData" class="govuk-button application-controls__submit">Complete usability check</button>
+
+                    </div>
+
+                </div>
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                {#<div class="govuk-form-group {% if emailError %}govuk-form-group--error{% endif %}">
+                    <label class="govuk-label govuk-label--s" for="emailAddress" id="emailAddressLabel">Email address
+                        {% if emailError %}
+                            <span class="govuk-error-message">
+                                    <span class="govuk-visually-hidden">Error:</span> You must enter a valid email address
+                            </span>
+                        {% endif %}
+                    </label>
+                    <input class="govuk-input govuk-input--width-20 {% if emailError %}govuk-input--error{% endif %}" id="emailAddress" type="text" name="emailAddress" value="{{ firstName }}">
+                </div>#}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                {#<div class="application-controls govuk-clearfix">
+                    {{ components.button(text='Add reviewer', extraClass="application-controls__submit")}}
+
+                    <span class="sub-button">
+                        {{ components.link(text='Cancel', url='/prototypes/peer-review/application-overview')}}
+                    </span>
+                </div>#}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %} {# nd form #}
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+    {#<script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        var selectEl = document.querySelector('#organisation');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 1,
+            selectElement: selectEl
+        });
+    </script>#}
+
+{% endblock %}
