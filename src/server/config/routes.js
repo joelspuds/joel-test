@@ -639,6 +639,21 @@ router.post('/prototypes/orgs3/search-results', demosController.orgs3SearchResul
 
 router.get('/prototypes/orgs3/add-manually', demosController.orgs3AddManuallyGet);
 router.post('/prototypes/orgs3/add-manually', demosController.orgs3AddManuallyPost);
+/* *************************************************************** *
+
+    Panel
+
+ * *************************************************************** */
+// Create new opportunity
+router.get('/prototypes/panel/', demosController.panelIndexGet);
+router.post('/prototypes/panel/', demosController.panelIndexPost);
+router.get('/prototypes/panel/external-email', demosController.panelExternalEmailGet);
+router.post('/prototypes/panel/external-email', demosController.panelExternalEmailPost);
+router.get('/prototypes/panel/home', demosController.panelHomeGet);
+router.post('/prototypes/panel/home', demosController.panelHomePost);
+router.get('/prototypes/panel/panel', demosController.panelPanelsGet);
+router.post('/prototypes/panel/panel', demosController.panelPanelsPost);
+// router.get('/prototypes/panel/config', demosController.createOpportunityConfigGetV3);
 
 /* *************************************************************** *
 

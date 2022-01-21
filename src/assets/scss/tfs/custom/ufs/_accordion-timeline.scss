@@ -1,0 +1,121 @@
+$module: 'govuk-accordion';
+// $pager-link-dimensions: 24px;
+
+.#{$module}__timeline {
+  position: relative;
+  margin-left: 40px;
+
+  .govuk-accordion__section {
+    position: relative;
+
+    &--disabled {
+      .govuk-accordion__section-header {
+        cursor: default;
+      }
+
+      h2 {
+        display: block !important;
+      }
+      .govuk-accordion__section-button--disabled {
+        font-weight: bold;
+        color: govuk-colour("dark-grey");
+        @extend .govuk-accordion__section-button;
+      }
+    }
+
+    &--active {
+
+      &:after {
+        background-color: govuk-colour("blue") !important;
+      }
+
+      .govuk-accordion__section-button:before {
+        border: 4px solid govuk-colour("blue") !important;
+      }
+
+      .govuk-accordion__section:after {
+        background-color: govuk-colour("blue") !important;
+      }
+    }
+
+    &:after {
+      position: absolute;
+      left: -32px;
+      top: 2px;
+      content: "";
+      width: 4px;
+      height: 101%;
+      background-color: govuk-colour("mid-grey");
+      z-index: 10;
+    }
+
+    &--first:after {
+      top:15px;
+    }
+
+    &--last:after {
+      top:auto;
+      bottom: 15px;
+    }
+
+  }
+
+  .govuk-accordion__section-header,
+  .govuk-accordion__section-content {
+    padding-left: 10px;
+  }
+
+  .govuk-accordion__section-button:before {
+    position: absolute;
+    left: -45px;
+    top: 14px;
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 4px solid govuk-colour("mid-grey");
+    background-color: govuk-colour("white");
+    outline: 1px solid govuk-colour("white");
+    z-index: 100;
+  }
+
+  .govuk-accordion__section--expanded {
+    background-color: govuk-colour("light-grey");
+
+    .govuk-accordion__section-button:before {
+      background-color: govuk-colour("blue");
+      border-color: govuk-colour("white");
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .govuk-accordion__section--expanded.govuk-accordion__section:after {
+    background-color: govuk-colour("blue");
+  }
+}
+
+/*.govuk-accordion__section__timeline--disabled {
+
+}*/
+
+.govuk-accordion__section--disabled {
+  @extend .govuk-accordion__section;
+}
+
+
+.govuk-accordion__section {
+}
+
+/*.govuk-accordion__section:first-of-type:after {
+  top: 15px !important;
+  background-color: orange!important;
+}*/
+
+/*.govuk-accordion.govuk-accordion__timeline ~ .govuk-accordion__section {
+  background-color: lime!important;
+}
+
+.govuk-accordion.govuk-accordion__timeline .govuk-accordion__section:first-of-type:after {
+  top: 15px!important;
+}*/

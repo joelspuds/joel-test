@@ -1,0 +1,147 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set showStickyNavscripts = true %}
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{% set pageTitle = 'Manage applicant responses'  + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+
+{%  set review1_markReviewAsUsable = review1_markReviewAsUsable if review1_markReviewAsUsable  %}
+{%  set review4_markReviewAsUsable = review4_markReviewAsUsable if review4_markReviewAsUsable  %}
+
+{% block content %}
+
+    {% call components.bulmaRow(extraClass='') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Application overview', caption='Removal of deep sea plastics and microparticles') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='', customID='main-content') %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab " href="#">Application overview</a>
+                    </li>
+                    <li class="govuk-tabs__list-item ">
+                        <a class="govuk-tabs__tab" href="#">Read application</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#">Reviews</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#">Response</a>
+                    </li>
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-8', customID='main-content') %}
+                <div class="govuk-accordion govuk-accordion__timeline" data-module="govuk-accordion" id="accordion-default">
+                    <div class="govuk-accordion__section govuk-accordion__section--first govuk-accordion__section--active">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">Application submitted</span>
+                            </h2>
+                            <span class="meta govuk-!-display-block govuk-!-font-size-16">Wednesday, 12 January 2022, 01:14am</span>
+                        </div>
+                        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                            <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        </div>
+                    </div>
+                    <div class="govuk-accordion__section govuk-accordion__section--active">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">Reviews received</span>
+                            </h2>
+                            <span class="meta govuk-!-display-block govuk-!-font-size-16">Tuesday 18 January 2022, 04:28pm</span>
+                        </div>
+                        <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+                            {{ components.captionHeading(text='What happens next?', tag='h3', size='s') }}
+                            <p class='govuk-body'>Your application has been reviewed and feedback has been provided for you to read and
+                                respond. <strong>Your response must be received by Friday 29 January 2022</strong>.
+                            <p class='govuk-body'>Each review and any comments you make will be sent to panel to help inform a decision.</p>
+                        </div>
+                    </div>
+                    <div class="govuk-accordion__section govuk-accordion__section--active govuk-accordion__section--expanded">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button" id="accordion-default-heading-3">Response</span>
+                            </h2>
+                            <span class="meta govuk-!-display-block govuk-!-font-size-16">Deadline Friday 29 January 2022, 04:28pm</span>
+                        </div>
+                        <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+                            <p class='govuk-body'>Applicant's response is pending</p>
+                        </div>
+                    </div>
+                    <div class="_govuk-accordion__section govuk-accordion__section--disabled">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button--disabled" id="accordion-default-heading-5">Panel</span>
+                            </h2>
+                        </div>
+
+                    </div>
+                    <div class="_govuk-accordion__section govuk-accordion__section--disabled govuk-accordion__section--last">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button--disabled" id="accordion-default-heading-5">Decision</span>
+                            </h2>
+                        </div>
+                        {#<div id="accordion-default-content-5" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-5">
+                            <p class='govuk-body'>This review is in progress</p>
+                        </div>#}
+                    </div>
+                </div>
+            </div>
+
+            <div class="column is-3 is-offset-1">
+                <div class="application-data u-space-b20">
+                    <dl class="application-data__list">
+                        <dt class="application-data__key">Response deadline</dt>
+                        <dd class="application-data__value">29 January 2022</dd>
+                        <dt class="application-data__key">Opportunity</dt>
+                        <dd class="application-data__value"><a href="#" class="govuk-link">Development of a Novel Inhibitor of Ricin</a></dd>
+                        <dt class="application-data__key">Application reference</dt>
+                        <dd class="application-data__value">APP000563</dd>
+
+                        <dt class="application-data__key">Funder</dt>
+                        <dd class="application-data__value">AHRC, UKRI</dd>
+                    </dl>
+                </div>
+
+            </div>
+
+        {%- endcall %}
+
+
+
+    {%- endcall %}
+{% endblock %}
+
+{% block bodyScripts %}
+    {#<script type="text/javascript">
+        /* smooth-scroll.js v1.3.1 */
+        /*
+        n=0,
+        r=500,
+        i=15,
+        */
+        (function(e,t){
+            "use strict";
+            var n=0,
+                r=250,
+                i=15,
+                s=document.getElementsByTagName("a"),
+                o;
+            for(var u=0;u<s.length;u++){
+                o=s[u].attributes.href===t?null:s[u].attributes.href.nodeValue.toString();
+                if(o!==null&&o.length>1&&o.indexOf("#")!=-1){
+                    s[u].onclick=function(){
+                        var n,s=this.attributes.href.nodeValue.toString(),o=s.substr(0,s.indexOf("#")),u=s.substr(s.indexOf("#")+1);if(n=document.getElementById(u)){var l=(r-r%i)/i,c=f(),h=(a(n)-c)/l;if(e.history&&typeof e.history.pushState=="function")e.history.pushState({},t,o+"#"+u);for(var p=1;p<=l;p++){(function(){var t=h*p;setTimeout(function(){e.scrollTo(0,t+c)},i*p)})()}return false}}}}var a=function(e){var r=n*-1;while(e.offsetParent!=t&&e.offsetParent!=null){r+=e.offsetTop+(e.clientTop!=null?e.clientTop:0);e=e.offsetParent}return r};var f=function(){return e.pageYOffset!==t?e.pageYOffset:document.documentElement.scrollTop!==t?document.documentElement.scrollTop:document.body.scrollTop}})(window)
+    </script>#}
+
+
+{% endblock %}

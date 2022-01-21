@@ -27,6 +27,23 @@
 
                 {{ components.alerts(text='This contains some important information')  }}
 
+                {{ components.captionHeading(text='Normal', tag='h2', size='s') }}
+
+                <div class="alerts alerts--link">
+                    You can click a link in this one
+                    <a href="#" class="govuk-link">Click here</a>
+                </div>
+
+                <div class="alerts alerts--link">
+                    This one contains a really long bit of text so you can see it wrapping all over the shed onto the next line on smaller viewports
+                    <a href="#" class="govuk-link">Click here</a>
+                </div>
+
+                <div class="alerts alerts--danger alerts--link">
+                    This one contains a really long bit of text so you can see it wrapping all over the shed onto the next line on smaller viewports
+                    <a href="#" class="govuk-link">Click here and find out more</a>
+                </div>
+
                 {{ components.captionHeading(text='Alert with a title', tag='h2', size='m') }}
 
                 {{ components.alerts(text='This contains some important information', title='This is really important') }}

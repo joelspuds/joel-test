@@ -363,3 +363,15 @@ Object.keys(_orgs3Controller).forEach(function (key) {
     }
   });
 });
+
+var _panelController = require('./panelController');
+
+Object.keys(_panelController).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _panelController[key];
+    }
+  });
+});

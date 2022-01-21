@@ -1,0 +1,53 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+
+{% set pageTitle = 'Peer review' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            {{ components.captionHeading(text='External user: panel') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+
+            <ol class="govuk-list ">
+
+                <li>
+                    <strong>Setting up an Opportunity</strong>
+                    <br>
+                    <a href="/prototypes/panel/external-email" class="govuk-link">Email to user</a>
+                    <br><br>
+                </li>
+
+
+
+            </ol>
+
+            <hr>
+
+            <p class="govuk-body">
+                <a href="/prototypes/panel?clearSession=true" class="govuk-link">Clear all stored data</a>
+            </p>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+{% block bodyScripts %}
+    {#<script>
+      Zepto(function($){
+        $('#thing').on('click', function() {
+        });
+      });
+    </script>#}
+{% endblock %}
+
+
