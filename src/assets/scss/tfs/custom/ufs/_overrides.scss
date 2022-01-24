@@ -255,6 +255,21 @@ td.u-align-right {
     width: 25%;
   }
 }
+
+.cell-max-120 {
+  width: 120px;
+}
+
+.wrap-table {
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  &__cell {
+    word-wrap: break-word;
+  }
+
+}
+
 // to mimic .govuk-link--no-visited-state
 .govuk-link:visited {
   color: govuk-colour("blue")!important;

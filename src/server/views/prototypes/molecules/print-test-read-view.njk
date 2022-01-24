@@ -1,0 +1,408 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set pageTitle = 'Application preview' + GLOBAL_TAG_TITLE_SUFFIX %}
+{#{% set showSmoothScrollscripts = true %}#}
+{% set showStickyNavscripts = true %}
+
+{% set projectName = 'Very long project name which will induce some degree of wrapping' %}
+{% set projectName = projectName if projectName %}
+
+{% set listItems = [
+    { text: '1. Details and summary but with a much longer title, actually longer is needed', url: '#details' },
+    { text: '2. Personal eligibility', url: '#applicant' },
+    { text: '3. Topic eligibility', url: '#area' },
+    { text: '4. Your current research activity', url: '#current' },
+    { text: '5. Your research history', url: '#history' },
+    { text: '6. Write a review', url: '#review' }
+] %}
+}
+
+{% set detailsInput = detailsInput if detailsInput %}
+{% set eligibilityInput = eligibilityInput if eligibilityInput %}
+{% set programmeTopic = programmeTopic if programmeTopic %}
+{% set widerEffect = widerEffect if widerEffect %}
+{% set researchExperience = researchExperience if researchExperience %}
+{% set writeReview = writeReview if writeReview %}
+{% set readOnly = readOnly if readOnly %}
+{% set actionText = 'View ' if readOnly else 'Edit <span aria-hidden="true">this section</span>'%}
+{#{% set backLinkContents =  [{url:'/prototypes/application-v2/', text:'Back to application'}] %}#}
+
+{% block content %}``
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Application preview', caption=projectName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item ">
+                        <a class="govuk-tabs__tab" href="/prototypes/application-v2/">Write application</a>
+                    </li>
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#">Read application</a>
+                    </li>
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='u-space-b30') %}
+
+        {% call components.bulmaColumnAny(size='is-3') %}
+            <nav class="sticky-nav">
+                {{ components.linkHeading(text='Contents', tag='h2', size='s')}}
+                {{ components.list(items=listItems, parentClass='sticky-nav')}}
+                <a href="#" class="govuk-link js-only print-link print-link--tabs" id="printThis" onclick="window.print();return false;">Print this page</a>
+            </nav>
+
+        {%- endcall %}
+
+        <div class="column is-9 " id="main-content">
+
+
+            <div class="alerts  alerts--info ">
+
+                This is how assessors will see your proposal.
+            </div>
+
+
+
+
+            <h2 class="govuk-heading-l serif govuk-heading--link">
+                Very long project name which will induce some degree of wrapping
+            </h2>
+
+
+            <h2 class="govuk-heading-m serif govuk-heading--link" id="details">
+                1. Details and summary but with a much longer title, actually longer is needed
+                <span class="govuk-heading_additional-link govuk-heading-m">
+                   <a href="/prototypes/application-v2/details" class="govuk-link">Edit this section
+                   </a>
+                </span>
+            </h2>
+
+            <div class="serif u-space-b30">
+
+                <p class="govuk-body ">Pellentesque molestie ante quis elit gravida euismod. Vestibulum egestas elementum sapien. Nullam scelerisque convallis odio a euismod. Vestibulum id neque ac urna aliquet pharetra. Suspendisse vel convallis turpis, pretium rutrum metus. Proin in condimentum ex. Vestibulum quis eros faucibus, ornare ligula quis, rutrum metus. Morbi accumsan sit amet nisi et interdum. Sed vulputate enim nibh, sed iaculis odio porta et. Cras blandit commodo facilisis. Cras feugiat erat arcu, at egestas purus luctus sed. Nullam molestie tempus sapien sed interdum. Nunc non dui faucibus, viverra nisl eget, ultricies ex.</p> <p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate.</p>
+
+
+                <table class="govuk-table responsive-table__table wrap-table">
+                    <thead>
+                    <tr class="govuk-table__header">
+                        <th class="govuk-table__header">Name of <br>Organisation</th>
+                        <th class="govuk-table__header">Registered office address<br>or website address</th>
+                        <th class="govuk-table__header">In-kind contribution</th>
+                        {#<th class="govuk-table__header govuk-table__header--numeric">Number</th>
+                        <th class="govuk-table__header govuk-table__header--numeric cell-max-120">URL</th>#}
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="govuk-table__cell">Berkshire Buckinghamshire and Oxfordshire Wildlife Trust</td>
+                            <td class="govuk-table__cell">UK-Canada Social Research Team Grants</td>
+                            <td class="govuk-table__cell">
+                                <p class="govuk-body">Nunc quis orci in ligula elementum hendrerit ac non tellus. Duis nec est egestas, dignissim metus vitae, tincidunt ex. Donec quis condimentum eros. Sed eleifend urna vitae euismod tempus. Nulla eu mi blandit, interdum lacus et, bibendum purus. Donec blandit, justo in placerat vestibulum, felis neque commodo dolor, id iaculis eros nisi eget quam.</p>
+                                <p class="govuk-body"><a href="http://www.test-address.co.uk">www.test-address.co.uk</a></p>
+                            </td>
+                           {# <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1000, 9999) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric cell-max-120 wrap-table__cell">https://www.example.com/afterthought/amusement.php?ball=brother</td>#}
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Avon And Somerset Wildlife Trust</td>
+                            <td class="govuk-table__cell">123 Thing Lane<br>Somerton<br>Somerset<br>BS78 3ER
+                                <p class="govuk-body"><a href="http://www.test-address.co.uk">www.avon-wildlife.co.uk</a></p>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <p class="govuk-body">Sed eleifend urna vitae euismod tempus. Nulla eu mi blandit, interdum lacus et, bibendum purus. Donec blandit, justo in placerat vestibulum, felis neque commodo dolor, id iaculis eros nisi eget quam.</p>
+
+                            </td>
+                            {#<td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1000, 9999) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric cell-max-120 wrap-table__cell">https://www.example.com/dummy-url?var=testing</td>#}
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Avon And Somerset Wildlife Trust</td>
+                            <td class="govuk-table__cell">123 Thing Lane<br>Somerton<br>Somerset<br>BS78 3ER
+                                <p class="govuk-body"><a href="http://www.test-address.co.uk">www.avon-wildlife.co.uk</a></p>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <p class="govuk-body">Sed eleifend urna vitae euismod tempus. Nulla eu mi blandit, interdum lacus et, bibendum purus. Donec blandit, justo in placerat vestibulum, felis neque commodo dolor, id iaculis eros nisi eget quam.</p>
+
+                            </td>
+                            {#<td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1000, 9999) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric cell-max-120 wrap-table__cell">https://www.example.com/dummy-url?var=testing</td>#}
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Avon And Somerset Wildlife Trust</td>
+                            <td class="govuk-table__cell">123 Thing Lane<br>Somerton<br>Somerset<br>BS78 3ER
+                                <p class="govuk-body"><a href="http://www.test-address.co.uk">www.avon-wildlife.co.uk</a></p>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <p class="govuk-body">Sed eleifend urna vitae euismod tempus. Nulla eu mi blandit, interdum lacus et, bibendum purus. Donec blandit, justo in placerat vestibulum, felis neque commodo dolor, id iaculis eros nisi eget quam.</p>
+
+                            </td>
+                            {#<td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1000, 9999) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric cell-max-120 wrap-table__cell">https://www.example.com/dummy-url?var=testing</td>#}
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Avon And Somerset Wildlife Trust</td>
+                            <td class="govuk-table__cell">123 Thing Lane<br>Somerton<br>Somerset<br>BS78 3ER</td>
+                            <td class="govuk-table__cell">
+                                <p class="govuk-body">Sed eleifend urna vitae euismod tempus. Nulla eu mi blandit, interdum lacus et, bibendum purus. Donec blandit, justo in placerat vestibulum, felis neque commodo dolor, id iaculis eros nisi eget quam.</p>
+                                <p class="govuk-body"><a href="http://www.test-address.co.uk">www.avon-wildlife.co.uk</a></p>
+                            </td>
+                            {#<td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1000, 9999) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric cell-max-120 wrap-table__cell">https://www.example.com/dummy-url?var=testing</td>#}
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                {#<table class="govuk-table responsive-table__table">
+                    <thead>
+                    <tr class="govuk-table__header">
+                        <th class="govuk-table__header">Organisation<br>name</th>
+                        <th class="govuk-table__header">Opportunity<br>name</th>
+                        <th class="govuk-table__header">Paragraph</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Number</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">URL</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="govuk-table__cell">Berkshire Buckinghamshire and Oxfordshire Wildlife Trust</td>
+                        <td class="govuk-table__cell">UK-Canada Social Research Team Grants</td>
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body">Nunc quis orci in ligula elementum hendrerit ac non tellus. Duis nec est egestas, dignissim metus vitae, tincidunt ex. Donec quis condimentum eros. Sed eleifend urna vitae euismod tempus. Nulla eu mi blandit, interdum lacus et, bibendum purus. Donec blandit, justo in placerat vestibulum, felis neque commodo dolor, id iaculis eros nisi eget quam.</p>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1000, 9999) | random }}</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">https://www.example.com/afterthought/amusement.php?ball=brother</td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell">Mahidol Oxford Tropical Medicine Research Unit</td>
+                        <td class="govuk-table__cell">Strength in places Round 3</td>
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body">Nunc quis orci in ligula elementum hendrerit ac non tellus. Duis nec est egestas, dignissim metus vitae, tincidunt ex. Donec quis condimentum eros. Sed eleifend urna vitae euismod tempus. Nulla eu mi blandit, interdum lacus et, bibendum purus. Donec blandit, justo in placerat vestibulum, felis neque commodo dolor, id iaculis eros nisi eget quam.</p>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1000, 9999) | random }}</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">https://www.example.com/army/border.html</td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell">Oxford Biomedical Research</td>
+                        <td class="govuk-table__cell">UK social research for the next decade Part III</td>
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body">Nunc quis orci in ligula elementum hendrerit ac non tellus. Duis nec est egestas, dignissim metus vitae, tincidunt ex. Donec quis condimentum eros. Sed eleifend urna vitae euismod tempus. Nulla eu mi blandit, interdum lacus et, bibendum purus. Donec blandit, justo in placerat vestibulum, felis neque commodo dolor, id iaculis eros nisi eget quam.</p>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1000, 9999) | random }}</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">http://amusement.example.com/#amount</td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell">Oxford Centre for Computational Neuroscience</td>
+                        <td class="govuk-table__cell">UK-Canada Diabetes Research Team Grants</td>
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body">Nunc quis orci in ligula elementum hendrerit ac non tellus. Duis nec est egestas, dignissim metus vitae, tincidunt ex. Donec quis condimentum eros. Sed eleifend urna vitae euismod tempus. Nulla eu mi blandit, interdum lacus et, bibendum purus. Donec blandit, justo in placerat vestibulum, felis neque commodo dolor, id iaculis eros nisi eget quam.</p>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1000, 9999) | random }}</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">http://www.example.com/brake?action=believe&branch=air</td>
+                    </tr>
+
+                    </tbody>
+
+                </table>#}
+
+                <h3 class="govuk-heading-s">Start date</h3><p class="govuk-body ">August 2020</p><h3 class="govuk-heading-s">Duration</h3><p class="govuk-body ">36 months</p><p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate.
+
+                </p></div>
+
+
+
+
+
+            <h2 class="govuk-heading-m serif govuk-heading--link" id="applicant">
+                2. Personal eligibility
+
+
+                <span class="govuk-heading_additional-link govuk-heading-m">
+            <a href="/prototypes/application-v2/eligibility-applicant" class="govuk-link">
+                Edit <span aria-hidden="true">this section</span>
+
+                    <span class="govuk-visually-hidden"> Personal eligibility</span>
+
+            </a>
+        </span>
+
+
+            </h2>
+
+
+
+
+            <div class="serif u-space-b30">
+
+                <p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate.</p>
+
+            </div>
+
+
+
+
+
+            <h2 class="govuk-heading-m serif govuk-heading--link" id="area">
+                3. Topic eligibility
+
+
+                <span class="govuk-heading_additional-link govuk-heading-m">
+            <a href="/prototypes/application-v2/eligibility-research-area" class="govuk-link">
+                Edit <span aria-hidden="true">this section</span>
+
+                    <span class="govuk-visually-hidden"> eligibility - research area</span>
+
+            </a>
+        </span>
+
+
+            </h2>
+
+
+
+            <div class="serif u-space-b30">
+
+                <p class="govuk-body ">Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. </p>
+
+            </div>
+
+
+
+
+
+            <h2 class="govuk-heading-m serif govuk-heading--link" id="current">
+                4. Your current research activity
+
+
+                <span class="govuk-heading_additional-link govuk-heading-m">
+            <a href="/prototypes/application-v2/current-research-activity" class="govuk-link">
+                Edit <span aria-hidden="true">this section</span>
+
+                    <span class="govuk-visually-hidden"> Your current research activity</span>
+
+            </a>
+        </span>
+
+
+            </h2>
+
+
+
+            <div class="serif u-space-b30">
+
+                <p class="govuk-body ">Etiam ut molestie dui. Pellentesque semper ante non massa malesuada, id dictum turpis consectetur. Fusce euismod nunc at suscipit laoreet. Morbi blandit justo est, quis accumsan justo mollis viverra. Aenean non tempus est. Sed metus nibh, facilisis suscipit porttitor sed, porttitor quis justo. Fusce placerat nunc at tincidunt gravida. Vestibulum pharetra mollis eros, nec vulputate velit. Aenean tristique elit dignissim malesuada rhoncus. Sed viverra velit quis nunc varius convallis.</p><p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. Quisque fringilla blandit venenatis. Duis consequat, purus at sodales ornare, sapien eros maximus urna, eget ultrices tellus velit vitae lorem.</p>
+
+            </div>
+
+
+
+
+
+            <h2 class="govuk-heading-m serif govuk-heading--link" id="history">
+                5. Your research history
+
+
+                <span class="govuk-heading_additional-link govuk-heading-m">
+            <a href="/prototypes/application-v2/research-history" class="govuk-link">
+                Edit <span aria-hidden="true">this section</span>
+
+                    <span class="govuk-visually-hidden"> Your research history</span>
+
+            </a>
+        </span>
+
+
+            </h2>
+
+
+
+            <div class="serif u-space-b30">
+
+                <p class="govuk-body ">Etiam ut molestie dui. Pellentesque semper ante non massa malesuada, id dictum turpis consectetur. Fusce euismod nunc at suscipit laoreet. Morbi blandit justo est, quis accumsan justo mollis viverra. Aenean non tempus est. Sed metus nibh, facilisis suscipit porttitor sed, porttitor quis justo. Fusce placerat nunc at tincidunt gravida. Vestibulum pharetra mollis eros, nec vulputate velit. Aenean tristique elit dignissim malesuada rhoncus. Sed viverra velit quis nunc varius convallis.</p><p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. Quisque fringilla blandit venenatis. Duis consequat, purus at sodales ornare, sapien eros maximus urna.</p><p class="govuk-body ">Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. Quisque fringilla blandit venenatis. Duis consequat, purus at sodales ornare, sapien eros maximus urna.</p>
+
+            </div>
+
+
+
+
+
+            <h2 class="govuk-heading-m serif govuk-heading--link" id="review">
+                6. Write a review
+
+
+                <span class="govuk-heading_additional-link govuk-heading-m">
+            <a href="/prototypes/application-v2/review" class="govuk-link">
+                Edit <span aria-hidden="true">this section</span>
+
+                    <span class="govuk-visually-hidden"> Write a review</span>
+
+            </a>
+        </span>
+
+
+            </h2>
+
+
+
+            <div class="serif u-space-b30">
+
+                <p class="govuk-body ">Quisque malesuada efficitur viverra. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc tincidunt est quis turpis tincidunt, quis luctus lorem ornare. Curabitur pulvinar mollis arcu. Praesent vehicula vulputate nibh sit amet lobortis. Suspendisse fringilla facilisis dui, sed sagittis lectus. Duis at eros nulla. Sed ac enim ornare, consectetur risus vel, molestie massa.</p><p class="govuk-body ">Pellentesque molestie ante quis elit gravida euismod. Vestibulum egestas elementum sapien. Nullam scelerisque convallis odio a euismod. Vestibulum id neque ac urna aliquet pharetra. Suspendisse vel convallis turpis, pretium rutrum metus. Proin in condimentum ex. Vestibulum quis eros faucibus, ornare ligula quis, rutrum metus. Morbi accumsan sit amet nisi et interdum. Sed vulputate enim nibh, sed iaculis odio porta et. Cras blandit commodo facilisis. Cras feugiat erat arcu, at egestas purus luctus sed. Nullam molestie tempus sapien sed interdum. Nunc non dui faucibus, viverra nisl eget, ultricies ex.</p><p class="govuk-body ">Nam hendrerit sapien eget pellentesque ultrices. Curabitur urna ante, tempor nec bibendum quis, rutrum sed arcu. Etiam nec aliquet lacus. Aenean gravida viverra leo quis blandit. Integer nunc nunc, dignissim a nibh et, lacinia ornare metus. Pellentesque elementum metus sed mauris cursus ornare. Ut venenatis massa nec risus cursus blandit. In imperdiet nisi eget diam semper, sit amet venenatis turpis faucibus. Vestibulum finibus lobortis vulputate. Quisque fringilla blandit venenatis. Duis consequat, purus at sodales ornare, sapien eros maximus urna, eget ultrices tellus velit vitae lorem.
+
+                </p></div>
+
+            <div class="u-align-right">
+                <a href="#main-content" class="govuk-link">Top of page</a>
+            </div>
+        </div>
+
+
+
+    {%- endcall %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script type="text/javascript">
+        /* smooth-scroll.js v1.3.1 */
+        /*
+        n=0,
+        r=500,
+        i=15,
+        */
+        (function(e,t){
+            "use strict";
+            var n=0,
+                r=250,
+                i=15,
+                s=document.getElementsByTagName("a"),
+                o;
+            for(var u=0;u<s.length;u++){
+                o=s[u].attributes.href===t?null:s[u].attributes.href.nodeValue.toString();
+                if(o!==null&&o.length>1&&o.indexOf("#")!=-1){
+                    s[u].onclick=function(){
+                        var n,s=this.attributes.href.nodeValue.toString(),o=s.substr(0,s.indexOf("#")),u=s.substr(s.indexOf("#")+1);if(n=document.getElementById(u)){var l=(r-r%i)/i,c=f(),h=(a(n)-c)/l;if(e.history&&typeof e.history.pushState=="function")e.history.pushState({},t,o+"#"+u);for(var p=1;p<=l;p++){(function(){var t=h*p;setTimeout(function(){e.scrollTo(0,t+c)},i*p)})()}return false}}}}var a=function(e){var r=n*-1;while(e.offsetParent!=t&&e.offsetParent!=null){r+=e.offsetTop+(e.clientTop!=null?e.clientTop:0);e=e.offsetParent}return r};var f=function(){return e.pageYOffset!==t?e.pageYOffset:document.documentElement.scrollTop!==t?document.documentElement.scrollTop:document.body.scrollTop}})(window)
+    </script>
+
+
+    <script>
+        Zepto(function($){
+            $(window).on('load', function() {
+                console.log('window loaded');
+                $('.govuk-tabs__tab').attr('tabindex', '');
+            });
+        });
+    </script>
+
+{% endblock %}
+
+
+
+

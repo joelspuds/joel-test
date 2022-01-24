@@ -6,6 +6,14 @@
     background-color: #fff;
   }
 
+  a[href]:after {
+    content: none !important;
+  }
+
+  img[src]:after {
+    content: none !important;
+  }
+
   body * {
     color: #000!important;
   }
@@ -56,4 +64,5 @@
   .print-hide {
     display: none!important;
   }
+
 }

@@ -645,6 +645,8 @@ router.post('/prototypes/orgs3/add-manually', demosController.orgs3AddManuallyPo
 
  * *************************************************************** */
 // Create new opportunity
+router.get('/prototypes/panel/config', demosController.panelConfigGet);
+router.post('/prototypes/panel/config', demosController.panelConfigPost);
 router.get('/prototypes/panel/', demosController.panelIndexGet);
 router.post('/prototypes/panel/', demosController.panelIndexPost);
 router.get('/prototypes/panel/external-email', demosController.panelExternalEmailGet);

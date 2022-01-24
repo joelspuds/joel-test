@@ -3,6 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.panelConfigGet = panelConfigGet;
+exports.panelConfigPost = panelConfigPost;
 exports.panelIndexGet = panelIndexGet;
 exports.panelIndexPost = panelIndexPost;
 exports.panelExternalEmailGet = panelExternalEmailGet;
@@ -14,6 +16,28 @@ exports.panelPanelsPost = panelPanelsPost;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 let panelSessionData = [];
+
+// ************************************************************************
+//
+//        config
+//
+// ************************************************************************
+function panelConfigGet(req, res) {
+  let viewData;
+
+  viewData = {};
+
+  return res.render('prototypes/panel/config', viewData);
+}
+
+function panelConfigPost(req, res) {
+  const { panelConfig } = req.body;
+
+  panelSessionData.journeyTYpe = panelConfig;
+  // req.session.firstName = firstName;
+
+  return res.redirect('/prototypes/panel/external-email');
+}
 
 // ************************************************************************
 //
@@ -37,9 +61,9 @@ function panelIndexGet(req, res) {
 function panelIndexPost(req, res) {
   const {} = req.body;
 
-  req.session.journeyConfig = completeConfig;
+  req.session.journeyConfig = complpanelConfigeteConfig;
 
-  return res.redirect('/prototypes/orgs3/start');
+  return res.redirect('/prototypes/panel/email');
 }
 
 // ************************************************************************

@@ -1,0 +1,120 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set navType = 'admin' %}
+
+{%  set loggedOut = false %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+
+
+{% set newHeader = true %}
+
+{% set pageTitle = 'Print test' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            {{ components.captionHeading(text='Download response material', caption='Development of a Novel Inhibitor of Ricin') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='downloadAllFiles') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+                <style>
+                    .print-test {
+                        width: 100%; height: auto; border:1px solid black;padding: 10px;margin-bottom:20px
+                    }
+                </style>
+
+                <div class="print-test" style="">
+                    {{ components.captionHeading(text='Visible; print and screen', tag='h2', size='m') }}
+                    <div class="">
+                        <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sodales, est non tempor dapibus, elit nisl sollicitudin orci, ut elementum dolor neque nec est. Aliquam nec ligula pretium, pharetra velit at, semper justo. Ut ac lorem at ex congue condimentum et sed lectus. Mauris venenatis enim est, non porta nunc efficitur non. Nunc consequat porttitor enim sed aliquet. Nam iaculis ipsum velit. Suspendisse blandit metus eu lorem condimentum pulvinar. Duis consectetur feugiat diam nec faucibus. Vestibulum libero tellus, pharetra ac venenatis id, tincidunt in tellus. Quisque vel magna quis sem finibus pellentesque. Etiam auctor purus aliquet elit finibus bibendum. Cras tristique sem eget bibendum semper. Mauris at elit vehicula, ullamcorper risus vitae, suscipit dolor. Nulla facilisi.</p>
+                    </div>
+                </div>
+
+                <div class="print-test" style="">
+                    {{ components.captionHeading(text='Visible; print only', tag='h2', size='m') }}
+                    <div class="print-show">
+                        <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sodales, est non tempor dapibus, elit nisl sollicitudin orci, ut elementum dolor neque nec est. Aliquam nec ligula pretium, pharetra velit at, semper justo. Ut ac lorem at ex congue condimentum et sed lectus. Mauris venenatis enim est, non porta nunc efficitur non. Nunc consequat porttitor enim sed aliquet. Nam iaculis ipsum velit. Suspendisse blandit metus eu lorem condimentum pulvinar. Duis consectetur feugiat diam nec faucibus. Vestibulum libero tellus, pharetra ac venenatis id, tincidunt in tellus. Quisque vel magna quis sem finibus pellentesque. Etiam auctor purus aliquet elit finibus bibendum. Cras tristique sem eget bibendum semper. Mauris at elit vehicula, ullamcorper risus vitae, suscipit dolor. Nulla facilisi.</p>
+                    </div>
+                </div>
+
+                <div class="print-test" style="">
+                    {{ components.captionHeading(text='Visible; screen only', tag='h2', size='m') }}
+                    <div class="print-hide">
+                        <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sodales, est non tempor dapibus, elit nisl sollicitudin orci, ut elementum dolor neque nec est. Aliquam nec ligula pretium, pharetra velit at, semper justo. Ut ac lorem at ex congue condimentum et sed lectus. Mauris venenatis enim est, non porta nunc efficitur non. Nunc consequat porttitor enim sed aliquet. Nam iaculis ipsum velit. Suspendisse blandit metus eu lorem condimentum pulvinar. Duis consectetur feugiat diam nec faucibus. Vestibulum libero tellus, pharetra ac venenatis id, tincidunt in tellus. Quisque vel magna quis sem finibus pellentesque. Etiam auctor purus aliquet elit finibus bibendum. Cras tristique sem eget bibendum semper. Mauris at elit vehicula, ullamcorper risus vitae, suscipit dolor. Nulla facilisi.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <table class="govuk-table responsive-table__table">
+                        <thead>
+                        <tr class="govuk-table__header">
+                            <th class="govuk-table__header">Organisation<br>name</th>
+                            <th class="govuk-table__header">Opportunity<br>name</th>
+                            <th class="govuk-table__header">Status</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Number</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">URL</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="govuk-table__cell">Berkshire Buckinghamshire and Oxfordshire Wildlife Trust</td>
+                            <td class="govuk-table__cell">UK-Canada Social Research Team Grants</td>
+                            <td class="govuk-table__cell">Draft</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1000, 9999) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">https://www.example.com/afterthought/amusement.php?ball=brother</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Mahidol Oxford Tropical Medicine Research Unit</td>
+                            <td class="govuk-table__cell">Strength in places Round 3</td>
+                            <td class="govuk-table__cell">Open</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1000, 9999) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">https://www.example.com/army/border.html</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Oxford Biomedical Research</td>
+                            <td class="govuk-table__cell">UK social research for the next decade Part III</td>
+                            <td class="govuk-table__cell">Open</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1000, 9999) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">http://amusement.example.com/#amount</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Oxford Centre for Computational Neuroscience</td>
+                            <td class="govuk-table__cell">UK-Canada Diabetes Research Team Grants</td>
+                            <td class="govuk-table__cell">Closed</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1000, 9999) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">http://www.example.com/brake?action=believe&branch=air</td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+
+
