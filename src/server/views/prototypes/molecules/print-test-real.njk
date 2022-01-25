@@ -1,0 +1,1243 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set navType = 'admin' %}
+
+{%  set loggedOut = false %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+
+
+{% set newHeader = true %}
+
+{% set pageTitle = 'Print test' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            {{ components.captionHeading(text='Download response material', caption='Development of a Novel Inhibitor of Ricin') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <div class="columns">
+        <div class="column is-full is-12-desktop is-12-widescreen" id="main-section-container">
+            <style>
+                table {
+                    table-layout:fixed;
+                }
+            </style>
+            <div class="container u-space-b30" id="application-view">
+                <div class="columns">
+                    <div class="column is-3" id="application-view-toc">
+                        <nav class="_sticky-nav">
+                            <h2 class="govuk-heading-s govuk-heading--link">Contents</h2>
+                            <ul class="govuk-list _sticky-nav__list">
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#main-content">Top of page</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#application-view-content-details-heading">1<!-- -->. <!-- -->Details</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#application-view-content-applicants-heading">2<!-- -->. <!-- -->Applicants</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#application-view-content-custom-59-heading">3<!-- -->. <!-- -->Case for Support: public health
+                                        outcomes</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#application-view-content-custom-60-heading">4<!-- -->. <!-- -->Case for Support: evidence gap</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#application-view-content-custom-61-heading">5<!-- -->. <!-- -->Case for Support: subsequent
+                                        development phases</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#application-view-content-custom-62-heading">6<!-- -->. <!-- -->Case for Support: methodology</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#application-view-content-custom-63-heading">7<!-- -->. <!-- -->Case for Support: research team and
+                                        capability to deliver</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#application-view-content-custom-64-heading">8<!-- -->. <!-- -->Case for Support: related
+                                        applications</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#application-view-content-custom-65-heading">9<!-- -->. <!-- -->Case for Support: references</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#application-view-content-custom-66-heading">10<!-- -->. <!-- -->Covid impact</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#application-view-content-custom-67-heading">11<!-- -->. <!-- -->Logic model and timeframe</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#application-view-content-custom-68-heading">12<!-- -->. <!-- -->Justification of resources</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#application-view-content-custom-69-heading">13<!-- -->. <!-- -->Supporting Organisations</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#application-view-content-custom-70-heading">14<!-- -->. <!-- -->Human participation</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#application-view-content-custom-71-heading">15<!-- -->. <!-- -->Personal information</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#application-view-content-custom-72-heading">16<!-- -->. <!-- -->Ethical implications</a>
+                                </li>
+                            </ul><a class="govuk-link js-only print-link" href="#" id="printThis">Print this page</a>
+                        </nav>
+                    </div>
+                    <div class="column is-9" id="application-view-content">
+                        <div class="print-show">
+                            <div class="application-data">
+                                <dl class="application-data__list">
+                                    <dt class="application-data__key">Application reference:</dt>
+                                    <dd class="application-data__value">APP1413</dd>
+                                    <dt class="application-data__key">Application name:</dt>
+                                    <dd class="application-data__value">BREATHE-INDIA: BREATHlEssness in INDIA. Development of a Breathlessness Beliefs and Behaviour education
+                                        intervention for use in the community-setting</dd>
+                                    <dt class="application-data__key">Applicant:</dt>
+                                    <dd class="application-data__value">Miriam Johnson</dd>
+                                    <dt class="application-data__key">Email:</dt>
+                                    <dd class="application-data__value">miriam.johnson@hyms.ac.uk</dd>
+                                    <dt class="application-data__key">Organisation:</dt>
+                                    <dd class="application-data__value">University of Hull</dd>
+                                </dl>
+                            </div>
+                            <hr class="section-break section-break--hardcore">
+                            <div class="application-data">
+                                <dl class="application-data__list">
+                                    <dt class="application-data__key">Application status:</dt>
+                                    <dd class="application-data__value">Submitted 1:41pm 24 January 2022</dd>
+                                </dl>
+                            </div>
+                            <hr class="section-break section-break--feather">
+                        </div>
+                        <h2 class="govuk-heading-l serif govuk-heading--link" id="application-view-content-heading">BREATHE-INDIA: BREATHlEssness in INDIA. Development of a
+                            Breathlessness Beliefs and Behaviour education intervention for use in the community-setting</h2>
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="application-view-content-details-heading">1<!-- -->. <!-- -->Details</h2>
+                        <div class="serif" id="application-view-content-details">
+                            <h3 class="govuk-heading-s serif">Briefly describe your research idea</h3>
+                            <div>
+                                <p class="serif govuk-body">PUBLIC HEALTH CHALLENGE: Chronic (persistent) breathlessness despite treatment of causal disease(s)[1] is associated with
+                                    disability and a vicious cycle of avoiding physical activity-related breathlessness,[2] deconditioning and increasing breathlessness.Those affected
+                                    participate less in the workforce,[3] risking curtailing of children’s education to increase income,[4] and need more healthcare.[5] Diseases causing
+                                    persistent breathlessness (e.g., chronic obstructive pulmonary disease (COPD),[6]coronary heart disease,[7]lung cancer[8]) are common in India,
+                                    mirroring smoking rates, air pollution[9] and poverty.[10] Low-resource countries have a disproportionate burden, accounting for 80% of global
+                                    COPD/asthma mortality.[11]</p>
+                                <p class="serif govuk-body">Low-cost self-management breathlessness-targeted interventions are effective and deliverable in community-settings (e.g.,
+                                    breathing techniques, fans, lifestyle approaches, paced physical activity). These promote well-being, need little medical knowledge[12]; are teachable
+                                    to lay workers, relatives or clinical support staff. Such approaches could be scaled up <em>via</em> population awareness, increasing human and social
+                                    capital, and decreasing healthcare reliance.[13] However, few are developed or tested for acceptability or effectiveness in India or other low-resource
+                                    countries. Despite strong community networks, emerging data suggest that health beliefs may reduce intervention acceptability and need to be addressed
+                                    during implementation.[13]</p>
+                                <p class="serif govuk-body">PROPOSED INTERVENTION: Our intervention will focus on community worker education. Given the “invisibility” of persistent
+                                    breathlessness even in high-income countries, this will incorporate health promotion, raising awareness of breathlessness as a therapeutic target, and
+                                    self-management techniques.</p>
+                                <p class="serif govuk-body">We will develop a chronic breathlessness education intervention. Using a Realist approach, Intervention Mapping and the
+                                    Medical Research Council Complex Intervention Framework, our objectives are to:</p>
+                                <ul class="serif govuk-list govuk-list--bullet">
+                                    <li>Understand how breathlessness self-management works in “real-life” population and individual contexts;</li>
+                                    <li>Understand contexts (e.g., country, setting, community systems, intervention components) for effective implementation;</li>
+                                    <li>Develop programme theory and co-produce a prototype intervention to improve chronic breathlessness self-management*;</li>
+                                    <li>Consider adaptation for other resource-poor settings, e.g., Nepal</li>
+                                </ul>
+                                <p class="serif govuk-body">* in India</p>
+                                <p class="serif govuk-body">With our stakeholder group, including community leaders, people with breathlessness, and clinicians we will conduct:</p>
+                                <ol class="serif govuk-list govuk-list--number">
+                                    <li>Realist review and evaluation to identify and refine evidence and theory for breathlessness self-management, producing intervention and
+                                        implementation programme theory and map intervention components to ‘what works, for whom, and where.’</li>
+                                    <li>Intervention development using Intervention Mapping to map intervention and implementation programme theory to intervention components, develop
+                                        materials to support intervention delivery, and co-design a prototype intervention ready for early acceptability and delivery-feasibility testing
+                                        in India.</li>
+                                </ol>
+                                <p class="serif govuk-body">IMPACT: We will deliver i) important understanding of breathlessness self-management in India relevant to practitioners and
+                                    policy makers; ii) the content of a prototype community-based intervention ready for further testing.</p>
+                            </div>
+                            <h3 class="govuk-heading-s serif">Start date</h3>
+                            <div>
+                                <p class="serif govuk-body">October 2022</p>
+                            </div>
+                            <h3 class="govuk-heading-s serif">Duration</h3>
+                            <div>
+                                <p class="serif govuk-body">18 months</p>
+                            </div>
+                        </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="application-view-content-applicants-heading">2<!-- -->. <!-- -->Applicants</h2>
+                        <div class="__responsive-table serif" id="application-view-content-applicants">
+                            <table class="govuk-table govuk-!-font-size-16">
+                                <colgroup>
+                                    <col width="undefined%">
+                                    <col width="undefined%">
+                                    <col width="undefined%">
+                                    <col width="undefined%">
+                                </colgroup>
+                                <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                    <th class="govuk-table__header" scope="col">Name</th>
+                                    <th class="govuk-table__header" scope="col">Email</th>
+                                    <th class="govuk-table__header" scope="col">Role</th>
+                                    <th class="govuk-table__header" scope="col">Organisation</th>
+                                </tr>
+                                </thead>
+                                <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">Miriam Johnson</td>
+                                    <td class="govuk-table__cell">miriam.johnson@hyms.ac.uk</td>
+                                    <td class="govuk-table__cell">Principal investigator</td>
+                                    <td class="govuk-table__cell">University of Hull</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">David Currow</td>
+                                    <td class="govuk-table__cell">david.currow@hyms.ac.uk</td>
+                                    <td class="govuk-table__cell">Co-investigator</td>
+                                    <td class="govuk-table__cell">University of Hull</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">Joseph Clark</td>
+                                    <td class="govuk-table__cell">joseph.clark@hyms.ac.uk</td>
+                                    <td class="govuk-table__cell">Researcher</td>
+                                    <td class="govuk-table__cell">University of Hull</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">Mark Pearson</td>
+                                    <td class="govuk-table__cell">mark.pearson@hyms.ac.uk</td>
+                                    <td class="govuk-table__cell">Co-investigator</td>
+                                    <td class="govuk-table__cell">University of Hull</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">Naveen Salins</td>
+                                    <td class="govuk-table__cell">naveensalins@gmail.com</td>
+                                    <td class="govuk-table__cell">Co-investigator</td>
+                                    <td class="govuk-table__cell">Bangalore Hospice Trust – Karunashraya</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">Anna Spathis</td>
+                                    <td class="govuk-table__cell">aos10@medschl.cam.ac.uk</td>
+                                    <td class="govuk-table__cell">Co-investigator</td>
+                                    <td class="govuk-table__cell">University of Cambridge</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="application-view-content-custom-59-heading">3<!-- -->. <!-- -->Case for Support: public health
+                            outcomes</h2>
+                        <div class="serif" id="application-view-content-custom-59" style="/*overflow-x:auto*/">
+                            <div>
+                                <p class="serif govuk-body"><strong>The public health challenge and need</strong></p>
+                                <p class="serif govuk-body">Chronic (persistent) breathlessness despite treatment of causal disease(s)[1] is associated with disability and a vicious
+                                    cycle of avoidance of physical activity (exertion-related breathlessness), deconditioning, worse function and increasing breathlessness. People with
+                                    chronic breathlessness reduce or cease activities important for individual and societal wellbeing[2] and, in high-resource countries, are more likely
+                                    to use healthcare services.[5] The non-communicable diseases (NCDs) (e.g., chronic obstructive pulmonary disease (COPD),[6] coronary heart disease,[7]
+                                    lung cancer[8]) causing chronic breathlessness are common in India, and increasing, mirroring high rates of tobacco smoking, air pollution[9] and
+                                    poverty.[10] Adverse impact has increased since the COVID-19 pandemic.[14]</p>
+                                <p class="serif govuk-body">The burden of NCDs falls disproportionately on people in low-resource settings, e.g, India, accounting for 80% of global
+                                    COPD and asthma mortality,[10] with high levels of disability due to poor prevention, poor healthcare access, late presentation and younger
+                                    onset.[15]&nbsp; In high-resource settings those affected participate less in the workforce,[3] but the younger age-profile in low-resource settings
+                                    leads to profound effects on absenteeism <u>and</u> presenteeism, risking children’s education to redress income reduction, and poverty. Breathlessness
+                                    strongly predicts COPD impairment in low-resource countries and is identified as a therapeutic target.[13]</p>
+                                <p class="serif govuk-body">Most NCDs are incurable; the main therapeutic goal is palliation. A 2002-2003 WHO survey found 7.7% of women and 6.1% of
+                                    men in India reported daily breathlessness unrelated to physical activity,[16] indicating severe symptoms.</p>
+                                <p class="serif govuk-body"><strong>Public health outcomes and strategic priorities</strong></p>
+                                <p class="serif govuk-body">Self-management chronic breathlessness strategies could potentially address strategic public health priorities
+                                    including:</p>
+                                <ul class="serif govuk-list govuk-list--bullet">
+                                    <li>Ensuring healthy lives and promoting wellbeing for all at all ages[17]</li>
+                                    <li>Promoting physical activity in sedentary older adults to improve physical and mental health[18]</li>
+                                    <li>reducing workforce participation due to ill health[19]</li>
+                                    <li>reducing social roles due to ill health[20]</li>
+                                    <li>reducing unaffordable out-of-pocket healthcare expenditure[10]</li>
+                                </ul>
+                                <p class="serif govuk-body">This project will co-design a programme-theory to inform development of a flexible population health, community-based
+                                    education intervention. The intervention will address breathlessness-related beliefs and behaviours e.g., physical activity, cool airflow, healthcare
+                                    utilisation. This will be informed by our realist review’s programme theories presented in “if, then” formats to demonstrate what works, for whom, how
+                                    and where.</p>
+                                <p class="serif govuk-body">Future study will evaluate utility, applicability, affordability and feasibility of the intervention along with measures
+                                    relating to beliefs (community influencers) and individual behaviours/clinical outcomes (physical and social activity, self-rated health and
+                                    well-being, workforce and education participation, healthcare utilisation).</p>
+                                <p class="serif govuk-body"><strong>Study population</strong></p>
+                                <p class="serif govuk-body"><u>The study population in this proposal</u> is co-design stakeholders rather than study subjects. We will work with
+                                    stakeholders to refine <u>the future study</u> population(s), raise breathlessness as a public health priority, and ensure future buy-in. Stakeholders
+                                    will include clinical and public health leaders (doctors, nurses, allied health, policy influencers) and community representatives (community and
+                                    faith, education, volunteers), and those with personal chronic breathlessness experience. Group composition will include different cultural/faith
+                                    groups and account for gender role imbalance at work and in the home to facilitate women’s voices. Our study investigators and Partners have wide
+                                    networks to facilitate key stakeholders’ invitations including Public Health Foundation India, Pallium India, and clinical/community training
+                                    programmes across Indian states.</p>
+                                <p class="serif govuk-body">Our future aim is to implement and evaluate an intervention to improve the function of people with chronic breathlessness
+                                    by challenging unhelpful, and strengthening helpful health beliefs <em>via</em> <u>a future study population</u> of community influencers likely to
+                                    lever benefit for patients suitable for self-management (e.g., Accredited Social Health Activist Workers [ASHAs], these are primary healthcare
+                                    promotors particularly in vulnerable communities using behaviour change communication, and facilitating access to health services).</p>
+                                <p class="serif govuk-body">Our intervention is likely to be applicable to other low-resource settings; particularly to disadvantaged groups with high
+                                    chronic breathlessness prevalence, e.g., older adults, greater deprivation. We will therefore also consider how this could be adapted.</p>
+                            </div>
+                        </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="application-view-content-custom-60-heading">4<!-- -->. <!-- -->Case for Support: evidence gap</h2>
+                        <div class="serif" id="application-view-content-custom-60" style="/*overflow-x:auto*/">
+                            <div>
+                                <p class="serif govuk-body">To our knowledge, our proposal is the first population health approach to this problem. This is necessary because of the
+                                    widespread and serious nature of the chronic breathlessness (see above) and because wellbeing and lifestyle approaches have the greatest potential to
+                                    address common misconceptions. Many people, for example, fear that activity is harmful; however it can reduce breathlessness by increasing fitness.</p>
+                                <p class="serif govuk-body">Evidence-based,[21] low-cost self-management breathlessness-targeted interventions are effective and cost-effective[22,23]
+                                    and deliverable in community-settings (e.g., breathing techniques, hand-held fans, lifestyle approaches such as paced physical activity), reducing
+                                    breathlessness severity,[24] breathlessness-related distress,[22,23] and increased breathlessness mastery.[25] With some components, e.g., fans,
+                                    emerging evidence shows faster recovery time from exertion-induced breathlessness,[26,27] increased physical activity[28] and reduced
+                                    medication.[26]These techniques require little medical knowledge; are teachable to lay workers, family carers,[25,29] and clinical support staff.</p>
+                                <p class="serif govuk-body">Clinical practice frameworks, such as the Breathing, Thinking, Functioning model,[30] are increasingly recognised in
+                                    high-income countries.&nbsp; Conceptual frameworks such as “Breathing Space”[31] highlight how engaged coping and appropriate help-seeking and health
+                                    beliefs (patient) and attention to symptom (clinician) helps maximise the patient's wellbeing, but are developed from literature from which
+                                    low-resource setting data is largely absent. However, such a low-cost, community-based approach could be readily adapted to low-resource countries such
+                                    as India within a population health intervention. By empowering people to make simple lifestyle changes that improve individual symptom control and
+                                    function, human and social capital can be developed and healthcare needs reduced. Many components of breathlessness self-management have not been
+                                    developed, or tested for utility, applicability, or feasibility in low-resource countries. Our proposed study recognises the potential relevance of
+                                    interventions and clinical tools internationally to the Indian context, along with the need for contextual evaluation and modification.</p>
+                                <p class="serif govuk-body">From other health interventions, we know that implementation fails unless the local context and health beliefs are
+                                    understood and interventions are adapted.[32] Regarding breathlessness self-management, emerging data suggest that patients’ and clinicians’ health
+                                    beliefs about cool airflow, particularly in hotter countries, may make fans less acceptable. Conversely, as shown in a recent realist review of
+                                    breathing exercises in people with COPD[33] (in which 58% studies were from Asia, mostly from China), other components such as deep breathing,
+                                    meditation and low-level exercise which make the connection between breathing and anxiety may be very acceptable in Asian cultures.&nbsp; However,
+                                    clinicians’ management and understanding of e.g., chronic respiratory diseases in low-resource countries suffers from a lack of clinical guidelines and
+                                    inclusion in educational curricula, and knowledge of breathlessness interventions may be non-existent. An Indian physician study[34] showed they
+                                    recognised chronic breathlessness as a serious problem, but expressed therapeutic nihilism and helplessness to the extent they avoided the subject with
+                                    their patients.</p>
+                                <p class="serif govuk-body">Whilst availability of pain medications is subject to strict legal and regulatory barriers, no legal barriers exist for
+                                    development and roll-out of breathlessness self-management interventions, yet these remain largely un-implemented in low-resource countries.</p>
+                            </div>
+                        </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="application-view-content-custom-61-heading">5<!-- -->. <!-- -->Case for Support: subsequent
+                            development phases</h2>
+                        <div class="serif" id="application-view-content-custom-61" style="/*overflow-x:auto*/">
+                            <div>
+                                <p class="serif govuk-body"><strong>Description of the intervention</strong></p>
+                                <p class="serif govuk-body">We will develop a population health educational intervention directed at community workers, (e.g., ASHA workers; educators)
+                                    who can influence people affected by chronic breathlessness. Community workers will be upskilled to address Breathlessness Beliefs and Behaviours
+                                    management (“Three Bs”), including unhelpful beliefs about physical activity (“breathlessness is harmful, physical activity should be avoided”) and
+                                    helpful beliefs (“meditation helps anxiety, spiritual connection and regulates breathing”) (see logic model).</p>
+                                <p class="serif govuk-body">Our overarching <em>intervention</em> programme theory is that an intervention resonating with existing cultural healthy
+                                    living beliefs, and working with individuals in family and community contexts, provides a stronger basis for addressing unhelpful beliefs about
+                                    breathlessness management.</p>
+                                <p class="serif govuk-body">Our overarching <em>implementation</em> programme theory is that effective delivery is driven by alignment of the beliefs
+                                    of a wide range of stakeholders, underpinned by low-cost to support delivery.</p>
+                                <p class="serif govuk-body"><strong>Pathway to main study and later evaluation stages</strong></p>
+                                <p class="serif govuk-body">During our co-design work (Step 2) we will conduct an evaluability assessment to agree process <u>and</u> outcome measures
+                                    for the evaluative phase, including what data should/could be collected.</p>
+                                <p class="serif govuk-body">Our <u>subsequent work</u> (feasibility, evaluation, implementation) will follow the MRC Framework for Complex Intervention
+                                    Development,[35] compatible with improvement approaches to population health interventions.[36] <em>The main evaluation phase study with in-built pilot
+                                        to check recruitment rates and data quality</em> will be quasi-experimental with a parallel process evaluation to explore how context affects
+                                    intervention operation.[35,37] recruiting both e.g., ASHAs and client/patients in areas where ASHA training does and does not include the “Three-B”
+                                    intervention. Outcomes will have been determined in <u>this</u> proposal (Step 2) and may include ASHA beliefs and behaviours, and patient/client
+                                    self-report (self-rated health, physical activity, social activity, work participation, activities of daily living, breathlessness severity, quality of
+                                    life) and objective (health service utilisation, physical activity [e.g., step-count], use of breathing techniques). Consistent with a theory-based
+                                    research perspective, the emphasis will be on getting a better understanding (empirically) of how the intervention is perceived, understood, used (or
+                                    not) and has different outcomes in different contexts.</p>
+                                <p class="serif govuk-body">Our feasibility work will test the intervention and implementation programme theories about our education intervention in a
+                                    sample of ASHAs, and/or other populations identified by our stakeholders (e.g., teachers, primary care clinicians), for acceptability, relevance and
+                                    utility. Before/after evaluation of change in beliefs would be conducted. Depending on the study population, this might include measuring
+                                    breathlessness inquiries made (increasing if beliefs that breathless is untreatable are countered). Economic modelling will be undertaken at this
+                                    stage.</p>
+                            </div>
+                        </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="application-view-content-custom-62-heading">6<!-- -->. <!-- -->Case for Support: methodology</h2>
+                        <div class="serif" id="application-view-content-custom-62" style="/*overflow-x:auto*/">
+                            <div>
+                                <p class="serif govuk-body"><strong>Summary design:</strong></p>
+                                <p class="serif govuk-body">Stakeholder engagement is prioritised with Expert and Stakeholder Group members contributing throughout.</p>
+                                <p class="serif govuk-body">Using Li et al’s realist review of COPD breathing exercises[33] as our starting point, we will conduct an expanded
+                                    <strong>realist review</strong> (step 1a) to explore all non-pharmacological self-management interventions for NCD-related chronic breathlessness to
+                                    identify evidence and theory for self-management. We will develop intervention and implementation programme theory, and map intervention components to
+                                    determine ‘what works, for whom’ with special consideration for low-resource settings. We will follow RAMESES publication standards.[38]</p>
+                                <p class="serif govuk-body">We will refine our programme theories using <strong>realist evaluation</strong> (step 1b) to develop content for a
+                                    prototype intervention and identify contextual delivery barriers and facilitators. Parallel <strong>co-design intervention development</strong> will
+                                    use the updated MRC Framework for Complex Intervention Development.[35]</p>
+                                <p class="serif govuk-body">We will deliver the content of a flexible, co-designed, population health, community-based education intervention, relating
+                                    to breathlessness-related beliefs and behaviours e.g., physical activity and cool airflow, ready for feasibility-testing and evaluation. We will have
+                                    defined populations who aren't thriving (breathlessness lens), and the population(s) for future study, agreeing a purpose for each with
+                                    aims,&nbsp;drivers, and how to address these.[33]</p>
+                                <p class="serif govuk-body"><strong>Expert and Stakeholder groups</strong></p>
+                                <p class="serif govuk-body">Project Partners are the basis of our ~three-monthly <strong>Expert Group</strong> including experts in respiratory,
+                                    primary and palliative care with links to community and other groups (e.g., Family Caregiver Education, Dream-A-Dream, Public Health Foundation India,
+                                    Pallium India). They will be responsible for inviting stakeholders and contributing to theory development.</p>
+                                <p class="serif govuk-body">We will convene ~<strong>5 stakeholder groups</strong> from across India:</p>
+                                <ul class="serif govuk-list govuk-list--bullet">
+                                    <li>Opinion leader physicians (primary, secondary care and public health)</li>
+                                    <li>nurses/allied health professionals&nbsp;(primary and secondary care)</li>
+                                    <li>community, education workers, lay volunteers</li>
+                                    <li>community/faith leaders or members</li>
+                                    <li>people with experience of chronic breathlessness; family members</li>
+                                </ul>
+                                <p class="serif govuk-body">Stakeholder groups (~n=8 per group) will be assembled purposively from rural and urban settings with gender/culture/faith
+                                    balance where appropriate. Each group will meet ~ <strong>three-monthly</strong> and be facilitated by a study team member(s) and project coordinator
+                                    (interpreter available if necessary). Most will be virtual, but face-to-face (particularly community) groups can be conducted. Individuals may be
+                                    interviewed if preferred.</p>
+                                <p class="serif govuk-body"><strong>Step 1a. Realist review</strong></p>
+                                <p class="serif govuk-body"><em>Aim:</em> develop programme and implementation theory about how breathlessness self-management interventions can
+                                    achieve desired impacts for different people</p>
+                                <p class="serif govuk-body"><em>Methods and analysis</em></p>
+                                <p class="serif govuk-body">We will follow five steps:[39] (1) define review scope, (2) develop initial programme theories, (3) identify evidence
+                                    through systematic review, (4) study selection (5) data extraction/synthesis.</p>
+                                <p class="serif govuk-body">We will use a theory-based approach guided by our expert group to develop initial programme theories ahead of the
+                                    systematic review, then search databases (e.g., Medline, CINAHL, Scopus, PsychInfo, EBSCO host discovery [Indian literature]), grey literature and
+                                    citations of relevant studies. Data will be extracted, and synthesised iteratively. Causal links between context, mechanisms and outcomes will be
+                                    mapped and low-resource relevance drawn out.</p>
+                                <p class="serif govuk-body"><strong>Step 1b. Realist evaluation</strong></p>
+                                <p class="serif govuk-body"><em>Aim:</em> refine programme and implementation theory to produce a conceptual framework of intervention components
+                                    (breathlessness techniques or behaviours) likely to help people with chronic breathlessness in India</p>
+                                <p class="serif govuk-body"><em>Methods and analysis:</em> We will conduct three “rounds” of stakeholder workshops regarding preliminary programme
+                                    theory and explanatory accounts of how and why existing intervention components may work in India. Following each, programme theory will be refined by
+                                    the study team and presented to our expert group to develop a conceptual platform to be presented to key stakeholders for further refinement in a
+                                    feedback loop.</p>
+                                <p class="serif govuk-body"><strong>Step 2. Intervention development</strong></p>
+                                <p class="serif govuk-body"><em>Aim:</em> develop a prototype education intervention deliverable in the Indian context ahead of feasibility and
+                                    evaluation of effect.</p>
+                                <p class="serif govuk-body"><em>Methods and Analysis:</em> Drawing on our expertise in co-designing breathlessness interventions,[40] we shall use
+                                    Intervention Mapping[41,42] to involve each of our stakeholder groups in an iterative co-design process (two meetings with each group, with a final
+                                    combined group at the study end) to translate theory and evidence into practical intervention components and a plan for implementing and sustaining the
+                                    prototype community-based breathlessness education intervention. Consistent with stages four and five of Intervention Mapping (the earlier stages
+                                    having been addressed in our Step 1), this process will include mapping intervention and implementation programme theory to intervention components,
+                                    and the development of materials to support intervention delivery. Throughout, we will pay close attention to the role of power which may be by
+                                    authority or credibility.[43] To structure development of potentially vast implementation aspects, we will use the Consolidated Framework for
+                                    Implementation Research adapted for low- and middle-income countries (CFIR-LMIC)[44] with its focus on stakeholders’ perceptions about intervention
+                                    scalability and sustainability; practice team norms and collective beliefs about working effectively together; and need for low-cost delivery.</p>
+                                <p class="serif govuk-body"><em>Dissemination:</em> We will publish/present findings in peer-reviewed journals and conferences. We will also prepare
+                                    executive summaries for lay and professional (including policy) audiences, with infographics. Drawing on our team expertise, particularly IPCRG links,
+                                    we will produce short animated intervention prototypes which will be made available on the Wolfson Palliative Care Research Centre, linking with other
+                                    key sites (IPCRG etc.)</p>
+                            </div>
+                        </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="application-view-content-custom-63-heading">7<!-- -->. <!-- -->Case for Support: research team and
+                            capability to deliver</h2>
+                        <div class="serif" id="application-view-content-custom-63" style="/*overflow-x:auto*/">
+                            <div>
+                                <p class="serif govuk-body">Our team has the expertise to design, conduct, manage, analyse and disseminate this project. All will contribute to expert
+                                    and/or stakeholder groups, and with Partners, provide the networks to identify relevant stakeholders. Table 1 summarises expertise and contribution,
+                                    Table 2 shows relevant funding, and outputs.</p>
+                                <p class="serif govuk-body">See Section 13 for Partner details, except for Sian Williams (Chief Executive Officer, International Primary-Care
+                                    Respiratory Group [IPCRG]) who will be a core member of the study team (see below and letter of support).</p>
+                                <p class="serif govuk-body">&nbsp;</p>
+                                <p class="serif govuk-body"><strong>Table 1. Expertise and contribution</strong></p>
+                                <table class="serif govuk-table __responsive-table" style="width:100%">
+                                    <tbody class="serif govuk-table__body">
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" style="width:20.1077%">
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:38.8599%">
+                                            <p class="serif govuk-body"><strong>Expertise</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:41.0323%">
+                                            <p class="serif govuk-body"><strong>Particular Contribution</strong></p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" colspan="3" style="width:99.9999%">
+                                            <p class="serif govuk-body"><strong>Applicants</strong></p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" style="width:20.1077%">
+                                            <p class="serif govuk-body"><strong>Johnson (PI)</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:38.8599%">
+                                            <p class="serif govuk-body">palliative care; breathlessness; community; complex breathlessness intervention development &amp; testing;
+                                                mixed-methods; population-based datasets</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:41.0323%">
+                                            <p class="serif govuk-body">overall study delivery; support/supervision for Clark; co-ordination with Salins</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" style="width:20.1077%">
+                                            <p class="serif govuk-body"><strong>Clark</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:38.8599%">
+                                            <p class="serif govuk-body">Global palliative care (LMICs); Social policy;</p>
+                                            <p class="serif govuk-body">Mixed-methods; breathlessness</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:41.0323%">
+                                            <p class="serif govuk-body">day-to-day management; protocol, conduct &amp; analysis review/evaluation; liaison with Indian project
+                                                co-ordinator</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" style="width:20.1077%">
+                                            <p class="serif govuk-body"><strong>Pearson</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:38.8599%">
+                                            <p class="serif govuk-body">realist research, co-design and implementation science</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:41.0323%">
+                                            <p class="serif govuk-body">protocol; theory development; realist process</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" style="width:20.1077%">
+                                            <p class="serif govuk-body"><strong>Spathis</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:38.8599%">
+                                            <p class="serif govuk-body">palliative care; breathlessness; community; complex intervention development &amp; staff training
+                                                (Breathing Thinking Functioning)</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:41.0323%">
+                                            <p class="serif govuk-body">education and training content support; theory development, research design</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" style="width:20.1077%">
+                                            <p class="serif govuk-body"><strong>Currow</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:38.8599%">
+                                            <p class="serif govuk-body">Public health; palliative care; policy; mixed-methods; population-based datasets. International pioneer in
+                                                palliative care research with a total grant income of<strong>&nbsp;</strong>AU$109.2M</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:41.0323%">
+                                            <p class="serif govuk-body">Mentor for Clark; protocol, analysis, liaison with networks; Policy impact</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" style="width:20.1077%">
+                                            <p class="serif govuk-body"><strong>Salins</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:38.8599%">
+                                            <p class="serif govuk-body">Palliative care; LMICs; National guidelines; Policy; educational content and implementation; Director, EPEC
+                                                India Program. https://pallipedia.org/epec-india/)</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:41.0323%">
+                                            <p class="serif govuk-body">Primary Indian team member; employment/management of project co-ordinator; liaison with networks (e.g.,
+                                                Pallium India, Indian Association for Palliative Care [IAPC])</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" colspan="3" style="width:99.9999%">
+                                            <p class="serif govuk-body"><strong>Partner/subcontractor</strong></p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" style="width:20.1077%">
+                                            <p class="serif govuk-body"><strong>Williams</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:38.8599%">
+                                            <p class="serif govuk-body">public health; policy; LMICs; global breathlessness &amp; respiratory health; primary care;
+                                                education/training materials; stakeholder engagement;</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:41.0323%">
+                                            <p class="serif govuk-body">Stakeholder engagement (e.g., IPCRG; Public Health Foundation India) Policy impact; education/training
+                                                materials (e.g., <a class="serif govuk-link" href="https://bit.ly/34JnVPe">https://bit.ly/34JnVPe</a>)</p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <p class="serif govuk-body">&nbsp;</p>
+                                <p class="serif govuk-body"><strong>Table 2. Relevant funding and outputs</strong></p>
+                                <table class="serif govuk-table __responsive-table" style="width:100%">
+                                    <tbody class="serif govuk-table__body">
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" style="width:19.5431%">
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:31.8017%">
+                                            <p class="serif govuk-body"><strong>Current funding</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:48.6552%">
+                                            <p class="serif govuk-body"><strong>Relevant outputs (for “REF” see section 9)</strong></p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" style="width:19.5431%">
+                                            <p class="serif govuk-body"><strong>Johnson</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:31.8017%">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NIHR PGfAR. (see Spathis, Pearson) 2022. Develop and test a
+                                                primary-care chronic breathlessness intervention. £2,416,792 (co-applicant)</p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Yorkshire Cancer Research (YCR). 2021. (see Pearson) Person-centred
+                                                intervention development for malignant bowel obstruction. £210,701 (co-PI)</p>
+                                            <p class="serif govuk-body">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YCR 2019 - (see Clark, Currow) Effectiveness and cost-effectiveness
+                                                cRCT of a primary-care needs assessment tool. £1,398,435.51. (PI)</p>
+                                            <p class="serif govuk-body">4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NIHR DRF 2017 Multi-component intervention development for hospice
+                                                delirium care. £279,854. (co-supervisor)</p>
+                                            <p class="serif govuk-body">5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; see Clark#1&amp;2; Currow #3&amp;4. co-applicant</p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:48.6552%">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; REF#5</p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; REF#34</p>
+                                            <p class="serif govuk-body">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; REF#2</p>
+                                            <p class="serif govuk-body">4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; REF#1</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" style="width:19.5431%">
+                                            <p class="serif govuk-body"><strong>Clark</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:31.8017%">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GCRF (see Currow, Salins, Daniel, Pearson): Cancer-related Pain
+                                                Control in India. £25,460; 2021 (co-PI)</p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GCRF (with Johnson, Munday) Feasibility of chronic breathlessness
+                                                research programme in Nepal <strong></strong>£4000 2018 (Co-PI)</p>
+                                            <p class="serif govuk-body">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; see Johnson#5, co-applicant</p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:48.6552%">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Elliott-Button HL, Johnson MJ, … Clark J. Identification and
+                                                Assessment of Breathlessness in Clinical Practice: A Systematic Review and Narrative Synthesis.&nbsp;<em>Journal of Pain Symptom
+                                                    Management (JPSM)</em>. 2020;59(3):724-733.e19.</p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clark J, … Johnson M. Perceptions and experiences of laws and
+                                                regulations governing access to opioids in Asia: A systematic review, critical interpretative synthesis and conceptual framework. PMJ
+                                                2021;35:59-75</p>
+                                            <p class="serif govuk-body">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; REF#3</p>
+                                            <p class="serif govuk-body">4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clark JD, Johnson M, …Currow D. Does the International Narcotics
+                                                Control Board prioritise access to therapeutic opioids? <em>Journal of Global Health Reports</em>. 2020;4:e2020042</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" style="width:19.5431%">
+                                            <p class="serif govuk-body"><strong>Pearson</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:31.8017%">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; see Johnson#1; co-applicant</p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NIHR RfPB. (with Johnson) (2022)&nbsp;Adapting a smartphone-based
+                                                rehabilitation programme for older adults with cancer: intervention development. £149,315 (co-applicant)</p>
+                                            <p class="serif govuk-body">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; see Johnson#4; (co-applicant)</p>
+                                            <p class="serif govuk-body">4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; see Clark#1, (co-applicant)</p>
+                                            <p class="serif govuk-body">5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NIHR HSDR. (2017)&nbsp;A realist review of interventions to tackle
+                                                doctors’ mental ill-health and its impacts.&nbsp; £201,827 (co-PI)</p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:48.6552%">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Prihartadi, A.S, …&nbsp;Pearson, M., Johnson, M., et al. (2021)
+                                                Non-medical devices for chronic breathlessness: A scoping review.&nbsp;<em>BMJ Supportive &amp; Palliative Care
+                                                    (BMJSP&amp;PC)</em>&nbsp;doi:10.1136/bmjspcare-2021-002962</p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Brand, S.L, … Pearson, M., et al.&nbsp; Building programme theory to
+                                                inform the development of complex interventions: The role of realist formative process evaluation prior to full trial.
+                                                <em>Evaluation</em> 2019;25(2)149-170</p>
+                                            <p class="serif govuk-body">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; REF#39</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" style="width:19.5431%">
+                                            <p class="serif govuk-body"><strong>Spathis</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:31.8017%">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NIHR PGfAR. (see Johnson#1; Chief Investigator)</p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:48.6552%">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Spathis A, et al. The Breathing, Thinking, Functioning clinical
+                                                model is an educational tool that facilitates chronic breathlessness management.&nbsp;<em>Primary Care Respiratory Medicine
+                                                    (PCRM)</em>&nbsp;2021;31(1):25.</p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Johnson K, … Spathis A, et al. &nbsp;Attitude change and increased
+                                                confidence with management of chronic breathlessness following a health-professional training workshop: survey evaluation. <em>BMC
+                                                    Medical Education&nbsp;</em>2020;(1):90.</p>
+                                            <p class="serif govuk-body">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; REF#30</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" style="width:19.5431%">
+                                            <p class="serif govuk-body"><strong>Currow</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:31.8017%">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; see Johnson#5, co-applicant)</p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPHERE. University of Technology, Sydney. (with Johnson).&nbsp;
+                                                Impact of chronic breathlessness: population-based study. 2021. AU$19,993</p>
+                                            <p class="serif govuk-body">3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPHERE (with Johnson). Behaviour change theory to drive scalability
+                                                of the hand-held fan for chronic breathlessness. AU$19,402. 2020-2021</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:48.6552%">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Currow DC, Johnson MJ, et al. Breathlessness and opioid prescribing
+                                                in COPD in general practice: cross-sectional, observational study.&nbsp; <em>ERJ Open Research</em> 2020;6(2)00299-2019</p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Barnes-Harris MMM, … Johnson MJ, .. Currow DC. Comparing functional
+                                                decline and symptom distress in people with thoracic life-limiting illnesses: lung cancers and non-malignant end-stage respiratory
+                                                diseases.&nbsp; <em>Thorax</em> 2021. doi:10.1136/thoraxjnl-2020-216039</p>
+                                            <p class="serif govuk-body">4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Currow DC, … Johnson MJ et al. Chronic breathlessness associated
+                                                with poorer physical and mental health-related quality-of-life (SF-12) across all adult age groups. Thorax 2017;72:1151-1153</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" style="width:19.5431%">
+                                            <p class="serif govuk-body"><strong>Salins</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:31.8017%">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; see Clark#1, co-applicant</p>
+                                            <p class="serif govuk-body">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Indian Council of Medical Research. Effectiveness of Capacity
+                                                Building: Integrating palliative care and symptom relief into Primary Health Care. 110,000 USD (PI)</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:48.6552%">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Harding R, Salins N, et al. Health literacy in communication,
+                                                decision-making and outcomes among cancer patients, families and clinicians in India: multicentre study. Pyscho-Oncology 2021 <a class=
+                                                                                                                                                                                 "serif govuk-link" href="https://doi.org/10.1002/pon.5838">doi.org/10.1002/pon.5838</a></p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Damani A, Salins N, et al.&nbsp;Provision of palliative care in
+                                                National Cancer Grid treatment centres in India: a cross-sectional gap analysis.&nbsp;BMJS&amp;PC&nbsp;2020 Jun 9;&nbsp;doi:
+                                                10.1136/bmjspcare-2019-002152.</p>
+                                            <p class="serif govuk-body">3. &nbsp; &nbsp; &nbsp; Salins, N., et al. Indian society for study of pain, … guidelines on palliative
+                                                care aspects in cancer pain management. IJPC 2020 26, 2, p. 210-214</p>
+                                            <p class="serif govuk-body">5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Salins N, et al.&nbsp;Feasibility and Acceptability of Implementing
+                                                the Integrated Care Plan for the Dying in the Indian Setting.&nbsp;IJPC.&nbsp;2017;23:3-12</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell" style="width:19.5431%">
+                                            <p class="serif govuk-body"><strong>Williams</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:31.8017%">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NIHR. RESPIRE&nbsp; University of Edinburgh: Global Health Research
+                                                Unit; respiratory health in Asia.&nbsp; &nbsp; (co-applicant, Stakeholder Engagement/ Governance)</p>
+                                            <p class="serif govuk-body">IPCRG educational materials:</p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Educational grant Boehringer Ingelheim</p>
+                                            <p class="serif govuk-body">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Asthma RightCare: AstraZeneca</p>
+                                            <p class="serif govuk-body">4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; COPD RightCare: Boehringer Ingelheim.</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell" style="width:48.6552%">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp; Rossaki FM, … Williams S, et al. Strategies for prevention, diagnosis and treatment of
+                                                COPD in LMICs: importance of primary care. Expert Rev Respir Med. 2021 15:1563-1577.</p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; REF#43</p>
+                                            <p class="serif govuk-body">3.&nbsp;Williams, S., et al. COVID-19 poses novel challenges for global primary care. npj Prim. Care
+                                                Respir. Med. 2020;30:30</p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="application-view-content-custom-64-heading">8<!-- -->. <!-- -->Case for Support: related
+                            applications</h2>
+                        <div class="serif" id="application-view-content-custom-64" style="/*overflow-x:auto*/">
+                            <div>
+                                <p class="serif govuk-body">No</p>
+                            </div>
+                        </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="application-view-content-custom-65-heading">9<!-- -->. <!-- -->Case for Support: references</h2>
+                        <div class="serif" id="application-view-content-custom-65" style="/*overflow-x:auto*/">
+                            <div>
+                                <ol class="serif govuk-list govuk-list--number">
+                                    <li>Johnson MJ, et al An expert consensus towards delineating a clinical syndrome of chronic breathlessness<em>. Eur Resp Journal (ERJ)</em> 2017;
+                                        0: 1602277</li>
+                                    <li>Kochovska S, et al. Activities Forgone because of Chronic Breathlessness: A Cross-Sectional Population Prevalence Study. <em>Pall Med Rep,</em>
+                                        2020;166-170.</li>
+                                    <li>Clark J et al. Lower workforce participation is associated with persisting breathlessness. BMC Pulmonary Medicine in press</li>
+                                    <li>Brakema EA, et al. Socioeconomic burden of lung disease in low-resource settings – an observational FRESH AIR study. Resp Res,
+                                        2019;20(291)</li>
+                                    <li>Currow DC, et al. Health-service utilisation associated with chronic breathlessness. <em>ERJ Open,</em> 2021;7: 00415-2021.</li>
+                                    <li>Rossaki FM, et al. Strategies for prevention, diagnosis and treatment of COPD in LMICs: the importance of primary care, <em>Exp Rev Respir
+                                            Med</em>, 2021;15:12, 1563-1577, DOI: 10.1080/17476348.2021.1985762</li>
+                                    <li>India State-Level Disease Burden Initiative CVD Collaborators. Changing patterns of CVDs and risk factors in India: Global Burden of Disease
+                                        Study 1990–2016. <em>Lancet Glob Health</em>, 2018. DOI:https://doi.org/10.1016/S2214-109X(18)30407-8.</li>
+                                    <li>Damani, A., et al. High prevalence of dyspnea in lung cancer: An observational study. <em>Indian Journal of Palliative Care (IPMC)</em>.
+                                        2019;25,3:403-406</li>
+                                    <li>Turner MC, et al. Outdoor air pollution and cancer: evidence and public health recommendations. <em>CA</em>, 2020;70:460-479.</li>
+                                    <li>Pandey A, et al. Out-of-pocket payments for hospitalisation in India: National Sample Surveys, 1995–2014. <em>Soc Sci and Med</em>,
+                                        2018;21:136-147.</li>
+                                    <li>World Health Organization. Chronic respiratory diseases. 2022. https://www.who.int/health-topics/chronic-respiratory-diseases#tab=tab_1.</li>
+                                    <li>Raymond, B., et al. Low-intensity educational interventions to improve breathlessness outcomes: systematic review. <em>npj Prim. Care Respir.
+                                            Med</em>. 2019;29:41. https://doi.org/10.1038/s41533-019-0152-8</li>
+                                    <li>Brakema EA, et al. Mapping low-resource contexts to prepare for lung health interventions in four countries (FRESH-AIR). <em>Lancet Glob
+                                            Health</em>, 2022;10(1). https://doi.org/10.1016/S2214-109X(21)00456-3.</li>
+                                    <li>Salvi SS, et al. COPD Management during COVID-19. <em>Lung India</em>, 2021;38(Suppl1):S80-S85.</li>
+                                    <li>The Energy and Resources Institute. M2.5 in Ecologically Different Districts in India: Characteristics &amp; Health Effects. 2021.
+                                        https://www.teriin.org/sites/default/files/2021-10/Factsheet.pdf.</li>
+                                    <li>Bishwajit G, et al. Burden of asthma, dyspnea, and cough in South Asia. <em>Int J COPD</em>. 2017;12:1093-1099</li>
+                                    <li>United Nations. Department of Economic and Social Affairs. Ensure healthy lives and promote well-being for all. 2021.
+                                        https://sdgs.un.org/goals/goal3.</li>
+                                    <li>World Health Organization. Physical Activity. 2021. https://www.who.int/news-room/fact-sheets/detail/physical-activity.</li>
+                                    <li>The World Bank. Human Capital Project. 2021. https://www.worldbank.org/en/publication/human-capital/</li>
+                                    <li>World Social Capital Monitor. Sustainable Development Goals. 2019. <a class="serif govuk-link" href=
+                                        "https://sustainabledevelopment.un.org/content/documents/commitments/6686_11706_commitment_World%20Social%20Capital%20Monitor%202019.pdf">https://sustainabledevelopment.un.org/content/documents/commitments/6686_11706_commitment_World%20Social%20Capital%20Monitor%202019.pdf</a>.
+                                    </li>
+                                    <li>Maddocks M, et al. Holistic services for breathlessness: mixed-methods evidence synthesis. <em>Health Services and Delivery Research</em>,
+                                        2019. DOI: 10.3310/hsdr07220.</li>
+                                    <li>Farquhar MC, et al. The clinical and cost effectiveness of a Breathlessness Intervention Service for non-malignant disease: a mixed-method RCT.
+                                        <em>BMC Trials</em>, 2016;17(185).</li>
+                                    <li>Farquhar MC, et al. Is a specialist breathlessness service more effective and cost-effective for cancer than standard care? mixed-method RCT.
+                                        <em>BMC Medicine</em>, 2014;12(194).</li>
+                                    <li>Johnson MJ, et al. RCT of three or one breathing technique training sessions in malignant lung disease. <em>BMC Medicine</em> 2015;13:213</li>
+                                    <li>Higginson IJ, et al. An integrated palliative and respiratory care service for breathlessness: RCT. <em>Lancet Respiratory Medicine</em>
+                                        2014,2(12):979-987</li>
+                                    <li>Swan F, et al. The hand-held fan and the Calming Hand for breathlessness: feasibility trial<em>. J Pain Symptom Manage.</em>
+                                        2019;57:1051–1061.e1</li>
+                                    <li>Long A, et al. Impact of fan therapy during exercise on breathlessness and recovery time in COPD: pilot crossover RCT. <em>ERJ Open Res</em>
+                                        2021;7&nbsp;00211-2021</li>
+                                    <li>Barnes-Harris MMM, et al. Battery operated fan and breathlessness: does it help? <em>BMJ Supportive &amp; Palliative Care</em>
+                                        2019;9:478-481.</li>
+                                    <li>Farquhar M, et al. Six topics carers of patients with breathlessness want to learn about: MRC phase-I study to inform an educational
+                                        intervention. <em>PlosOne,</em> doi.org/10.1371/journal.pone.0177081.</li>
+                                    <li>Spathis A, et al. Breathing, Thinking, Functioning: a proposal to facilitate evidence-based breathlessness management in respiratory disease.
+                                        <em>NPJ,</em> 2017;27(27).</li>
+                                    <li>Hutchinson A, et al. Living with breathlessness: systematic review. <em>ERJ</em>, 51. DOI: 10.1183/13993003.01477-2017.</li>
+                                    <li>Peters DH, et al. Implementation Research in Health. 2013. <a class="serif govuk-link" href=
+                                        "https://apps.who.int/iris/bitstream/handle/10665/91758/9789241506212_eng.pdf;jsessionid=CDFC65177EAF669FFBDC5E227CBCA228?sequence=1">https://apps.who.int/iris/bitstream/handle/10665/91758/9789241506212_eng.pdf;jsessionid=CDFC65177EAF669FFBDC5E227CBCA228?sequence=1</a>.
+                                    </li>
+                                    <li>Li J, et al. Breathing exercises in people with COPD: realist review. <em>J Adv Nurs.</em> 2021;77:1698-1715.</li>
+                                    <li>Barnes-Harris MM, et al. How Physicians in South India Recognize, Assess, and Manage Chronic Breathlessness Syndrome: A Thematic Analysis.
+                                        <em>IJPC,</em> 2021;27:54-61</li>
+                                    <li>Skivington K, et al. A new framework for developing and evaluating complex interventions: update of Medical Research Council guidance.
+                                        <em>BMJ,</em> 2021;374:n2061</li>
+                                    <li>Delgado P, et al. Accelerating population health improvement <em>BMJ</em> 2021;373:n966</li>
+                                    <li>Moore GF, et al. Process evaluation of complex interventions: Medical Research Council guidance.&nbsp; <em>BMJ</em> 2015;350:h1258.</li>
+                                    <li>Wong G, et al. RAMESES publication standards: realist syntheses. <em>BMC Med,</em> 2013;11:21</li>
+                                    <li>Pearson M, et al. Using realist review to inform intervention development: methodological illustration and conceptual platform.
+                                        <em>Implementation Science,</em> 2015;10:134.</li>
+                                    <li>Crowther L, et al. Towards Co-Design in Respiratory Care: Development of an implementation-ready intervention to improve guideline-adherent
+                                        adult asthma care across primary and secondary care settings (SENTINEL). <em>BMJ Open Respiratory Research</em> 2022 [in press]</li>
+                                    <li>Bartholomew, L. K., et al. Planning health promotion programs: intervention mapping. 4 Jossey-Bass. 2011.</li>
+                                    <li>Kok, G. A Practical guide to behavior change: behavior change methods in an intervention. <em>European Health Psychologist</em>,
+                                        2014;16:156-170</li>
+                                    <li>Habib GMM, et al. Engaging with stakeholders to promote implementation of pulmonary rehabilitation in Bangladesh: Challenges and opportunities.
+                                        <em>J Glob Health</em>, 2020;10(2)</li>
+                                    <li>Means, A.R., et al. Evaluating and optimizing the consolidated framework for implementation research (CFIR) for LMICs: a systematic review.
+                                        <em>Implementation Sci</em>, 2020;15:17.</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="application-view-content-custom-66-heading">10<!-- -->. <!-- -->Covid impact</h2>
+                        <div class="serif" id="application-view-content-custom-66" style="/*overflow-x:auto*/">
+                            <div>
+                                <p class="serif govuk-body">As for most people, our work has been disrupted in many ways. Research projects have been delayed, clinical applicants were
+                                    taken away from research to undertake clinical work, challenges of data collection with social distancing/working with vulnerable groups and so on.
+                                    However, the pandemic has also presented opportunities for our work in terms of: heightened public and professional understanding of breathlessness,
+                                    international lesson learning and use of technology to promote collaboration.</p>
+                                <p class="serif govuk-body">As a result of COVID-19, there has been a significant discourse on breathlessness as a diagnostic indicator as well as a
+                                    symptom to be relieved, with associated public recognition that public health and individual health are entangled. Less positively, the pandemic has
+                                    placed huge pressures on primary and community care internationally and increased the need for community-focussed public health interventions such as
+                                    that we propose.</p>
+                                <p class="serif govuk-body">Many clinicians and people with chronic breathlessness (and disability) have had increased opportunity to access beneficial
+                                    educational interventions. Health care practitioners and patients have become accustomed to the use of technology (e.g., audio-visual software) for
+                                    educational purposes and for clinical care. For example, members of our team made use of webinars to disseminate training relating to symptom
+                                    management to clinicians internationally (Salins, Daniel, Palat) [COVID-19 toolkit]. The International Primary Care Respiratory Group (Williams)
+                                    successfully ran a Teach the Teacher training program promoting diagnosis and management of asthma and Clark/Johnson developed an educational program
+                                    for online delivery for intervention training of primary care practitioners in use of a palliative care needs assessment tool. COVID-19 has therefore
+                                    normalised use of the technologies which we will use to develop our intervention and, dependent upon the outcomes of our realist review, to promote
+                                    equitable access and potentially increase the impact of our intervention, whilst also taking into account the populations which may be disadvantaged
+                                    with regard to technology (rural, age, socioeconomic deprived [e.g, unable to afford limitless data], less access to technology support).</p>
+                                <p class="serif govuk-body">Finally, the pandemic and associated use of technology has facilitated international collaboration without need for
+                                    international travel. Johnson, Salins, Clark, Currow, Pearson and Daniel have strengthened methods of collaborative working by conducting a research
+                                    project identifying good practice related to opioid availability in India, with Indian data collection conducted from the UK (<em>via</em> Zoom),
+                                    regular online project meetings and ongoing analysis and data management using secure encrypted platforms (MS Teams).</p>
+                                <p class="serif govuk-body">Overall, the COVID-19 pandemic has increased the need for our proposed project, increased opportunities for accelerating
+                                    the impact of community interventions through use of technology and increased our capability as an international team to successfully deliver our
+                                    proposal.</p>
+                            </div>
+                        </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="application-view-content-custom-67-heading">11<!-- -->. <!-- -->Logic model and timeframe</h2>
+                        <div class="serif" id="application-view-content-custom-67" style="/*overflow-x:auto*/">
+                            <div>
+                                <p class="serif govuk-body">See our logic model and Gantt chart uploaded.</p>
+                            </div>
+                            <div class="files">
+                                <div class="files__item">
+                                    <div class="files__name">
+                                        <form action="" id="application-view-content-custom-67" method="post" name="downloadFile">
+                                            <input name="csrfToken" type="hidden" value="6482bad0-36bf-4598-a2ae-8336dfa91577"><input name="fileId" type="hidden" value=
+                                            "f6ff1a0d-6727-436b-b823-f9e0725ec61f"><input name="fileName" type="hidden" value="APP1413 Logic and Time.pdf"><input name="fileType" type=
+                                            "hidden" value="application/pdf"><input name="formType" type="hidden" value="downloadFile"><input class="govuk-button--link" type="submit"
+                                                                                                                                              value="APP1413 Logic and Time.pdf">
+                                        </form>
+                                    </div>
+                                    <div class="files__meta">
+                                        <span class="files__size">0.19<!-- -->MB</span><span class="files__action"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="application-view-content-custom-68-heading">12<!-- -->. <!-- -->Justification of resources</h2>
+                        <div class="serif" id="application-view-content-custom-68" style="/*overflow-x:auto*/">
+                            <div>
+                                <p class="serif govuk-body">Each named or identifiable (from post name) individual included on this form is aware that: We have shared their personal
+                                    information with UKRI, and that the UKRI will process their personal information as set out in UKRI’s Privacy Notice.</p>
+                                <h1 class="serif govuk-heading-l">Full economic costings</h1>
+                                <h2 class="serif govuk-heading-m">Directly allocated staff:</h2>
+                                <p class="serif govuk-body">To support all directly incurred staff and ensure methodological rigour and topic knowledge, we have allocated costs as
+                                    follows. We acknowledge that the actual investigator commitment may be more, but will be counted as institutional in-kind contribution as with
+                                    administrative, library, and technological resources.</p>
+                                <p class="serif govuk-body">Prof Miriam Johnson: (5%) Principal investigator, palliative care and breathlessness expertise (Director of the Wolfson
+                                    Palliative Care Research Centre [WPCRC] which has a major breathlessness programme of work), mixed-methods researcher, collaboration with Indian
+                                    colleagues (Daniel, Salins, Bhat) and experience of providing breathlessness education to Indian secondary and hospice care settings. Johnson is also
+                                    Clark’s (see below) supervisor providing day-to-day support.</p>
+                                <p class="serif govuk-body">Dr Mark Pearson: (5%) Co-investigator, implementation science methodology expertise (WPCRC implementation science lead),
+                                    particularly realist approaches.</p>
+                                <p class="serif govuk-body">Note, Prof David Currow is a co-investigator (public and population health, palliative care, policy), but his time is given
+                                    <em>gratis</em> (~2% in-kind).</p>
+                                <h2 class="serif govuk-heading-m">Directly incurred staff:</h2>
+                                <p class="serif govuk-body">Dr Joseph Clark (0.5 whole-time-equivalent): An experienced early career researcher, expertise in both breathlessness and
+                                    global palliative care (WPCRC global lead). Responsibilities: overall project management, prepare the realist protocol, conduct the realist review
+                                    supported by the investigator team, working closely with the Indian project co-ordinator and stakeholder group facilitator (see Exceptions)</p>
+                                <p class="serif govuk-body">Dr Anna Spathis: (5%) Co-investigator, palliative care and breathlessness expertise (leads a breathlessness programme at
+                                    the University of Cambridge) – in particular, development of, and trainer for, the Breathing, Thinking, Functioning clinical framework, mixed-methods
+                                    clinical academic, collaboration with International Primary Care Respiratory Group (IPCRG).</p>
+                                <h2 class="serif govuk-heading-m">Directly incurred costs</h2>
+                                <p class="serif govuk-body">Ms Sian Williams (IPCRG): (3%) Partner/Subcontractor, public health expertise, chief executive officer of the IPCRG and
+                                    liaison point for key stakeholders e.g., Public Health Foundation India (and see letter of support).</p>
+                                <p class="serif govuk-body">Travel and subsistence: Costs allow our researcher-investigator (Clark) to visit India (Karunashraya Hospice) twice to
+                                    cement the collaboration.</p>
+                                <p class="serif govuk-body">Zoom license for virtual meetings.</p>
+                                <h1 class="serif govuk-heading-l">Headline costs</h1>
+                                <h2 class="serif govuk-heading-m">Exceptions</h2>
+                                <p class="serif govuk-body">Staff:</p>
+                                <ol class="serif govuk-list govuk-list--number">
+                                    <li>Indian-based project co-ordinator/stakeholder group facilitator. Given the large number of stakeholder groups, we need a full-time
+                                        co-ordinator. Support provided by senior investigators and Clark to conduct component mapping, and collate conclusions from stakeholder
+                                        groups.</li>
+                                    <li>Prof Naveen Salins (5%), Indian co-investigator and crucial to project success. He will employ/manage the project co-ordinator, and oversee
+                                        Karunashraya Hospice Institutional study governance approval.</li>
+                                    <li>Interpreters (medical students) are costed for groups where necessary (~120 hours @£10/hour), but an Indian team member will be used where
+                                        possible.</li>
+                                </ol>
+                                <p class="serif govuk-body">Travel and subsistence:</p>
+                                <p class="serif govuk-body">Most groups will be virtual, but have costed for the Indian project co-ordinator/facilitator to attend five community group
+                                    meetings in person (one per “round”). Costs include travel, one overnight stay, venue hire/refreshments @£200 per group. We will offer a financial
+                                    thank-you for stakeholders’ time (£5/meeting recommended by our Indian colleagues). We have also costed for our Indian co-investigator to visit the
+                                    University of Hull to help cement the collaboration.</p>
+                            </div>
+                            <div class="files">
+                                <div class="files__item">
+                                    <div class="files__name">
+                                        <form action="" id="application-view-content-custom-68" method="post" name="downloadFile">
+                                            <input name="csrfToken" type="hidden" value="6482bad0-36bf-4598-a2ae-8336dfa91577"><input name="fileId" type="hidden" value=
+                                            "99877d98-96c4-432b-9927-23daa1daaf76"><input name="fileName" type="hidden" value="APP1413FEC.pdf"><input name="fileType" type="hidden"
+                                                                                                                                                      value="application/pdf"><input name="formType" type="hidden" value="downloadFile"><input class="govuk-button--link" type="submit" value=
+                                            "APP1413FEC.pdf">
+                                        </form>
+                                    </div>
+                                    <div class="files__meta">
+                                        <span class="files__size">0.1<!-- -->MB</span><span class="files__action"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="application-view-content-custom-69-heading">13<!-- -->. <!-- -->Supporting Organisations</h2>
+                        <div class="serif" id="application-view-content-custom-69" style="/*overflow-x:auto*/">
+                            <div>
+                                <p class="serif govuk-body"><strong>CONTRIBUTION</strong>. All Partners will be; i) members of the expert group providing advice and helping
+                                    development and refinement of theory; ii) identify and invite key stakeholders through their various networks (see support letters). The exception is
+                                    Sian Williams (see Section 7) who is a Partner/subcontractor and will be a core member of the study team bringing particular expertise regarding public
+                                    health and international (including LMIC) stakeholder engagement (this is reflected in the costs - see justification of costs).</p>
+                                <p class="serif govuk-body">The Expert group will meet 6 times (each ~1.5 hours, and the last meeting held jointly with the Stakeholders will be 2
+                                    hours) during the project. They will also contribute about the same amount of time to identify and invite key stakeholders, read and consider findings.
+                                    In total we anticipate approximately 20 hours “in-kind” time contribution. We do not have the information regarding this value in pounds.</p>
+                                <p class="serif govuk-body"><strong>NOTE</strong>: all the contribution is indirect.</p>
+                                <p class="serif govuk-body"><strong>EXPERTISE</strong>. All have been invited because of their wide networks in LMIC, global respiratory and
+                                    breathlessness care; see letters of support, particularly with regard to their contacts and experience with education and training including using
+                                    remote platforms such as Project-ECHO. Note, Sian Williams details are reported in Section 7 (and letter of support) - examples of video educational
+                                    materials she has been involved in developing through the International Primary Care Respiratory Group (IPCRG) can be seen here (<a class=
+                                                                                                                                                                        "serif govuk-link" href="https://bit.ly/34JnVPe">https://bit.ly/34JnVPe</a>).</p>
+                                <p class="serif govuk-body">Between them, Partners have links with many relevant organisations e.g.,</p>
+                                <ul class="serif govuk-list govuk-list--bullet">
+                                    <li>IPCRG</li>
+                                    <li>WHO network Global Association against Respiratory Disease <em>via</em> IPCRG</li>
+                                    <li>Indian Association for Palliative Care</li>
+                                    <li>Pulmocare Research and Education (PURE) Foundation</li>
+                                    <li>Indian Chest Research Foundation</li>
+                                    <li>Public Health Foundation India</li>
+                                    <li>Global Family Doctor association,</li>
+                                    <li>WONCA;</li>
+                                    <li>other global patient platforms such as the European Lung Foundation</li>
+                                    <li>Asia Pacific Palliative Care Network</li>
+                                </ul>
+                                <p class="serif govuk-body">&nbsp;</p>
+                                <p class="serif govuk-body">Details of partner (name, organisation etc.), their funding and outputs, if relevant, are shown in Table 1.</p>
+                                <p class="serif govuk-body"><strong>Table 1. Partner name, organisation, office, funding and outputs</strong></p>
+                                <table class="serif govuk-table __responsive-table">
+                                    <tbody class="serif govuk-table__body">
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body"><strong>Partner name;</strong></p>
+                                            <p class="serif govuk-body"><strong>Organisation and Office</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body"><strong>Relevant funding</strong></p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body"><strong>Relevant outputs</strong></p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body"><strong>Dr Sunitha Daniel,</strong></p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                            <p class="serif govuk-body">Specialist Medical Officer</p>
+                                            <p class="serif govuk-body">National Health Mission, Ernakulam,</p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                            <p class="serif govuk-body">Department of Palliative Care, Ernakulam General Hospital, Hospital Rd, Marine Drive, Ernakulam, Kerala,
+                                                India, 682011</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">Global Challenge Research Fund (GCRF) (see Currow, Salins, Clark, Pearson, section 7): Cancer-related Pain
+                                                Control in India. £25,460; 2021 (co-applicant)</p>
+                                            <p class="serif govuk-body">Indian National Cancer Grid. Development of a screening tool to detect Serious Health-related Suffering.
+                                                £1350. (co-applicant)</p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Daniel S.. .Johnson MJ. Voices from the community on women with
+                                                breast cancer in India. Supportive Care in Cancer 2022;30:951–963</p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Daniel S; … Johnson MJ. 'I don’t talk about my distress to others; I
+                                                feel that I have to suffer my problems...’.&nbsp;<em>Supportive Care in Cancer</em> 2021;29:2591-2600.</p>
+                                            <p class="serif govuk-body">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Leng MEF, Daniel S,&nbsp;Munday, D. Respiratory problems in
+                                                low-resource settings.&nbsp;<em>Current Opinion in Supportive and Palliative Care</em> 2017<em>;</em>11:174-178.</p>
+                                            <p class="serif govuk-body">4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rao SR, … Daniel S, et al. Psychosocial aspects of COVID-19 in the
+                                                context of palliative care. <em>IJPC.</em> 2020;1;26:116.</p>
+                                            <p class="serif govuk-body">5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Daniel S, et al. Responding to palliative care training needs in the
+                                                COVID-19 era: The context and process of developing and disseminating training resources and guidance for LMICs from Kerala, South
+                                                India<em>. IJPC.</em> 2020;1;26:8.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body"><strong>Dr Nagesh Simha,</strong> Medical Director and Consultant in Palliative Medicine, Karunashraya
+                                                Hospice, Bangalore, India</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">GCRF. Pump-priming grant for developing ICU-Palliative Care services in a resource-limited setting
+                                                £30,000</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Wajid et al. Why is hospice care important?. <em>BMC Palliat
+                                                    Care</em> 2021;20:70.</p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mani et al. Guidelines from ICMR: Meeting a felt need. <em>Indian
+                                                    Journal of Medical Ethics</em>.2020;05:01-03.</p>
+                                            <p class="serif govuk-body">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gursahani et al. &nbsp;End-of-Life Care in India: the End-of-Life
+                                                Care in India Taskforce Journey. Indian <em>Journal of Palliative Care</em>. 2020;26: 269.</p>
+                                            <p class="serif govuk-body">4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Damani et al. Palliative care in coronavirus disease 2019 pandemic:
+                                                Position statement of the Indian association of palliative care. <em>IJPC</em> &nbsp;2020;26:3.</p>
+                                            <p class="serif govuk-body">5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gursahani et al. Making end-of-life and palliative care viable in India: A
+                                                blueprint for action. <em>National Medical Journal of India</em>. 2019;32:129.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body"><strong>Dr Seema Rao,</strong></p>
+                                            <p class="serif govuk-body">Associate Director, Research &amp; Education, Bangalore Hospice Trust Karunashraya</p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                            <p class="serif govuk-body">Palliative Medicine Consultant. Lien Collaborative for Palliative Care, Asia Pacific Palliative Care
+                                                Network, Singapore</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">Palliative Care Capacity building in Cancer Centres in India. APHN Singapore,100,000 USD</p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                            <p class="serif govuk-body">Effectiveness of respite model of Palliative Care in the Indian setting. Tata Trust Project 2015. 700,000
+                                                USD</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rao, et al. COVID-19 Palliative and End-of-Life Care Plan.
+                                                <em>IJPC</em>. 2021;59:1-9.</p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rao et al.. Symptom Management among Patients with Chronic Kidney
+                                                Disease. <em>IJPC</em>. 2021;27(Suppl 1):S14-S29.</p>
+                                            <p class="serif govuk-body">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rao SR et al. The Concept of Respite in Palliative Care.
+                                                &nbsp;<em>Curr Oncol Rep</em>. 2021;23:25.</p>
+                                            <p class="serif govuk-body">4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rao SR, … Daniel S, et al. Psychosocial aspects of COVID-19 in the
+                                                context of palliative care. <em>IJPC.</em> 2020;1;26:116.</p>
+                                            <p class="serif govuk-body">5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Damani et al. Palliative care in coronavirus disease 2019 pandemic:
+                                                Position statement of the Indian association of palliative care. IJPC 2020;26:3.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body"><strong>Dr Sundeep Salvi</strong></p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                            <p class="serif govuk-body">Pulmocare Research and Education (PURE) Foundation</p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                            <p class="serif govuk-body">1st Floor FAITH Centre, Survey No. 232, Sakore Nagar, Viman Nagar, Pune-411014, Maharashtra, India.</p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">NIHR. RESPIRE (see SW#1)</p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                            <p class="serif govuk-body">NIHR RECHARGE programme, University of Leicester (£200,000)</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ghorpade, D.D., …Salvi S<em>.</em>&nbsp;COPD awareness in the urban
+                                                slums and rural areas around Pune.&nbsp;<em>npj Prim. Care Respir. Med.</em>&nbsp;2021;31:6.</p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Salvi S et al, India State-Level Disease Burden Initiative CRD
+                                                Collaborators. The burden of chronic respiratory diseases and their heterogeneity across India: Global Burden of Disease Study
+                                                1990-2016<em>. Lancet Glob Health</em>. 2018;6:e1363-e1374</p>
+                                            <p class="serif govuk-body">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Meghji J, … Salvi S et al. Improving lung health in LMICs.
+                                                <em>Lancet</em>, 2021;97: 928 – 940</p>
+                                            <p class="serif govuk-body">4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Orme MW, …, Salvi S, et al. &nbsp;Global RECHARGE: Establishing a
+                                                standard international data set for pulmonary rehabilitation in LMICs. <em>J Glob Health</em>. 2020;10:020316.</p>
+                                            <p class="serif govuk-body">5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Barne MS, … Salvi SS. Effectiveness of the Training Material on COPD
+                                                Designed for ASHA Workers: Quasi-experiment.&nbsp;<em>Indian J Community Med</em>. 2020;4:565-566.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body"><strong>Professor Dan Munday,</strong></p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                            <p class="serif govuk-body">Consultant Physician in Palliative Medicine/ General Practitioner</p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                            <p class="serif govuk-body">Green Pastures Hospital</p>
+                                            <p class="serif govuk-body">International Nepal Fellowship</p>
+                                            <p class="serif govuk-body">PO Box 28, Pokhara, Nepal</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">UK health care charity EMMSI/UKAid: Development and evaluation of model of primary palliative care for
+                                                rural Nepal (2022-2025)</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Munday D, et al. Integrated management of non-communicable diseases
+                                                in low-income settings: palliative care, primary care and community health synergies.&nbsp;<em>BMJSupportive Palliative Care</em> 2018:
+                                                bmjspcare-2018-001579.</p>
+                                            <p class="serif govuk-body">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Munday D, et al. Palliative care in Nepal: achieving universal
+                                                health coverage.&nbsp;<em>Eur. J. Palliat Care</em>&nbsp;2018;25: 40-46</p>
+                                            <p class="serif govuk-body">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Munday D, et al. Rural palliative care in North India: Rapid
+                                                evaluation of a program; realist mixed-method approach.&nbsp;<em>IJPC</em>&nbsp;2018;24:3-8</p>
+                                            <p class="serif govuk-body">6.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Leng MEF, Daniel S,&nbsp;Munday, D. Respiratory problems in
+                                                low-resource settings.&nbsp;<em>Current Opinion in Supportive and Palliative Care</em> 2017<em>;</em>11:174-178.</p>
+                                            <p class="serif govuk-body">7.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Karasouli E,&nbsp;Munday D, et al. A qualitative study of patients’
+                                                experiences leading to emergency hospital admission with advanced respiratory illness.
+                                                &nbsp;<em>BMJOpen&nbsp;</em>2016<em>;</em>6:e009030.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body"><strong>Professor Gayatri Palat,</strong></p>
+                                            <p class="serif govuk-body">Professor, Pain and Palliative Medicine;</p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                            <p class="serif govuk-body">MNJ Institute of Oncology and RCC Red Hills, Lakidikapul, Near Niloufer Children Hospital, Hyderabad-
+                                                500004, Andhra Pradesh, India</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">None.</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">1. Chetna et al. Socio-economic inequalities at the end of life among cancer patients: APPROACH study in
+                                                five Asian countries. <em>International Journal for Equity in Health</em>, 2020;19:158</p>
+                                            <p class="serif govuk-body">2. World Health Organization. Guideline Development Group, Guideline on Chronic Pain in Children, WHO 2020.
+                                                ISBN: 9789240017870. 3. Doherty et al. Using Virtual Learning to Build Pediatric Palliative Care Capacity in South Asia: Experiences of
+                                                Implementing a Teleteaching and Mentorship Program (Project ECHO<em>), JCO Global Oncology</em> 2021;7:210-222</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body"><strong>Dr Rajani Bhat</strong></p>
+                                            <p class="serif govuk-body">&nbsp;</p>
+                                            <p class="serif govuk-body">Consultant Pulmonologist and Physician</p>
+                                            <p class="serif govuk-body">Swasth Community Science Alliance</p>
+                                            <p class="serif govuk-body">Website:&nbsp;<a class="serif govuk-link" href=
+                                                "https://science.swasth.app/">https://science.swasth.app/</a></p>
+                                            <p class="serif govuk-body">Board of Doctors</p>
+                                            <p class="serif govuk-body">Website: ww.boardofdoctors.com</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">None</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">1. Co-author. Palliative Care Training Manual for Medical Officers (Ayushman Bharat, Health and Wellness
+                                                Centres), National Health Systems Resource Centre, India.
+                                                (https://nhsrcindia.org/sites/default/files/2021-12/Palliative%20Care%20Training%20Manual%20for%20Medical%20Officer.pdf)</p>
+                                            <p class="serif govuk-body">2. Co-author. E-book : Palliative Care for COVID-19 Resource Toolkit for LMIC, 2021
+                                                (https://palliumindia.org/2020/06/resources-for-palliative-care-in-the-context-of-covid19 )</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="serif govuk-table__row">
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">Dr Rajam Iyer</p>
+                                            <p class="serif govuk-body">Consultant</p>
+                                            <p class="serif govuk-body">Pulmonologist &amp; Palliative Medicine;</p>
+                                            <p class="serif govuk-body">The Bhatia and P.D. Hinduja Hospitals,</p>
+                                            <p class="serif govuk-body">Mumbai</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">None</p>
+                                        </td>
+                                        <td class="serif govuk-table__cell">
+                                            <p class="serif govuk-body">1. Co-author. E-book : Palliative Care for COVID-19 Resource Toolkit for LMIC, 2021
+                                                (https://palliumindia.org/2020/06/resources-for-palliative-care-in-the-context-of-covid19 )</p>
+                                            <p class="serif govuk-body">2. Rawlinson et al. Palliative care health care professionals’ needs during Covid-19 ‘thematic analysis of
+                                                a postgraduate cohort of students’ discussion board. <em>BMJ Supportive &amp; Palliative Care</em> 2021;11:A12</p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="files">
+                                <div class="files__item">
+                                    <div class="files__name">
+                                        <form action="" id="application-view-content-custom-69" method="post" name="downloadFile">
+                                            <input name="csrfToken" type="hidden" value="6482bad0-36bf-4598-a2ae-8336dfa91577"><input name="fileId" type="hidden" value=
+                                            "8fd78b55-d6fb-4fa8-8c54-ce80b164c315"><input name="fileName" type="hidden" value="APP1413SupportLetters.pdf"><input name="fileType" type=
+                                            "hidden" value="application/pdf"><input name="formType" type="hidden" value="downloadFile"><input class="govuk-button--link" type="submit"
+                                                                                                                                              value="APP1413SupportLetters.pdf">
+                                        </form>
+                                    </div>
+                                    <div class="files__meta">
+                                        <span class="files__size">4.57<!-- -->MB</span><span class="files__action"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="application-view-content-custom-70-heading">14<!-- -->. <!-- -->Human participation</h2>
+                        <div class="serif" id="application-view-content-custom-70" style="/*overflow-x:auto*/">
+                            <div>
+                                <p class="serif govuk-body">No, we are working with stakeholders not research subjects.</p>
+                            </div>
+                        </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="application-view-content-custom-71-heading">15<!-- -->. <!-- -->Personal information</h2>
+                        <div class="serif" id="application-view-content-custom-71" style="/*/*overflow-x:auto*/*/">
+                            <div>
+                                <p class="serif govuk-body">No</p>
+                            </div>
+                        </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="application-view-content-custom-72-heading">16<!-- -->. <!-- -->Ethical implications</h2>
+                        <div class="serif" id="application-view-content-custom-72" style="/*overflow-x:auto*/">
+                            <div>
+                                <p class="serif govuk-body"><strong>Governance</strong></p>
+                                <p class="serif govuk-body">We are conducting a realist evaluation with expert stakeholders and <u>not</u> research subjects. We will obtain ethical
+                                    approvals from the Hull York Medical School Ethics Board (United Kingdom) and institutional approval from the Karunashraya Hospice in India. As we are
+                                    not recruiting research subjects, our Indian colleagues confirm we will not require approval from the Indian Council of Medical Research.</p>
+                                <p class="serif govuk-body"><strong>Stakeholder groups</strong></p>
+                                <p class="serif govuk-body">We will invite professional and lay people to participate in stakeholder groups. Participation in stakeholder groups will
+                                    be voluntary. Stakeholders will be provided with a study information sheet providing details of the project and the nature of their involvement;
+                                    attendance will be taken as implicit consent. Lay and professional stakeholders will be given a financial token (£5/hr) of appreciation for their time
+                                    in attending meetings/interviews.</p>
+                                <p class="serif govuk-body">It is feasible that lay stakeholders with experience of chronic breathlessness may become upset during discussions
+                                    regarding the project as it may involve relating their own limitations and impact on life due to breathlessness. We will develop support protocols to
+                                    support stakeholders, offering facilities for ‘time out,’ during group meetings as well as support provided by a study team or expert group member and
+                                    referral for further support through appropriate channels if required.</p>
+                                <p class="serif govuk-body">Medicine is a hierarchical profession in many countries irrespective of resources, but particularly so in India and other
+                                    LMICs, and Indian society is patriarchal. We are mindful of the potential power imbalances between the varying stakeholders and so workshops/events
+                                    will be conducted separately with stakeholders with discrete roles to ensure a wide range of views are incorporated and all stakeholders are able to
+                                    speak freely. Stakeholders may be individually interviewed if they cannot make the meeting, or prefer to do so (e.g., would feel more comfortable to
+                                    express views).</p>
+                                <p class="serif govuk-body">On all stakeholder groups, we will ensure appropriate gender and seniority issues are managed (e.g., we will take expert
+                                    group advice as to whether our community groups should be single gender only), and we note that in India physicians are predominantly men and nurses
+                                    are predominantly women.</p>
+                                <p class="serif govuk-body"><strong>Other potential consequences of our study</strong></p>
+                                <p class="serif govuk-body">Our primary aim is to improve awareness and management of chronic breathlessness. However, people with chronic
+                                    breathlessness in India may <u>not</u> <strong></strong>have had their underlying condition diagnosed or optimally managed; our project may encourage
+                                    better presentation and recognition of this neglected symptom. As part of our intervention development, we will work with our Indian clinical
+                                    colleagues to develop protocols that dovetail with appropriate Indian approaches for NCD diagnosis and management.</p>
+                            </div>
+                        </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+
+
