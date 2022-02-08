@@ -23,7 +23,6 @@
 
 {% block content %}
 
-
     {% if allData.journeyType != 'chair' %}
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-full') %}
@@ -53,9 +52,12 @@
 
         {% call components.bulmaColumnAny(size='column is-full') %}
 
+            {% if allData.journeyType != 'chair' %}
             <p class="govuk-body">
                 <strong>Your role:</strong> <span class="badge--dark govuk-!-font-size-14">FIRST INTRODUCER</span>
             </p>
+            {% endif %}
+
 
             {{ components.captionHeading(text='Panelists', tag='h2', size='s') }}
 
@@ -86,12 +88,17 @@
                     <li class="govuk-tabs__list-item">
                         <a class="govuk-tabs__tab" href="/prototypes/panel/application-response">Response</a>
                     </li>
+                    {% if allData.journeyType == 'chair' %}
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--disabled">
+                        <span class="govuk-tabs__tab ">Pre score</span>
+                    </li>
+                    {% else %}
                     <li class="govuk-tabs__list-item">
                         <a class="govuk-tabs__tab" href="/prototypes/panel/pre-score">Pre score</a>
                     </li>
-                    {#<li class="govuk-tabs__list-item govuk-tabs__list-item--disabled">
-                        <span class="govuk-tabs__tab ">Pre score</span>
-                    </li>#}
+                    {% endif %}
+
+
                 </ul>
             </div>
         {%- endcall %}

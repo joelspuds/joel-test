@@ -346,7 +346,7 @@ export function panelApplicationOverviewGet(req, res) {
   console.log('hasConflict stuff: ');
   console.log(allData.hasConflict);*/
 
-  let allData = panelSessionData;
+  let allData = req.session;
 
   console.log(allData);
 
@@ -371,7 +371,7 @@ export function panelApplicationOverviewPost(req, res) {
 export function panelReadApplicationGet(req, res) {
   let viewData;
 
-  let allData = panelSessionData;
+  let allData = req.session;
 
   console.log(allData);
 
@@ -386,6 +386,56 @@ export function panelReadApplicationPost(req, res) {
   // req.session.firstName = firstName;
 
   return res.redirect('/prototypes/panel/read-application');
+}
+
+// ************************************************************************
+//
+//        Application reviews
+//
+// ************************************************************************
+export function panelApplicationReviewsGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+
+  console.log(allData);
+
+  viewData = { allData };
+
+  return res.render('prototypes/panel/application-reviews', viewData);
+}
+
+export function panelApplicationReviewsPost(req, res) {
+  const {} = req.body;
+
+  // req.session.firstName = firstName;
+
+  return res.redirect('/prototypes/panel/application-reviews');
+}
+
+// ************************************************************************
+//
+//        Application response
+//
+// ************************************************************************
+export function panelApplicationResponseGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+
+  console.log(allData);
+
+  viewData = { allData };
+
+  return res.render('prototypes/panel/application-response', viewData);
+}
+
+export function panelApplicationResponsePost(req, res) {
+  const {} = req.body;
+
+  // req.session.firstName = firstName;
+
+  return res.redirect('/prototypes/panel/application-response');
 }
 
 // ************************************************************************

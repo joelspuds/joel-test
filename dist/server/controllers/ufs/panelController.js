@@ -35,6 +35,10 @@ exports.panelApplicationOverviewGet = panelApplicationOverviewGet;
 exports.panelApplicationOverviewPost = panelApplicationOverviewPost;
 exports.panelReadApplicationGet = panelReadApplicationGet;
 exports.panelReadApplicationPost = panelReadApplicationPost;
+exports.panelApplicationReviewsGet = panelApplicationReviewsGet;
+exports.panelApplicationReviewsPost = panelApplicationReviewsPost;
+exports.panelApplicationResponseGet = panelApplicationResponseGet;
+exports.panelApplicationResponsePost = panelApplicationResponsePost;
 exports.panelPreScoreGet = panelPreScoreGet;
 exports.panelPreScorePost = panelPreScorePost;
 exports.panelPreScoreConfirmGet = panelPreScoreConfirmGet;
@@ -386,7 +390,7 @@ function panelApplicationOverviewGet(req, res) {
    console.log('hasConflict stuff: ');
   console.log(allData.hasConflict);*/
 
-  let allData = panelSessionData;
+  let allData = req.session;
 
   console.log(allData);
 
@@ -411,7 +415,7 @@ function panelApplicationOverviewPost(req, res) {
 function panelReadApplicationGet(req, res) {
   let viewData;
 
-  let allData = panelSessionData;
+  let allData = req.session;
 
   console.log(allData);
 
@@ -426,6 +430,56 @@ function panelReadApplicationPost(req, res) {
   // req.session.firstName = firstName;
 
   return res.redirect('/prototypes/panel/read-application');
+}
+
+// ************************************************************************
+//
+//        Application reviews
+//
+// ************************************************************************
+function panelApplicationReviewsGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+
+  console.log(allData);
+
+  viewData = { allData };
+
+  return res.render('prototypes/panel/application-reviews', viewData);
+}
+
+function panelApplicationReviewsPost(req, res) {
+  const {} = req.body;
+
+  // req.session.firstName = firstName;
+
+  return res.redirect('/prototypes/panel/application-reviews');
+}
+
+// ************************************************************************
+//
+//        Application response
+//
+// ************************************************************************
+function panelApplicationResponseGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+
+  console.log(allData);
+
+  viewData = { allData };
+
+  return res.render('prototypes/panel/application-response', viewData);
+}
+
+function panelApplicationResponsePost(req, res) {
+  const {} = req.body;
+
+  // req.session.firstName = firstName;
+
+  return res.redirect('/prototypes/panel/application-response');
 }
 
 // ************************************************************************

@@ -675,6 +675,10 @@ router.get('/prototypes/panel/declare-conflict', demosController.panelConflictGe
 router.post('/prototypes/panel/declare-conflict', demosController.panelConflictPost);
 router.get('/prototypes/panel/application-overview', demosController.panelApplicationOverviewGet);
 router.post('/prototypes/panel/application-overview', demosController.panelApplicationOverviewPost);
+router.get('/prototypes/panel/application-reviews', demosController.panelApplicationReviewsGet);
+router.post('/prototypes/panel/application-reviews', demosController.panelApplicationReviewsPost);
+router.get('/prototypes/panel/application-response', demosController.panelApplicationResponseGet);
+router.post('/prototypes/panel/application-response', demosController.panelApplicationResponsePost);
 router.get('/prototypes/panel/read-application', demosController.panelReadApplicationGet);
 router.post('/prototypes/panel/read-application', demosController.panelReadApplicationPost);
 router.get('/prototypes/panel/pre-score', demosController.panelPreScoreGet);

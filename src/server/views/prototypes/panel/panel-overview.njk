@@ -74,11 +74,18 @@
                         <tr>
                             <td class="govuk-table__cell">
 
-                                <a href="/prototypes/panel/declare-conflict" class="govuk-link">APP090</a>
+                                {#<a href="/prototypes/panel/declare-conflict" class="govuk-link">APP090</a>#}
+                                {% if allData.hasConflict == 'yes' %}
+                                    <a href="/prototypes/panel/application-overview-conflict" class="govuk-link">APP090</a>
+                                {% elseif allData.hasDeclared == true %}
+                                    <a href="/prototypes/panel/application-overview" class="govuk-link">APP090</a>
+                                {% else %}
+                                    <a href="/prototypes/panel/declare-conflict" class="govuk-link">APP090</a>
+                                {% endif %}
 
                             </td>
                             <td class="govuk-table__cell">Development of a Novel Inhibitor of Ricin</td>
-                            <td class="govuk-table__cell">University of South Wales</td>
+                            <td class="govuk-table__cell">Coventry University</td>
                             <td class="govuk-table__cell">Giles Dexter</td>
 
                             <td class="govuk-table__cell govuk-table__cell--numeric">
@@ -134,7 +141,7 @@
                         <tr>
                             <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }}</a></td>
                             <td class="govuk-table__cell">Plastic reprocessing with zero waste</td>
-                            <td class="govuk-table__cell">Belfast University</td>
+                            <td class="govuk-table__cell">Fulchester University</td>
                             <td class="govuk-table__cell">Harry Lourder</td>
                             <td class="govuk-table__cell govuk-table__cell--numeric"><span class="badge--alert govuk-!-font-size-14">CONFLICT</span></td>
                         </tr>
@@ -234,14 +241,14 @@
                             <th class="govuk-table__header">Application name</th>
                             <th class="govuk-table__header">Lead<br>organisation</th>
                             <th class="govuk-table__header">Principle<br>investigator</th>
-                            <th class="govuk-table__header govuk-table__header--numeric">Your role</th>
+                            <th class="govuk-table__header">Your role</th>
                             <th class="govuk-table__header govuk-table__header--numeric">Status</th>
                         </tr>
                     </thead>
                     <tbody>
+                    {% if allData.hasConflict != 'yes' %}
                         <tr>
                             <td class="govuk-table__cell">
-
                                 {% if allData.hasConflict == 'yes' %}
                                     <a href="/prototypes/panel/application-overview-conflict" class="govuk-link">APP090</a>
                                 {% elseif allData.hasDeclared == true %}
@@ -251,9 +258,16 @@
                                 {% endif %}
                             </td>
                             <td class="govuk-table__cell">Development of a Novel Inhibitor of Ricin</td>
-                            <td class="govuk-table__cell">University of South Wales</td>
+                            <td class="govuk-table__cell">Coventry University</td>
                             <td class="govuk-table__cell">Giles Dexter</td>
-                            <td class="govuk-table__cell"><span class="badge--light govuk-!-font-size-14">FIRST INTRODUCER</span></td>
+                            <td class="govuk-table__cell">
+                                {%  if allData.hasDeclared == true %}
+                                <span class="badge--dark govuk-!-font-size-14">FIRST INTRODUCER</span>
+                                {% else %}
+                                    <span class="badge--light govuk-!-font-size-14">FIRST INTRODUCER</span>
+                                {% endif %}
+
+                            </td>
 
                             <td class="govuk-table__cell govuk-table__cell--numeric">
                                 {% if allData.hasConflict == 'yes' %}
@@ -265,6 +279,8 @@
                                 {% endif %}
                             </td>
                         </tr>
+
+                     {% endif %}
                         <tr>
                             <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }}</a></td>
                             <td class="govuk-table__cell"> Solutions - longer living</td>
@@ -313,6 +329,16 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% if allData.hasConflict == 'yes' %}
+                            <tr>
+                                <td class="govuk-table__cell"><a href="#" class="govuk-link">APP090</a></td>
+                                <td class="govuk-table__cell">Development of a Novel Inhibitor of Ricin</td>
+                                <td class="govuk-table__cell">Coventry University</td>
+                                <td class="govuk-table__cell">	Giles Dexter</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric"><span class="badge--alert govuk-!-font-size-14">CONFLICT</span></td>
+                            </tr>
+                        {% endif %}
+
                         <tr>
                             <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }}</a></td>
                             <td class="govuk-table__cell">Intelligent water system</td>
