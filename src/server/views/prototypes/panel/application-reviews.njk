@@ -1,0 +1,310 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '/prototypes/edi/applications' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+
+{% set pageTitle = "Application overview" %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set showStickyNavscripts = true %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Panel overview ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/panel/panel-overview', text:'Back to panel overview'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            {{ components.captionHeading(text='Application overview', caption='Inform design of cross-council digital research environments') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full') %}
+
+            <p class="govuk-body">
+                <strong>Your role:</strong> <span class="badge--dark govuk-!-font-size-14">FIRST INTRODUCER</span>
+            </p>
+
+            {{ components.captionHeading(text='Panelists', tag='h2', size='s') }}
+
+            <p class="govuk-body">
+                <strong>First introducer:</strong> <span class="">Jane Doe, Belfast University</span>
+                <br>
+                <strong>Second introducer:</strong> <span class="">Aaron Powell, University of South Wales</span>
+                <br>
+                <strong>Third introducer:</strong> <span class="">Lucy Cavanaugh, Bristol University</span>
+            </p>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/application-overview">Information</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/read-application">Read application</a>
+                    </li>
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#">Reviews</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/application-response">Response</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/pre-score">Pre score</a>
+                    </li>
+                    {#<li class="govuk-tabs__list-item govuk-tabs__list-item--disabled">
+                        <span class="govuk-tabs__tab ">Pre score</span>
+                    </li>#}
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+   {# {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-9') %}
+
+            <div class="application-data">
+                <dl class="application-data__list">
+                    <dt class="application-data__key">Application title:</dt>
+                    <dd class="application-data__value">APP090: Development of a Novel Inhibitor of Ricin</dd>
+                    <dt class="application-data__key">Opportunity:</dt>
+                    <dd class="application-data__value"><a href="#">OPP123: Inform design of cross-council digital research environments</a></dd>
+                    <dt class="application-data__key">Team:</dt>
+                    <dd class="application-data__value">
+                        <strong>Principal investigator:</strong> Prof Giles Dexter, Coventry University<br>
+                        <strong>Co-investigator:</strong> Prof Gillian Demetriov Coventry University<br>
+                        <strong>Researcher:</strong> Dr. Maximoma Turnipé Coventry University<br>
+                    </dd>
+                </dl>
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}#}
+
+{#    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-9') %}
+
+            {{ components.captionHeading(text='Reviews', tag='h2', size='s') }}
+
+        {%- endcall %}
+
+    {%- endcall %}#}
+
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-3') %}
+            <nav class="sticky-nav">
+                {#{{ components.linkHeading(text='Manage reviews', tag='h2', size='s')}} #}
+                <ul class="govuk-list">
+                    <li>
+                        <a href="#accordion-default-heading-1" class="govuk-link govuk-link--no-visited-state ">Review 1</a>
+                    </li>
+                    <li>
+                        <a href="#accordion-default-heading-2" class="govuk-link govuk-link--no-visited-state ">Review 2</a>
+                    </li>
+                    <li>
+                        <a href="#accordion-default-heading-3" class="govuk-link govuk-link--no-visited-state ">Review 3</a>
+                    </li>
+                </ul>
+
+                <a href="#main-content" class="govuk-link">Top of page</a>
+            </nav>
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-9', customID='main-content') %}
+
+            {% call components.form(action='#', method='POST',name='manageReviews') %}
+
+                <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+                    <div class="govuk-accordion__section ">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                                  Review 1
+                                </span>
+                            </h2>
+                            <div class="score score--accordion">
+                                <span class="govuk-!-font-size-36">5</span> / 6
+                            </div>
+                        </div>
+                        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+
+                            <h3 class="govuk-heading-s">(1) Aims and Objectives and (2) Research Questions</h3>
+
+                            <p class="govuk-body"> There are two central and related aims in this proposal. The first is about developing a new philosophical model of habit and habitual thought. The second is about seeing whether this new model can inform/transform clinical practice.</p>
+
+                            <p class="govuk-body">Let me begin by addressing the first aim. Although habit is a very interesting topic, and more research on it would be very
+                                welcome (especially in the direction of habitual thought) a) I felt that the framing here lacks focus, motivation and feels
+                                disjointed. One is left wondering, for example, why there is this focus on "Aristotelian philosophy, Idealism, Pragmatism and
+                                Phenomenology." I'm not saying there shouldn't be this focus, I'm just saying that it should be more clearly motivated. What
+                                is it about these four traditions that makes them especially suitable? (E.g. Pragmatism and Embodied Phenomenology has
+                                an obvious fit - where is the fit with idealism? Or Neo-Aristotelianism?)</p>
+
+                            <p class="govuk-body">The second aim, I think is very nice: bringing philosophical insights about habits to bear on the clinic in general, and on
+                                breathing difficulties in particular, has a strong appeal. However, there's a bit of a lack of focus: there is talk of mental
+                                health, but also asthma, dysfunctional breathing, OT and speech and language therapy. The focus seems to shift slightly
+                                throughout the proposal. A clearer focus on, say, Asthma (or breathing difficulties, or mental health) would have been
+                                Welcome.</p>
+
+                            <p class="govuk-body">Also, the originality of the second main aim, undermines the motivation for the first aim. Exploring the different
+                                consequences of different philosophical accounts of habit (I especially liked the focus, in passing, on feelings of
+                                responsibility for symptoms) for clinical practice is in itself exciting and original. You do not need to promise a new account
+                                of habit and habitual thought to be contributing something significant.</p>
+
+                            <p class="govuk-body">A number of the secondary research questions under Q1. raised related concerns about just how original this new model of
+                                habit is going to be. This brings me on to issues with the Research Context.</p>
+
+                            <h3 class="govuk-heading-s">(3) Research Context</h3>
+                            <p class="govuk-body">Many research proposals make claims about how (i) the research target is under-researched and (ii) current research on
+                                said target is labouring under misapprehensions that will be corrected by the proposed research. We get this here too.
+                                However, I am not entirely sure that habit is (i) especially under-researched (and in fairness, relevant research is cited). In
+                                any case, the misapprehension that all current work on habit is being charged with is Cartesianism. Again, I'm really not
+                                sure that it's fair to say that Cartesianism looms large in philosophy of mind in general, and in work on habit in particular.
+                                Generally, philosophers drawn to working on habit are Pragmatists, Phenomenologist, Enactivists etc. In short Anti-
+                                Cartesians par excellence.</p>
+
+                            <p class="govuk-body">Again, what I feel is really exciting and potentially important about this proposal is the application of philosophy of habit to
+                                the clinic. No need to highlight originality in work on habit when it is unclear that it's really there. (The resort to the Cartesian
+                                straw man illustrates this.)</p>
+
+                            <p class="govuk-body">There is something of interest and originality that would deserve its own grant, and that is the topic of mental habit. This
+                                could build very nicely on burgeoning literature on mental action. Its implications for mental health could also be brought
+                                out. Though exciting in its own right, it is not clear how this fits with exciting proposals about habit and asthma.</p>
+
+                            <h3 class="govuk-heading-s">(4) Research Methods</h3>
+                            <p class="govuk-body">I found this section to be especially strong, but it only cemented my feeling that the second part of this project is what it
+                                should really be about. The varied, interdisciplinary and engaged set-ups (e.g. Reflective Practice Meetings, Focus groups
+                                etc.) is really exciting and well thought-out. The focus should be on getting philosophy of habit interacting with clinicians.</p>
+
+                            <h3 class="govuk-heading-s">Conclusion</h3>
+                            <p class="govuk-body">There is lots of good material in this proposal, and I am certain that, given the high quality of the applicants, and the research directions proposed, lots of good and important research would come out of it.</p>
+
+                            <p class="govuk-body">However, overall, I felt like too many things were brought in: a sharper focus, in general, on specific points of interest would
+                                have been nice. (There's, so to speak, a fair amount of jumping around thematically). Also, I can't help feeling like it is really
+                                two projects stuck together. Let's call the proposed research surrounding the main Research Question 1, Part 1, and the
+                                research surrounding main Research Question 2, Part 2.</p>
+
+                            <p class="govuk-body">I would have preferred a project that focused more fully on Part 2, namely, the application of philosophical views of habit to
+                                clinical practice. This part of the application, it seems to me, is original, impactful, interdisciplinary and engaged, and it
+                                would remain so even if all that was being done was applying various existing accounts of habit. I really liked Part 2. That
+                                said, a bit more focus and clarity on the target would have been nice. Why not, for example, go to town on asthma and
+                                breathing difficulties? There was distracting mention of mental health, OT, Speech and Language Therapy. It wasn't clear
+                                how this all tied together, and why these are specifically good targets for a habit-based approach. I'm not saying they're
+                                not, but it needs to be made explicit.</p>
+
+                            <p class="govuk-body">Part 1 is simply proposing the development of a new philosophical model of habit. This strikes me as more monodisciplinary
+                                than Part 2, although the historical angle is very welcome. Nevertheless, I did not get a sense of genuine
+                                originality. Pragmatist, embodied and phenomenological approaches to cognition are pretty mainstream these days, and
+                                many researchers working in these fields already pay attention to habit. A symptom of this, I felt, was the brief (and uncited)
+                                mention of a "Cartesian" mainstream. It could be a sampling bias on my part, but it doesn't seem to me like there are
+                                many Cartesians, and I doubt they pay much attention to habit.</p>
+
+                            <h3 class="govuk-heading-s">Real high points:</h3>
+                            <p class="govuk-body">I felt there was potential for some *very* interesting things to be said around agency and habit, and how this relates to responsibility (self and sense of self were unhelpfully mentioned - there is a vast literature on the self and how it relates to agency, and the relationship is not straightforward). This was nicely brought out in Part 2 regarding patients feeling responsible for their symptoms. More could have been made of this. This can also feature as a general point in Part 1. A bright flash of originality emerged in mention of mental habits. A separate mono-disciplinary project on mental habits would be great (it would dovetail nicely with recent work on mental action), as would one that looks at mental habits as a core explanatory (and hence clinically relevant) component of various pathologies. The hypothesis that anxiety and depression might be thought of in terms of toxic mental habits strikes me as potentially fruitful.</p>
+
+
+                            <div class="score">
+                                {{ components.captionHeading(text='Expert review score', tag='h3', size='s', extraClass='u-space-10') }}
+                                <span class="govuk-!-font-size-36">5</span> / 6
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="govuk-accordion__section ">
+                        <span class="js-hidden ">Review 2</span>
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">Review 2</span>
+                            </h2>
+                            <div class="score score--accordion">
+                                <span class="govuk-!-font-size-36">6</span> / 6
+                            </div>
+                        </div>
+                        <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+                            {% include '../generic-includes/application-peer-review.njk' %}
+                            <div class="score">
+                                {{ components.captionHeading(text='Expert review score', tag='h3', size='s', extraClass='u-space-10') }}
+                                <span class="govuk-!-font-size-36">6</span> / 6
+                            </div>
+                        </div>
+                    </div>
+                    <div class="govuk-accordion__section _govuk-accordion__section--disabled ">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading ">
+                                <span class="govuk-accordion__section-button" id="accordion-default-heading-3">Review 3</span>
+                            </h2>
+                            <div class="score score--accordion">
+                                <span class="govuk-!-font-size-36">4</span> / 6
+                            </div>
+                        </div>
+                        <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+                            {% include '../generic-includes/application-peer-review.njk' %}
+                            <div class="score">
+                                {{ components.captionHeading(text='Expert review score', tag='h3', size='s', extraClass='u-space-10') }}
+                                <span class="govuk-!-font-size-36">4</span> / 6
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+            {%- endcall %} {# end form #}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script type="text/javascript">
+        /* smooth-scroll.js v1.3.1 */
+        /*
+        n=0,
+        r=500,
+        i=15,
+        */
+        (function(e,t){
+            "use strict";
+            var n=0,
+                r=250,
+                i=15,
+                s=document.getElementsByTagName("a"),
+                o;
+            for(var u=0;u<s.length;u++){
+                o=s[u].attributes.href===t?null:s[u].attributes.href.nodeValue.toString();
+                if(o!==null&&o.length>1&&o.indexOf("#")!=-1){
+                    s[u].onclick=function(){
+                        var n,s=this.attributes.href.nodeValue.toString(),o=s.substr(0,s.indexOf("#")),u=s.substr(s.indexOf("#")+1);if(n=document.getElementById(u)){var l=(r-r%i)/i,c=f(),h=(a(n)-c)/l;if(e.history&&typeof e.history.pushState=="function")e.history.pushState({},t,o+"#"+u);for(var p=1;p<=l;p++){(function(){var t=h*p;setTimeout(function(){e.scrollTo(0,t+c)},i*p)})()}return false}}}}var a=function(e){var r=n*-1;while(e.offsetParent!=t&&e.offsetParent!=null){r+=e.offsetTop+(e.clientTop!=null?e.clientTop:0);e=e.offsetParent}return r};var f=function(){return e.pageYOffset!==t?e.pageYOffset:document.documentElement.scrollTop!==t?document.documentElement.scrollTop:document.body.scrollTop}})(window)
+    </script>
+
+
+{% endblock %}
+

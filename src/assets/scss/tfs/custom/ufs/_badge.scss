@@ -70,6 +70,24 @@
     padding: 4px 7px 2px;
   }
 
+  &--light {
+    @extend %badge;
+    background-color: govuk-colour("light-grey");
+    color: govuk-colour("dark-grey");
+    border: 1px solid govuk-colour("white");
+    border-radius: 2px;
+    padding: 4px 7px 2px;
+  }
+
+  &--dark {
+    @extend %badge;
+    background-color: govuk-colour("dark-blue");
+    color: govuk-colour("white");
+    border: 1px solid govuk-colour("white");
+    border-radius: 2px;
+    padding: 4px 7px 2px;
+  }
+
   &--no-border {
     border-radius: 0;
     border: 0;

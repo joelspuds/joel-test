@@ -1,0 +1,185 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '/prototypes/edi/applications' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+
+{% set pageTitle = "Home" %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Panel overview ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/panel/panels-in-progress', text:'Back to panels'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Panel overview', caption='Inform design of cross-council digital research environments') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item ">
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/panel-overview">Applications</a>
+                    </li>
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#">Guidance</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/panel-meeting-details">Meeting details</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/panel-panelists">Panelists</a>
+                    </li>
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-8') %}
+
+            {{ components.captionHeading(text='Panel member guidance', tag='h2', size='m') }}
+
+            <p class="govuk-body">Ensure you familiarise yourself with these documents before the panel meeting.</p>
+
+            <div class="files">
+
+                <div class="files__item">
+                    <div class="files__name">
+                        <a href="/misc/file1.pdf">Method of Working.pdf</a>
+                    </div>
+                    <div class="files__meta">
+                        <span class="files__size">1.3MB</span>
+                    </div>
+                </div>
+                <div class="files__item">
+                    <div class="files__name">
+                        <a href="/misc/file2.pdf">Additional Documentation - Information for Assessment.pdff</a>
+                    </div>
+                    <div class="files__meta">
+                        <span class="files__size">0.4MB</span>
+                    </div>
+                </div>
+                <div class="files__item">
+                    <div class="files__name">
+                        <a href="/misc/file3.pdf">Assessment Criteria and Scoring Range.pdf</a>
+                    </div>
+                    <div class="files__meta">
+                        <span class="files__size">575Kb</span>
+                    </div>
+                </div>
+                <div class="files__item">
+                    <div class="files__name">
+                        <a href="/misc/file4.pdf">Assessment Process Actions and Timeline.pdf</a>
+                    </div>
+                    <div class="files__meta">
+                        <span class="files__size">2MB</span>
+                    </div>
+                </div>
+                <div class="files__item">
+                    <div class="files__name">
+                        <a href="/misc/file5.pdf">Itinerary for all Committees.pdf</a>
+                    </div>
+                    <div class="files__meta">
+                        <span class="files__size">1.1MB</span>
+                    </div>
+                </div>
+                <div class="files__item">
+                    <div class="files__name">
+                        <a href="/misc/file1.pdf">Roles and Responsibilities.pdf</a>
+                    </div>
+                    <div class="files__meta">
+                        <span class="files__size">890Kb</span>
+                    </div>
+                </div>
+                <div class="files__item">
+                    <div class="files__name">
+                        <a href="/misc/file1.pdf">Safeguarding Decision Making.pdf</a>
+                    </div>
+                    <div class="files__meta">
+                        <span class="files__size">1.6MB</span>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='js-only--block') %}
+
+        {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+
+            <div class="application-controls govuk-clearfix">
+
+                {{ components.button(text='Download all files', extraClass="application-controls__submit", id='downloadAll')}}
+
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        var ready = (callback) => {
+            if (document.readyState != 'loading') callback();
+            else document.addEventListener('DOMContentLoaded', callback);
+        }
+        ready(() => {
+            const urls = [
+                '/misc/file1.pdf',
+                '/misc/file2.pdf',
+                '/misc/file3.pdf',
+                '/misc/file4.pdf',
+                '/misc/file5.pdf'
+            ]
+            var tempURLS;
+            var interval;
+
+            $('#downloadAll').on('click', function(e) {
+                e.preventDefault();
+                tempURLS = [...urls];
+                interval = setInterval(download, 300, tempURLS);
+            });
+
+            function download(tempURLS) {
+                var url = tempURLS.pop();
+
+                if (url == null) {
+                    clearInterval(interval);
+                    return;
+                }
+                var a = document.createElement("a");
+                a.setAttribute('href', url);
+                a.setAttribute('download', '');
+                a.setAttribute('target', '_blank');
+                a.click();
+            }
+        });
+    </script>
+{% endblock %}
+

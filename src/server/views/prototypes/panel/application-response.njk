@@ -1,0 +1,123 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '/prototypes/edi/applications' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+
+{% set pageTitle = "Application overview" %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Panel overview ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/panel/panel-overview', text:'Back to panel overview'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            {{ components.captionHeading(text='Application overview', caption='Inform design of cross-council digital research environments') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full') %}
+
+            <p class="govuk-body">
+                <strong>Your role:</strong> <span class="badge--dark govuk-!-font-size-14">FIRST INTRODUCER</span>
+            </p>
+
+            {{ components.captionHeading(text='Panelists', tag='h2', size='s') }}
+
+            <p class="govuk-body">
+                <strong>First introducer:</strong> <span class="">Jane Doe, Belfast University</span>
+                <br>
+                <strong>Second introducer:</strong> <span class="">Aaron Powell, University of South Wales</span>
+                <br>
+                <strong>Third introducer:</strong> <span class="">Lucy Cavanaugh, Bristol University</span>
+            </p>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/application-overview">Information</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/read-application">Read application</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab " href="/prototypes/panel/application-reviews">Reviews</a>
+                    </li>
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab " href="#">Response</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/pre-score">Pre score</a>
+                    </li>
+                    {#<li class="govuk-tabs__list-item govuk-tabs__list-item--disabled">
+                        <span class="govuk-tabs__tab ">Pre score</span>
+                    </li>#}
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-9') %}
+
+            {{ components.captionHeading(text='Principal Investigator response', tag='h2', size='m') }}
+
+            {{ components.captionHeading(text='Prof. Davina Smallbrook, University of Edinburgh', tag='h2', size='s') }}
+
+            <p class="govuk-body">there are no clearly a priori specified hypotheses that correspond to an analytical plan. The outline of the statistics is
+                rather making broad references to growth models. I would expect a clearly laid out (ideally formalized) outline of at least the
+                key aspects of the plan. This would allow me to scrutinize the plans and constrain the number of analyses (it is fine to
+                declare as many as the authors like as exploratory).</p>
+
+            <p class="govuk-body"> I was concerned to see the flexibility in the analytical plan. The applicants state: “Multiple approaches will be used to
+                address the hypotheses outlined, though the rich data enables numerous other possibilities.</p>
+
+            <p class="govuk-body"> “As I said above, this is not the right approach to hypotheses testing that should have a clear formalized analytical plan
+                corresponding to them. It is incompatible with all the concerns about replicability.</p>
+
+            <p class="govuk-body">  in the analytical section, I was surprised to see that the applicants have not considered how to use training (discovery)
+                and replications samples to test their key hypotheses. They should at least be using a cross-validation approach to the
+                data, but ideally provide evidence of how they would utilize what they expect to be large samples.</p>
+
+            <p class="govuk-body">  I was confused about the use of other datasets. In the analytical section there is no clearly spelt out plan about how the
+                other datasets (e.g. ALSPAC) will be used and for which particular questions. Also, it is not clear what analytical method—if
+                any—will be leveraged to test generalizability of the findings. It would be great if the authors did so, but it is not clear how.
+            </p>
+            <p class="govuk-body">
+                Phasellus ac risus lectus. Proin quis vehicula metus. Suspendisse eget odio
+                metus. Maecenas vehicula quam ut accumsan dapibus. Phasellus sit amet nibh a
+                lectus commodo viverra in id risus. Maecenas at sem nec dolor consectetur
+                accumsan. Morbi non eros magna. Sed et mauris libero. Donec sollicitudin, risus
+                non pulvinar consectetur, nibh lacus venenatis nunc, eget laoreet libero quam et
+                lacus. Proin eros tortor, tempor quis dui quis, consequat ultricies arcu. Sed
+                congue turpis at elit posuere, quis iaculis elit consequat. In maximus eu
+                mi id euismod.</p>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+

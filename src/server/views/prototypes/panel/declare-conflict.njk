@@ -1,0 +1,152 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '/prototypes/edi/applications' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+
+{% set pageTitle = "Home" %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Panel overview ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/panel/panel-overview', text:'Back to panel overview'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Declare if you have a conflict of interest', caption='Inform design of cross-council digital research environments') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-9') %}
+
+            <div class="application-data">
+                <dl class="application-data__list">
+                    <dt class="application-data__key">Application title:</dt>
+                    <dd class="application-data__value">APP090: Development of a Novel Inhibitor of Ricin</dd>
+                    <dt class="application-data__key">Opportunity:</dt>
+                    <dd class="application-data__value"><a href="#">OPP123: Inform design of cross-council digital research environments</a></dd>
+                    <dt class="application-data__key">Team:</dt>
+                    <dd class="application-data__value">
+                        <strong>Principal investigator:</strong> Prof Giles Dexter, Coventry University<br>
+                        <strong>Co-investigator:</strong> Prof Gillian Demetriov Coventry University<br>
+                        <strong>Researcher:</strong> Dr. Maximoma Turnipé Coventry University<br>
+                    </dd>
+                </dl>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-9') %}
+
+            {{ components.captionHeading(text='Summary', tag='h2', size='s') }}
+            <p class="govuk-body">The PI proposes a high-impact collaborative research project to develop new
+                inhibitors for ribosome inactivating proteins (RIPs), such as ricin and Shiga toxin.
+                Ricin toxin, produced by the castor bean plant, has a nefarious past. Ricin is a
+                well-known homicidal poison and has been used in several bioterrorist attacks.
+                Shiga toxin is a deadly product of enterobacterial Escherichia coli. RIPs are RNA
+                N-glycosidases that enzymatically remove specific purine residues from the
+                universally conserved sarcin/ricin loop (S/R loop) of large ribosomal RNA,
+                causing cellular death.
+            </p>
+            <p class="govuk-body">
+                Phasellus ac risus lectus. Proin quis vehicula metus. Suspendisse eget odio
+                metus. Maecenas vehicula quam ut accumsan dapibus. Phasellus sit amet nibh a
+                lectus commodo viverra in id risus. Maecenas at sem nec dolor consectetur
+                accumsan. Morbi non eros magna. Sed et mauris libero. Donec sollicitudin, risus
+                non pulvinar consectetur, nibh lacus venenatis nunc, eget laoreet libero quam et
+                lacus. Proin eros tortor, tempor quis dui quis, consequat ultricies arcu. Sed
+                congue turpis at elit posuere, quis iaculis elit consequat. In maximus eu
+                mi id euismod.</p>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='declareConflict') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="disabilities-hint">
+                        <legend class="govuk-fieldset__legend--m">Do you have a conflict of interest with this application?</legend>
+
+                        <details class="govuk-details" data-module="govuk-details">
+                            <summary class="govuk-details__summary">
+                                <span class="govuk-details__summary-text">Guidance for conflicts of interest</span>
+                            </summary>
+                            <div class="govuk-details__text">
+                                <p class="govuk-body">It is imperative that Panel members are not only completely impartial, but are also seen to be, at all stages of an application’s assessment. You should not take part in the moderation of any proposal where a conflict of interest could be construed. If you think you may have one, inform the staff member responsible for your panel as soon as possible.</p>
+
+                                {{ components.captionHeading(text='We consider these instances to be conflicts of interest:', tag='h3', size='s') }}
+                                <ul class="govuk-list govuk-list--bullet">
+                                    <li>working at the same institution as an applicant</li>
+                                    <li>a personal relationship with an applicant</li>
+                                    <li>an active, ongoing collaboration with an applicant.</li>
+                                </ul>
+
+                                {{ components.captionHeading(text='We do not consider these instances to be conflicts of interest:', tag='h3', size='s') }}
+                                <ul class="govuk-list govuk-list--bullet">
+                                    <li>published collaborations with applicants that have concluded</li>
+                                    <li>holding a different scientific view to an applicant.</li>
+                                </ul>
+
+                            </div>
+                        </details>
+
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="conflict1" name="conflict" type="radio" value="no">
+                                <label class="govuk-label govuk-radios__label" for="conflict1">No, I <strong>do not</strong> have a conflict of interest</label>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="conflict2" name="conflict" type="radio" value="yes">
+                                <label class="govuk-label govuk-radios__label" for="conflict2">Yes, I <strong>do</strong> have a conflict of interet</label>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </div>
+
+
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                {% call components.formGroup() %}
+
+                    {{ components.button(text='Continue', extraClass="application-controls__submit")}}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+

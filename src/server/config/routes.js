@@ -647,14 +647,40 @@ router.post('/prototypes/orgs3/add-manually', demosController.orgs3AddManuallyPo
 // Create new opportunity
 router.get('/prototypes/panel/config', demosController.panelConfigGet);
 router.post('/prototypes/panel/config', demosController.panelConfigPost);
-router.get('/prototypes/panel/', demosController.panelIndexGet);
-router.post('/prototypes/panel/', demosController.panelIndexPost);
+router.get('/prototypes/panel', demosController.panelIndexGet);
+router.post('/prototypes/panel', demosController.panelIndexPost);
 router.get('/prototypes/panel/external-email', demosController.panelExternalEmailGet);
 router.post('/prototypes/panel/external-email', demosController.panelExternalEmailPost);
+router.get('/prototypes/panel/signin-options', demosController.panelSigninOptionsGet);
+router.post('/prototypes/panel/signin-options', demosController.panelSigninOptionsPost);
+router.get('/prototypes/panel/signin', demosController.panelSigninGet);
+router.post('/prototypes/panel/signin', demosController.panelSigninPost);
 router.get('/prototypes/panel/home', demosController.panelHomeGet);
 router.post('/prototypes/panel/home', demosController.panelHomePost);
 router.get('/prototypes/panel/panel', demosController.panelPanelsGet);
 router.post('/prototypes/panel/panel', demosController.panelPanelsPost);
+router.get('/prototypes/panel/panels-in-progress', demosController.panelPanelsInProgressGet);
+router.post('/prototypes/panel/panels-in-progress', demosController.panelPanelsInProgressPost);
+router.get('/prototypes/panel/panels-previous', demosController.panelPanelsPreviousGet);
+router.post('/prototypes/panel/panels-previous', demosController.panelPanelsPreviousPost);
+router.get('/prototypes/panel/panel-overview', demosController.panelPanelOverviewGet);
+router.post('/prototypes/panel/panel-overview', demosController.panelPanelOverviewPost);
+router.get('/prototypes/panel/panel-guidance', demosController.panelPanelGuidanceGet);
+router.post('/prototypes/panel/panel-guidance', demosController.panelPanelGuidancePost);
+router.get('/prototypes/panel/panel-meeting-details', demosController.panelMeetingDetailsGet);
+router.post('/prototypes/panel/panel-meeting-details', demosController.panelMeetingDetailsPost);
+router.get('/prototypes/panel/panel-panelists', demosController.panelPanelistsGet);
+router.post('/prototypes/panel/panel-panelists', demosController.panelPanelistsPost);
+router.get('/prototypes/panel/declare-conflict', demosController.panelConflictGet);
+router.post('/prototypes/panel/declare-conflict', demosController.panelConflictPost);
+router.get('/prototypes/panel/application-overview', demosController.panelApplicationOverviewGet);
+router.post('/prototypes/panel/application-overview', demosController.panelApplicationOverviewPost);
+router.get('/prototypes/panel/read-application', demosController.panelReadApplicationGet);
+router.post('/prototypes/panel/read-application', demosController.panelReadApplicationPost);
+router.get('/prototypes/panel/pre-score', demosController.panelPreScoreGet);
+router.post('/prototypes/panel/pre-score', demosController.panelPreScorePost);
+router.get('/prototypes/panel/pre-score-confirm', demosController.panelPreScoreConfirmGet);
+router.post('/prototypes/panel/pre-score-confirm', demosController.panelPreScoreConfirmPost);
 // router.get('/prototypes/panel/config', demosController.createOpportunityConfigGetV3);
 
 /* *************************************************************** *

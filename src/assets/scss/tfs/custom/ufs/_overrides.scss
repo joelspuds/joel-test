@@ -339,3 +339,16 @@ td.u-align-right {
 .govuk-link--disabled {
   color: govuk-colour("dark-grey");
 }
+
+
+.govuk-tabs__list-item--disabled {
+  color: govuk-colour("mid-grey") !important;
+
+  &:hover {
+    color: govuk-colour("mid-grey") !important;
+  }
+
+  .govuk-tabs__tab {
+    color: govuk-colour("mid-grey") !important;
+  }
+}

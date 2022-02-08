@@ -1,0 +1,78 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '/prototypes/edi/applications' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+
+{% set pageTitle = "Home" %}
+{% set allData = allData if allData %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Panel overview ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/panel/application-overview', text:'Back to application overview'}] %}
+
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Are you sure you want to submit your pre score?', caption='Inform design of cross-council digital research environments') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='confirmPrescore') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                <div class="govuk-warning-text">
+                    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                    <strong class="govuk-warning-text__text">
+                        <span class="govuk-warning-text__assistive">Warning</span>
+                        You will not be able to make any changes.
+                    </strong>
+                </div>
+
+                <div class="score">
+                    {{ components.captionHeading(text='Expert review score', tag='h3', size='s', extraClass='u-space-10') }}
+                    <span class="govuk-!-font-size-36">{{ allData.preScore }}</span> / 6
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-9', extraClass='u-space-t45') %}
+
+                {% call components.formGroup() %}
+
+                    {{ components.button(text='Submit', extraClass="application-controls__submit")}}
+
+                    {{ components.link(text='Cancel, back to pre-score', url='/prototypes/panel/pre-score', extraClass="application-controls__cancel")}}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+

@@ -1,0 +1,147 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '/prototypes/edi/applications' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+
+{% set pageTitle = "Home" %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Panels ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/panel/home', text:'Back to home'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {# {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-notification-banner govuk-notification-banner--info" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">
+                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion (EDI)</a> profile before any applications you contribute to can be submitted to UKRI.
+    #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
+</p>
+</div>
+</div>
+
+{%- endcall %}
+{%- endcall %}#}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Panels', caption='Dr. Jane Doington-Longname') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/panels-in-progress">In progress</a>
+                    </li>
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#">Previous</a>
+                    </li>
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-9') %}
+            <ul class="overview-items overview-items--plain">
+                <li class="overview-item  _overview-item--inactive">
+                    <div class="columns">
+                        <div class="column is-8">
+                            <h3 class="overview-item__title">
+                                <a href="#" class="govuk-link">Information management framework for digital twins - August 2021</a>
+                            </h3>
+                            <ul class="overview-item__meta-list">
+                                <li class="overview-item__meta-item"><strong>Panel date:</strong> 22 Nov 2022<br></li>
+                                <li class="overview-item__meta-item"><strong>Council:</strong> AHRC</li>
+                                <li class="overview-item__meta-item"><strong>Opportunity: </strong>OPP763: Information management framework for digital twins<br></li>
+                            </ul>
+                        </div>
+                        <div class="column is-2">
+                            <div class="u-align-setup-vertical u-align-center">
+                                <div class="u-align-cell">
+                                    <span class="overview-item__meta">
+                                        <strong>Complete</strong>
+                                        <br>
+                                        14 Jan 2022
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-2">
+                            <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                <div class="u-align-cell">
+                                    <strong>Complete</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="overview-item  _overview-item--inactive">
+                    <div class="columns">
+                        <div class="column is-8">
+                            <h3 class="overview-item__title">
+                                <a href="#" class="govuk-link">Innovate UK smart grants: May 2021</a>
+                            </h3>
+                            <ul class="overview-item__meta-list">
+                                <li class="overview-item__meta-item"><strong>Panel date:</strong> 9 Oct 2021<br></li>
+                                <li class="overview-item__meta-item"><strong>Council:</strong> MRC, UKRI</li>
+                                <li class="overview-item__meta-item"><strong>Opportunity: </strong>OPP418: Innovate UK smart grants<br></li>
+                            </ul>
+                        </div>
+                        <div class="column is-2">
+                            <div class="u-align-setup-vertical u-align-center">
+                                <div class="u-align-cell">
+                                    <span class="overview-item__meta">
+                                        <strong>Complete</strong>
+                                        <br>
+                                        14 Oct 2021
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-2">
+                            <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
+                                <div class="u-align-cell">
+                                    <strong>Complete</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+
+            </ul>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+

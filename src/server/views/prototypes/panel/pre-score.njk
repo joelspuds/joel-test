@@ -1,0 +1,198 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '/prototypes/edi/applications' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+
+{% set pageTitle = "Application overview" %}
+{% set allData = allData if allData %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Panel overview ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/panel/panel-overview', text:'Back to panel overview'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% if allData.preScoreSet %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="govuk-notification-banner govuk-notification-banner--info" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <p class="govuk-notification-banner__heading">
+                            Pre-score submitted on {{ allData.preScoreDateAndTime }}
+                            {#{{ 'dataAndTime' | dateAndTime() }}#}
+                        </p>
+                    </div>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+    {% endif %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            {{ components.captionHeading(text='Application overview', caption='Inform design of cross-council digital research environments') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full') %}
+
+            <p class="govuk-body">
+                <strong>Your role:</strong> <span class="badge--dark govuk-!-font-size-14">FIRST INTRODUCER</span>
+            </p>
+
+            {{ components.captionHeading(text='Panelists', tag='h2', size='s') }}
+
+            <p class="govuk-body">
+                <strong>First introducer:</strong> <span class="">Jane Doe, Belfast University</span>
+                <br>
+                <strong>Second introducer:</strong> <span class="">Aaron Powell, University of South Wales</span>
+                <br>
+                <strong>Third introducer:</strong> <span class="">Lucy Cavanaugh, Bristol University</span>
+            </p>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/application-overview">Information</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/read-application">Read application</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab " href="/prototypes/panel/application-reviews">Reviews</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab " href="/prototypes/panel/application-response">Response</a>
+                    </li>
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#">Pre score</a>
+                    </li>
+                    {#<li class="govuk-tabs__list-item govuk-tabs__list-item--disabled">
+                        <span class="govuk-tabs__tab ">Pre score</span>
+                    </li>#}
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% if allData.preScoreSet %}
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                {{ components.captionHeading(text='Pre-score this applciation', tag='h2', size='m') }}
+
+                <div class="score">
+                    <span class="govuk-!-font-size-36">{{ allData.preScore }}</span> / 6
+                </div>
+
+            {%- endcall %}
+        {%- endcall %}
+
+    {% else %}
+
+
+
+
+    {% call components.form(action='#', method='POST',name='preScore') %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-9') %}
+
+            {{ components.captionHeading(text='Pre-score this applciation', tag='h2', size='m') }}
+
+            <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">Guidance for pre-score</span>
+                </summary>
+                <div class="govuk-details__text">
+                    <p class="govuk-body">It is important that you use the full breadth of the scoring range as detailed below when assessing applications.</p>
+                    <ul class="govuk-list">
+                        <li><strong>1 - Flawed proposal</strong> The proposal is scientifically, technically or methodologically flawed and does not meet UKRI quality standards.
+                            Does not meet the assessment criteria to an adequate level.
+                        </li>
+                        <li>
+                            <strong>2 - Not competitive</strong> The proposal is adequate, but it is very unlikely to be competitive and does not meet UKRI funding standards. Meets some of the assessment criteria to an adequate level.
+                        </li>
+                        <li>
+                            <strong>3 - Good quality but with clear weaknesses </strong> The proposal is of good quality but that is not of a consistent high quality across all aspects of the proposed work and might be limited in terms of originality and significance.
+                            Meets the majority assessment criteria to an adequate level.
+                        </li>
+                        <li>
+                            <strong>4 - High quality </strong>
+                            The proposal demonstrates high standards of originality, robust scholarly quality, significance and demonstrates ability to deliver it through the proposed research team. Meets the majority of the assessment criteria to a high level.
+                        </li>
+                        <li>
+                            <strong>5 - Excellent </strong> Excellent standards of originality and quality. Work will most likely advance the research area critically. Addresses all the assessment criteria and meets them to a very high level.
+                        </li>
+                        <li>
+                            <strong>6 - Exceptional </strong> Outstanding proposal that shows international leadership in the area. It will advance the research area and fill critical gaps in knowledge. Addresses all the assessment criteria and meets them to an exceptional level.
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="preScore">Score</label>
+               {# <input class="govuk-input govuk-input--width-2" id="preScore" name="preScore" type="number" value="{{ rating }}">&nbsp; /6#}
+                <select class="govuk-select" name="preScore">
+                    <option value="1" {% if allData.preScore == 1 %}selected {% endif %}>1</option>
+                    <option value="2" {% if allData.preScore == 2 %}selected {% endif %}>2</option>
+                    <option value="3" {% if allData.preScore == 3 %}selected {% endif %}>3</option>
+                    <option value="4" {% if allData.preScore == 4 %}selected {% endif %}>4</option>
+                    <option value="5" {% if allData.preScore == 5 %}selected {% endif %}>5</option>
+                    <option value="6" {% if allData.preScore == 6 %}selected {% endif %}>6</option>
+                </select>&nbsp; <span class="govuk-!-font-size-19">/6</span>
+
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                {% call components.formGroup() %}
+
+                    {{ components.button(text='Review and submit', extraClass="application-controls__submit")}}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+
+    {% endif %} {# end preScoreSet#}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+
