@@ -220,7 +220,9 @@ function panelPanelsPost(req, res) {
 function panelPanelsInProgressGet(req, res) {
   let viewData;
 
-  viewData = {};
+  let allData = req.session;
+
+  viewData = { allData };
 
   return res.render('prototypes/panel/panels-in-progress', viewData);
 }

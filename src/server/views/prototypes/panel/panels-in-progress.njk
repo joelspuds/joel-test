@@ -11,6 +11,8 @@
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
+{% set allData = allData if allData %}
+
 {% set isAdminUser = false %}
 {%  set loggedOut = false %}
 
@@ -63,6 +65,7 @@
     {% call components.bulmaRow() %}
 
         {% call components.bulmaColumnAny(size='column is-9') %}
+
             <ul class="overview-items overview-items--plain">
                 <li class="overview-item  _overview-item--inactive">
                     <div class="columns">
@@ -76,7 +79,7 @@
                                 <li class="overview-item__meta-item"><strong>Opportunity: </strong>OPP687: Freshwater ecology Part I, Sub aquatic travel and investigation methods?<br></li>
                             </ul>
                         </div>
-                        <div class="column is-2">
+                        <div class="column is-2 {% if allData.journeyType != 'normal' %}is-offset-2 {% endif %}">
                             <div class="u-align-setup-vertical u-align-center">
                                 <div class="u-align-cell">
                                     <span class="overview-item__meta overview-item__meta--danger">
@@ -88,6 +91,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% if allData.journeyType == 'normal' %}
                         <div class="column is-2">
                             <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
                                 <div class="u-align-cell">
@@ -99,6 +103,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
                     </div>
                 </li>
 
