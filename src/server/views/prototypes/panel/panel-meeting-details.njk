@@ -52,41 +52,49 @@
 
     {% call components.bulmaRow() %}
 
-        {% call components.bulmaColumnAny(size='column is-full') %}
+        {% call components.bulmaColumnAny(size='column is-8') %}
 
             {{ components.captionHeading(text='Meeting details', tag='h2', size='m') }}
 
-            {{ components.captionHeading(text='Meeting date', tag='h3', size='s') }}
-            <p class="govuk-body">
-                14 May 2022
-            </p>
+            <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Date and time
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        14 May 2022, 9am to 5pm
+                    </dd>
+                </div>
 
-            {{ components.captionHeading(text='Meeting time', tag='h3', size='s') }}
-            <p class="govuk-body">
-                9:00am to 5:00pm
-            </p>
-
-            {{ components.captionHeading(text='Meeting type', tag='h3', size='s') }}
-            <p class="govuk-body">
-                Hybrid <br>
-                <span class="meta">Location based with option to join meeting remotely</span>
-
-            </p>
-
-            {{ components.captionHeading(text='Location', tag='h3', size='s') }}
-            <p class="govuk-body">
-                UK Research and Innovation, Polaris House, Swindon, SN2 1FL. <a href="#" class="govuk-link"> View map (opens in a new window)</a>.
-
-            </p>
-
-            {{ components.captionHeading(text='Call details', tag='h3', size='s') }}
-            <p class="govuk-body">
-                Via Zoom: <a href="#" class="govuk-link">https://ukri.zoom.us/j/4791264595</a>.
-                <br>
-                Passcode: fb34967gwn
-
-            </p>
-
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Type
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        Hybrid <br>
+                        <span class="meta">Office based with an option to join remotely</span>
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Office location
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        UK Research and Innovation, Polaris House, Swindon, SN2 1FL<br>
+                        <a href="#" class="govuk-link"> View on map (opens in a new window)</a>
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Join remotely
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        Zoom link: <a href="#" class="govuk-link">https://ukri.zoom.us/j/4791264595</a>
+                        <br>
+                        Passcode: fb34967gwn
+                    </dd>
+                </div>
+            </dl>
 
         {%- endcall %}
     {%- endcall %}
