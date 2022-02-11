@@ -23,24 +23,6 @@
 
 {% block content %}
 
-   {# {% call components.bulmaRow() %}
-        {% call components.bulmaColumnAny(size='is-full') %}
-
-            <div class="govuk-notification-banner govuk-notification-banner--info" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-                <div class="govuk-notification-banner__header">
-                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
-                </div>
-                <div class="govuk-notification-banner__content">
-                    <p class="govuk-notification-banner__heading">
-                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion (EDI)</a> profile before any applications you contribute to can be submitted to UKRI.
-                        #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
-                    </p>
-                </div>
-            </div>
-
-        {%- endcall %}
-    {%- endcall %}#}
-
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
             {{ components.captionHeading(text='Panels', caption='Dr. Jane Doington-Longname') }}
@@ -106,53 +88,7 @@
                         {% endif %}
                     </div>
                 </li>
-
-
-
-                {#<li class="overview-item  overview-item--inactive  ">
-                    <div class="columns">
-                        <div class="column is-8">
-                            <h3 class="overview-item__title">
-                                <a href="/prototypes/peer-review-external/review-tabs" class="govuk-link">Dimensional transmogrification methodology in domesticated urban felines.</a>
-                            </h3>
-                            <ul class="overview-item__meta-list">
-
-                                <li class="overview-item__meta-item"><strong>Opportunity: </strong>OPP920: Preservation of distributed and diverse avian populations in tendered and semi-wild non-rural environments<br></li>
-                                <li class="overview-item__meta-item"><strong>Application reference:</strong> AWA417<br></li>
-                                <li class="overview-item__meta-item"><strong>Organisation:</strong> Bristol University</li>
-                            </ul>
-                        </div>
-                        <div class="column is-2">
-                            <div class="u-align-setup-vertical u-align-center">
-                                <div class="u-align-cell">
-                                        <span class="overview-item__meta">
-                                            <strong>Closed</strong>
-                                            <br>
-                                            <span class="govuk-body-s">Deadline 20 Jan 2021</span>
-                                        </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column is-2">
-                            <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center overview-item__meta--danger">
-                                <div class="u-align-cell">
-                                    <strong>Complete</strong>
-                                    <br>
-                                    Application unfunded
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>#}
-
-
             </ul>
-
-
-
-
-
-
 
         {%- endcall %}
 

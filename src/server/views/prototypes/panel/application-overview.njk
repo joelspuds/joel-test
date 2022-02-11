@@ -88,7 +88,7 @@
                     <li class="govuk-tabs__list-item">
                         <a class="govuk-tabs__tab" href="/prototypes/panel/application-response">Response</a>
                     </li>
-                    {% if allData.journeyType == 'chair' %}
+                    {#{% if allData.journeyType == 'chair' %}
                     <li class="govuk-tabs__list-item govuk-tabs__list-item--disabled">
                         <span class="govuk-tabs__tab ">Pre score</span>
                     </li>
@@ -96,6 +96,11 @@
                     <li class="govuk-tabs__list-item">
                         <a class="govuk-tabs__tab" href="/prototypes/panel/pre-score">Pre score</a>
                     </li>
+                    {% endif %}#}
+                    {% if allData.journeyType == 'normal' %}
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="/prototypes/panel/pre-score">Pre-score</a>
+                        </li>
                     {% endif %}
 
 
@@ -110,7 +115,7 @@
 
             <div class="application-data">
                 <dl class="application-data__list">
-                    <dt class="application-data__key">Application title:</dt>
+                    <dt class="application-data__key">Application name:</dt>
                     <dd class="application-data__value">APP090: Development of a Novel Inhibitor of Ricin</dd>
                     <dt class="application-data__key">Opportunity:</dt>
                     <dd class="application-data__value"><a href="#">OPP123: Inform design of cross-council digital research environments</a></dd>

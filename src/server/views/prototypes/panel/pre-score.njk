@@ -86,7 +86,7 @@
                         <a class="govuk-tabs__tab " href="/prototypes/panel/application-response">Response</a>
                     </li>
                     <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-                        <a class="govuk-tabs__tab" href="#">Pre score</a>
+                        <a class="govuk-tabs__tab" href="#">Pre-score</a>
                     </li>
                     {#<li class="govuk-tabs__list-item govuk-tabs__list-item--disabled">
                         <span class="govuk-tabs__tab ">Pre score</span>
@@ -125,11 +125,11 @@
 
             <details class="govuk-details" data-module="govuk-details">
                 <summary class="govuk-details__summary">
-                    <span class="govuk-details__summary-text">Guidance for pre-score</span>
+                    <span class="govuk-details__summary-text">View the scoring range</span>
                 </summary>
                 <div class="govuk-details__text">
-                    <p class="govuk-body">It is important that you use the full breadth of the scoring range as detailed below when assessing applications.</p>
-                    <ul class="govuk-list">
+                    <p class="govuk-body">You must use the following scoring range when assessing applications.</p>
+                    {#<ul class="govuk-list">
                         <li><strong>1 - Flawed proposal</strong> The proposal is scientifically, technically or methodologically flawed and does not meet UKRI quality standards.
                             Does not meet the assessment criteria to an adequate level.
                         </li>
@@ -150,7 +150,57 @@
                         <li>
                             <strong>6 - Exceptional </strong> Outstanding proposal that shows international leadership in the area. It will advance the research area and fill critical gaps in knowledge. Addresses all the assessment criteria and meets them to an exceptional level.
                         </li>
-                    </ul>
+                    </ul>#}
+
+
+                    <table class="govuk-table">
+                        <thead>
+                        <tr>
+                            <th class="govuk-table__header">Score</th>
+                            <th class="govuk-table__header">Definition</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="govuk-table__cell"><span class="govuk-!-font-size-36">1</span></td>
+                            <td class="govuk-table__cell">
+                                <strong>Flawed proposal</strong> The proposal is scientifically, technically or methodologically flawed and does not meet UKRI quality standards. Does not meet the assessment criteria to an adequate level.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><span class="govuk-!-font-size-36">2</span></td>
+                            <td class="govuk-table__cell">
+                                <strong>Not competitive</strong> The proposal is adequate, but it is very unlikely to be competitive and does not meet UKRI funding standards. Meets some of the assessment criteria to an adequate level.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><span class="govuk-!-font-size-36">3</span></td>
+                            <td class="govuk-table__cell">
+                                <strong>Good quality but with clear weaknesses </strong> The proposal is of good quality but that is not of a consistent high quality across all aspects of the proposed work and might be limited in terms of originality and significance. Meets the majority assessment criteria to an adequate level.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><span class="govuk-!-font-size-36">4</span></td>
+                            <td class="govuk-table__cell">
+                                <strong>High quality </strong> The proposal demonstrates high standards of originality, robust scholarly quality, significance and demonstrates ability to deliver it through the proposed research team. Meets the majority of the assessment criteria to a high level.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><span class="govuk-!-font-size-36">5</span></td>
+                            <td class="govuk-table__cell">
+                                <strong>Excellent </strong> Excellent standards of originality and quality. Work will most likely advance the research area critically. Addresses all the assessment criteria and meets them to a very high level.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><span class="govuk-!-font-size-36">6</span></td>
+                            <td class="govuk-table__cell">
+                                <strong>Exceptional </strong> Outstanding proposal that shows international leadership in the area. It will advance the research area and fill critical gaps in knowledge. Addresses all the assessment criteria and meets them to an exceptional level.
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
                 </div>
             </details>
 

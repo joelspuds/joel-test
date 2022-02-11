@@ -24,7 +24,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Are you sure you want to submit your pre score?', caption='Inform design of cross-council digital research environments') }}
+            {{ components.captionHeading(text='Are you sure you want to submit your pre-score?', caption='Inform design of cross-council digital research environments') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -42,10 +42,36 @@
                     </strong>
                 </div>
 
-                <div class="score">
+                <table class="govuk-table">
+                    <thead>
+                        <tr>
+                            <th class="govuk-table__header">Score</th>
+                            <th class="govuk-table__header">Definition</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="govuk-table__cell"><span class="govuk-!-font-size-36">{{ allData.preScore }}</span></td>
+                            <td class="govuk-table__cell">
+
+                                {% if allData.preScore == 1 %}<strong>Flawed proposal</strong> The proposal is scientifically, technically or methodologically flawed and does not meet UKRI quality standards. Does not meet the assessment criteria to an adequate level. {% endif %}
+                                {% if allData.preScore == 2 %}<strong>Not competitive</strong> The proposal is adequate, but it is very unlikely to be competitive and does not meet UKRI funding standards. Meets some of the assessment criteria to an adequate level.{% endif %}
+                                {% if allData.preScore == 3 %}<strong>Good quality but with clear weaknesses </strong> The proposal is of good quality but that is not of a consistent high quality across all aspects of the proposed work and might be limited in terms of originality and significance. Meets the majority assessment criteria to an adequate level.{% endif %}
+                                {% if allData.preScore == 4 %}<strong>High quality </strong> The proposal demonstrates high standards of originality, robust scholarly quality, significance and demonstrates ability to deliver it through the proposed research team. Meets the majority of the assessment criteria to a high level.{% endif %}
+                                {% if allData.preScore == 5 %}<strong>Excellent </strong> Excellent standards of originality and quality. Work will most likely advance the research area critically. Addresses all the assessment criteria and meets them to a very high level.{% endif %}
+                                {% if allData.preScore == 6 %}<strong>Exceptional </strong> Outstanding proposal that shows international leadership in the area. It will advance the research area and fill critical gaps in knowledge. Addresses all the assessment criteria and meets them to an exceptional level.{% endif %}
+
+
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+                {#<div class="score">
                     {{ components.captionHeading(text='Expert review score', tag='h3', size='s', extraClass='u-space-10') }}
                     <span class="govuk-!-font-size-36">{{ allData.preScore }}</span> / 6
-                </div>
+                </div>#}
 
             {%- endcall %}
 
