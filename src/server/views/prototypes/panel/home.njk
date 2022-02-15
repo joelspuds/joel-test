@@ -6,7 +6,7 @@
 {% set reviewsLink = '#' %}
 {% set hideAccountLinks = 'true' %}
 {% set altProfilePagelink = '/prototypes/edi/profile' %}
-
+{% set userName = 'Prof Lyndsay Fletcher' %}
 {% set pageTitle = "Home" %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
@@ -43,7 +43,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Home', caption='Dr. Jane Doington-Longname') }}
+            {{ components.captionHeading(text='Home', caption=userName) }}
         {%- endcall %}
     {%- endcall %}
 

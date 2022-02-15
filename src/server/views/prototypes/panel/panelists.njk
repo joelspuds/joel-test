@@ -6,7 +6,7 @@
 {% set reviewsLink = '#' %}
 {% set hideAccountLinks = 'true' %}
 {% set altProfilePagelink = '/prototypes/edi/profile' %}
-
+{% set userName = 'Prof Lyndsay Fletcher' %}
 {% set pageTitle = "Home" %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
@@ -65,7 +65,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td class="govuk-table__cell">Dr. John Doeington-Longname</td>
+                        <td class="govuk-table__cell">{{ userName }}</td>
                         <td class="govuk-table__cell">Fulchester University</td>
                     </tr>
                 </tbody>
