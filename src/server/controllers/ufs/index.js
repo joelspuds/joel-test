@@ -30,7 +30,7 @@ export * from './designController';
 // export * from './organisationMotherLoad';
 // export * from './motherLoadController';
 
-export * from './orgsController';
-export * from './orgs2Controller';
+// export * from './orgsController';
+// export * from './orgs2Controller';
 export * from './orgs3Controller';
 export * from './panelController';

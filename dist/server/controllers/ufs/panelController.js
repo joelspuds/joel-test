@@ -74,7 +74,12 @@ function panelConfigPost(req, res) {
 
   let targetURL;
 
-  targetURL = '/prototypes/panel/external-email';
+  if (panelConfig === 'chair') {
+    targetURL = '/prototypes/panel/email-chair';
+  } else {
+    targetURL = '/prototypes/panel/email-member';
+  }
+
   return res.redirect(targetURL);
 }
 
@@ -149,7 +154,7 @@ function panelSigninOptionsPost(req, res) {
 //
 //        signin
 //
-// ************************************************************************
+// ************************************************************************orgsListCleanedDupesRemoved.js
 function panelSigninGet(req, res) {
   let viewData;
 
@@ -163,7 +168,7 @@ function panelSigninPost(req, res) {
 
   // req.session.firstName = firstName;
 
-  return res.redirect('/prototypes/panel/home');
+  return res.redirect('/prototypes/panel/panels-in-progress');
 }
 
 // ************************************************************************
