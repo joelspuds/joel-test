@@ -27,11 +27,24 @@
 
             {% call components.bulmaColumnAny(size='is-two-thirds') %}
 
+
+
+                {#<div class="govuk-form-group ">
+                    <label class="govuk-label govuk-!-font-weight-bold" for="userName">Personalisation (optional)</label>
+                    <span class="govuk-hint">Enter your full name and include your honorific if you like, for example: Prof. Jane Moriarty</span>
+                    <input class="govuk-input govuk-input--width-30" id="userName" name="userName" type="text" value="">
+                </div>#}
+
+                <input type="hidden" name="userName" value="Dr Melinda Haunton">
+
+
                 <div class="govuk-form-group ">
                     <fieldset class="govuk-fieldset">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                            <h2 class="govuk-fieldset__heading">Journey options</h2>
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            <h2 class="govuk-fieldset__heading">User role</h2>
+                            <span  class="govuk-hint">Select your normal Panel role </span>
                         </legend>
+
 
                         <div class="govuk-radios">
                             <div class="govuk-radios__item">

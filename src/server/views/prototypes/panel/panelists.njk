@@ -6,12 +6,12 @@
 {% set reviewsLink = '#' %}
 {% set hideAccountLinks = 'true' %}
 {% set altProfilePagelink = '/prototypes/edi/profile' %}
-{% set userName = 'Prof Lyndsay Fletcher' %}
 {% set pageTitle = "Home" %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
 
 {% set isAdminUser = false %}
 {%  set loggedOut = false %}
@@ -65,7 +65,12 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td class="govuk-table__cell">{{ userName }}</td>
+
+                        {% if allData.journeyType == 'chair' %}
+                            <td class="govuk-table__cell">{{ userName }}</td>
+                        {% else %}
+                            <td class="govuk-table__cell">Prof. Raflasia Arnoldi</td>
+                        {% endif %}
                         <td class="govuk-table__cell">Fulchester University</td>
                     </tr>
                 </tbody>
@@ -103,7 +108,11 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="govuk-table__cell">Richard Taint</td>
+                    {% if allData.journeyType == 'normal' %}
+                        <td class="govuk-table__cell">{{ userName }}</td>
+                    {% else %}
+                        <td class="govuk-table__cell">Prof. Dickie Carhartt</td>
+                    {% endif %}
                     <td class="govuk-table__cell">Swansea University</td>
                 </tr>
                 <tr>

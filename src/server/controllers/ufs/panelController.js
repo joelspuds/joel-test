@@ -21,17 +21,13 @@ export function panelConfigGet(req, res) {
 }
 
 export function panelConfigPost(req, res) {
-  const { panelConfig } = req.body;
+  const { panelConfig, userName } = req.body;
 
   // chair | normal
   req.session.journeyType = panelConfig;
+  req.session.userName = userName;
 
   let targetURL;
-  /*if (panelConfig === 'chair') {
-    targetURL = '/prototypes/panel/external-email-chair';
-  } else {
-    targetURL = '/prototypes/panel/external-email';
-  }*/
 
   targetURL = '/prototypes/panel/external-email';
   return res.redirect(targetURL);
@@ -133,7 +129,9 @@ export function panelSigninPost(req, res) {
 export function panelHomeGet(req, res) {
   let viewData;
 
-  viewData = {};
+  let allData = req.session;
+
+  viewData = { allData };
 
   return res.render('prototypes/panel/home', viewData);
 }
@@ -198,7 +196,9 @@ export function panelPanelsInProgressPost(req, res) {
 export function panelPanelsPreviousGet(req, res) {
   let viewData;
 
-  viewData = {};
+  let allData = req.session;
+
+  viewData = { allData };
 
   return res.render('prototypes/panel/panels-previous', viewData);
 }

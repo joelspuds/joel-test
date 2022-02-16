@@ -6,10 +6,11 @@
 {% set reviewsLink = '#' %}
 {% set hideAccountLinks = 'true' %}
 {% set altProfilePagelink = '/prototypes/edi/profile' %}
-{% set userName = 'Prof Lyndsay Fletcher' %}
+
 {% set pageTitle = "Application overview" %}
 
 {% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
