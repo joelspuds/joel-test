@@ -8,7 +8,7 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set isAdminUser = false %}
-{%  set loggedOut = false %}
+{%  set loggedOut = true %}
 
 {% set pageTitle = 'Panel config' + GLOBAL_TAG_TITLE_SUFFIX %}
 {#{% set backLinkContents =  [{url:'#', text:'Back to applications'}] %}#}
@@ -35,7 +35,7 @@
                     <input class="govuk-input govuk-input--width-30" id="userName" name="userName" type="text" value="">
                 </div>#}
 
-                <input type="hidden" name="userName" value="Prof. Kevin Schurer">
+                <input type="hidden" name="userName" value="Dr. Peggy Froerer">
 
 
                 <div class="govuk-form-group ">
