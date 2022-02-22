@@ -91,3 +91,17 @@
   border-bottom: 1px solid govuk-colour("mid-grey");
   background-color: lighten(govuk-colour("mid-grey"), 20%);
 }
+
+
+.govuk-details--boxed {
+  border:1px solid govuk-colour("mid-grey");
+  padding: 10px 20px 5px;
+
+  .govuk-details__text {
+    padding: 15px;
+    padding-left: 0;
+    border-left: none;
+  }
+
+
+}

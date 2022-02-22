@@ -105,7 +105,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tabs-cta">
+                    <div class="tabs-cta print-hide">
                         <a href="/prototypes/peer-review-external/download-files" class="govuk-button govuk-button--secondary">Download review material</a>
                     </div>
 
@@ -196,7 +196,7 @@
 
                             {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
 
-                                {% include '../generic-includes/review-content.njk' %}
+                                {% include '../generic-includes/review-content-questions.njk' %}
 
                                 <p class="govuk-body u-space-t45">
                                     <a href="/prototypes/peer-review-external/invite-reject" class="govuk-link">Unable to review this application?</a>
