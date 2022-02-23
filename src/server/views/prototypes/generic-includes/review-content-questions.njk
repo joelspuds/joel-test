@@ -10,11 +10,11 @@
 
 <details class="govuk-details govuk-details--boxed u-space-t20" data-module="govuk-details" role="group">
     <summary class="govuk-details__summary print-hide" role="button" aria-controls="" aria-expanded="false">
-        <span class="govuk-details__summary-text">See original question for this section</span>
+        <span class="govuk-details__summary-text">View application question</span>
     </summary>
     <div class="govuk-details__text" id="" aria-hidden="true">
 
-        {{ components.captionHeading(text='Original question for this section', tag='h3', size='s', extraClass='print-show') }}
+        {{ components.captionHeading(text='Application question', tag='h3', size='s', extraClass='print-show') }}
 
         <p class="govuk-body"><strong>Describe your project outline and explain why it deserves funding.</strong>
             {#<br>
@@ -89,10 +89,10 @@
 {{ components.captionHeading(text='2. Capability to deliver', tag='h2', size='m', id='capability', extraClass='serif') }}
 <details class="govuk-details govuk-details--boxed u-space-t20" data-module="govuk-details" role="group">
     <summary class="govuk-details__summary print-hide" role="button" aria-controls="" aria-expanded="false">
-        <span class="govuk-details__summary-text">See original question for this section</span>
+        <span class="govuk-details__summary-text">View application question</span>
     </summary>
     <div class="govuk-details__text" id="" aria-hidden="true">
-        {{ components.captionHeading(text='Original question for this section', tag='h3', size='s', extraClass='print-show') }}
+        {{ components.captionHeading(text='Application question', tag='h3', size='s', extraClass='print-show') }}
         <p class="govuk-body"><strong>Describe how you plan to deliver the project.</strong></p>
         <p class="govuk-body">Provide details of key team members with their relevant experience and list of recent publications.</p>
     </div>
@@ -125,10 +125,10 @@
 {{ components.captionHeading(text='3. Pathways to impact ', tag='h2', size='m', id='pathways', extraClass='serif') }}
 <details class="govuk-details govuk-details--boxed u-space-t20" data-module="govuk-details" role="group">
     <summary class="govuk-details__summary print-hide" role="button" aria-controls="" aria-expanded="false">
-        <span class="govuk-details__summary-text">See original question for this section</span>
+        <span class="govuk-details__summary-text">View application question</span>
     </summary>
     <div class="govuk-details__text" id="" aria-hidden="true">
-        {{ components.captionHeading(text='Original question for this section', tag='h3', size='s', extraClass='print-show') }}
+        {{ components.captionHeading(text='Application question', tag='h3', size='s', extraClass='print-show') }}
         <p class="govuk-body"><strong>Outline your project's impact in this field</strong></p>
         <p class="govuk-body">Give details of how you plan to revolutionise this field with your research</p>
     </div>
@@ -151,10 +151,10 @@
 
 <details class="govuk-details govuk-details--boxed u-space-t20" data-module="govuk-details" role="group">
     <summary class="govuk-details__summary print-hide" role="button" aria-controls="" aria-expanded="false">
-        <span class="govuk-details__summary-text">See original question for this section</span>
+        <span class="govuk-details__summary-text">View application question</span>
     </summary>
     <div class="govuk-details__text" id="" aria-hidden="true">
-        {{ components.captionHeading(text='Original question for this section', tag='h3', size='s', extraClass='print-show') }}
+        {{ components.captionHeading(text='Application question', tag='h3', size='s', extraClass='print-show') }}
         <p class="govuk-body"><strong>Give details of your data impact</strong></p>
         <p class="govuk-body">Outline the implications of your research in terms of impact on existing data.</p>
     </div>
@@ -170,10 +170,10 @@
 
 <details class="govuk-details govuk-details--boxed u-space-t20" data-module="govuk-details" role="group">
     <summary class="govuk-details__summary print-hide" role="button" aria-controls="" aria-expanded="false">
-        <span class="govuk-details__summary-text">See original question for this section</span>
+        <span class="govuk-details__summary-text">View application question</span>
     </summary>
     <div class="govuk-details__text" id="" aria-hidden="true">
-        {{ components.captionHeading(text='Original question for this section', tag='h3', size='s', extraClass='print-show') }}
+        {{ components.captionHeading(text='Application question', tag='h3', size='s', extraClass='print-show') }}
         <p class="govuk-body"><strong>Finances and costs</strong></p>
         <p class="govuk-body">Give a full costed outline of your project including all costs incurred or associated with your project of over the entirety of its lifespan.</p>
     </div>
@@ -259,10 +259,10 @@
 
 <details class="govuk-details govuk-details--boxed u-space-t20" data-module="govuk-details" role="group">
     <summary class="govuk-details__summary print-hide" role="button" aria-controls="" aria-expanded="false">
-        <span class="govuk-details__summary-text">See original question for this section</span>
+        <span class="govuk-details__summary-text">View application question</span>
     </summary>
     <div class="govuk-details__text" id="" aria-hidden="true">
-        {{ components.captionHeading(text='Original question for this section', tag='h3', size='s', extraClass='print-show') }}
+        {{ components.captionHeading(text='Application question', tag='h3', size='s', extraClass='print-show') }}
         <p class="govuk-body"><strong>Provide letters of support</strong></p>
         <p class="govuk-body">Upload letters of support from academic peers or relevant parties that have experience of working in this field and of working with you.</p>
     </div>
@@ -319,8 +319,7 @@
     // open closed details elements for printing
     window.addEventListener('beforeprint',() => {
         const allDetails = document.body.querySelectorAll('details');
-        for(let i=0; i<allDetails.length; i++)
-        {
+        for(let i=0; i<allDetails.length; i++) {
             if(allDetails[i].open){
                 allDetails[i].dataset.open = '1';
             }
