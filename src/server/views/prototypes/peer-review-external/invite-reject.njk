@@ -12,7 +12,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Decline invitation to review ', caption='Bio-detoxification of Ricin in castor bean') }}
+            {{ components.captionHeading(text='Why are you unable to review this application?', caption='Bio-detoxification of Ricin in castor bean') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -24,8 +24,8 @@
 
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                            <h2 class="govuk-fieldset__heading _govuk-visually-hidden">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-visually-hidden">
+                            <h2 class="govuk-fieldset__heading ">
                                 I cannot review this application because:
                             </h2>
                         </legend>
@@ -33,17 +33,17 @@
                         <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="busy" name="rejectReason" type="radio" value="busy">
-                                <label class="govuk-label govuk-radios__label" for="busy">Too busy</label>
+                                <label class="govuk-label govuk-radios__label" for="busy">I'm too busy</label>
                             </div>
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="expertise" name="rejectReason" type="radio" value="expertise">
-                                <label class="govuk-label govuk-radios__label" for="expertise">Outside area of expertise</label>
+                                <label class="govuk-label govuk-radios__label" for="expertise">It's outside my area of expertise</label>
                             </div>
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="conflict" name="rejectReason" type="radio" value="conflict">
-                                <label class="govuk-label govuk-radios__label" for="conflict">Conflict of interest</label>
-                                <div class="govuk-hint govuk-radios__hint">
-                                    <a href="#" class="govuk-link">Guidelines on conflicts</a>
+                                <label class="govuk-label govuk-radios__label" for="conflict">There’s a conflict of interest</label>
+                                <div class="govuk-hint govuk-radios__hint govuk-!-font-size-16">
+                                    <a href="#" class="govuk-link">View guidance on conflicts of interest (opens in a new window).</a>
                                 </div>
                             </div>
 
@@ -53,7 +53,8 @@
                             </div>
                             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-3">
                                 <div class="govuk-form-group">
-                                    <label class="govuk-label" for="otherSpecify">Please specify (optional)</label>
+                                    <label class="govuk-label" for="otherSpecify">Enter the reason (optional)</label>
+                                    <span class="govuk-hint">Do not include any personal or financial information.</span>
                                     <input class="govuk-input " id="otherSpecify" name="otherSpecify" type="text">
                                 </div>
                             </div>
@@ -62,28 +63,31 @@
                     </fieldset>
                 </div>
 
-                {{ components.captionHeading(text='Suggest alternative reviewer (optional)', size='m', tag='h2') }}
+                {{ components.captionHeading(text='Suggest an alternative reviewer (optional)', size='m', tag='h2') }}
 
                 <div class="govuk-form-group">
-                    <label class="govuk-label" for="altName">Name</label>
+                    <label class="govuk-label" for="altName">Enter name</label>
                     <input class="govuk-input govuk-input--width-20" id="altName" name="altName" type="text">
                 </div>
 
                 <div class="govuk-form-group">
-                    <label class="govuk-label" for="altEmail">Email address</label>
+                    <label class="govuk-label" for="altEmail">Enter email address</label>
                     <input class="govuk-input govuk-input--width-20" id="altEmail" name="altEmail" type="text">
                 </div>
 
-                {% call components.formGroup() %}
-                    <label class="govuk-label govuk-label--s" for="more-detail">Provide more detail (optional)</label>
-                    <div id="more-detail-hint" class="govuk-hint">Use the box below to tell us why you are declining this invitation, or anything you think may help us with reviewer recruitment. Avoid telling us any personal information.</div>
-                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-                {%- endcall %}
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="more-detail">Tell us why you're suggesting this reviewer</label>
+                        <div id="more-detail-hint" class="govuk-hint">Do not include any personal or financial information.</div>
+                        <textarea class="govuk-textarea govuk-input--width-20 govuk-js-character-count " id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                        <p class="govuk-body u-space-t10"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 500 characters remaining</span></p>
+                    </div>
+                </div>
 
                 {% call components.formGroup() %}
                     <div class="application-controls govuk-clearfix">
 
-                        {{ components.button(text='Decline', extraClass="application-controls__submit")}}
+                        {{ components.button(text='Continue', extraClass="application-controls__submit")}}
 
                     </div>
                 {%- endcall %}
@@ -91,7 +95,7 @@
             {%- endcall %}
         {%- endcall %}
 
-        {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
+        {#{% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
 
             <div class="govuk-related-items govuk-related-items--flush">
                 <div class="application-data">
@@ -120,10 +124,7 @@
                     </dl>
                 </div>
             </div>
-
-
-
-        {%- endcall %}
+        {%- endcall %}#}
 
     {%- endcall %}
 

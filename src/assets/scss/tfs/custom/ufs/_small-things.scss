@@ -43,6 +43,13 @@
   }
 }
 
+.application-data--large {
+  .application-data__key,
+  .application-data__value {
+    @include govuk-font($size: 19);
+  }
+}
+
 .application-controls {
   margin-top: govuk-spacing(3);
   margin-bottom: govuk-spacing(2);
