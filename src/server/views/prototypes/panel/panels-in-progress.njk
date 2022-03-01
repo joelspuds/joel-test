@@ -38,7 +38,7 @@
                         <a class="govuk-tabs__tab" href="#">In progress</a>
                     </li>
                     <li class="govuk-tabs__list-item">
-                        <a class="govuk-tabs__tab" href="/prototypes/panel/panels-previous">Completed</a>
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/panels-previous">Previous panels</a>
                     </li>
                 </ul>
             </div>
@@ -62,19 +62,19 @@
                                 <li class="overview-item__meta-item"><strong>Opportunity: </strong>OPP687: Freshwater ecology Part I, Sub aquatic travel and investigation methods?<br></li>
                             </ul>
                         </div>
-                        <div class="column is-2 {% if allData.journeyType != 'normal' %}is-offset-2 {% endif %}">
+                        <div class="column is-2 {% if allData.journeyType == 'chair' %}is-offset-2 {% endif %}">
                             <div class="u-align-setup-vertical u-align-center">
                                 <div class="u-align-cell">
                                     <span class="overview-item__meta overview-item__meta--danger">
                                         <strong><span class="govuk-!-font-size-24">2</span>
                                         <br>days left</strong>
                                         <br>
-                                        <span class="govuk-body-s">Deadline 2 May 2022</span>
+                                        <span class="govuk-body-s">Pre-score deadline <br>2 May 2022</span>
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        {% if allData.journeyType == 'normal' %}
+                        {% if allData.journeyType != 'chair' %}
                         <div class="column is-2">
                             <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
                                 <div class="u-align-cell">

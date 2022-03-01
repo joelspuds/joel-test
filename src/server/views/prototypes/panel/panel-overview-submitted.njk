@@ -1,0 +1,381 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '/prototypes/edi/applications' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+
+{% set pageTitle = "Home" %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Panel overview ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/panel/panels-in-progress', text:'Back to panels'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <div class="govuk-notification-banner govuk-notification-banner--info" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">
+                        Pre-score submitted on 14 March 2022 at 11:34am
+                    </p>
+                </div>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Panel overview', caption='Inform design of cross-council digital research environments') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#">Applications</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/panel-guidance">Guidance</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/panel-meeting-details">Meeting details</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="/prototypes/panel/panel-panelists">Panelists</a>
+                    </li>
+                </ul>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+
+
+        {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-8') %}
+            {{ components.captionHeading(text='My assigned applications and roles (4)', tag='h2', size='m') }}
+
+            <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">Guidance on panel roles</span>
+                </summary>
+                <div class="govuk-details__text">
+                    <p class="govuk-body">An introducing member's role is to assess applications (including any reviewer comments and applicant responses) in a fair, evidence-based and objective way. They do this with other introducing members and committee members.</p>
+                    <p class="govuk-body">You can find out more about roles and responsibilities in the guidance section.</p>
+                </div>
+            </details>
+        {%- endcall %}
+
+        {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full') %}
+
+            {#<div class="responsive-table">
+                <table class="govuk-table responsive-table__table">
+                    <thead>
+                        <tr class="govuk-table__header">
+                            <th class="govuk-table__header">Application<br>reference</th>
+                            <th class="govuk-table__header">Application name</th>
+                            <th class="govuk-table__header">Lead<br>organisation</th>
+                            <th class="govuk-table__header">Principle<br>investigator</th>
+                            <th class="govuk-table__header">Your role</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Your<br>pre-score</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% if allData.hasConflict != 'yes' %}
+                        <tr>
+                            <td class="govuk-table__cell">
+                                {% if allData.hasConflict == 'yes' %}
+                                    <a href="/prototypes/panel/application-overview-conflict" class="govuk-link">APP090</a>
+                                {% elseif allData.hasDeclared == true %}
+                                    <a href="/prototypes/panel/application-overview" class="govuk-link">APP090</a>
+                                {% else %}
+                                    <a href="/prototypes/panel/declare-conflict" class="govuk-link">APP090</a>
+                                {% endif %}
+                            </td>
+                            <td class="govuk-table__cell">Development of a Novel Inhibitor of Ricin</td>
+                            <td class="govuk-table__cell">Coventry University</td>
+                            <td class="govuk-table__cell">Giles Dexter</td>
+                            <td class="govuk-table__cell">
+                                <span class="badge--dark govuk-!-font-size-14">FIRST INTRODUCER</span>
+                            </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="application-item application-item--complete">Complete</span>
+                            </td>
+                        </tr>
+
+                     {% endif %}
+                        <tr>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }}</a></td>
+                            <td class="govuk-table__cell"> Solutions - longer living</td>
+                            <td class="govuk-table__cell">Manchester University</td>
+                            <td class="govuk-table__cell">Erin Sykes</td>
+                            <td class="govuk-table__cell"><span class="badge--dark govuk-!-font-size-14">SECOND INTRODUCER</span></td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">6</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="application-item application-item--complete">Complete</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }}</a></td>
+                            <td class="govuk-table__cell">Products and Services Personalised</td>
+                            <td class="govuk-table__cell">Leeds University</td>
+                            <td class="govuk-table__cell">Max Payne</td>
+                            <td class="govuk-table__cell"><span class="badge--dark govuk-!-font-size-14">THIRD INTRODUCER</span></td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="application-item application-item--complete">Complete</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }}</a></td>
+                            <td class="govuk-table__cell">Intelligent Building</td>
+                            <td class="govuk-table__cell">Swansea University</td>
+                            <td class="govuk-table__cell">Samantha Birch</td>
+                            <td class="govuk-table__cell"><span class="badge--dark govuk-!-font-size-14">READER</span></td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">4</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="application-item application-item--complete">Complete</span>
+                            </td>
+                        </tr>
+                   </tbody>
+                </table>
+            </div>#}
+
+            <div class="responsive-table">
+                <table class="govuk-table responsive-table__table">
+                    <thead>
+                    <tr class="govuk-table__header">
+                        <th class="govuk-table__header">Application</th>
+                        <th class="govuk-table__header">Lead<br>organisation</th>
+                        <th class="govuk-table__header">Principle<br>investigator</th>
+                        <th class="govuk-table__header">Your role</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Your<br>pre-score</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if allData.hasConflict != 'yes' %}
+                        <tr>
+                            <td class="govuk-table__cell">
+                                {% if allData.hasConflict == 'yes' %}
+                                    <a href="/prototypes/panel/application-overview-conflict" class="govuk-link">APP090 - Development of a Novel Inhibitor of Ricin</a>
+                                {% elseif allData.hasDeclared == true %}
+                                    <a href="/prototypes/panel/application-overview" class="govuk-link">APP090 - Development of a Novel Inhibitor of Ricin</a>
+                                {% else %}
+                                    <a href="/prototypes/panel/declare-conflict" class="govuk-link">APP090 - Development of a Novel Inhibitor of Ricin</a>
+                                {% endif %}
+                            </td>
+                            <td class="govuk-table__cell">Coventry University</td>
+                            <td class="govuk-table__cell">Giles Dexter</td>
+                            <td class="govuk-table__cell">
+                                <span class="badge--dark govuk-!-font-size-14">FIRST INTRODUCER</span>
+                            </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <span class="application-item application-item--complete">Complete</span>
+                            </td>
+                        </tr>
+
+                    {% endif %}
+                    <tr>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }} -  Solutions - longer living </a></td>
+                        <td class="govuk-table__cell">Manchester University</td>
+                        <td class="govuk-table__cell">Erin Sykes</td>
+                        <td class="govuk-table__cell"><span class="badge--dark govuk-!-font-size-14">SECOND INTRODUCER</span></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"> 6</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            <span class="application-item application-item--complete">Complete</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }} - Products and Services Personalised</a></td>
+                        <td class="govuk-table__cell">Leeds University</td>
+                        <td class="govuk-table__cell">Max Payne</td>
+                        <td class="govuk-table__cell"><span class="badge--dark govuk-!-font-size-14">THIRD INTRODUCER</span></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            <span class="application-item application-item--complete">Complete</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }} - Intelligent Building</a></td>
+                        <td class="govuk-table__cell">Swansea University</td>
+                        <td class="govuk-table__cell">Samantha Birch</td>
+                        <td class="govuk-table__cell"><span class="badge--dark govuk-!-font-size-14">READER</span></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">4</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            <span class="application-item application-item--complete">Complete</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        {%- endcall %}
+    {%- endcall %}
+
+
+
+    {% call components.form(action='#', method='POST',name='confirmAllPrescore') %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-9', extraClass='u-space-t0') %}
+
+            {% call components.formGroup() %}
+
+                {{ components.button(text='Submit pre-scores', extraClass="application-controls__submit", url='/prototypes/panel/pre-score-confirm-all')}}
+
+                {#{{ components.link(text='Cancel, back to pre-score', url='/prototypes/panel/pre-score', extraClass="application-controls__cancel")}}#}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+
+
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-9') %}
+
+            {{ components.captionHeading(text='Other applications for panel (12)', tag='h2', size='m') }}
+
+            <div class="responsive-table">
+                <table class="govuk-table responsive-table__table">
+                    <thead>
+                        <tr class="govuk-table__header">
+                            <th class="govuk-table__header">Application</th>
+                            <th class="govuk-table__header">Lead<br>organisation</th>
+                            <th class="govuk-table__header">Principle<br>investigator</th>
+                            <th class="govuk-table__header govuk-table__header--numeric"><span class="govuk-visually-hidden">Status</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if allData.hasConflict == 'yes' %}
+                            <tr>
+                                <td class="govuk-table__cell"><a href="#" class="govuk-link">APP090 - Development of a Novel Inhibitor of Ricin</a></td>
+                                <td class="govuk-table__cell">Coventry University</td>
+                                <td class="govuk-table__cell">	Giles Dexter</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric"><span class="badge--alert govuk-!-font-size-14">CONFLICT</span></td>
+                            </tr>
+                        {% endif %}
+
+                        <tr>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }} - Intelligent water system</a></td>
+                            <td class="govuk-table__cell">UCL</td>
+                            <td class="govuk-table__cell">Chloe West</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }} - 3D-printed buildings</a></td>
+                            <td class="govuk-table__cell">Oxford University</td>
+                            <td class="govuk-table__cell">Daniel Umbridge</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }} - Passive buildings</a></td>
+                            <td class="govuk-table__cell">Bristol University</td>
+                            <td class="govuk-table__cell">Delores Smithers</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><a href="/prototypes/panel/application-overview-conflict-exists" class="govuk-link">APP463 - Plastic reprocessing with zero waste</a></td>
+                            <td class="govuk-table__cell">Belfast University</td>
+                            <td class="govuk-table__cell">Harry Lourder</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric"><span class="badge--alert govuk-!-font-size-14">CONFLICT</span></td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }} - Low power air purification systems</a></td>
+                            <td class="govuk-table__cell">Leeds University</td>
+                            <td class="govuk-table__cell">Helen Dangerfield</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }} - Molecular tree breeding</a></td>
+                            <td class="govuk-table__cell">Glasgow University</td>
+                            <td class="govuk-table__cell">James McTavish</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }} - Intelligent water system</a></td>
+                            <td class="govuk-table__cell">UCL</td>
+                            <td class="govuk-table__cell">Jane Singleton</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }} - 3D-printed buildings</a></td>
+                            <td class="govuk-table__cell">University of the West of England</td>
+                            <td class="govuk-table__cell">Jethro Timpson</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><a href="/prototypes/panel/application-overview-conflict-exists" class="govuk-link">APP{{ range(101, 999) | random }} - Passive buildings</a></td>
+                            <td class="govuk-table__cell">Fulchester Univeristy</td>
+                            <td class="govuk-table__cell">Mutha Bacon</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric"><span class="badge--alert govuk-!-font-size-14">CONFLICT</span></td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }} - Intelligent water system</a></td>
+                            <td class="govuk-table__cell">Durham University</td>
+                            <td class="govuk-table__cell">William Fyshe</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }} - Low power air purification systems</a></td>
+                            <td class="govuk-table__cell">Camden University</td>
+                            <td class="govuk-table__cell">Arti McHindrey</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }} - Molecular tree breeding</a></td>
+                            <td class="govuk-table__cell">Keele University</td>
+                            <td class="govuk-table__cell">Davina Westbrook</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+

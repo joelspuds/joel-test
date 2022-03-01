@@ -1,0 +1,107 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '/prototypes/edi/applications' %}
+{% set homeLink = '/prototypes/edi/home' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '/prototypes/edi/profile' %}
+{% set pageTitle = "Home" %}
+{% set allData = allData if allData %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Panel overview ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/panel/application-overview', text:'Back to application overview'}] %}
+
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Are you sure you want to submit these pre-scores?', caption='Inform design of cross-council digital research environments') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='confirmPrescore') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full') %}
+                <table class="govuk-table">
+                    <thead>
+                    <tr>
+                        <th class="govuk-table__header">Application</th>
+                        <th class="govuk-table__header govuk-table__header--numeric cell-150">Your&nbsp;pre-score</th>
+                        <th class="govuk-table__header">Definition</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="govuk-table__cell">APP090 - Development of a Novel Inhibitor of Ricin</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                        <td class="govuk-table__cell"><strong>Excellent </strong> Excellent standards of originality and quality. Work will most likely advance the research area critically. Addresses all the assessment criteria and meets them to a very high level.</td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell">APP509 - Solutions - longer living</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric cell">6</td>
+                        <td class="govuk-table__cell"><strong>Exceptional </strong> Outstanding proposal that shows international leadership in the area. It will advance the research area and fill critical gaps in knowledge. Addresses all the assessment criteria and meets them to an exceptional level.</td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell">APP317 - Products and Services Personalised</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                        <td class="govuk-table__cell"><strong>Excellent </strong> Excellent standards of originality and quality. Work will most likely advance the research area critically. Addresses all the assessment criteria and meets them to a very high level.</td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell">APP402 - Intelligent Building</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">4</td>
+                        <td class="govuk-table__cell"><strong>High quality </strong> The proposal demonstrates high standards of originality, robust scholarly quality, significance and demonstrates ability to deliver it through the proposed research team. Meets the majority of the assessment criteria to a high level.</td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-9', extraClass='u-space-t45') %}
+
+                {% call components.formGroup() %}
+
+                    <div class="govuk-warning-text">
+                        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                        <strong class="govuk-warning-text__text">
+                            <span class="govuk-warning-text__assistive">Warning</span>
+                            You will not be able to make any further changes once you've submitted these scores.</strong>
+                    </div>
+
+                    {{ components.button(text='Submit', extraClass="application-controls__submit", url='/prototypes/panel/panel-overview-submitted')}}
+
+                    <br>
+
+                    {{ components.link(text='Cancel, back to panel-overview', url='/prototypes/panel/panel-overview-submitted', extraClass="application-controls__cancel")}}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+
