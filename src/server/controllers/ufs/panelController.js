@@ -24,7 +24,12 @@ export function panelConfigPost(req, res) {
   const { panelConfig, userName } = req.body;
 
   // chair | normal
-  req.session.journeyType = panelConfig;
+  if (panelConfig === 'chair') {
+    req.session.journeyType = panelConfig;
+  } else {
+    req.session.journeyType = 'normal';
+  }
+
   req.session.userName = userName;
 
   let targetURL;

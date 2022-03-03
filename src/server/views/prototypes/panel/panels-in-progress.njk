@@ -62,6 +62,7 @@
                                 <li class="overview-item__meta-item"><strong>Opportunity: </strong>OPP687: Freshwater ecology Part I, Sub aquatic travel and investigation methods?<br></li>
                             </ul>
                         </div>
+                        {% if allData.journeyType != 'chair' %}
                         <div class="column is-2 {% if allData.journeyType == 'chair' %}is-offset-2 {% endif %}">
                             <div class="u-align-setup-vertical u-align-center">
                                 <div class="u-align-cell">
@@ -74,6 +75,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
                         {% if allData.journeyType != 'chair' %}
                         <div class="column is-2">
                             <div class="overview-item__meta overview-item__meta--right u-align-setup-vertical u-align-center">
