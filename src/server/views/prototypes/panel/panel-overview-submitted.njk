@@ -74,7 +74,7 @@
         {% call components.bulmaColumnAny(size='column is-8') %}
             {{ components.captionHeading(text='My assigned applications and roles (4)', tag='h2', size='m') }}
 
-            <details class="govuk-details" data-module="govuk-details">
+            {#<details class="govuk-details" data-module="govuk-details">
                 <summary class="govuk-details__summary">
                     <span class="govuk-details__summary-text">Guidance on panel roles</span>
                 </summary>
@@ -82,7 +82,7 @@
                     <p class="govuk-body">An introducing member's role is to assess applications (including any reviewer comments and applicant responses) in a fair, evidence-based and objective way. They do this with other introducing members and committee members.</p>
                     <p class="govuk-body">You can find out more about roles and responsibilities in the guidance section.</p>
                 </div>
-            </details>
+            </details>#}
         {%- endcall %}
 
         {%- endcall %}
@@ -90,81 +90,6 @@
     {% call components.bulmaRow() %}
 
         {% call components.bulmaColumnAny(size='column is-full') %}
-
-            {#<div class="responsive-table">
-                <table class="govuk-table responsive-table__table">
-                    <thead>
-                        <tr class="govuk-table__header">
-                            <th class="govuk-table__header">Application<br>reference</th>
-                            <th class="govuk-table__header">Application name</th>
-                            <th class="govuk-table__header">Lead<br>organisation</th>
-                            <th class="govuk-table__header">Principle<br>investigator</th>
-                            <th class="govuk-table__header">Your role</th>
-                            <th class="govuk-table__header govuk-table__header--numeric">Your<br>pre-score</th>
-                            <th class="govuk-table__header govuk-table__header--numeric">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% if allData.hasConflict != 'yes' %}
-                        <tr>
-                            <td class="govuk-table__cell">
-                                {% if allData.hasConflict == 'yes' %}
-                                    <a href="/prototypes/panel/application-overview-conflict" class="govuk-link">APP090</a>
-                                {% elseif allData.hasDeclared == true %}
-                                    <a href="/prototypes/panel/application-overview" class="govuk-link">APP090</a>
-                                {% else %}
-                                    <a href="/prototypes/panel/declare-conflict" class="govuk-link">APP090</a>
-                                {% endif %}
-                            </td>
-                            <td class="govuk-table__cell">Development of a Novel Inhibitor of Ricin</td>
-                            <td class="govuk-table__cell">Coventry University</td>
-                            <td class="govuk-table__cell">Giles Dexter</td>
-                            <td class="govuk-table__cell">
-                                <span class="badge--dark govuk-!-font-size-14">FIRST INTRODUCER</span>
-                            </td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">
-                                <span class="application-item application-item--complete">Complete</span>
-                            </td>
-                        </tr>
-
-                     {% endif %}
-                        <tr>
-                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }}</a></td>
-                            <td class="govuk-table__cell"> Solutions - longer living</td>
-                            <td class="govuk-table__cell">Manchester University</td>
-                            <td class="govuk-table__cell">Erin Sykes</td>
-                            <td class="govuk-table__cell"><span class="badge--dark govuk-!-font-size-14">SECOND INTRODUCER</span></td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">6</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">
-                                <span class="application-item application-item--complete">Complete</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }}</a></td>
-                            <td class="govuk-table__cell">Products and Services Personalised</td>
-                            <td class="govuk-table__cell">Leeds University</td>
-                            <td class="govuk-table__cell">Max Payne</td>
-                            <td class="govuk-table__cell"><span class="badge--dark govuk-!-font-size-14">THIRD INTRODUCER</span></td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">
-                                <span class="application-item application-item--complete">Complete</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ range(101, 999) | random }}</a></td>
-                            <td class="govuk-table__cell">Intelligent Building</td>
-                            <td class="govuk-table__cell">Swansea University</td>
-                            <td class="govuk-table__cell">Samantha Birch</td>
-                            <td class="govuk-table__cell"><span class="badge--dark govuk-!-font-size-14">READER</span></td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">4</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">
-                                <span class="application-item application-item--complete">Complete</span>
-                            </td>
-                        </tr>
-                   </tbody>
-                </table>
-            </div>#}
 
             <div class="responsive-table">
                 <table class="govuk-table responsive-table__table">
@@ -239,30 +164,6 @@
 
         {%- endcall %}
     {%- endcall %}
-
-
-
-    {% call components.form(action='#', method='POST',name='confirmAllPrescore') %}
-
-    {% call components.bulmaRow() %}
-
-        {% call components.bulmaColumnAny(size='is-9', extraClass='u-space-t0') %}
-
-            {% call components.formGroup() %}
-
-                {{ components.button(text='Submit pre-scores', extraClass="application-controls__submit", url='/prototypes/panel/pre-score-confirm-all')}}
-
-                {#{{ components.link(text='Cancel, back to pre-score', url='/prototypes/panel/pre-score', extraClass="application-controls__cancel")}}#}
-
-            {%- endcall %}
-
-        {%- endcall %}
-
-    {%- endcall %}
-
-    {%- endcall %} {# end form #}
-
-
 
 
     {% call components.bulmaRow() %}
