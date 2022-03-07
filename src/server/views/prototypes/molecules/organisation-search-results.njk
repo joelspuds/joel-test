@@ -156,8 +156,14 @@
                     <li>using different search terms</li>
                     <li>searching for something less specific</li>
                 </ul>
-                <p class="govuk-body"></p>
                 <p class="govuk-body">Or you can <a href="#" class="govuk-link">enter the organisation's details manually</a>.</p>
+            {%- endcall %}
+        {%- endcall %}
+
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='column is-9', customID='') %}
+                <p class="govuk-body"><a href="#" class="govuk-link">Cancel and return to applicants</a></p>
             {%- endcall %}
         {%- endcall %}
 
