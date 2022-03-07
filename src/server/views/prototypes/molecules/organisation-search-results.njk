@@ -1,0 +1,173 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set userName = 'John  Doe' %}
+{% set hideAccountLinks = true %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set orgs3SessionData = orgs3SessionData if orgs3SessionData %}
+
+{% if orgs3SessionData.roles  %}
+    {% set captionTitle = 'New ' + orgs3SessionData.roles %}
+{% else %}
+    {% set captionTitle = 'New person' %}
+{% endif %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Search results' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/orgs3/applicants', text:'Back to Applicants'}] %}
+
+{% set resultArray = resultArray if resultArray %}
+{#{% set searchTerm = searchTerm if searchTerm %}#}
+{% set searchFail = searchFail if searchFail %}
+{% set randomValue = randomValue if randomValue %}
+{% set searchResultsText = searchResultsNumber + ' results' if searchResultsNumber else '' %}
+
+{% if searchTerm  %}
+    {% set displayTitle = 'Search results for \'' + searchTerm + '\'' %}
+{% else %}
+    {% set displayTitle = 'Search results' %}
+{% endif %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text=displayTitle, caption=captionTitle) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-half', customID='mainContent') %}
+
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-visually-hidden">Find organisation</legend>
+                    <div class="govuk-form-group u-space-b0">
+                        <label class="govuk-label govuk-label--s" for="searchTerm">{#  [{ displayTitle }}#} {#Search for their organisation, company or other eligible entity#} Search for this applicant's organisation </label>
+                        <input class="govuk-input" id="searchTerm" name="searchTerm" type="text">
+                    </div>
+                </fieldset>
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-7', extraClass='') %}
+                <div class="application-controls govuk-clearfix">
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Search</button>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='column is-full', customID='mainContent') %}
+                <p class="govuk-body">123 results for '<strong>University of Fulchester</strong>'</p>
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='column is-9', customID='mainContent') %}
+                   <table class="govuk-table">
+                    <thead class="govuk-table__header">
+                        <tr>
+                            <th class="govuk-table__header">Organisation name and details</th>
+                            <th class="govuk-table__header--numeric"><span class="govuk-visually-hidden">Add organisation</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="">
+                        <td class="govuk-table__cell">
+                            <span class="govuk-!-display-block"><strong>Center for Pediatric Endocrinology Zurich</strong></span>
+                            <span class="meta">[City], [Country]</span>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric "><button type="submit" class="govuk-button govuk-button--link govuk-button--180 u-align-right" name="organisation" value="Center for Pediatric Endocrinology Zurich">Select organisation</button> </td>
+                    </tr>
+
+                    <tr class="">
+                        <td class="govuk-table__cell">
+                            <span class="govuk-!-display-block"><strong>Department of Health Canton of Zurich</strong></span>
+                            <span class="meta">[City], [Country]</span>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric "><button type="submit" class="govuk-button govuk-button--link govuk-button--180 u-align-right" name="organisation" value="Department of Health Canton of Zurich">Select organisation</button> </td>
+                    </tr>
+
+                    <tr class="">
+                        <td class="govuk-table__cell">
+                            <span class="govuk-!-display-block"><strong>ETH Zurich</strong></span>
+                            <span class="meta">[City], [Country]</span>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric "><button type="submit" class="govuk-button govuk-button--link govuk-button--180 u-align-right" name="organisation" value="ETH Zurich">Select organisation</button> </td>
+                    </tr>
+
+                    <tr class="">
+                        <td class="govuk-table__cell">
+                            <span class="govuk-!-display-block"><strong>IBM Research - Zurich</strong></span>
+                            <span class="meta">[City], [Country]</span>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric "><button type="submit" class="govuk-button govuk-button--link govuk-button--180 u-align-right" name="organisation" value="IBM Research - Zurich">Select organisation</button> </td>
+                    </tr>
+
+                    <tr class="">
+                        <td class="govuk-table__cell">
+                            <span class="govuk-!-display-block"><strong>Life Science Zurich</strong></span>
+                            <span class="meta">[City], [Country]</span>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric "><button type="submit" class="govuk-button govuk-button--link govuk-button--180 u-align-right" name="organisation" value="Life Science Zurich">Select organisation</button> </td>
+                    </tr>
+
+                    <tr class="">
+                        <td class="govuk-table__cell">
+                            <span class="govuk-!-display-block"><strong>University Childrens Hospital Zurich</strong></span>
+                            <span class="meta">[City], [Country]</span>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric "><button type="submit" class="govuk-button govuk-button--link govuk-button--180 u-align-right" name="organisation" value="University Childrens Hospital Zurich">Select organisation</button> </td>
+                    </tr>
+
+                    <tr class="">
+                        <td class="govuk-table__cell">
+                            <span class="govuk-!-display-block"><strong>University Hospital of Zurich</strong></span>
+                            <span class="meta">[City], [Country]</span>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric "><button type="submit" class="govuk-button govuk-button--link govuk-button--180 u-align-right" name="organisation" value="University Hospital of Zurich">Select organisation</button> </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+                {{ components.pagination(totalItems=99,itemsPerPage=10,currentPage=4) }}
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='column is-9', customID='') %}
+                <p class="govuk-body">If you cannot find the right organisation, try:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>double-checking your spelling</li>
+                    <li>using different search terms</li>
+                    <li>searching for something less specific</li>
+                </ul>
+                <p class="govuk-body"></p>
+                <p class="govuk-body">Or you can <a href="#" class="govuk-link">enter the organisation's details manually</a>.</p>
+            {%- endcall %}
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+    </script>
+{% endblock %}
+
