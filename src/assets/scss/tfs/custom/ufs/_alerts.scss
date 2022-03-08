@@ -18,7 +18,8 @@
   &--success,
   &--danger,
   &--info,
-  &--mono {
+  &--mono,
+  &--cross {
     padding-left: 50px;
 
     &:before {
@@ -38,7 +39,8 @@
     &:before {
       background-image: url(/images/ufs/tick.svg);
       background-size: 38px 28px;
-      background-repeat: no-repeat
+      background-repeat: no-repeat;
+      top:16px;
     }
   }
 
@@ -48,6 +50,16 @@
     &:before {
       background-size: 17px 18px;
       background-image: url(/images/ufs/danger_triangle.svg);
+    }
+  }
+
+  &--cross {
+    border-color:  govuk-colour("red");
+
+    &:before {
+      content:"\274C";
+      top:16px;
+      font-size: 12px;
     }
   }
 
