@@ -1,0 +1,95 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Home' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Home ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{#{% set backLinkContents =  [{url:'#', text:'Back to reviews'}] %}#}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Home', caption=userName) }}
+            {#<p>allData.userName = {{ allData.userName }}</p>#}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-3') %}
+            <div class="tfs-tile3">
+                <a href="#" class="tfs-tile3__mega-link">
+                    <span class="tfs-tile3__heading">Your applications</span>
+                    <span class="tfs-tile3__number">2</span>
+                    {#<span class="tfs-tile3__progress">In progress</span>#}
+                </a>
+            </div>
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='column is-3') %}
+            <div class="tfs-tile3">
+                <a href="/prototypes/post-decision/awards" class="tfs-tile3__mega-link">
+                    <span class="tfs-tile3__heading">Your awards</span>
+                    <span class="tfs-tile3__number">1</span>
+                    {#<span class="tfs-tile3__progress">In progress</span>#}
+                </a>
+            </div>
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {#{% call components.bulmaRow(extraClass='u-space-t45') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Stuff you’re doing for other people cos you’re such a kind academic person', tag='h2', size='m') }}
+        {%- endcall %}
+    {%- endcall %}#}
+
+    {% call components.bulmaRow(extraClass='u-space-t20') %}
+
+        {% call components.bulmaColumnAny(size='column is-3') %}
+            <div class="tfs-tile3">
+                <a href="#" class="tfs-tile3__mega-link">
+                    <span class="tfs-tile3__heading">Reviews</span>
+                    <span class="tfs-tile3__number">1</span>
+                    {#<span class="tfs-tile3__progress">In progress</span>#}
+                </a>
+            </div>
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='column is-3') %}
+            <div class="tfs-tile3">
+                <a href="/prototypes/panel/panels-in-progress" class="tfs-tile3__mega-link">
+                    <span class="tfs-tile3__heading">Panels</span>
+                    <span class="tfs-tile3__number">1</span>
+                    {#<span class="tfs-tile3__progress">In progress</span>#}
+                </a>
+            </div>
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+

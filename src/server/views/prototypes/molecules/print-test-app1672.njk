@@ -1,0 +1,718 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set navType = 'admin' %}
+
+{%  set loggedOut = false %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+
+
+{% set newHeader = true %}
+
+{% set pageTitle = 'Print test' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            {{ components.captionHeading(text='Download response material', caption='Development of a Novel Inhibitor of Ricin') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <div class="columns">
+        <div class="column is-full is-12-desktop is-12-widescreen" id="main-section-container">
+
+            <div class="container u-space-b30" id="application-view">
+                <div class="columns">
+                    <div class="column is-3" id="application-view-toc">
+                        <nav class="_sticky-nav">
+                            <h2 class="govuk-heading-s govuk-heading--link">Contents</h2>
+                            <ul class="govuk-list _sticky-nav__list">
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#main-content">Top of page</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#">Example link</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#">Example link</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#">Example link</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#">Example link</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#">Example link</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#">Example link</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#">Example link</a>
+                                </li>
+                                <li class="_sticky-nav__item">
+                                    <a class="govuk-link _sticky-nav__link" href="#">Example link</a>
+                                </li>
+                            </ul>
+                            <a class="govuk-link js-only print-link" href="#" id="printThis">Print this page</a>
+                        </nav>
+                    </div>
+                    <div class="column is-9" id="application-view-content">
+                        <div class="print-show">
+                            <div class="application-data">
+                                <dl class="application-data__list">
+                                    <dt class="application-data__key">Application reference:</dt>
+                                    <dd class="application-data__value">[app_reference]</dd>
+                                    <dt class="application-data__key">Application name:</dt>
+                                    <dd class="application-data__value">[application_name]]</dd>
+                                    <dt class="application-data__key">Applicant:</dt>
+                                    <dd class="application-data__value">[name]]</dd>
+                                    <dt class="application-data__key">Email:</dt>
+                                    <dd class="application-data__value">[email]</dd>
+                                    <dt class="application-data__key">Organisation:</dt>
+                                    <dd class="application-data__value">[organisation]</dd>
+                                </dl>
+                            </div>
+                            <hr class="section-break section-break--hardcore">
+                            <div class="application-data">
+                                <dl class="application-data__list">
+                                    <dt class="application-data__key">Application status:</dt>
+                                    <dd class="application-data__value">Submitted 1:41pm 24 January 2022</dd>
+                                </dl>
+                            </div>
+                            <hr class="section-break section-break--feather">
+                        </div>
+
+                        <style>
+                            .readonly-view table {
+                                table-layout: fixed;
+                            }
+                        </style>
+                        {#
+                            *************************************************************************
+
+                            UPPER TABLE
+
+                            *************************************************************************
+                        #}
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="">Original table</h2>
+                        <div id="upper" class="serif" style="overflow-x:auto">
+                        <div class="upperTable readonly-view">
+                            <table class="serif govuk-table _responsive-table" style="border-collapse:collapse;width:100%;">
+                                <tbody class="serif govuk-table__body">
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Named Individual</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Position Held</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">Registered Office</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">Support Offered</td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">Date of support</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:">British Telecom</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%"><strong>Dr Carla Di Cairano-Gilfedder&nbsp;</strong></td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%"><strong>Research Manager, AI and Optimisation</strong><br><strong>Applied Research, BT Technology</strong></td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">1 Braham Street, London, United Kingdom, E1 8EE&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">BT will support the activities of RDIN+ in terms of collaboration and co-production. The specifics of these activities will be agreed once the network has been approved,</td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">28th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Afallen</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Peter Trott</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Partner</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">
+                                        <p class="serif govuk-body">Britannia House</p>
+                                        <p class="serif govuk-body">Caerphilly Business Park</p>
+                                        <p class="serif govuk-body">Van Road</p>
+                                        <p class="serif govuk-body">Caerphilly</p>
+                                        <p class="serif govuk-body">CF83 3GG</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Peter Trott to be a member of the RDIN+ Advisory Board.</p>
+                                        <ul class="serif govuk-list govuk-list--bullet">
+                                            <li>Active engagement in debates, workshops, seminar series and other events and the encouraging our partners to similarly engage with your research.&nbsp;&nbsp;</li>
+                                            <li>Act in an advisory capacity to inform the agenda setting for the Research Network and the associated director’s project including participation in conference calls, review and discussion panels and plenary meetings.&nbsp;</li>
+                                        </ul>
+                                        <ul class="serif govuk-list govuk-list--bullet">
+                                            <li>Provision of Case studies in relevant areas, for example the role of digital technology in energy systems and fuel poverty<strong><em>.&nbsp;</em></strong>&nbsp;</li>
+                                            <li>Active engagement in influencing policy makers and establishing uptake of resultant research outputs. This could include the involvement of policy and community-related research, dialogue, and outreach.&nbsp;</li>
+                                            <li>Active support of the development of the network to maintain equality, diversity, and expertise in its strong multi-disciplinary international community.&nbsp;&nbsp;</li>
+                                            <li>Active engagement with all partners within our network to encourage skills scale up and educational programs in order to establish a talent pool for the digital Circular Economy.&nbsp;</li>
+                                        </ul>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">24th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Celsa Steel UK</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Eoin Bailey</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Innovation Manager</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">Castle Works, Cardiff CF24 5NN</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Eoin Bailey to be a member of RDIN+ Advisory Board</p>
+                                        <p class="serif govuk-body">Active engagement in debates, workshops, seminar series and other events and the encouraging our partners to similarly engage with your research.</p>
+                                        <p class="serif govuk-body">Act in an advisory capacity to inform the agenda setting for the Research Networkand the associated director’s project including participation in conference calls, review and discussion panels and plenary meetings.</p>
+                                        <p class="serif govuk-body">Provision of Case studies in relevant areas, for example CELSA Circular Steel Voucher scheme.</p>
+                                        <p class="serif govuk-body">Active engagement in influencing policy makers and establishing uptake of resultant research outputs. This could include the involvement of policy and community-related research, dialogue, and outreach.</p>
+                                        <p class="serif govuk-body">Active support of the development of the network to maintain equality, diversity, and expertise in its strong multi-disciplinary international community.</p>
+                                        <p class="serif govuk-body">Secondment to drive engagement with the Research Institute. We would anticipate this engagement to focus on a full range of activities that will mutually benefit both parties to undertake research, innovation, engagement, commercialisation, and entrepreneurship to drive a knowledge transfer to different communities in its broadest sense.</p>
+                                        <p class="serif govuk-body">Feasibility research and sprint projects that promote the circular economy with impact on people and society</p>
+                                        <p class="serif govuk-body">Active engagement with all partners within our network to encourage skills scale up and educational programs in order to establish a talent pool for FinTech</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">22nd February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Brother Int. Europe Ltd</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">M.A.Keynes</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Senior Manager</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">
+                                        <p class="serif govuk-body">Brother House, 1 Tame Street, Audenshaw Manchester, M34 5JE</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">actively engage in debates, workshops, seminar series and other events and further encourage our extensive network of organisations to similarly engage with your research. We would be also prepared to provide case studies in relevant areas, including giving youaccess to specialist facilities and equipment related to the study.</p>
+                                        <p class="serif govuk-body">We will actively support the development of the network to maintain equality, diversity, and expertise in its strong multi-disciplinary international community,and, overall, I estimate that the&nbsp;total value of our in-kind support will be of the order of at least £200,000 over the course of the network.</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">28th Feb 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Costain Ltd</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Tim Embley</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Innovation and Group Research Director</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">Vanwall Business Pk,Maidenhead Berkshire SL6 4UB</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Active engagement in debates, workshops, seminar seriesand other events and encouraging ourpartners to similarly engage with your research.</p>
+                                        <p class="serif govuk-body">Act in an advisory capacity to inform the agendasetting for the Research Networkand participation in conference calls, review and discussion panels and plenary meetings.</p>
+                                        <p class="serif govuk-body">Provision of Case studiesin relevant areas, for example investigating how Digital solution may improveboth the safetyand wellbeing of ourconstruction site employees.This may also include access to specialist facilities and equipment related to the study such as construction sitesand industrial sites of our partners.</p>
+                                        <p class="serif govuk-body">Active engagement in influencing policy makers and establishing uptake of resultant research outputs. This could include the involvement of policy and community-related research, dialogue,and outreach.</p>
+                                        <p class="serif govuk-body">Active support of thedevelopment of the network to maintain equality, diversity,and expertise in its strong multi-disciplinary international community.</p>
+                                        <p class="serif govuk-body">A substantive secondment of 20%to drive engagement with the Research Institute.</p>
+                                        <p class="serif govuk-body">We would anticipate this engagement to focus on a full range of activities that will mutually benefitboth parties to undertake research, innovation, engagement, commercialisation,and entrepreneurship to drive a knowledge transfer todifferent communities in its broadest sense.</p>
+                                        <p class="serif govuk-body">The above in kind support is estimated to be in the region of £300,000 over 5 years. We are looking forward to working with you on this exciting project.</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">21st February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">DSV Solutions</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Andrew Lahy</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Director Solutions Design</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">DSV Solutions LMS Viaduktstrasse 424052 Basel Switzerland</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Advisory Board Member:</p>
+                                        <strong>Mike Wilson</strong> Executive Vice President Logistics Manufacturing Services,&nbsp; &amp; Executive Vice President Latin America, DSV Honorary Visiting Professor, Cardiff Business School, Cardiff University <a class="serif govuk-link" href="#" target="_blank">Mike Wilson - Executive Vice President - DSV - Global Transport and Logistics | LinkedIn</a><br><a class="serif govuk-link" href="https://www.cardiff.ac.uk/people/view/560209-wilson-mike" target="_blank">Professor Mike Wilson - People - Cardiff University</a>
+                                        <p class="serif govuk-body">Actively engage in debates, workshops, seminar series and other events and further encourageour extensive network of organisations to similarly engage with your research.</p>
+                                        <p class="serif govuk-body">Act in an advisory capacity to inform the agenda setting for the Research Network and contributetoconference calls, review and discussion panels and plenary meetings.</p>
+                                        <p class="serif govuk-body">Provide case studies in relevant areas, for example customer digital supply chain challenges. This willalso include access to specialist facilities and equipment related to the study such asour logistics sites.</p>
+                                        <p class="serif govuk-body">Actively support the development of the network to maintain equality, diversity, and expertise in its strong multi-disciplinary international community.</p>
+                                        <p class="serif govuk-body">Arrange for a substantive secondment of 25%FTE for the duration of the project to drive engagement.</p>
+                                        <p class="serif govuk-body">Such in-kind contribution is estimated at £300,000 over the duration of the project.</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">25th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">SPARK</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Professor Chris Taylor</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Academic Director</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">Cardiff University CF10 3EU</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Professor Taylor to be a member of the RDNI+ Advisory Board</p>
+                                        <ul class="serif govuk-list govuk-list--bullet">
+                                            <li>Active engagement in debates, workshops, seminar series and other events and the encouraging our partners to similarly engage with your research.&nbsp;&nbsp;</li>
+                                        </ul>
+                                        <ul class="serif govuk-list govuk-list--bullet">
+                                            <li>Act in an advisory capacity to inform the agenda setting for the Research Network and participation in conference calls, review and discussion panels and plenary meetings.&nbsp;</li>
+                                            <li>Provision of Case studies in relevant to our areas, for example in terms of the circular and repair economy. This may also include access to specialist facilities and equipment related to the study such as the RemakerSpace.&nbsp;&nbsp;Active engagement in influencing policy makers and establishing uptake of resultant research outputs. This could include the involvement of policy and community-related research, dialogue, and outreach.&nbsp;</li>
+                                            <li>Active support of the development of the network to maintain equality, diversity, and expertise in its strong multi-disciplinary international community.&nbsp;&nbsp;</li>
+                                        </ul>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">25th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Centre For Innovation Policy Research</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Professor Rick Delbridge, <strong>FAcSS FBAM FLSW</strong></td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Co-Convenor</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">Cardiff University, CF10 3EU</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Professor Delbridge to be a member of RDIN+ Advisory Board</p>
+                                        <ul class="serif govuk-list govuk-list--bullet">
+                                            <li>Active engagement in debates, workshops, seminar series and other events and the encouraging our partners to similarly engage with your research.</li>
+                                            <li>Act in an advisory capacity to inform the agenda setting for the Research Network and participation in conference calls, review and discussion panels and plenary meetings.</li>
+                                            <li>Active engagement in influencing policy makers and establishing uptake of resultant research outputs. This could include the involvement of policy and community-related research, dialogue, and outreach.</li>
+                                            <li>Active support of the development of the network to maintain equality, diversity, and expertise in its strong multi-disciplinary international community.</li>
+                                        </ul>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">25th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">LSE/ASPECT</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Pofessor Julia Black CBE. FBA</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">LSE Strategic Director for Innovation, Chair of ASPECT Steering Group</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">
+                                        <p class="serif govuk-body">LSE Directorate, Houghton Street, WC2A 2AE</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Professor Julia Black to be a member of the RDNI+ Advisory Board.</p>
+                                        <ul class="serif govuk-list govuk-list--bullet">
+                                            <li>Active engagement in debates, workshops, seminar series and other events, encouraging the Aspect membership to similarly take part in and engage with your research.</li>
+                                            <li>Act in an advisory capacity to inform the agenda setting for the Research Network (particularly around any SHAPE related activity) and participation in conference calls, review and discussion panels and plenary meetings.</li>
+                                            <li>Active engagement in influencing policy makers and establishing uptake of resultant outputs. This might particularly include engagement with the wider Aspect network through our communication and dissemination channels. It may also include supporting deeper engagement with Aspect members whose funded activities align with the purpose and mission of the Responsible Digital Innovation Network</li>
+                                        </ul>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">28th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Welsh Council for Voluntary Action</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Alun Jones</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Head of Social Investment Cymru</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">One Canal Parade, Dumballs Road Cardiff, CF10 5BS</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Alun Jones to be a member of the RIND+ Advisory Board</p>
+                                        <p class="serif govuk-body">Active engagement in debates, workshops, seminar series and other events<br>and the encouraging our partners to similarly engage with your research</p>
+                                        <p class="serif govuk-body">Act in an advisory capacity to inform the agenda setting for the Research<br>Network and the associated director’s project including participation in<br>conference calls, review and discussion panels and plenary meetings.</p>
+                                        <p class="serif govuk-body">Provision of Case studies in relevant areas<br>• Active engagement in influencing policy makers and establishing uptake of resultant research outputs. This could include the involvement of policy and<br>community-related research, dialogue, and outreach.</p>
+                                        <p class="serif govuk-body">Active support of the development of the network to maintain equality,<br>diversity, and expertise in its strong multi-disciplinary international<br>community.</p>
+                                        <p class="serif govuk-body">Feasibility research and sprint projects that promote the circular economy<br>with impact on people and society</p>
+                                        <p class="serif govuk-body">Active engagement with all partners within our network to encourage skills<br>scale up and educational programs in order to establish a talent pool for FinTech<br><br></p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">25th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">
+                                        <p class="serif govuk-body">CRAFT (Center for Research toward Advancing Financial Technologies)</p>
+                                        <p class="serif govuk-body">Stevens Institute of Technology, New Jersey, USA</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Dr Steven Yang</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Associate Professor</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">https://faculty.stevens.edu/syang14</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Dr Steven Yang to be invited to join the Advisory Board if the bid is successful.</p>
+                                        <p class="serif govuk-body">Active engagement in debates, workshops, seminar series and other events and <br>the encouraging our partners to similarly engage with your research. <br>Act in an advisory capacity to inform the agenda setting for the Research Institute <br>and the associated director’s projectincluding participation in conference calls, review and discussion panelsand plenary meetings.</p>
+                                        <p class="serif govuk-body">Provision of Case studies in relevant to our areas, for example we are interested <br>in the impact of various fintech innovations and regulations to incumbent <br>financial institutions. Joint studies with a network of global and local firms within <br>the financial industry would benefit both organizations. These case studies may <br>use our industry members as survey targetssubject to a mutual agreement.</p>
+                                        <p class="serif govuk-body">Active engagement in influencing policy makers and establishing uptake of <br>resultant research outputs. This could include the involvement of policy and <br>community-related research, dialogue,and outreach.</p>
+                                        <p class="serif govuk-body">Active support of the development of the network to maintain equality, diversity, <br>and expertise in its strong multi-disciplinary international community.</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">28th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">
+                                        <p class="serif govuk-body">&nbsp;</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">&nbsp;</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">&nbsp;</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Edinburgh University</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Professor Chris Carter</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">
+                                        <h2 class="serif govuk-heading-m">Director of Research Degrees (Principal Programmes) &amp; Chair in Strategy &amp; Organisation</h2>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">https://www.business-school.ed.ac.uk/staff/chris-carter</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">Professor Chris Carter will be a member of the RDIN+ Advisory Board</td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">25th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Leicester University</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Dr Steve Conway</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Associate Professor of Innovation</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">https://www2.le.ac.uk/departments/business/people/academic/dr-steve-conway</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">Dr Steve Conway will be a member of the RDIN+ Advisory Board</td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">25th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Grenoble Ecole de Management. France</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">
+                                        <p class="serif govuk-body">Professor Ismael Al-Amoudi</p>
+                                        <p class="serif govuk-body">&nbsp;</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Director of the Centre for Social Ontology</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%"><a class="serif govuk-link" href="#" target="_blank">www.socialontology.org</a></td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Professor Ismael Al-Amoudi will be a member of the RDIN+ Advisory Board</p>
+                                        <p class="serif govuk-body">He will also give full access to the network in support of the RDIN+ work.</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">28th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Discovery Partners Institutute</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">
+                                        <p class="serif govuk-body">Professor Venkat Venkatakrishnan</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Interim director of research for the Discovery Partners Institute.&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">
+                                        <a class="serif govuk-link" href="#" target="_blank">https://dpi.uillinois.edu/team/venkat-venkatakrishnan</a>
+
+
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Professor Venkatakrshnan will provide access to the DPI membership in support of the RDIN+ work.</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">28th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">
+                                        <p class="serif govuk-body">&nbsp;</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">&nbsp;</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">&nbsp;</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p class="serif govuk-body">&nbsp;</p>
+                        </div>
+                    </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                        {#
+                        *************************************************************************
+
+                        LOWER TABLE
+
+                        *************************************************************************
+                        #}
+
+                        <style>
+                            .lowerTable table {
+                                table-layout:fixed;
+                                font-size:14px !important;
+                            }
+
+                            .lowerTable th,
+                            .lowerTable td,
+                            .lowerTable li,
+                            .lowerTable p,
+                            .lowerTable .serif{
+                                font-size:14px !important;
+                            }
+
+                            .lowerTable ul,
+                            .lowerTable li,
+                            .lowerTable p,
+                            .lowerTable p.govuk-body,
+                            .lowerTable p.govuk-body.serif,
+                            .lowerTable p.serif  {
+                                margin: 0 0 0 0 !important;
+                                line-height: 18px !important;
+                            }
+
+                            .lowerTable td * {
+                                padding: 5px 5px 5px 0;
+
+                                /*border: 1px solid darkgrey;
+                                background-color: rgba(123,123,123, 0.1);*/
+                            }
+                            .lowerTable td {
+
+                                /*white-space: -o-pre-wrap;
+                                word-wrap: break-word;
+                                white-space: pre-wrap;
+                                white-space: -moz-pre-wrap;
+                                white-space: -pre-wrap;*/
+
+                                white-space: normal;
+                                word-wrap: break-word;
+
+                                width: auto !important;
+
+                            }
+                        </style>
+                        <h2 class="govuk-heading-m serif govuk-heading--link" id="">Tweaked table</h2>
+                        <div id="lower" class="serif" style="overflow-x:auto">
+                        <div class="lowerTable readonly-view">
+                            <table class="serif govuk-table responsive-table" style="border-collapse:collapse;width:100%;">
+                                <tbody class="serif govuk-table__body">
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Named Individual</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Position Held</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">Registered Office</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">Support Offered</td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">Date of support</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:">British Telecom</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%"><strong>Dr Carla Di Cairano-Gilfedder&nbsp;</strong></td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%"><strong>Research Manager, AI and Optimisation</strong><br><strong>Applied Research, BT Technology</strong></td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">1 Braham Street, London, United Kingdom, E1 8EE&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">BT will support the activities of RDIN+ in terms of collaboration and co-production. The specifics of these activities will be agreed once the network has been approved,</td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">28th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Afallen</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Peter Trott</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Partner</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">
+                                        <p class="serif govuk-body">Britannia House</p>
+                                        <p class="serif govuk-body">Caerphilly Business Park</p>
+                                        <p class="serif govuk-body">Van Road</p>
+                                        <p class="serif govuk-body">Caerphilly</p>
+                                        <p class="serif govuk-body">CF83 3GG</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Peter Trott to be a member of the RDIN+ Advisory Board.</p>
+                                        <ul class="serif govuk-list govuk-list--bullet">
+                                            <li>Active engagement in debates, workshops, seminar series and other events and the encouraging our partners to similarly engage with your research.&nbsp;&nbsp;</li>
+                                            <li>Act in an advisory capacity to inform the agenda setting for the Research Network and the associated director’s project including participation in conference calls, review and discussion panels and plenary meetings.&nbsp;</li>
+                                        </ul>
+                                        <ul class="serif govuk-list govuk-list--bullet">
+                                            <li>Provision of Case studies in relevant areas, for example the role of digital technology in energy systems and fuel poverty<strong><em>.&nbsp;</em></strong>&nbsp;</li>
+                                            <li>Active engagement in influencing policy makers and establishing uptake of resultant research outputs. This could include the involvement of policy and community-related research, dialogue, and outreach.&nbsp;</li>
+                                            <li>Active support of the development of the network to maintain equality, diversity, and expertise in its strong multi-disciplinary international community.&nbsp;&nbsp;</li>
+                                            <li>Active engagement with all partners within our network to encourage skills scale up and educational programs in order to establish a talent pool for the digital Circular Economy.&nbsp;</li>
+                                        </ul>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">24th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Celsa Steel UK</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Eoin Bailey</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Innovation Manager</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">Castle Works, Cardiff CF24 5NN</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Eoin Bailey to be a member of RDIN+ Advisory Board</p>
+                                        <p class="serif govuk-body">Active engagement in debates, workshops, seminar series and other events and the encouraging our partners to similarly engage with your research.</p>
+                                        <p class="serif govuk-body">Act in an advisory capacity to inform the agenda setting for the Research Networkand the associated director’s project including participation in conference calls, review and discussion panels and plenary meetings.</p>
+                                        <p class="serif govuk-body">Provision of Case studies in relevant areas, for example CELSA Circular Steel Voucher scheme.</p>
+                                        <p class="serif govuk-body">Active engagement in influencing policy makers and establishing uptake of resultant research outputs. This could include the involvement of policy and community-related research, dialogue, and outreach.</p>
+                                        <p class="serif govuk-body">Active support of the development of the network to maintain equality, diversity, and expertise in its strong multi-disciplinary international community.</p>
+                                        <p class="serif govuk-body">Secondment to drive engagement with the Research Institute. We would anticipate this engagement to focus on a full range of activities that will mutually benefit both parties to undertake research, innovation, engagement, commercialisation, and entrepreneurship to drive a knowledge transfer to different communities in its broadest sense.</p>
+                                        <p class="serif govuk-body">Feasibility research and sprint projects that promote the circular economy with impact on people and society</p>
+                                        <p class="serif govuk-body">Active engagement with all partners within our network to encourage skills scale up and educational programs in order to establish a talent pool for FinTech</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">22nd February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Brother Int. Europe Ltd</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">M.A.Keynes</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Senior Manager</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">
+                                        <p class="serif govuk-body">Brother House, 1 Tame Street, Audenshaw Manchester, M34 5JE</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">actively engage in debates, workshops, seminar series and other events and further encourage our extensive network of organisations to similarly engage with your research. We would be also prepared to provide case studies in relevant areas, including giving youaccess to specialist facilities and equipment related to the study.</p>
+                                        <p class="serif govuk-body">We will actively support the development of the network to maintain equality, diversity, and expertise in its strong multi-disciplinary international community,and, overall, I estimate that the&nbsp;total value of our in-kind support will be of the order of at least £200,000 over the course of the network.</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">28th Feb 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Costain Ltd</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Tim Embley</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Innovation and Group Research Director</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">Vanwall Business Pk,Maidenhead Berkshire SL6 4UB</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Active engagement in debates, workshops, seminar seriesand other events and encouraging ourpartners to similarly engage with your research.</p>
+                                        <p class="serif govuk-body">Act in an advisory capacity to inform the agendasetting for the Research Networkand participation in conference calls, review and discussion panels and plenary meetings.</p>
+                                        <p class="serif govuk-body">Provision of Case studiesin relevant areas, for example investigating how Digital solution may improveboth the safetyand wellbeing of ourconstruction site employees.This may also include access to specialist facilities and equipment related to the study such as construction sitesand industrial sites of our partners.</p>
+                                        <p class="serif govuk-body">Active engagement in influencing policy makers and establishing uptake of resultant research outputs. This could include the involvement of policy and community-related research, dialogue,and outreach.</p>
+                                        <p class="serif govuk-body">Active support of thedevelopment of the network to maintain equality, diversity,and expertise in its strong multi-disciplinary international community.</p>
+                                        <p class="serif govuk-body">A substantive secondment of 20%to drive engagement with the Research Institute.</p>
+                                        <p class="serif govuk-body">We would anticipate this engagement to focus on a full range of activities that will mutually benefitboth parties to undertake research, innovation, engagement, commercialisation,and entrepreneurship to drive a knowledge transfer todifferent communities in its broadest sense.</p>
+                                        <p class="serif govuk-body">The above in kind support is estimated to be in the region of £300,000 over 5 years. We are looking forward to working with you on this exciting project.</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">21st February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">DSV Solutions</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Andrew Lahy</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Director Solutions Design</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">DSV Solutions LMS Viaduktstrasse 424052 Basel Switzerland</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Advisory Board Member:</p>
+                                        <strong>Mike Wilson</strong> Executive Vice President Logistics Manufacturing Services,&nbsp; &amp; Executive Vice President Latin America, DSV Honorary Visiting Professor, Cardiff Business School, Cardiff University <a class="serif govuk-link" href="#" target="_blank">Mike Wilson - Executive Vice President - DSV - Global Transport and Logistics | LinkedIn</a><br><a class="serif govuk-link" href="https://www.cardiff.ac.uk/people/view/560209-wilson-mike" target="_blank">Professor Mike Wilson - People - Cardiff University</a>
+                                        <p class="serif govuk-body">Actively engage in debates, workshops, seminar series and other events and further encourageour extensive network of organisations to similarly engage with your research.</p>
+                                        <p class="serif govuk-body">Act in an advisory capacity to inform the agenda setting for the Research Network and contributetoconference calls, review and discussion panels and plenary meetings.</p>
+                                        <p class="serif govuk-body">Provide case studies in relevant areas, for example customer digital supply chain challenges. This willalso include access to specialist facilities and equipment related to the study such asour logistics sites.</p>
+                                        <p class="serif govuk-body">Actively support the development of the network to maintain equality, diversity, and expertise in its strong multi-disciplinary international community.</p>
+                                        <p class="serif govuk-body">Arrange for a substantive secondment of 25%FTE for the duration of the project to drive engagement.</p>
+                                        <p class="serif govuk-body">Such in-kind contribution is estimated at £300,000 over the duration of the project.</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">25th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">SPARK</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Professor Chris Taylor</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Academic Director</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">Cardiff University CF10 3EU</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Professor Taylor to be a member of the RDNI+ Advisory Board</p>
+                                        <ul class="serif govuk-list govuk-list--bullet">
+                                            <li>Active engagement in debates, workshops, seminar series and other events and the encouraging our partners to similarly engage with your research.&nbsp;&nbsp;</li>
+                                        </ul>
+                                        <ul class="serif govuk-list govuk-list--bullet">
+                                            <li>Act in an advisory capacity to inform the agenda setting for the Research Network and participation in conference calls, review and discussion panels and plenary meetings.&nbsp;</li>
+                                            <li>Provision of Case studies in relevant to our areas, for example in terms of the circular and repair economy. This may also include access to specialist facilities and equipment related to the study such as the RemakerSpace.&nbsp;&nbsp;Active engagement in influencing policy makers and establishing uptake of resultant research outputs. This could include the involvement of policy and community-related research, dialogue, and outreach.&nbsp;</li>
+                                            <li>Active support of the development of the network to maintain equality, diversity, and expertise in its strong multi-disciplinary international community.&nbsp;&nbsp;</li>
+                                        </ul>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">25th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Centre For Innovation Policy Research</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Professor Rick Delbridge, <strong>FAcSS FBAM FLSW</strong></td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Co-Convenor</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">Cardiff University, CF10 3EU</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Professor Delbridge to be a member of RDIN+ Advisory Board</p>
+                                        <ul class="serif govuk-list govuk-list--bullet">
+                                            <li>Active engagement in debates, workshops, seminar series and other events and the encouraging our partners to similarly engage with your research.</li>
+                                            <li>Act in an advisory capacity to inform the agenda setting for the Research Network and participation in conference calls, review and discussion panels and plenary meetings.</li>
+                                            <li>Active engagement in influencing policy makers and establishing uptake of resultant research outputs. This could include the involvement of policy and community-related research, dialogue, and outreach.</li>
+                                            <li>Active support of the development of the network to maintain equality, diversity, and expertise in its strong multi-disciplinary international community.</li>
+                                        </ul>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">25th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">LSE/ASPECT</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Pofessor Julia Black CBE. FBA</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">LSE Strategic Director for Innovation, Chair of ASPECT Steering Group</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">
+                                        <p class="serif govuk-body">LSE Directorate, Houghton Street, WC2A 2AE</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Professor Julia Black to be a member of the RDNI+ Advisory Board.</p>
+                                        <ul class="serif govuk-list govuk-list--bullet">
+                                            <li>Active engagement in debates, workshops, seminar series and other events, encouraging the Aspect membership to similarly take part in and engage with your research.</li>
+                                            <li>Act in an advisory capacity to inform the agenda setting for the Research Network (particularly around any SHAPE related activity) and participation in conference calls, review and discussion panels and plenary meetings.</li>
+                                            <li>Active engagement in influencing policy makers and establishing uptake of resultant outputs. This might particularly include engagement with the wider Aspect network through our communication and dissemination channels. It may also include supporting deeper engagement with Aspect members whose funded activities align with the purpose and mission of the Responsible Digital Innovation Network</li>
+                                        </ul>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">28th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Welsh Council for Voluntary Action</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Alun Jones</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Head of Social Investment Cymru</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">One Canal Parade, Dumballs Road Cardiff, CF10 5BS</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Alun Jones to be a member of the RIND+ Advisory Board</p>
+                                        <p class="serif govuk-body">Active engagement in debates, workshops, seminar series and other events<br>and the encouraging our partners to similarly engage with your research</p>
+                                        <p class="serif govuk-body">Act in an advisory capacity to inform the agenda setting for the Research<br>Network and the associated director’s project including participation in<br>conference calls, review and discussion panels and plenary meetings.</p>
+                                        <p class="serif govuk-body">Provision of Case studies in relevant areas<br>• Active engagement in influencing policy makers and establishing uptake of resultant research outputs. This could include the involvement of policy and<br>community-related research, dialogue, and outreach.</p>
+                                        <p class="serif govuk-body">Active support of the development of the network to maintain equality,<br>diversity, and expertise in its strong multi-disciplinary international<br>community.</p>
+                                        <p class="serif govuk-body">Feasibility research and sprint projects that promote the circular economy<br>with impact on people and society</p>
+                                        <p class="serif govuk-body">Active engagement with all partners within our network to encourage skills<br>scale up and educational programs in order to establish a talent pool for FinTech<br><br></p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">25th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">
+                                        <p class="serif govuk-body">CRAFT (Center for Research toward Advancing Financial Technologies)</p>
+                                        <p class="serif govuk-body">Stevens Institute of Technology, New Jersey, USA</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Dr Steven Yang</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Associate Professor</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">https://faculty.stevens.edu/syang14</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Dr Steven Yang to be invited to join the Advisory Board if the bid is successful.</p>
+                                        <p class="serif govuk-body">Active engagement in debates, workshops, seminar series and other events and <br>the encouraging our partners to similarly engage with your research. <br>Act in an advisory capacity to inform the agenda setting for the Research Institute <br>and the associated director’s projectincluding participation in conference calls, review and discussion panelsand plenary meetings.</p>
+                                        <p class="serif govuk-body">Provision of Case studies in relevant to our areas, for example we are interested <br>in the impact of various fintech innovations and regulations to incumbent <br>financial institutions. Joint studies with a network of global and local firms within <br>the financial industry would benefit both organizations. These case studies may <br>use our industry members as survey targetssubject to a mutual agreement.</p>
+                                        <p class="serif govuk-body">Active engagement in influencing policy makers and establishing uptake of <br>resultant research outputs. This could include the involvement of policy and <br>community-related research, dialogue,and outreach.</p>
+                                        <p class="serif govuk-body">Active support of the development of the network to maintain equality, diversity, <br>and expertise in its strong multi-disciplinary international community.</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">28th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">
+                                        <p class="serif govuk-body">&nbsp;</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">&nbsp;</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">&nbsp;</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Edinburgh University</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Professor Chris Carter</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">
+                                        <h2 class="serif govuk-heading-m">Director of Research Degrees (Principal Programmes) &amp; Chair in Strategy &amp; Organisation</h2>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">https://www.business-school.ed.ac.uk/staff/chris-carter</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">Professor Chris Carter will be a member of the RDIN+ Advisory Board</td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">25th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Leicester University</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">Dr Steve Conway</td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Associate Professor of Innovation</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">https://www2.le.ac.uk/departments/business/people/academic/dr-steve-conway</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">Dr Steve Conway will be a member of the RDIN+ Advisory Board</td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">25th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Grenoble Ecole de Management. France</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">
+                                        <p class="serif govuk-body">Professor Ismael Al-Amoudi</p>
+                                        <p class="serif govuk-body">&nbsp;</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Director of the Centre for Social Ontology</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%"><a class="serif govuk-link" href="#" target="_blank">www.socialontology.org</a></td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Professor Ismael Al-Amoudi will be a member of the RDIN+ Advisory Board</p>
+                                        <p class="serif govuk-body">He will also give full access to the network in support of the RDIN+ work.</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">28th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">Discovery Partners Institutute</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">
+                                        <p class="serif govuk-body">Professor Venkat Venkatakrishnan</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">Interim director of research for the Discovery Partners Institute.&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">
+                                        <a class="serif govuk-link" href="#" target="_blank">https://dpi.uillinois.edu/team/venkat-venkatakrishnan</a>
+
+
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">Professor Venkatakrshnan will provide access to the DPI membership in support of the RDIN+ work.</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">28th February 2022</td>
+                                </tr>
+                                <tr class="serif govuk-table__row">
+                                    <td class="serif govuk-table__cell" style="width:18.7871%">&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:13.7151%">
+                                        <p class="serif govuk-body">&nbsp;</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:15.602%">&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:36.1319%">&nbsp;</td>
+                                    <td class="serif govuk-table__cell" style="width:1.002%">
+                                        <p class="serif govuk-body">&nbsp;</p>
+                                    </td>
+                                    <td class="serif govuk-table__cell" style="width:10.7502%">&nbsp;</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p class="serif govuk-body">&nbsp;</p>
+                        </div>
+                                </div>
+                        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+
+

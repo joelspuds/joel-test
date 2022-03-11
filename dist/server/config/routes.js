@@ -709,6 +709,20 @@ router.post('/prototypes/panel/pre-score-confirm', demosController.panelPreScore
 
 /* *************************************************************** *
 
+    Post decision - external
+
+ * *************************************************************** */
+// Create new opportunity
+router.get('/prototypes/post-decision', demosController.pdIndexGet);
+router.post('/prototypes/post-decision', demosController.pdIndexPost);
+router.get('/prototypes/post-decision/home', demosController.pdHomeGet);
+router.post('/prototypes/post-decision/home', demosController.pdHomePost);
+router.get('/prototypes/post-decision/awards', demosController.pdAwardsGet);
+router.post('/prototypes/post-decision/awards', demosController.pdAwardsPost);
+/*router.get('/prototypes/post-decision', demosController.pdIndexGet);
+router.post('/prototypes/post-decision', demosController.pdIndexPost);*/
+/* *************************************************************** *
+
   Design section
 
 * *************************************************************** */

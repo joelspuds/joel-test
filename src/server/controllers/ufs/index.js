@@ -34,3 +34,4 @@ export * from './designController';
 // export * from './orgs2Controller';
 export * from './orgs3Controller';
 export * from './panelController';
+export * from './postDecisionController';
