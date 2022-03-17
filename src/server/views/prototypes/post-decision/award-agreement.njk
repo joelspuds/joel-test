@@ -1,0 +1,359 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Home' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/post-decision/award', text:'Back to award overview'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-notification-banner govuk-notification-banner--info" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">
+                        Your award is ready to start
+                    </p>
+                    <p class="govuk-body">
+                        You must start your award before before <strong>28 July 2022</strong>. <a class="govuk-notification-banner__link" href="#">Submit your start confirmation</a>
+                        {#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}
+                    </p>
+                </div>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Award agreement', caption='AWA222: Development of a Novel Inhibitor of Ricin') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='u-space-y0') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {#{{ components.captionHeading(text='Award summary', size='s', tag='h2') }}#}
+            <p class="govuk-body meta "><strong class="meta">THIS AGREEMENT</strong> is dated DD/MM/YYYY and is made between: (1) Biotechnology and Biological Sciences Research Council,
+                part of UK Research and Innovation (“BBSRC, UKRI”); (2) University of Wales; and (3) University of Manchester
+            <p class="govuk-body meta ">
+            <strong class="meta">IN WITNESS WHEREOF</strong>, the parties have duly executed this Agreement the day and year last set forth below.</p>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='u-space-y0') %}
+        {% call components.bulmaColumnAny(size='is-4') %}
+            {{ components.captionHeading(text='For and on behalf of BBSRC', size='xs meta', tag='h3') }}
+            <p class="govuk-body meta ">
+                Arden Pimenta,<br>
+                BBSRC, UKRI
+            </p>
+            <p class="govuk-body meta ">on DD Month YYYY.</p>
+        {%- endcall %}
+        {% call components.bulmaColumnAny(size='is-4') %}
+            {{ components.captionHeading(text='For and on behalf of University of Wales', size='xs meta', tag='h3') }}
+            <p class="govuk-body meta ">
+                Arden Pimenta,<br>
+                BBSRC, UKRI
+            </p>
+            <p class="govuk-body meta ">on DD Month YYYY.</p>
+        {%- endcall %}
+        {% call components.bulmaColumnAny(size='is-4') %}
+            {{ components.captionHeading(text='For and on behalf of University of Manchester', size='xs meta', tag='h3') }}
+            <p class="govuk-body meta ">
+                Arden Pimenta,<br>
+                BBSRC, UKRI
+            </p>
+            <p class="govuk-body meta ">on DD Month YYYY.</p>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-8') %}
+
+            {{ components.captionHeading(text='Details', size='m', tag='h2') }}
+
+            <table class="govuk-table u-space-b45">
+                <tbody>
+                    <tr>
+                        <th class="govuk-table__header">Award name</th>
+                        <td class="govuk-table__cell">Development of a Novel Inhibitor of Ricin</td>
+                    </tr>
+                    <tr>
+                        <th class="govuk-table__header">Start date</th>
+                        <td class="govuk-table__cell">28 July 2002</td>
+                    </tr>
+                    <tr>
+                        <th class="govuk-table__header">Duration in months</th>
+                        <td class="govuk-table__cell">24</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+
+            {{ components.captionHeading(text='Costs', size='m', tag='h2') }}
+
+            <table class="govuk-table govuk-table--stripes">
+
+                <thead>
+                <tr>
+                    <th class="govuk-table__header">Category</th>
+                    <th class="govuk-table__header govuk-table__header--numeric">Directly incurred<br>(80%)</th>
+                    <th class="govuk-table__header govuk-table__header--numeric">Directly allocated<br>(80%)</th>
+                    <th class="govuk-table__header govuk-table__header--numeric">Exceptions<br>(100%)</th>
+                    <th class="govuk-table__header govuk-table__header--numeric">Funding applied for<br>(£)</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td class="govuk-table__cell">Staff</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
+                </tr>
+                <tr>
+                    <td class="govuk-table__cell">Equipment</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
+                </tr>
+                <tr>
+                    <td class="govuk-table__cell">Other</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
+                </tr>
+                <tr>
+                    <td class="govuk-table__cell">Animals</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
+                </tr>
+                <tr>
+                    <td class="govuk-table__cell">Estates and indirects</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
+                </tr>
+
+                <tr>
+                    <td class="govuk-table__cell govuk-table__cell--mega">Total applied for:</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£335,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£335,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£330,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£1,000,000</td>
+                </tr>
+
+
+                </tbody>
+
+            </table>
+
+
+            {{ components.captionHeading(text='Costs', size='m', tag='h2') }}
+
+            <table class="govuk-table govuk-table--stripes">
+
+                <thead>
+                <tr>
+                    <th class="govuk-table__header">Category</th>
+                    <th class="govuk-table__header govuk-table__header--numeric">Directly incurred<br>(80%)</th>
+                    <th class="govuk-table__header govuk-table__header--numeric">Directly allocated<br>(80%)</th>
+                    <th class="govuk-table__header govuk-table__header--numeric">Exceptions<br>(100%)</th>
+                    <th class="govuk-table__header govuk-table__header--numeric">Funding applied for<br>(£)</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td class="govuk-table__cell">Staff</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
+                </tr>
+                <tr>
+                    <td class="govuk-table__cell">Equipment</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
+                </tr>
+                <tr>
+                    <td class="govuk-table__cell">Other</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
+                </tr>
+                <tr>
+                    <td class="govuk-table__cell">Animals</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
+                </tr>
+                <tr>
+                    <td class="govuk-table__cell">Estates and indirects</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
+                </tr>
+
+                <tr>
+                    <td class="govuk-table__cell govuk-table__cell--mega">Total applied for:</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£335,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£335,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£330,000</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£1,000,000</td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            {{ components.captionHeading(text='Team', size='m', tag='h2') }}
+
+            <p class="govuk-body"><strong>University of Wales</strong> <span class="meta">(Lead)</span></p>
+
+            <table class="govuk-table">
+                <caption class="govuk-table__caption govuk-visually-hidden">Project team members</caption>
+                <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header cell-max-35">Name</th>
+                    <th scope="col" class="govuk-table__header cell-max-35">Email</th>
+                    <th scope="col" class="govuk-table__header">Role</th>
+                </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell  ">Prof. Jane Doe</td>
+                    <td class="govuk-table__cell ">j.doe@cardiffuniversity.ac.uk</td>
+                    <td class="govuk-table__cell ">Lead applicant</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell ">Dr. Phoebe Buffay-Hannigan </td>
+                    <td class="govuk-table__cell ">p.buffay-hanningane@cardiffuniversity.ac.uk</td>
+                    <td class="govuk-table__cell ">Co-investigator</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell ">Dr. Richard Johnson </td>
+                    <td class="govuk-table__cell ">r.johnson@cardiffuniversity.ac.uk</td>
+                    <td class="govuk-table__cell ">Co-investigator</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p class="govuk-body"><strong>University of Manchester</strong></p>
+
+            <table class="govuk-table">
+                <caption class="govuk-table__caption govuk-visually-hidden">Project team members</caption>
+                <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header cell-max-35">Name</th>
+                    <th scope="col" class="govuk-table__header cell-max-35">Email</th>
+                    <th scope="col" class="govuk-table__header">Role</th>
+                </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell  ">{{ 'addHonorific' | giveMeAName }}</td>
+                    <td class="govuk-table__cell ">a.n.other@manchester.ac.uk</td>
+                    <td class="govuk-table__cell ">Lead applicant</td>
+                </tr>
+                </tbody>
+            </table>
+
+            {{ components.captionHeading(text='Terms and conditions', size='m', tag='h2') }}
+
+            {% include '../../layouts/partials/terms-and-conditions-awards.njk' %}
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-3 is-offset-1') %}
+
+            {#{{ components.list(items=listItemsActions, type='bullet')}}#}
+
+            <div class="application-data application-data--large ">
+                <dl class="application-data__list">
+                    <dt class="application-data__key"><strong>Application reference:</strong></dt>
+                    <dd class="application-data__value"><a href="#" class="govuk-link">APP101660 (opens in new window)</a> </dd>
+                    <dt class="application-data__key"><strong>Application name:</strong></dt>
+                    <dd class="application-data__value">The economics of grant funding in a post-pandemic world</dd>
+                    <dt class="application-data__key"><strong>Applicant:</strong></dt>
+                    <dd class="application-data__value">{{ 'addHonorific' | giveMeAName }}</dd>
+                    <dt class="application-data__key"><strong>Email:</strong></dt>
+                    <dd class="application-data__value">a.person@academic-org.ac.uk</dd>
+                    <dt class="application-data__key"><strong>Organisations:</strong></dt>
+                    <dd class="application-data__value">
+                        Belfast University<br>
+                        Manchester University
+                    </dd>
+                    <dt class="application-data__key"><strong>Award value:</strong></dt>
+                    <dd class="application-data__value">£1,200,000</dd>
+                </dl>
+            </div>
+
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        function toggleVisibility(_this, id, className) {
+            // event.preventDefault();
+            let toggleSwitch = _this;
+            let toggleItem = document.getElementById(id);
+            if (hasClass(toggleItem, className)) {
+                toggleSwitch.classList.add('filter__title--closed');
+                toggleItem.classList.remove(className);
+                toggleSwitch.setAttribute('aria-expanded', true);
+            }
+            else  {
+                toggleSwitch.classList.remove('filter__title--closed');
+                toggleItem.classList.add(className);
+                toggleSwitch.setAttribute('aria-expanded', false);
+            }
+            // return false;
+        }
+        function hasClass(target, className) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
+    </script>
+{% endblock %}
+

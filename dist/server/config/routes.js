@@ -719,6 +719,8 @@ router.get('/prototypes/post-decision/home', demosController.pdHomeGet);
 router.post('/prototypes/post-decision/home', demosController.pdHomePost);
 router.get('/prototypes/post-decision/awards', demosController.pdAwardsGet);
 router.post('/prototypes/post-decision/awards', demosController.pdAwardsPost);
+router.get('/prototypes/post-decision/award-start', demosController.pdAwardStartGet);
+router.post('/prototypes/post-decision/award-start', demosController.pdAwardStartPost);
 /*router.get('/prototypes/post-decision', demosController.pdIndexGet);
 router.post('/prototypes/post-decision', demosController.pdIndexPost);*/
 /* *************************************************************** *

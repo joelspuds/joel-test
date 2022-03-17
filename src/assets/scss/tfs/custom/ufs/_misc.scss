@@ -103,3 +103,14 @@
     border-left: none;
   }
 }
+
+.govuk-table--stripes tr:nth-child(even) td {
+  background-color: govuk-colour("light-grey");
+}
+
+.govuk-table__cell--mega {
+  border-width: 2px;
+  background-color: govuk-colour("white") !important;
+  border-top: 2px solid govuk-colour("mid-grey");
+  @include govuk-font($size: 19, $weight: bold);
+}

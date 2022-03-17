@@ -9,6 +9,10 @@ exports.pdHomeGet = pdHomeGet;
 exports.pdHomePost = pdHomePost;
 exports.pdAwardsGet = pdAwardsGet;
 exports.pdAwardsPost = pdAwardsPost;
+exports.pdAwardStartGet = pdAwardStartGet;
+exports.pdAwardStartPost = pdAwardStartPost;
+// import {megaDataApplications} from "./data";
+
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 
@@ -72,6 +76,12 @@ function pdHomePost(req, res) {
 function pdAwardsGet(req, res) {
   let viewData;
 
+  let megaDataApplications = generalData.megaDataApplications;
+
+  if (!req.session.megaDataApplications) {
+    req.session.megaDataApplications = megaDataApplications;
+  }
+
   let allData = req.session;
   viewData = { allData };
 
@@ -79,6 +89,34 @@ function pdAwardsGet(req, res) {
 }
 
 function pdAwardsPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/post-decision/home';
+  return res.redirect(targetURL);
+}
+
+// ************************************************************************
+//
+//        award start
+//
+// ************************************************************************
+function pdAwardStartGet(req, res) {
+  let viewData;
+
+  let megaDataApplications = generalData.megaDataApplications;
+
+  if (!req.session.megaDataApplications) {
+    req.session.megaDataApplications = megaDataApplications;
+  }
+
+  let allData = req.session;
+  viewData = { allData };
+
+  return res.render('prototypes/post-decision/award-start', viewData);
+}
+
+function pdAwardStartPost(req, res) {
   const {} = req.body;
 
   let targetURL;

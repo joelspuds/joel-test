@@ -1,19 +1,30 @@
+let generalData = require('../controllers/ufs/data');
 const namer = (exports.namer = format => {
-  /* var d = new Date();
-    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  let titles = ['Dr.', 'Prof.', ''];
+  let firstNames = generalData.firstNamesList;
+  let lastNames = generalData.lastNamesList;
+  let fakeEmail;
+  let fullName;
+  let result;
 
-    /!*if ((format = 'dataAndTime')) {
-      // return d.getDate() + ' ' + months[d.getMonth()] + ' at ' + d.getHours() + ':' + d.getMinutes();
-      return d.getDate() + ' ' + months[d.getMonth()] + ' at ' + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
-    } else {
-      return d.getTime();
-    }*!/
+  let title;
+  if (format == 'addHonorific') {
+    title = titles[Math.floor(Math.random() * titles.length)] + ' ';
+    fullName =
+      title + firstNames[Math.floor(Math.random() * firstNames.length)] + ' ' + lastNames[Math.floor(Math.random() * lastNames.length)];
+  } else if (format == 'asEmail') {
+    title = ' ';
+    fakeEmail =
+      firstNames[Math.floor(Math.random() * firstNames.length)].toLowerCase() +
+      '.' +
+      lastNames[Math.floor(Math.random() * lastNames.length)].toLowerCase() +
+      '@organisation.ac.uk';
+    fullName = fakeEmail;
+  } else {
+    title = '';
+    fullName =
+      title + firstNames[Math.floor(Math.random() * firstNames.length)] + ' ' + lastNames[Math.floor(Math.random() * lastNames.length)];
+  }
 
-    if ((format = 'firstAndLast')) {
-      return 'Bobbington' + ' ' + 'Rashford';
-    } else {
-      return d.getDate() + ' ' + months[d.getMonth()] + ' at ' + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
-    }*/
-  let test = format;
-  return 'hello';
+  return fullName;
 });

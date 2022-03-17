@@ -39,3 +39,15 @@ Object.keys(_dateTime).forEach(function (key) {
     }
   });
 });
+
+var _names = require('./names');
+
+Object.keys(_names).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _names[key];
+    }
+  });
+});

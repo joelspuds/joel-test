@@ -526,13 +526,16 @@ let megaDataApplicationsList = [{
   name: 'Bio-detoxification of Ricin in castor bean',
   oppName: 'Development of a Novel Inhibitor of Ricin',
   funder: 'MRC',
+  awardURL: '/prototypes/post-decision/award-start',
   org: 'University of Cardiff',
   daysLeft: '5',
   progressMessage: 'Deadline 14 May 2021',
   action: '',
   status: 'Ready to submit',
+  awardStatus: 'READY TO START',
   completeness: '100% complete',
   active: true,
+  period: '0 of 8',
   imminent: false
 }, {
   id: '97',
@@ -544,6 +547,7 @@ let megaDataApplicationsList = [{
   progressMessage: 'Deadline 14 May 2021',
   action: '',
   status: 'Ready to submit',
+  awardStatus: 'In progress',
   completeness: '100% complete',
   active: true,
   imminent: true
@@ -557,6 +561,7 @@ let megaDataApplicationsList = [{
   progressMessage: 'Deadline 21 May 2021',
   action: '',
   status: 'Ready to submit',
+  awardStatus: 'In progress',
   completeness: '100% complete',
   active: true,
   imminent: true
@@ -570,6 +575,7 @@ let megaDataApplicationsList = [{
   progressMessage: 'Deadline 14 May 2021',
   action: '',
   status: 'In progress',
+  awardStatus: 'In progress',
   completeness: '75% complete',
   active: true,
   imminent: false
@@ -583,6 +589,7 @@ let megaDataApplicationsList = [{
   progressMessage: 'Awaiting assessment',
   action: '',
   status: 'Completed',
+  awardStatus: 'RECEIVED',
   completeness: '',
   active: true
 }, {
@@ -596,6 +603,7 @@ let megaDataApplicationsList = [{
   finalMessage: 'Closed',
   action: '',
   status: 'Completed',
+  awardStatus: 'In progress',
   completeness: '',
   active: false
 }, {
@@ -609,6 +617,91 @@ let megaDataApplicationsList = [{
   finalMessage: 'Closed',
   action: 'Remove application',
   status: 'Incomplete',
+  awardStatus: 'In progress',
+  completeness: '',
+  active: false
+}, {
+  id: '488',
+  name: 'A natural anti-bacterial solution using rainwater and persimmon caly',
+  oppName: 'Innovative water supplies for the 21st century ',
+  funder: 'MRC',
+  org: 'Fulchester University',
+  daysLeft: '',
+  progressMessage: 'Deadline 20 Jan 2021',
+  finalMessage: 'Closed',
+  action: 'Remove application',
+  status: 'Incomplete',
+  awardStatus: 'In progress',
+  completeness: '',
+  active: false
+}, {
+  id: '501',
+  name: 'Making the road safer with Computer Vision Algorithms',
+  oppName: 'Safer urban transport, Part III',
+  funder: 'BBSRC',
+  org: 'Frome University',
+  daysLeft: '',
+  progressMessage: 'Deadline 20 Jan 2021',
+  finalMessage: 'Closed',
+  action: 'Remove application',
+  status: 'Incomplete',
+  awardStatus: 'Complete',
+  completeness: '',
+  active: false
+}, {
+  id: '504',
+  name: 'Averrhoa Bilimbi – A Natural Coagulant For Rubber Latex',
+  oppName: 'Modern renewables - organic vehicles and recyling',
+  funder: 'BBSRC',
+  org: 'Yeovil Technical Labs',
+  daysLeft: '',
+  progressMessage: 'Deadline 20 Jan 2021',
+  finalMessage: 'Closed',
+  action: 'Remove application',
+  status: 'Incomplete',
+  awardStatus: 'RECEIVED',
+  completeness: '',
+  active: false
+}, {
+  id: '516',
+  name: ' A convolutional neural network based approach to plant disease diagnosis',
+  oppName: 'Future Feeding - getting the most out of our agricultural spaces',
+  funder: 'EPSRC',
+  org: 'University of Somerset',
+  daysLeft: '',
+  progressMessage: 'Deadline 20 Jan 2021',
+  finalMessage: 'Closed',
+  action: 'Remove application',
+  status: 'Incomplete',
+  awardStatus: 'In progress',
+  completeness: '',
+  active: false
+}, {
+  id: '518',
+  name: 'Cheap production of nitrogen pesticides and fertilizers through hydrolysis of plant protein',
+  oppName: 'Future Feeding - getting the most out of our agricultural spaces',
+  funder: 'EPSRC',
+  org: 'Newport Univeristy',
+  daysLeft: '',
+  progressMessage: 'Deadline 20 Jan 2021',
+  finalMessage: 'Closed',
+  action: 'Remove application',
+  status: 'Incomplete',
+  awardStatus: 'In progress',
+  completeness: '',
+  active: false
+}, {
+  id: '529',
+  name: 'Combatting drought with orange peels',
+  oppName: 'Future Feeding - getting the most out of our agricultural spaces',
+  funder: 'EPSRC',
+  org: 'University of Chester',
+  daysLeft: '',
+  progressMessage: 'Deadline 20 Jan 2021',
+  finalMessage: 'Closed',
+  action: 'Remove application',
+  status: 'Incomplete',
+  awardStatus: 'Terminated',
   completeness: '',
   active: false
 }];

@@ -192,6 +192,12 @@ $module: 'application-item';
         }
     }
 
+    &--plain {
+        .#{$module}__contents {
+            padding-right: 0;
+        }
+    }
+
     &__data-item {
         position: relative;
         width: 100px;
