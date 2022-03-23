@@ -1,0 +1,130 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Home' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/post-decision/award-start', text:'Back to award overview'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Finance summary', caption='AWA222: Development of a Novel Inhibitor of Ricin') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='u-space-y0') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            <p class="govuk-body govuk-!-font-size-24">The total project costs were supplied by the partner organisation during the assessment period.</p>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='startConfirmation') %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-2') %}
+                <p class="govuk-body u-space-b0"><strong>Period</strong></p>
+                <p class="govuk-body govuk-!-font-size-24">1 of 8</p>
+            {%- endcall %}
+            {% call components.bulmaColumnAny(size='is-2') %}
+                <p class="govuk-body u-space-b0"><strong>Amount paid to date</strong></p>
+                <p class="govuk-body govuk-!-font-size-24">£0</p>
+            {%- endcall %}
+            {% call components.bulmaColumnAny(size='is-2') %}
+                <p class="govuk-body u-space-b0"><strong>Amount outstanding</strong></p>
+                <p class="govuk-body govuk-!-font-size-24">£1,000,000</p>
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                <table class="govuk-table govuk-table--stripes">
+
+                    <thead>
+                    <tr>
+                        <th class="govuk-table__header">Organisation</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Total eligible costs</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Payments to date</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Percentage (%) of <br>payments to date</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr class="">
+                        <td class="govuk-table__cell govuk-table__cell--middle">University of Wales <span class="meta">(Lead)</span> </td>
+                        <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">£750,000</td>
+                        <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">£0</td>
+                        <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">0%</td>
+                    </tr>
+
+                    <tr class="">
+                        <td class="govuk-table__cell govuk-table__cell--middle">University of Manchester </td>
+                        <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">£250,000</td>
+                        <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">£0</td>
+                        <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">0%</td>
+                    </tr>
+
+                    <tr>
+                        <td class="govuk-table__cell govuk-table__cell--mega">Totals</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">1,000,000</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£0</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">0%</td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+
+            {%- endcall %}
+        {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        function toggleVisibility(_this, id, className) {
+            // event.preventDefault();
+            let toggleSwitch = _this;
+            let toggleItem = document.getElementById(id);
+            if (hasClass(toggleItem, className)) {
+                toggleSwitch.classList.add('filter__title--closed');
+                toggleItem.classList.remove(className);
+                toggleSwitch.setAttribute('aria-expanded', true);
+            }
+            else  {
+                toggleSwitch.classList.remove('filter__title--closed');
+                toggleItem.classList.add(className);
+                toggleSwitch.setAttribute('aria-expanded', false);
+            }
+            // return false;
+        }
+        function hasClass(target, className) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
+    </script>
+{% endblock %}
+

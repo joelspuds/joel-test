@@ -114,3 +114,10 @@
   border-top: 2px solid govuk-colour("mid-grey");
   @include govuk-font($size: 19, $weight: bold);
 }
+
+.govuk-summary-list--narrow {
+  .govuk-summary-list__actions {
+    width: 10%;
+  }
+
+}

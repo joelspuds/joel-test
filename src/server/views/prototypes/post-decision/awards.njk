@@ -226,13 +226,55 @@
                     </thead>
                     <tbody>
 
+                    <tr class="mega-table_row-status--">
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/post-decision/award-start" class="govuk-link">AWA24 - Bio-detoxification of Ricin in castor bean</a></td>
+                        <td class="govuk-table__cell">MRC</td>
+                        <td class="govuk-table__cell">Dr. Alessandro Brock</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">£1,000,000</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            <span class="_mega-table_item-meta">0 of 8</span>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            {% if allData.startConfirmed %}
+                                <strong class="govuk-tag govuk-tag--grey">In progress</strong>
+                            {% else %}
+                                <strong class="govuk-tag govuk-tag--yellow">READY TO START</strong>
+                            {% endif %}
+
+                        </td>
+                    </tr>
+                    <tr class="mega-table_row-status--">
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/post-decision/award-change-start" class="govuk-link">AWA97 - Linear field waves in liquids</a></td>
+                        <td class="govuk-table__cell">MRC</td>
+                        <td class="govuk-table__cell">Dr. Loghan Watkins</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">£1,200,000</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            <span class="_mega-table_item-meta">2 of 12</span>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            {% if allData.transferConfirmed %}
+                                <strong class="govuk-tag govuk-tag--yellow">Awaiting transfer</strong>
+                            {% else %}
+                                <strong class="govuk-tag govuk-tag--grey">In progress</strong>
+                            {% endif %}
+
+                        </td>
+                    </tr>
+
+
                     {% for item in allData.megaDataApplications %}
                         <tr class="mega-table_row-status--">
                             <td class="govuk-table__cell mega-table__cell--fixed"><a href="{% if item.awardURL %}{{ item.awardURL }}{% else %}#{% endif %}" class="govuk-link">AWA{{ item.id }} - {{ item.name }}</a></td>
                             <td class="govuk-table__cell">{{ item.funder }}</td>
                             <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
                             {#<td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1, 10) | random }}</td>#}
-                            <td class="govuk-table__cell govuk-table__cell--numeric">£{{ range(100, 1000) | random | numberFormat }},000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                               {% if item.awardAmount %}
+                                   £{{ item.awardAmount }}
+                               {% else %}
+                                    £{{ range(100, 1000) | random | numberFormat }},000
+                               {% endif %}
+                            </td>
                             <td class="govuk-table__cell govuk-table__cell--numeric">
                                 <span class="_mega-table_item-meta">
                                     {% if item.period %}
@@ -245,19 +287,19 @@
                             </td>
                             <td class="govuk-table__cell govuk-table__cell--numeric">
                                 {% if item.awardStatus == 'READY TO START' %}
-                                    <span class="badge--plain badge--smaller">{{ item.awardStatus }}</span>
+                                    <strong class="govuk-tag govuk-tag--yellow">{{ item.awardStatus }}</strong>
                                 {% endif %}
                                 {% if item.awardStatus == 'RECEIVED' %}
-                                    <span class="badge--plain badge badge--smaller badge">{{ item.awardStatus }}</span>
+                                    <strong class="govuk-tag govuk-tag--purple">{{ item.awardStatus }}</strong>
                                 {% endif %}
                                 {% if item.awardStatus == 'In progress' %}
-                                    {{ item.awardStatus }}
+                                    <strong class="govuk-tag govuk-tag--grey">{{ item.awardStatus }}</strong>
                                 {% endif %}
                                 {% if item.awardStatus == 'Complete' %}
-                                    <span class="status-text--green">{{ item.awardStatus }}</span>
+                                    <strong class="govuk-tag govuk-tag--green">{{ item.awardStatus }}</strong>
                                 {% endif %}
                                 {% if item.awardStatus == 'Terminated' %}
-                                    <span class="status-text--red">{{ item.awardStatus }}</span>
+                                    <strong class="govuk-tag govuk-tag--red">{{ item.awardStatus }}</strong>
                                 {% endif %}
 
                             </td>

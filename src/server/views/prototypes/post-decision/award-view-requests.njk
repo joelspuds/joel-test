@@ -1,0 +1,68 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Home' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/post-decision/award-change-start', text:'Back to award overview'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='View award change requests', caption='AWA97 - Linear field waves in liquids') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-7') %}
+
+            <table class="govuk-table">
+                <thead>
+                    <tr class="govuk-table__header">
+                        <th class="govuk-table__header">Change type</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="govuk-table__cell">
+                            <a href="/prototypes/post-decision/award-transfer-progress" class="govuk-link">Transfer</a>
+                            <p class="govuk-body u-space-y0">
+                                By Arden Pimenta - University of Wales, <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span>
+                            </p>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">-</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+

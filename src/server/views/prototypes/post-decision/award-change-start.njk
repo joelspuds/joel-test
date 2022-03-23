@@ -26,24 +26,10 @@
 
 {% block content %}
 
+    {% if allData.transferConfirmed %}
 
-
-    {% call components.bulmaRow() %}
-        {% call components.bulmaColumnAny(size='is-full') %}
-
-            {% if allData.startConfirmed %}
-
-                <div class="govuk-notification-banner govuk-notification-banner--success" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-                    <div class="govuk-notification-banner__header">
-                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
-                    </div>
-                    <div class="govuk-notification-banner__content">
-                        <p class="govuk-notification-banner__heading">Start confirmed</p>
-                        <p class="govuk-body">By Jane Doe on behalf of University of Wales on {{ 'dataAndTime' | dateAndTime() }}</p>
-                    </div>
-                </div>
-
-            {% else %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
 
                 <div class="govuk-notification-banner govuk-notification-banner--info" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
                     <div class="govuk-notification-banner__header">
@@ -51,23 +37,23 @@
                     </div>
                     <div class="govuk-notification-banner__content">
                         <p class="govuk-notification-banner__heading">
-                            Your award is ready to start
+                            Awaiting transfer
                         </p>
                         <p class="govuk-body">
-                            You must start your award before before <strong>28 July 2022</strong>. <a class="govuk-notification-banner__link" href="/prototypes/post-decision/award-confirmation">Submit your start confirmation</a>
-                            {#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}
+                            Transfer of this award to another research organisation is in progress. <a class="govuk-notification-banner__link" href="/prototypes/post-decision/award-transfer-progress">View progress</a>
                         </p>
                     </div>
                 </div>
 
-            {% endif %}
-
+            {%- endcall %}
         {%- endcall %}
-    {%- endcall %}
+
+
+    {% endif %}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Award overview', caption='AWA222: Development of a Novel Inhibitor of Ricin') }}
+            {{ components.captionHeading(text='Award overview', caption='AWA97 - Linear field waves in liquids') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -79,24 +65,22 @@
 
     {% call components.bulmaRow(extraClass='u-space-b45') %}
         {% call components.bulmaColumnAny(size='is-3') %}
-            <p class="govuk-body u-space-y0"><strong>Status: </strong>
-                {% if allData.startConfirmed %}
-                    <strong class="govuk-tag govuk-tag--grey">In progress</strong>
+            <p class="govuk-body u-space-y0">
+                <strong>Status: </strong>
+                {% if allData.transferConfirmed %}
+                    <strong class="govuk-tag govuk-tag--yellow">Awaiting transfer</strong>
                 {% else %}
-                    <strong class="govuk-tag govuk-tag--yellow">Ready to start</strong>
+                    <strong class="govuk-tag govuk-tag--grey">In progress</strong>
                 {% endif %}
+
             </p>
-            <p class="govuk-body u-space-y0"><strong>Period: </strong> 0 of 24</p>
+            <p class="govuk-body u-space-y0"><strong>Period: </strong> 2 of 12</p>
         {%- endcall %}
         {% call components.bulmaColumnAny(size='is-3') %}
-            <p class="govuk-body u-space-y0"><strong>Start date:</strong> May 2022 to July 2022</p>
-            <p class="govuk-body u-space-y0"><strong>Duration:</strong> 24 months</p>
+            <p class="govuk-body u-space-y0"><strong>Start date: </strong> January 2022</p>
+            <p class="govuk-body u-space-y0"><strong>Duration: </strong> 12 months</p>
         {%- endcall %}
     {%- endcall %}
-
-
-
-
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-7') %}
@@ -108,18 +92,7 @@
                 <div class="application-item  application-item--skinny">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
-                            <a href="/prototypes/post-decision/award-details" class="govuk-link">Details</a>
-                        </div>
-                        {#<div class="application-item__right">
-                            <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
-                        </div>#}
-                    </div>
-                </div>
-
-                <div class="application-item  application-item--skinny">
-                    <div class="application-item__contents govuk-clearfix">
-                        <div class="application-item__left">
-                            <a href="/prototypes/post-decision/award-team" class="govuk-link">Team</a>
+                            <a href="" class="govuk-link">Details</a>
                         </div>
                     </div>
                 </div>
@@ -127,7 +100,17 @@
                 <div class="application-item  application-item--skinny">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
-                            <a href="/prototypes/post-decision/award-agreement" class="govuk-link">Award agreement</a>
+                            {#<a href="/prototypes/post-decision/award-team" class="govuk-link">Team</a>#}
+                            <a href="#" class="govuk-link">Team</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-item  application-item--skinny">
+                    <div class="application-item__contents govuk-clearfix">
+                        <div class="application-item__left">
+                            {#<a href="/prototypes/post-decision/award-agreement" class="govuk-link">Award agreement</a>#}
+                            <a href="#" class="govuk-link">Award agreement</a>
                         </div>
                     </div>
                 </div>
@@ -135,7 +118,8 @@
                 <div class="application-item application-item--skinny">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
-                            <a href="/prototypes/post-decision/award-docs" class="govuk-link">Supporting documents</a>
+                            {#<a href="/prototypes/post-decision/award-docs" class="govuk-link">Supporting documents</a>#}
+                            <a href="#" class="govuk-link">Supporting documents</a>
                         </div>
                     </div>
                 </div>
@@ -143,15 +127,14 @@
                 <div class="application-item application-item--skinny application-item--plain">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
-                            <a href="/prototypes/post-decision/award-confirmation" class="govuk-link">Start confirmation</a>
+                            {#<a href="/prototypes/post-decision/award-confirmation" class="govuk-link">Start confirmation</a>#}
+                            <a href="#" class="govuk-link">Start confirmation</a>
                         </div>
                         <div class="application-item__right">
-
-                            {% if allData.startConfirmed %}
-                                {#<strong class="govuk-tag govuk-tag--grey">In progress</strong>#}
-                            {% else %}
-                                <strong class="govuk-tag govuk-tag--yellow">READY TO START</strong>
-                            {% endif %}
+                            {#<strong class="govuk-tag govuk-tag--yellow">
+                                READY TO START
+                            </strong>#}
+                            {#<span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>#}
                         </div>
                     </div>
                 </div>
@@ -164,7 +147,8 @@
                 <div class="application-item  application-item--skinny">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
-                            <a href="/prototypes/post-decision/award-costs" class="govuk-link">Costs</a>
+                            {#<a href="/prototypes/post-decision/award-costs" class="govuk-link">Costs</a>#}
+                            <a href="#" class="govuk-link">Costs</a>
                         </div>
                         {#<div class="application-item__right">
                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
@@ -175,7 +159,8 @@
                 <div class="application-item  application-item--skinny">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
-                            <a href="/prototypes/post-decision/award-payment-schedule" class="govuk-link">Payment schedule</a>
+                            {#<a href="/prototypes/post-decision/award-payment-schedule" class="govuk-link">Payment schedule</a>#}
+                            <a href="#" class="govuk-link">Payment schedule</a>
                         </div>
                     </div>
                 </div>
@@ -183,7 +168,8 @@
                 <div class="application-item  application-item--skinny">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
-                            <a href="/prototypes/post-decision/award-finance-summary" class="govuk-link">Finance summary</a>
+                            {#<a href="/prototypes/post-decision/award-finance-summary" class="govuk-link">Finance summary</a>#}
+                            <a href="#" class="govuk-link">Finance summary</a>
                         </div>
                     </div>
                 </div>
@@ -191,7 +177,8 @@
                 <div class="application-item  application-item--skinny">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
-                            <a href="/prototypes/post-decision/award-expenditure" class="govuk-link">Expenditure statements</a>
+                            {#<a href="/prototypes/post-decision/award-expenditure" class="govuk-link">Expenditure statements</a>#}
+                            <a href="#" class="govuk-link">Expenditure statements</a>
                         </div>
                     </div>
                 </div>
@@ -204,7 +191,7 @@
                 <div class="application-item  application-item--skinny">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
-                            <a href="/prototypes/post-decision/award-change-request" class="govuk-link">Create new award change request</a>
+                            <a href="/prototypes/post-decision/award-create-change-request" class="govuk-link">Create new award change request</a>
                         </div>
                         {#<div class="application-item__right">
                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
@@ -230,20 +217,20 @@
             <div class="application-data application-data--large ">
                 <dl class="application-data__list">
                     <dt class="application-data__key"><strong>Application reference:</strong></dt>
-                    <dd class="application-data__value"><a href="#" class="govuk-link">APP101660 (opens in new window)</a> </dd>
+                    <dd class="application-data__value"><a href="#" class="govuk-link">APP142889 (opens in new window)</a> </dd>
                     <dt class="application-data__key"><strong>Application name:</strong></dt>
-                    <dd class="application-data__value">The economics of grant funding in a post-pandemic world</dd>
+                    <dd class="application-data__value">Liquid field dynamics and deep-sea molusca</dd>
                     <dt class="application-data__key"><strong>Applicant:</strong></dt>
                     <dd class="application-data__value">{{ 'addHonorific' | giveMeAName }}</dd>
                     <dt class="application-data__key"><strong>Email:</strong></dt>
                     <dd class="application-data__value">a.person@academic-org.ac.uk</dd>
                     <dt class="application-data__key"><strong>Organisations:</strong></dt>
                     <dd class="application-data__value">
-                        University of Wales<br>
-                        Manchester University
+                        Belfast University<br>
+                        Fulchester Institute of Science
                     </dd>
                     <dt class="application-data__key"><strong>Award value:</strong></dt>
-                    <dd class="application-data__value">£1,200,000</dd>
+                    <dd class="application-data__value">£1,000,000</dd>
                 </dl>
             </div>
 

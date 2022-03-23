@@ -20,7 +20,7 @@
 {%  set loggedOut = false %}
 
 {% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/post-decision/award', text:'Back to award overview'}] %}
+{% set backLinkContents =  [{url:'/prototypes/post-decision/award-start', text:'Back to award overview'}] %}
 
 {% set inviteResponse = inviteResponse if inviteResponse %}
 
@@ -179,66 +179,6 @@
             </table>
 
 
-            {{ components.captionHeading(text='Costs', size='m', tag='h2') }}
-
-            <table class="govuk-table govuk-table--stripes">
-
-                <thead>
-                <tr>
-                    <th class="govuk-table__header">Category</th>
-                    <th class="govuk-table__header govuk-table__header--numeric">Directly incurred<br>(80%)</th>
-                    <th class="govuk-table__header govuk-table__header--numeric">Directly allocated<br>(80%)</th>
-                    <th class="govuk-table__header govuk-table__header--numeric">Exceptions<br>(100%)</th>
-                    <th class="govuk-table__header govuk-table__header--numeric">Funding applied for<br>(£)</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                <tr>
-                    <td class="govuk-table__cell">Staff</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
-                </tr>
-                <tr>
-                    <td class="govuk-table__cell">Equipment</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
-                </tr>
-                <tr>
-                    <td class="govuk-table__cell">Other</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
-                </tr>
-                <tr>
-                    <td class="govuk-table__cell">Animals</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
-                </tr>
-                <tr>
-                    <td class="govuk-table__cell">Estates and indirects</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£67,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
-                </tr>
-
-                <tr>
-                    <td class="govuk-table__cell govuk-table__cell--mega">Total applied for:</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£335,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£335,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£330,000</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£1,000,000</td>
-                </tr>
-                </tbody>
-            </table>
 
 
             {{ components.captionHeading(text='Team', size='m', tag='h2') }}

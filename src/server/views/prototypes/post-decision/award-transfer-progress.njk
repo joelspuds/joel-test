@@ -1,45 +1,86 @@
-{% extends 'layouts/bulma-ufs.layout.njk' %}
-{% set showStickyNavscripts = true %}
-{% set navType = 'admin' %}
-{% set isAdminUser = true %}
-{% set pageTitle = 'Manage applicant responses'  + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
 
-{%  set review1_markReviewAsUsable = review1_markReviewAsUsable if review1_markReviewAsUsable  %}
-{%  set review4_markReviewAsUsable = review4_markReviewAsUsable if review4_markReviewAsUsable  %}
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Home' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/post-decision/award change requests', text:'Back to award change requests'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
 
 {% block content %}
 
-    {% call components.bulmaRow(extraClass='') %}
+    {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Application overview', caption='Removal of deep sea plastics and microparticles') }}
-        {%- endcall %}
-    {%- endcall %}
-
-    {% call components.bulmaRow(extraClass='', customID='main-content') %}
-        {% call components.bulmaColumnAny(size='is-full') %}
-            <div class="govuk-tabs" data-module="govuk-tabs">
-                <ul class="govuk-tabs__list">
-                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-                        <a class="govuk-tabs__tab " href="#">Application overview</a>
-                    </li>
-                    <li class="govuk-tabs__list-item ">
-                        <a class="govuk-tabs__tab" href="#">Read application</a>
-                    </li>
-                    <li class="govuk-tabs__list-item">
-                        <a class="govuk-tabs__tab" href="#">Reviews</a>
-                    </li>
-                    <li class="govuk-tabs__list-item">
-                        <a class="govuk-tabs__tab" href="#">Response</a>
-                    </li>
-                </ul>
-            </div>
+            {{ components.captionHeading(text='Transfer', caption='View award change requests') }}
         {%- endcall %}
     {%- endcall %}
 
     {% call components.bulmaRow() %}
-        {% call components.bulmaColumnAny(size='is-8', customID='main-content') %}
-            <div class="govuk-accordion govuk-accordion__timeline" data-module="govuk-accordion" id="accordion-default">
+        {% call components.bulmaColumnAny(size='is-9') %}
+
+            <div class="timeline">
+                <ul class="timeline__list">
+                    <li class="timeline__item timeline__item--active">
+                        <span class="timeline__title">Transfer request submitted</span>
+                        <span class="timeline__meta">By Arden Pimenta - University of Wales, <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span></span>
+                        <p class="govuk-body u-space-t20 u-space-b0">
+                            <strong>What happens next</strong><br>
+                            A transfer request will be sent to the receiving Research Organisation and UKRI for
+                            them to confirm their acceptance of the Transfer. If they accept you will then need to
+                            complete a transfer expenditure statement before the transfer date.
+                        </p>
+                        <strong class="govuk-tag govuk-tag--green">COMPLETE</strong>
+                    </li>
+                    <li class="timeline__item timeline__item--live">
+                        <span class="timeline__title">Awaiting transfer response</span>
+                        <span class="timeline__meta">Research Office - University of Bristol </span>
+                        <strong class="govuk-tag govuk-tag--yellow">WAITING ON</strong>
+                    </li>
+                    <li class="timeline__item timeline__item--live">
+                        <span class="timeline__title">Awaiting transfer response</span>
+                        <span class="timeline__meta">BBSRC - UKRI</span>
+                        <strong class="govuk-tag govuk-tag--yellow">WAITING ON</strong>
+                    </li>
+                    <li class="timeline__item timeline__item--inactive">
+                        <span class="timeline__title">Submit transfer expenditure statement</span>
+                        <span class="timeline__meta">Research Office - University of Wales</span>
+                        <strong class="govuk-tag govuk-tag--grey">UNAVAILABLE</strong>
+                    </li>
+                    <li class="timeline__item timeline__item--inactive">
+                        <span class="timeline__title">Review transfer expenditure statement</span>
+                        <span class="timeline__meta">BBSRC - UKRI</span>
+                        <strong class="govuk-tag govuk-tag--grey">UNAVAILABLE</strong>
+                    </li>
+                    <li class="timeline__item timeline__item--inactive">
+                        <span class="timeline__title">Accept award agreement</span>
+                        <span class="timeline__meta">Research Office - University of Bristol </span>
+                        <strong class="govuk-tag govuk-tag--grey">UNAVAILABLE</strong>
+                    </li>
+                    <li class="timeline__item timeline__item--inactive">
+                        <span class="timeline__title">Transfer complete</span>
+                        <strong class="govuk-tag govuk-tag--grey">UNAVAILABLE</strong>
+                    </li>
+                </ul>
+            </div>
+
+            {#<div class="govuk-accordion govuk-accordion__timeline" data-module="govuk-accordion" id="accordion-default">
                 <div class="govuk-accordion__section govuk-accordion__section--first govuk-accordion__section--active">
                     <div class="govuk-accordion__section-header">
                         <h2 class="govuk-accordion__section-heading">
@@ -90,58 +131,24 @@
                             <span class="govuk-accordion__section-button--disabled" id="accordion-default-heading-5">Decision</span>
                         </h2>
                     </div>
-                    {#<div id="accordion-default-content-5" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-5">
+                    #}{#<div id="accordion-default-content-5" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-5">
                         <p class='govuk-body'>This review is in progress</p>
-                    </div>#}
+                    </div>#}{#
                 </div>
-            </div>
-        </div>
+            </div>#}
 
-        <div class="column is-3 is-offset-1">
-            <div class="application-data u-space-b20">
-                <dl class="application-data__list">
-                    <dt class="application-data__key">Response deadline</dt>
-                    <dd class="application-data__value">29 January 2022</dd>
-                    <dt class="application-data__key">Opportunity</dt>
-                    <dd class="application-data__value"><a href="#" class="govuk-link">Development of a Novel Inhibitor of Ricin</a></dd>
-                    <dt class="application-data__key">Application reference</dt>
-                    <dd class="application-data__value">APP000563</dd>
 
-                    <dt class="application-data__key">Funder</dt>
-                    <dd class="application-data__value">AHRC, UKRI</dd>
-                </dl>
-            </div>
 
-        </div>
+
 
         {%- endcall %}
 
-
-
     {%- endcall %}
-{% endblock %}
 
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
 {% block bodyScripts %}
-    {#<script type="text/javascript">
-        /* smooth-scroll.js v1.3.1 */
-        /*
-        n=0,
-        r=500,
-        i=15,
-        */
-        (function(e,t){
-            "use strict";
-            var n=0,
-                r=250,
-                i=15,
-                s=document.getElementsByTagName("a"),
-                o;
-            for(var u=0;u<s.length;u++){
-                o=s[u].attributes.href===t?null:s[u].attributes.href.nodeValue.toString();
-                if(o!==null&&o.length>1&&o.indexOf("#")!=-1){
-                    s[u].onclick=function(){
-                        var n,s=this.attributes.href.nodeValue.toString(),o=s.substr(0,s.indexOf("#")),u=s.substr(s.indexOf("#")+1);if(n=document.getElementById(u)){var l=(r-r%i)/i,c=f(),h=(a(n)-c)/l;if(e.history&&typeof e.history.pushState=="function")e.history.pushState({},t,o+"#"+u);for(var p=1;p<=l;p++){(function(){var t=h*p;setTimeout(function(){e.scrollTo(0,t+c)},i*p)})()}return false}}}}var a=function(e){var r=n*-1;while(e.offsetParent!=t&&e.offsetParent!=null){r+=e.offsetTop+(e.clientTop!=null?e.clientTop:0);e=e.offsetParent}return r};var f=function(){return e.pageYOffset!==t?e.pageYOffset:document.documentElement.scrollTop!==t?document.documentElement.scrollTop:document.body.scrollTop}})(window)
-    </script>#}
-
 
 {% endblock %}
+

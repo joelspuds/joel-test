@@ -173,6 +173,17 @@ table td:not([align]), table th:not([align]) {
   border-style: none;
 }
 
+.govuk-table--current {
+  .govuk-table__cell {
+    background-color: govuk-colour("light-grey");
+    border-top: 2px solid govuk-colour("dark-grey");
+    border-bottom: 2px solid govuk-colour("dark-grey");
+  }
+
+}
+.govuk-table__header--top {
+  vertical-align: top !important;
+}
 .govuk-list--alpha {
   list-style-type: lower-alpha;
   padding-left: 20px;

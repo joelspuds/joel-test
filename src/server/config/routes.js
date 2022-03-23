@@ -701,8 +701,28 @@ router.get('/prototypes/post-decision/awards', demosController.pdAwardsGet);
 router.post('/prototypes/post-decision/awards', demosController.pdAwardsPost);
 router.get('/prototypes/post-decision/award-start', demosController.pdAwardStartGet);
 router.post('/prototypes/post-decision/award-start', demosController.pdAwardStartPost);
-/*router.get('/prototypes/post-decision', demosController.pdIndexGet);
-router.post('/prototypes/post-decision', demosController.pdIndexPost);*/
+router.get('/prototypes/post-decision/award-confirmation', demosController.pdAwardConfirmGet);
+router.post('/prototypes/post-decision/award-confirmation', demosController.pdAwardConfirmPost);
+router.get('/prototypes/post-decision/award-payment-schedule', demosController.pdAwardPaymentScheduleGet);
+router.post('/prototypes/post-decision/award-payment-schedule', demosController.pdAwardPaymentSchedulePost);
+router.get('/prototypes/post-decision/award-details', demosController.pdAwardDetailsGet);
+router.post('/prototypes/post-decision/award-details', demosController.pdAwardDetailsPost);
+router.get('/prototypes/post-decision/award-team', demosController.pdAwardTeamGet);
+router.post('/prototypes/post-decision/award-team', demosController.pdAwardTeamPost);
+router.get('/prototypes/post-decision/award-docs', demosController.pdAwardDocsGet);
+router.post('/prototypes/post-decision/award-docs', demosController.pdAwardDocsPost);
+//
+router.get('/prototypes/post-decision/award-change-start', demosController.pdAwardChangeStartGet);
+router.post('/prototypes/post-decision/award-change-start', demosController.pdAwardChangeStartPost);
+router.get('/prototypes/post-decision/award-create-change-request', demosController.pdAwardCreateChangeRequestGet);
+router.post('/prototypes/post-decision/award-create-change-request', demosController.pdAwardCreateChangeRequestPost);
+router.get('/prototypes/post-decision/award-change-project-details', demosController.pdAwardCreateChangeProjectDetailsGet);
+router.post('/prototypes/post-decision/award-change-project-details', demosController.pdAwardCreateChangeProjectDetailsPost);
+router.get('/prototypes/post-decision/award-change-transfer', demosController.pdAwardCreateChangeTransferGet);
+router.post('/prototypes/post-decision/award-change-transfer', demosController.pdAwardCreateChangeTransferPost);
+router.get('/prototypes/post-decision/award-change-transfer-confirm', demosController.pdAwardCreateChangeTransferConfirmGet);
+router.post('/prototypes/post-decision/award-change-transfer-confirm', demosController.pdAwardCreateChangeTransferConfirmPost);
+
 /* *************************************************************** *
 
   Design section

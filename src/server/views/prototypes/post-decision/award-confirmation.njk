@@ -1,0 +1,205 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Home' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/post-decision/award-start', text:'Back to award overview'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-notification-banner govuk-notification-banner--info" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">Your award is ready to start</p>
+                    <p class="govuk-body">You must start your award before before <strong>28 July 2022</strong>.</p>
+                </div>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Start confirmation', caption='AWA222: Development of a Novel Inhibitor of Ricin') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='u-space-y0') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            <p class="govuk-body  govuk-!-font-size-24">You must provide the actual start date of the award and details of the funding heading under which expenditure has been incurred. Submission of the Start Confirmation is required no more than 42 days after the actual start date.</p>
+
+        {%- endcall %}
+    {%- endcall %}
+    {% call components.form(action='#', method='POST',name='startConfirmation') %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-7') %}
+
+                <div class="govuk-form-group u-space-t45">
+                    <fieldset class="govuk-fieldset" role="group">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            <h2 class="govuk-fieldset__heading">Actual stat date</h2>
+                        </legend>
+                        <div id="passport-issued-hint" class="govuk-hint">
+                            What date did your project begin?
+                        </div>
+                        <div class="govuk-date-input" id="">
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="startConfirmationDay">
+                                        Day
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="startConfirmationDay" name="startConfirmationDay" type="text" pattern="[0-9]*" inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="startConfirmationMonth">
+                                        Month
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="startConfirmationMonth" name="startConfirmationMonth" type="text" pattern="[0-9]*" inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="startConfirmationYear">
+                                        Year
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="startConfirmationYear" name="startConfirmationYear" type="text" pattern="[0-9]*" inputmode="numeric">
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </div>
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-7') %}
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="expenditure">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            <h2 class="govuk-fieldset__heading">Expenditure funding heading</h2>
+                        </legend>
+                        <div id="expenditure" class="govuk-hint">
+                            Which funding heading has expenditure has been incurred?
+                            <br> allData.expenditureFundingHeading = {{ allData.expenditureFundingHeading }}
+                            allData.startConfirmed = {{ allData.startConfirmed }}
+                        </div>
+                        {{ allData.expenditureFundingHeading }}
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="directlyIncurred" name="expenditureFundingHeading" type="radio" value="Directly incurred">
+                                <label class="govuk-label govuk-radios__label" for="directlyIncurred">Directly incurred</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="directlyAllocated" name="expenditureFundingHeading" type="radio" value="Directly allocated">
+                                <label class="govuk-label govuk-radios__label" for="directlyAllocated">Directly allocated</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="indirectCosts" name="expenditureFundingHeading" type="radio" value="Indirect costs">
+                                <label class="govuk-label govuk-radios__label" for="indirectCosts">Indirect costs</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="exceptions" name="expenditureFundingHeading" type="radio" value="Exceptions">
+                                <label class="govuk-label govuk-radios__label" for="exceptions">Exceptions</label>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </div>
+
+
+
+            {%- endcall %}
+        {%- endcall %}
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+                <div class="application-item">
+                    <div class="application-item__contents application-item__contents--mac">
+                        <div class="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="markAsComplete2" name="isComplete2" type="checkbox" {% if fundersIsComplete %} checked{% endif %}>
+                                <label class="govuk-label govuk-checkboxes__label" for="markAsComplete2">Mark as complete</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="application-controls govuk-clearfix">
+                    {{ components.button(text='Confirm start', extraClass="application-controls__submit") }}
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        function toggleVisibility(_this, id, className) {
+            // event.preventDefault();
+            let toggleSwitch = _this;
+            let toggleItem = document.getElementById(id);
+            if (hasClass(toggleItem, className)) {
+                toggleSwitch.classList.add('filter__title--closed');
+                toggleItem.classList.remove(className);
+                toggleSwitch.setAttribute('aria-expanded', true);
+            }
+            else  {
+                toggleSwitch.classList.remove('filter__title--closed');
+                toggleItem.classList.add(className);
+                toggleSwitch.setAttribute('aria-expanded', false);
+            }
+            // return false;
+        }
+        function hasClass(target, className) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
+    </script>
+{% endblock %}
+

@@ -1,0 +1,122 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Home' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/post-decision/award-change-start', text:'Back to award overview'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Create new award change request', caption='AWA97 - Linear field waves in liquids') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            <p class="govuk-body govuk-!-font-size-24">Select the type of change you want to create</p>
+        {%- endcall %}
+    {%- endcall %}
+    {% call components.form(action='#', method='POST',name='startConfirmation') %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-7') %}
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="expenditure">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            <h2 class="govuk-fieldset__heading">Change category</h2>
+                        </legend>
+                        {#<div id="expenditure" class="govuk-hint">
+                            Which funding heading has expenditure has been incurred?
+                        </div>#}
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="financial" name="newChangeRequest" type="radio" value="Financial">
+                                <label class="govuk-label govuk-radios__label" for="financial">Financial</label>
+                                <span class="govuk-hint govuk-radios__hint">Additional funds</span>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="projectDetails" name="newChangeRequest" type="radio" value="Project details">
+                                <label class="govuk-label govuk-radios__label" for="projectDetails">Project details</label>
+                                <span class="govuk-hint govuk-radios__hint">Team and transfer</span>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="logistics" name="newChangeRequest" type="radio" value="Logistics and timings">
+                                <label class="govuk-label govuk-radios__label" for="logistics">Logistics and timings</label>
+                                <span class="govuk-hint govuk-radios__hint">Extension, suspend, termination and change start date</span>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="strategic" name="newChangeRequest" type="radio" value="Strategic">
+                                <label class="govuk-label govuk-radios__label" for="strategic">Strategic</label>
+                                <span class="govuk-hint govuk-radios__hint">Deliverables and scope</span>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </div>
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="application-controls govuk-clearfix">
+                    {{ components.button(text='Continue', extraClass="application-controls__submit") }}
+                    <a href="/prototypes/post-decision/award-change-start" class="govuk-link">Cancel, back to award overview</a>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        function toggleVisibility(_this, id, className) {
+            // event.preventDefault();
+            let toggleSwitch = _this;
+            let toggleItem = document.getElementById(id);
+            if (hasClass(toggleItem, className)) {
+                toggleSwitch.classList.add('filter__title--closed');
+                toggleItem.classList.remove(className);
+                toggleSwitch.setAttribute('aria-expanded', true);
+            }
+            else  {
+                toggleSwitch.classList.remove('filter__title--closed');
+                toggleItem.classList.add(className);
+                toggleSwitch.setAttribute('aria-expanded', false);
+            }
+            // return false;
+        }
+        function hasClass(target, className) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
+    </script>
+{% endblock %}
+
