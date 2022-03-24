@@ -20,7 +20,7 @@ const dayAndTime = exports.dayAndTime = format => {
     }
 
     // return d.getDate() + ' ' + months[d.getMonth()] + ' at ' + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
-    return d.getDate() + ' ' + months[d.getMonth()] + ' at ' + actualHours + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes() + ' ' + amOrPm;
+    return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear() + ' ' + ' at ' + actualHours + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes() + ' ' + amOrPm;
   } else {
     return d.getTime();
   }

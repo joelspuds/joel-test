@@ -22,6 +22,9 @@ const dayAndTime = (exports.dayAndTime = format => {
       d.getDate() +
       ' ' +
       months[d.getMonth()] +
+      ' ' +
+      d.getFullYear() +
+      ' ' +
       ' at ' +
       actualHours +
       ':' +

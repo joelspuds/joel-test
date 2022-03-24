@@ -38,8 +38,8 @@
                         <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
                     </div>
                     <div class="govuk-notification-banner__content">
-                        <p class="govuk-notification-banner__heading">Start confirmed</p>
-                        <p class="govuk-body">By Jane Doe on behalf of University of Wales on {{ 'dataAndTime' | dateAndTime() }}</p>
+                        <p class="govuk-notification-banner__heading">Start confirmed by Jane Doe on behalf of University of Wales</p>
+                        {#<p class="govuk-body">By Jane Doe on behalf of University of Wales on {{ 'dataAndTime' | dateAndTime() }}</p>#}
                     </div>
                 </div>
 
@@ -88,7 +88,7 @@
             </p>
             <p class="govuk-body u-space-y0">
                 {% if allData.startConfirmed %}
-                <strong>Period: </strong> 1 of 8
+                    <strong>Period: </strong> 1 of 8
                 {% else %}
                     <strong>Period: </strong> 0 of 8
                 {% endif %}
@@ -96,7 +96,16 @@
             </p> {# TODO change to 1 of 8 when started#}
         {%- endcall %}
         {% call components.bulmaColumnAny(size='is-3') %}
-            <p class="govuk-body u-space-y0"><strong>Start date:</strong> May 2022 to July 2022</p> {# TODO: change to real date#}
+            <p class="govuk-body u-space-y0">
+
+                {% if allData.startConfirmed %}
+                    <strong>Start date: </strong> {{ 'dataAndTime' | dateAndTime() }}
+                {% else %}
+                    <strong>Start date:</strong> May 2022 to July 2022
+                {% endif %}
+
+
+            </p>
             <p class="govuk-body u-space-y0"><strong>Duration:</strong> 24 months</p>
         {%- endcall %}
     {%- endcall %}
