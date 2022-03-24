@@ -28,17 +28,19 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='View award change requests', caption='AWA97 - Linear field waves in liquids') }}
+            {{ components.captionHeading(text='Award change requests', caption='AWA97 - Linear field waves in liquids') }}
         {%- endcall %}
     {%- endcall %}
 
     {% call components.bulmaRow() %}
-        {% call components.bulmaColumnAny(size='is-7') %}
+        {% call components.bulmaColumnAny(size='is-9') %}
 
             <table class="govuk-table">
                 <thead>
                     <tr class="govuk-table__header">
                         <th class="govuk-table__header">Change type</th>
+                        <th class="govuk-table__header">Requested by</th>
+                        <th class="govuk-table__header">Organisation</th>
                         <th class="govuk-table__header govuk-table__header--numeric">Status</th>
                     </tr>
                 </thead>
@@ -46,11 +48,20 @@
                     <tr>
                         <td class="govuk-table__cell">
                             <a href="/prototypes/post-decision/award-transfer-progress" class="govuk-link">Transfer</a>
-                            <p class="govuk-body u-space-y0">
-                                By Arden Pimenta - University of Wales, <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span>
-                            </p>
+                            {#<p class="govuk-body u-space-y0">
+                                <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span>
+                            </p>#}
                         </td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric">-</td>
+                        <td class="govuk-table__cell">
+                            Arden Pimenta
+                            <br> <span class="meta govuk-!-font-size-16">on {{ 'dataAndTime' | dateAndTime() }}</span>
+                        </td>
+                        <td class="govuk-table__cell">
+                            University of Wales
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            <strong class="govuk-tag govuk-tag--grey">In progress</strong>
+                        </td>
                     </tr>
                 </tbody>
             </table>

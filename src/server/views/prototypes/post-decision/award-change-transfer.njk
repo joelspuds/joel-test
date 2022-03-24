@@ -21,7 +21,7 @@
 {%  set loggedOut = false %}
 
 {% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/post-decision/award-start', text:'Back to award overview'}] %}
+{% set backLinkContents =  [{url:'/prototypes/post-decision/award-change-project-details', text:'Back to project details'}] %}
 
 {% set inviteResponse = inviteResponse if inviteResponse %}
 
@@ -29,15 +29,15 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Transfer', caption='Create new award change request') }}
+            {{ components.captionHeading(text='Enter details about the organisation you want to transfer the award to', caption='Create new award change request') }}
         {%- endcall %}
     {%- endcall %}
 
-    {% call components.bulmaRow(extraClass='') %}
+   {# {% call components.bulmaRow(extraClass='') %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
             <p class="govuk-body govuk-!-font-size-24">Request to transfer this award to a new Research Organisation.</p>
         {%- endcall %}
-    {%- endcall %}
+    {%- endcall %}#}
 
     {% call components.form(action='#', method='POST',name='awardTransfer') %}
 
@@ -45,7 +45,7 @@
             {% call components.bulmaColumnAny(size='is-7') %}
 
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="organisation">Receiving research organisation</label>
+                    <label class="govuk-label govuk-label--s" for="organisation">Organisation name</label>
                     <span class="govuk-hint">Start entering, then select the organisation's name</span>
                     <select name="transferOrganisation" class="govuk-select control" id="transferOrganisation">
                         <option></option>

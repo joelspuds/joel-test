@@ -20,7 +20,7 @@
 {%  set loggedOut = false %}
 
 {% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/post-decision/award-change-start', text:'Back to award overview'}] %}
+{% set backLinkContents =  [{url:'/prototypes/post-decision/award-create-change-request', text:'Back to type of change request'}] %}
 
 {% set inviteResponse = inviteResponse if inviteResponse %}
 
@@ -28,15 +28,15 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Project details', caption='Create new award change request') }}
+            {{ components.captionHeading(text='Which project details do you want to change?', caption='Create new award change request') }}
         {%- endcall %}
     {%- endcall %}
 
-    {% call components.bulmaRow(extraClass='') %}
+    {#{% call components.bulmaRow(extraClass='') %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
             <p class="govuk-body govuk-!-font-size-24">Select the type of change you want to create</p>
         {%- endcall %}
-    {%- endcall %}
+    {%- endcall %}#}
     {% call components.form(action='#', method='POST',name='startConfirmation') %}
 
         {% call components.bulmaRow() %}
@@ -45,7 +45,7 @@
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset" aria-describedby="">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                            <h2 class="govuk-fieldset__heading">Change type</h2>
+                            <h2 class="govuk-fieldset__heading govuk-visually-hidden">Change type</h2>
                         </legend>
                         {#<div id="expenditure" class="govuk-hint">
                             Which funding heading has expenditure has been incurred?
@@ -53,12 +53,12 @@
                         <div class="govuk-radios" data-module="govuk-radios">
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="team" name="newChangeRequestProjectDetails" type="radio" value="Team">
-                                <label class="govuk-label govuk-radios__label" for="team">Team</label>
+                                <label class="govuk-label govuk-radios__label" for="team">The award team</label>
                                 <span class="govuk-hint govuk-radios__hint">Change the award team</span>
                             </div>
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="transfer" name="newChangeRequestProjectDetails" type="radio" value="Transfer">
-                                <label class="govuk-label govuk-radios__label" for="transfer">Transfer</label>
+                                <label class="govuk-label govuk-radios__label" for="transfer">The organisation receiving the award</label>
                                 <span class="govuk-hint govuk-radios__hint">Transfer award to another organisation</span>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
 
                 <div class="application-controls govuk-clearfix">
                     {{ components.button(text='Continue', extraClass="application-controls__submit") }}
-                    <a href="/prototypes/post-decision/award-change-start" class="govuk-link">Cancel, back to award overview</a>
+                    <a href="/prototypes/post-decision/award-change-start" class="govuk-link">Cancel and return to award overview</a>
                 </div>
 
             {%- endcall %}

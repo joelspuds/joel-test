@@ -28,7 +28,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Create new award change request', caption='AWA97 - Linear field waves in liquids') }}
+            {{ components.captionHeading(text='Which type of change request do you want to create?', caption='AWA97 - Linear field waves in liquids') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -45,7 +45,7 @@
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset" aria-describedby="expenditure">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                            <h2 class="govuk-fieldset__heading">Change category</h2>
+                            <h2 class="govuk-fieldset__heading govuk-visually-hidden">Change category</h2>
                         </legend>
                         {#<div id="expenditure" class="govuk-hint">
                             Which funding heading has expenditure has been incurred?
@@ -84,7 +84,7 @@
 
                 <div class="application-controls govuk-clearfix">
                     {{ components.button(text='Continue', extraClass="application-controls__submit") }}
-                    <a href="/prototypes/post-decision/award-change-start" class="govuk-link">Cancel, back to award overview</a>
+                    <a href="/prototypes/post-decision/award-change-start" class="govuk-link">Cancel and return to award overview</a>
                 </div>
 
             {%- endcall %}

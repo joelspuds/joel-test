@@ -20,7 +20,7 @@
 {%  set loggedOut = false %}
 
 {% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/post-decision/award-start', text:'Back to award overview'}] %}
+{% set backLinkContents =  [{url:'/prototypes/post-decision/award-change-transfer', text:'‘Back to organisation details'}] %}
 
 {% set inviteResponse = inviteResponse if inviteResponse %}
 
@@ -28,13 +28,13 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Are you sure you want to transfer your awward?', caption='Create new award change request') }}
+            {{ components.captionHeading(text='Are you sure you want to transfer your award?', caption='Create new award change request') }}
         {%- endcall %}
     {%- endcall %}
 
     {% call components.bulmaRow(extraClass='') %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            <p class="govuk-body govuk-!-font-size-24">A transfer request will be sent to the receiving Research Organisation and UKRI for them to confirm their acceptance of the Transfer. If they accept you will then need to complete a transfer expenditure statement before the transfer date.  </p>
+            <p class="govuk-body govuk-!-font-size-24">We'll send a transfer request to UKRI and the receiving research organisation so they can confirm that they accept this transfer. If they accept, you’ll need to complete a transfer expenditure statement before the transfer date.</p>
         {%- endcall %}
     {%- endcall %}
 
@@ -45,7 +45,7 @@
 
                 <dl class="govuk-summary-list govuk-summary-list--narrow">
                     <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">Receiving research organisation</dt>
+                        <dt class="govuk-summary-list__key">Organisation name</dt>
                         <dd class="govuk-summary-list__value">{{ allData.transferOrganisation }}
                         </dd>
                         <dd class="govuk-summary-list__actions govuk-summary-list__actions">

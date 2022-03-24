@@ -28,7 +28,17 @@
     { text: 'Pathways to impact', url: '#pathways', class:'canScroll' },
     { text: 'Data impact statement', url: '#data', class:'canScroll' },
     { text: 'Finances', url: '#finances', class:'canScroll' },
-    { text: 'Letters of support', url: '#letters', class:'canScroll' }
+    { text: 'Letters of support', url: '#letters', class:'canScroll' },
+    { text: 'Section with an unusually long name so it wraps', url: '#section7', class:'canScroll' },
+    { text: 'This is another section', url: '#section8', class:'canScroll' },
+    { text: 'Well, let\'s have pone here' , url:' #section9', class:'canScroll' },
+    { text: 'This is another really long one to push ti down a bit more', url: '#section10', class:'canScroll' },
+    { text: 'Running out of steam on this section names', url: '#section11', class:'canScroll' },
+    { text: 'Blah ', url: '#section12', class:'canScroll' },
+    { text: 'Section 13 I think', url: '#section13', class:'canScroll' },
+    { text: 'Section 14 unless I\'ve lost count', url: '#section14', class:'canScroll' },
+    { text: 'This is probably section 15', url: '#section15', class:'canScroll' },
+    { text: 'Finally, the last one I think, section 16 PHEW', url: '#section16', class:'canScroll' }
 ] %}
 
 {% block content %}
@@ -117,10 +127,6 @@
 
                                 {{ components.captionHeading(text='Review deadline',tag='h2', size='s', extraClass='u-space-b5') }}
 
-                           {#     <p class="govuk-body">
-                                    14 May 2021
-                                </p>#}
-
                                 <p class="govuk-body">
                                     14 May 2021 (21 days left) <br>
                                     <a href="#" class="govuk-link">Request extension</a>
@@ -131,20 +137,6 @@
                                 <p class="govuk-body">
                                     <a href="#">Development of a Novel Inhibitor of Ricin</a>
                                 </p>
-
-                                {#{{ components.captionHeading(text='Application title',tag='h2', size='s', extraClass='u-space-b5') }}
-
-                                <p class="govuk-body">
-                                    Bio-detoxification of Ricin in castor bean
-                                </p>#}
-
-                                {#{{ components.captionHeading(text='Team',tag='h2', size='s', extraClass='u-space-b5') }}
-
-                                <p class="govuk-body">
-                                    <strong>Principal investigator:</strong> Prof Giles Dexter, Coventry University<br>
-                                    <strong>Co-investigator:</strong> Prof Ian Charles,  Coventry University<br>
-                                    <strong>Researcher:</strong> Dr Maxwell Peterson,  Coventry University<br>
-                                </p>#}
 
                                 {{ components.captionHeading(text='Grant size',tag='h2', size='s', extraClass='u-space-b5') }}
 
@@ -269,35 +261,6 @@
                                     <li>share personal information</li>
                                     <li>base on rumour or opinion</li>
                                 </ul>
-
-                                {#<p class="govuk-body">The applicant will be able to read your review and respond to what you have written. Their comments and your review are both submitted to panel to help shape funding decisions.</p>
-
-                                <div class="application-items u-space-b30">
-                                    <div class="application-item application-item--skinny {% if isComplete %} application-item--complete {% else%} application-item--incomplete {% endif %} ">
-                                        <div class="application-item__contents govuk-clearfix">
-                                            <div class="application-item__left">
-                                                <a href="/prototypes/peer-review-external/write-review" class="govuk-link">Write your review</a>
-                                            </div>
-                                            <div class="application-item__right">
-                                                {% if isComplete %}
-                                                <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
-                                                {% else %}
-                                                <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
-                                                {% endif %}
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {% call components.form(action='#', method='POST',name='formAddApplicant') %}
-                                <div class="application-controls govuk-clearfix">
-
-                                    <input class="govuk-button application-controls__submit" type="submit" value="Save as draft" {% if not isComplete %} disabled {% endif %}>
-
-                                </div>
-                                {%- endcall %}#}
-
 
 
                             {%- endcall %}

@@ -20,7 +20,7 @@
 {%  set loggedOut = false %}
 
 {% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/post-decision/award change requests', text:'Back to award change requests'}] %}
+{% set backLinkContents =  [{url:'/prototypes/post-decision/award-change-start', text:'Back to award overview'}] %}
 
 {% set inviteResponse = inviteResponse if inviteResponse %}
 
@@ -28,7 +28,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Transfer', caption='View award change requests') }}
+            {{ components.captionHeading(text='Transfer requests', caption='View award change requests') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -39,12 +39,10 @@
                 <ul class="timeline__list">
                     <li class="timeline__item timeline__item--active">
                         <span class="timeline__title">Transfer request submitted</span>
-                        <span class="timeline__meta">By Arden Pimenta - University of Wales, <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span></span>
+                        <span class="timeline__meta">By Arden Pimenta, University of Wales, <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span></span>
                         <p class="govuk-body u-space-t20 u-space-b0">
                             <strong>What happens next</strong><br>
-                            A transfer request will be sent to the receiving Research Organisation and UKRI for
-                            them to confirm their acceptance of the Transfer. If they accept you will then need to
-                            complete a transfer expenditure statement before the transfer date.
+                            We'll send a transfer request to UKRI and the receiving research organisation so they can confirm that they accept this transfer. If they accept, you’ll need to complete a transfer expenditure statement before the transfer date.
                         </p>
                         <strong class="govuk-tag govuk-tag--green">COMPLETE</strong>
                     </li>
