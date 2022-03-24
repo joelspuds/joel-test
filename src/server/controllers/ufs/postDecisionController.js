@@ -26,7 +26,7 @@ export function pdIndexGet(req, res) {
 export function pdIndexPost(req, res) {
   const {} = req.body;
 
-  req.session.organisation = 'Fulchester University';
+  req.session.organisation = 'University of Wales';
   req.session.userName = 'Dr Randy Gartner';
 
   let targetURL;

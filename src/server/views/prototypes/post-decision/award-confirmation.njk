@@ -34,8 +34,8 @@
                     <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
                 </div>
                 <div class="govuk-notification-banner__content">
-                    <p class="govuk-notification-banner__heading">Your award is ready to start</p>
-                    <p class="govuk-body">You must start your award before before <strong>28 July 2022</strong>.</p>
+                    <p class="govuk-notification-banner__heading">You must start your award before before <strong>28 July 2022</strong></p>
+                    {#<p class="govuk-body">You must start your award before before <strong>28 July 2022</strong>.</p>#}
                 </div>
             </div>
 
@@ -44,13 +44,13 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Start confirmation', caption='AWA222: Development of a Novel Inhibitor of Ricin') }}
+            {{ components.captionHeading(text='Start date confirmation', caption='AWA222: Development of a Novel Inhibitor of Ricin') }}
         {%- endcall %}
     {%- endcall %}
 
     {% call components.bulmaRow(extraClass='u-space-y0') %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            <p class="govuk-body  govuk-!-font-size-24">You must provide the actual start date of the award and details of the funding heading under which expenditure has been incurred. Submission of the Start Confirmation is required no more than 42 days after the actual start date.</p>
+            <p class="govuk-body  govuk-!-font-size-24">You must submit this information no later than 42 days after the actual start date.</p>
 
         {%- endcall %}
     {%- endcall %}
@@ -62,11 +62,11 @@
                 <div class="govuk-form-group u-space-t45">
                     <fieldset class="govuk-fieldset" role="group">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                            <h2 class="govuk-fieldset__heading">Actual stat date</h2>
+                            <h2 class="govuk-fieldset__heading">Project start date</h2>
                         </legend>
-                        <div id="passport-issued-hint" class="govuk-hint">
+                        {#<div id="passport-issued-hint" class="govuk-hint">
                             What date did your project begin?
-                        </div>
+                        </div>#}
                         <div class="govuk-date-input" id="">
                             <div class="govuk-date-input__item">
                                 <div class="govuk-form-group">
@@ -112,10 +112,7 @@
                         </legend>
                         <div id="expenditure" class="govuk-hint">
                             Which funding heading has expenditure has been incurred?
-                            <br> allData.expenditureFundingHeading = {{ allData.expenditureFundingHeading }}
-                            allData.startConfirmed = {{ allData.startConfirmed }}
                         </div>
-                        {{ allData.expenditureFundingHeading }}
                         <div class="govuk-radios" data-module="govuk-radios">
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="directlyIncurred" name="expenditureFundingHeading" type="radio" value="Directly incurred">

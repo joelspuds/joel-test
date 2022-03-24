@@ -31,11 +31,11 @@
         {%- endcall %}
     {%- endcall %}
 
-    {% call components.bulmaRow(extraClass='u-space-y0') %}
-        {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            <p class="govuk-body u-space-y0">Showing <strong>13</strong> awards</p>
+    {#{% call components.bulmaRow(extraClass='u-space-y0') %}
+        {% call components.bulmaColumnAny(size='is-3 is-offset-3') %}
+            <p class="govuk-body _u-space-y0">Showing <strong>13</strong> awards</p>
         {%- endcall %}
-    {%- endcall %}
+    {%- endcall %}#}
 
     {% call components.bulmaRow() %}
 
@@ -45,7 +45,7 @@
 
             <div class="govuk-related-items govuk-related-items--flush u-space-t15">
 
-                {{ components.captionHeading(text='Filters and sorting', tag='h2', size='s') }}
+                {{ components.captionHeading(text='Filters', tag='h2', size='s') }}
 
                 <div class="filter">
                     <h2 class="filter__title">Filter by status</h2>
@@ -118,7 +118,7 @@
                 </div>#}
 
                 <div class="filter filter-toggle __filter-toggle--shut">
-                    <button class="filter__title" type="button" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')" aria-expanded="false">Filter by council</button>
+                    <button class="filter__title" type="button" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')" aria-expanded="false">Filter by funding body</button>
                     {#<h2 class="filter__title" tabindex="0" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')">Filter by council</h2>#}
                     <span class="filter__toggle"></span>
                     <ul class="filter__list u-clearfix js-hidden" id="toggleCouncilsList">
@@ -213,11 +213,13 @@
 
             <div class="responsive-table">
 
+                <p class="govuk-body u-space-t10">Showing <strong>13</strong> awards</p>
+
                 <table class="govuk-table mega-table responsive-table__table">
                     <thead>
                         <tr class="govuk-table__header">
                             <th class="govuk-table__header">Award name</th>
-                            <th class="govuk-table__header">Funder</th>
+                            <th class="govuk-table__header">Funding<br>Body</th>
                             <th class="govuk-table__header">Principle<br>investigator</th>
                             <th class="govuk-table__header govuk-table__header--numeric">Award<br>amount</th>
                             <th class="govuk-table__header govuk-table__header--numeric">Period</th>

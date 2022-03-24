@@ -54,7 +54,7 @@
                             Your award is ready to start
                         </p>
                         <p class="govuk-body">
-                            You must start your award before before <strong>28 July 2022</strong>. <a class="govuk-notification-banner__link" href="/prototypes/post-decision/award-confirmation">Submit your start confirmation</a>
+                            You need to  <a class="govuk-notification-banner__link" href="/prototypes/post-decision/award-confirmation">tell us when you’ll start your award</a>. This must be by <strong>28 July 2022</strong>
                             {#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}
                         </p>
                     </div>
@@ -86,10 +86,17 @@
                     <strong class="govuk-tag govuk-tag--yellow">Ready to start</strong>
                 {% endif %}
             </p>
-            <p class="govuk-body u-space-y0"><strong>Period: </strong> 0 of 24</p>
+            <p class="govuk-body u-space-y0">
+                {% if allData.startConfirmed %}
+                <strong>Period: </strong> 1 of 8
+                {% else %}
+                    <strong>Period: </strong> 0 of 8
+                {% endif %}
+
+            </p> {# TODO change to 1 of 8 when started#}
         {%- endcall %}
         {% call components.bulmaColumnAny(size='is-3') %}
-            <p class="govuk-body u-space-y0"><strong>Start date:</strong> May 2022 to July 2022</p>
+            <p class="govuk-body u-space-y0"><strong>Start date:</strong> May 2022 to July 2022</p> {# TODO: change to real date#}
             <p class="govuk-body u-space-y0"><strong>Duration:</strong> 24 months</p>
         {%- endcall %}
     {%- endcall %}
@@ -108,7 +115,7 @@
                 <div class="application-item  application-item--skinny">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
-                            <a href="/prototypes/post-decision/award-details" class="govuk-link">Details</a>
+                            <a href="/prototypes/post-decision/award-details" class="govuk-link">Award details</a>
                         </div>
                         {#<div class="application-item__right">
                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
@@ -143,7 +150,7 @@
                 <div class="application-item application-item--skinny application-item--plain">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
-                            <a href="/prototypes/post-decision/award-confirmation" class="govuk-link">Start confirmation</a>
+                            <a href="/prototypes/post-decision/award-confirmation" class="govuk-link">Start date confirmation</a>
                         </div>
                         <div class="application-item__right">
 
@@ -235,14 +242,14 @@
                     <dd class="application-data__value">The economics of grant funding in a post-pandemic world</dd>
                     <dt class="application-data__key"><strong>Applicant:</strong></dt>
                     <dd class="application-data__value">{{ 'addHonorific' | giveMeAName }}</dd>
-                    <dt class="application-data__key"><strong>Email:</strong></dt>
+                    <dt class="application-data__key"><strong>Email address:</strong></dt>
                     <dd class="application-data__value">a.person@academic-org.ac.uk</dd>
                     <dt class="application-data__key"><strong>Organisations:</strong></dt>
                     <dd class="application-data__value">
                         University of Wales<br>
                         Manchester University
                     </dd>
-                    <dt class="application-data__key"><strong>Award value:</strong></dt>
+                    <dt class="application-data__key"><strong>Award amount:</strong></dt>
                     <dd class="application-data__value">£1,200,000</dd>
                 </dl>
             </div>
