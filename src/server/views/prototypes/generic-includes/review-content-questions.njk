@@ -83,7 +83,7 @@
 </p>
 
 <div class="u-align-right">
-    <a class="govuk-link canScroll" href="#main-content">Top of page</a>
+    <a class="govuk-link canScroll" href="#mainContent">Top of page</a>
 </div>
 
 {{ components.captionHeading(text='2. Capability to deliver', tag='h2', size='m', id='capability', extraClass='serif') }}
@@ -105,7 +105,7 @@
 </p>
 
 <div class="u-align-right">
-    <a class="govuk-link canScroll" href="#main-content">Top of page</a>
+    <a class="govuk-link canScroll" href="#mainContent">Top of page</a>
 </div>
 
 {{ components.captionHeading(text='2.2 Relevant experience', tag='h3', size='s', extraClass='serif') }}
@@ -144,7 +144,7 @@
 </p>
 
 <div class="u-align-right">
-    <a class="govuk-link canScroll" href="#main-content">Top of page</a>
+    <a class="govuk-link canScroll" href="#mainContent">Top of page</a>
 </div>
 
 {{ components.captionHeading(text='4. Data impact statement', tag='h2', size='m', id='data', extraClass='serif') }}
@@ -310,11 +310,19 @@
 </div>
 
 <div class="u-align-right">
-    <a class="govuk-link canScroll" href="#main-content">Top of page</a>
+    <a class="govuk-link canScroll" href="#mainContent">Top of page</a>
 </div>
+
+{% set dummySections = ['7','8','9','10','11','12','13','14','15','16'] %}
+{% for item in dummySections %}
+{{ components.captionHeading(text=item + '. Dummy section '+item, tag='h2', size='m', id='section'+item, extraClass='serif') }}
+<p class="govuk-body">Sed hendrerit urna non massa porttitor pulvinar. Nam nec porttitor nisi. Duis malesuada turpis ac libero blandit, quis lacinia urna efficitur. Phasellus sed quam sed leo ullamcorper ullamcorper ac at ex. Maecenas felis leo, sagittis in pharetra at, feugiat in sem. Vestibulum tempus erat vel tellus iaculis, quis mollis ante accumsan.</p>
+<div class="u-align-right">
+    <a class="govuk-link canScroll" href="#mainContent">Top of page</a>
+</div>
+{% endfor %}
+
 <hr>
-
-
 <script>
     // open closed details elements for printing
     window.addEventListener('beforeprint',() => {

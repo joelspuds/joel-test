@@ -21,7 +21,7 @@
 {% set rating = rating if rating %}
 {% set isComplete = isComplete if isComplete %}
 
-{% set showStickyNavscripts = true %}
+{#{% set showStickyNavscripts = true %}#}
 {% set listItems = [
     { text: 'Case for support', url: '#case', class:'canScroll' },
     { text: 'Capability to deliver', url: '#capability', class:'canScroll' },
@@ -93,11 +93,6 @@
                         Contents
                     </h2>
 
-                    {#<a class="govuk-tabs__tab" id="link_one" href="#one"  data-tab="one" data-scroll="">
-                        Application overview
-                    </a>#}
-
-                   {# <ul class="govuk-tabs__list">#}
                     <ul class="govuk-tabs__list sticky-tabs menu" id="stickyBar" style="background-color:white;">
                         <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
                             <a class="govuk-tabs__tab" id="link_one" data-tab="one" href="#one" data-scroll="">
@@ -158,11 +153,8 @@
                                     <a href="/prototypes/peer-review-external/invite-reject" class="govuk-link">Unable to review this application?</a>
                                 </p>
 
-
                             {%- endcall %}
-
                         {%- endcall %}
-
                     </div>
                     {#
 
@@ -177,10 +169,28 @@
                         {% call components.bulmaRow() %}
 
                             {% call components.bulmaColumnAny(size='is-3') %}
-                                <nav class="sticky-nav">
+                                <style>
+                                    .fixed-sidebar {
+                                        position: -webkit-sticky;
+                                        position: -moz-sticky;
+                                        position: -ms-sticky;
+                                        position: -o-sticky;
+                                        position: sticky;
+                                        /* height: 300px;*/
+                                        /*height: 100%;*/
+                                        padding: 40px 0;
+                                        /*background: lime;*/
+                                        color: #fff;
+                                        top: 10px;
+                                        bottom: auto;
+                                    }
+                                </style>
+                                {#<nav class="sticky-nav">#}
+                                <nav class="fixed-sidebar">
                                     {{ components.linkHeading(text='Contents', tag='h2', size='s')}}
 
-                                    {{ components.list(items=listItems, parentClass='sticky-nav')}}
+                                    {#{{ components.list(items=listItems, parentClass='sticky-nav')}}#}
+                                    {{ components.list(items=listItems, parentClass='')}}
 
                                     {#<a href="#" class="govuk-link js-only print-link print-link--tabs" id="printThis" onclick="window.print();return false;">Print this page</a>#}
                                 </nav>
@@ -394,6 +404,10 @@
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script>
+        /*console.log($('.fixed-sidebar').css('height'));*/
+    </script>
+    <script>
+        // Sticky tabs!
         let div_top = $('.menu').offset().top;
         console.log('div_top = ' + div_top);
         $(window).load(function () {
@@ -413,7 +427,8 @@
         $('.govuk-tabs__tab').each(function(index){
             $(this).on('click', function(e){
                 e.preventDefault();
-                console.log('clicking');
+                // console.log('clicking');
+                // window.location.hash = this;
                 // set previous scroll before doing anything
                 $('.govuk-tabs__list-item--selected a').attr('data-scroll', $(document).scrollTop());
                 // hide all tabs
