@@ -19,6 +19,11 @@ exports.pdAwardDetailsGet = pdAwardDetailsGet;
 exports.pdAwardDetailsPost = pdAwardDetailsPost;
 exports.pdAwardTeamGet = pdAwardTeamGet;
 exports.pdAwardTeamPost = pdAwardTeamPost;
+exports.pdAwardAgreementGet = pdAwardAgreementGet;
+exports.pdAwardAgreementPost = pdAwardAgreementPost;
+exports.pdAwardCostsGet = pdAwardCostsGet;
+exports.pdAwardFinanceGet = pdAwardFinanceGet;
+exports.pdAwardExpenditureGet = pdAwardExpenditureGet;
 exports.pdAwardDocsGet = pdAwardDocsGet;
 exports.pdAwardDocsPost = pdAwardDocsPost;
 exports.pdAwardChangeStartGet = pdAwardChangeStartGet;
@@ -60,7 +65,7 @@ function pdIndexPost(req, res) {
   const {} = req.body;
 
   req.session.organisation = 'University of Wales';
-  req.session.userName = 'Dr Randy Gartner';
+  req.session.userName = 'Binoo Rastogi';
 
   let targetURL;
   targetURL = '/prototypes/post-decision/email';
@@ -242,6 +247,67 @@ function pdAwardTeamPost(req, res) {
   let targetURL;
   targetURL = '/prototypes/post-decision/award-team';
   return res.redirect(targetURL);
+}
+
+// ************************************************************************
+//
+//        award agreement
+//
+// ************************************************************************
+function pdAwardAgreementGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = { allData };
+
+  return res.render('prototypes/post-decision/award-agreement', viewData);
+}
+
+function pdAwardAgreementPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/post-decision/award-team';
+  return res.redirect(targetURL);
+}
+// ************************************************************************
+//
+//        award costs
+//
+// ************************************************************************
+function pdAwardCostsGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = { allData };
+
+  return res.render('prototypes/post-decision/award-costs', viewData);
+}
+// ************************************************************************
+//
+//        award finance
+//
+// ************************************************************************
+function pdAwardFinanceGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = { allData };
+
+  return res.render('prototypes/post-decision/award-finance', viewData);
+}
+// ************************************************************************
+//
+//        award expenditure
+//
+// ************************************************************************
+function pdAwardExpenditureGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = { allData };
+
+  return res.render('prototypes/post-decision/award-expenditure', viewData);
 }
 
 // ************************************************************************

@@ -5,41 +5,20 @@
 {% set applicationsLink = '#' %}
 {% set homeLink = '#' %}
 {% set reviewsLink = '#' %}
-{% set accountSettingsLink = '#' %}
+{% set accountSettingsLink = '' %}
+{% set showExternalFurniture = false %}
 
 {% set hideAccountLinks = true %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 {% set userName = 'John  Doe' %}
 {% set isAdminUser = false %}
-{% set loggedOut = false %}
-
-{% set orgs3SessionData = orgs3SessionData if orgs3SessionData %}
-{% set userOneV3 = userOneV3 if userOneV3 %}
-{% set userTwoV3 = userTwoV3 if userTwoV3 %}
-{% set userThreeV3 = userThreeV3 if userThreeV3 %}
-{% set userFourV3 = userFourV3 if userFourV3 %}
+{% set loggedOut = true %}
 
 {% set pageTitle = 'Applicants' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/orgs3/', text:'Back to application'}] %}
 
 {% block content %}
-
-    {# {% if userOneV3.firstName %}
-        {% call components.bulmaRow() %}
-            {% call components.bulmaColumnAny(size='is-full', extraClass='u-space-t20') %}
-                <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-                    <div class="govuk-notification-banner__header">
-                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
-                    </div>
-                    <div class="govuk-notification-banner__content">
-                        <h3 class="govuk-notification-banner__heading">{{ userOneV3.firstName }} {{ userOneV3.lastName }} has been added to the project.</h3>
-                    </div>
-                </div>
-            {%- endcall %}
-        {%- endcall %}
-    {% endif %}#}
-
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
@@ -48,43 +27,6 @@
     {%- endcall %}
 
     {% call components.form(action='#', method='POST',name='submitForm') %}
-
-     {#   {% call components.bulmaRow() %}
-
-            {% call components.bulmaColumnAny(size='is-9', extraClass='u-space-t20') %}
-
-
-            {%- endcall %}
-
-        {%- endcall %}
-#}
-
-       {# {% call components.bulmaRow() %}
-
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen') %}
-
-                {% call components.formGroup() %}
-                    <div class="application-item">
-                        <div class="application-item__contents application-item__contents--mac">
-                            <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
-                                <legend class="govuk-fieldset__legend govuk-visually-hidden">
-                                    <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
-                                </legend>
-                                <div class="govuk-checkboxes">
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if allResourcesValues.isComplete == 'on' %} checked{% endif %}>
-                                        <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-                    </div>
-                {%- endcall %}
-
-            {%- endcall %}
-
-        {%- endcall %}#}
-
 
         {% call components.bulmaRow() %}
 
@@ -97,21 +39,13 @@
 
             {%- endcall %}
 
-
         {%- endcall %}
 
     {%- endcall %}
     {% include '../../layouts/partials/user-contact.njk' %}
 {% endblock %}
 {% block bodyScripts %}
-    {#<script>
-        Zepto(function($){
-            $(window).on('load', function() {
-                console.log('window loaded');
-                $('.govuk-tabs__tab').attr('tabindex', '');
-            });
-        });
-    </script>#}
+
 {% endblock %}
 
 

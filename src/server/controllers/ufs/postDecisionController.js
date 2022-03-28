@@ -27,7 +27,7 @@ export function pdIndexPost(req, res) {
   const {} = req.body;
 
   req.session.organisation = 'University of Wales';
-  req.session.userName = 'Dr Randy Gartner';
+  req.session.userName = 'Binoo Rastogi';
 
   let targetURL;
   targetURL = '/prototypes/post-decision/email';
@@ -210,6 +210,67 @@ export function pdAwardTeamPost(req, res) {
   let targetURL;
   targetURL = '/prototypes/post-decision/award-team';
   return res.redirect(targetURL);
+}
+
+// ************************************************************************
+//
+//        award agreement
+//
+// ************************************************************************
+export function pdAwardAgreementGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = { allData };
+
+  return res.render('prototypes/post-decision/award-agreement', viewData);
+}
+
+export function pdAwardAgreementPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/post-decision/award-team';
+  return res.redirect(targetURL);
+}
+// ************************************************************************
+//
+//        award costs
+//
+// ************************************************************************
+export function pdAwardCostsGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = { allData };
+
+  return res.render('prototypes/post-decision/award-costs', viewData);
+}
+// ************************************************************************
+//
+//        award finance
+//
+// ************************************************************************
+export function pdAwardFinanceGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = { allData };
+
+  return res.render('prototypes/post-decision/award-finance', viewData);
+}
+// ************************************************************************
+//
+//        award expenditure
+//
+// ************************************************************************
+export function pdAwardExpenditureGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = { allData };
+
+  return res.render('prototypes/post-decision/award-expenditure', viewData);
 }
 
 // ************************************************************************

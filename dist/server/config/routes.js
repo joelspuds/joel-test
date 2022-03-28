@@ -731,6 +731,12 @@ router.get('/prototypes/post-decision/award-team', demosController.pdAwardTeamGe
 router.post('/prototypes/post-decision/award-team', demosController.pdAwardTeamPost);
 router.get('/prototypes/post-decision/award-docs', demosController.pdAwardDocsGet);
 router.post('/prototypes/post-decision/award-docs', demosController.pdAwardDocsPost);
+router.get('/prototypes/post-decision/award-agreement', demosController.pdAwardAgreementGet);
+router.post('/prototypes/post-decision/award-agreement ', demosController.pdAwardAgreementPost);
+router.get('/prototypes/post-decision/award-costs', demosController.pdAwardCostsGet);
+router.get('/prototypes/post-decision/award-finance', demosController.pdAwardFinanceGet);
+router.get('/prototypes/post-decision/award-expenditure', demosController.pdAwardExpenditureGet);
+
 //
 router.get('/prototypes/post-decision/award-change-start', demosController.pdAwardChangeStartGet);
 router.post('/prototypes/post-decision/award-change-start', demosController.pdAwardChangeStartPost);
