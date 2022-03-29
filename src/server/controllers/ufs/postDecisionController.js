@@ -27,7 +27,7 @@ export function pdIndexPost(req, res) {
   const {} = req.body;
 
   req.session.organisation = 'University of Wales';
-  req.session.userName = 'Binoo Rastogi';
+  req.session.userName = 'Trang Vo Heng Yeng';
 
   let targetURL;
   targetURL = '/prototypes/post-decision/email';
