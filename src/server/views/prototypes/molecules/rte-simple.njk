@@ -127,7 +127,7 @@
 {% endblock %}
 
 {% block bodyScripts %}
-    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5-dev/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
       /*
@@ -150,6 +150,8 @@
       tinymce.init({
         selector: '#tinyMCEInput',
         height: 500,
+        a11y_advanced_options: true,
+        iframe_aria_text: 'Rich Text Area. Press ALT-0 for help.',
         plugins: [
           'advlist autolink lists link anchor',
           'wordcount'
