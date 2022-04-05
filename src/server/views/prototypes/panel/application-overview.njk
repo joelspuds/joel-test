@@ -55,20 +55,23 @@
 
             {% if allData.journeyType != 'chair' %}
             <p class="govuk-body">
-                <strong>Your role:</strong> <span class="badge--dark govuk-!-font-size-14">FIRST INTRODUCER</span>
+                <strong>Your role:</strong> <strong class="govuk-tag govuk-tag--blue govuk-!-font-size-14">FIRST INTRODUCER</strong>
             </p>
             {% endif %}
+
+            {% if allData.journeyType == 'chair' %}
+                <ul class="govuk-list">
+                    <li><strong class="govuk-tag govuk-tag--blue">First introducer:</strong> <span class="">Jane Doe, Belfast University</span></li>
+                    <li><strong class="govuk-tag govuk-tag--blue">Second introducer:</strong> <span class="">Aaron Powell, University of South Wales</span></li>
+                    <li><strong class="govuk-tag govuk-tag--blue">Third introducer:</strong> <span class="">Lucy Cavanaugh, Bristol University</span></li>
+                </ul>
+            {% endif %}
+
 
 {#
             {{ components.captionHeading(text='Panelists', tag='h2', size='s') }}
 
-            <p class="govuk-body">
-                <strong>First introducer:</strong> <span class="">Jane Doe, Belfast University</span>
-                <br>
-                <strong>Second introducer:</strong> <span class="">Aaron Powell, University of South Wales</span>
-                <br>
-                <strong>Third introducer:</strong> <span class="">Lucy Cavanaugh, Bristol University</span>
-            </p>#}
+           #}
 
         {%- endcall %}
     {%- endcall %}

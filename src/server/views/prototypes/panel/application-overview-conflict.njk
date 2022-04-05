@@ -52,27 +52,6 @@
         {%- endcall %}
     {%- endcall %}
 
-    {#{% call components.bulmaRow() %}
-
-        {% call components.bulmaColumnAny(size='column is-full') %}
-
-            <p class="govuk-body">
-                <strong>Your role:</strong> <span class="badge--dark govuk-!-font-size-14">FIRST INTRODUCER</span>
-            </p>
-
-            {{ components.captionHeading(text='Panelists', tag='h2', size='s') }}
-
-            <p class="govuk-body">
-                <strong>First introducer:</strong> <span class="">Jane Doe, Belfast University</span>
-                <br>
-                <strong>Second introducer:</strong> <span class="">Aaron Powell, University of South Wales</span>
-                <br>
-                <strong>Third introducer:</strong> <span class="">Lucy Cavanaugh, Bristol University</span>
-            </p>
-
-        {%- endcall %}
-    {%- endcall %}#}
-
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
             <div class="govuk-tabs" data-module="govuk-tabs">
@@ -80,16 +59,6 @@
                     <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
                         <a class="govuk-tabs__tab" href="#">Information</a>
                     </li>
-                    {#<li class="govuk-tabs__list-item govuk-tabs__list-item--disabled">
-                        <span class="govuk-tabs__tab ">Read application</span>
-                    </li><li class="govuk-tabs__list-item govuk-tabs__list-item--disabled">
-                        <span class="govuk-tabs__tab ">Reviews</span>
-                    </li><li class="govuk-tabs__list-item govuk-tabs__list-item--disabled">
-                        <span class="govuk-tabs__tab ">Response</span>
-                    </li>
-                    <li class="govuk-tabs__list-item govuk-tabs__list-item--disabled">
-                        <span class="govuk-tabs__tab ">Pre score</span>
-                    </li>#}
                 </ul>
             </div>
         {%- endcall %}
