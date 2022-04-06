@@ -24,26 +24,6 @@
 
 {% block content %}
 
-
-
-   {# {% call components.bulmaRow() %}
-        {% call components.bulmaColumnAny(size='is-full') %}
-
-            <div class="govuk-notification-banner govuk-notification-banner--info" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-                <div class="govuk-notification-banner__header">
-                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
-                </div>
-                <div class="govuk-notification-banner__content">
-                    <p class="govuk-notification-banner__heading">
-                        You must complete your <a class="govuk-notification-banner__link" href="/prototypes/edi/edi">Equality, Diversity and Inclusion (EDI)</a> profile before any applications you contribute to can be submitted to UKRI.
-                        #}{#<a class="govuk-notification-banner__link" href="#">View invitation</a>.#}{#
-                    </p>
-                </div>
-            </div>
-
-        {%- endcall %}
-    {%- endcall %}#}
-
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
             {{ components.captionHeading(text='Home', caption=userName) }}
@@ -83,31 +63,6 @@
         {%- endcall %}
 
     {%- endcall %}
-
-
-    {#{% call components.bulmaRow(extraClass='u-space-t20') %}
-
-        {% call components.bulmaColumnAny(size='column is-3') %}
-            <div class="tfs-tile3">
-                <a href="#" class="tfs-tile3__mega-link">
-                    <span class="tfs-tile3__heading">Reviews</span>
-                    <span class="tfs-tile3__number">1</span>
-                    #}{#<span class="tfs-tile3__progress">In progress</span>#}{#
-                </a>
-            </div>
-        {%- endcall %}
-
-        {% call components.bulmaColumnAny(size='column is-3') %}
-            <div class="tfs-tile3">
-                <a href="/prototypes/panel/panels-in-progress" class="tfs-tile3__mega-link">
-                    <span class="tfs-tile3__heading">Panels</span>
-                    <span class="tfs-tile3__number">1</span>
-                    #}{#<span class="tfs-tile3__progress">In progress</span>#}{#
-                </a>
-            </div>
-        {%- endcall %}
-
-    {%- endcall %}#}
 
     {% call components.bulmaRow(extraClass='u-space-t30') %}
         {% call components.bulmaColumnAny(size='column is-9') %}
