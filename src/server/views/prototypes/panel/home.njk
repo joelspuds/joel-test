@@ -50,40 +50,24 @@
         {%- endcall %}
     {%- endcall %}
 
-    {#{% call components.bulmaRow() %}
-        {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Your stuff', tag='h2', size='m') }}
-        {%- endcall %}
-    {%- endcall %}#}
-
     {% call components.bulmaRow() %}
 
         {% call components.bulmaColumnAny(size='column is-3') %}
             <div class="tfs-tile3">
                 <a href="#" class="tfs-tile3__mega-link">
-                    <span class="tfs-tile3__heading">Your applications</span>
-                    <span class="tfs-tile3__number">2</span>
-                    {#<span class="tfs-tile3__progress">In progress</span>#}
+                    <span class="tfs-tile3__heading">Applications</span>
+                    <span class="tfs-tile3__number">3</span>
+                    <span class="tfs-tile3__progress">View and manage your applications</span>
                 </a>
             </div>
         {%- endcall %}
 
-    {%- endcall %}
-
-    {#{% call components.bulmaRow(extraClass='u-space-t45') %}
-        {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Stuff you’re doing for other people cos you’re such a kind academic person', tag='h2', size='m') }}
-        {%- endcall %}
-    {%- endcall %}#}
-
-    {% call components.bulmaRow(extraClass='u-space-t20') %}
-
         {% call components.bulmaColumnAny(size='column is-3') %}
             <div class="tfs-tile3">
-                <a href="#" class="tfs-tile3__mega-link">
-                    <span class="tfs-tile3__heading">Reviews</span>
-                    <span class="tfs-tile3__number">1</span>
-                    {#<span class="tfs-tile3__progress">In progress</span>#}
+                <a href="/prototypes/post-decision/awards" class="tfs-tile3__mega-link">
+                    <span class="tfs-tile3__heading">Expert review</span>
+                    <span class="tfs-tile3__number">6</span>
+                    <span class="tfs-tile3__progress">BLAhdy blah blah</span>
                 </a>
             </div>
         {%- endcall %}
@@ -93,9 +77,56 @@
                 <a href="/prototypes/panel/panels-in-progress" class="tfs-tile3__mega-link">
                     <span class="tfs-tile3__heading">Panels</span>
                     <span class="tfs-tile3__number">1</span>
-                    {#<span class="tfs-tile3__progress">In progress</span>#}
+                    <span class="tfs-tile3__progress">View and manage your panels</span>
                 </a>
             </div>
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+    {#{% call components.bulmaRow(extraClass='u-space-t20') %}
+
+        {% call components.bulmaColumnAny(size='column is-3') %}
+            <div class="tfs-tile3">
+                <a href="#" class="tfs-tile3__mega-link">
+                    <span class="tfs-tile3__heading">Reviews</span>
+                    <span class="tfs-tile3__number">1</span>
+                    #}{#<span class="tfs-tile3__progress">In progress</span>#}{#
+                </a>
+            </div>
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='column is-3') %}
+            <div class="tfs-tile3">
+                <a href="/prototypes/panel/panels-in-progress" class="tfs-tile3__mega-link">
+                    <span class="tfs-tile3__heading">Panels</span>
+                    <span class="tfs-tile3__number">1</span>
+                    #}{#<span class="tfs-tile3__progress">In progress</span>#}{#
+                </a>
+            </div>
+        {%- endcall %}
+
+    {%- endcall %}#}
+
+    {% call components.bulmaRow(extraClass='u-space-t30') %}
+        {% call components.bulmaColumnAny(size='column is-9') %}
+            <hr class="has-background-grey-light">
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='u-space-t20') %}
+
+        {#{% call components.bulmaColumnAny(size='column is-3') %}
+            <a href="#" class="govuk-link govuk-!-font-weight-bold govuk-!-font-size-19">Manage University of Wales</a>
+            <br>
+            <p class="govuk-body u-space-y10">Manage users and permissions for your organisations.</p>
+        {%- endcall %}#}
+
+        {% call components.bulmaColumnAny(size='column is-3') %}
+            <a href="#" class="govuk-link govuk-!-font-weight-bold govuk-!-font-size-19">Account settings</a>
+            <br>
+            <p class="govuk-body u-space-y10">View your personal details and manage your Equality, Diversity and Inclusion (EDI) profile.</p>
         {%- endcall %}
 
     {%- endcall %}
