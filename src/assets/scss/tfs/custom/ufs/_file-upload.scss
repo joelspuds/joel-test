@@ -11,6 +11,7 @@ $module: 'files';
     margin-bottom: 10px;
     padding:20px;
     min-height: 68px;
+    @include clearfix;
 
     &:last-of-type {
       margin-bottom: 0;
@@ -23,6 +24,9 @@ $module: 'files';
   &__name {
     float: left;
     width:60%;
+    // overflow: hidden;
+    white-space: normal;
+    word-wrap: break-word;
 
     @include touch {
       float: none;

@@ -1,0 +1,209 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set pageTitle = 'Finance tables' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set isAdminUser = true %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-half') %}
+
+            {{ components.captionHeading(text='Various finance tables') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {% call components.bulmaRow(extraClass='u-space-b30') %}
+
+            {% call components.bulmaColumnAny(size='column is-full') %}
+
+                {{ components.captionHeading(text='Cost summary',tag='h2',size='m') }}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-ful') %}
+
+                <table class="govuk-table govuk-table--stripes govuk-table--finance">
+                    <thead>
+                        <tr>
+                            <th rowspan="2" class="govuk-table__header">Cost category</th>
+                            <th colspan="3" class="govuk-table__header govuk-table__cell--centre">Authorised fEC (£)</th>
+                            <th colspan="3" class="govuk-table__header govuk-table__cell--centre">RC Contribution (£)</th>
+                            <th rowspan="2" class="govuk-table__header govuk-table__header--numeric">% fEC</th>
+                        </tr>
+                        <tr>
+                            <th class="govuk-table__header govuk-table__header--numeric">Net</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Indexation</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Total</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Net</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Indexation</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="govuk-table__cell">DI - Staff</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">DI - Equipment</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">DI - T&amp;S</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                        </tr>
+                        <tr class="govuk-table__cell-bb">
+                            <td class="govuk-table__cell">DI - Other</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">DA - Investigator</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">DA - Estates</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">DA - Other</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                        </tr>
+                        <tr class="govuk-table__cell-bb">
+                            <td class="govuk-table__cell">DA - Indirect costs</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Ex - Staff</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Ex - T&amp;S</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                        </tr>
+                        <tr class="">
+                            <td class="govuk-table__cell">Ex - Other</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="">
+                            <td class="govuk-table__cell govuk-table__cell--mega">Total value</td>
+                            <td class="govuk-table__cell govuk-table__cell--mega govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--mega govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--mega govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--mega govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--mega govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--mega govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--mega govuk-table__cell--numeric">80</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+
+    <section class="section">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-8') %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-8') %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+{% endblock %}

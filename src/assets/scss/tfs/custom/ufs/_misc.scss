@@ -115,6 +115,41 @@
   @include govuk-font($size: 19, $weight: bold);
 }
 
+.govuk-table--finance {
+
+  .govuk-table__header {
+    background-color: govuk-colour("light-grey");
+    border-top: 1px solid govuk-colour("mid-grey");
+  }
+
+  .govuk-table__cell,
+  .govuk-table__header {
+    border-left: 1px solid govuk-colour("mid-grey");
+    border-right: 1px solid govuk-colour("mid-grey");
+  }
+
+  tr td:first-of-type,
+  tr th:first-of-type {
+    padding-left: 8px;
+  }
+
+  tr td:last-of-type,
+  tr th:last-of-type {
+    padding-right: 8px;
+  }
+
+}
+
+.govuk-table__cell-bb {
+  .govuk-table__cell {
+    border-bottom:2px solid govuk-colour("mid-grey");
+  }
+}
+
+.govuk-table__cell--centre {
+  text-align: center!important;
+}
+
 .govuk-summary-list--narrow {
   .govuk-summary-list__actions {
     width: 10%;
