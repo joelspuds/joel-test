@@ -1,0 +1,172 @@
+.govuk-table--error-row {
+  border-left: 5px solid govuk-colour("red");
+
+  & td:first-of-type {
+    padding-left: 10px;
+  }
+}
+
+.govuk-table--stripes tr:nth-child(even) td {
+  background-color: govuk-colour("light-grey");
+}
+
+.govuk-table__row--mega {
+ td, .govuk-table__cell {
+   border-width: 2px;
+   background-color: govuk-colour("white") !important;
+   border-top: 2px solid govuk-colour("mid-grey");
+   @include govuk-font($size: 19, $weight: bold);
+ }
+}
+.govuk-table__cell--mega {
+  border-width: 2px;
+  background-color: govuk-colour("white") !important;
+  border-top: 2px solid govuk-colour("mid-grey");
+  @include govuk-font($size: 19, $weight: bold);
+}
+
+.govuk-table--finance {
+
+  .govuk-table__header {
+    // background-color: govuk-colour("light-grey");
+    // border-top: 1px solid govuk-colour("mid-grey");
+  }
+
+  .govuk-table__cell,
+  .govuk-table__header {
+    border-left: 1px solid govuk-colour("mid-grey");
+    border-right: 1px solid govuk-colour("mid-grey");
+  }
+
+  tr td:first-of-type,
+  tr th:first-of-type {
+    padding-left: 8px;
+  }
+
+  tr td:last-of-type,
+  tr th:last-of-type {
+    padding-right: 8px;
+  }
+}
+
+.table-cell--no-border {
+  border: 0!important;
+}
+
+.govuk-table__cell-bb {
+  .govuk-table__cell {
+    border-bottom:2px solid govuk-colour("mid-grey");
+  }
+}
+
+.govuk-table__cell--centre {
+  text-align: center!important;
+}
+
+
+// bulma reset reset
+table td:not([align]), table th:not([align]) {
+  // text-align: unset;
+}
+
+.govuk-table__header--numeric,
+.govuk-table__cell--numeric {
+  text-align: right!important;
+}
+
+
+.govuk-table__cell--middle {
+  vertical-align: middle;
+}
+
+.govuk-table__cell--borderless {
+  border-style: none;
+}
+
+.govuk-table--current {
+  .govuk-table__cell {
+    background-color: govuk-colour("light-grey");
+    border-top: 2px solid govuk-colour("dark-grey");
+    border-bottom: 2px solid govuk-colour("dark-grey");
+  }
+
+}
+.govuk-table__header--top {
+  vertical-align: top !important;
+}
+
+td.u-align-right {
+  text-align: right!important;
+}
+
+/*.govuk-table--current {
+  .govuk-table__cell {
+    background-color: govuk-colour("light-grey");
+  }
+}*/
+
+
+.cell-max-35 {
+
+  @include widescreen {
+    width:40%;
+  }
+
+  @include desktop {
+    width: 35%;
+  }
+}
+
+.cell-max-25 {
+
+  @include widescreen {
+    width:35%;
+  }
+
+  @include desktop {
+    width: 25%;
+  }
+}
+
+.cell-max-120 {
+  width: 120px;
+}
+
+.cell-min-200 {
+  width: 200px;
+}
+
+.cell-150 {
+  width: 150px;
+}
+
+.wrap-table {
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  &__cell {
+    word-wrap: break-word;
+  }
+
+}
+
+.govuk-table__header {
+  vertical-align: bottom;
+}
+
+
+.govuk-table__row--disabled {
+
+  td:first-of-type {
+    padding-left: 10px;
+  }
+
+  td:last-of-type {
+    padding-right: 10px;
+  }
+
+  td {
+    background-color: #f1f1f1;
+  }
+
+}

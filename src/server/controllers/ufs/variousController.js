@@ -356,3 +356,27 @@ export function colourPaletteGet(req, res) {
   };
   return res.render('prototypes/molecules/colours', viewData);
 }
+
+
+/*
+*
+*     Demo awards list
+*
+*/
+export function demoAwardsListGet(req, res) {
+  let viewData;
+
+  let megaDataApplications = generalData.megaDataApplications;
+
+  if (!req.session.megaDataApplications) {
+    req.session.megaDataApplications = megaDataApplications;
+  }
+
+  let allData = req.session;
+  viewData = { allData };
+
+  return res.render('prototypes/molecules/awards-list', viewData);
+}
+
+
+demoAwardsListGet

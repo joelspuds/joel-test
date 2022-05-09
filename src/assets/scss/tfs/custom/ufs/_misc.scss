@@ -71,15 +71,6 @@
   }
 }
 
-
-.govuk-table--error-row {
-  border-left: 5px solid govuk-colour("red");
-
-  & td:first-of-type {
-    padding-left: 10px;
-  }
-}
-
 .red-text {
   color: red;
 }
@@ -104,51 +95,7 @@
   }
 }
 
-.govuk-table--stripes tr:nth-child(even) td {
-  background-color: govuk-colour("light-grey");
-}
 
-.govuk-table__cell--mega {
-  border-width: 2px;
-  background-color: govuk-colour("white") !important;
-  border-top: 2px solid govuk-colour("mid-grey");
-  @include govuk-font($size: 19, $weight: bold);
-}
-
-.govuk-table--finance {
-
-  .govuk-table__header {
-    background-color: govuk-colour("light-grey");
-    border-top: 1px solid govuk-colour("mid-grey");
-  }
-
-  .govuk-table__cell,
-  .govuk-table__header {
-    border-left: 1px solid govuk-colour("mid-grey");
-    border-right: 1px solid govuk-colour("mid-grey");
-  }
-
-  tr td:first-of-type,
-  tr th:first-of-type {
-    padding-left: 8px;
-  }
-
-  tr td:last-of-type,
-  tr th:last-of-type {
-    padding-right: 8px;
-  }
-
-}
-
-.govuk-table__cell-bb {
-  .govuk-table__cell {
-    border-bottom:2px solid govuk-colour("mid-grey");
-  }
-}
-
-.govuk-table__cell--centre {
-  text-align: center!important;
-}
 
 .govuk-summary-list--narrow {
   .govuk-summary-list__actions {

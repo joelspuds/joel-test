@@ -150,40 +150,13 @@ a.govuk-link:focus {
   }
 }
 
-// bulma reset reset
-table td:not([align]), table th:not([align]) {
-  // text-align: unset;
-}
 
-.govuk-table__header--numeric,
-.govuk-table__cell--numeric {
-  text-align: right!important;
-}
 
 .govuk-back-link {
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.govuk-table__cell--middle {
-  vertical-align: middle;
-}
-
-.govuk-table__cell--borderless {
-  border-style: none;
-}
-
-.govuk-table--current {
-  .govuk-table__cell {
-    background-color: govuk-colour("light-grey");
-    border-top: 2px solid govuk-colour("dark-grey");
-    border-bottom: 2px solid govuk-colour("dark-grey");
-  }
-
-}
-.govuk-table__header--top {
-  vertical-align: top !important;
-}
 .govuk-list--alpha {
   list-style-type: lower-alpha;
   padding-left: 20px;
@@ -241,53 +214,8 @@ body {
 }*/
 
 
-td.u-align-right {
-  text-align: right!important;
-}
 
-.cell-max-35 {
 
-  @include widescreen {
-    width:40%;
-  }
-
-  @include desktop {
-    width: 35%;
-  }
-}
-
-.cell-max-25 {
-
-  @include widescreen {
-    width:35%;
-  }
-
-  @include desktop {
-    width: 25%;
-  }
-}
-
-.cell-max-120 {
-  width: 120px;
-}
-
-.cell-min-200 {
-  width: 200px;
-}
-
-.cell-150 {
-  width: 150px;
-}
-
-.wrap-table {
-  border-collapse: collapse;
-  table-layout: fixed;
-
-  &__cell {
-    word-wrap: break-word;
-  }
-
-}
 
 // to mimic .govuk-link--no-visited-state
 .govuk-link:visited {
@@ -299,9 +227,7 @@ td.u-align-right {
   background-color: govuk-colour("white")!important;
 }
 
-.govuk-table__header {
-  vertical-align: bottom;
-}
+
 
 
 .dev-preview__fullscreen-button {
@@ -339,21 +265,6 @@ td.u-align-right {
   }
 }
 
-.govuk-table__row--disabled {
-
-  td:first-of-type {
-    padding-left: 10px;
-  }
-
-  td:last-of-type {
-    padding-right: 10px;
-  }
-
-  td {
-    background-color: #f1f1f1;
-  }
-
-}
 
 .govuk-link--disabled {
   color: govuk-colour("dark-grey");
