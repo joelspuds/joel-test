@@ -357,7 +357,6 @@ export function colourPaletteGet(req, res) {
   return res.render('prototypes/molecules/colours', viewData);
 }
 
-
 /*
 *
 *     Demo awards list
@@ -378,5 +377,4 @@ export function demoAwardsListGet(req, res) {
   return res.render('prototypes/molecules/awards-list', viewData);
 }
 
-
-demoAwardsListGet
+demoAwardsListGet;
