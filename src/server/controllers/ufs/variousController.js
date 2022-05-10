@@ -377,4 +377,22 @@ export function demoAwardsListGet(req, res) {
   return res.render('prototypes/molecules/awards-list', viewData);
 }
 
-demoAwardsListGet;
+/*
+*
+*     Demo awards list for RO
+*
+*/
+export function demoAwardsListROGet(req, res) {
+  let viewData;
+
+  let megaDataApplications = generalData.megaDataApplications;
+
+  if (!req.session.megaDataApplications) {
+    req.session.megaDataApplications = megaDataApplications;
+  }
+
+  let allData = req.session;
+  viewData = { allData };
+
+  return res.render('prototypes/molecules/awards-list-ro', viewData);
+}

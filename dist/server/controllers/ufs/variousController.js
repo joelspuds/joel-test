@@ -19,6 +19,7 @@ exports.topNavGet = topNavGet;
 exports.sortableTablesGet = sortableTablesGet;
 exports.colourPaletteGet = colourPaletteGet;
 exports.demoAwardsListGet = demoAwardsListGet;
+exports.demoAwardsListROGet = demoAwardsListROGet;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 // import sanitizeHtml from '../../../../no';
@@ -398,4 +399,22 @@ function demoAwardsListGet(req, res) {
   return res.render('prototypes/molecules/awards-list', viewData);
 }
 
-demoAwardsListGet;
+/*
+*
+*     Demo awards list for RO
+*
+*/
+function demoAwardsListROGet(req, res) {
+  let viewData;
+
+  let megaDataApplications = generalData.megaDataApplications;
+
+  if (!req.session.megaDataApplications) {
+    req.session.megaDataApplications = megaDataApplications;
+  }
+
+  let allData = req.session;
+  viewData = { allData };
+
+  return res.render('prototypes/molecules/awards-list-ro', viewData);
+}

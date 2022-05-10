@@ -279,6 +279,7 @@ router.get('/prototypes/molecules/top-nav', demosController.topNavGet);
 router.get('/prototypes/molecules/sortable-tables', demosController.sortableTablesGet);
 router.get('/prototypes/molecules/colours', demosController.colourPaletteGet);
 router.get('/prototypes/molecules/awards-list', demosController.demoAwardsListGet);
+router.get('/prototypes/molecules/awards-list-ro', demosController.demoAwardsListROGet);
 // organisations mother load
 /*router.get('/prototypes/molecules/organisations-motherload-search', demosController.motherloadSearchGet);
 router.post('/prototypes/molecules/organisations-motherload-search', demosController.motherloadSearchPost);
