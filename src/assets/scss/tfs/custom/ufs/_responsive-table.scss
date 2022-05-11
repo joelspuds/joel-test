@@ -222,4 +222,8 @@ th.scrolly__locked-th--right {
     font-size: 14px;
   }
 
+  .error-text {
+    @include govuk-font($size: 16, $weight: bold);
+  }
+
 }

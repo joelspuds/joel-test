@@ -1,0 +1,139 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set showStickyNavscripts = true %}
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{% set pageTitle = 'Manage invites'  + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/peer-review/applications-list', text:'Back to all applictions'}] %}
+
+{%  set review1_markReviewAsUsable = review1_markReviewAsUsable if review1_markReviewAsUsable  %}
+{%  set review4_markReviewAsUsable = review4_markReviewAsUsable if review4_markReviewAsUsable  %}
+
+{% set review1Usable = review1Usable if review1Usable %}
+{% set review4UnUsable = review4UnUsable if review4UnUsable %}
+{% set badReviewMessage = badReviewMessage if badReviewMessage %}
+
+
+
+{% block content %}
+
+    {% call components.bulmaRow(extraClass='') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Review overview', caption='APP106: GPS adaptions for remote drone protocols') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='', customID='main-content') %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item ">
+                        <a class="govuk-tabs__tab " href="#">Manage invites (8)</a>
+                    </li>
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected ">
+                        <a class="govuk-tabs__tab" href="#">Manage reviews (4)</a>
+                    </li>
+                    <li class="govuk-tabs__list-item ">
+                        <a class="govuk-tabs__tab" href="#">Manage applicant response</a>
+                    </li>
+                </ul>
+                {#<a href="#" class="govuk-link sneaky-tab-link">Read application</a>#}
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-9', customID='main-content') %}
+
+            {% call components.form(action='#', method='POST',name='manageReviews') %}
+
+                {{ components.captionHeading(text='Reviews', tag='h2', size='m', id='overview') }}
+
+                <p class="govuk-body">You can invite applicants to respond to reviews with a "usable" status.</p>
+
+                <table class="govuk-table mega-table _u-space-b10">
+                    <caption class="govuk-table__caption govuk-visually-hidden">Reviews overview table</caption>
+                    <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">Review</th>
+                        <th scope="col" class="govuk-table__header">Name</th>
+                        <th scope="col" class="govuk-table__header">Deadline</th>
+                        <th scope="col" class="govuk-table__header govuk-table__header--numeric">Score</th>
+                        <th scope="col" class="govuk-table__header govuk-table__header--numeric">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">Review 1</a></td>
+                        <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
+                        <td class="govuk-table__cell">12 May 2022</td>
+                        <td class="govuk-table__cell u-align-right">5</td>
+                        <td class="govuk-table__cell u-align-right">
+                            <span class="status-text--tick status-text--green ">Usable</span>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row govuk-table--error-row">
+                        <td class="govuk-table__cell u-brd-b0" colspan="5">
+                            <span class="error-text">Select review 2 and confirm whether it's usable</span>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row govuk-table--error-row">
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">Review 2</a></td>
+                        <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
+                        <td class="govuk-table__cell">14 May 2022</td>
+                        <td class="govuk-table__cell u-align-right">5</td>
+                        <td class="govuk-table__cell u-align-right">
+                            <span class="status-text--blue">Received</span>
+                        </td>
+                    </tr>
+
+                    <tr class="govuk-table__row ">
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">Review 3</a></td>
+                        <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
+                        <td class="govuk-table__cell">15 May 2022</td>
+                        <td class="govuk-table__cell u-align-right">3</td>
+                        <td class="govuk-table__cell u-align-right">
+                            <span class="status-text--cross status-text--red">Unusable</span>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row govuk-table--error-row">
+                        <td class="govuk-table__cell u-brd-b0" colspan="5">
+                            <span class="error-text">You must wait until the deadline for review X has closed before you invite applicants to respond</span>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row govuk-table--error-row">
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">Review 4</a></td>
+                        <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
+                        <td class="govuk-table__cell">15 May 2022</td>
+                        <td class="govuk-table__cell u-align-right"><span class="meta">N/A<sup>*</sup></span></td>
+                        <td class="govuk-table__cell u-align-right">
+                            <span class="meta">Incomplete</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <p class="govuk-body govuk-!-font-size-16 u-space-t0"><span class="meta"><sup>*</sup>Not available</span></p>
+
+                {{ components.captionHeading(text='Invite applicant to respond to this review', tag='h2', size='m', id='') }}
+
+                <p class="govuk-body">The panel will use the reviews and responses, if provided, to help score applications against the assessment criteria.</p>
+
+                <p class="govuk-body">
+                    {#<a href="/prototypes/peer-review/review-and-send-invitation-to-respond" class="govuk-button">Invite applicant to respond</a>#}
+                    <a href="/prototypes/peer-review/send-reviews-to-applicant" class="govuk-button">Invite applicant to respond</a>
+                </p>
+
+
+            {%- endcall %} {# end form #}
+
+        {%- endcall %}
+
+    {%- endcall %}
+{% endblock %}
+
+{% block bodyScripts %}
+{% endblock %}

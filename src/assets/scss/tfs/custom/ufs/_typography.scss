@@ -172,6 +172,50 @@ body.ufs .govuk-heading_additional-link a span {
     color: govuk-colour("red")!important;
   }
 
+  &--tick,
+  &--cross {
+    display: inline-block;
+    position: relative;
+
+    &:before {
+      //background-color: salmon;
+      content: "";
+      width: 18px;
+      height: 16px;
+      top: 5px;
+      position: absolute;
+      background-repeat: no-repeat
+    }
+  }
+
+
+  &--tick {
+    font-weight: normal!important;
+    &:before {
+      background-image: url(/images/ufs/tick.svg);
+      background-size: 38px 28px;
+      background-repeat: no-repeat;
+      left: -28px;
+      //top:16px;
+    }
+  }
+
+  &--cross {
+    font-weight: normal!important;
+    &:before {
+      content:"\274C";
+      left: -30px;
+      //top:16px;
+      font-size: 12px;
+    }
+  }
+}
+
+.mega-table {
+  .status-text--tick:before,
+  .status-text--cross:before{
+    top: 2px;
+  }
 }
 
 .govuk-notification-banner--danger {
