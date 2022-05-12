@@ -1,7 +1,5 @@
 .responsive-table {
   @include touch {
-
-    // background-color: lime;
     width: 100%;
     overflow-x:auto;
   }
@@ -9,14 +7,13 @@
   &__table {
     min-width: 600px;
   }
-
 }
 
 $column-fixed-width: 180px;
 $column-fixed-width-right: 120px;
+
 .scrolly {
   // wrapper div
-  // width: calc(100% - $column-fixed-width-right);
   width: calc(100% - 120px);
   overflow: auto;
 
@@ -93,7 +90,6 @@ th.scrolly__locked-th--right {
 
       &--ready{
         background-color: #e8f0f8;
-        // background-color: lighten(ufs-colour("ukri-blue"), 70%);
         border-left:4px solid ufs-colour("ukri-blue");
 
         .mega-table_item-status {
@@ -104,7 +100,6 @@ th.scrolly__locked-th--right {
 
       &--change {
         background-color: #fbf1e5;
-        // background-color: lighten(ufs-colour("sand"), 65%);
         border-left:4px solid ufs-colour("sand");
 
         .mega-table_item-status {
@@ -114,7 +109,6 @@ th.scrolly__locked-th--right {
 
       &--complete {
         background-color: #e5f0eb;
-        // background-color: lighten(govuk-colour("green"), 75%);
         border-left:4px solid govuk-colour("green");
 
         .mega-table_item-status {
@@ -123,7 +117,6 @@ th.scrolly__locked-th--right {
       }
 
       &--overdue {
-        // background-color: lighten(govuk-colour("red"), 50%);
         background-color: #fbeae7;
         border-left:4px solid govuk-colour("red");
 
@@ -140,47 +133,25 @@ th.scrolly__locked-th--right {
           color: govuk-colour("green")
         }
       }
-      &--plain {
-        // white
-        // background-color: #F3F2F1;
-
-        .mega-table_item-status {
-          // color: govuk-colour("green")
-        }
-      }
 
       &--danger {
         // red
         background-color: lighten(govuk-colour("red"), 45%);
         border-left:4px solid govuk-colour("red");
-
-        .mega-table_item-status {
-          // color: govuk-colour("green")
-        }
       }
 
       &--info {
         // blue
         background-color: lighten(govuk-colour("blue"), 50%);
         border-left:4px solid govuk-colour("blue");
-
-        .mega-table_item-status {
-          // color: govuk-colour("green")
-        }
       }
 
       &--flat {
         // GREY
         background-color: lighten(govuk-colour("mid-grey"), 25%);
         border-left:4px solid govuk-colour("mid-grey");
-
-        .mega-table_item-status {
-          // color: govuk-colour("green")
-        }
       }
-
     }
-
   }
 
   &__cell--fixed {
@@ -188,27 +159,7 @@ th.scrolly__locked-th--right {
   }
 
   &_item-status {
-
     @include govuk-font($size: 16, $weight: bold);
-
-    /*&--black,
-    &--orange,
-    &--blue,
-    &--green {
-
-    }
-
-    &--orange {
-      color: #D77900;
-    }
-
-    &--blue {
-      color: #1D70B8;
-    }
-
-    &--green {
-      color: #00703C;
-    }*/
   }
 
   &_item-meta {
@@ -218,12 +169,10 @@ th.scrolly__locked-th--right {
   }
 
   .govuk-tag {
-    // @include govuk-font($size: 14, $weight: bold);
     font-size: 14px;
   }
 
   .error-text {
     @include govuk-font($size: 16, $weight: bold);
   }
-
 }

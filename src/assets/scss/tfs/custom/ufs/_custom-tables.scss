@@ -26,6 +26,7 @@
    @include govuk-font($size: 19, $weight: bold);
  }
 }
+
 .govuk-table__cell--mega {
   border-width: 2px;
   background-color: govuk-colour("white") !important;
@@ -34,11 +35,6 @@
 }
 
 .govuk-table--finance {
-
-  .govuk-table__header {
-    // background-color: govuk-colour("light-grey");
-    // border-top: 1px solid govuk-colour("mid-grey");
-  }
 
   .govuk-table__cell,
   .govuk-table__header {
@@ -71,7 +67,6 @@
   text-align: center!important;
 }
 
-
 // bulma reset reset
 table td:not([align]), table th:not([align]) {
   // text-align: unset;
@@ -81,7 +76,6 @@ table td:not([align]), table th:not([align]) {
 .govuk-table__cell--numeric {
   text-align: right!important;
 }
-
 
 .govuk-table__cell--middle {
   vertical-align: middle;
@@ -97,8 +91,8 @@ table td:not([align]), table th:not([align]) {
     border-top: 2px solid govuk-colour("dark-grey");
     border-bottom: 2px solid govuk-colour("dark-grey");
   }
-
 }
+
 .govuk-table__header--top {
   vertical-align: top !important;
 }
@@ -106,13 +100,6 @@ table td:not([align]), table th:not([align]) {
 td.u-align-right {
   text-align: right!important;
 }
-
-/*.govuk-table--current {
-  .govuk-table__cell {
-    background-color: govuk-colour("light-grey");
-  }
-}*/
-
 
 .cell-max-35 {
 
@@ -155,13 +142,11 @@ td.u-align-right {
   &__cell {
     word-wrap: break-word;
   }
-
 }
 
 .govuk-table__header {
   vertical-align: bottom;
 }
-
 
 .govuk-table__row--disabled {
 
@@ -176,5 +161,4 @@ td.u-align-right {
   td {
     background-color: #f1f1f1;
   }
-
 }

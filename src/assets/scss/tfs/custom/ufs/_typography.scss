@@ -176,9 +176,9 @@ body.ufs .govuk-heading_additional-link a span {
   &--cross {
     display: inline-block;
     position: relative;
+    margin-left: 20px;
 
     &:before {
-      //background-color: salmon;
       content: "";
       width: 18px;
       height: 16px;
@@ -195,7 +195,7 @@ body.ufs .govuk-heading_additional-link a span {
       background-image: url(/images/ufs/tick.svg);
       background-size: 38px 28px;
       background-repeat: no-repeat;
-      left: -28px;
+      left: -20px;
       //top:16px;
     }
   }
@@ -204,8 +204,7 @@ body.ufs .govuk-heading_additional-link a span {
     font-weight: normal!important;
     &:before {
       content:"\274C";
-      left: -30px;
-      //top:16px;
+      left: -22px;
       font-size: 12px;
     }
   }
@@ -223,9 +222,5 @@ body.ufs .govuk-heading_additional-link a span {
 
   .govuk-notification-banner__header {
     background-color: govuk-colour("red");
-  }
-
-  .govuk-notification-banner__link {
-    // @include govuk-link-style-success;
   }
 }

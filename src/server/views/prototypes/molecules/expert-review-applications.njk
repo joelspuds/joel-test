@@ -1,0 +1,149 @@
+{% set showExternalNav = false %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Expert review' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Bathalzar Tzatziki' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/post-decision/home', text:'Back to home'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Expert review', caption='OPP123: Inform design of multi-faceted empiracl measurement processes in poly-dimensional spaces') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            <p class="govuk-body"><strong>Review deadline</strong> 2 June 2022</p>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Applications', size='l', tag='h2') }}
+            <p class="govuk-body _u-space-t10">Showing <strong>13</strong> applications sorted by '<strong>Application reference</strong>'</p>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(customID='mainContent') %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="responsive-table">
+
+                <table class="govuk-table mega-table responsive-table__table">
+                    <thead>
+                    <tr class="govuk-table__header">
+                        <th class="govuk-table__header">Application</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Shortlisted<br>reviewers</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Sent<br>invites</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Accepted<br>invites</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Reviews<Br>received</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Usable<br>reviews</th>
+                        <th class="govuk-table__header ">Response<br>received</th>
+                        <th class="govuk-table__header ">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr class="mega-table_row-status--">
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="#" class="govuk-link">APP24 - Bio-detoxification of Ricin in castor bean</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">12</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">11</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">5</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell "><span class="status-text--green status-text--tick">Yes</span></td>
+                        <td class="govuk-table__cell "><span class="status-text--green">Complete</span></td>
+                    </tr>
+                    <tr class="mega-table_row-status--">
+                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="#" class="govuk-link">AWA97 - Linear field waves in liquids</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">9</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">7</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">3</td>
+                        <td class="govuk-table__cell "><span class="status-text--red status-text--cross">No</span></td>
+                        <td class="govuk-table__cell "><span class="status-text--green">Complete</span></td>
+                    </tr>
+
+
+                    {% for item in allData.megaDataApplications %}
+                        <tr class="mega-table_row-status--">
+                            <td class="govuk-table__cell mega-table__cell--fixed"><a href="#" class="govuk-link">APP{{ item.id }} - {{ item.name }}</a></td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(2, 12) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(2, 12) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(2, 6) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1, 4) | random }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(0, 2) | random }}</td>
+                            <td class="govuk-table__cell "><span class="meta">N/A<sup>*</sup></span></td>
+                            <td class="govuk-table__cell">
+                                {%  if item.awardStatus == 'RECEIVED' %}
+                                    Sent for response
+                                {% elseif item.awardStatus == 'Terminated' %}
+                                    Sent for response
+                                {% else %}
+                                    In progress
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <p class="govuk-body govuk-!-font-size-16 u-space-t0"><span class="meta"><sup>*</sup>Not available</span></p>
+
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        function toggleVisibility(_this, id, className) {
+            // event.preventDefault();
+            let toggleSwitch = _this;
+            let toggleItem = document.getElementById(id);
+            if (hasClass(toggleItem, className)) {
+                toggleSwitch.classList.add('filter__title--closed');
+                toggleItem.classList.remove(className);
+                toggleSwitch.setAttribute('aria-expanded', true);
+            }
+            else  {
+                toggleSwitch.classList.remove('filter__title--closed');
+                toggleItem.classList.add(className);
+                toggleSwitch.setAttribute('aria-expanded', false);
+            }
+            // return false;
+        }
+        function hasClass(target, className) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
+    </script>
+{% endblock %}
+
