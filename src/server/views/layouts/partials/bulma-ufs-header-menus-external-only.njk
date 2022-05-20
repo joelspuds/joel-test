@@ -93,31 +93,31 @@
             <div class="container">
                 <div class="columns">
                     <div class="column">
-                        <span class="new-header__service">Funding Service</span>
+                        <span class="new-header__service">Funding Service(E)</span>
                         {% if not loggedOut %}
                             <div class="nav-wrapper">
                                 {% if not hideAccountLinks %}
-                                <div class="nav-bar" aria-label="Organisation Navigation">
+                                <div class="nav-bar" aria-label="Organisation Navigation" role="navigation">
                                     <ul class="nav-bar__list">
                                         <li class="dropdown">
                                             <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="organisation-dropdown">Account view</button>
                                             <ul class="dropdown__menu" id="organisation-dropdown">
-                                                <li><a href="/prototypes/external-users/home" class="{% if navArea == 'personal' %}dropdown__link--active{% endif %}">Personal {% if navArea == 'personal' %}(current){% endif %}</a></li>
-                                                <li><a href="/prototypes/external-users/home-organisation" class="{% if navArea == 'organisation' %}dropdown__link--active{% endif %}">University of Manchester {% if navArea == 'organisation' %}(current){% endif %}</a></li>
-                                                <li><a href="/prototypes/external-users/home-business" class="{% if navArea == 'business' %}dropdown__link--active{% endif %}">Cyberdine Systems Ltd {% if navArea == 'business' %}(current){% endif %}</a></li>
+                                                <li><a href="/prototypes/external-users/home" class="{% if navArea == 'personal' %}dropdown__link--active{% endif %}" role="menuitem">Personal {% if navArea == 'personal' %}(current){% endif %}</a></li>
+                                                <li><a href="/prototypes/external-users/home-organisation" class="{% if navArea == 'organisation' %}dropdown__link--active{% endif %}" role="menuitem">University of Manchester {% if navArea == 'organisation' %}(current){% endif %}</a></li>
+                                                <li><a href="/prototypes/external-users/home-business" class="{% if navArea == 'business' %}dropdown__link--active{% endif %}" role="menuitem">Cyberdine Systems Ltd {% if navArea == 'business' %}(current){% endif %}</a></li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </div>
                                 {% endif %}
 
-                                <div class="nav-bar" aria-label="User Navigation">
+                                <div class="nav-bar" aria-label="User Navigation" role="navigation">
                                     <ul class="nav-bar__list">
                                         <li class="dropdown">
                                             <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="user-dropdown">{{ userName }}</button>
                                             <ul class="dropdown__menu" id="user-dropdown">
-                                                <li><a href="{{ accountSettingsLink }}" class="{% if navArea == 'profile' %}dropdown__link--active{% endif %}">Account settings</a></li>
-                                                <li><a href="{{ signOutLink }}">Sign out</a></li>
+                                                <li><a href="{{ accountSettingsLink }}" class="{% if navArea == 'profile' %}dropdown__link--active{% endif %}" role="menuitem" >Account settings</a></li>
+                                                <li><a href="{{ signOutLink }}" role="menuitem">Sign out</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -125,10 +125,10 @@
                             </div>
                         {% else %}
                             <div class="nav-wrapper">
-                                <div class="nav-bar" aria-label="User Navigation">
+                                <div class="nav-bar" aria-label="User Navigation" role="menu">
                                     <ul class="nav-bar__list">
                                         <li class="dropdown">
-                                            <a href="{{ signInURL }}">Sign in</a>
+                                            <a href="{{ signInURL }}" role="menuitem">Sign in</a>
                                             {#<button type="button" class="dropdown__title" aria-expanded="false" aria-controls="user-dropdown">Dr. Jane Doe</button>
                                             <ul class="dropdown__menu" id="user-dropdown">
                                                 <li><a href="#">Account settings</a></li>
