@@ -1,0 +1,162 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set pageTitle = 'Progress bars' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set isAdminUser = true %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Show day') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="altRows">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" role="group" aria-describedby="dateHint">
+                        <legend class="govuk-fieldset__legend">
+                            When is the thing?
+                        </legend>
+                        <div id="dateHint" class="govuk-hint">
+                            For example, 27 6 2022
+                        </div>
+                        <div class="govuk-date-input" id="date">
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="date-day">
+                                        Day
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-day" name="date-day" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="date-month">
+                                        Month
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-month" name="date-month" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="date-year">
+                                        Year
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-year" name="date-year" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="govuk-body js-only meta u-space-t20" id="dayNameWrapper">This thing falls on a: <span id="dayName"></span> </p>
+
+                    </fieldset>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+{% endblock %}
+
+{% block bodyScripts %}
+    <script>
+      Zepto(function($){
+
+          //let dayWrapper = $('#dayNameWrapper');
+          //let dayName = $('#dayName');
+
+        function showTheDay (){
+            console.log('date-day')
+            let theDay = $('#date-day').val();
+            let theMonth = $('#date-month').val();
+            let theYear = $('#date-year').val();
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+            if(
+                parseInt(theDay) > 0 &&
+                parseInt(theDay) < 32 &&
+                parseInt(theMonth) > 0 &&
+                parseInt(theMonth) < 13 &&
+                parseInt(theYear) > 0 &&
+                parseInt(theYear) < 2050
+            ) {
+                console.log('we are in business!');
+                const d = new Date(parseInt(theMonth) + ' ' + parseInt(theDay) + ' ' + parseInt(theYear));
+                // const d = new Date('12 12 2022');
+                let day = d.getDay();
+                // $('#dayNameWrapper').html('Date is: ' + theDay + ' ' + months[parseInt(theMonth)-1] + ' ' + theYear);
+                $('#dayNameWrapper').html('This thing falls on a: ' + days[parseInt(day)-1]);
+            } else {
+                /*$('#dayNameWrapper').*/
+                // $('#dayNameWrapper').html('Hit me up with a real date dude!');
+            }
+
+        }
+
+          $('#date-day').on('keyup', function() {
+              showTheDay();
+          });
+          $('#date-month').on('keyup', function() {
+              showTheDay();
+          });
+          $('#date-year').on('keyup', function() {
+              showTheDay();
+          });
+      });
+    </script>
+
+   {# <script>
+        Zepto(function($){
+            if (!document.cookie.match('cookieBannerDismissed')) {
+                $('#global-cookie-message').removeClass('cookie-hidden');
+            }
+            let date = new Date();
+            let daysValidFor = 30;
+            date.setTime(date.getTime() + (daysValidFor*24*60*60*1000));
+            let expires = 'expires='+ date.toUTCString();
+            $('#dismissCookieBanner').on('click', function(event) {
+                $('#global-cookie-message').hide().addClass('cookie-hidden');
+                document.cookie = 'cookieBannerDismissed=true;' + expires + '; path=/';
+            });
+        })
+    </script>
+    <script>
+        Zepto(function($){
+            $('#showInviteRow').on('click', function(event) {
+                $('#hiddenInviteRow').removeClass('govuk-visually-hidden');
+                $('#hiddenPendingRow').addClass('govuk-visually-hidden');
+                event.preventDefault();
+            });
+            $('#sendInvite').on('click', function(event) {
+                // pendingFullName, pendingEmail
+                $('#hiddenInviteRow').addClass('govuk-visually-hidden');
+                $('#pendingFullName').html($('#teamFullName').val());
+                $('#pendingEmail').html('<a href="#">'+ $('#teamEmail').val() + "</a>");
+                $('#hiddenPendingRow').removeClass('govuk-visually-hidden');
+                $('#teamFullName').val('');
+                $('#teamEmail').val('');
+                event.preventDefault();
+            });
+            $('#cancelInvite').on('click', function(event) {
+                $('#hiddenInviteRow').removeClass('govuk-visually-hidden');
+                $('#hiddenPendingRow').addClass('govuk-visually-hidden');
+                $('#teamFullName').val('');
+                $('#teamEmail').val('');
+                event.preventDefault();
+            });
+        })
+    </script>#}
+{% endblock %}
