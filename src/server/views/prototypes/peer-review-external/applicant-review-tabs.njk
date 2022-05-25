@@ -48,7 +48,7 @@
 
     {% call components.bulmaRow() %}
 
-        {% call components.bulmaColumnAny(size='is-full', customID='main-content') %}
+        {% call components.bulmaColumnAny(size='is-full', customID='mainContent') %}
 
             <p class="govuk-body">
                 <strong>Response deadline:</strong> 28 May 2021<br>
@@ -57,7 +57,7 @@
         {%- endcall %}
     {%- endcall %}
 
-    <section class="section" id="main-content">
+    <section class="section" id="mainContent">
 
         {% call components.bulmaRow() %}
 
@@ -210,16 +210,16 @@
                                 </nav>
 
                                 {#<p class="govuk-body">
-                                    #}{#<a href="#main-content" class="govuk-link">Top of page</a>
+                                    #}{#<a href="#mainContent" class="govuk-link">Top of page</a>
                                     <br><br>#}{#
-                                    <a href="#main-content" class="govuk-link">Download reviews</a>
+                                    <a href="#mainContent" class="govuk-link">Download reviews</a>
                                     <br>
-                                    <a href="#main-content" class="govuk-link">Print reviews</a>
+                                    <a href="#mainContent" class="govuk-link">Print reviews</a>
                                 </p>#}
 
                             {%- endcall %}
 
-                            {% call components.bulmaColumnAny(size='is-9', customID='main-content') %}
+                            {% call components.bulmaColumnAny(size='is-9', customID='mainContent') %}
 
                                 {% call components.form(action='#', method='POST',name='manageReviews') %}
 

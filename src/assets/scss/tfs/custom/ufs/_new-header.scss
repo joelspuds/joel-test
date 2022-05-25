@@ -73,6 +73,20 @@ $design-colour: govuk-colour("blue");
     }
   }
 
+  &--external,
+  &--admin {
+    /*@include mobile {
+      .new-header__bar {
+        background-image: none !important;
+      }
+    }*/
+    @include touch {
+      .new-header__bar {
+        background-image: none !important;
+      }
+    }
+  }
+
   &--design {
     .new-header__bar {
       background-color: ufs-colour("jade");

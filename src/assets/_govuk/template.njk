@@ -33,7 +33,7 @@
 
     {% block skipLink %}
       {{ govukSkipLink({
-        href: '#main-content',
+        href: '#mainContent',
         text: 'Skip to main content'
       }) }}
     {% endblock %}
@@ -45,7 +45,7 @@
     {% block main %}
       <div class="govuk-width-container">
         {% block beforeContent %}{% endblock %}
-        <main class="govuk-main-wrapper {{ mainClasses }}" id="main-content" role="main">
+        <main class="govuk-main-wrapper {{ mainClasses }}" id="mainContent" role="main">
           {% block content %}{% endblock %}
         </main>
       </div>

@@ -19,14 +19,36 @@
 
     {% call components.bulmaRow() %}
 
-        {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='main-content') %}
+        {% call components.bulmaColumnAny(size='column is-8', customID='mainContent') %}
 
-           <p class="govuk-body">Page showing furniture/elements for external users</p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>User profile/orgs menu, above in right-hand end of nav bar</li>
-                <li>Beta banner (scroll down)</li>
-                <li>Contact info (scroll down)</li>
-            </ul>
+            <section>
+
+                <p class="govuk-body">Page showing furniture/elements for external users</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>User profile/orgs menu, above in right-hand end of nav bar</li>
+                    <li>Beta banner (scroll down)</li>
+                    <li>Contact info (scroll down)</li>
+                </ul>
+
+            </section>
+
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='column is-4') %}
+
+            <aside>
+                <p class="govuk-body">Side bar content</p>
+
+                <ul class="govuk-list">
+                    <li>
+                        <a href="#" class="govuk-link">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#" class="govuk-link">Link 2</a>
+                    </li>
+                </ul>
+            </aside>
 
         {%- endcall %}
 

@@ -6,6 +6,14 @@
 
 {% block content %}
 
+    <style>
+        header,
+        footer,
+        .ufs-footer__branding {
+            display:none!important;
+        }
+    </style>
+
     {% call components.bulmaRow() %}
 
         {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
@@ -18,7 +26,7 @@
 
         <section class="section" id="altRows">
 
-            {% call components.bulmaRow() %}
+           {# {% call components.bulmaRow() %}
 
                 {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
 
@@ -26,10 +34,10 @@
 
                 {%- endcall %}
 
-            {%- endcall %}
+            {%- endcall %}#}
 
             {% call components.bulmaRow() %}
-                {% call components.bulmaColumnAny(size='column is-8') %}
+               {# {% call components.bulmaColumnAny(size='column is-8') %}
 
                     <div class="application-items u-space-b30">
 
@@ -46,8 +54,8 @@
                     </div>
 
                 {%- endcall %}
-
-                {% call components.bulmaColumnAny(size='column is-3 is-offset-1') %}
+#}
+                {% call components.bulmaColumnAny(size='column is-3 {#is-offset-1#}') %}
                     <div class="govuk-related-items govuk-related-items--flush">
 
                         <div class="progress-meter">
@@ -83,7 +91,7 @@
                         </div>
 
                         <div class="progress-meter">
-                            < <label class="govuk-visually-hidden" id="progressBar5">Application Progress</label>
+                            <label class="govuk-visually-hidden" id="progressBar5">Application Progress</label>
                             <div class="progress-meter__text progress-meter__text--back" role="progressbar" aria-labelledby="progressBar5"><span class="govuk-visually-hidden">Your application is</span> 96% complete</div>
                             <div class="progress-meter__clipper" aria-hidden="true" style="clip-path: inset(0% 4% 0% 0%); -webkit-clip-path: inset(0% 4% 0% 0%)">
                                 <div class="progress-meter__text progress-meter__text--front">96% complete</div>

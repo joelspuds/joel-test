@@ -68,37 +68,11 @@
                     </thead>
                     <tbody>
 
-                    <tr class="mega-table_row-status--">
-                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="#" class="govuk-link">AWA24 - Bio-detoxification of Ricin in castor bean</a></td>
-                        <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
-                        <td class="govuk-table__cell">MRC</td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1, 30) | random }} Jan 2022</td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1, 30) | random }} Mar 2024</td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric">
-                            <span class="_mega-table_item-meta">[value]</span>
-                        </td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric">
-                           <strong class="govuk-tag govuk-tag--purple">Received</strong>
-                        </td>
-                    </tr>
-                    <tr class="mega-table_row-status--">
-                        <td class="govuk-table__cell mega-table__cell--fixed"><a href="#" class="govuk-link">AWA97 - Linear field waves in liquids</a></td>
-                        <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
-                        <td class="govuk-table__cell">MRC</td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1, 30) | random }} Feb 2022</td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1, 30) | random }} Aug 2024</td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric">
-                            <span class="_mega-table_item-meta">[value]</span>
-                        </td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric">
-                            <strong class="govuk-tag govuk-tag--red">Overdue</strong>
-                        </td>
-                    </tr>
-
-
                     {% for item in allData.megaDataApplications %}
                         <tr class="mega-table_row-status--">
-                            <td class="govuk-table__cell mega-table__cell--fixed"><a href="{% if item.awardURL %}{{ item.awardURL }}{% else %}#{% endif %}" class="govuk-link">AWA{{ item.id }} - {{ item.name }}</a></td>
+                            <td class="govuk-table__cell mega-table__cell--fixed">
+                                <a href="{% if item.awardURL %}{{ item.awardURL }}{% else %}#{% endif %}" class="govuk-link">AWA{{ item.id }} - {{ item.name }}</a>
+                            </td>
                             <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
                             <td class="govuk-table__cell">{{ item.funder }}</td>
                             <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1, 30) | random }} Jan 2022</td>
@@ -111,14 +85,12 @@
                                 {% if item.awardStatus == 'RECEIVED' %}
                                     <strong class="govuk-tag govuk-tag--yellow">Waiting on</strong>
                                 {% endif %}
-
                                 {% if item.awardStatus == 'Complete' %}
                                     <strong class="govuk-tag govuk-tag--green">{{ item.awardStatus }}</strong>
                                 {% endif %}
                                 {% if item.awardStatus == 'Terminated' %}
                                     <strong class="govuk-tag govuk-tag--red">Overdue</strong>
                                 {% endif %}
-
                             </td>
                         </tr>
                     {% endfor %}
