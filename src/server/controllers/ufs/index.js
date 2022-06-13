@@ -35,3 +35,4 @@ export * from './designController';
 export * from './orgs3Controller';
 export * from './panelController';
 export * from './postDecisionController';
+export * from './changeRequestController';

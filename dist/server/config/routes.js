@@ -259,6 +259,24 @@ router.post('/prototypes/application-v2/add-applicant', demosController.appV2Add
 
 /* *************************************************************** *
 
+  Change request
+
+* *************************************************************** */
+router.get('/prototypes/change-request', demosController.crIndexGet);
+router.post('/prototypes/change-request', demosController.crIndexPost);
+router.get('/prototypes/change-request/create', demosController.crCreateGet);
+router.post('/prototypes/change-request/create', demosController.crCreatePost);
+router.get('/prototypes/change-request/create-type', demosController.crCreateTypeGet);
+router.post('/prototypes/change-request/create-type', demosController.crCreateTypePost);
+router.get('/prototypes/change-request/team-and-transfer', demosController.crTeamAndTransferGet);
+router.post('/prototypes/change-request/team-and-transfer', demosController.crTeamAndTransferPost);
+router.get('/prototypes/change-request/logistics-and-timings', demosController.crLogisticsAndTimingsGet);
+router.post('/prototypes/change-request/logistics-and-timings', demosController.crLogisticsAndTimingsPost);
+router.get('/prototypes/change-request/deliverables-and-scope', demosController.crDeliverablesAndScopeGet);
+router.post('/prototypes/change-request/deliverables-and-scope', demosController.crDeliverablesAndScopePost);
+
+/* *************************************************************** *
+
   Various
 
 * *************************************************************** */

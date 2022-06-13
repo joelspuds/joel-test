@@ -1,0 +1,95 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set accountSettingsLink = '' %}
+{% set showExternalFurniture = false %}
+
+{% set hideAccountLinks = true %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+{% set allData = allData if allData %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set userName = prototypeData.userName %}
+
+{% set pageTitle = 'Create award change request' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'#', text:'Back to award overview'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Create award change request', caption=prototypeData.awardName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <p class="govuk-body">Select the type of change you want to create</p>
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="roles-hint">
+                        <legend class="govuk-visually-hidden">Select change type</legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="type1" name="types" type="radio" value="Project details" >
+                                <label class="govuk-label govuk-radios__label" for="type1" >Project details</label>
+                                <span class="govuk-hint govuk-radios__hint">Team and transfer</span>
+                            </div>
+                        </div>
+
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="type2" name="types" type="radio" value="Logistics and timings" >
+                                <label class="govuk-label govuk-radios__label" for="type2" >Logistics and timings</label>
+                                <span class="govuk-hint govuk-radios__hint">Extension, suspension, termination and change start date</span>
+                            </div>
+                        </div>
+
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="type3" name="types" type="radio" value="Strategic" >
+                                <label class="govuk-label govuk-radios__label" for="type3" >Strategic</label>
+                                <span class="govuk-hint govuk-radios__hint">Deliverables and scope</span>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <div class="application-controls govuk-clearfix">
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Continue</button>
+                    <a href="/prototypes/change-request/" class="govuk-link application-controls__cancel">Cancel and return to view and create award change request</a>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+    {% include '../../layouts/partials/user-contact.njk' %}
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+
+

@@ -363,3 +363,15 @@ Object.keys(_postDecisionController).forEach(function (key) {
     }
   });
 });
+
+var _changeRequestController = require('./changeRequestController');
+
+Object.keys(_changeRequestController).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _changeRequestController[key];
+    }
+  });
+});
