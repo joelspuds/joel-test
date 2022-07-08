@@ -717,7 +717,13 @@ export function crAwardExpenditureGet(req, res) {
   return res.render('prototypes/change-request/award-expenditure', viewData);
 }
 
-export function crAwawdChangeRequestsGet(req, res) {
+/*
+*
+*   View change request page
+*
+* */
+
+export function crAwardChangeRequestsGet(req, res) {
   let viewData;
 
   let crStatus = req.param('status');
@@ -736,4 +742,31 @@ export function crAwawdChangeRequestsGet(req, res) {
     savedSession,
   };
   return res.render('prototypes/change-request/award-view-requests', viewData);
+}
+
+/*
+*
+*   Award change request page
+*
+* */
+
+export function crViewRequestGet(req, res) {
+  let viewData;
+
+  let crStatus = req.param('status');
+  console.log();
+  if (crStatus) {
+    req.session.crStatus = crStatus;
+  }
+
+  console.log();
+
+  let allData = req.session;
+
+  viewData = {
+    allData,
+    prototypeData,
+    savedSession,
+  };
+  return res.render('prototypes/change-request/change-request-detail', viewData);
 }

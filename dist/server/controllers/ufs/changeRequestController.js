@@ -49,7 +49,8 @@ exports.crAwardAgreementGet = crAwardAgreementGet;
 exports.crAwardCostsGet = crAwardCostsGet;
 exports.crAwardFinanceGet = crAwardFinanceGet;
 exports.crAwardExpenditureGet = crAwardExpenditureGet;
-exports.crAwawdChangeRequestsGet = crAwawdChangeRequestsGet;
+exports.crAwardChangeRequestsGet = crAwardChangeRequestsGet;
+exports.crViewRequestGet = crViewRequestGet;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 let limitedOrgs = require('./orgs400');
@@ -769,7 +770,13 @@ function crAwardExpenditureGet(req, res) {
   return res.render('prototypes/change-request/award-expenditure', viewData);
 }
 
-function crAwawdChangeRequestsGet(req, res) {
+/*
+*
+*   View change request page
+*
+* */
+
+function crAwardChangeRequestsGet(req, res) {
   let viewData;
 
   let crStatus = req.param('status');
@@ -788,4 +795,31 @@ function crAwawdChangeRequestsGet(req, res) {
     savedSession
   };
   return res.render('prototypes/change-request/award-view-requests', viewData);
+}
+
+/*
+*
+*   Award change request page
+*
+* */
+
+function crViewRequestGet(req, res) {
+  let viewData;
+
+  let crStatus = req.param('status');
+  console.log();
+  if (crStatus) {
+    req.session.crStatus = crStatus;
+  }
+
+  console.log();
+
+  let allData = req.session;
+
+  viewData = {
+    allData,
+    prototypeData,
+    savedSession
+  };
+  return res.render('prototypes/change-request/change-request-detail', viewData);
 }

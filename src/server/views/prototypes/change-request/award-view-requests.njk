@@ -49,7 +49,7 @@
                 <tbody>
                     <tr>
                         <td class="govuk-table__cell">
-                            <a href="/prototypes/post-decision/award-transfer-progress" class="govuk-link">{{ savedSession.requestType }}</a>
+                            <a href="/prototypes/change-request/change-request-detail{% if allData.crStatus %}?crStatus={{ allData.crStatus }}{% endif %}" class="govuk-link">{{ savedSession.requestType }}</a>
                             {#<p class="govuk-body u-space-y0">
                                 <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span>
                             </p>#}
@@ -63,9 +63,9 @@
                         </td>
                         <td class="govuk-table__cell govuk-table__cell--numeric">
 
-                            {% if savedSession.crStatus == 'accepted' %}
+                            {% if allData.crStatus == 'accepted' %}
                                 <strong class="govuk-tag govuk-tag--green">Accepted</strong>
-                            {% elseif savedSession.crStatus == 'rejected' %}
+                            {% elseif allData.crStatus == 'rejected' %}
                                 <strong class="govuk-tag govuk-tag--red">Rejected</strong>
                             {% else %}
                                 <strong class="govuk-tag govuk-tag--grey">In progress</strong>

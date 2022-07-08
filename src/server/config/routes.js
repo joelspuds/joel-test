@@ -297,7 +297,8 @@ router.post('/prototypes/change-request/strategic/scope', demosController.crStra
 router.get('/prototypes/change-request/check', demosController.crCheckGet);
 router.post('/prototypes/change-request/check', demosController.crCheckPost);
 
-router.get('/prototypes/change-request/award-view-requests', demosController.crAwawdChangeRequestsGet);
+router.get('/prototypes/change-request/award-view-requests', demosController.crAwardChangeRequestsGet);
+router.get('/prototypes/change-request/change-request-detail', demosController.crViewRequestGet);
 // router.post('/prototypes/change-request/award-view-requests', demosController.crAwawrdChangeRequestsPost);
 
 /* *************************************************************** *

@@ -45,7 +45,6 @@
 
         {%- endcall %}
     {%- endcall %}
-
 {% endif %}
 
     {% call components.bulmaRow() %}
@@ -181,13 +180,19 @@
                         <div class="application-item__left">
                             <a href="/prototypes/change-request/create-type" class="govuk-link">Create new award change request</a>
                         </div>
+
                     </div>
                 </div>
 
-                <div class="application-item  application-item--skinny">
+                <div class="application-item  application-item--skinny application-item--plain">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
                             <a href="/prototypes/change-request/award-view-requests" class="govuk-link">View award change requests</a>
+                        </div>
+                        <div class="application-item__right">
+                            {% if savedSession.requestSubmitted %}
+                                <strong class="govuk-tag govuk-tag--grey">In progress</strong>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,187 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Change request' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set prototypeData = prototypeData if prototypeData %}
+{% set savedSession = savedSession if savedSession %}
+{% set userName = prototypeData.userName %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/change-request/award-view-requests', text:'Back to all change requests'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Change request status', caption=prototypeData.awardName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-9') %}
+
+            <div class="timeline">
+                <ul class="timeline__list">
+                    <li class="timeline__item {% if allData.crStatus %}timeline__item--live{% else %}timeline__item--active{% endif %}">
+                        <span class="timeline__title">Change request submitted</span>
+                        <span class="timeline__meta">By Arden Pimenta, University of Wales, <span class="meta">{{ savedSession.createdTimeAndDate }}</span></span>
+                        <p class="govuk-body u-space-t20 u-space-b0">
+                            <strong>Change request type:</strong> {{ savedSession.requestType }}
+                        </p>
+                        <p class="govuk-body u-space-t20 u-space-b0">
+                            <strong>What happens next</strong><br>
+                            We'll send a transfer request to UKRI and the receiving research organisation so they can confirm that they accept this transfer. If they accept, you’ll need to complete a transfer expenditure statement before the transfer date.
+                        </p>
+                        {#<strong class="govuk-tag govuk-tag--green">COMPLETE</strong>#}
+                    </li>
+
+                    {% if allData.crStatus == 'accepted' %}
+                        <li class="timeline__item {% if allData.crStatus %}timeline__item--active{% else %}timeline__item--live{% endif %}">
+                            <span class="timeline__title">Response from UKRI</span>
+                            <span class="timeline__meta">MRC, UKRI</span>
+                            <strong class="govuk-tag govuk-tag--green">Accepted</strong>
+                            <p class="govuk-body u-space-t20 u-space-b0">
+                                <strong>Comment</strong><br>
+                                We have received your change request and accepted the changes. There is no further action required and the payment schedule will be updated to reflect the new timelines. <br>Thanks, Sheila Biggins, MRC
+                            </p>
+                        </li>
+                    {% elseif allData.crStatus == 'rejected' %}
+                        <li class="timeline__item {% if allData.crStatus %}timeline__item--active{% else %}timeline__item--live{% endif %}">
+                            <span class="timeline__title">Response from UKRI</span>
+                            <span class="timeline__meta">MRC, UKRI </span>
+                            <strong class="govuk-tag govuk-tag--red">Rejected</strong>
+                            <p class="govuk-body u-space-t20 u-space-b0">
+                                <strong>Comment</strong><br>
+                                We have received your change request and cannot accept the changes. Please refer to the terms and conditions outlining this type of change - either submit a new change request which conforms to the Ts &amp; Cs in your award agreement (which I will happily accept) or continue with the project as is. There is no further action required on this change request and I have closed it, but please get in touch if you have any further queries.  <br>Thanks, Sheila Biggins, MRC
+                            </p>
+                        </li>
+                    {% else %}
+                        <li class="timeline__item timeline__item--live">
+                            <span class="timeline__title">Response from UKRI</span>
+                            <span class="timeline__meta">MRC, UKRI</span>
+                            <strong class="govuk-tag govuk-tag--grey">Waiting for response</strong>
+                        </li>
+                    {% endif %}
+
+
+                    {#<li class="timeline__item timeline__item--live">
+                        <span class="timeline__title">Awaiting transfer response</span>
+                        <span class="timeline__meta">Research Office - University of Bristol </span>
+                        <strong class="govuk-tag govuk-tag--yellow">WAITING ON</strong>
+                    </li>
+                    <li class="timeline__item timeline__item--live">
+                        <span class="timeline__title">Awaiting transfer response</span>
+                        <span class="timeline__meta">BBSRC - UKRI</span>
+                        <strong class="govuk-tag govuk-tag--yellow">WAITING ON</strong>
+                    </li>
+                    <li class="timeline__item timeline__item--inactive">
+                        <span class="timeline__title">Submit transfer expenditure statement</span>
+                        <span class="timeline__meta">Research Office - University of Wales</span>
+                        <strong class="govuk-tag govuk-tag--grey">UNAVAILABLE</strong>
+                    </li>
+                    <li class="timeline__item timeline__item--inactive">
+                        <span class="timeline__title">Review transfer expenditure statement</span>
+                        <span class="timeline__meta">BBSRC - UKRI</span>
+                        <strong class="govuk-tag govuk-tag--grey">UNAVAILABLE</strong>
+                    </li>
+                    <li class="timeline__item timeline__item--inactive">
+                        <span class="timeline__title">Accept award agreement</span>
+                        <span class="timeline__meta">Research Office - University of Bristol </span>
+                        <strong class="govuk-tag govuk-tag--grey">UNAVAILABLE</strong>
+                    </li>
+                    <li class="timeline__item timeline__item--inactive">
+                        <span class="timeline__title">Transfer complete</span>
+                        <strong class="govuk-tag govuk-tag--grey">UNAVAILABLE</strong>
+                    </li>#}
+                </ul>
+            </div>
+
+            {#<div class="govuk-accordion govuk-accordion__timeline" data-module="govuk-accordion" id="accordion-default">
+                <div class="govuk-accordion__section govuk-accordion__section--first govuk-accordion__section--active">
+                    <div class="govuk-accordion__section-header">
+                        <h2 class="govuk-accordion__section-heading">
+                            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">Application submitted</span>
+                        </h2>
+                        <span class="meta govuk-!-display-block govuk-!-font-size-16">Wednesday, 12 January 2022, 01:14am</span>
+                    </div>
+                    <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                        <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+                <div class="govuk-accordion__section govuk-accordion__section--active">
+                    <div class="govuk-accordion__section-header">
+                        <h2 class="govuk-accordion__section-heading">
+                            <span class="govuk-accordion__section-button" id="accordion-default-heading-2">Reviews received</span>
+                        </h2>
+                        <span class="meta govuk-!-display-block govuk-!-font-size-16">Tuesday 18 January 2022, 04:28pm</span>
+                    </div>
+                    <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+                        {{ components.captionHeading(text='What happens next?', tag='h3', size='s') }}
+                        <p class='govuk-body'>Your application has been reviewed and feedback has been provided for you to read and
+                            respond. <strong>Your response must be received by Friday 29 January 2022</strong>.
+                        <p class='govuk-body'>Each review and any comments you make will be sent to panel to help inform a decision.</p>
+                    </div>
+                </div>
+                <div class="govuk-accordion__section govuk-accordion__section--active govuk-accordion__section--expanded">
+                    <div class="govuk-accordion__section-header">
+                        <h2 class="govuk-accordion__section-heading">
+                            <span class="govuk-accordion__section-button" id="accordion-default-heading-3">Response</span>
+                        </h2>
+                        <span class="meta govuk-!-display-block govuk-!-font-size-16">Deadline Friday 29 January 2022, 04:28pm</span>
+                    </div>
+                    <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+                        <p class='govuk-body'>Applicant's response is pending</p>
+                    </div>
+                </div>
+                <div class="_govuk-accordion__section govuk-accordion__section--disabled">
+                    <div class="govuk-accordion__section-header">
+                        <h2 class="govuk-accordion__section-heading">
+                            <span class="govuk-accordion__section-button--disabled" id="accordion-default-heading-5">Panel</span>
+                        </h2>
+                    </div>
+
+                </div>
+                <div class="_govuk-accordion__section govuk-accordion__section--disabled govuk-accordion__section--last">
+                    <div class="govuk-accordion__section-header">
+                        <h2 class="govuk-accordion__section-heading">
+                            <span class="govuk-accordion__section-button--disabled" id="accordion-default-heading-5">Decision</span>
+                        </h2>
+                    </div>
+            #}{#<div id="accordion-default-content-5" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-5">
+                        <p class='govuk-body'>This review is in progress</p>
+                    </div>#}{#
+        </div>
+    </div>#}
+
+
+
+
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+
