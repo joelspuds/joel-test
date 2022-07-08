@@ -33,9 +33,27 @@
 
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
-                <div class="application-controls govuk-clearfix">
-                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Start journey</button>
-                    {#<a href="/prototypes/orgs" class="govuk-link application-controls__cancel">Return to application</a>#}
+
+                <h2 class="govuk-heading-m">Prototype</h2>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li><a class="govuk-link" href="/prototypes/change-request/awards-list">Start change request journey</a><br><br></li>
+                    <li><a class="govuk-link" href="/prototypes/change-request/email-accepted">Change request accepted</a> </li>
+                    <li><a class="govuk-link" href="/prototypes/change-request/email-rejected">Change request rejected</a><br><br></li>
+                </ul>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-3', extraClass='u-space-t20') %}
+
+                <div class="is-warning u-pad-20" style="border:1px solid #909090; padding-bottom:0!important">
+                    <p class="govuk-body">
+                        Remove session data.
+                    </p>
+                    <a href="/prototypes/change-request/?clearSession=true" class="govuk-button govuk-button--secondary" >Clear session</a>
                 </div>
 
             {%- endcall %}

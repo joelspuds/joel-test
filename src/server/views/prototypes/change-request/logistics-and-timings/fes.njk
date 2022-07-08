@@ -1,3 +1,4 @@
+
 {% set showExternalNav = true %}
 {% set activeNavItem = 'awards' %}
 {% set navArea = 'personal' %}
@@ -18,14 +19,14 @@
 
 {% set userName = prototypeData.userName %}
 
-{% set pageTitle = 'Extension' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Extend final Expenditure Statement' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/change-request/award-overview', text:'Back to award overview'}] %}
 
 {% block content %}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Extension', caption='Create award change request') }}
+            {{ components.captionHeading(text='Extend final Expenditure Statement ', caption='Create award change request') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -35,8 +36,8 @@
 
             {% call components.bulmaColumnAny(size='is-7') %}
 
-                <p class="govuk-body">Request an extension to the end date of the award.</p>
-                <p class="govuk-body">Extensions are subject to the terms and conditions. Refer to the your <a href="#" class="govuk-link">award agreement</a> (opens in a new window) or the Terms and Conditions for the Opportunity on the UKRI website for further guidance.</p>
+                <p class="govuk-body">Request an extension to the final Expenditure Statement due date.</p>
+                <p class="govuk-body">Final Expenditure Statement extensions are subject to the terms and conditions. Refer to the your <a href="#" class="govuk-link">award agreement</a> (opens in a new window) or the Terms and Conditions for the Opportunity on the UKRI website for further guidance.</p>
 
             {%- endcall %}
 
@@ -47,34 +48,34 @@
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
                 <p class="govuk-body">
-                    <strong>Current end date</strong>
+                    <strong>Current fES due date</strong>
                     <br>
-                    <span>{{ prototypeData.currentEndDate }}</span>
+                    <span>12 Jan 2023</span>
                 </p>
 
                 <div class="govuk-form-group ">
                     <fieldset class="govuk-fieldset" role="group" aria-describedby="">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                            <h2 class="govuk-fieldset__heading">Requested end date</h2>
+                            <h2 class="govuk-fieldset__heading">Requested due date</h2>
                         </legend>
                         <div class="govuk-date-input" id="transferDates">
                             <div class="govuk-date-input__item">
                                 <div class="govuk-form-group">
                                     <label class="govuk-label govuk-date-input__label" for="newDay1">Day</label>
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="newDay1" name="newDay1" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ allData.transferDay }}">
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="newDay1" name="newDay1" type="text" pattern="[0-9]*" inputmode="numeric" value="">
                                 </div>
                             </div>
                             <div class="govuk-date-input__item">
                                 <div class="govuk-form-group">
                                     <label class="govuk-label govuk-date-input__label" for="newMonth1">Month</label>
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="newMonth1" name="newMonth1" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ allData.transferMonth }}">
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="newMonth1" name="newMonth1" type="text" pattern="[0-9]*" inputmode="numeric" value="">
                                 </div>
                             </div>
                             <div class="govuk-date-input__item">
                                 <div class="govuk-form-group">
                                     <label class="govuk-label govuk-date-input__label" for="newYear1">Year</label>
 
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="newYear1" name="newYear1" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ allData.transferYear }}">
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="newYear1" name="newYear1" type="text" pattern="[0-9]*" inputmode="numeric" value="">
                                 </div>
                             </div>
                         </div>
@@ -82,11 +83,11 @@
                     </fieldset>
                 </div>
 
-                <p class="govuk-body">
+                {#<p class="govuk-body">
                     <strong>Extension in months</strong>
                     <br>
                     <span>6</span>
-                </p>
+                </p>#}
 
             {%- endcall %}
 
@@ -129,23 +130,23 @@
 {% block bodyScripts %}
     <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5-dev/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
-       tinymce.init({
-           selector: 'textarea',
-           height: 300,
-           menubar: false,
-           tinydrive_dropbox_app_key: 'socw0soabe8fvpv',
-           tinydrive_token_provider: '/prototypes/jwt',
-           powerpaste_allow_local_images: true,
-           plugins: [
-               'lists link charmap preview anchor',
-               'insertdatetime media table paste tinydrive code  wordcount '
-           ],
-           toolbar: 'formatselect | bold italic | numlist bullist ',
-           content_css: [
-               '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
-               '/stylesheets/tinymce.css'
-           ]
-       });
+        tinymce.init({
+            selector: 'textarea',
+            height: 300,
+            menubar: false,
+            tinydrive_dropbox_app_key: 'socw0soabe8fvpv',
+            tinydrive_token_provider: '/prototypes/jwt',
+            powerpaste_allow_local_images: true,
+            plugins: [
+                'lists link charmap preview anchor',
+                'insertdatetime media table paste tinydrive code  wordcount '
+            ],
+            toolbar: 'formatselect | bold italic | numlist bullist ',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ]
+        });
     </script>
 {% endblock %}
 

@@ -4,8 +4,11 @@ let limitedOrgs = require('./orgs400');
 
 const prototypeData = {
   userName: 'Rohindra Khatra',
-  awardName: 'AWA184 Environmental research grants 2022',
+  awardName: 'AWA184 - Environmental research grants 2022',
+  currentEndDate: '30 October 2023',
 };
+
+let savedSession;
 
 // ************************************************************************
 //
@@ -17,6 +20,7 @@ export function crIndexGet(req, res) {
 
   let clearSession = req.param('clearSession');
   if (clearSession === 'true') {
+    savedSession = null;
     req.session.destroy();
   }
 
@@ -36,8 +40,56 @@ export function crIndexPost(req, res) {
   req.session.userName = 'Linda Squires';*/
 
   let targetURL;
-  targetURL = '/prototypes/change-request/create';
+  targetURL = '/prototypes/change-request/awards-list';
   return res.redirect(targetURL);
+}
+
+// ************************************************************************
+//
+//        Awards list
+//
+// ************************************************************************
+export function crAwardsListGet(req, res) {
+  let viewData;
+  let megaDataApplications = generalData.megaDataApplications;
+
+  if (!req.session.megaDataApplications) {
+    req.session.megaDataApplications = megaDataApplications;
+  }
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/change-request/awards-list', viewData);
+}
+
+// ************************************************************************
+//
+//        Award details
+//
+// ************************************************************************
+export function crAwardOverviewGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  let tempSession;
+  console.log(savedSession);
+
+  if (savedSession) {
+    // savedSession.requestSubmitted = null;
+    console.log('savedSession exists!');
+  }
+
+  viewData = {
+    allData,
+    prototypeData,
+    savedSession,
+  };
+
+  return res.render('prototypes/change-request/award-overview', viewData);
 }
 
 // ************************************************************************
@@ -93,11 +145,13 @@ export function crCreateTypePost(req, res) {
   req.session.changeType = types;
 
   if (types === 'Project details') {
-    targetURL = '/prototypes/change-request/team-and-transfer';
+    targetURL = '/prototypes/change-request/project-details';
   } else if (types === 'Logistics and timings') {
     targetURL = '/prototypes/change-request/logistics-and-timings';
-  } else if (types === 'Strategic') {
-    targetURL = '/prototypes/change-request/strategic';
+  } else if (types === 'Scope') {
+    targetURL = '/prototypes/change-request/strategic/scope';
+  } else if (types === 'fES') {
+    targetURL = '/prototypes/change-request/logistics-and-timings/fes';
   } else {
     targetURL = '/prototypes/change-request/create-type';
   }
@@ -106,10 +160,10 @@ export function crCreateTypePost(req, res) {
 }
 // ************************************************************************
 //
-//        create, Project details
+//        create, Project details, and Team and Transfer
 //
 // ************************************************************************
-export function crTeamAndTransferGet(req, res) {
+export function crProjectDetailsGet(req, res) {
   let viewData;
 
   let allData = req.session;
@@ -121,11 +175,144 @@ export function crTeamAndTransferGet(req, res) {
   return res.render('prototypes/change-request/project-details', viewData);
 }
 
-export function crTeamAndTransferPost(req, res) {
-  const {} = req.body;
+export function crProjectDetailsPost(req, res) {
+  const { subType } = req.body;
 
   let targetURL;
-  targetURL = '/prototypes/change-request/create-type';
+
+  if (subType === 'Team') {
+    targetURL = '/prototypes/change-request/project-details/team';
+  } else if (subType === 'Transfer') {
+    targetURL = '/prototypes/change-request/project-details/transfer';
+  } else {
+    targetURL = '/prototypes/change-request/project-details';
+  }
+
+  return res.redirect(targetURL);
+}
+
+/*  TEAM */
+
+export function crProjectDetailsTeamGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/change-request/project-details/team', viewData);
+}
+
+export function crProjectDetailsTeamPost(req, res) {
+  const {} = req.body;
+  let targetURL;
+  console.log(req.body);
+
+  //let formData = req.body;
+
+  if (req.body.removeButton) {
+    req.session.removeablePerson = req.body.removeButton;
+    targetURL = '/prototypes/change-request/project-details/team-remove';
+  } else if (req.body.submitButton) {
+    targetURL = '/prototypes/change-request/project-details/team-add';
+  }
+
+  return res.redirect(targetURL);
+}
+/*
+* Remove person
+* */
+export function crTeamRemoveGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/change-request/project-details/team-remove', viewData);
+}
+
+export function crTeamRemovePost(req, res) {
+  const {} = req.body;
+
+  let formStuff = req.body;
+  for (const [key, value] of Object.entries(formStuff)) {
+    console.log(`${key} ${value}`);
+    req.session[`${key}`] = `${value}`;
+  }
+
+  req.session.teamChangeReturnLink = '/prototypes/change-request/project-details/team';
+  req.session.requestType = 'Remove team member';
+
+  let targetURL = '/prototypes/change-request/check';
+  return res.redirect(targetURL);
+}
+
+/*
+* Add person
+* */
+export function crTeamAddGet(req, res) {
+  let viewData;
+
+  let limitedOrgList = limitedOrgs.limitedOrgList;
+
+  let allData = req.session;
+  viewData = {
+    limitedOrgList,
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/change-request/project-details/team-add', viewData);
+}
+
+export function crTeamAddPost(req, res) {
+  const {} = req.body;
+  let formStuff = req.body;
+  for (const [key, value] of Object.entries(formStuff)) {
+    console.log(`${key} ${value}`);
+    req.session[`${key}`] = `${value}`;
+  }
+
+  req.session.teamChangeReturnLink = '/prototypes/change-request/project-details/team';
+  req.session.requestType = 'Add team member';
+
+  let targetURL = '/prototypes/change-request/check';
+  return res.redirect(targetURL);
+}
+
+/* TRANSFER */
+
+export function crProjectDetailsTransferGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  let limitedOrgList = limitedOrgs.limitedOrgList;
+  viewData = {
+    limitedOrgList,
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/change-request/project-details/transfer', viewData);
+}
+
+export function crProjectDetailsTransferPost(req, res) {
+  const { subType } = req.body;
+  let formStuff = req.body;
+  for (const [key, value] of Object.entries(formStuff)) {
+    console.log(`${key} ${value}`);
+    req.session[`${key}`] = `${value}`;
+  }
+
+  // req.session.teamChangeReturnLink = '/prototypes/change-request/project-details/team';
+  req.session.requestType = 'Transfer';
+
+  let targetURL = '/prototypes/change-request/check';
   return res.redirect(targetURL);
 }
 
@@ -147,19 +334,187 @@ export function crLogisticsAndTimingsGet(req, res) {
 }
 
 export function crLogisticsAndTimingsPost(req, res) {
-  const {} = req.body;
+  const { subType } = req.body;
 
   let targetURL;
-  targetURL = '/prototypes/change-request/create-type';
+
+  if (subType === 'Extension') {
+    targetURL = '/prototypes/change-request/logistics-and-timings/extension';
+  } else if (subType === 'Suspension') {
+    targetURL = '/prototypes/change-request/logistics-and-timings/suspension';
+  } else if (subType === 'Termination') {
+    targetURL = '/prototypes/change-request/logistics-and-timings/termination';
+  } else if (subType === 'Change start date') {
+    targetURL = '/prototypes/change-request/logistics-and-timings/change-start-date';
+  } else {
+    targetURL = '/prototypes/change-request/logistics-and-timings';
+  }
   return res.redirect(targetURL);
 }
 
+/* extension */
+export function crLogisticsAndTimingsExtensionGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/change-request/logistics-and-timings/extension', viewData);
+}
+
+export function crLogisticsAndTimingsExtensionPost(req, res) {
+  const {} = req.body;
+
+  let formStuff = req.body;
+  for (const [key, value] of Object.entries(formStuff)) {
+    console.log(`${key} ${value}`);
+    req.session[`${key}`] = `${value}`;
+  }
+  console.log('req.session = ');
+  console.log(req.session);
+
+  req.session.requestType = 'Extension';
+  req.session.dateLabel1 = 'Requested end date';
+
+  let targetURL;
+  targetURL = '/prototypes/change-request/check';
+  return res.redirect(targetURL);
+}
+
+/* extension */
+export function crLogisticsAndTimingsFESGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/change-request/logistics-and-timings/fes', viewData);
+}
+
+export function crLogisticsAndTimingsFESPost(req, res) {
+  const {} = req.body;
+
+  let formStuff = req.body;
+  for (const [key, value] of Object.entries(formStuff)) {
+    console.log(`${key} ${value}`);
+    req.session[`${key}`] = `${value}`;
+  }
+  console.log('req.session = ');
+  console.log(req.session);
+
+  req.session.requestType = 'fES due date extension';
+  req.session.dateLabel1 = 'Requested end date';
+
+  let targetURL;
+  targetURL = '/prototypes/change-request/check';
+  return res.redirect(targetURL);
+}
+
+/* suspension */
+export function crLogisticsAndTimingsSuspensionGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/change-request/logistics-and-timings/suspension', viewData);
+}
+
+export function crLogisticsAndTimingsSuspensionPost(req, res) {
+  const {} = req.body;
+
+  let formStuff = req.body;
+  for (const [key, value] of Object.entries(formStuff)) {
+    console.log(`${key} ${value}`);
+    req.session[`${key}`] = `${value}`;
+  }
+
+  req.session.requestType = 'Suspension';
+  req.session.dateLabel1 = 'Requested suspension date';
+  req.session.dateLabel2 = 'Requested resumption date';
+  req.session.reasonLabel = 'Reason for suspension';
+
+  let targetURL;
+  targetURL = '/prototypes/change-request/check';
+  return res.redirect(targetURL);
+}
+
+/* termination */
+export function crLogisticsAndTimingsTerminationGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/change-request/logistics-and-timings/termination', viewData);
+}
+
+export function crLogisticsAndTimingsTerminationPost(req, res) {
+  const {} = req.body;
+
+  let formStuff = req.body;
+  for (const [key, value] of Object.entries(formStuff)) {
+    console.log(`${key} ${value}`);
+    req.session[`${key}`] = `${value}`;
+  }
+
+  req.session.requestType = 'Termination';
+  req.session.dateLabel1 = 'Requested termination date';
+  req.session.dateLabel2 = null;
+  req.session.reasonLabel = 'Reason for termination';
+
+  let targetURL;
+  targetURL = '/prototypes/change-request/check';
+  return res.redirect(targetURL);
+}
+
+/* change start date */
+export function crLogisticsAndTimingsChangestartDateGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/change-request/logistics-and-timings/change-start-date', viewData);
+}
+
+export function crLogisticsAndTimingsChangestartDatePost(req, res) {
+  const {} = req.body;
+
+  let formStuff = req.body;
+  for (const [key, value] of Object.entries(formStuff)) {
+    console.log(`${key} ${value}`);
+    req.session[`${key}`] = `${value}`;
+  }
+
+  req.session.requestType = 'Change start date';
+  req.session.dateLabel1 = 'Requested new start date';
+
+  let targetURL;
+  targetURL = '/prototypes/change-request/check';
+  return res.redirect(targetURL);
+}
 // ************************************************************************
 //
 //        create, strategic
 //
 // ************************************************************************
-export function crDeliverablesAndScopeGet(req, res) {
+export function crStrategicGet(req, res) {
   let viewData;
 
   let allData = req.session;
@@ -171,384 +526,214 @@ export function crDeliverablesAndScopeGet(req, res) {
   return res.render('prototypes/change-request/strategic', viewData);
 }
 
-export function crDeliverablesAndScopePost(req, res) {
-  const {} = req.body;
+export function crStrategicPost(req, res) {
+  const { subType } = req.body;
 
   let targetURL;
-  targetURL = '/prototypes/change-request/create-type';
-  return res.redirect(targetURL);
-}
 
-/*
-
-// ************************************************************************
-//
-//        awards
-//
-// ************************************************************************
-export function pdAwardsGet(req, res) {
-  let viewData;
-
-  let megaDataApplications = generalData.megaDataApplications;
-
-  if (!req.session.megaDataApplications) {
-    req.session.megaDataApplications = megaDataApplications;
+  if (subType === 'Deliverables') {
+    targetURL = '/prototypes/change-request/strategic/deliverables';
+  } else if (subType === 'Scope') {
+    targetURL = '/prototypes/change-request/strategic/scope';
+  } else {
+    targetURL = '/prototypes/change-request/strategic';
   }
 
-  let allData = req.session;
-  viewData = { allData };
-
-  return res.render('prototypes/post-decision/awards', viewData);
-}
-
-export function pdAwardsPost(req, res) {
-  const {} = req.body;
-
-  let targetURL;
-  targetURL = '/prototypes/post-decision/home';
   return res.redirect(targetURL);
 }
 
-// ************************************************************************
-//
-//        award start
-//
-// ************************************************************************
-export function pdAwardStartGet(req, res) {
+/* deliverables */
+export function crStrategicDeliverablesGet(req, res) {
   let viewData;
-
-  let megaDataApplications = generalData.megaDataApplications;
-
-  if (!req.session.megaDataApplications) {
-    req.session.megaDataApplications = megaDataApplications;
-  }
-
-  let allData = req.session;
-  viewData = { allData };
-
-  return res.render('prototypes/post-decision/award-start', viewData);
-}
-
-export function pdAwardStartPost(req, res) {
-  const {} = req.body;
-
-  let targetURL;
-  targetURL = '/prototypes/post-decision/home';
-  return res.redirect(targetURL);
-}
-
-// ************************************************************************
-//
-//        award start confirmaiton
-//
-// ************************************************************************
-export function pdAwardConfirmGet(req, res) {
-  let viewData;
-
-  /!*let megaDataApplications = generalData.megaDataApplications;
-
-  if (!req.session.megaDataApplications) {
-    req.session.megaDataApplications = megaDataApplications;
-  }*!/
-
-  let allData = req.session;
-  viewData = { allData };
-
-  return res.render('prototypes/post-decision/award-confirmation', viewData);
-}
-
-export function pdAwardConfirmPost(req, res) {
-  const { startConfirmationDay, startConfirmationMonth, startConfirmationYear, expenditureFundingHeading } = req.body;
-
-  req.session.startConfirmationDay = startConfirmationDay;
-  req.session.startConfirmationMonth = startConfirmationMonth;
-  req.session.startConfirmationYear = startConfirmationYear;
-  req.session.expenditureFundingHeading = expenditureFundingHeading;
-  req.session.startConfirmed = true;
-
-  let targetURL;
-  targetURL = '/prototypes/post-decision/award-start';
-  return res.redirect(targetURL);
-}
-
-// ************************************************************************
-//
-//        award payment schedule
-//
-// ************************************************************************
-export function pdAwardPaymentScheduleGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = { allData };
-
-  return res.render('prototypes/post-decision/award-payment-schedule', viewData);
-}
-
-export function pdAwardPaymentSchedulePost(req, res) {
-  const {} = req.body;
-
-  let targetURL;
-  targetURL = '/prototypes/post-decision/award-payment-schedule';
-  return res.redirect(targetURL);
-}
-
-// ************************************************************************
-//
-//        award details
-//
-// ************************************************************************
-export function pdAwardDetailsGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = { allData };
-
-  return res.render('prototypes/post-decision/award-details', viewData);
-}
-
-export function pdAwardDetailsPost(req, res) {
-  const {} = req.body;
-
-  let targetURL;
-  targetURL = '/prototypes/post-decision/award-details';
-  return res.redirect(targetURL);
-}
-
-// ************************************************************************
-//
-//        award team
-//
-// ************************************************************************
-export function pdAwardTeamGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = { allData };
-
-  return res.render('prototypes/post-decision/award-team', viewData);
-}
-
-export function pdAwardTeamPost(req, res) {
-  const {} = req.body;
-
-  let targetURL;
-  targetURL = '/prototypes/post-decision/award-team';
-  return res.redirect(targetURL);
-}
-
-// ************************************************************************
-//
-//        award agreement
-//
-// ************************************************************************
-export function pdAwardAgreementGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = { allData };
-
-  return res.render('prototypes/post-decision/award-agreement', viewData);
-}
-
-export function pdAwardAgreementPost(req, res) {
-  const {} = req.body;
-
-  let targetURL;
-  targetURL = '/prototypes/post-decision/award-team';
-  return res.redirect(targetURL);
-}
-// ************************************************************************
-//
-//        award costs
-//
-// ************************************************************************
-export function pdAwardCostsGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = { allData };
-
-  return res.render('prototypes/post-decision/award-costs', viewData);
-}
-// ************************************************************************
-//
-//        award finance
-//
-// ************************************************************************
-export function pdAwardFinanceGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = { allData };
-
-  return res.render('prototypes/post-decision/award-finance', viewData);
-}
-// ************************************************************************
-//
-//        award expenditure
-//
-// ************************************************************************
-export function pdAwardExpenditureGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = { allData };
-
-  return res.render('prototypes/post-decision/award-expenditure', viewData);
-}
-
-// ************************************************************************
-//
-//        award docs
-//
-// ************************************************************************
-export function pdAwardDocsGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = { allData };
-
-  return res.render('prototypes/post-decision/award-documents', viewData);
-}
-
-export function pdAwardDocsPost(req, res) {
-  const {} = req.body;
-
-  let targetURL;
-  targetURL = '/prototypes/post-decision/award-team';
-  return res.redirect(targetURL);
-}
-
-// ************************************************************************
-//
-//        award change start
-//
-// ************************************************************************
-export function pdAwardChangeStartGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = { allData };
-
-  return res.render('prototypes/post-decision/award-change-start', viewData);
-}
-
-export function pdAwardChangeStartPost(req, res) {
-  const {} = req.body;
-
-  let targetURL;
-  targetURL = '/prototypes/post-decision/award-change-start';
-  return res.redirect(targetURL);
-}
-
-// ************************************************************************
-//
-//        award create new change request
-//
-// ************************************************************************
-export function pdAwardCreateChangeRequestGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = { allData };
-
-  return res.render('prototypes/post-decision/award-create-change-request', viewData);
-}
-
-export function pdAwardCreateChangeRequestPost(req, res) {
-  const { newChangeRequest } = req.body;
-
-  req.session.newChangeRequest = newChangeRequest;
-
-  let targetURL;
-  targetURL = '/prototypes/post-decision/award-change-project-details';
-  return res.redirect(targetURL);
-}
-
-// ************************************************************************
-//
-//        award create new change request project details
-//
-// ************************************************************************
-export function pdAwardCreateChangeProjectDetailsGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = { allData };
-
-  return res.render('prototypes/post-decision/award-change-project-details', viewData);
-}
-
-export function pdAwardCreateChangeProjectDetailsPost(req, res) {
-  const { newChangeRequestProjectDetails } = req.body;
-
-  req.session.newChangeRequestProjectDetails = newChangeRequestProjectDetails;
-
-  let targetURL;
-  targetURL = '/prototypes/post-decision/award-change-transfer';
-  return res.redirect(targetURL);
-}
-
-// ************************************************************************
-//
-//        award create new change request transfer
-//
-// ************************************************************************
-export function pdAwardCreateChangeTransferGet(req, res) {
-  let viewData;
-
-  let limitedOrgList = limitedOrgs.limitedOrgList;
-  console.log('limitedOrgList: ');
-  console.log(limitedOrgList);
 
   let allData = req.session;
   viewData = {
     allData,
-    limitedOrgList,
+    prototypeData,
   };
 
-  return res.render('prototypes/post-decision/award-change-transfer', viewData);
+  return res.render('prototypes/change-request/strategic/deliverables', viewData);
 }
 
-export function pdAwardCreateChangeTransferPost(req, res) {
-  const { transferDay, transferMonth, transferYear, transferOrganisation } = req.body;
+export function crStrategicDeliverablesPost(req, res) {
+  const {} = req.body;
 
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  let formStuff = req.body;
+  for (const [key, value] of Object.entries(formStuff)) {
+    console.log(`${key} ${value}`);
+    req.session[`${key}`] = `${value}`;
+  }
 
-  req.session.transferDay = transferDay;
-  req.session.transferMonth = transferMonth;
-  req.session.transferYear = transferYear;
-  req.session.transferOrganisation = transferOrganisation;
-
-  req.session.transferMonthName = months[parseInt(transferMonth) - 1];
+  req.session.requestType = 'Deliverables';
 
   let targetURL;
-  targetURL = '/prototypes/post-decision/award-change-transfer-confirm';
+  targetURL = '/prototypes/change-request/check';
   return res.redirect(targetURL);
 }
 
-// ************************************************************************
-//
-//        award create new change request transfer CONFIRM<
-//
-// ************************************************************************
-export function pdAwardCreateChangeTransferConfirmGet(req, res) {
+/* deliverables */
+export function crStrategicScopeGet(req, res) {
   let viewData;
 
   let allData = req.session;
-  viewData = { allData };
+  viewData = {
+    allData,
+    prototypeData,
+  };
 
-  return res.render('prototypes/post-decision/award-change-transfer-confirm', viewData);
+  return res.render('prototypes/change-request/strategic/scope', viewData);
 }
 
-export function pdAwardCreateChangeTransferConfirmPost(req, res) {
+export function crStrategicScopePost(req, res) {
   const {} = req.body;
+  let formStuff = req.body;
+  for (const [key, value] of Object.entries(formStuff)) {
+    console.log(`${key} ${value}`);
+    req.session[`${key}`] = `${value}`;
+  }
 
-  req.session.transferConfirmed = true;
+  req.session.requestType = 'Scope';
 
   let targetURL;
-  targetURL = '/prototypes/post-decision/award-change-start';
+  targetURL = '/prototypes/change-request/check';
   return res.redirect(targetURL);
 }
+
+// ************************************************************************
+//
+//        CHECK BEFORE SAVING
+//
+// ************************************************************************
+export function crCheckGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/change-request/check', viewData);
+}
+
+export function crCheckPost(req, res) {
+  const { createdTimeAndDate } = req.body;
+  /* SUBMIT */
+  req.session.requestSubmitted = true;
+  req.session.requestSubmittedPermanent = true;
+  req.session.createdTimeAndDate = createdTimeAndDate;
+  savedSession = req.session;
+  req.session = null;
+
+  /*console.log('savedSession = ');
+  console.log(savedSession);*/
+
+  let targetURL = '/prototypes/change-request/award-overview';
+
+  return res.redirect(targetURL);
+}
+
+/*
+crAwardPaymentScheduleGet
+crAwardTeamGet
+crAwardDocsGet
+crAwardAgreementGet
+crAwardCostsGet
+crAwardFinanceGet
+crAwardExpenditureGet
 */
+export function crAwardDetailsGet(req, res) {
+  let viewData;
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+  return res.render('prototypes/change-request/award-details', viewData);
+}
+export function crAwardPaymentScheduleGet(req, res) {
+  let viewData;
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+  return res.render('prototypes/change-request/award-payment-schedule', viewData);
+}
+
+export function crAwardTeamGet(req, res) {
+  let viewData;
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+  return res.render('prototypes/change-request/award-team', viewData);
+}
+
+export function crAwardDocsGet(req, res) {
+  let viewData;
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+  return res.render('prototypes/change-request/award-documents', viewData);
+}
+export function crAwardAgreementGet(req, res) {
+  let viewData;
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+  return res.render('prototypes/change-request/award-agreement', viewData);
+}
+export function crAwardCostsGet(req, res) {
+  let viewData;
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+  return res.render('prototypes/change-request/award-costs', viewData);
+}
+export function crAwardFinanceGet(req, res) {
+  let viewData;
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+  return res.render('prototypes/change-request/award-finance-summary', viewData);
+}
+export function crAwardExpenditureGet(req, res) {
+  let viewData;
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+  return res.render('prototypes/change-request/award-expenditure', viewData);
+}
+
+export function crAwawdChangeRequestsGet(req, res) {
+  let viewData;
+
+  let crStatus = req.param('status');
+  console.log();
+  if (crStatus) {
+    req.session.crStatus = crStatus;
+  }
+
+  console.log();
+
+  let allData = req.session;
+
+  viewData = {
+    allData,
+    prototypeData,
+    savedSession,
+  };
+  return res.render('prototypes/change-request/award-view-requests', viewData);
+}

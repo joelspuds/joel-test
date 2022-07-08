@@ -116,6 +116,7 @@ const startApp = exports.startApp = async () => {
   env.addFilter('prismFullpage', Helpers.wrapCodeWithPrismForFullPagePreview);
   env.addFilter('numberFormat', Helpers.formatAsNumber);
   env.addFilter('dateAndTime', Helpers.dayAndTime);
+  env.addFilter('showMonth', Helpers.showMonth);
   env.addFilter('giveMeAName', Helpers.namer);
 
   // Add lodash as a global for view templates

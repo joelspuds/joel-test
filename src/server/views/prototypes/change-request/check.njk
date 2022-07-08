@@ -1,0 +1,317 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set accountSettingsLink = '' %}
+{% set showExternalFurniture = false %}
+
+{% set hideAccountLinks = true %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+{% set allData = allData if allData %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set userName = prototypeData.userName %}
+
+{% set pageTitle = 'Check your change request' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/change-request/award-overview', text:'Back to award overview'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Check your change request', caption=prototypeData.awardName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7') %}
+
+                <p class="govuk-body">Check your change request details before submitting</p>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-8') %}
+
+                <dl class="govuk-summary-list">
+                    {# Request type - ALL #}
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Type of request</dt>
+                        <dd class="govuk-summary-list__value">{{ allData.requestType }}</dd>
+                        <dd class="govuk-summary-list__actions">
+                            &nbsp;
+                        </dd>
+                    </div>
+
+                    {#
+                    Extension
+                    #}
+                    {% if allData.requestType == 'Extension' %}
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Current end date</dt>
+                            <dd class="govuk-summary-list__value">{{ prototypeData.currentEndDate }}</dd>
+                            <dd class="govuk-summary-list__actions">&nbsp;</dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Requested end date</dt>
+                            <dd class="govuk-summary-list__value">{{ allData.newDay1 }}  {{ allData.newMonth1 | showMonth() }} {{ allData.newYear1 }}</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#" onclick="window.history.go (-1)">
+                                    Change<span class="govuk-visually-hidden"> date</span>
+                                </a>
+                            </dd>
+                        </div>
+                    {% endif %}
+                    {#
+                    fES due date extension
+                    #}
+                    {% if allData.requestType == 'fES due date extension' %}
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Current fES due date</dt>
+                            <dd class="govuk-summary-list__value">{{ prototypeData.currentEndDate }}</dd>
+                            <dd class="govuk-summary-list__actions">&nbsp;</dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Requested fES due date</dt>
+                            <dd class="govuk-summary-list__value">{{ allData.newDay1 }}  {{ allData.newMonth1 | showMonth() }} {{ allData.newYear1 }}</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#" onclick="window.history.go (-1)">
+                                    Change<span class="govuk-visually-hidden"> date</span>
+                                </a>
+                            </dd>
+                        </div>
+                    {% endif %}
+
+                    {#
+                    Suspension
+                    #}
+                    {% if allData.requestType == 'Suspension' %}
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Requested suspension date</dt>
+                            <dd class="govuk-summary-list__value">{{ allData.newDay1 }}  {{ allData.newMonth1 | showMonth() }} {{ allData.newYear1 }}</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#" onclick="window.history.go (-1)">
+                                    Change<span class="govuk-visually-hidden"> date</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Requested resumption date</dt>
+                            <dd class="govuk-summary-list__value">{{ allData.newDay2 }}  {{ allData.newMonth2 | showMonth() }} {{ allData.newYear2 }}</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#" onclick="window.history.go (-1)">
+                                    Change<span class="govuk-visually-hidden"> date</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">{{ allData.reasonLabel }}</dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ allData.reasons }}
+                                {% if allData.reasons == 'Other' %}
+                                    {% if allData.other %}
+                                        <br><span class="meta">{{ allData.other }}</span>
+                                    {% endif %}
+                                {% endif %}
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#" onclick="window.history.go (-1)">
+                                    Change<span class="govuk-visually-hidden"> reason</span>
+                                </a>
+                            </dd>
+                        </div>
+                    {% endif %}
+
+                    {#
+                    Termination
+                    #}
+                    {% if allData.requestType == 'Termination' %}
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Current end date</dt>
+                            <dd class="govuk-summary-list__value">{{ prototypeData.currentEndDate }}</dd>
+                            <dd class="govuk-summary-list__actions">&nbsp;</dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Requested termination date</dt>
+                            <dd class="govuk-summary-list__value">{{ allData.newDay1 }}  {{ allData.newMonth1 | showMonth() }} {{ allData.newYear1 }}</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#" onclick="window.history.go (-1)">
+                                    Change<span class="govuk-visually-hidden"> date</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Reason for termination</dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ allData.reasons }}
+                                {% if allData.reasons == 'Other' %}
+                                    {% if allData.other %}
+                                        <br><span class="meta">{{ allData.other }}</span>
+                                    {% endif %}
+                                {% endif %}
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#" onclick="window.history.go (-1)">
+                                    Change<span class="govuk-visually-hidden"> reason</span>
+                                </a>
+                            </dd>
+                        </div>
+                    {% endif %}
+
+                    {#
+                    Change start date
+                    #}
+                    {% if allData.requestType == 'Change start date' %}
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Current start date</dt>
+                            <dd class="govuk-summary-list__value">{{ prototypeData.currentEndDate }}</dd>
+                            <dd class="govuk-summary-list__actions">&nbsp;</dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Requested end date</dt>
+                            <dd class="govuk-summary-list__value">{{ allData.newDay1 }}  {{ allData.newMonth1 | showMonth() }} {{ allData.newYear1 }}</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#" onclick="window.history.go (-1)">
+                                    Change<span class="govuk-visually-hidden"> date</span>
+                                </a>
+                            </dd>
+                        </div>
+                    {% endif %}
+
+                    {#  Transfer  #}
+                    {% if allData.requestType == 'Transfer' %}
+                        {#<div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Name</dt>
+                            <dd class="govuk-summary-list__value">{{ allData.firstName }} {{ allData.lastName }}</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#" onclick="window.history.go (-1)">
+                                    Change<span class="govuk-visually-hidden"> name of contact</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Email address</dt>
+                            <dd class="govuk-summary-list__value">{{ allData.email }}</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#" onclick="window.history.go (-1)">
+                                    Change<span class="govuk-visually-hidden"> contact email address</span>
+                                </a>
+                            </dd>
+                        </div>#}
+
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Requested transfer date</dt>
+                            <dd class="govuk-summary-list__value">{{ allData.newDay1 }}  {{ allData.newMonth1 | showMonth() }} {{ allData.newYear1 }}</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#" onclick="window.history.go (-1)">
+                                    Change<span class="govuk-visually-hidden"> date</span>
+                                </a>
+                            </dd>
+                        </div>
+
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Organsation</dt>
+                            <dd class="govuk-summary-list__value">{{ allData.organisation }}</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#" onclick="window.history.go (-1)">
+                                    Change<span class="govuk-visually-hidden"> new organisation name</span>
+                                </a>
+                            </dd>
+                        </div>
+                    {% endif %}
+
+                    {% if allData.requestType == 'Remove team member' %}
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Remove team member</dt>
+                            <dd class="govuk-summary-list__value">{{ allData.removeablePerson }}</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="{{ allData.teamChangeReturnLink }}">
+                                    Change<span class="govuk-visually-hidden"> team member</span>
+                                </a>
+                            </dd>
+                        </div>
+                    {% endif %}
+
+                    {% if allData.requestType == 'Add team member' %}
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Name</dt>
+                            <dd class="govuk-summary-list__value">{{ allData.firstName }} {{ allData.lastName }}</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#" onclick="window.history.go (-1)">
+                                    Change<span class="govuk-visually-hidden"> name of contact</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Email</dt>
+                            <dd class="govuk-summary-list__value">{{ allData.email }}</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#" onclick="window.history.go (-1)">
+                                    Change<span class="govuk-visually-hidden"> contact email address</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Organsation name</dt>
+                            <dd class="govuk-summary-list__value">{{ allData.organisation }}</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#" onclick="window.history.go (-1)">
+                                    Change<span class="govuk-visually-hidden"> new organisation name</span>
+                                </a>
+                            </dd>
+                        </div>
+                    {% endif %}
+
+                    {# Justification textarea - ALL #}
+                    {% if allData.justification %}
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Justification</dt>
+                            <dd class="govuk-summary-list__value">{{ allData.justification }}</dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#" onclick="window.history.go (-1)">
+                                    Change<span class="govuk-visually-hidden"> justification</span>
+                                </a>
+                            </dd>
+                        </div>
+                    {% endif %}
+                </dl>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7') %}
+
+                <div class="application-controls govuk-clearfix">
+                    <input type="hidden" value="{{ 'dataAndTime' | dateAndTime() }}" name="createdTimeAndDate">
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Submit change request</button>
+                    <br><a class="govuk-link" href="/prototypes/change-request/create-type">Re-start change request process</a>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+    {% include '../../layouts/partials/user-contact.njk' %}
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+
+

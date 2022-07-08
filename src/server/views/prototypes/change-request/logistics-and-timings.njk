@@ -20,7 +20,7 @@
 {% set userName = prototypeData.userName %}
 
 {% set pageTitle = 'Logistics and timings' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/change-request/create-type', text:'Back to create award change request'}] %}
+{% set backLinkContents =  [{url:'/prototypes/change-request/award-overview', text:'Back to award overview'}] %}
 
 {% block content %}
 
@@ -86,7 +86,7 @@
 
                 <div class="application-controls govuk-clearfix">
                     <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Continue</button>
-                    <a href="/prototypes/change-request/" class="govuk-link application-controls__cancel">Cancel and return to view and create award change request</a>
+                    <br><br><a href="/prototypes/change-request/create-type" class="govuk-link application-controls__cancel">Cancel and return to create award change request</a>
                 </div>
 
             {%- endcall %}

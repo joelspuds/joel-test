@@ -18,14 +18,14 @@
 
 {% set userName = prototypeData.userName %}
 
-{% set pageTitle = 'Suspension' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Change start date' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/change-request/award-overview', text:'Back to award overview'}] %}
 
 {% block content %}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Suspension', caption='Create award change request') }}
+            {{ components.captionHeading(text='Change start date', caption='Create award change request') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -35,20 +35,36 @@
 
             {% call components.bulmaColumnAny(size='is-7') %}
 
-                <p class="govuk-body">Work on the award has stopped, or where work is continuing but payment needs to stop.</p>
-
+                <p class="govuk-body">The project has already started and you can no longer change the start date.</p>
+                <p class="govuk-body">Return to the <a href="/prototypes/change-request/logistics-and-timings" class="govuk-link">logistics and timings change request options</a> to make further changes to the project dates.</p>
             {%- endcall %}
 
         {%- endcall %}
 
-        {% call components.bulmaRow() %}
+        {#{% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7') %}
+
+                <p class="govuk-body">Request a new start date for the project.</p>
+                <p class="govuk-body">Changes in start date are subject to the terms and conditions. Refer to the your <a href="#" class="govuk-link">award agreement</a> (opens in a new window) or the Terms and Conditions for the Opportunity on the UKRI website for further guidance.</p>
+            {%- endcall %}
+
+        {%- endcall %}#}
+
+        {#{% call components.bulmaRow() %}
 
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <p class="govuk-body">
+                    <strong>Current start date</strong>
+                    <br>
+                    <span>14 August 2022</span>
+                </p>
 
                 <div class="govuk-form-group ">
                     <fieldset class="govuk-fieldset" role="group" aria-describedby="">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                            <h2 class="govuk-fieldset__heading">Requested suspension date</h2>
+                            <h2 class="govuk-fieldset__heading">Requested start date</h2>
                         </legend>
                         <div class="govuk-date-input" id="transferDates">
                             <div class="govuk-date-input__item">
@@ -84,77 +100,6 @@
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
                 <div class="govuk-form-group ">
-                    <fieldset class="govuk-fieldset" role="group" aria-describedby="">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                            <h2 class="govuk-fieldset__heading">Requested resumption date</h2>
-                        </legend>
-                        <div class="govuk-date-input" id="transferDates">
-                            <div class="govuk-date-input__item">
-                                <div class="govuk-form-group">
-                                    <label class="govuk-label govuk-date-input__label" for="newDay2">Day</label>
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="newDay2" name="newDay2" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ allData.transferDay }}">
-                                </div>
-                            </div>
-                            <div class="govuk-date-input__item">
-                                <div class="govuk-form-group">
-                                    <label class="govuk-label govuk-date-input__label" for="newMonth2">Month</label>
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="newMonth2" name="newMonth2" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ allData.transferMonth }}">
-                                </div>
-                            </div>
-                            <div class="govuk-date-input__item">
-                                <div class="govuk-form-group">
-                                    <label class="govuk-label govuk-date-input__label" for="newYear2">Year</label>
-
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="newYear2" name="newYear2" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ allData.transferYear }}">
-                                </div>
-                            </div>
-                        </div>
-
-                    </fieldset>
-                </div>
-
-            {%- endcall %}
-
-        {%- endcall %}
-
-        {% call components.bulmaRow() %}
-
-            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
-                <div class="govuk-form-group">
-                    <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Reason for suspension</legend>
-                        {#<div id="contact-hint" class="govuk-hint">Select one option.</div>#}
-                        <div class="govuk-radios" data-module="govuk-radios">
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="reason1" name="reasons" type="radio" value="Maternity/paternity or adoption leave">
-                                <label class="govuk-label govuk-radios__label" for="reason1">Maternity/paternity or adoption leave</label>
-                            </div>
-
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="reason2" name="reasons" type="radio" value="Other" data-aria-controls="conditional-reasons-2">
-                                <label class="govuk-label govuk-radios__label" for="reason2">Other</label>
-
-                            </div>
-                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-reasons-2">
-                                <div class="govuk-form-group">
-                                    <label class="govuk-label" for="other">Please specify (optional)</label>
-                                    <span class="govuk-hint">Do not include any personal or financial information.</span>
-                                    <input class="govuk-input govuk-!-width-one-third" id="other" name="other" type="text">
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-
-            {%- endcall %}
-
-        {%- endcall %}
-
-        {% call components.bulmaRow() %}
-
-            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
-
-                <div class="govuk-form-group ">
                     <label class="govuk-label govuk-label govuk-label--s" for="justification">Justification</label>
                     <span class="govuk-hint">You must provide a reason for making this request</span>
                     <textarea class="govuk-textarea govuk-js-character-count" name="justification" id="justification" rows="6">{{ allData.justification }}</textarea>
@@ -163,8 +108,6 @@
             {%- endcall %}
 
         {%- endcall %}
-
-
 
         {% call components.bulmaRow() %}
 
@@ -179,9 +122,7 @@
 
             {%- endcall %}
 
-        {%- endcall %}
-
-
+        {%- endcall %}#}
 
     {%- endcall %}
     {% include '../../../layouts/partials/user-contact.njk' %}

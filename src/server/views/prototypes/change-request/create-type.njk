@@ -20,7 +20,7 @@
 {% set userName = prototypeData.userName %}
 
 {% set pageTitle = 'Create award change request' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'#', text:'Back to award overview'}] %}
+{% set backLinkContents =  [{url:'/prototypes/change-request/award-overview', text:'Back to award overview'}] %}
 
 {% block content %}
 
@@ -59,9 +59,16 @@
 
                         <div class="govuk-radios" data-module="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="type3" name="types" type="radio" value="Strategic" >
-                                <label class="govuk-label govuk-radios__label" for="type3" >Strategic</label>
-                                <span class="govuk-hint govuk-radios__hint">Deliverables and scope</span>
+                                <input class="govuk-radios__input" id="type3" name="types" type="radio" value="Scope" >
+                                <label class="govuk-label govuk-radios__label" for="type3">Scope and status</label>
+                                <span class="govuk-hint govuk-radios__hint">Update the scope or status of your project</span>
+                            </div>
+                        </div>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="type4" name="types" type="radio" value="fES">
+                                <label class="govuk-label govuk-radios__label" for="type4">Extend fES</label>
+                                <span class="govuk-hint govuk-radios__hint">Request a change to your final Expenditure Statement due date</span>
                             </div>
                         </div>
 
@@ -78,7 +85,7 @@
 
                 <div class="application-controls govuk-clearfix">
                     <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Continue</button>
-                    <a href="/prototypes/change-request/" class="govuk-link application-controls__cancel">Cancel and return to view and create award change request</a>
+                    <a href="/prototypes/change-request/award-overview" class="govuk-link application-controls__cancel">Cancel and return to award overview</a>
                 </div>
 
             {%- endcall %}

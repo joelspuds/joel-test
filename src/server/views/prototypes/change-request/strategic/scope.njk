@@ -1,0 +1,109 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set accountSettingsLink = '' %}
+{% set showExternalFurniture = false %}
+
+{% set hideAccountLinks = true %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+{% set allData = allData if allData %}
+{% set prototypeData = prototypeData if prototypeData %}
+{% set limitedOrgList = limitedOrgList if limitedOrgList %}
+
+
+{% set userName = prototypeData.userName %}
+
+{% set pageTitle = 'Scope and status' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/change-request/award-overview', text:'Back to award overview'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Scope and status', caption='Create award change request') }}
+
+            <p class="govuk-body govuk-!-font-size-24">Outline the changes in scope and status you wish to make to your project.</p>
+            <p class="govuk-body">You should refer to your original application, <a href="#" class="govuk-link">The economics of grant funding in a post-pandemic world</a>. Be  concise and brief, and reference any relevant points from your application. Some changes in scope and status will be referred to a panel for consultation.</p>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <div class="govuk-form-group ">
+                    <label class="govuk-label govuk-label govuk-label--s" for="justification">Justification</label>
+                    <span class="govuk-hint">You must provide a reason for making this request</span>
+                    <textarea class="govuk-textarea govuk-js-character-count" name="justification" id="justification" rows="6">{{ allData.justification }}</textarea>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <div class="application-controls govuk-clearfix ">
+                    <button type="submit" class="govuk-button application-controls__submit govuk-!-display-inline govuk-button--secondary" value="save" name="saveButton">Save</button>
+                    &nbsp;
+                    <button type="submit" class="govuk-button application-controls__submit govuk-!-display-inline" name="submitButton" value="submit">Check and submit</button>
+                    <br><br><a href="/prototypes/change-request/create-type" class="govuk-link application-controls__cancel">Cancel and return to create award change request</a>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+    {% include '../../../layouts/partials/user-contact.njk' %}
+{% endblock %}
+{% block bodyScripts %}
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5-dev/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            height: 600,
+            menubar: false,
+            tinydrive_dropbox_app_key: 'socw0soabe8fvpv',
+            tinydrive_token_provider: '/prototypes/jwt',
+            powerpaste_allow_local_images: true,
+            plugins: [
+                'lists link charmap preview anchor',
+                'insertdatetime media table paste tinydrive code  wordcount '
+            ],
+            toolbar: 'formatselect | bold italic | numlist bullist ',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ]
+        });
+    </script>
+
+    <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        var selectEl = document.querySelector('#organisation');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 1,
+            selectElement: selectEl
+        });
+    </script>
+{% endblock %}
+
+

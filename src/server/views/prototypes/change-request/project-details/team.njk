@@ -1,0 +1,139 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set accountSettingsLink = '' %}
+{% set showExternalFurniture = false %}
+
+{% set hideAccountLinks = true %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+{% set allData = allData if allData %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set userName = prototypeData.userName %}
+
+{% set pageTitle = 'Team' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/change-request/award-overview', text:'Back to award overview'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Team', caption='Create award change request') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-8') %}
+
+                <p class="govuk-body">Chose an existing team member to remove, or add a new one.</p>
+                <p class="govuk-body">Changes to the project team are subject to the terms and conditions. Refer to the your <a href="#" class="govuk-link">award agreement</a> (opens in a new window) or the Terms and Conditions for the Opportunity on the UKRI website for further guidance.</p>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                {#{{ components.captionHeading(text='University of Wales', tag='h2', size='s') }}#}
+                <p class="govuk-body govuk-!-font-size-24"><strong>University of Wales</strong> <span class="meta">(Lead)</span></p>
+
+                <table class="govuk-table">
+                    <caption class="govuk-table__caption govuk-visually-hidden">University of Wales team members</caption>
+                    <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header _cell-max-35">Name</th>
+                        <th scope="col" class="govuk-table__header _cell-max-35">Role</th>
+                        <th scope="col" class="govuk-table__header ">Email address</th>
+                        <th scope="col" class="govuk-table__header "><span class="govuk-visually-hidden">Action</span></th>
+                    </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell  ">Dr. Alicia Brook</td>
+                            <td class="govuk-table__cell ">Lead applicant</td>
+                            <td class="govuk-table__cell ">a.brook@wales.ac.uk</td>
+                            <td class="govuk-table__cell u-align-right"><button type="submit" name="removeButton" class="govuk-button govuk-button--link" value="Dr. Alicia Brook">Remove <span class="govuk-visually-hidden">this person</span></button></td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell ">Dr. Phoebe Buffay-Hannigan</td>
+                            <td class="govuk-table__cell ">Co-investigator</td>
+                            <td class="govuk-table__cell ">p.buffay-hanningane@cardiffuniversity.ac.uk</td>
+                            <td class="govuk-table__cell u-align-right"><button type="submit" name="removeButton" class="govuk-button govuk-button--link" value="Dr. Phoebe Buffay-Hannigan">Remove <span class="govuk-visually-hidden">this person</span></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                {#{{ components.captionHeading(text='University of Wales', tag='h2', size='s') }}#}
+                <p class="govuk-body govuk-!-font-size-24"><strong>University of Manchester</strong></p>
+
+                <table class="govuk-table">
+                    <caption class="govuk-table__caption govuk-visually-hidden">University of Manchester team members</caption>
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header _cell-max-35">Name</th>
+                            <th scope="col" class="govuk-table__header _cell-max-35">Role</th>
+                            <th scope="col" class="govuk-table__header ">Email address</th>
+                            <th scope="col" class="govuk-table__header "><span class="govuk-visually-hidden">Action</span></th>
+                        </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell ">Dr. Annabel Hatt</td>
+                            <td class="govuk-table__cell ">Lead applicant</td>
+                            <td class="govuk-table__cell ">a.hatt@manchester.ac.uk</td>
+                            <td class="govuk-table__cell u-align-right"><button type="submit" name="removeButton" class="govuk-button govuk-button--link" value="Dr. Annabel Hatt">Remove <span class="govuk-visually-hidden">this person</span></button></td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">Dr. David Burson</td>
+                            <td class="govuk-table__cell">Co-investigator</td>
+                            <td class="govuk-table__cell ">d.burson@manchester.ac.uk</td>
+                            <td class="govuk-table__cell u-align-right"><button type="submit" name="removeButton" class="govuk-button govuk-button--link" value="Dr. David Burson">Remove <span class="govuk-visually-hidden">this person</span></button></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <div class="application-controls govuk-clearfix">
+                    <button type="submit" class="govuk-button application-controls__submit" name="submitButton" value="addPerson">Add new team member</button>
+                    <br><br><a href="/prototypes/change-request/create-type" class="govuk-link application-controls__cancel">Cancel and return to create award change request</a>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+    {% include '../../../layouts/partials/user-contact.njk' %}
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+
+

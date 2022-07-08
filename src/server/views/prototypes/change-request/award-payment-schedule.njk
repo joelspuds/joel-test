@@ -1,0 +1,177 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Home' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set prototypeData = prototypeData if prototypeData %}
+{% set userName = prototypeData.userName %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/change-request/award-overview', text:'Back to award overview'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Payment schedule', caption=prototypeData.awardName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {#{% call components.bulmaRow(extraClass='_u-space-y0') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Schedule summary', size='s', tag='h2') }}
+        {%- endcall %}
+    {%- endcall %}#}
+    {% call components.form(action='#', method='POST',name='startConfirmation') %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-2') %}
+                <p class="govuk-body u-space-b0"><strong>Period</strong></p>
+                <p class="govuk-body govuk-!-font-size-24">1 of 8</p>
+            {%- endcall %}
+            {% call components.bulmaColumnAny(size='is-2') %}
+                <p class="govuk-body u-space-b0"><strong>Amount paid to date</strong></p>
+                <p class="govuk-body govuk-!-font-size-24">£0</p>
+            {%- endcall %}
+            {% call components.bulmaColumnAny(size='is-2') %}
+                <p class="govuk-body u-space-b0"><strong>Amount outstanding</strong></p>
+                <p class="govuk-body govuk-!-font-size-24">£1,000,000</p>
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                <table class="govuk-table">
+
+                    <thead>
+                        <tr>
+                            <th class="govuk-table__header">Period</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Schedule date</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Profile amount (%)</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Actual amount paid (£)</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr class="govuk-table--current">
+                            <td class="govuk-table__cell govuk-table__cell--middle"><strong>1</strong> <span class="meta">(current period)</span></td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">12 May 2022</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">125,000</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">0</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">
+                                <strong class="govuk-tag govuk-tag--grey">DUE</strong>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td class="govuk-table__cell govuk-table__cell--middle"><strong>2</strong></td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">12 Jun 2022</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">125,000</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">0</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">
+                                <strong class="govuk-tag govuk-tag--grey">DUE</strong>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td class="govuk-table__cell govuk-table__cell--middle"><strong>3</strong></td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">12 Jul 2022</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">125,000</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">0</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">
+                                <strong class="govuk-tag govuk-tag--grey">DUE</strong>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td class="govuk-table__cell govuk-table__cell--middle"><strong>4</strong></td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">12 Aug 2022</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">125,000</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">0</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">
+                                <strong class="govuk-tag govuk-tag--grey">DUE</strong>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td class="govuk-table__cell govuk-table__cell--middle"><strong>5</strong></td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">12 Sep 2022</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">125,000</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">0</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">
+                                <strong class="govuk-tag govuk-tag--grey">DUE</strong>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td class="govuk-table__cell govuk-table__cell--middle"><strong>6</strong></td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">12 Oct 2022</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">125,000</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">0</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">
+                                <strong class="govuk-tag govuk-tag--grey">DUE</strong>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td class="govuk-table__cell govuk-table__cell--middle"><strong>7</strong></td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">12 Nov 2022</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">125,000</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">0</td>
+                            <td class="govuk-table__cell govuk-table__cell--middle govuk-table__cell--numeric">
+                                <strong class="govuk-tag govuk-tag--grey">DUE</strong>
+                            </td>
+                        </tr>
+
+
+
+                    </tbody>
+
+                </table>
+
+
+            {%- endcall %}
+        {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        function toggleVisibility(_this, id, className) {
+            // event.preventDefault();
+            let toggleSwitch = _this;
+            let toggleItem = document.getElementById(id);
+            if (hasClass(toggleItem, className)) {
+                toggleSwitch.classList.add('filter__title--closed');
+                toggleItem.classList.remove(className);
+                toggleSwitch.setAttribute('aria-expanded', true);
+            }
+            else  {
+                toggleSwitch.classList.remove('filter__title--closed');
+                toggleItem.classList.add(className);
+                toggleSwitch.setAttribute('aria-expanded', false);
+            }
+            // return false;
+        }
+        function hasClass(target, className) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
+    </script>
+{% endblock %}
+

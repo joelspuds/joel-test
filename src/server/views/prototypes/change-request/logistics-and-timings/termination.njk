@@ -18,14 +18,14 @@
 
 {% set userName = prototypeData.userName %}
 
-{% set pageTitle = 'Suspension' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Termination' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/change-request/award-overview', text:'Back to award overview'}] %}
 
 {% block content %}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Suspension', caption='Create award change request') }}
+            {{ components.captionHeading(text='Termination', caption='Create award change request') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -35,7 +35,7 @@
 
             {% call components.bulmaColumnAny(size='is-7') %}
 
-                <p class="govuk-body">Work on the award has stopped, or where work is continuing but payment needs to stop.</p>
+                <p class="govuk-body">Request to terminate the award before the end date is reached. </p>
 
             {%- endcall %}
 
@@ -45,10 +45,16 @@
 
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
+                <p class="govuk-body">
+                    <strong>Current end date</strong>
+                    <br>
+                    <span>{{ prototypeData.currentEndDate }}</span>
+                </p>
+
                 <div class="govuk-form-group ">
                     <fieldset class="govuk-fieldset" role="group" aria-describedby="">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                            <h2 class="govuk-fieldset__heading">Requested suspension date</h2>
+                            <h2 class="govuk-fieldset__heading">Requested termination date</h2>
                         </legend>
                         <div class="govuk-date-input" id="transferDates">
                             <div class="govuk-date-input__item">
@@ -82,52 +88,28 @@
         {% call components.bulmaRow() %}
 
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
-
-                <div class="govuk-form-group ">
-                    <fieldset class="govuk-fieldset" role="group" aria-describedby="">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                            <h2 class="govuk-fieldset__heading">Requested resumption date</h2>
-                        </legend>
-                        <div class="govuk-date-input" id="transferDates">
-                            <div class="govuk-date-input__item">
-                                <div class="govuk-form-group">
-                                    <label class="govuk-label govuk-date-input__label" for="newDay2">Day</label>
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="newDay2" name="newDay2" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ allData.transferDay }}">
-                                </div>
-                            </div>
-                            <div class="govuk-date-input__item">
-                                <div class="govuk-form-group">
-                                    <label class="govuk-label govuk-date-input__label" for="newMonth2">Month</label>
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="newMonth2" name="newMonth2" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ allData.transferMonth }}">
-                                </div>
-                            </div>
-                            <div class="govuk-date-input__item">
-                                <div class="govuk-form-group">
-                                    <label class="govuk-label govuk-date-input__label" for="newYear2">Year</label>
-
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="newYear2" name="newYear2" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ allData.transferYear }}">
-                                </div>
-                            </div>
-                        </div>
-
-                    </fieldset>
-                </div>
-
-            {%- endcall %}
-
-        {%- endcall %}
-
-        {% call components.bulmaRow() %}
-
-            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Reason for suspension</legend>
-                        {#<div id="contact-hint" class="govuk-hint">Select one option.</div>#}
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Reason for termination</legend>
                         <div class="govuk-radios" data-module="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="reason1" name="reasons" type="radio" value="Maternity/paternity or adoption leave">
-                                <label class="govuk-label govuk-radios__label" for="reason1">Maternity/paternity or adoption leave</label>
+                                <input class="govuk-radios__input" id="reason1" name="reasons" type="radio" value="Gone to employment">
+                                <label class="govuk-label govuk-radios__label" for="reason1">Gone to employment</label>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="reason3" name="reasons" type="radio" value="Personal including illness">
+                                <label class="govuk-label govuk-radios__label" for="reason3">Personal including illness</label>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="reason4" name="reasons" type="radio" value="Award holder deceased">
+                                <label class="govuk-label govuk-radios__label" for="reason4">Award holder deceased</label>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="reason5" name="reasons" type="radio" value="Suitability">
+                                <label class="govuk-label govuk-radios__label" for="reason5">Suitability</label>
                             </div>
 
                             <div class="govuk-radios__item">
@@ -164,8 +146,6 @@
 
         {%- endcall %}
 
-
-
         {% call components.bulmaRow() %}
 
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
@@ -180,8 +160,6 @@
             {%- endcall %}
 
         {%- endcall %}
-
-
 
     {%- endcall %}
     {% include '../../../layouts/partials/user-contact.njk' %}
@@ -208,6 +186,5 @@
         });
     </script>
 {% endblock %}
-
 
 

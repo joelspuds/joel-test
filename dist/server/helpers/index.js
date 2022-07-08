@@ -51,3 +51,15 @@ Object.keys(_names).forEach(function (key) {
     }
   });
 });
+
+var _showMonth = require('./showMonth');
+
+Object.keys(_showMonth).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _showMonth[key];
+    }
+  });
+});

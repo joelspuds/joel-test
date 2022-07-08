@@ -1,0 +1,82 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Home' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set prototypeData = prototypeData if prototypeData %}
+{% set userName = prototypeData.userName %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/change-request/award-overview', text:'Back to award overview'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Expenditure statements', caption=prototypeData.awardName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='u-space-y0') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            <p class="govuk-body govuk-!-font-size-24">Expenditure Statements are required to enable the Research Councils to meet their responsibilities in accounting for the use of public funds.</p>
+
+            <p class="govuk-body">Interim Expenditure Statement may also be required, and can be requested by UKRI at any time. If the statement is not received within the period, the Research Council may recover some or all of your award.  </p>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-9') %}
+
+            {{ components.captionHeading(text='Expenditure statements', size='m', tag='h2') }}
+
+            <p class="govuk-body">You have no outstanding expenditure statements.</p>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        function toggleVisibility(_this, id, className) {
+            // event.preventDefault();
+            let toggleSwitch = _this;
+            let toggleItem = document.getElementById(id);
+            if (hasClass(toggleItem, className)) {
+                toggleSwitch.classList.add('filter__title--closed');
+                toggleItem.classList.remove(className);
+                toggleSwitch.setAttribute('aria-expanded', true);
+            }
+            else  {
+                toggleSwitch.classList.remove('filter__title--closed');
+                toggleItem.classList.add(className);
+                toggleSwitch.setAttribute('aria-expanded', false);
+            }
+            // return false;
+        }
+        function hasClass(target, className) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
+    </script>
+{% endblock %}
+

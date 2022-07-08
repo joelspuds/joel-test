@@ -244,16 +244,61 @@ router.post('/prototypes/application-v2/add-applicant', demosController.appV2Add
 * *************************************************************** */
 router.get('/prototypes/change-request', demosController.crIndexGet);
 router.post('/prototypes/change-request', demosController.crIndexPost);
+router.get('/prototypes/change-request/awards-list', demosController.crAwardsListGet);
+router.get('/prototypes/change-request/award-overview', demosController.crAwardOverviewGet);
+
+router.get('/prototypes/change-request/award-details', demosController.crAwardDetailsGet);
+router.get('/prototypes/change-request/award-payment-schedule', demosController.crAwardPaymentScheduleGet);
+router.get('/prototypes/change-request/award-team', demosController.crAwardTeamGet);
+router.get('/prototypes/change-request/award-documents', demosController.crAwardDocsGet);
+router.get('/prototypes/change-request/award-agreement', demosController.crAwardAgreementGet);
+router.get('/prototypes/change-request/award-costs', demosController.crAwardCostsGet);
+router.get('/prototypes/change-request/award-finance', demosController.crAwardFinanceGet);
+router.get('/prototypes/change-request/award-expenditure', demosController.crAwardExpenditureGet);
+
 router.get('/prototypes/change-request/create', demosController.crCreateGet);
 router.post('/prototypes/change-request/create', demosController.crCreatePost);
 router.get('/prototypes/change-request/create-type', demosController.crCreateTypeGet);
 router.post('/prototypes/change-request/create-type', demosController.crCreateTypePost);
-router.get('/prototypes/change-request/team-and-transfer', demosController.crTeamAndTransferGet);
-router.post('/prototypes/change-request/team-and-transfer', demosController.crTeamAndTransferPost);
+
+router.get('/prototypes/change-request/project-details', demosController.crProjectDetailsGet);
+router.post('/prototypes/change-request/project-details', demosController.crProjectDetailsPost);
+router.get('/prototypes/change-request/project-details/team', demosController.crProjectDetailsTeamGet);
+router.post('/prototypes/change-request/project-details/team', demosController.crProjectDetailsTeamPost);
+router.get('/prototypes/change-request/project-details/team-remove', demosController.crTeamRemoveGet);
+router.post('/prototypes/change-request/project-details/team-remove', demosController.crTeamRemovePost);
+router.get('/prototypes/change-request/project-details/team-add', demosController.crTeamAddGet);
+router.post('/prototypes/change-request/project-details/team-add', demosController.crTeamAddPost);
+
+router.get('/prototypes/change-request/project-details/transfer', demosController.crProjectDetailsTransferGet);
+router.post('/prototypes/change-request/project-details/transfer', demosController.crProjectDetailsTransferPost);
+
 router.get('/prototypes/change-request/logistics-and-timings', demosController.crLogisticsAndTimingsGet);
 router.post('/prototypes/change-request/logistics-and-timings', demosController.crLogisticsAndTimingsPost);
-router.get('/prototypes/change-request/deliverables-and-scope', demosController.crDeliverablesAndScopeGet);
-router.post('/prototypes/change-request/deliverables-and-scope', demosController.crDeliverablesAndScopePost);
+router.get('/prototypes/change-request/logistics-and-timings/extension', demosController.crLogisticsAndTimingsExtensionGet);
+router.post('/prototypes/change-request/logistics-and-timings/extension', demosController.crLogisticsAndTimingsExtensionPost);
+router.get('/prototypes/change-request/logistics-and-timings/suspension', demosController.crLogisticsAndTimingsSuspensionGet);
+router.post('/prototypes/change-request/logistics-and-timings/suspension', demosController.crLogisticsAndTimingsSuspensionPost);
+router.get('/prototypes/change-request/logistics-and-timings/termination', demosController.crLogisticsAndTimingsTerminationGet);
+router.post('/prototypes/change-request/logistics-and-timings/termination', demosController.crLogisticsAndTimingsTerminationPost);
+router.get('/prototypes/change-request/logistics-and-timings/change-start-date', demosController.crLogisticsAndTimingsChangestartDateGet);
+router.post('/prototypes/change-request/logistics-and-timings/change-start-date', demosController.crLogisticsAndTimingsChangestartDatePost);
+
+router.get('/prototypes/change-request/logistics-and-timings/fes', demosController.crLogisticsAndTimingsFESGet);
+router.post('/prototypes/change-request/logistics-and-timings/fes', demosController.crLogisticsAndTimingsFESPost);
+
+router.get('/prototypes/change-request/strategic', demosController.crStrategicGet);
+router.post('/prototypes/change-request/strategic', demosController.crStrategicPost);
+router.get('/prototypes/change-request/strategic/deliverables', demosController.crStrategicDeliverablesGet);
+router.post('/prototypes/change-request/strategic/deliverables', demosController.crStrategicDeliverablesPost);
+router.get('/prototypes/change-request/strategic/scope', demosController.crStrategicScopeGet);
+router.post('/prototypes/change-request/strategic/scope', demosController.crStrategicScopePost);
+
+router.get('/prototypes/change-request/check', demosController.crCheckGet);
+router.post('/prototypes/change-request/check', demosController.crCheckPost);
+
+router.get('/prototypes/change-request/award-view-requests', demosController.crAwawdChangeRequestsGet);
+// router.post('/prototypes/change-request/award-view-requests', demosController.crAwawrdChangeRequestsPost);
 
 /* *************************************************************** *
 
