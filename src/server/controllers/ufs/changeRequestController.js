@@ -58,9 +58,12 @@ export function crAwardsListGet(req, res) {
   }
 
   let allData = req.session;
+  // // console.log(allData);
+
   viewData = {
     allData,
     prototypeData,
+    savedSession,
   };
 
   return res.render('prototypes/change-request/awards-list', viewData);
@@ -76,12 +79,12 @@ export function crAwardOverviewGet(req, res) {
 
   let allData = req.session;
   let tempSession;
-  console.log(savedSession);
+  // // console.log(savedSession);
 
-  if (savedSession) {
+  /*if (savedSession) {
     // savedSession.requestSubmitted = null;
-    console.log('savedSession exists!');
-  }
+    // console.log('savedSession exists!');
+  }*/
 
   viewData = {
     allData,
@@ -100,7 +103,7 @@ export function crAwardOverviewGet(req, res) {
 export function crCreateGet(req, res) {
   let viewData;
 
-  console.log(prototypeData);
+  // console.log(prototypeData);
   let allData = req.session;
   viewData = {
     allData,
@@ -140,7 +143,7 @@ export function crCreateTypePost(req, res) {
 
   let targetURL;
 
-  console.log('types = ' + types);
+  // console.log('types = ' + types);
 
   req.session.changeType = types;
 
@@ -208,7 +211,7 @@ export function crProjectDetailsTeamGet(req, res) {
 export function crProjectDetailsTeamPost(req, res) {
   const {} = req.body;
   let targetURL;
-  console.log(req.body);
+  // console.log(req.body);
 
   //let formData = req.body;
 
@@ -241,7 +244,7 @@ export function crTeamRemovePost(req, res) {
 
   let formStuff = req.body;
   for (const [key, value] of Object.entries(formStuff)) {
-    console.log(`${key} ${value}`);
+    // console.log(`${key} ${value}`);
     req.session[`${key}`] = `${value}`;
   }
 
@@ -274,7 +277,7 @@ export function crTeamAddPost(req, res) {
   const {} = req.body;
   let formStuff = req.body;
   for (const [key, value] of Object.entries(formStuff)) {
-    console.log(`${key} ${value}`);
+    // console.log(`${key} ${value}`);
     req.session[`${key}`] = `${value}`;
   }
 
@@ -305,7 +308,7 @@ export function crProjectDetailsTransferPost(req, res) {
   const { subType } = req.body;
   let formStuff = req.body;
   for (const [key, value] of Object.entries(formStuff)) {
-    console.log(`${key} ${value}`);
+    // console.log(`${key} ${value}`);
     req.session[`${key}`] = `${value}`;
   }
 
@@ -370,11 +373,11 @@ export function crLogisticsAndTimingsExtensionPost(req, res) {
 
   let formStuff = req.body;
   for (const [key, value] of Object.entries(formStuff)) {
-    console.log(`${key} ${value}`);
+    // console.log(`${key} ${value}`);
     req.session[`${key}`] = `${value}`;
   }
-  console.log('req.session = ');
-  console.log(req.session);
+  // console.log('req.session = ');
+  // console.log(req.session);
 
   req.session.requestType = 'Extension';
   req.session.dateLabel1 = 'Requested end date';
@@ -402,11 +405,11 @@ export function crLogisticsAndTimingsFESPost(req, res) {
 
   let formStuff = req.body;
   for (const [key, value] of Object.entries(formStuff)) {
-    console.log(`${key} ${value}`);
+    // console.log(`${key} ${value}`);
     req.session[`${key}`] = `${value}`;
   }
-  console.log('req.session = ');
-  console.log(req.session);
+  // console.log('req.session = ');
+  // console.log(req.session);
 
   req.session.requestType = 'fES due date extension';
   req.session.dateLabel1 = 'Requested end date';
@@ -434,7 +437,7 @@ export function crLogisticsAndTimingsSuspensionPost(req, res) {
 
   let formStuff = req.body;
   for (const [key, value] of Object.entries(formStuff)) {
-    console.log(`${key} ${value}`);
+    // console.log(`${key} ${value}`);
     req.session[`${key}`] = `${value}`;
   }
 
@@ -466,7 +469,7 @@ export function crLogisticsAndTimingsTerminationPost(req, res) {
 
   let formStuff = req.body;
   for (const [key, value] of Object.entries(formStuff)) {
-    console.log(`${key} ${value}`);
+    // console.log(`${key} ${value}`);
     req.session[`${key}`] = `${value}`;
   }
 
@@ -498,7 +501,7 @@ export function crLogisticsAndTimingsChangestartDatePost(req, res) {
 
   let formStuff = req.body;
   for (const [key, value] of Object.entries(formStuff)) {
-    console.log(`${key} ${value}`);
+    // console.log(`${key} ${value}`);
     req.session[`${key}`] = `${value}`;
   }
 
@@ -560,7 +563,7 @@ export function crStrategicDeliverablesPost(req, res) {
 
   let formStuff = req.body;
   for (const [key, value] of Object.entries(formStuff)) {
-    console.log(`${key} ${value}`);
+    // console.log(`${key} ${value}`);
     req.session[`${key}`] = `${value}`;
   }
 
@@ -588,7 +591,7 @@ export function crStrategicScopePost(req, res) {
   const {} = req.body;
   let formStuff = req.body;
   for (const [key, value] of Object.entries(formStuff)) {
-    console.log(`${key} ${value}`);
+    // console.log(`${key} ${value}`);
     req.session[`${key}`] = `${value}`;
   }
 
@@ -625,8 +628,8 @@ export function crCheckPost(req, res) {
   savedSession = req.session;
   req.session = null;
 
-  /*console.log('savedSession = ');
-  console.log(savedSession);*/
+  /*// console.log('savedSession = ');
+  // console.log(savedSession);*/
 
   let targetURL = '/prototypes/change-request/award-overview';
 
@@ -727,12 +730,12 @@ export function crAwardChangeRequestsGet(req, res) {
   let viewData;
 
   let crStatus = req.param('status');
-  console.log();
+  // console.log();
   if (crStatus) {
     req.session.crStatus = crStatus;
   }
 
-  console.log();
+  // console.log();
 
   let allData = req.session;
 
@@ -754,12 +757,12 @@ export function crViewRequestGet(req, res) {
   let viewData;
 
   let crStatus = req.param('status');
-  console.log();
+  // console.log();
   if (crStatus) {
     req.session.crStatus = crStatus;
   }
 
-  console.log();
+  // console.log();
 
   let allData = req.session;
 

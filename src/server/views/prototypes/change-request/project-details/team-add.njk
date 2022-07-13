@@ -62,10 +62,48 @@
                         {% endfor %}
                     </select>
                 </div>
-
-
             {%- endcall %}
         {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="roles-hint">
+                    <legend class="govuk-label govuk-label--s u-space-b20">Role </legend>
+                    <div class="govuk-radios" data-module="govuk-radios">
+
+
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="roles1" name="roles" type="radio" value="Principal investigator">
+                            <label class="govuk-label govuk-radios__label" for="roles1" >Principal investigator</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="roles2" name="roles" type="radio" value="Co-investigator">
+                            <label class="govuk-label govuk-radios__label" for="roles2">Co-investigator</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="roles3" name="roles" type="radio" value="Researcher">
+                            <label class="govuk-label govuk-radios__label" for="roles3">Researcher</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="roles4" name="roles" type="radio" value="Business partner" >
+                            <label class="govuk-label govuk-radios__label" for="roles4">Business partner</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="roles5" name="roles" type="radio" value="Technician">
+                            <label class="govuk-label govuk-radios__label" for="roles5">Technician</label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
 
         {% call components.bulmaRow() %}
 

@@ -798,6 +798,8 @@ let megaDataApplicationsList = [
     active: true,
     period: '0 of 8',
     imminent: false,
+    altStatus: 'Active',
+    altTask: '',
   },
   {
     id: '102',
@@ -815,6 +817,8 @@ let megaDataApplicationsList = [
     completeness: '100% complete',
     active: true,
     imminent: true,
+    altStatus: 'Active',
+    altTask: '',
   },
   {
     id: '124',
@@ -830,6 +834,8 @@ let megaDataApplicationsList = [
     completeness: '100% complete',
     active: true,
     imminent: true,
+    altStatus: 'Announced',
+    altTask: 'Information',
   },
   {
     id: '204',
@@ -845,6 +851,8 @@ let megaDataApplicationsList = [
     completeness: '75% complete',
     active: true,
     imminent: false,
+    altStatus: 'Active',
+    altTask: 'Waiting on',
   },
   {
     id: '398',
@@ -859,6 +867,8 @@ let megaDataApplicationsList = [
     awardStatus: 'RECEIVED',
     completeness: '',
     active: true,
+    altStatus: 'Active',
+    altTask: '',
   },
   {
     id: '401',
@@ -874,6 +884,8 @@ let megaDataApplicationsList = [
     awardStatus: 'In progress',
     completeness: '',
     active: false,
+    altStatus: 'Suspended',
+    altTask: '',
   },
   {
     id: '417',
@@ -889,6 +901,8 @@ let megaDataApplicationsList = [
     awardStatus: 'In progress',
     completeness: '',
     active: false,
+    altStatus: 'Active',
+    altTask: 'Attention',
   },
   {
     id: '488',
@@ -904,6 +918,8 @@ let megaDataApplicationsList = [
     awardStatus: 'In progress',
     completeness: '',
     active: false,
+    altStatus: 'Finished',
+    altTask: '',
   },
   {
     id: '501',

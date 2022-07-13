@@ -38,7 +38,7 @@
                     <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
                 </div>
                 <div class="govuk-notification-banner__content">
-                    <p class="govuk-notification-banner__heading">A {{ savedSession.requestType }} change request has been submitted</p>
+                    <p class="govuk-notification-banner__heading">{{ savedSession.requestType }} change request has been submitted</p>
                     <p class="govuk-body">The request has been received and you will be contacted by the relevant council shortly.</p>
                 </div>
             </div>
@@ -61,24 +61,33 @@
 
     {% call components.bulmaRow(extraClass='u-space-b45') %}
         {% call components.bulmaColumnAny(size='is-3') %}
-            <p class="govuk-body u-space-y0"><strong>Status: </strong>
-                <strong class="govuk-tag govuk-tag--grey">In progress</strong>
+            <p class="govuk-body u-space-y10">
+                <strong>Status: </strong> Active
             </p>
-            <p class="govuk-body u-space-y0">
-               <strong>Period: </strong> 3 of 8
+            <p class="govuk-body u-space-y10">
+                <strong>Award holder: </strong> Dr. Alicia Brook
+            </p>
+            <p class="govuk-body u-space-y10">
+                <strong>Organisation: </strong> University of Wales
             </p>
         {%- endcall %}
         {% call components.bulmaColumnAny(size='is-3') %}
-            <p class="govuk-body u-space-y0">
-                <strong>Start date:</strong> Nov 2021
+            <p class="govuk-body u-space-y10">
+                <strong>Latest start date:</strong> Nov 2021
             </p>
-            <p class="govuk-body u-space-y0"><strong>Duration:</strong> 24 months</p>
+            <p class="govuk-body u-space-y10">
+                <strong>End date:</strong> {{ prototypeData.currentEndDate }}
+            </p>
+            <p class="govuk-body u-space-y10">
+                <strong>Award value:</strong> £1,000,000
+            </p>
+            {#<p class="govuk-body u-space-y0"><strong>Duration:</strong> 24 months</p>#}
         {%- endcall %}
-        {% call components.bulmaColumnAny(size='is-3') %}
+        {#{% call components.bulmaColumnAny(size='is-3') %}
             <p class="govuk-body u-space-y0">
                 <strong>End date:</strong> {{ prototypeData.currentEndDate }}
             </p>
-        {%- endcall %}
+        {%- endcall %}#}
     {%- endcall %}
 
 
@@ -154,13 +163,13 @@
                     </div>
                 </div>
 
-                <div class="application-item  application-item--skinny">
+                {#<div class="application-item  application-item--skinny">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
                             <a href="/prototypes/change-request/award-finance-summary" class="govuk-link">Finance summary</a>
                         </div>
                     </div>
-                </div>
+                </div>#}
 
                 <div class="application-item  application-item--skinny">
                     <div class="application-item__contents govuk-clearfix">
@@ -204,26 +213,28 @@
 
             {#{{ components.list(items=listItemsActions, type='bullet')}}#}
 
-            <div class="application-data application-data--large ">
-                <dl class="application-data__list">
-                    <dt class="application-data__key"><strong>Application reference:</strong></dt>
-                    <dd class="application-data__value"><a href="#" class="govuk-link">APP101660 (opens in new window)</a> </dd>
-                    <dt class="application-data__key"><strong>Application name:</strong></dt>
-                    <dd class="application-data__value">The economics of grant funding in a post-pandemic world</dd>
-                    <dt class="application-data__key"><strong>Applicant:</strong></dt>
-                    <dd class="application-data__value">Dr. Alicia Brook{#{{ 'addHonorific' | giveMeAName }}#}</dd>
-                    <dt class="application-data__key"><strong>Email address:</strong></dt>
-                    <dd class="application-data__value">a.brook@wales.ac.uk</dd>
-                    <dt class="application-data__key"><strong>Organisations:</strong></dt>
-                    <dd class="application-data__value">
-                        University of Wales<br>
-                        Manchester University
-                    </dd>
-                    <dt class="application-data__key"><strong>Award amount:</strong></dt>
-                    <dd class="application-data__value">£1,200,000</dd>
-                </dl>
-            </div>
+            <div class="govuk-related-items govuk-related-items--flush u-space-t15">
 
+                <div class="application-data application-data--large u-space-t10">
+                    <dl class="application-data__list">
+                        <dt class="application-data__key"><strong>Application:</strong></dt>
+                        <dd class="application-data__value"><a href="#" class="govuk-link">APP101660: The economics of grant funding in a post-pandemic world (opens in new window)</a> </dd>
+                        <dt class="application-data__key"><strong>Opportunity:</strong></dt>
+                        <dd class="application-data__value">OPP991: Post pandemic fiscal innovation</dd>
+                        {#<dt class="application-data__key"><strong>Applicant:</strong></dt>
+                        <dd class="application-data__value">Dr. Alicia Brook#}{#{{ 'addHonorific' | giveMeAName }}#}{#</dd>
+                        <dt class="application-data__key"><strong>Email address:</strong></dt>
+                        <dd class="application-data__value">a.brook@wales.ac.uk</dd>
+                        <dt class="application-data__key"><strong>Organisations:</strong></dt>
+                        <dd class="application-data__value">
+                            University of Wales<br>
+                            Manchester University
+                        </dd>
+                        <dt class="application-data__key"><strong>Award amount:</strong></dt>
+                        <dd class="application-data__value">£1,200,000</dd>#}
+                    </dl>
+                </div>
+            </div>
 
         {%- endcall %}
 

@@ -15,6 +15,7 @@
 {% set allData = allData if allData %}
 {% set prototypeData = prototypeData if prototypeData %}
 {% set userName = prototypeData.userName %}
+{% set savedSession = savedSession if savedSession %}
 
 {% set isAdminUser = false %}
 {%  set loggedOut = false %}
@@ -185,8 +186,8 @@
                         <th class="govuk-table__header">Funding<br>Body</th>
                         <th class="govuk-table__header">Principle<br>investigator</th>
                         <th class="govuk-table__header govuk-table__header--numeric">Award<br>amount</th>
-                        <th class="govuk-table__header govuk-table__header--numeric">Period</th>
                         <th class="govuk-table__header govuk-table__header--numeric">Status</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Task</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -197,10 +198,15 @@
                         <td class="govuk-table__cell">Dr. Alicia Brook</td>
                         <td class="govuk-table__cell govuk-table__cell--numeric">£1,000,000</td>
                         <td class="govuk-table__cell govuk-table__cell--numeric">
-                            <span class="_mega-table_item-meta">0 of 8</span>
+                            <span class="_mega-table_item-meta">Active</span>
                         </td>
                         <td class="govuk-table__cell govuk-table__cell--numeric">
-                           <strong class="govuk-tag govuk-tag--grey">In progress</strong>
+                           {#<strong class="govuk-tag govuk-tag--grey">In progress</strong>#}
+                            {% if savedSession.requestSubmitted %}
+                                <strong class="govuk-tag govuk-tag--red">Attention</strong>
+                            {% else %}
+                                &nbsp;
+                            {% endif %}
                         </td>
                     </tr>
                     {#<tr class="mega-table_row-status--">
@@ -239,16 +245,27 @@
                             </td>
                             <td class="govuk-table__cell govuk-table__cell--numeric">
                                 <span class="_mega-table_item-meta">
-                                    {% if item.period %}
+                                   {# {% if item.period %}
                                         {{ item.period}}
                                     {% else %}
                                         {{ range(1, 5) | random }} of 8
-                                    {% endif %}
+                                    {% endif %}#}
+                                    {{ item.altStatus }}
 
                                 </span>
                             </td>
                             <td class="govuk-table__cell govuk-table__cell--numeric">
-                                {% if item.awardStatus == 'READY TO START' %}
+                                {#{{ item.altTask }}#}
+                                {% if item.altTask == 'Information' %}
+                                    <strong class="govuk-tag govuk-tag--blue">{{ item.altTask }}</strong>
+                                {% endif %}
+                                {% if item.altTask == 'Waiting on' %}
+                                    <strong class="govuk-tag govuk-tag--yellow">{{ item.altTask }}</strong>
+                                {% endif %}
+                                {% if item.altTask == 'Attention' %}
+                                    <strong class="govuk-tag govuk-tag--red">{{ item.altTask }}</strong>
+                                {% endif %}
+                                {#{% if item.awardStatus == 'READY TO START' %}
                                     <strong class="govuk-tag govuk-tag--yellow">{{ item.awardStatus }}</strong>
                                 {% endif %}
                                 {% if item.awardStatus == 'RECEIVED' %}
@@ -262,8 +279,7 @@
                                 {% endif %}
                                 {% if item.awardStatus == 'Terminated' %}
                                     <strong class="govuk-tag govuk-tag--red">{{ item.awardStatus }}</strong>
-                                {% endif %}
-
+                                {% endif %}#}
                             </td>
                         </tr>
                         {% endif %}

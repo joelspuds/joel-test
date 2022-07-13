@@ -539,7 +539,9 @@ let megaDataApplicationsList = [{
   completeness: '100% complete',
   active: true,
   period: '0 of 8',
-  imminent: false
+  imminent: false,
+  altStatus: 'Active',
+  altTask: ''
 }, {
   id: '102',
   name: 'Historical influences of macrodynamics in entomyphagy ',
@@ -555,7 +557,9 @@ let megaDataApplicationsList = [{
   awardStatus: 'In progress',
   completeness: '100% complete',
   active: true,
-  imminent: true
+  imminent: true,
+  altStatus: 'Active',
+  altTask: ''
 }, {
   id: '124',
   name: 'Viral pandemic: distributed societal issues and news shaping',
@@ -569,7 +573,9 @@ let megaDataApplicationsList = [{
   awardStatus: 'In progress',
   completeness: '100% complete',
   active: true,
-  imminent: true
+  imminent: true,
+  altStatus: 'Announced',
+  altTask: 'Information'
 }, {
   id: '204',
   name: 'Recovery strategies from pollution in freshwater ecosystems',
@@ -583,7 +589,9 @@ let megaDataApplicationsList = [{
   awardStatus: 'In progress',
   completeness: '75% complete',
   active: true,
-  imminent: false
+  imminent: false,
+  altStatus: 'Active',
+  altTask: 'Waiting on'
 }, {
   id: '398',
   name: 'Effluent filtering in pre-treated brown water overflows',
@@ -596,7 +604,9 @@ let megaDataApplicationsList = [{
   status: 'Completed',
   awardStatus: 'RECEIVED',
   completeness: '',
-  active: true
+  active: true,
+  altStatus: 'Active',
+  altTask: ''
 }, {
   id: '401',
   name: 'Jet propulsion systems in underwater environments',
@@ -610,7 +620,9 @@ let megaDataApplicationsList = [{
   status: 'Completed',
   awardStatus: 'In progress',
   completeness: '',
-  active: false
+  active: false,
+  altStatus: 'Suspended',
+  altTask: ''
 }, {
   id: '417',
   name: 'Dimensional transmogrification methodology in domesticated urban felines.',
@@ -624,7 +636,9 @@ let megaDataApplicationsList = [{
   status: 'Incomplete',
   awardStatus: 'In progress',
   completeness: '',
-  active: false
+  active: false,
+  altStatus: 'Active',
+  altTask: 'Attention'
 }, {
   id: '488',
   name: 'A natural anti-bacterial solution using rainwater and persimmon caly',
@@ -638,7 +652,9 @@ let megaDataApplicationsList = [{
   status: 'Incomplete',
   awardStatus: 'In progress',
   completeness: '',
-  active: false
+  active: false,
+  altStatus: 'Finished',
+  altTask: ''
 }, {
   id: '501',
   name: 'Making the road safer with Computer Vision Algorithms',
