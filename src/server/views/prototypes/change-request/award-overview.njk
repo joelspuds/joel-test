@@ -68,7 +68,7 @@
                 <strong>Award holder: </strong> Dr. Alicia Brook
             </p>
             <p class="govuk-body u-space-y10">
-                <strong>Organisation: </strong> University of Wales
+                <strong>Funder: </strong> BBSRC
             </p>
         {%- endcall %}
         {% call components.bulmaColumnAny(size='is-3') %}
@@ -141,11 +141,11 @@
                         </div>
                     </div>
                 </div>#}
-            </div>
+           {# </div>
 
             {{ components.captionHeading(text='Financial information', size='s', tag='h2') }}
 
-            <div class="application-items u-space-b45">
+            <div class="application-items u-space-b45">#}
 
                 <div class="application-item  application-item--skinny">
                     <div class="application-item__contents govuk-clearfix">
@@ -171,6 +171,13 @@
                     </div>
                 </div>#}
 
+
+            </div>
+
+            {{ components.captionHeading(text='Manage award', size='s', tag='h2') }}
+
+            <div class="application-items u-space-b45">
+
                 <div class="application-item  application-item--skinny">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
@@ -178,22 +185,18 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            {{ components.captionHeading(text='Award change request', size='s', tag='h2') }}
-
-            <div class="application-items u-space-b45">
 
                 <div class="application-item  application-item--skinny">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
-                            <a href="/prototypes/change-request/create-type" class="govuk-link">Create new award change request</a>
+                            {#<a href="/prototypes/change-request/create-type" class="govuk-link">View and create award change request</a>#}
+                            <a href="/prototypes/change-request/create" class="govuk-link">View and create award change request</a>
                         </div>
 
                     </div>
                 </div>
 
-                <div class="application-item  application-item--skinny application-item--plain">
+                {#<div class="application-item  application-item--skinny application-item--plain">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
                             <a href="/prototypes/change-request/award-view-requests" class="govuk-link">View award change requests</a>
@@ -204,7 +207,7 @@
                             {% endif %}
                         </div>
                     </div>
-                </div>
+                </div>#}
             </div>
 
         {%- endcall %}

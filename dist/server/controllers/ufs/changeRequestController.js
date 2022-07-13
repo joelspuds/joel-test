@@ -57,7 +57,7 @@ let limitedOrgs = require('./orgs400');
 
 const prototypeData = {
   userName: 'Rohindra Khatra',
-  awardName: 'AWA184 - Environmental research grants 2022',
+  awardName: 'AWA184: Environmental research grants 2022',
   currentEndDate: '30 October 2023'
 };
 
@@ -156,11 +156,17 @@ function crAwardOverviewGet(req, res) {
 function crCreateGet(req, res) {
   let viewData;
 
-  // console.log(prototypeData);
+  let crStatus = req.param('status');
+  if (crStatus) {
+    req.session.crStatus = crStatus;
+  }
+
   let allData = req.session;
+
   viewData = {
     allData,
-    prototypeData
+    prototypeData,
+    savedSession
   };
 
   return res.render('prototypes/change-request/create', viewData);
@@ -684,7 +690,8 @@ function crCheckPost(req, res) {
   /*// console.log('savedSession = ');
   // console.log(savedSession);*/
 
-  let targetURL = '/prototypes/change-request/award-overview';
+  // let targetURL = '/prototypes/change-request/award-overview';
+  let targetURL = '/prototypes/change-request/create';
 
   return res.redirect(targetURL);
 }
@@ -783,12 +790,9 @@ function crAwardChangeRequestsGet(req, res) {
   let viewData;
 
   let crStatus = req.param('status');
-  // console.log();
   if (crStatus) {
     req.session.crStatus = crStatus;
   }
-
-  // console.log();
 
   let allData = req.session;
 

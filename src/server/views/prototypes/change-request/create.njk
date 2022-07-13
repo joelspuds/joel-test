@@ -16,6 +16,7 @@
 {% set loggedOut = false %}
 {% set allData = allData if allData %}
 {% set prototypeData = prototypeData if prototypeData %}
+{% set savedSession = savedSession if savedSession %}
 
 {% set userName = prototypeData.userName %}
 
@@ -23,6 +24,55 @@
 {% set backLinkContents =  [{url:'/prototypes/change-request/award-overview', text:'Back to award overview'}] %}
 
 {% block content %}
+    {% if allData.crStatus == 'accepted' %}
+        {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+        <div class="govuk-notification-banner govuk-notification-banner--success" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+                <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Accepted</h2>
+            </div>
+            <div class="govuk-notification-banner__content">
+                <p class="govuk-notification-banner__heading">{{ savedSession.requestType }} change request has been approved</p>
+                <p class="govuk-body">The request has been approved and you do not need to take any further action.</p>
+            </div>
+        </div>
+        {%- endcall %}
+        {%- endcall %}
+
+    {% elseif allData.crStatus == 'rejected' %}
+        {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+        <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+                <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Rejected</h2>
+            </div>
+            <div class="govuk-notification-banner__content">
+                <p class="govuk-notification-banner__heading">{{ savedSession.requestType }} change request has been rejected</p>
+                <p class="govuk-body">The request has been rejected. Please contact the funding council or UKRI if you require further information.</p>
+            </div>
+        </div>
+        {%- endcall %}
+        {%- endcall %}
+
+    {% elseif savedSession.requestSubmitted %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="govuk-notification-banner " role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <p class="govuk-notification-banner__heading">{{ savedSession.requestType }} change request in progress</p>
+                        <p class="govuk-body">The request has been received and you will be contacted by the relevant council shortly.</p>
+                    </div>
+                </div>
+
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
+
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
@@ -45,6 +95,123 @@
             {%- endcall %}
 
         {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7') %}
+
+                {{ components.captionHeading(text='Open change requests', size='s', tag='h2') }}
+
+                {% if savedSession.requestSubmitted %}
+
+                    <table class="govuk-table">
+                        <thead>
+                        <tr class="govuk-table__header">
+                            <th class="govuk-table__header">Change type</th>
+                            <th class="govuk-table__header">Requested by</th>
+                            <th class="govuk-table__header">Organisation</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="govuk-table__cell">
+                                <a href="/prototypes/change-request/change-request-detail{% if allData.crStatus %}?crStatus={{ allData.crStatus }}{% endif %}" class="govuk-link">{{ savedSession.requestType }}</a>
+
+                            </td>
+                            <td class="govuk-table__cell">
+                                {{ prototypeData.userName }}
+                                <br> <span class="meta govuk-!-font-size-16">on {{ savedSession.createdTimeAndDate }}{#{{ 'dataAndTime' | dateAndTime() }}#}</span>
+                            </td>
+                            <td class="govuk-table__cell">
+                                University of Wales
+                            </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+
+                                {% if allData.crStatus == 'accepted' %}
+                                    <strong class="govuk-tag govuk-tag--green">Approved</strong>
+                                {% elseif allData.crStatus == 'rejected' %}
+                                    <strong class="govuk-tag govuk-tag--red">Rejected</strong>
+                                {% else %}
+                                    <strong class="govuk-tag govuk-tag--grey">In progress</strong>
+                                {% endif %}
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                {% else %}
+
+                    <p class="govuk-body">There are currently no open change requests</p>
+
+                {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7') %}
+
+                {{ components.captionHeading(text='Previous change requests', size='s', tag='h2') }}
+
+                <table class="govuk-table">
+                    <thead>
+                    <tr class="govuk-table__header">
+                        <th class="govuk-table__header">Change type</th>
+                        <th class="govuk-table__header">Requested by</th>
+                        <th class="govuk-table__header">Organisation</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="govuk-table__cell">
+                            <a href="#" class="govuk-link">Change start date</a>
+                            {#<p class="govuk-body u-space-y0">
+                                <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span>
+                            </p>#}
+                        </td>
+                        <td class="govuk-table__cell">
+                            Dr. Alicia Brook
+                            <br> <span class="meta govuk-!-font-size-16">on 11 October 2021</span>
+                        </td>
+                        <td class="govuk-table__cell">
+                            University of Wales
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            <strong class="govuk-tag govuk-tag--green">Approved</strong>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
 
     {%- endcall %}
     {% include '../../layouts/partials/user-contact.njk' %}

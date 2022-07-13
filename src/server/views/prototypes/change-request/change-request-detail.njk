@@ -22,7 +22,7 @@
 {%  set loggedOut = false %}
 
 {% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/change-request/award-view-requests', text:'Back to all change requests'}] %}
+{% set backLinkContents =  [{url:'/prototypes/change-request/create', text:'Back to view and create award change request'}] %}
 
 {% set inviteResponse = inviteResponse if inviteResponse %}
 
@@ -56,7 +56,7 @@
                         <li class="timeline__item {% if allData.crStatus %}timeline__item--active{% else %}timeline__item--live{% endif %}">
                             <span class="timeline__title">Response from UKRI</span>
                             <span class="timeline__meta">MRC, UKRI</span>
-                            <strong class="govuk-tag govuk-tag--green">Accepted</strong>
+                            <strong class="govuk-tag govuk-tag--green">Approved</strong>
                             <p class="govuk-body u-space-t20 u-space-b0">
                                 <strong>Comment</strong><br>
                                 We have received your change request and accepted the changes. There is no further action required and the payment schedule will be updated to reflect the new timelines. <br>Thanks, Sheila Biggins, MRC
