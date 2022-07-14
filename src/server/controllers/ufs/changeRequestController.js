@@ -22,6 +22,8 @@ export function crIndexGet(req, res) {
   if (clearSession === 'true') {
     savedSession = null;
     req.session.destroy();
+    let targetURL = '/prototypes/change-request/';
+    return res.redirect(targetURL);
   }
 
   let allData = req.session;

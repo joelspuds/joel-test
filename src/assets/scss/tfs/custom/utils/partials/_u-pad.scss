@@ -26,6 +26,14 @@
     .u-pad-#{$value} {
         padding: #{$value}px #{$value}px #{$value}px #{$value}px !important;
     }
+
+    .u-pad-l#{$value} {
+        padding-left: #{$value}px !important;
+    }
+
+    .u-pad-r#{$value} {
+        padding-right: #{$value}px !important;
+    }
 }
 
 @media print {
