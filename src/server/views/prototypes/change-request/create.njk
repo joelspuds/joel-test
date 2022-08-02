@@ -20,7 +20,7 @@
 
 {% set userName = prototypeData.userName %}
 
-{% set pageTitle = 'View and create award change request' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Change requests' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/change-request/award-overview', text:'Back to award overview'}] %}
 
 {% block content %}
@@ -76,7 +76,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='View and create award change request', caption=prototypeData.awardName) }}
+            {{ components.captionHeading(text='View and create award change request (Shorten title to "Change requests")', caption=prototypeData.awardName) }}
         {%- endcall %}
     {%- endcall %}
 

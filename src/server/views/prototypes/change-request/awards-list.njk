@@ -41,9 +41,30 @@
 
     {% call components.bulmaRow() %}
 
-        {% call components.bulmaColumnAny(size='is-3') %}
+        {% call components.bulmaColumnAny(size='is-9') %}
 
-            {#{{ components.list(items=listItemsActions, type='bullet')}}#}
+            <form action="#" method="get" role="search">
+                <div class="search">
+                    <div class="govuk-form-group govuk-form-group--search">
+                        <label class="govuk-label govuk-visually-hidden" for="search">Event name</label>
+                        <input class="govuk-input govuk-input--width-20 search__input" id="search" name="event-name" type="text" placeholder="Search all Opportunities">
+                        <button type="submit" class="search__submit">Search</button>
+                    </div>
+                </div>
+            </form>
+
+            {#<p class="govuk-body">
+                Showing <strong>8</strong> Opportunities filtered by <strong>MRC</strong> in award set-up
+            </p>#}
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {#{% call components.bulmaColumnAny(size='is-3') %}
+
+            #}{#{{ components.list(items=listItemsActions, type='bullet')}}#}{#
 
             <div class="govuk-related-items govuk-related-items--flush u-space-t15">
 
@@ -83,7 +104,7 @@
 
                 <div class="filter filter-toggle __filter-toggle--shut">
                     <button class="filter__title" type="button" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')" aria-expanded="false">Filter by funding body</button>
-                    {#<h2 class="filter__title" tabindex="0" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')">Filter by council</h2>#}
+                    #}{#<h2 class="filter__title" tabindex="0" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')">Filter by council</h2>#}{#
                     <span class="filter__toggle"></span>
                     <ul class="filter__list u-clearfix js-hidden" id="toggleCouncilsList">
                         <ul class="filter__list u-clearfix" id="toggleCouncilsList">
@@ -171,9 +192,11 @@
             </div>
 
 
-        {%- endcall %}
+        {%- endcall %}#}
 
-        {% call components.bulmaColumnAny(size='is-9') %}
+
+
+        {% call components.bulmaColumnAny(size='is-full') %}
 
             <div class="responsive-table">
 
@@ -183,10 +206,10 @@
                     <thead>
                     <tr class="govuk-table__header">
                         <th class="govuk-table__header">Award name</th>
-                        <th class="govuk-table__header">Funding<br>Body</th>
+                        <th class="govuk-table__header">Funding<br>body</th>
                         <th class="govuk-table__header">Principle<br>investigator</th>
                         <th class="govuk-table__header govuk-table__header--numeric">Award<br>amount</th>
-                        <th class="govuk-table__header govuk-table__header--numeric">Status</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Award<br>status</th>
                         <th class="govuk-table__header govuk-table__header--numeric">Task</th>
                     </tr>
                     </thead>
