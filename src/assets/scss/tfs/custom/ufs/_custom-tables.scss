@@ -53,6 +53,19 @@
   }
 }
 
+.govuk-table--edges {
+
+  tr td:first-of-type,
+  tr th:first-of-type {
+    padding-left: 8px;
+  }
+
+  tr td:last-of-type,
+  tr th:last-of-type {
+    padding-right: 8px;
+  }
+}
+
 .table-cell--no-border {
   border: 0!important;
 }

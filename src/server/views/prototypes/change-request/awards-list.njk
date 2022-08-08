@@ -46,9 +46,10 @@
             <form action="#" method="get" role="search">
                 <div class="search">
                     <div class="govuk-form-group govuk-form-group--search">
-                        <label class="govuk-label govuk-visually-hidden" for="search">Event name</label>
-                        <input class="govuk-input govuk-input--width-20 search__input" id="search" name="event-name" type="text" placeholder="Search all Opportunities">
-                        <button type="submit" class="search__submit">Search</button>
+                        <label class="govuk-label govuk-label--s" for="search">Search awards</label>
+                        <span class="govuk-hint">Search by award reference, name or holder</span>
+                        <input class="govuk-input govuk-input--width-20 search__input" id="search" name="event-name" type="text" placeholder="Search awards">
+                        <button type="submit" class="govuk-button {#search__submit#}">Search</button>
                     </div>
                 </div>
             </form>
@@ -60,155 +61,24 @@
         {%- endcall %}
     {%- endcall %}
 
-    {% call components.bulmaRow() %}
-
-        {#{% call components.bulmaColumnAny(size='is-3') %}
-
-            #}{#{{ components.list(items=listItemsActions, type='bullet')}}#}{#
-
-            <div class="govuk-related-items govuk-related-items--flush u-space-t15">
-
-                {{ components.captionHeading(text='Filters', tag='h2', size='s') }}
-
-                <div class="filter">
-                    <h2 class="filter__title">Filter by status</h2>
-                    <span class="filter__toggle"></span>
-                    <ul class="filter__list u-clearfix ">
-                        <li class="filter__item filter__item--small ">
-                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                <input class="govuk-checkboxes__input govuk-checkboxes--small" id="filterReady" type="checkbox" name="filterReady" value="Ready">
-                                <label for="filterReady" class="govuk-checkboxes__label u-display-ib">Ready to start (1)</label>
-                            </div>
-                        </li>
-                        <li class="filter__item filter__item--small ">
-                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                <input class="govuk-checkboxes__input govuk-checkboxes--small" id="filterReceived" type="checkbox" name="filterReceived" value="Received">
-                                <label for="filterReceived" class="govuk-checkboxes__label u-display-ib">Received (2)</label>
-                            </div>
-                        </li>
-                        <li class="filter__item filter__item--small ">
-                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                <input class="govuk-checkboxes__input govuk-checkboxes--small" id="filterProgress" type="checkbox" name="filterProgress" value="In progress">
-                                <label for="filterProgress" class="govuk-checkboxes__label u-display-ib">In progress (8)</label>
-                            </div>
-                        </li>
-                        <li class="filter__item filter__item--small ">
-                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                <input class="govuk-checkboxes__input govuk-checkboxes--small" id="filterComplete" type="checkbox" name="filterComplete" value="Complete">
-                                <label for="filterComplete" class="govuk-checkboxes__label u-display-ib">Complete (1)</label>
-                            </div>
-                        </li>
-
-                    </ul>
-                </div>
-
-                <div class="filter filter-toggle __filter-toggle--shut">
-                    <button class="filter__title" type="button" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')" aria-expanded="false">Filter by funding body</button>
-                    #}{#<h2 class="filter__title" tabindex="0" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')">Filter by council</h2>#}{#
-                    <span class="filter__toggle"></span>
-                    <ul class="filter__list u-clearfix js-hidden" id="toggleCouncilsList">
-                        <ul class="filter__list u-clearfix" id="toggleCouncilsList">
-
-                            <li class="filter__item filter__item--small govuk-clearfix">
-                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                    <input class="govuk-checkboxes__input " id="filterCouncils_0" type="checkbox" name="filterCouncils_0" value="Arts and Humanities Research Council">
-                                    <label for="filterCouncils_0" class="govuk-checkboxes__label u-display-ib">AHRC</label>
-                                </div>
-                            </li>
-
-                            <li class="filter__item filter__item--small govuk-clearfix">
-                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                    <input class="govuk-checkboxes__input " id="filterCouncils_1" type="checkbox" name="filterCouncils_1" value="Biotechnology and Biological Sciences Research Council">
-                                    <label for="filterCouncils_1" class="govuk-checkboxes__label u-display-ib">BBSRC</label>
-                                </div>
-                            </li>
-
-                            <li class="filter__item filter__item--small govuk-clearfix">
-                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                    <input class="govuk-checkboxes__input " id="filterCouncils_2" type="checkbox" name="filterCouncils_2" value="Economic and Social Research Council">
-                                    <label for="filterCouncils_2" class="govuk-checkboxes__label u-display-ib">ESRC</label>
-                                </div>
-                            </li>
-
-                            <li class="filter__item filter__item--small govuk-clearfix">
-                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                    <input class="govuk-checkboxes__input " id="filterCouncils_3" type="checkbox" name="filterCouncils_3" value="Engineering and Physical Sciences Research Council">
-                                    <label for="filterCouncils_3" class="govuk-checkboxes__label u-display-ib">EPSRC</label>
-                                </div>
-                            </li>
-
-                            <li class="filter__item filter__item--small govuk-clearfix">
-                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                    <input class="govuk-checkboxes__input " id="filterCouncils_4" type="checkbox" name="filterCouncils_4" value="Innovate UK">
-                                    <label for="filterCouncils_4" class="govuk-checkboxes__label u-display-ib">Innovate UK</label>
-                                </div>
-                            </li>
-
-                            <li class="filter__item filter__item--small govuk-clearfix">
-                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                    <input class="govuk-checkboxes__input " id="filterCouncils_5" type="checkbox" name="filterCouncils_5" value="Medical Research Council">
-                                    <label for="filterCouncils_5" class="govuk-checkboxes__label u-display-ib">MRC</label>
-                                </div>
-                            </li>
-
-                            <li class="filter__item filter__item--small govuk-clearfix">
-                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                    <input class="govuk-checkboxes__input " id="filterCouncils_6" type="checkbox" name="filterCouncils_6" value="Natural Environment Research Council">
-                                    <label for="filterCouncils_6" class="govuk-checkboxes__label u-display-ib">NERC</label>
-                                </div>
-                            </li>
-
-                            <li class="filter__item filter__item--small govuk-clearfix">
-                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                    <input class="govuk-checkboxes__input " id="filterCouncils_7" type="checkbox" name="filterCouncils_7" value="Research England">
-                                    <label for="filterCouncils_7" class="govuk-checkboxes__label u-display-ib">Research England</label>
-                                </div>
-                            </li>
-
-                            <li class="filter__item filter__item--small govuk-clearfix">
-                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                    <input class="govuk-checkboxes__input " id="filterCouncils_8" type="checkbox" name="filterCouncils_8" value="Science and Technology Facilities Council">
-                                    <label for="filterCouncils_8" class="govuk-checkboxes__label u-display-ib">STFC</label>
-                                </div>
-                            </li>
-
-                            <li class="filter__item filter__item--small govuk-clearfix">
-                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                    <input class="govuk-checkboxes__input " id="filterCouncils_9" type="checkbox" name="filterCouncils_9" value="UK Research and Innovation">
-                                    <label for="filterCouncils_9" class="govuk-checkboxes__label u-display-ib">UKRI</label>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </ul>
-                </div>
-
-                <div>
-                    {% call components.formGroup() %}
-                        {{ components.button(text='Apply filters', extraClass='')}}
-                    {%- endcall %}
-                </div>
-
-            </div>
-
-
-        {%- endcall %}#}
-
-
+    {#{% call components.bulmaRow() %}
 
         {% call components.bulmaColumnAny(size='is-full') %}
 
             <div class="responsive-table">
 
-                <p class="govuk-body u-space-t10">Showing <strong>8</strong> awards</p>
+                <p class="govuk-body u-space-t10">Showing <strong>8</strong> of <strong>8</strong> awards sorted by "<strong>Task</strong>"</p>
 
                 <table class="govuk-table mega-table responsive-table__table">
                     <thead>
                     <tr class="govuk-table__header">
                         <th class="govuk-table__header">Award name</th>
+
+                        <th class="govuk-table__header">Award<br>holder</th>
                         <th class="govuk-table__header">Funding<br>body</th>
-                        <th class="govuk-table__header">Principle<br>investigator</th>
-                        <th class="govuk-table__header govuk-table__header--numeric">Award<br>amount</th>
+                        #}{#<th class="govuk-table__header govuk-table__header--numeric">Award<br>amount</th>#}{#
+                        <th class="govuk-table__header govuk-table__header--numeric">Start<br>date</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">End<br>date</th>
                         <th class="govuk-table__header govuk-table__header--numeric">Award<br>status</th>
                         <th class="govuk-table__header govuk-table__header--numeric">Task</th>
                     </tr>
@@ -217,19 +87,20 @@
 
                     <tr class="mega-table_row-status--">
                         <td class="govuk-table__cell mega-table__cell--fixed"><a href="/prototypes/change-request/award-overview" class="govuk-link">{{ prototypeData.awardName }}</a></td>
-                        <td class="govuk-table__cell">MRC</td>
                         <td class="govuk-table__cell">Dr. Alicia Brook</td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric">£1,000,000</td>
+                        <td class="govuk-table__cell">MRC</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">21 Nov 2021</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">30 Oct 2023</td>
                         <td class="govuk-table__cell govuk-table__cell--numeric">
                             <span class="_mega-table_item-meta">Active</span>
                         </td>
                         <td class="govuk-table__cell govuk-table__cell--numeric">
 
-                            {#{% if savedSession.requestSubmitted %}
+                            #}{#{% if savedSession.requestSubmitted %}
                                 <strong class="govuk-tag govuk-tag--red">Attention</strong>
                             {% else %}
                                 &nbsp;
-                            {% endif %}#}
+                            {% endif %}#}{#
                             {% if allData.crStatus == 'accepted' %}
                                 <strong class="govuk-tag govuk-tag--red">Attention</strong>
                             {% elseif allData.crStatus == 'rejected' %}
@@ -242,26 +113,27 @@
 
                     {% set length = 6 %}
                     {% for item in allData.megaDataApplications %}
-                        <h2>{% if loop.index < 8 %}</h2>
-
+                        {% if loop.index < 8 %}
                         <tr class="mega-table_row-status--">
                             <td class="govuk-table__cell mega-table__cell--fixed"><a href="{% if item.awardURL %}{{ item.awardURL }}{% else %}#{% endif %}" class="govuk-link">AWA{{ item.id }} - {{ item.name }}</a></td>
-                            <td class="govuk-table__cell">{{ item.funder }}</td>
                             <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                            <td class="govuk-table__cell">{{ item.funder }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1, 31) | random }} Jan 2022</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(1, 31) | random }} Dec 2024</td>
+                            #}{#<td class="govuk-table__cell govuk-table__cell--numeric">
                                 {% if item.awardAmount %}
                                     £{{ item.awardAmount }}
                                 {% else %}
                                     £{{ range(100, 1000) | random | numberFormat }},000
                                 {% endif %}
-                            </td>
+                            </td>#}{#
                             <td class="govuk-table__cell govuk-table__cell--numeric">
                                 <span class="_mega-table_item-meta">
                                     {{ item.altStatus }}
                                 </span>
                             </td>
                             <td class="govuk-table__cell govuk-table__cell--numeric">
-                                {#{{ item.altTask }}#}
+                                #}{#{{ item.altTask }}#}{#
                                 {% if item.altTask == 'Information' %}
                                     <strong class="govuk-tag govuk-tag--blue">{{ item.altTask }}</strong>
                                 {% endif %}
@@ -279,13 +151,157 @@
                 </table>
             </div>
 
-            {#{{ components.pagination(totalItems=46,currentPage=2) }}#}
-            {#{{ components.pagination(totalItems=99,itemsPerPage=10,currentPage=4) }}#}
+            #}{#{{ components.pagination(totalItems=46,currentPage=2) }}#}{#
+            #}{#{{ components.pagination(totalItems=99,itemsPerPage=10,currentPage=4) }}#}{#
+
+        {%- endcall %}
+
+    {%- endcall %}#}
+
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="responsive-table">
+                <p class="govuk-body u-space-t10">Showing <strong>8</strong> of <strong>8</strong> awards sorted by "<strong>Task</strong>"</p>
+
+
+            <table class="govuk-table mega-table responsive-table__table">
+                <thead>
+                <tr class="govuk-table__header">
+                    <th class="govuk-table__header">Award name</th>
+                    <th class="govuk-table__header">Award<br>
+                        holder</th>
+                    <th class="govuk-table__header">Funding<br>
+                        body</th>
+                    <th class="govuk-table__header govuk-table__header--numeric">Start<br>
+                        date</th>
+                    <th class="govuk-table__header govuk-table__header--numeric">End<br>
+                        date</th>
+                    <th class="govuk-table__header govuk-table__header--numeric">Award<br>
+                        status</th>
+                    <th class="govuk-table__header govuk-table__header--numeric">Task</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="mega-table_row-status--">
+                    <td class="govuk-table__cell mega-table__cell--fixed">
+                        <a class="govuk-link" href="#">AWA417 - Dimensional transmogrification methodology in domesticated urban felines.</a>
+                    </td>
+                    <td class="govuk-table__cell">Dr. Rhyon Merritt</td>
+                    <td class="govuk-table__cell">NERC</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">24 Jan 2022</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">25 Jan 2024</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"><span class="_mega-table_item-meta">Active</span></td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--red">Attention</strong></td>
+                </tr>
+                <tr class="mega-table_row-status--">
+                    <td class="govuk-table__cell mega-table__cell--fixed">
+                        <a class="govuk-link" href="#">AWA204 - Recovery strategies from pollution in freshwater ecosystems</a>
+                    </td>
+                    <td class="govuk-table__cell">Prof. Urban Becker</td>
+                    <td class="govuk-table__cell">NERC</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">11 Jan 2022</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">1 Feb 2024</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"><span class="_mega-table_item-meta">Active</span></td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--yellow">Waiting on</strong></td>
+                </tr>
+                {% if savedSession.requestSubmitted %}
+                    <tr class="mega-table_row-status--">
+                        <td class="govuk-table__cell mega-table__cell--fixed">
+                            <a class="govuk-link" href="/prototypes/change-request/award-overview">AWA184: Environmental research grants 2022</a>
+                        </td>
+                        <td class="govuk-table__cell">Dr. Alicia Brook</td>
+                        <td class="govuk-table__cell">MRC</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">21 Nov 2021</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">30 Oct 2023</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><span class="_mega-table_item-meta">Active</span></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            <strong class="govuk-tag govuk-tag--yellow">Waiting on</strong>
+                        </td>
+                    </tr>
+                {% endif %}
+                <tr class="mega-table_row-status--">
+                    <td class="govuk-table__cell mega-table__cell--fixed">
+                        <a class="govuk-link" href="#">AWA124 - Viral pandemic: distributed societal issues and news shaping</a>
+                    </td>
+                    <td class="govuk-table__cell">Rayane Hudson</td>
+                    <td class="govuk-table__cell">MRC</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">3 Jan 2022</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">7 Mar 2024</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"><span class="_mega-table_item-meta">Announced</span></td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--blue">Information</strong></td>
+                </tr>
+                {% if not savedSession.requestSubmitted %}
+                <tr class="mega-table_row-status--">
+                    <td class="govuk-table__cell mega-table__cell--fixed">
+                        <a class="govuk-link" href="/prototypes/change-request/award-overview">AWA184: Environmental research grants 2022</a>
+                    </td>
+                    <td class="govuk-table__cell">Dr. Alicia Brook</td>
+                    <td class="govuk-table__cell">MRC</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">21 Nov 2021</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">30 Oct 2023</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"><span class="_mega-table_item-meta">Active</span></td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+                </tr>
+                {% endif %}
+                <tr class="mega-table_row-status--">
+                    <td class="govuk-table__cell mega-table__cell--fixed">
+                        <a class="govuk-link" href="#">AWA29 - Culture wars of early naughties Part II</a>
+                    </td>
+                    <td class="govuk-table__cell">Prof. Fletcher Lee</td>
+                    <td class="govuk-table__cell">MRC</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">7 Jan 2022</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">16 Apr 2024</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"><span class="_mega-table_item-meta">Active</span></td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+                </tr>
+                <tr class="mega-table_row-status--">
+                    <td class="govuk-table__cell mega-table__cell--fixed">
+                        <a class="govuk-link" href="#">AWA102 - Historical influences of macrodynamics in entomyphagy</a>
+                    </td>
+                    <td class="govuk-table__cell">Prof. Azzam Booth</td>
+                    <td class="govuk-table__cell">ESPRC</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">1 Jan 2022</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">26 May 2024</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"><span class="_mega-table_item-meta">Active</span></td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+                </tr>
+
+
+                <tr class="mega-table_row-status--">
+                    <td class="govuk-table__cell mega-table__cell--fixed">
+                        <a class="govuk-link" href="#">AWA398 - Effluent filtering in pre-treated brown water overflows</a>
+                    </td>
+                    <td class="govuk-table__cell">Prof. Kieran-Scott Bradley</td>
+                    <td class="govuk-table__cell">NERC</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">12 Jan 2022</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">13 Jun 2024</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"><span class="_mega-table_item-meta">Active</span></td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+                </tr>
+                <tr class="mega-table_row-status--">
+                    <td class="govuk-table__cell mega-table__cell--fixed">
+                        <a class="govuk-link" href="#">AWA401 - Jet propulsion systems in underwater environments</a>
+                    </td>
+                    <td class="govuk-table__cell">Prof. Mason Dudley</td>
+                    <td class="govuk-table__cell">NERC</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">25 Jan 2022</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">6 July 2024</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"><span class="_mega-table_item-meta">Suspended</span></td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+                </tr>
+
+                </tbody>
+            </table>
+
+
+            </div>
 
         {%- endcall %}
 
     {%- endcall %}
-
 
 
     {% include '../../layouts/partials/user-contact.njk' %}
