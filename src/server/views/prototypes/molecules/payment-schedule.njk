@@ -1,0 +1,247 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set pageTitle = 'Payment schedule' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set isAdminUser = true %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-half') %}
+
+            {{ components.captionHeading(text='Payment schedule tables') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {% call components.bulmaRow(extraClass='u-space-b30') %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <strong>Paid to date</strong>
+                <br>
+                <span class="govuk-!-display-block govuk-!-font-size-36">£250,000</span>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <strong>Outstanding</strong>
+                <br>
+                <span class="govuk-!-display-block govuk-!-font-size-36">£750,000</span>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+
+                <strong>Total award value</strong>
+                <br>
+                <span class="govuk-!-display-block govuk-!-font-size-36">£1,000,000</span>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+
+        {% call components.bulmaRow(extraClass='u-space-b30') %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                <div class="responsive-table">
+
+                    <table class="govuk-table govuk-table--edges">
+                        <thead>
+                        <tr>
+                            <th class="govuk-table__header">Quarter</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Payment amount</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="govuk-table--current">
+                            <td class="govuk-table__cell">Jul to Sep 2022 <span class="meta">(current quarter)</span></td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£300,208.40</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--yellow">Due</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Oct to Dec 2022</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£75,285.55</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--grey">Due</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Jan to Mar 2023</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£75,285.55</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--grey">Due</strong></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='u-space-b30') %}
+
+            {% call components.bulmaColumnAny(size='column is-9') %}
+
+                <div class="responsive-table">
+
+                    <table class="govuk-table govuk-table--edges">
+                        <thead>
+                        <tr>
+                            <th class="govuk-table__header">Quarter</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Payment amount</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="">
+                            <td class="govuk-table__cell">Apr to Jun 2022</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£300,208.40</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--yellow">Paid</strong></td>
+                        </tr>
+                        <tr class="govuk-table--current">
+                            <td class="govuk-table__cell">Jul to Sep 2022 <span class="meta">(current quarter)</span></td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£300,208.40</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--yellow">Due</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Oct to Dec 2022</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£75,285.55</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--grey">Due</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Jan to Mar 2023</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£75,285.55</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--grey">Due</strong></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+    </section>
+
+
+    {#<section class="section">
+
+        {% call components.bulmaRow(extraClass='u-space-b30') %}
+
+            {% call components.bulmaColumnAny(size='column is-full') %}
+
+                {{ components.captionHeading(text='Payment schedule',tag='h2',size='m') }}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='u-space-b30') %}
+
+            {% call components.bulmaColumnAny(size='column is-2') %}
+
+                <strong>Amount paid to <br>date (£)</strong>
+                <br>
+                <span class="govuk-!-display-block govuk-!-font-size-36">112,000</span>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-2') %}
+
+                <strong>Outstanding <br>payments (£)</strong>
+                <br>
+                <span class="govuk-!-display-block govuk-!-font-size-36">86,000</span>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='column is-2') %}
+
+                <strong>Total award<br> value (£)</strong>
+                <br>
+                <span class="govuk-!-display-block govuk-!-font-size-36">320,000</span>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='column is-full') %}
+
+                    <table class="govuk-table _govuk-table--stripes govuk-table--finance">
+                        <thead>
+                        <tr>
+                            <th class="govuk-table__header u-brd-l0 u-brd-r0">Quarter</th>
+                            <th class="govuk-table__header govuk-table__header--numeric u-brd-l0 u-brd-r0">Payment date</th>
+                            <th class="govuk-table__header govuk-table__header--numeric u-brd-l0 u-brd-r0">Profile amount (£)</th>
+                            <th class="govuk-table__header govuk-table__header--numeric u-brd-r0 u-brd-l0">Payment total (£)</th>
+                            <th class="govuk-table__header govuk-table__header--numeric u-brd-l0 u-brd-r0">Status</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="govuk-table__cell">1</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">1 Apr 2022</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">£36,000</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">£26,000</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--green">paid</strong></td>
+                            </tr>
+                            <tr class="govuk-table--current">
+                                <td class="govuk-table__cell">2</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">1 Jul 2022</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">£36,000</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">£26,000</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--yellow">due</strong></td>
+                            </tr>
+                            <tr class="">
+                                <td class="govuk-table__cell">3</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">1 Oct 2022</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">£36,000</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">£26,000</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--grey">due</strong></td>
+                            </tr>
+                            <tr class="">
+                                <td class="govuk-table__cell">4</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">1 Jan 2023</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">£36,000</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">£26,000</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--grey">due</strong></td>
+                            </tr>
+
+                    </table>
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-8') %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>#}
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+{% endblock %}
