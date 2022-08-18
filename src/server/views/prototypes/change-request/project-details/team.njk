@@ -44,10 +44,57 @@
         {%- endcall %}
 
         {% call components.bulmaRow() %}
-            {% call components.bulmaColumnAny(size='is-9') %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+
+
+
+                <table class="govuk-table">
+                    <caption class="govuk-table__caption govuk-visually-hidden">University of Wales team members</caption>
+                    <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header _cell-max-35">Name</th>
+                        <th scope="col" class="govuk-table__header _cell-max-35">Role</th>
+                        <th scope="col" class="govuk-table__header _cell-max-35">Organisation</th>
+                        <th scope="col" class="govuk-table__header ">Email address</th>
+                        <th scope="col" class="govuk-table__header "><span class="govuk-visually-hidden">Action</span>&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell  ">Dr. Alicia Brook</td>
+                        <td class="govuk-table__cell ">Lead applicant</td>
+                        <td class="govuk-table__cell ">University of Wales</td>
+                        <td class="govuk-table__cell ">a.brook@wales.ac.uk</td>
+                        <td class="govuk-table__cell u-align-right"><button type="submit" name="removeButton" class="govuk-button govuk-button--link" value="Dr. Alicia Brook">Remove <span class="govuk-visually-hidden">this person</span></button></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell ">Dr. Annabel Hatt</td>
+                        <td class="govuk-table__cell ">Lead applicant</td>
+                        <td class="govuk-table__cell ">Manchester University</td>
+                        <td class="govuk-table__cell ">a.hatt@manchester.ac.uk</td>
+                        <td class="govuk-table__cell u-align-right"><button type="submit" name="removeButton" class="govuk-button govuk-button--link" value="Dr. Annabel Hatt">Remove <span class="govuk-visually-hidden">this person</span></button></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell ">Dr. Phoebe Buffay-Hannigan</td>
+                        <td class="govuk-table__cell ">Co-investigator</td>
+                        <td class="govuk-table__cell ">University of Wales</td>
+                        <td class="govuk-table__cell ">p.buffay-hanningane@cardiffuniversity.ac.uk</td>
+                        <td class="govuk-table__cell u-align-right"><button type="submit" name="removeButton" class="govuk-button govuk-button--link" value="Dr. Phoebe Buffay-Hannigan">Remove <span class="govuk-visually-hidden">this person</span></button></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Dr. David Burson</td>
+                        <td class="govuk-table__cell">Co-investigator</td>
+                        <td class="govuk-table__cell ">Manchester University</td>
+                        <td class="govuk-table__cell ">d.burson@manchester.ac.uk</td>
+                        <td class="govuk-table__cell u-align-right"><button type="submit" name="removeButton" class="govuk-button govuk-button--link" value="Dr. David Burson">Remove <span class="govuk-visually-hidden">this person</span></button></td>
+                    </tr>
+                    </tbody>
+                </table>
+
 
                 {#{{ components.captionHeading(text='University of Wales', tag='h2', size='s') }}#}
-                <p class="govuk-body govuk-!-font-size-24"><strong>University of Wales</strong> <span class="meta">(Lead)</span></p>
+              {#  <p class="govuk-body govuk-!-font-size-24"><strong>University of Wales</strong> <span class="meta">(Lead)</span></p>
 
                 <table class="govuk-table">
                     <caption class="govuk-table__caption govuk-visually-hidden">University of Wales team members</caption>
@@ -73,16 +120,16 @@
                             <td class="govuk-table__cell u-align-right"><button type="submit" name="removeButton" class="govuk-button govuk-button--link" value="Dr. Phoebe Buffay-Hannigan">Remove <span class="govuk-visually-hidden">this person</span></button></td>
                         </tr>
                     </tbody>
-                </table>
+                </table>#}
 
 
             {%- endcall %}
         {%- endcall %}
 
-        {% call components.bulmaRow() %}
+        {#{% call components.bulmaRow() %}
             {% call components.bulmaColumnAny(size='is-9') %}
 
-                {#{{ components.captionHeading(text='University of Wales', tag='h2', size='s') }}#}
+                #}{#{{ components.captionHeading(text='University of Wales', tag='h2', size='s') }}#}{#
                 <p class="govuk-body govuk-!-font-size-24"><strong>University of Manchester</strong></p>
 
                 <table class="govuk-table">
@@ -114,7 +161,7 @@
 
 
             {%- endcall %}
-        {%- endcall %}
+        {%- endcall %}#}
 
         {% call components.bulmaRow() %}
 

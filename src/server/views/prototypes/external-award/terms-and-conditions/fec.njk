@@ -1,0 +1,59 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set externalAwardPrototypeData = externalAwardPrototypeData if externalAwardPrototypeData %}
+{% set userName = externalAwardPrototypeData.userName %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'fEC conditions ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/external-award/award-terms', text:'Back to terms and conditions'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='fEC conditions', caption=externalAwardPrototypeData.awardName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                {% include '../../../layouts/partials/terms-and-conditions-awards.njk' %}
+
+            {%- endcall %}
+        {%- endcall %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-9') %}
+                <p class="govuk-body">
+                    <a href="/prototypes/external-award/award-terms" class="govuk-link">Back to terms and conditions</a>
+                </p>
+            {%- endcall %}
+        {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+

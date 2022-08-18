@@ -1,4 +1,3 @@
-
 {% set showExternalNav = true %}
 {% set activeNavItem = 'awards' %}
 {% set navArea = 'personal' %}
@@ -7,16 +6,13 @@
 {% set reviewsLink = '#' %}
 {% set accountSettingsLink = '' %}
 {% set showExternalFurniture = false %}
-
 {% set hideAccountLinks = true %}
-
 {% extends 'layouts/bulma-ufs.layout.njk' %}
-
 {% set isAdminUser = false %}
 {% set loggedOut = false %}
+
 {% set allData = allData if allData %}
 {% set prototypeData = prototypeData if prototypeData %}
-
 {% set userName = prototypeData.userName %}
 
 {% set pageTitle = 'Check your change request' + GLOBAL_TAG_TITLE_SUFFIX %}

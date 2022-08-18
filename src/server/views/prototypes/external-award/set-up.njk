@@ -1,0 +1,179 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set accountSettingsLink = '' %}
+{% set showExternalFurniture = false %}
+{% set hideAccountLinks = true %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+
+{% set allData = allData if allData %}
+{% set externalAwardPrototypeData = externalAwardPrototypeData if externalAwardPrototypeData %}
+{% set userName = externalAwardPrototypeData.userName %}
+
+{% set pageTitle = 'Award set-up overview' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/external-award/', text:'Back to awards'}] %}
+
+{% block content %}
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                {{ components.captionHeading(text='Award set-up overview', caption=externalAwardPrototypeData.awardName) }}
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='u-space-b45') %}
+            {% call components.bulmaColumnAny(size='is-3') %}
+                <p class="govuk-body u-space-y10">
+                    <strong>Status: </strong> Active
+                </p>
+                <p class="govuk-body u-space-y10">
+                    <strong>Award holder: </strong> Dr. Alicia Brook
+                </p>
+                <p class="govuk-body u-space-y10">
+                    <strong>Funder: </strong> BBSRC
+                </p>
+            {%- endcall %}
+            {% call components.bulmaColumnAny(size='is-3') %}
+                <p class="govuk-body u-space-y10">
+                    <strong>Start date:</strong> 21 November 2021
+                </p>
+                <p class="govuk-body u-space-y10">
+                    <strong>End date:</strong> {{ externalAwardPrototypeData.currentEndDate }}
+                </p>
+                <p class="govuk-body u-space-y10">
+                    <strong>Award value:</strong> £1,000,000
+                </p>
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-8', customID='mainContent') %}
+                {#<p class="govuk-body-l">Select 'Funders' to list the bodies supporting your Opportunity. Then add the stages you need to manage it.</p>
+                #}
+                <section class="section" id="defaultItems">
+
+                    <div class="application-items">
+
+                        <div class="application-item _application-item--complete">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <a href="/prototypes/external-award/award-details" class="govuk-link">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="application-item _application-item--complete">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <a href="/prototypes/external-award/award-team" class="govuk-link">Team</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="application-item {% if allData.addedTerms == 'on' %}application-item--complete{% else %}application-item--incomplete{% endif %}">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <a href="/prototypes/external-award/award-terms" class="govuk-link">Terms and conditions</a>
+                                </div>
+                                <div class="application-item__right">
+                                    {% if allData.addedTerms == 'on' %}
+                                        <span>Complete</span>
+                                    {% else %}
+                                        <span>Incomplete</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="application-item _application-item--complete">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <a href="/prototypes/external-award/award-costs" class="govuk-link">Costs</a>
+                                </div>
+                                <div class="application-item__right u-align-right">
+                                    <strong class="govuk-tag govuk-tag--blue">Updated</strong>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="application-item _application-item--complete">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <a href="/prototypes/external-award/award-payment-schedule" class="govuk-link">Payment schedule</a>
+                                </div>
+                                <div class="application-item__right">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="application-item {% if allData.collabAgreement == 'on' %}application-item--complete{% else %}application-item--incomplete{% endif %}">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <a href="/prototypes/external-award/award-collaboration-agreement" class="govuk-link">Collaboration agreement</a>
+                                </div>
+                                <div class="application-item__right">
+                                    {% if allData.collabAgreement == 'on' %}
+                                        <span>Complete</span>
+                                    {% else %}
+                                        <span>Incomplete</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="application-item _application-item--complete">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <a href="/prototypes/external-award/award-agreement" class="govuk-link">Award agreement</a>
+                                </div>
+                                <div class="application-item__right">
+                                    Incomplete
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section class="section" id="submitSection">
+                    {% call components.formGroup(extraClass='application-controls--paired-buttons govuk-clearfix') %}
+                        {{ components.captionHeading(text='Respond to offer', tag='h2', size='m') }}
+
+                        <p class="govuk-body">
+                            You must respond on behalf Research Organisation to either accept or decline the offer.
+                            If any of these details as incorrect you must <a href="#" class="govuk-link">contact us</a> as soon as possible.
+                        </p>
+
+                        <div class="application-controls application-controls--paired-buttons govuk-clearfix _u-space-t45">
+                            <button type="submit" class="govuk-button application-controls__submit" name="submitButton" value="submitToUKRI">Accept award</button>
+                            <a href="/prototypes/external-award/decline" class="govuk-link application-controls__cancel u-space-x45" >Decline award offer</a>
+                        </div>
+                    {%- endcall %}
+                </section>
+
+            {%- endcall %}
+
+            {% call components.bulmaColumnAny(size='is-3 is-offset-1') %}
+                <div class="govuk-related-items govuk-related-items--flush _u-space-t15">
+                    <div class="application-data application-data--large u-space-t10">
+                        <dl class="application-data__list">
+                            <dt class="application-data__key"><strong>Application:</strong></dt>
+                            <dd class="application-data__value"><a href="#" class="govuk-link">APP101660: The economics of grant funding in a post-pandemic world (opens in new window)</a> </dd>
+                            <dt class="application-data__key"><strong>Opportunity:</strong></dt>
+                            <dd class="application-data__value">OPP991: Post pandemic fiscal innovation</dd>
+                        </dl>
+                    </div>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+
+    {%- endcall %}
+    {% include '../../layouts/partials/user-contact.njk' %}
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+
+

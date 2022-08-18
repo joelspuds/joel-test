@@ -375,3 +375,15 @@ Object.keys(_changeRequestController).forEach(function (key) {
     }
   });
 });
+
+var _externalAwardsController = require('./externalAwardsController');
+
+Object.keys(_externalAwardsController).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _externalAwardsController[key];
+    }
+  });
+});

@@ -1,0 +1,114 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Terms and conditions' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set externalAwardPrototypeData = externalAwardPrototypeData if externalAwardPrototypeData %}
+{% set userName = externalAwardPrototypeData.userName %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/external-award/set-up', text:'Back to award set-up overview'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Terms and conditions', caption=externalAwardPrototypeData.awardName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='acceptTerms') %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-half') %}
+
+                {{ components.captionHeading(text='Added terms and conditions', size='m', tag='h2') }}
+
+                <p class="govuk-body">These terms and conditions are only for this award. You must agree to these on behalf of your Research Organisation before  you can accept the award offer.</p>
+
+                <div class="application-items u-space-b45">
+                    <div class="application-item  application-item--skinny {% if allData.addedTerms == 'on' %}application-item--complete{% else %}application-item--incomplete{% endif %}">
+                        <div class="application-item__contents govuk-clearfix">
+                            <div class="application-item__left">
+                                <a href="/prototypes/external-award/terms-and-conditions/added" class="govuk-link">Award terms and conditions</a>
+                            </div>
+                            <div class="application-item__right">
+                                {% if allData.addedTerms == 'on' %}
+                                    <span>Complete</span>
+                                {% else %}
+                                    <span>Incomplete</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-half') %}
+
+                {{ components.captionHeading(text='Standard terms and conditions', size='m', tag='h2') }}
+
+                <p class="govuk-body">These terms and conditions apply to all awards for the opportunity.</p>
+
+                <div class="application-items u-space-b45">
+
+                    <div class="application-item  application-item--skinny">
+                        <div class="application-item__contents govuk-clearfix">
+                            <div class="application-item__left">
+                                <a href="/prototypes/external-award/terms-and-conditions/opportunity" class="govuk-link">Opportunity conditions</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="application-item  application-item--skinny">
+                        <div class="application-item__contents govuk-clearfix">
+                            <div class="application-item__left">
+                                <a href="/prototypes/external-award/terms-and-conditions/mrc" class="govuk-link">MRC conditions</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="application-item  application-item--skinny">
+                        <div class="application-item__contents govuk-clearfix">
+                            <div class="application-item__left">
+                                <a href="/prototypes/external-award/terms-and-conditions/fec" class="govuk-link">fEC conditions</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            {%- endcall %}
+        {%- endcall %}
+
+
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+

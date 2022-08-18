@@ -36,3 +36,4 @@ export * from './orgs3Controller';
 export * from './panelController';
 export * from './postDecisionController';
 export * from './changeRequestController';
+export * from './externalAwardsController';

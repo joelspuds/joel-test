@@ -323,6 +323,33 @@ router.get('/prototypes/change-request/change-request-detail', demosController.c
 
 /* *************************************************************** *
 
+  External award
+
+* *************************************************************** */
+router.get('/prototypes/external-award', demosController.eaIndexGet);
+router.post('/prototypes/external-award', demosController.eaIndexPost);
+router.get('/prototypes/external-award/set-up', demosController.eaSetUpGet);
+router.post('/prototypes/external-award/set-up', demosController.eaSetUpPost);
+router.get('/prototypes/external-award/award-agreement', demosController.eaAwardAgreementGet);
+router.post('/prototypes/external-award/award-agreement', demosController.eaAwardAgreementPost);
+router.get('/prototypes/external-award/award-collaboration-agreement', demosController.eaAwardCollaborationAgreementGet);
+router.post('/prototypes/external-award/award-collaboration-agreement', demosController.eaAwardCollaborationAgreementPost);
+router.get('/prototypes/external-award/award-costs', demosController.eaAwardCostsGet);
+router.post('/prototypes/external-award/award-costs', demosController.eaAwardCostsPost);
+router.get('/prototypes/external-award/award-details', demosController.eaAwardDetailsGet);
+router.post('/prototypes/external-award/award-details', demosController.eaAwardDetailsPost);
+router.get('/prototypes/external-award/award-payment-schedule', demosController.eaAwardPaymentScheduleGet);
+router.post('/prototypes/external-award/award-payment-schedule', demosController.eaAwardPaymentSchedulePost);
+router.get('/prototypes/external-award/award-team', demosController.eaAwardTeamGet);
+router.post('/prototypes/external-award/award-team', demosController.eaAwardTeamPost);
+router.get('/prototypes/external-award/award-terms', demosController.eaAwardTermsGet);
+router.post('/prototypes/external-award/award-terms', demosController.eaAwardTermsPost);
+// terms and conditions
+router.get('/prototypes/external-award/terms-and-conditions/added', demosController.eaAwardTermsAddedGet);
+router.post('/prototypes/external-award/terms-and-conditions/added', demosController.eaAwardTermsAddedPost);
+
+/* *************************************************************** *
+
   Various
 
 * *************************************************************** */

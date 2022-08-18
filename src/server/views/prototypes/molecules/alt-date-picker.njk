@@ -1,0 +1,164 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set pageTitle = 'Alt date picker' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set isAdminUser = true %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Alt date picker') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <section class="section" id="altRows">
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" role="group" aria-describedby="dateHint">
+                        <legend class="govuk-fieldset__legend">
+                            When is the thing?
+                        </legend>
+                        <div id="dateHint" class="govuk-hint">
+                            For example, 27 6 2022
+                        </div>
+                        <div class="govuk-date-input" id="date">
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="date-day">
+                                        Day
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-day" name="date-day" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="date-month">
+                                        Month
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-month" name="date-month" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="date-year">
+                                        Year
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-year" name="date-year" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+
+                            <div class="form-group sm-date-picker-container">
+                                <label class="govuk-visually-hidden" for="sm-date-picker">Date picker for start date</label>
+                                <i class="far fa-calendar-alt fa-2x" id="sm-date-picker-start">
+                                    <input class="form-control sm-date-picker-input" id="sm-date-picker" name="sm-date-picker" type="text" autocomplete="off">
+                                </i>
+                            </div>
+
+
+                        </div>
+
+
+
+                       {# <div class="form-date">
+                            <div class="form-group form-group-day">
+                                <label class="form-label" for="date-day">Day</label>
+                                <input class="form-control" id="date-day" name="date-day" type="number" pattern="[0-9]*">
+                            </div>
+                            <div class="form-group form-group-month">
+                                <label class="form-label" for="date-month">Month</label>
+                                <input class="form-control" id="date-month" name="date-month" type="number" pattern="[0-9]*">
+                            </div>
+                            <div class="form-group form-group-year">
+                                <label class="form-label" for="date-year">Year</label>
+                                <input class="form-control" id="date-year" name="date-year" type="number" pattern="[0-9]*">
+                            </div>
+                            <div class="form-group sm-date-picker-container">
+                                <label class="sm-visually-hidden" for="sm-date-picker">Date picker for start date</label>
+                                <i class="far fa-calendar-alt fa-2x" id="sm-date-picker-start">
+                                    <input class="form-control sm-date-picker-input" id="sm-date-picker" name="sm-date-picker" type="text" autocomplete="off">
+                                </i>
+                            </div>
+                        </div>#}
+
+                    </fieldset>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    </section>
+
+    <style>
+        .form-date .sm-date-picker-container {
+            top: 32px;
+        }
+        .form-date .sm-date-picker-container {
+            position: relative;
+            top: 28px;
+        }
+        @media (min-width: 641px) {
+            .form-date .sm-date-picker-container {
+                top: 32px;
+            }
+
+            .form-date .sm-date-picker-container {
+                position: relative;
+                top: 28px;
+            }
+        }
+
+        .form-date .sm-date-picker-container .fa-calendar-alt {
+            position: absolute;
+            top: 0;
+        }
+        .form-date .sm-date-picker-container .fa-calendar-alt {
+            position: absolute;
+            top: 0;
+        }
+        .fa, .far, .fas {
+            font-family: "Font Awesome 5 Free";
+        }
+        .far {
+            font-weight: 400;
+        }
+        .fa-2x {
+            font-size: 2em;
+        }
+        .fa, .fab, .fal, .far, .fas {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+        }
+    </style>
+
+{% endblock %}
+
+{% block bodyScripts %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" integrity="sha512-h9kKZlwV1xrIcr2LwAPZhjlkx+x62mNwuQK5PAu9d3D+JXMNlGx8akZbqpXvp0vA54rz+DrqYVrzUGDMhwKmwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <script src="https://dft-street-manager-style-guide.herokuapp.com/public/javascripts/street-manager/sm.js"></script>
+    <script>
+        // https://dft-street-manager-style-guide.herokuapp.com/sm-date-picker/
+        document.addEventListener("DOMContentLoaded", function (event) {
+            if (document.querySelectorAll('.sm-date-picker-container').length) {
+                SmDatePicker('#sm-date-picker', '#date-day', '#date-month', '#date-year').init()
+            }
+        });
+    </script>
+{% endblock %}

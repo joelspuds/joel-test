@@ -14,14 +14,14 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set allData = allData if allData %}
-{% set prototypeData = prototypeData if prototypeData %}
-{% set userName = prototypeData.userName %}
+{% set externalAwardPrototypeData = externalAwardPrototypeData if externalAwardPrototypeData %}
+{% set userName = externalAwardPrototypeData.userName %}
 
 {% set isAdminUser = false %}
 {%  set loggedOut = false %}
 
 {% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/change-request/award-overview', text:'Back to award overview'}] %}
+{% set backLinkContents =  [{url:'/prototypes/external-award/set-up', text:'Back to award set-up overview'}] %}
 
 {% set inviteResponse = inviteResponse if inviteResponse %}
 
@@ -29,7 +29,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Team', caption=prototypeData.awardName) }}
+            {{ components.captionHeading(text='Team', caption=externalAwardPrototypeData.awardName) }}
         {%- endcall %}
     {%- endcall %}
 
@@ -95,26 +95,6 @@
 
 {% endblock %}
 {% block bodyScripts %}
-    <script>
-        function toggleVisibility(_this, id, className) {
-            // event.preventDefault();
-            let toggleSwitch = _this;
-            let toggleItem = document.getElementById(id);
-            if (hasClass(toggleItem, className)) {
-                toggleSwitch.classList.add('filter__title--closed');
-                toggleItem.classList.remove(className);
-                toggleSwitch.setAttribute('aria-expanded', true);
-            }
-            else  {
-                toggleSwitch.classList.remove('filter__title--closed');
-                toggleItem.classList.add(className);
-                toggleSwitch.setAttribute('aria-expanded', false);
-            }
-            // return false;
-        }
-        function hasClass(target, className) {
-            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
-        }
-    </script>
+
 {% endblock %}
 
