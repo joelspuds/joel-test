@@ -1,0 +1,108 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Home' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set prototypeData = prototypeData if prototypeData %}
+{% set userName = prototypeData.userName %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/change-request/award-overview', text:'Back to award overview'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Supporting documents', caption=prototypeData.awardName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='u-space-y0') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            <p class="govuk-body govuk-!-font-size-24">UKRI and all project partners can view any documents you upload here.</p>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='startConfirmation') %}
+
+        {% call components.bulmaRow(extraClass='') %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+
+                <div class="files">
+
+                    <div class="files__item">
+                        <div class="files__name">
+                            <a href="#" class="govuk-link">Collaboration_Agreement .pdf</a>
+                        </div>
+                        <div class="files__meta">
+                            <span class="files__size">1.3MB</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            {%- endcall %}
+        {%- endcall %}
+
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                <div class="govuk-form-group u-space-b0">
+                    <label for="fileUpload2" class="govuk-visually-hidden">Upload a document</label>
+                    <input type="file" id="fileUpload3" class="govuk-visually-hidden" multiple />
+                    <button type="button" class="govuk-button govuk-button--secondary u-space-b0" name="" id="jsUploadButton">Upload a document</button>
+                    <span class="meta govuk-!-display-inline-block u-space-t10 u-space-x20" id="spanFilePath"></span>
+                </div>
+
+            {%- endcall %}
+        {%- endcall %}
+
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        function toggleVisibility(_this, id, className) {
+            // event.preventDefault();
+            let toggleSwitch = _this;
+            let toggleItem = document.getElementById(id);
+            if (hasClass(toggleItem, className)) {
+                toggleSwitch.classList.add('filter__title--closed');
+                toggleItem.classList.remove(className);
+                toggleSwitch.setAttribute('aria-expanded', true);
+            }
+            else  {
+                toggleSwitch.classList.remove('filter__title--closed');
+                toggleItem.classList.add(className);
+                toggleSwitch.setAttribute('aria-expanded', false);
+            }
+            // return false;
+        }
+        function hasClass(target, className) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
+    </script>
+{% endblock %}
+

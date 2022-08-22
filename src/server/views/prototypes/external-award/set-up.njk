@@ -21,9 +21,42 @@
 {% block content %}
     {% call components.form(action='#', method='POST',name='submitForm') %}
 
+        {% if allData.genericError %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+
+                    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary">
+                        <h2 class="govuk-error-summary__title" id="error-summary-title">
+                            There is a problem
+                        </h2>
+                        <div class="govuk-error-summary__body">
+                            <ul class="govuk-list govuk-error-summary__list">
+                                {% if allData.termsError %}
+                                    <li class=""><a href="#termsErrorMessage" class="govuk-notification-banner__link">You must agree to the terms and conditions and mark this section as complete</a></li>
+                                {% endif %}
+                                {% if allData.collabError %}
+                                    <li class=""><a href="#collabAgreementMessage" class="govuk-notification-banner__link">You must upload your collaboration agreement and mark this section as complete</a></li>
+                                {% endif %}
+                                {% if allData.awardError %}
+                                    <li class=""><a href="#awardErrorMessage" class="govuk-notification-banner__link">You must agree to the Award Agreement and mark this section as complete</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+
+                {%- endcall %}
+            {%- endcall %}
+
+        {% endif %}
+
         {% call components.bulmaRow() %}
             {% call components.bulmaColumnAny(size='is-full') %}
                 {{ components.captionHeading(text='Award set-up overview', caption=externalAwardPrototypeData.awardName) }}
+{#
+                allData.termsError = {{ allData.termsError }}
+                <br>
+                allData.awardError = {{ allData.awardError }}#}
             {%- endcall %}
         {%- endcall %}
 
@@ -74,7 +107,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="application-item {% if allData.addedTerms == 'on' %}application-item--complete{% else %}application-item--incomplete{% endif %}">
+                        <div class="application-item {% if allData.termsError %}application-item--error{% endif %} {% if allData.addedTerms == 'on' %}application-item--complete{% else %}application-item--incomplete{% endif %}">
+                            {% if allData.termsError %}
+                            <div class="application-item__error-message" id="termsErrorMessage">
+                                You must agree to the terms and conditions and mark this section as complete
+                            </div>
+                            {% endif %}
                             <div class="application-item__contents govuk-clearfix">
                                 <div class="application-item__left">
                                     <a href="/prototypes/external-award/award-terms" class="govuk-link">Terms and conditions</a>
@@ -108,7 +146,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="application-item {% if allData.collabAgreement == 'on' %}application-item--complete{% else %}application-item--incomplete{% endif %}">
+                        <div class="application-item {% if allData.collabError %}application-item--error{% endif %} {% if allData.collabAgreement == 'on' %}application-item--complete{% else %}application-item--incomplete{% endif %}">
+                            {% if allData.collabError %}
+                            <div class="application-item__error-message" id="collabAgreementMessage">
+                                You must upload your collaboration agreement and mark this section as complete
+                            </div>
+                            {% endif %}
                             <div class="application-item__contents govuk-clearfix">
                                 <div class="application-item__left">
                                     <a href="/prototypes/external-award/award-collaboration-agreement" class="govuk-link">Collaboration agreement</a>
@@ -122,13 +165,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="application-item _application-item--complete">
+                        <div class="application-item {% if allData.awardError %}application-item--error{% endif %} {% if allData.awardAgreement == 'on' %}application-item--complete{% else %}application-item--incomplete{% endif %}">
+                            {% if allData.awardError %}
+                            <div class="application-item__error-message" id="awardErrorMessage">
+                                You must agree to the Award Agreement and mark this section as complete
+                            </div>
+                            {% endif %}
                             <div class="application-item__contents govuk-clearfix">
                                 <div class="application-item__left">
                                     <a href="/prototypes/external-award/award-agreement" class="govuk-link">Award agreement</a>
                                 </div>
                                 <div class="application-item__right">
-                                    Incomplete
+                                    {% if allData.awardAgreement == 'on' %}
+                                        <span>Complete</span>
+                                    {% else %}
+                                        <span>Incomplete</span>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

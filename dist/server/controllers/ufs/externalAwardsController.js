@@ -23,6 +23,8 @@ exports.eaAwardTermsGet = eaAwardTermsGet;
 exports.eaAwardTermsPost = eaAwardTermsPost;
 exports.eaAwardTermsAddedGet = eaAwardTermsAddedGet;
 exports.eaAwardTermsAddedPost = eaAwardTermsAddedPost;
+exports.eaConfirmGet = eaConfirmGet;
+exports.eaAwardOverviewGet = eaAwardOverviewGet;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 let limitedOrgs = require('./orgs400');
@@ -75,13 +77,15 @@ function eaIndexPost(req, res) {
 // ************************************************************************
 function eaSetUpGet(req, res) {
   let viewData;
-  let megaDataApplications = generalData.megaDataApplications;
-
-  if (!req.session.megaDataApplications) {
+  /*let megaDataApplications = generalData.megaDataApplications;
+   if (!req.session.megaDataApplications) {
     req.session.megaDataApplications = megaDataApplications;
-  }
+  }*/
 
   let allData = req.session;
+  // let allData = [...req.session];
+
+  console.log(allData);
 
   viewData = {
     allData,
@@ -89,12 +93,101 @@ function eaSetUpGet(req, res) {
     savedSession
   };
 
+  if (allData.addedTerms === 'on') {
+    req.session.termsError = null;
+    allData.termsError = null;
+  }
+
+  if (allData.collabAgreement === 'on') {
+    req.session.collabError = null;
+    allData.collabError = null;
+  }
+
+  if (allData.awardAgreement === 'on') {
+    req.session.awardError = null;
+    allData.awardError = null;
+  }
+
+  if (allData.addedTerms === 'on' && allData.collabAgreement === 'on' && allData.awardAgreement === 'on') {
+    req.session.genericError = null;
+    allData.genericError = null;
+  }
+
+  /*if (allData.addedTerms === 'on' || allData.collabAgreement === 'on' || allData.awardAgreement === 'on') {
+     req.session.genericError = null;
+    allData.genericError = null;
+     req.session.termsError = null;
+    allData.termsError = null;
+     req.session.collabError = null;
+    allData.collabError = null;
+     req.session.awardError = null;
+    allData.awardError = null;
+  }*/
+
+  //req.session.genericError = null;
+  //allData.genericError = null;
+
+  //req.session.termsError = null;
+  //allData.termsError = null;
+
+  //req.session.collabError = null;
+  //allData.collabError = null;
+
+  //req.session.awardError = null;
+  //allData.awardError = null;
+
+  console.log(allData);
+
   return res.render('prototypes/external-award/set-up', viewData);
 }
 function eaSetUpPost(req, res) {
   const {} = req.body;
   let targetURL;
   targetURL = '/prototypes/external-award/set-up';
+
+  // if (req.session.)
+  /*
+  * req.session.awardAgreement
+  * req.session.collabAgreement
+  * req.session.addedTerms
+  * */
+
+  req.session.termsError = null;
+  req.session.collabError = null;
+  req.session.awardError = null;
+  req.session.genericError = null;
+
+  // let genericError, termsError, collabError, awardError = false;
+
+  console.log('req.session.addedTerms = ' + req.session.addedTerms);
+  console.log('req.session.collabAgreement = ' + req.session.collabAgreement);
+  console.log('req.session.awardAgreement = ' + req.session.awardAgreement);
+
+  if (req.session.addedTerms === 'on' && req.session.collabAgreement === 'on' && req.session.awardAgreement === 'on') {
+    targetURL = '/prototypes/external-award/confirm';
+  } else {
+    req.session.genericError = true;
+
+    if (req.session.addedTerms !== 'on') {
+      req.session.termsError = true;
+      console.log('req.session.termsError = ' + req.session.termsError);
+    } else {
+      req.session.termsError = null;
+    }
+
+    if (req.session.collabAgreement !== 'on') {
+      req.session.collabError = true;
+    } else {
+      req.session.collabError = null;
+    }
+
+    if (req.session.awardAgreement !== 'on') {
+      req.session.awardError = true;
+    } else {
+      req.session.awardError = null;
+    }
+  }
+
   return res.redirect(targetURL);
 }
 
@@ -119,8 +212,12 @@ function eaAwardAgreementGet(req, res) {
   return res.render('prototypes/external-award/award-agreement', viewData);
 }
 function eaAwardAgreementPost(req, res) {
-  const {} = req.body;
+  // awardAgreement
+
+  const { isComplete } = req.body;
   let targetURL;
+  console.log('isComplete = ' + isComplete);
+  req.session.awardAgreement = isComplete;
   targetURL = '/prototypes/external-award/set-up';
   return res.redirect(targetURL);
 }
@@ -282,4 +379,37 @@ function eaAwardTermsAddedPost(req, res) {
   req.session.addedTerms = isComplete;
   targetURL = '/prototypes/external-award/award-terms';
   return res.redirect(targetURL);
+}
+/*
+* Confirm
+* */
+function eaConfirmGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+
+  viewData = {
+    allData,
+    externalAwardPrototypeData,
+    savedSession
+  };
+
+  return res.render('prototypes/external-award/confirm', viewData);
+}
+
+/*
+* Award overview
+* */
+function eaAwardOverviewGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+
+  viewData = {
+    allData,
+    externalAwardPrototypeData,
+    savedSession
+  };
+
+  return res.render('prototypes/external-award/award-overview', viewData);
 }

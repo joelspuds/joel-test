@@ -1,0 +1,55 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set accountSettingsLink = '' %}
+{% set showExternalFurniture = false %}
+{% set hideAccountLinks = true %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+
+{% set allData = allData if allData %}
+{% set externalAwardPrototypeData = externalAwardPrototypeData if externalAwardPrototypeData %}
+{% set userName = externalAwardPrototypeData.userName %}
+
+{% set pageTitle = 'Confirm acceptance of award' + GLOBAL_TAG_TITLE_SUFFIX %}
+{#{% set backLinkContents =  [{url:'/prototypes/external-award/', text:'Back to awards'}] %}#}
+
+{% block content %}
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-8') %}
+                {{ components.captionHeading(text='Are you sure you want to accept award offer?', caption=externalAwardPrototypeData.awardName) }}
+            {%- endcall %}
+        {%- endcall %}
+
+
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-8', customID='mainContent') %}
+                <p class="govuk-body">By accepting this offer you agree to the terms and conditions on behalf of your organisation and the award holder.</p>
+
+                <p class="govuk-body">
+                    <a href="/prototypes/external-award/award-overview" class="govuk-button">Accept award</a>
+
+                    <br>
+
+                    <a href="/prototypes/external-award/set-up" class="govuk-link">Return to award set-up overview</a>
+
+                </p>
+            {%- endcall %}
+        {%- endcall %}
+
+
+    {%- endcall %}
+    {% include '../../layouts/partials/user-contact.njk' %}
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+
+

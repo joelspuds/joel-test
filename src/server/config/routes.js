@@ -328,6 +328,9 @@ router.post('/prototypes/external-award/award-terms', demosController.eaAwardTer
 router.get('/prototypes/external-award/terms-and-conditions/added', demosController.eaAwardTermsAddedGet);
 router.post('/prototypes/external-award/terms-and-conditions/added', demosController.eaAwardTermsAddedPost);
 
+router.get('/prototypes/external-award/confirm', demosController.eaConfirmGet);
+router.get('/prototypes/external-award/award-overview', demosController.eaAwardOverviewGet);
+
 /* *************************************************************** *
 
   Various
