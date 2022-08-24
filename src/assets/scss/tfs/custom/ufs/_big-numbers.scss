@@ -1,9 +1,13 @@
 .big-numbers {
   display: flex;
+  align-content: flex-start;
+  flex-direction: row;
+  justify-content: flex-start;
 
   &__biggy {
+    flex: 1 1 0px;
     max-width: 270px;
-    margin-right: 50px;
+    margin-right: 20px;
   }
 
   &__title {
@@ -20,8 +24,10 @@
   .big-numbers {
     display: block;
 
+
     &__biggy {
       max-width:100%;
+      margin-bottom: 20px;
     }
 
     &__title {
