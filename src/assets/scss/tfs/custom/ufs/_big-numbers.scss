@@ -3,12 +3,8 @@
 
   &__biggy {
     max-width: 270px;
-    margin-left: 40px;
-    // border:1px solid lime;
+    margin-right: 50px;
   }
-
-  &__biggy:first-of-type {
-    margin-left: 0;  }
 
   &__title {
     @include govuk-font($size: 19, $weight: bold);
@@ -26,7 +22,6 @@
 
     &__biggy {
       max-width:100%;
-      margin-left: 0;
     }
 
     &__title {

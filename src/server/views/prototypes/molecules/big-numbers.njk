@@ -32,6 +32,41 @@
 
                 <div class="big-numbers__biggy">
                     <div class="big-numbers__title">
+                        Contribution from organisations
+                    </div>
+                    <div class="big-numbers__number">
+                        £500,250
+                    </div>
+                </div>
+
+                <div class="big-numbers__biggy">
+                    <div class="big-numbers__title">
+                        Total award value
+                    </div>
+                    <div class="big-numbers__number">
+                        £2,800,000
+                    </div>
+                </div>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='u-space-b30') %}
+        {% call components.bulmaColumnAny(size='column is-full') %}
+            {{ components.captionHeading(text='This is in flexbox', tag='h2', size='m') }}
+            <div class="big-numbers">
+
+                <div class="big-numbers__biggy">
+                    <div class="big-numbers__title">
+                        Total authorised fEC
+                    </div>
+                    <div class="big-numbers__number">
+                        £1,500,250
+                    </div>
+                </div>
+
+                <div class="big-numbers__biggy">
+                    <div class="big-numbers__title">
                         Contribution from applying organisations
                     </div>
                     <div class="big-numbers__number">
