@@ -67,6 +67,24 @@
 
       {{ components.list(items=listItemsExternal, type='bullet')}}
 
+      {{ components.heading(text='Post decision', tag='h4', size='small') }}
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <li>
+          <a href="/prototypes/post-decision" class="govuk-link govuk-link--no-visited-state ">Start award</a>
+        </li>
+
+        <li>
+          <a href="/prototypes/change-request" class="govuk-link govuk-link--no-visited-state ">Change request</a>
+        </li>
+
+        <li>
+          <a href="/prototypes/external-award" class="govuk-link govuk-link--no-visited-state ">Accept award</a>
+        </li>
+
+      </ul>
+
       {{ components.heading(text='Generic', tag='h4', size='small') }}
 
       {{ components.list(items=listItemsGeneric, type='bullet')}}
