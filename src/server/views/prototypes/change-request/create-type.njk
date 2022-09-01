@@ -20,7 +20,7 @@
 {% set userName = prototypeData.userName %}
 
 {% set pageTitle = 'Create award change request' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/change-request/award-overview', text:'Back to award overview'}] %}
+{% set backLinkContents =  [{url:'/prototypes/change-request/create', text:'Back to change requests'}] %}
 
 {% block content %}
 
@@ -44,7 +44,7 @@
                         <div class="govuk-radios" data-module="govuk-radios">
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="type1" name="types" type="radio" value="Project details" >
-                                <label class="govuk-label govuk-radios__label" for="type1" >Project details</label>
+                                <label class="govuk-label govuk-radios__label" for="type1" >Team or organisation</label>
                                 <span class="govuk-hint govuk-radios__hint">Change the team or transfer to a different organisation</span>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                         <div class="govuk-radios" data-module="govuk-radios">
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="type2" name="types" type="radio" value="Logistics and timings" >
-                                <label class="govuk-label govuk-radios__label" for="type2" >Logistics and timings</label>
+                                <label class="govuk-label govuk-radios__label" for="type2" >Dates and timings</label>
                                 <span class="govuk-hint govuk-radios__hint">Extend, suspend, terminate, withdraw, or change start date of award</span>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                         <div class="govuk-radios" data-module="govuk-radios">
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="type3" name="types" type="radio" value="Scope" >
-                                <label class="govuk-label govuk-radios__label" for="type3">Scope and status</label>
+                                <label class="govuk-label govuk-radios__label" for="type3">Project scope</label>
                                 <span class="govuk-hint govuk-radios__hint">Update the scope or status of your project</span>
                             </div>
                         </div>
