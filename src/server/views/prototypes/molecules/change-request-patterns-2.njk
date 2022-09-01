@@ -1,0 +1,125 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{% set pageTitle = 'Complete change request'  + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/molecules/', text:'Back to molecules'}] %}
+{#{% set allOrgs = allOrgs if allOrgs %}
+{% set namesArray = namesArray if namesArray %}#}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-notification-banner govuk-notification-banner--info" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">Change request in progress</p>
+                    <p class="govuk-body">By Diedre Smithers - UKRI on 12 September 2022, 9.48am</p>
+                </div>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Generic complete/rejecet change request page', caption='AWA1441: Marine ecology projects funding 2022') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='expertReview') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-8') %}
+
+                <p class="govuk-body govuk-body-l">The accepted changes will then be reflected in The Funding Service and your Research Office will be informed of UKRI's decision.</p>
+
+                <div class="govuk-warning-text">
+                    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                    <strong class="govuk-warning-text__text">
+                        <span class="govuk-warning-text__assistive">Warning</span>
+                        Only approve once changes have been complete in <a href="#" class="govuk-link">Grants Finance System</a>.
+                    </strong>
+                </div>
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-8') %}
+
+                {{ components.captionHeading(text='What happens next?', tag='h2', size='m') }}
+
+                <ol class="govuk-list govuk-list--number">
+                    <li>If you continue the award end date will be updated in The Funding Service and the Grants Finance System</li>
+                    <li>If you the award needs reprofiling you will need to complete the request in the Grants Finance System</li>
+                    <li>Once the change process is complete you can approve the change and notify the Research Office.</li>
+                </ol>
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-8') %}
+
+                {% call components.formGroup() %}
+
+                    {{ components.captionHeading(text='Approve change request', tag='h2', size='m') }}
+
+                    <p class="meta govuk-body">I confirm that the changes align to the business rules, and if appropriate, changes have been made to the rants Finance System. </p>
+                    <div class="application-item">
+                        <div class="application-item__contents application-item__contents--mac">
+                            <div class="govuk-checkboxes">
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="markAsComplete2" name="isComplete2" type="checkbox">
+                                    <label class="govuk-label govuk-checkboxes__label" for="markAsComplete2">Mark as complete</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <div class="application-controls govuk-clearfix ">
+
+                    <button type="submit" class="govuk-button application-controls__submit govuk-!-display-inline" name="submitButton" value="submit">Continue</button>
+                    <br><br><a href="/prototypes/change-request/create-type" class="govuk-link application-controls__cancel">Cancel and return to [the_correct_page]</a>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %} {# nd form #}
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+    {#<script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        var selectEl = document.querySelector('#organisation');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 1,
+            selectElement: selectEl
+        });
+    </script>#}
+
+{% endblock %}

@@ -201,7 +201,13 @@
 
     {%- endcall %}
 
-
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <p class="govuk-body u-space-t30">
+                <a href="/prototypes/external-award/set-up" class="govuk-link">Return to award set-up overview</a>
+            </p>
+        {%- endcall %}
+    {%- endcall %}
 
     {% include '../../layouts/partials/user-contact.njk' %}
 

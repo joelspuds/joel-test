@@ -1,0 +1,123 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{% set pageTitle = 'Change request patterns'  + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/molecules/', text:'Back to molecules'}] %}
+{#{% set allOrgs = allOrgs if allOrgs %}
+{% set namesArray = namesArray if namesArray %}#}
+
+
+{% block content %}
+
+    {% call components.bulmaRow(extraClass='') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Change request patterns ') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='expertReview') %}
+
+        {#{% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                {{ components.captionHeading(text='Score widget', tag='h2', size='m') }}
+
+                <div class="score">
+                    {{ components.captionHeading(text='Expert review score', tag='h2', size='s', extraClass='u-space-b10') }}
+                    <span class="govuk-!-font-size-36">5</span> / 6
+                </div>
+
+
+            {%- endcall %}
+
+        {%- endcall %}#}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                {{ components.captionHeading(text='Boxed content', tag='h2', size='m') }}
+
+                <div class="boxed-content">
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <h2 class="govuk-fieldset__heading">
+                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s u-space-b20">Respond to request</legend>
+                            </h2>
+                            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="radio1" name="radios" type="radio" value="approve">
+                                    <label class="govuk-label govuk-radios__label" for="radio1">Approve request</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="radio2" name="radios" type="radio" value="assigno">
+                                    <label class="govuk-label govuk-radios__label" for="radio2">Assign for approval</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="radio3" name="radios" type="radio" value="reject">
+                                    <label class="govuk-label govuk-radios__label" for="radio3">Reject with comments</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="application-controls govuk-clearfix _u-space-t45">
+                        <button type="submit" id="saveTableData" class="govuk-button application-controls__submit u-space-b10">Continue</button>
+                    </div>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-9') %}
+
+                {#<div class="govuk-form-group {% if emailError %}govuk-form-group--error{% endif %}">
+                    <label class="govuk-label govuk-label--s" for="emailAddress" id="emailAddressLabel">Email address
+                        {% if emailError %}
+                            <span class="govuk-error-message">
+                                    <span class="govuk-visually-hidden">Error:</span> You must enter a valid email address
+                            </span>
+                        {% endif %}
+                    </label>
+                    <input class="govuk-input govuk-input--width-20 {% if emailError %}govuk-input--error{% endif %}" id="emailAddress" type="text" name="emailAddress" value="{{ firstName }}">
+                </div>#}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                {#<div class="application-controls govuk-clearfix">
+                    {{ components.button(text='Add reviewer', extraClass="application-controls__submit")}}
+
+                    <span class="sub-button">
+                        {{ components.link(text='Cancel', url='/prototypes/peer-review/application-overview')}}
+                    </span>
+                </div>#}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %} {# nd form #}
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+    {#<script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        var selectEl = document.querySelector('#organisation');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 1,
+            selectElement: selectEl
+        });
+    </script>#}
+
+{% endblock %}
