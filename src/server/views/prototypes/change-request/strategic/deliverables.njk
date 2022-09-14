@@ -42,11 +42,7 @@
 
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
-                <div class="govuk-form-group ">
-                    <label class="govuk-label govuk-label govuk-label--s" for="justification">Justification</label>
-                    <span class="govuk-hint">You must provide a reason for making this request</span>
-                    <textarea class="govuk-textarea govuk-js-character-count" name="justification" id="justification" rows="6">{{ allData.justification }}</textarea>
-                </div>
+                {% include '../justification.njk' %}
 
             {%- endcall %}
 
@@ -73,26 +69,7 @@
     {% include '../../../layouts/partials/user-contact.njk' %}
 {% endblock %}
 {% block bodyScripts %}
-    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5-dev/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-        tinymce.init({
-            selector: 'textarea',
-            height: 600,
-            menubar: false,
-            tinydrive_dropbox_app_key: 'socw0soabe8fvpv',
-            tinydrive_token_provider: '/prototypes/jwt',
-            powerpaste_allow_local_images: true,
-            plugins: [
-                'lists link charmap preview anchor',
-                'insertdatetime media table paste tinydrive code  wordcount '
-            ],
-            toolbar: 'formatselect | bold italic | numlist bullist ',
-            content_css: [
-                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
-                '/stylesheets/tinymce.css'
-            ]
-        });
-    </script>
+
 
     <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
     <script type="text/javascript">

@@ -19,14 +19,14 @@
 
 {% set userName = prototypeData.userName %}
 
-{% set pageTitle = 'Logistics and timings' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Dates and timings' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/change-request/award-overview', text:'Back to award overview'}] %}
 
 {% block content %}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Logistics and timings', caption='Create award change request') }}
+            {{ components.captionHeading(text='Dates and timings', caption='Create award change request') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -36,7 +36,7 @@
 
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
-                <p class="govuk-body">Select the change you want to create</p>
+                <p class="govuk-body govuk-!-font-size-24">What type of change do you want to make?</p>
 
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset" aria-describedby="roles-hint">
@@ -45,7 +45,7 @@
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="type1" name="subType" type="radio" value="Extension" >
                                 <label class="govuk-label govuk-radios__label" for="type1" >Extension</label>
-                                <span class="govuk-hint govuk-radios__hint">Request an extension to the end date of the award</span>
+                                <span class="govuk-hint govuk-radios__hint">Request to change the award end date</span>
                             </div>
                         </div>
 
@@ -53,7 +53,7 @@
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="type2" name="subType" type="radio" value="Suspension" >
                                 <label class="govuk-label govuk-radios__label" for="type2" >Suspension</label>
-                                <span class="govuk-hint govuk-radios__hint">Work on the award has stopped, or where work is continuing but payment needs to stop</span>
+                                <span class="govuk-hint govuk-radios__hint">Request to pause funding if you need to stop payments, or if work on the award has stopped.</span>
                             </div>
                         </div>
 
@@ -61,7 +61,7 @@
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="type3" name="subType" type="radio" value="Termination" >
                                 <label class="govuk-label govuk-radios__label" for="type3" >Termination</label>
-                                <span class="govuk-hint govuk-radios__hint">Terminate the award before the end date is reached</span>
+                                <span class="govuk-hint govuk-radios__hint">Request to stop funding and end the award early.</span>
                             </div>
                         </div>
 
@@ -69,7 +69,7 @@
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="type4" name="subType" type="radio" value="Change start date" >
                                 <label class="govuk-label govuk-radios__label" for="type4" >Change start date</label>
-                                <span class="govuk-hint govuk-radios__hint">If the award has not yet started (i.e. status Announced) then, subject to the terms and conditions a change to the start date can be requested</span>
+                                <span class="govuk-hint govuk-radios__hint">Request to change the start date if the award has not yet started.</span>
                             </div>
                         </div>
 

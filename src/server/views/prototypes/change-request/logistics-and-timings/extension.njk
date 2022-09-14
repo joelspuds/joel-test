@@ -35,8 +35,9 @@
 
             {% call components.bulmaColumnAny(size='is-7') %}
 
-                <p class="govuk-body govuk-!-font-size-24">Request an extension to the end date of the award.</p>
-                <p class="govuk-body">Extensions are subject to the terms and conditions. Refer to the your <a href="#" class="govuk-link">award agreement</a> (opens in a new window) or the Terms and Conditions for the Opportunity on the UKRI website for further guidance.</p>
+                <p class="govuk-body govuk-!-font-size-24">Request to change the end date of the award.</p>
+                <p class="govuk-body">Extensions are subject to the award terms and conditions. Please check the <a href="#" class="govuk-link">award agreement</a> (opens in a new window) for further guidance.</p>
+                {#<p class="govuk-body">Extensions are subject to the terms and conditions. Refer to the your <a href="#" class="govuk-link">award agreement</a> (opens in a new window) or the Terms and Conditions for the Opportunity on the UKRI website for further guidance.</p>#}
 
             {%- endcall %}
 
@@ -96,11 +97,7 @@
 
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
-                <div class="govuk-form-group ">
-                    <label class="govuk-label govuk-label govuk-label--s" for="justification">Justification</label>
-                    <span class="govuk-hint">You must provide a reason for making this request</span>
-                    <textarea class="govuk-textarea govuk-js-character-count" name="justification" id="justification" rows="6">{{ allData.justification }}</textarea>
-                </div>
+                {% include '../justification.njk' %}
 
             {%- endcall %}
 
@@ -127,27 +124,8 @@
     {% include '../../../layouts/partials/user-contact.njk' %}
 {% endblock %}
 {% block bodyScripts %}
-    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5-dev/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-       tinymce.init({
-           selector: 'textarea',
-           height: 300,
-           menubar: false,
-           tinydrive_dropbox_app_key: 'socw0soabe8fvpv',
-           tinydrive_token_provider: '/prototypes/jwt',
-           powerpaste_allow_local_images: true,
-           plugins: [
-               'lists link charmap preview anchor',
-               'insertdatetime media table paste tinydrive code  wordcount '
-           ],
-           toolbar: 'formatselect | bold italic | numlist bullist ',
-           content_css: [
-               '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
-               '/stylesheets/tinymce.css'
-           ]
-       });
-    </script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+
+    {#<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
     <script src="/public/javascripts/vendor/jquery-1.11.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
@@ -157,7 +135,7 @@
                 SmDatePicker('#sm-date-picker', '#date-day', '#date-month', '#date-year').init()
             }
         });
-    </script>
+    </script>#}
 {% endblock %}
 
 

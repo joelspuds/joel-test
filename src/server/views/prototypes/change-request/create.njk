@@ -29,7 +29,7 @@
         {% call components.bulmaColumnAny(size='is-full') %}
         <div class="govuk-notification-banner govuk-notification-banner--success" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
             <div class="govuk-notification-banner__header">
-                <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Accepted</h2>
+                <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
             </div>
             <div class="govuk-notification-banner__content">
                 <p class="govuk-notification-banner__heading">{{ savedSession.requestType }} change request has been approved</p>
@@ -45,11 +45,11 @@
 
         <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
             <div class="govuk-notification-banner__header">
-                <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Rejected</h2>
+                <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
             </div>
             <div class="govuk-notification-banner__content">
-                <p class="govuk-notification-banner__heading">{{ savedSession.requestType }} change request has been rejected</p>
-                <p class="govuk-body">The request has been rejected. Please contact the funding council or UKRI if you require further information.</p>
+                <p class="govuk-notification-banner__heading">{{ savedSession.requestType }} request declined</p>
+                <p class="govuk-body">You may need to give more information and resubmit the request. <a href="/prototypes/change-request/change-request-detail?crStatus=rejected" class="govuk-link">View change request status</a></p>
             </div>
         </div>
         {%- endcall %}
@@ -64,8 +64,8 @@
                         <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
                     </div>
                     <div class="govuk-notification-banner__content">
-                        <p class="govuk-notification-banner__heading">{{ savedSession.requestType }} change request in progress</p>
-                        <p class="govuk-body">The request has been received and you will be contacted by the relevant council shortly.</p>
+                        <p class="govuk-notification-banner__heading">{{ savedSession.requestType }} request in progress</p>
+                        <p class="govuk-body">UKRI will send a response to your Research Office.</p>
                     </div>
                 </div>
 
@@ -86,7 +86,7 @@
 
             {% call components.bulmaColumnAny(size='is-7') %}
 
-                <p class="govuk-body">Awards change requests provides functionality for a Research Organisation or UKRI to submit a request to change an existing Award.</p>
+                <p class="govuk-body">Submit a request to change an existing award, and view previous change requests.</p>
 
                 <div class="application-controls govuk-clearfix">
                     <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Create award change request</button>
@@ -107,9 +107,8 @@
                     <table class="govuk-table">
                         <thead>
                         <tr class="govuk-table__header">
-                            <th class="govuk-table__header">Change type</th>
+                            <th class="govuk-table__header cell-max-35">Change type</th>
                             <th class="govuk-table__header">Requested by</th>
-                            <th class="govuk-table__header">Organisation</th>
                             <th class="govuk-table__header govuk-table__header--numeric">Status</th>
                         </tr>
                         </thead>
@@ -121,17 +120,15 @@
                             </td>
                             <td class="govuk-table__cell">
                                 {{ prototypeData.userName }}
+                                <br> <span class="meta">University of Wales</span>
                                 <br> <span class="meta govuk-!-font-size-16">on {{ savedSession.createdTimeAndDate }}{#{{ 'dataAndTime' | dateAndTime() }}#}</span>
-                            </td>
-                            <td class="govuk-table__cell">
-                                University of Wales
                             </td>
                             <td class="govuk-table__cell govuk-table__cell--numeric">
 
                                 {% if allData.crStatus == 'accepted' %}
                                     <strong class="govuk-tag govuk-tag--green">Approved</strong>
                                 {% elseif allData.crStatus == 'rejected' %}
-                                    <strong class="govuk-tag govuk-tag--red">Rejected</strong>
+                                    <strong class="govuk-tag govuk-tag--red">Declined</strong>
                                 {% else %}
                                     <strong class="govuk-tag govuk-tag--yellow">Waiting on</strong>
                                 {% endif %}
@@ -143,29 +140,9 @@
 
                 {% else %}
 
-                    <p class="govuk-body">There are currently no open change requests</p>
+                    <p class="govuk-body">There are no change requests in progress.</p>
 
                 {% endif %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             {%- endcall %}
 
@@ -180,9 +157,8 @@
                 <table class="govuk-table">
                     <thead>
                     <tr class="govuk-table__header">
-                        <th class="govuk-table__header">Change type</th>
+                        <th class="govuk-table__header cell-max-35">Change type</th>
                         <th class="govuk-table__header">Requested by</th>
-                        <th class="govuk-table__header">Organisation</th>
                         <th class="govuk-table__header govuk-table__header--numeric">Status</th>
                     </tr>
                     </thead>
@@ -196,10 +172,8 @@
                         </td>
                         <td class="govuk-table__cell">
                             Dr. Alicia Brook
-                            <br> <span class="meta govuk-!-font-size-16">on 11 October 2021</span>
-                        </td>
-                        <td class="govuk-table__cell">
-                            University of Wales
+                            <br> <span class="meta">University of Wales</span>
+                            <br> <span class="meta govuk-!-font-size-16">on 11 October 2021 at 2:28 pm</span>
                         </td>
                         <td class="govuk-table__cell govuk-table__cell--numeric">
                             <strong class="govuk-tag govuk-tag--green">Approved</strong>

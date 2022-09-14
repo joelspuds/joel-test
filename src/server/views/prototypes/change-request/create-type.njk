@@ -39,32 +39,32 @@
                 <p class="govuk-body">Select the type of change you want to create</p>
 
                 <div class="govuk-form-group">
-                    <fieldset class="govuk-fieldset" aria-describedby="roles-hint">
+                    <fieldset class="govuk-fieldset fieldset" aria-describedby="roles-hint">
                         <legend class="govuk-visually-hidden">Select change type</legend>
-                        <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios u-space-b30" data-module="govuk-radios">
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="type1" name="types" type="radio" value="Project details" >
                                 <label class="govuk-label govuk-radios__label" for="type1" >Team or organisation</label>
-                                <span class="govuk-hint govuk-radios__hint">Change the team or transfer to a different organisation</span>
+                                {#<span class="govuk-hint govuk-radios__hint">Change the team or transfer to a different organisation</span>#}
                             </div>
                         </div>
 
-                        <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios " data-module="govuk-radios">
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="type2" name="types" type="radio" value="Logistics and timings" >
                                 <label class="govuk-label govuk-radios__label" for="type2" >Dates and timings</label>
-                                <span class="govuk-hint govuk-radios__hint">Extend, suspend, terminate, withdraw, or change start date of award</span>
+                                <span class="govuk-hint govuk-radios__hint">Extend, suspend, terminate, withdraw, or change the start date of award</span>
                             </div>
                         </div>
 
-                        <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios u-space-b30" data-module="govuk-radios">
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="type3" name="types" type="radio" value="Scope" >
                                 <label class="govuk-label govuk-radios__label" for="type3">Project scope</label>
-                                <span class="govuk-hint govuk-radios__hint">Update the scope or status of your project</span>
+                                {#<span class="govuk-hint govuk-radios__hint">Update the scope or status of your project</span>#}
                             </div>
                         </div>
-                        <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios {#u-space-b20#}" data-module="govuk-radios">
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="type4" name="types" type="radio" value="fES">
                                 <label class="govuk-label govuk-radios__label" for="type4">Extend fES</label>

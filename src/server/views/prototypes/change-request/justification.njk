@@ -1,0 +1,59 @@
+<div class="govuk-form-group ">
+    <label class="govuk-label govuk-label govuk-label--s _u-space-b20" for="justification">Reason for request</label>
+    <span class="govuk-hint">You must give details about why you are requesting this change.</span>
+    <textarea class="govuk-textarea govuk-js-character-count" name="justification" id="justification" rows="6">{{ allData.justification }}</textarea>
+    <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 500 words remaining</span></p>
+</div>
+<style>
+    .tox-statusbar__wordcount, .tox-statusbar__branding { display: none!important}
+</style>
+<script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5-dev/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    const counteroutputFoot = document.getElementById('wordCount');
+    let words = 0;
+    const limit = 500;
+    let tinyMCEWordCount;
+
+    tinymce.init({
+        selector: 'textarea',
+        height: 300,
+        menubar: false,
+        tinydrive_dropbox_app_key: 'socw0soabe8fvpv',
+        tinydrive_token_provider: '/prototypes/jwt',
+        powerpaste_allow_local_images: true,
+        plugins: [
+            'lists link charmap preview anchor',
+            'insertdatetime media table paste tinydrive code  wordcount '
+        ],
+        setup: function(editor) {
+
+            editor.on('keyup', function(e) {
+                tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                words = tinyMCEWordCount;
+                let remainder = limit - words;
+                if (words < limit) {
+                    counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                } else {
+                    let overCount = words - limit;
+                    counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+                }
+            });
+
+            editor.on('init', function(e) {
+                setTimeout(function(){
+                    tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                    console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                    words = tinyMCEWordCount;
+                    let remainder = limit - words;
+                    counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                }, 500);
+            });
+        },
+        toolbar: 'formatselect | bold italic | numlist bullist ',
+        content_css: [
+            '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+            '/stylesheets/tinymce.css'
+        ]
+    });
+</script>

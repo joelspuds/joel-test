@@ -23,7 +23,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Check your change request', caption=prototypeData.awardName) }}
+            {{ components.captionHeading(text='Check your change request', caption='Create award change request') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -33,7 +33,7 @@
 
             {% call components.bulmaColumnAny(size='is-7') %}
 
-                <p class="govuk-body">Check your change request details before submitting</p>
+                <p class="govuk-body-l">Check that the details are correct before you submit your request.</p>
 
             {%- endcall %}
 
@@ -46,7 +46,7 @@
                 <dl class="govuk-summary-list">
                     {# Request type - ALL #}
                     <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">Type of request</dt>
+                        <dt class="govuk-summary-list__key">Type of change</dt>
                         <dd class="govuk-summary-list__value">{{ allData.requestType }}</dd>
                         <dd class="govuk-summary-list__actions">
                             &nbsp;
@@ -284,7 +284,7 @@
                     {# Justification textarea - ALL #}
                     {% if allData.justification %}
                         <div class="govuk-summary-list__row">
-                            <dt class="govuk-summary-list__key">Justification</dt>
+                            <dt class="govuk-summary-list__key">Reason for request</dt>
                             <dd class="govuk-summary-list__value">{{ allData.justification }}</dd>
                             <dd class="govuk-summary-list__actions">
                                 <a class="govuk-link" href="#" onclick="window.history.go (-1)">
@@ -306,7 +306,7 @@
                 <div class="application-controls govuk-clearfix">
                     <input type="hidden" value="{{ 'dataAndTime' | dateAndTime() }}" name="createdTimeAndDate">
                     <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Submit change request</button>
-                    <br><a class="govuk-link" href="/prototypes/change-request/create-type">Re-start change request process</a>
+                    <br><a class="govuk-link" href="/prototypes/change-request/create-type">Cancel and start again</a>
                 </div>
 
             {%- endcall %}

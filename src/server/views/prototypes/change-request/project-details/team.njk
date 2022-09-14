@@ -46,9 +46,6 @@
         {% call components.bulmaRow() %}
             {% call components.bulmaColumnAny(size='is-full') %}
 
-
-
-
                 <table class="govuk-table">
                     <caption class="govuk-table__caption govuk-visually-hidden">University of Wales team members</caption>
                     <thead class="govuk-table__head">
@@ -159,8 +156,17 @@
                     </tbody>
                 </table>
 
+            {%- endcall %}
+        {%- endcall %}#}
+
+       {# {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                {% include '../justification.njk' %}
 
             {%- endcall %}
+
         {%- endcall %}#}
 
         {% call components.bulmaRow() %}
@@ -169,7 +175,7 @@
 
                 <div class="application-controls govuk-clearfix">
                     <button type="submit" class="govuk-button application-controls__submit" name="submitButton" value="addPerson">Add new team member</button>
-                    <br><br><a href="/prototypes/change-request/create-type" class="govuk-link application-controls__cancel">Cancel and return to create award change request</a>
+                    <a href="/prototypes/change-request/" class="govuk-link application-controls__cancel">Cancel and return to view and create award change request</a>
                 </div>
 
             {%- endcall %}

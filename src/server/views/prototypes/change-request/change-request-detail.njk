@@ -43,11 +43,11 @@
                         <span class="timeline__title">Change request submitted</span>
                         <span class="timeline__meta">By Arden Pimenta, University of Wales, <span class="meta">{{ savedSession.createdTimeAndDate }}</span></span>
                         <p class="govuk-body u-space-t20 u-space-b0">
-                            <strong>Change request type:</strong> {{ savedSession.requestType }}
+                            <strong>Type of change:</strong> {{ savedSession.requestType }}
                         </p>
                         <p class="govuk-body u-space-t20 u-space-b0">
-                            <strong>What happens next</strong><br>
-                            We'll send a transfer request to UKRI and the receiving research organisation so they can confirm that they accept this transfer. If they accept, you’ll need to complete a transfer expenditure statement before the transfer date.
+                            <strong>Next steps</strong><br>
+                            We'll send a request to UKRI to approve or decline the change request.
                         </p>
                         {#<strong class="govuk-tag govuk-tag--green">COMPLETE</strong>#}
                     </li>
@@ -65,8 +65,7 @@
                     {% elseif allData.crStatus == 'rejected' %}
                         <li class="timeline__item {% if allData.crStatus %}timeline__item--active{% else %}timeline__item--live{% endif %}">
                             <span class="timeline__title">Response from UKRI</span>
-                            <span class="timeline__meta">MRC, UKRI </span>
-                            <strong class="govuk-tag govuk-tag--red">Rejected</strong>
+                            <strong class="govuk-tag govuk-tag--red">Declined</strong>
                             <p class="govuk-body u-space-t20 u-space-b0">
                                 <strong>Comment</strong><br>
                                 We have received your change request and cannot accept the changes. Please refer to the terms and conditions outlining this type of change - either submit a new change request which conforms to the Ts &amp; Cs in your award agreement (which I will happily accept) or continue with the project as is. There is no further action required on this change request and I have closed it, but please get in touch if you have any further queries.  <br>Thanks, Sheila Biggins, MRC
@@ -75,8 +74,7 @@
                     {% else %}
                         <li class="timeline__item timeline__item--live">
                             <span class="timeline__title">Response from UKRI</span>
-                            <span class="timeline__meta">MRC, UKRI</span>
-                            <strong class="govuk-tag govuk-tag--yellow">Waiting on</strong>
+                            <strong class="govuk-tag govuk-tag--yellow">In progress</strong>
                         </li>
                     {% endif %}
 
