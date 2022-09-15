@@ -1,0 +1,246 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Home' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set prototypeData = prototypeData if prototypeData %}
+{% set savedSession = savedSession if savedSession %}
+{% set userName = prototypeData.userName %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/change-request/awards-list', text:'Back to awards'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="govuk-notification-banner govuk-notification-banner--info" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <p class="govuk-notification-banner__heading">
+                            The latest you can submit your start confirmation is 21 October (38 days remaining).
+
+                        </p>
+                        <p class="govuk-body">
+                            Your funding award could end if you do not submit your start confirmation by this date.
+                        </p>
+                    </div>
+                </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Award overview', caption=prototypeData.awardName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+
+    {% call components.bulmaRow(extraClass='_u-space-b45') %}
+        {% call components.bulmaColumnAny(size='is-3') %}
+            <p class="govuk-body u-space-y10">
+                <strong>Status: </strong> Active
+            </p>
+            <p class="govuk-body u-space-y10">
+                <strong>Award holder: </strong> Dr. Alicia Brook
+            </p>
+            <p class="govuk-body u-space-y10">
+                <strong>Funder: </strong> BBSRC
+            </p>
+        {%- endcall %}
+        {% call components.bulmaColumnAny(size='is-3') %}
+            <p class="govuk-body u-space-y10">
+                <strong>Latest start date:</strong> 21 November 2022
+            </p>
+            <p class="govuk-body u-space-y10">
+                <strong>Latest end date:</strong> {#{{ prototypeData.currentEndDate }}#} 21 March 2025
+            </p>
+            <p class="govuk-body u-space-y10">
+                <strong>Award total:</strong> £1,000,000
+            </p>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='_u-space-b45') %}
+        {% call components.bulmaColumnAny(size='is-7') %}
+            <div class="govuk-inset-text">
+                <p class="govuk-body">You must notify us through the Funding Service within 42 days of starting your award.
+                </p>
+                <p class="govuk-body"><a href="/prototypes/start-award/start-confirmation" class="govuk-button u-space-b0" >Complete start confirmation</a></p>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-7') %}
+
+            {{ components.captionHeading(text='Award information', size='m', tag='h2') }}
+
+            <div class="application-items u-space-b45">
+
+                <div class="application-item  application-item--skinny">
+                    <div class="application-item__contents govuk-clearfix">
+                        <div class="application-item__left">
+                            <a href="{#/prototypes/change-request/award-details#}#" class="govuk-link">Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-item  application-item--skinny">
+                    <div class="application-item__contents govuk-clearfix">
+                        <div class="application-item__left">
+                            <a href="/{#prototypes/change-request/award-team#}#" class="govuk-link">Team</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-item  application-item--skinny">
+                    <div class="application-item__contents govuk-clearfix">
+                        <div class="application-item__left">
+                            <a href="{#/prototypes/change-request/award-agreement#}#" class="govuk-link">Award agreement</a>
+                        </div>
+                    </div>
+                </div>
+
+               {# <div class="application-item application-item--skinny">
+                    <div class="application-item__contents govuk-clearfix">
+                        <div class="application-item__left">
+                            <a href="/prototypes/change-request/award-documents" class="govuk-link">Supporting documents</a>
+                        </div>
+                    </div>
+                </div>#}
+
+                <div class="application-item  application-item--skinny">
+                    <div class="application-item__contents govuk-clearfix">
+                        <div class="application-item__left">
+                            <a href="#" class="govuk-link">Costs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-item  application-item--skinny">
+                    <div class="application-item__contents govuk-clearfix">
+                        <div class="application-item__left">
+                            <a href="#" class="govuk-link">Payment schedule</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{ components.captionHeading(text='Manage award', size='m', tag='h2') }}
+
+            <div class="application-items u-space-b45">
+
+                <div class="application-item  application-item--skinny">
+                    <div class="application-item__contents govuk-clearfix">
+                        <div class="application-item__left">
+                            <a href="#" class="govuk-link">Expenditure statements</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-item  application-item--skinny ">
+                    <div class="application-item__contents govuk-clearfix u-pad-r0">
+                        <div class="application-item__left">
+                            <a href="#" class="govuk-link">Change requests</a>
+                        </div>
+                        <div class="application-item__right u-align-right">
+                            {% if allData.crStatus == 'accepted' %}
+                                <strong class="govuk-tag govuk-tag--green">Approved</strong>
+                            {% elseif allData.crStatus == 'rejected' %}
+                                <strong class="govuk-tag govuk-tag--red">Rejected</strong>
+                            {% elseif savedSession.requestSubmitted %}
+                                <strong class="govuk-tag govuk-tag--yellow">Waiting on</strong>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
+
+            {#{{ components.list(items=listItemsActions, type='bullet')}}#}
+
+            <div class="govuk-related-items govuk-related-items--flush u-space-t15">
+
+                <div class="application-data application-data--large u-space-t10">
+                    <dl class="application-data__list">
+                        <dt class="application-data__key"><strong>Application:</strong></dt>
+                        <dd class="application-data__value"><a href="#" class="govuk-link">APP101660: The economics of grant funding in a post-pandemic world (opens in new window)</a> </dd>
+                        <dt class="application-data__key"><strong>Opportunity:</strong></dt>
+                        <dd class="application-data__value">OPP991: Post pandemic fiscal innovation</dd>
+                        {#<dt class="application-data__key"><strong>Applicant:</strong></dt>
+                        <dd class="application-data__value">Dr. Alicia Brook#}{#{{ 'addHonorific' | giveMeAName }}#}{#</dd>
+                        <dt class="application-data__key"><strong>Email address:</strong></dt>
+                        <dd class="application-data__value">a.brook@wales.ac.uk</dd>
+                        <dt class="application-data__key"><strong>Organisations:</strong></dt>
+                        <dd class="application-data__value">
+                            University of Wales<br>
+                            Manchester University
+                        </dd>
+                        <dt class="application-data__key"><strong>Award amount:</strong></dt>
+                        <dd class="application-data__value">£1,200,000</dd>#}
+                    </dl>
+                </div>
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        function toggleVisibility(_this, id, className) {
+            // event.preventDefault();
+            let toggleSwitch = _this;
+            let toggleItem = document.getElementById(id);
+            if (hasClass(toggleItem, className)) {
+                toggleSwitch.classList.add('filter__title--closed');
+                toggleItem.classList.remove(className);
+                toggleSwitch.setAttribute('aria-expanded', true);
+            }
+            else  {
+                toggleSwitch.classList.remove('filter__title--closed');
+                toggleItem.classList.add(className);
+                toggleSwitch.setAttribute('aria-expanded', false);
+            }
+            // return false;
+        }
+        function hasClass(target, className) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
+    </script>
+{% endblock %}
+

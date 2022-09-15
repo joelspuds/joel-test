@@ -1,0 +1,147 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Home' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set prototypeData = prototypeData if prototypeData %}
+{% set savedSession = savedSession if savedSession %}
+{% set userName = prototypeData.userName %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/start-award/award-overview-confirmed', text:'Back to award overview'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Start confirmation', caption=prototypeData.awardName) }}
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass=' u-space-t0') %}
+        {% call components.bulmaColumnAny(size='is-7') %}
+            <div class="govuk-inset-text u-space-y0">
+                <p class="govuk-body"><strong>Start confirmation submitted</strong>
+                <br>By {{ prototypeData.userName }} at {{ 'dataAndTime' | dateAndTime() }}</p>
+
+                <p class="govuk-body">You can <a href="#" class="govuk-link">print or save this page as a PDF</a>.</p>
+
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+
+    {% call components.bulmaRow(extraClass='_u-space-b45') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+
+            <p class="govuk-body u-space-y20">
+                <strong>Award reference: </strong>
+                <br>
+                AWA184
+            </p>
+
+            <p class="govuk-body u-space-y20">
+                <strong>Award name: </strong>
+                <br>
+                Environmental research grants 2022
+            </p>
+
+            <p class="govuk-body u-space-y20">
+                <strong>Organisation: </strong>
+                <br>
+                University of Wales
+            </p>
+
+            <p class="govuk-body u-space-y20">
+                <strong>Announced start date: </strong>
+                <br>
+                DD Month YYYY
+            </p>
+
+            <p class="govuk-body u-space-y20">
+                <strong>Announced end date: </strong>
+                <br>
+                DD Month YYYY
+            </p>
+
+            <p class="govuk-body u-space-y20">
+                <strong>Earliest start date: </strong>
+                <br>
+                21 November 2022
+            </p>
+
+            <p class="govuk-body u-space-y20">
+                <strong>Latest start date: </strong>
+                <br>
+                21 March 2025
+            </p>
+
+            <p class="govuk-body u-space-y20">
+                <strong>Start confirmation deadline: </strong>
+                <br>
+                21 October 2022
+            </p>
+
+            <p class="govuk-body u-space-y20">
+                <strong>Actual start date: </strong>
+                <br>
+                21 November 2022
+            </p>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+
+        {% call components.bulmaRow(extraClass='') %}
+            {% call components.bulmaColumnAny(size='is-half') %}
+
+                <div class="govuk-warning-text">
+                    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                    <strong class="govuk-warning-text__text">
+                        <span class="govuk-warning-text__assistive">Warning</span>
+                        UKRI may request evidence that expenditure has been incurred, for example,
+                        proof that a member of staff has commenced work on the project.
+                    </strong>
+                </div>
+
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-b20') %}
+
+                <div class="application-controls govuk-clearfix ">
+                    <a href="/prototypes/start-award" class="govuk-link application-controls__cancel">Cancel and return to award overview</a>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+

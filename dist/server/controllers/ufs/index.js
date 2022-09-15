@@ -387,3 +387,15 @@ Object.keys(_externalAwardsController).forEach(function (key) {
     }
   });
 });
+
+var _startAwardController = require('./startAwardController');
+
+Object.keys(_startAwardController).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _startAwardController[key];
+    }
+  });
+});

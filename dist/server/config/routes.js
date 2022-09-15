@@ -848,6 +848,19 @@ router.post('/prototypes/post-decision/award-change-transfer-confirm', demosCont
 
 /* *************************************************************** *
 
+    Start award mini prototype
+
+ * *************************************************************** */
+// Create new opportunity
+router.get('/prototypes/start-award', demosController.saIndexGet);
+router.post('/prototypes/start-award', demosController.saIndexPost);
+router.get('/prototypes/start-award/start-confirmation', demosController.saStartConfirmationGet);
+router.post('/prototypes/start-award/start-confirmation', demosController.saStartConfirmationPost);
+router.get('/prototypes/start-award/award-overview-confirmed', demosController.saOverviewConfirmedGet);
+router.get('/prototypes/start-award/start-confirmation-done', demosController.saStartConfirmDoneGet);
+
+/* *************************************************************** *
+
   Design section
 
 * *************************************************************** */

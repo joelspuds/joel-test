@@ -1,0 +1,173 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Home' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set prototypeData = prototypeData if prototypeData %}
+{% set savedSession = savedSession if savedSession %}
+{% set userName = prototypeData.userName %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/start-award', text:'Back to award overview'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Start confirmation', caption=prototypeData.awardName) }}
+
+            <p class="govuk-body-l">Your research office can only start an award if it includes at least one cost that was incurred as a direct result of delivering the award. This includes directly incurred, directly allocated and equipment costs.</p>
+        {%- endcall %}
+    {%- endcall %}
+
+
+    {% call components.bulmaRow(extraClass='_u-space-b45') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+
+            <p class="govuk-body u-space-y20">
+                <strong>Award reference: </strong>
+                <br>
+                AWA184
+            </p>
+
+            <p class="govuk-body u-space-y20">
+                <strong>Award name: </strong>
+                <br>
+                Environmental research grants 2022
+            </p>
+
+            <p class="govuk-body u-space-y20">
+                <strong>Organisation: </strong>
+                <br>
+                University of Wales
+            </p>
+
+            <p class="govuk-body u-space-y20">
+                <strong>Announced start date: </strong>
+                <br>
+                DD Month YYYY
+            </p>
+
+            <p class="govuk-body u-space-y20">
+                <strong>Announced end date: </strong>
+                <br>
+                DD Month YYYY
+            </p>
+
+            <p class="govuk-body u-space-y20">
+                <strong>Earliest start date: </strong>
+                <br>
+                21 November 2022
+            </p>
+
+            <p class="govuk-body u-space-y20">
+                <strong>Latest start date: </strong>
+                <br>
+                21 March 2025
+            </p>
+
+            <p class="govuk-body u-space-y20">
+                <strong>Start confirmation deadline: </strong>
+                <br>
+                21 October 2022
+            </p>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+            <div class="govuk-form-group ">
+                <fieldset class="govuk-fieldset" role="group" aria-describedby="startDateHint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        <h2 class="govuk-fieldset__heading">Actual start date</h2>
+                        <div id="startDateHint" class="govuk-hint">
+                            The date expenditure has been incurred on the award.
+                        </div>
+                    </legend>
+                    <div class="govuk-date-input" id="transferDates">
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="newDay1">Day</label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="newDay1" name="newDay1" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ allData.transferDay }}">
+                            </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="newMonth1">Month</label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="newMonth1" name="newMonth1" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ allData.transferMonth }}">
+                            </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="newYear1">Year</label>
+
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="newYear1" name="newYear1" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ allData.transferYear }}">
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='') %}
+        {% call components.bulmaColumnAny(size='is-half') %}
+
+            <div class="govuk-warning-text">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text">
+                    <span class="govuk-warning-text__assistive">Warning</span>
+                    UKRI may request evidence that expenditure has been incurred, for example,
+                    proof that a member of staff has commenced work on the project.
+                </strong>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-7', extraClass='_u-space-t20 u-space-b45') %}
+
+            <div class="application-controls govuk-clearfix ">
+                <button type="submit" class="govuk-button application-controls__submit govuk-!-display-inline" name="submitButton" value="submit">Submit start confirmation</button>
+                <br><br><a href="/prototypes/start-award" class="govuk-link application-controls__cancel">Cancel and return to award overview</a>
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+

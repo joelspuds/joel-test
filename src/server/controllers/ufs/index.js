@@ -37,3 +37,4 @@ export * from './panelController';
 export * from './postDecisionController';
 export * from './changeRequestController';
 export * from './externalAwardsController';
+export * from './startAwardController';
