@@ -1,0 +1,336 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'panel' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set accountSettingsLink = '' %}
+{% set showExternalFurniture = false %}
+{% set hideAccountLinks = true %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set isAdminUser = true %}
+{% set loggedOut = false %}
+
+{% set allData = allData if allData %}
+{% set externalAwardPrototypeData = prototypeData if prototypeData %}
+{% set userName = externalAwardPrototypeData.userName %}
+
+{% set pageTitle = 'Manage members' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/manage-panel/panel-dashboard', text:'Back to panel dashboard'}] %}
+
+{% block content %}
+
+    <style>
+        .sticky-tabs {
+            /*overflow: hidden;*/
+        }
+        .sticky-tabs--stuck {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .menu {
+            width: 100%;
+            z-index: 99;
+            position: static;
+        }
+
+        .menu.sticky {
+            position: fixed;
+            top: 0;
+            /*border-bottom: 0;*/
+            width: 100%;
+            max-width: 1152px;
+            padding-right: 1.5rem;
+        }
+
+        .sticky-tabs + .govuk-tabs__panel {
+            /*padding-top: 60px;*/
+        }
+    </style>
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Manage members', caption=externalAwardPrototypeData.panelName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='_u-space-b45') %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <div class="big-numbers big-numbers--small-boxed">
+                <div class="big-numbers__biggy">
+                    <div class="big-numbers__number">
+                        1<span class="govuk-!-font-size-16">of</span>11
+                    </div>
+                    <div class="big-numbers__title">
+                        Applications assigned first introducers
+                    </div>
+                </div>
+                <div class="big-numbers__biggy">
+                    <div class="big-numbers__number">
+                        1<span class="govuk-!-font-size-16">of</span>11
+                    </div>
+                    <div class="big-numbers__title">
+                        Applications assigned second introducers
+                    </div>
+                </div>
+                <div class="big-numbers__biggy">
+                    <div class="big-numbers__number">
+                        1<span class="govuk-!-font-size-16">of</span>11
+                    </div>
+                    <div class="big-numbers__title">
+                        Applications assigned third introducers
+                    </div>
+                </div>
+                <div class="big-numbers__biggy">
+                    <div class="big-numbers__number">
+                        1
+                    </div>
+                    <div class="big-numbers__title">
+                        Panelists have Conflicts with applications
+                    </div>
+                </div>
+                <div class="big-numbers__biggy">
+                    <div class="big-numbers__number">
+                        0<span class="govuk-!-font-size-16">of</span>11
+                    </div>
+                    <div class="big-numbers__title">
+                        Panelists have been notified
+                    </div>
+                </div>
+
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full') %}
+            <div class="govuk-tabs" data-module="_govuk-tabs">
+                <h2 class="govuk-tabs__title">
+                    Contents
+                </h2>
+                <ul class="govuk-tabs__list sticky-tabs menu" id="stickyBar" style="background-color:white;">
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" id="link_one" data-tab="one" href="#one" data-scroll="">
+                            Manage applications
+                        </a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" id="link_two" data-tab="two" href="#two" data-scroll="">
+                            Name the roles
+                        </a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" id="link_three" data-tab="three" href="#three" data-scroll="">
+                            Assign the roles
+                        </a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" id="link_four" data-tab="four" href="#four" data-scroll="">
+                            Review panelists
+                        </a>
+                    </li>
+                </ul>
+                {#<div class="tabs-cta print-hide">
+                    <a href="/prototypes/peer-review-external/download-files" class="govuk-button govuk-button--secondary">Download review material</a>
+                </div>#}
+
+                <div class="govuk-tabs__panel govuk-tabs__panel--borderless" id="one">
+
+                    {% call components.bulmaRow() %}
+
+                        {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
+
+                            {{ components.captionHeading(text='Manage applications',tag='h2', size='m', extraClass='_u-space-b5') }}
+
+                        {%- endcall %}
+
+                    {%- endcall %}
+
+                </div>
+                {#
+
+
+                END TAB ONE
+
+
+                #}
+
+                <div class="govuk-tabs__panel govuk-tabs__panel--borderless govuk-tabs__panel--hidden" id="two">
+
+                    {% call components.bulmaRow() %}
+
+                        {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
+
+                            {{ components.captionHeading(text='Name the roles',tag='h2', size='m', extraClass='_u-space-b5') }}
+
+                        {%- endcall %}
+
+                    {%- endcall %}
+                </div>
+                {#
+
+
+                END TAB TWO
+
+
+                #}
+                <div class="govuk-tabs__panel govuk-tabs__panel--borderless govuk-tabs__panel--hidden" id="three">
+
+                    {% call components.bulmaRow() %}
+
+                        {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
+
+                            {{ components.captionHeading(text='Assign the roles',tag='h2', size='m', extraClass='_u-space-b5') }}
+
+                        {%- endcall %}
+
+                    {%- endcall %}
+                </div>
+                {#
+
+
+
+                END TAB THREE
+
+
+
+                #}
+                <div class="govuk-tabs__panel govuk-tabs__panel--borderless govuk-tabs__panel--hidden" id="four">
+
+                    {% call components.bulmaRow() %}
+
+                        {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
+
+                            {{ components.captionHeading(text='Review panelists',tag='h2', size='m', extraClass='_u-space-b5') }}
+
+                        {%- endcall %}
+
+                    {%- endcall %}
+                </div>
+                {#
+
+
+
+                END TAB FOR
+
+
+
+                #}
+
+            </div>
+        {%- endcall %}
+
+    {%- endcall %}
+    </section>
+
+
+
+
+   {# {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <p class="govuk-body u-space-t30">
+                <a href="/prototypes/external-award/set-up" class="govuk-link">Return to award set-up overview</a>
+            </p>
+        {%- endcall %}
+    {%- endcall %}#}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script type="text/javascript">
+        /* smooth-scroll.js v1.3.1 */
+        /*
+        n=0,
+        r=500,
+        i=15,
+        */
+        (function(e, t) {
+            "use strict";
+            // n is the offset value to get the title showing below the tabs
+            var n = 60,
+                r = 250,
+                i = 15,
+                /*s=document.getElementsByTagName("a"),*/
+                s = document.getElementsByClassName('canScroll'),
+                o;
+            for (var u = 0; u < s.length; u++) {
+                o = s[u].attributes.href === t ? null : s[u].attributes.href.nodeValue.toString();
+                if (o !== null && o.length > 1 && o.indexOf("#") != -1) {
+                    s[u].onclick = function() {
+                        var n, s = this.attributes.href.nodeValue.toString(),
+                            o = s.substr(0, s.indexOf("#")),
+                            u = s.substr(s.indexOf("#") + 1);
+                        if (n = document.getElementById(u)) {
+                            var l = (r - r % i) / i,
+                                c = f(),
+                                h = (a(n) - c) / l;
+                            if (e.history && typeof e.history.pushState == "function") e.history.pushState({}, t, o + "#" + u);
+                            for (var p = 1; p <= l; p++) {
+                                (function() {
+                                    var t = h * p;
+                                    setTimeout(function() {
+                                        e.scrollTo(0, t + c)
+                                    }, i * p)
+                                })()
+                            }
+                            return false
+                        }
+                    }
+                }
+            }
+            var a = function(e) {
+                var r = n * -1;
+                while (e.offsetParent != t && e.offsetParent != null) {
+                    r += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);
+                    e = e.offsetParent
+                }
+                return r
+            };
+            var f = function() {
+                return e.pageYOffset !== t ? e.pageYOffset : document.documentElement.scrollTop !== t ? document.documentElement.scrollTop : document.body.scrollTop
+            }
+        })(window)
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script>
+        let div_top = $('.menu').offset().top;
+        console.log('div_top = ' + div_top);
+        $(window).load(function () {
+            console.log($('.menu').offset().top);
+        });
+        $(window).scroll(function () {
+            var window_top = $(window).scrollTop() - 0;
+            if (window_top > div_top) {
+                if (!$('.menu').is('.sticky')) {
+                    $('.menu').addClass('sticky');
+                }
+            } else {
+                $('.menu').removeClass('sticky');
+            }
+        });
+
+        $('.govuk-tabs__tab').each(function(index){
+            $(this).on('click', function(e){
+                e.preventDefault();
+                console.log('clicking');
+                // set previous scroll before doing anything
+                $('.govuk-tabs__list-item--selected a').attr('data-scroll', $(document).scrollTop());
+                // hide all tabs
+                $('.govuk-tabs__panel').addClass('govuk-tabs__panel--hidden');
+                $('.govuk-tabs__list-item').removeClass('govuk-tabs__list-item--selected');
+                // activate desired tab
+                $('#' + $(this).data('tab')).removeClass('govuk-tabs__panel--hidden');
+                $(this).parent().addClass('govuk-tabs__list-item--selected');
+                // scroll to active tab
+                $(document).scrollTop(parseInt($(this).attr('data-scroll')));
+            });
+        });
+    </script>
+
+
+{% endblock %}
+

@@ -861,6 +861,32 @@ router.get('/prototypes/start-award/start-confirmation-done', demosController.sa
 
 /* *************************************************************** *
 
+    Manage Panel mini prototype
+
+ * *************************************************************** */
+// Create new opportunity
+router.get('/prototypes/manage-panel', demosController.mpIndexGet);
+router.post('/prototypes/manage-panel', demosController.mpIndexPost);
+router.get('/prototypes/manage-panel/panel-dashboard', demosController.mpPanelDashboardGet);
+router.post('/prototypes/manage-panel/panel-dashboard', demosController.mpPanelDashboardPost);
+router.get('/prototypes/manage-panel/manage-applications', demosController.mpManageApplicationsGet);
+router.post('/prototypes/manage-panel/manage-applications', demosController.mpManageApplicationsPost);
+router.get('/prototypes/manage-panel/manage-members', demosController.mpManageMembersGet);
+router.post('/prototypes/manage-panel/manage-members', demosController.mpManageMembersPost);
+router.get('/prototypes/manage-panel/manage-members/manage-conflicts', demosController.mpManageMembersManageConflictsGet);
+router.post('/prototypes/manage-panel/manage-members/manage-conflicts', demosController.mpManageMembersManageConflictsPost);
+router.get('/prototypes/manage-panel/manage-members/name-the-roles', demosController.mpManageMembersNameTheRolesGet);
+router.post('/prototypes/manage-panel/manage-members/name-the-roles', demosController.mpManageMembersNameTheRolesPost);
+router.get('/prototypes/manage-panel/manage-members/assign-the-roles', demosController.mpManageMembersAssignTheRolesGet);
+router.post('/prototypes/manage-panel/manage-members/assign-the-roles', demosController.mpManageMembersAssignTheRolesPost);
+router.get('/prototypes/manage-panel/manage-members/review-panelists', demosController.mpManageMembersReviewPanelistsGet);
+router.post('/prototypes/manage-panel/manage-members/review-panelists', demosController.mpManageMembersReviewPanelistsPost);
+
+router.get('/prototypes/manage-panel/manage-roles', demosController.mpManageRolesGet);
+router.post('/prototypes/manage-panel/manage-roles', demosController.mpManageRolesPost);
+
+/* *************************************************************** *
+
   Design section
 
 * *************************************************************** */

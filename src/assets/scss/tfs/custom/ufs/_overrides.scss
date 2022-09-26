@@ -105,6 +105,29 @@ a {
   height: 7px;
 }
 
+.govuk-checkboxes__item.govuk-checkboxes__item--snug:last-child, .govuk-checkboxes__item:last-of-type {
+  /*margin-bottom: auto;*/
+}
+
+
+.govuk-checkboxes__item--snug.govuk-checkboxes--small {
+  min-height: 28px;
+  padding-left:0;
+  // margin-top:-7px!important;
+
+  .govuk-checkboxes__label:before {
+    top: 2px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .govuk-checkboxes__label::after {
+    top: 9px;
+
+  }
+
+}
+
 .govuk-skip-link:active,
 .govuk-skip-link:focus {
   display: block;

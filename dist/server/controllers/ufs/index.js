@@ -399,3 +399,15 @@ Object.keys(_startAwardController).forEach(function (key) {
     }
   });
 });
+
+var _managePanelController = require('./managePanelController');
+
+Object.keys(_managePanelController).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _managePanelController[key];
+    }
+  });
+});

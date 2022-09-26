@@ -1079,7 +1079,7 @@ let megaDataApplicationNamesList = [
     style: 'info',
   },
   {
-    name: 'Me and my lunch: post-prandial dipping',
+    name: 'Me and my lunch: post-parandial dipping',
     status: 'progress',
     style: 'plain',
   },

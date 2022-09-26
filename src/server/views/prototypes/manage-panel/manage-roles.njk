@@ -1,0 +1,82 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'panel' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set accountSettingsLink = '' %}
+{% set showExternalFurniture = false %}
+{% set hideAccountLinks = true %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set isAdminUser = true %}
+{% set loggedOut = false %}
+
+{% set allData = allData if allData %}
+{% set externalAwardPrototypeData = prototypeData if prototypeData %}
+{% set userName = externalAwardPrototypeData.userName %}
+
+{% set pageTitle = 'Manage roles' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/manage-panel/panel-dashboard', text:'Back to panel dashboard'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Manage roles', caption=externalAwardPrototypeData.panelName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='_u-space-b45') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Set up your panel', tag='h2', size='m') }}
+            <details class="govuk-details u-space-b10" data-module="govuk-details" role="group">
+                <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                    <span class="govuk-details__summary-text">Guidance on setting up your panel</span>
+                </summary>
+                <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                    <p class="govuk-body">Your panel will only be set up once you’ve added meeting details and uploaded guidance.</p>
+                </div>
+            </details>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='u-space-b45') %}
+        {% call components.bulmaColumnAny(size='is-7') %}
+
+
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
+
+            <div class="govuk-related-items govuk-related-items--flush _u-space-t15">
+                <div class="application-data application-data--large u-space-t10">
+                    <dl class="application-data__list">
+                        <dt class="application-data__key"><strong>Panel</strong></dt>
+                        <dd class="application-data__value">
+                            PAN414: Inform design of cross-council digital research environments
+                            <br><a href="#" class="govuk-link">Edit panel name</a> </dd>
+                    </dl>
+                </div>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+
+
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <p class="govuk-body u-space-t30">
+                <a href="/prototypes/external-award/set-up" class="govuk-link">Return to award set-up overview</a>
+            </p>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+

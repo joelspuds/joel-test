@@ -1,0 +1,347 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'panel' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set accountSettingsLink = '' %}
+{% set showExternalFurniture = false %}
+{% set hideAccountLinks = true %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set isAdminUser = true %}
+{% set loggedOut = false %}
+
+{% set allData = allData if allData %}
+{% set externalAwardPrototypeData = prototypeData if prototypeData %}
+{% set userName = externalAwardPrototypeData.userName %}
+{% set appData = appData if appData %}
+{% set oppData = oppData if oppData %}
+
+{% set pageTitle = 'Manage applications' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/manage-panel/panel-dashboard', text:'Back to panel dashboard'}] %}
+
+{% block content %}
+
+    <style>
+        .sticky-tabs {
+            /*overflow: hidden;*/
+        }
+        .sticky-tabs--stuck {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .menu {
+            width: 100%;
+            z-index: 99;
+            position: static;
+        }
+
+        .menu.sticky {
+            position: fixed;
+            top: 0;
+            /*border-bottom: 0;*/
+            width: 100%;
+            max-width: 1152px;
+            padding-right: 1.5rem;
+        }
+
+        .sticky-tabs + .govuk-tabs__panel {
+            /*padding-top: 60px;*/
+        }
+    </style>
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Manage applications', caption=externalAwardPrototypeData.panelName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST', name='submitForm') %}
+
+
+
+
+        {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full') %}
+            <div class="govuk-tabs" data-module="_govuk-tabs">
+                <h2 class="govuk-tabs__title">
+                    Contents
+                </h2>
+                <ul class="govuk-tabs__list sticky-tabs menu" id="stickyBar" style="background-color:white;">
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" id="link_one" data-tab="one" href="#one" data-scroll="">
+                            Assign applications
+                        </a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" id="link_two" data-tab="two" href="#two" data-scroll="">
+                            Review assigned applications
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="govuk-tabs__panel govuk-tabs__panel--borderless" id="one">
+
+
+                    {% call components.bulmaRow() %}
+                        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+
+                            {{ components.captionHeading(text='Assign applications',tag='h2', size='m', extraClass='_u-space-b5') }}
+
+                        {%- endcall %}
+                    {%- endcall %}
+
+                    {% call components.bulmaRow() %}
+                        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-label--s" for="opportunities">Add Opportunity</label>
+                                <span class="govuk-hint">Start typing an Opportunity reference or name</span>
+                                <select name="opportunities" class="govuk-select control" id="opportunities">
+                                    {#<option></option>
+                        {% for item in oppData %}
+                            <option value="{{ item.id }}">{{ item.id}}: {{ item.name }}</option>
+                        {% endfor %}#}
+                                    <option value="{{ item.id }}">OPP4418: Modern science research techniques, Summer 2022</option>
+                                </select>
+                            </div>
+
+                            <p class="{#govuk-!-font-weight-bold#} govuk-body">
+                                Showing <strong>9</strong> applications for <strong>"OPP4418: Modern science research techniques, Summer 2022"</strong>
+                            </p>
+
+                        {%- endcall %}
+                    {%- endcall %}
+
+                    {% call components.bulmaRow() %}
+                        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+
+                            <p class="{#govuk-!-font-weight-bold#} govuk-body">
+                                <strong>7</strong> of <strong>9</strong> applications selected
+                            </p>
+
+                            <p class="govuk-body">
+                                <button class="govuk-button">Assign selected applications to panel</button>
+                            </p>
+
+                        {%- endcall %}
+                    {%- endcall %}
+
+                    {% call components.bulmaRow() %}
+
+                        {% call components.bulmaColumnAny(size='is-full', extraClass='{#u-space-t20#}') %}
+
+
+
+                            <div class="responsive-table">
+
+                                <table class="govuk-table">
+                                    <caption class="govuk-table__caption govuk-visually-hidden">Applications</caption>
+                                        <thead class="govuk-table__head">
+                                        <tr class="govuk-table__row">
+                                            <th scope="col" class="govuk-table__header">
+                                                <div class="govuk-checkboxes__item govuk-checkboxes__item--snug govuk-checkboxes--small">
+                                                    <input class="govuk-checkboxes__input govuk-checkboxes--small" id="headerCheck" name="headerCheck" type="checkbox" value="mines">
+                                                    <label class="govuk-label govuk-checkboxes__label govuk-label--s " for="headerCheck">
+                                                        <span class="govuk-visually-hidden">Waste from mines or quarries</span>
+                                                    </label>
+                                                </div>
+                                            </th>
+                                            <th scope="col" class="govuk-table__header _cell-max-25">Name</th>
+                                            <th scope="col" class="govuk-table__header">Lead organisation</th>
+                                            <th scope="col" class="govuk-table__header">PI name</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="govuk-table__body">
+                                            <tr class="govuk-table__row">
+                                                <td class="govuk-table__cell">
+                                                <div class="govuk-checkboxes__item govuk-checkboxes__item--snug govuk-checkboxes--small">
+                                                    <input class="govuk-checkboxes__input govuk-checkboxes--small" id="staticApp" name="staticApp" type="checkbox" value="">
+                                                    <label class="govuk-label govuk-checkboxes__label govuk-label--s " for="staticApp">
+                                                        <span class="govuk-visually-hidden">Check: Molecular Level Understanding of New Particle Formation in the Urban Atmosphere:
+                                                    Contribution of Local Pollutants</span>
+                                                    </label>
+                                                </div>
+                                                </td>
+                                                <td class="govuk-table__cell"><a href="#" class="govuk-link">APP335: Molecular Level Understanding of New Particle Formation in the Urban Atmosphere: Contribution of Local Pollutants</a></td>
+                                                <td class="govuk-table__cell">Cardiff University</td>
+                                                <td class="govuk-table__cell">
+                                                   Prof. Gillian Mitochondria
+                                                </td>
+                                            </tr>
+
+                                            {% for item in appData %}
+
+                                            <tr class="govuk-table__row">
+                                                <td class="govuk-table__cell">
+                                                    <div class="govuk-checkboxes__item govuk-checkboxes__item--snug govuk-checkboxes--small">
+                                                        <input class="govuk-checkboxes__input govuk-checkboxes--small" id="{{ item.id }}" name="checkbox-{{ item.id }}" type="checkbox" value="{{ item.id }}" checked>
+                                                        <label class="govuk-label govuk-checkboxes__label govuk-label--s " for="{{ item.id }}">
+                                                            <span class="govuk-visually-hidden">Check {{ item.name }}</span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ item.id }}: {{ item.name }}</a></td>
+                                                <td class="govuk-table__cell">{{ item.org }}</td>
+                                                <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
+                                            </tr>
+
+                                        {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        {%- endcall %}
+
+                    {%- endcall %}
+
+                </div>
+                {#
+
+
+                END TAB ONE
+
+
+                #}
+
+                <div class="govuk-tabs__panel govuk-tabs__panel--borderless govuk-tabs__panel--hidden" id="two">
+
+                    {% call components.bulmaRow() %}
+
+                        {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
+
+                            {{ components.captionHeading(text='Review assigned applications',tag='h2', size='m', extraClass='_u-space-b5') }}
+
+                        {%- endcall %}
+
+                    {%- endcall %}
+                </div>
+                {#
+
+
+                END TAB TWO
+
+
+                #}
+
+            </div>
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script type="text/javascript">
+        /* smooth-scroll.js v1.3.1 */
+        /*
+        n=0,
+        r=500,
+        i=15,
+        */
+        (function(e, t) {
+            "use strict";
+            // n is the offset value to get the title showing below the tabs
+            var n = 60,
+                r = 250,
+                i = 15,
+                /*s=document.getElementsByTagName("a"),*/
+                s = document.getElementsByClassName('canScroll'),
+                o;
+            for (var u = 0; u < s.length; u++) {
+                o = s[u].attributes.href === t ? null : s[u].attributes.href.nodeValue.toString();
+                if (o !== null && o.length > 1 && o.indexOf("#") != -1) {
+                    s[u].onclick = function() {
+                        var n, s = this.attributes.href.nodeValue.toString(),
+                            o = s.substr(0, s.indexOf("#")),
+                            u = s.substr(s.indexOf("#") + 1);
+                        if (n = document.getElementById(u)) {
+                            var l = (r - r % i) / i,
+                                c = f(),
+                                h = (a(n) - c) / l;
+                            if (e.history && typeof e.history.pushState == "function") e.history.pushState({}, t, o + "#" + u);
+                            for (var p = 1; p <= l; p++) {
+                                (function() {
+                                    var t = h * p;
+                                    setTimeout(function() {
+                                        e.scrollTo(0, t + c)
+                                    }, i * p)
+                                })()
+                            }
+                            return false
+                        }
+                    }
+                }
+            }
+            var a = function(e) {
+                var r = n * -1;
+                while (e.offsetParent != t && e.offsetParent != null) {
+                    r += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);
+                    e = e.offsetParent
+                }
+                return r
+            };
+            var f = function() {
+                return e.pageYOffset !== t ? e.pageYOffset : document.documentElement.scrollTop !== t ? document.documentElement.scrollTop : document.body.scrollTop
+            }
+        })(window)
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script>
+        let div_top = $('.menu').offset().top;
+        console.log('div_top = ' + div_top);
+        $(window).load(function () {
+            console.log($('.menu').offset().top);
+        });
+        $(window).scroll(function () {
+            var window_top = $(window).scrollTop() - 0;
+            if (window_top > div_top) {
+                if (!$('.menu').is('.sticky')) {
+                    $('.menu').addClass('sticky');
+                }
+            } else {
+                $('.menu').removeClass('sticky');
+            }
+        });
+
+        $('.govuk-tabs__tab').each(function(index){
+            $(this).on('click', function(e){
+                e.preventDefault();
+                console.log('clicking');
+                // set previous scroll before doing anything
+                $('.govuk-tabs__list-item--selected a').attr('data-scroll', $(document).scrollTop());
+                // hide all tabs
+                $('.govuk-tabs__panel').addClass('govuk-tabs__panel--hidden');
+                $('.govuk-tabs__list-item').removeClass('govuk-tabs__list-item--selected');
+                // activate desired tab
+                $('#' + $(this).data('tab')).removeClass('govuk-tabs__panel--hidden');
+                $(this).parent().addClass('govuk-tabs__list-item--selected');
+                // scroll to active tab
+                $(document).scrollTop(parseInt($(this).attr('data-scroll')));
+            });
+        });
+    </script>
+
+    <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        var selectEl = document.querySelector('#opportunities');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 2,
+            selectElement: selectEl
+        });
+    </script>
+
+
+{% endblock %}
+

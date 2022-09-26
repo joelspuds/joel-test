@@ -1,0 +1,37 @@
+$module: 'radio-toggles';
+.#{$module} {
+
+  &__item {
+    margin-bottom: 40px;
+
+    &:last-of-type .#{$module}__contents {
+      // background-color:lime;
+      border-bottom:1px solid govuk-colour("mid-grey");
+    }
+  }
+
+  &__radio {
+    position: relative;
+    // width: 50px;
+  }
+
+  &__contents {
+    border-top:1px solid govuk-colour("mid-grey");
+    padding: 20px 0;
+
+    &-left {
+
+    }
+
+    &-right {
+      text-align: center;
+      border-left:1px solid govuk-colour("mid-grey");
+    }
+
+  }
+
+  &__item {
+
+  }
+
+}

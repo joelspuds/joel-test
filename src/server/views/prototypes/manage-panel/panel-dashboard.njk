@@ -1,0 +1,246 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'panel' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set accountSettingsLink = '' %}
+{% set showExternalFurniture = false %}
+{% set hideAccountLinks = true %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set isAdminUser = true %}
+{% set loggedOut = false %}
+
+{% set allData = allData if allData %}
+{% set externalAwardPrototypeData = prototypeData if prototypeData %}
+{% set userName = externalAwardPrototypeData.userName %}
+
+{% set pageTitle = 'Panel dashboard' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'#', text:'Back to panels'}] %}
+
+{% block content %}
+
+   {# {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <div class="govuk-notification-banner govuk-notification-banner--success" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">Award offer accepted</p>
+                    <p class="govuk-body">By {{ externalAwardPrototypeData.userName }} on behalf University of Wales on {{ 'dataAndTime' | dateAndTime() }}</p>
+                </div>
+            </div>
+        {%- endcall %}
+    {%- endcall %}#}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Panel dashboard', caption=externalAwardPrototypeData.panelName) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='_u-space-b45') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Set up your panel', tag='h2', size='m') }}
+            <details class="govuk-details u-space-b10" data-module="govuk-details" role="group">
+                <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                    <span class="govuk-details__summary-text">Guidance on setting up your panel</span>
+                </summary>
+                <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                    <p class="govuk-body">Your panel will only be set up once you’ve added meeting details and uploaded guidance.</p>
+                </div>
+            </details>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='u-space-b45') %}
+        {% call components.bulmaColumnAny(size='is-7') %}
+
+            <div class="application-items u-space-b45">
+                <div class="application-item application-item--summary">
+                    <div class="application-item__contents govuk-clearfix">
+                        <div class="application-item__left">
+                            <a href="#" class="govuk-link govuk-!-font-size-24 ">Add meeting details</a>
+                            <div class="application-item__data">
+                                <div class="application-item__data-item">
+                                    <span class="application-item__data-text"><strong>Start date</strong><br>Not aded yet</span>
+                                </div>
+                                <div class="application-item__data-item">
+                                    <span class="application-item__data-text"><strong>End date</strong><br>Not added yet</span>
+                                </div>
+                                {#<div class="application-item__data-item">
+                                    <span class="application-item__data-text"><strong>0</strong><br> Submitted</span>
+                                </div>
+                                <div class="application-item__data-item">
+                                    <span class="application-item__data-text"><strong>234,434</strong><br> total</span>
+                                </div>#}
+                            </div>
+                        </div>
+                        {#<div class="application-item__right">
+                            <span class="application-item__meta">
+                                <span class="item-successful">Opened:<br>
+                                    <strong>9 Apr 2020</strong><br></span>
+                                Closes:<br>
+                                <strong>21 Aug 2020</strong>
+                            </span>
+                        </div>#}
+                    </div>
+                </div>
+
+                <div class="application-item application-item--summary">
+                    <div class="application-item__contents govuk-clearfix">
+                        <div class="application-item__left">
+                            <a href="#" class="govuk-link govuk-!-font-size-24 ">Upload guidance</a>
+                            <div class="application-item__data">
+                                <div class="application-item__data-item">
+                                    <span class="application-item__data-text"><strong>Documents uploaded</strong><br>0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{ components.captionHeading(text='Manage your panel', tag='h2', size='m') }}
+
+            <div class="application-items u-space-b45">
+                <div class="application-item application-item--summary">
+                    <div class="application-item__contents govuk-clearfix">
+                        <div class="application-item__left">
+                            <a href="/prototypes/manage-panel/manage-applications" class="govuk-link govuk-!-font-size-24 ">Manage applications</a>
+                            <div class="application-item__data">
+                                <div class="application-item__data-item">
+                                    <span class="application-item__data-text"><strong>Applications</strong><br>0</span>
+                                </div>
+                                <div class="application-item__data-item">
+                                    <span class="application-item__data-text"><strong>Opportunities</strong><br>0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-item application-item--summary">
+                    <div class="application-item__contents govuk-clearfix">
+                        <div class="application-item__left">
+                            {#<a href="/prototypes/manage-panel/manage-members" class="govuk-link govuk-!-font-size-24 ">Manage members</a>#}
+                            <a href="/prototypes/manage-panel/manage-members/manage-conflicts" class="govuk-link govuk-!-font-size-24 ">Manage members</a>
+                            <div class="application-item__data">
+                                <div class="application-item__data-item">
+                                    <span class="application-item__data-text"><strong>Chair</strong><br>0</span>
+                                </div>
+                                <div class="application-item__data-item">
+                                    <span class="application-item__data-text"><strong>Deputy chair</strong><br>0</span>
+                                </div>
+                                <div class="application-item__data-item">
+                                    <span class="application-item__data-text"><strong>Panelists</strong><br>0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-item application-item--summary">
+                    <div class="application-item__contents govuk-clearfix">
+                        <div class="application-item__left">
+                            <a href="/prototypes/manage-panel/manage-roles" class="govuk-link govuk-!-font-size-24 ">Manage roles</a>
+                            <div class="application-item__data">
+                                <div class="application-item__data-item">
+                                    <span class="application-item__data-text"><strong>First introducers</strong><br>0</span>
+                                </div>
+                                <div class="application-item__data-item">
+                                    <span class="application-item__data-text"><strong>Second introducers</strong><br>0</span>
+                                </div>
+                                <div class="application-item__data-item">
+                                    <span class="application-item__data-text"><strong>Third introducers</strong><br>0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {{ components.captionHeading(text='Notify panelists', tag='h2', size='m') }}
+            <details class="govuk-details u-space-b10" data-module="govuk-details" role="group">
+                <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                    <span class="govuk-details__summary-text">Guidance on notifying panelists</span>
+                </summary>
+                <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                    <p class="govuk-body">You can only notify panelists once you’ve set up your panel and assigned roles.</p>
+                </div>
+            </details>
+
+            <div class="application-items u-space-b45">
+                <div class="application-item application-item--summary">
+                    <div class="application-item__contents govuk-clearfix">
+                        <div class="application-item__left">
+                            <a href="#" class="govuk-link govuk-!-font-size-24 ">Share meeting details</a>
+                            <div class="application-item__data">
+                                <div class="application-item__data-item">
+                                    <span class="application-item__data-text"><strong>Recipients</strong><br>0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {{ components.captionHeading(text='Manage outcomes', tag='h2', size='m') }}
+
+            <div class="application-items u-space-b45">
+                <div class="application-item application-item--summary">
+                    <div class="application-item__contents govuk-clearfix">
+                        <div class="application-item__left">
+                            <a href="#" class="govuk-link govuk-!-font-size-24 ">Order and rank applications</a>
+                            <div class="application-item__data">
+                                <div class="application-item__data-item">
+                                    <span class="application-item__data-text"><strong>Applications</strong><br>0</span>
+                                </div>
+                                <div class="application-item__data-item">
+                                    <span class="application-item__data-text"><strong>Ranked application</strong><br>0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
+
+            <div class="govuk-related-items govuk-related-items--flush _u-space-t15">
+                <div class="application-data application-data--large u-space-t10">
+                    <dl class="application-data__list">
+                        <dt class="application-data__key"><strong>Panel</strong></dt>
+                        <dd class="application-data__value">
+                            PAN414: Inform design of cross-council digital research environments
+                            <br><a href="#" class="govuk-link">Edit panel name</a> </dd>
+                    </dl>
+                </div>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+
+
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <p class="govuk-body u-space-t30">
+                <a href="/prototypes/external-award/set-up" class="govuk-link">Return to award set-up overview</a>
+            </p>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+{% endblock %}
+

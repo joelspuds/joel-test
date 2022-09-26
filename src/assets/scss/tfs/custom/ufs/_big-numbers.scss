@@ -18,6 +18,17 @@
   &__number {
     @include govuk-font($size: 36);
   }
+
+  &--small-boxed {
+    .big-numbers__biggy {
+      background-color: govuk-colour("light-grey");
+      padding: 10px;
+    }
+    .big-numbers__title {
+      @include govuk-font($size: 16, $weight: regular);
+    }
+  }
+
 }
 
 @include touch {
@@ -37,4 +48,5 @@
       @include govuk-font($size: 24);
     }
   }
+
 }
