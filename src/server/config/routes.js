@@ -849,21 +849,38 @@ router.get('/prototypes/manage-panel', demosController.mpIndexGet);
 router.post('/prototypes/manage-panel', demosController.mpIndexPost);
 router.get('/prototypes/manage-panel/panel-dashboard', demosController.mpPanelDashboardGet);
 router.post('/prototypes/manage-panel/panel-dashboard', demosController.mpPanelDashboardPost);
+
+/* manage applications */
 router.get('/prototypes/manage-panel/manage-applications', demosController.mpManageApplicationsGet);
 router.post('/prototypes/manage-panel/manage-applications', demosController.mpManageApplicationsPost);
+router.get('/prototypes/manage-panel/manage-applications/assign-applications', demosController.mpManageApplicationsAssignApplicationsGet);
+router.post('/prototypes/manage-panel/manage-applications/assign-applications', demosController.mpManageApplicationsAssignApplicationsPost);
+router.get(
+  '/prototypes/manage-panel/manage-applications/review-assigned-applications',
+  demosController.mpManageApplicationsReviewAssignedApplicationsGet
+);
+router.post(
+  '/prototypes/manage-panel/manage-applications/review-assigned-applications',
+  demosController.mpManageApplicationsReviewAssignedApplicationsPost
+);
+
+/* manage members */
 router.get('/prototypes/manage-panel/manage-members', demosController.mpManageMembersGet);
 router.post('/prototypes/manage-panel/manage-members', demosController.mpManageMembersPost);
-router.get('/prototypes/manage-panel/manage-members/manage-conflicts', demosController.mpManageMembersManageConflictsGet);
-router.post('/prototypes/manage-panel/manage-members/manage-conflicts', demosController.mpManageMembersManageConflictsPost);
-router.get('/prototypes/manage-panel/manage-members/name-the-roles', demosController.mpManageMembersNameTheRolesGet);
-router.post('/prototypes/manage-panel/manage-members/name-the-roles', demosController.mpManageMembersNameTheRolesPost);
-router.get('/prototypes/manage-panel/manage-members/assign-the-roles', demosController.mpManageMembersAssignTheRolesGet);
-router.post('/prototypes/manage-panel/manage-members/assign-the-roles', demosController.mpManageMembersAssignTheRolesPost);
-router.get('/prototypes/manage-panel/manage-members/review-panelists', demosController.mpManageMembersReviewPanelistsGet);
-router.post('/prototypes/manage-panel/manage-members/review-panelists', demosController.mpManageMembersReviewPanelistsPost);
+router.get('/prototypes/manage-panel/manage-members/manage-members', demosController.mpManageMembersManageMembersGet);
+router.post('/prototypes/manage-panel/manage-members/manage-members', demosController.mpManageMembersManageMembersPost);
 
+/* manage roles */
 router.get('/prototypes/manage-panel/manage-roles', demosController.mpManageRolesGet);
 router.post('/prototypes/manage-panel/manage-roles', demosController.mpManageRolesPost);
+router.get('/prototypes/manage-panel/manage-roles/manage-conflicts', demosController.mpManageRolesManageConflictsGet);
+router.post('/prototypes/manage-panel/manage-roles/manage-conflicts', demosController.mpManageRolesManageConflictsPost);
+router.get('/prototypes/manage-panel/manage-roles/name-the-roles', demosController.mpManageRolesNameTheRolesGet);
+router.post('/prototypes/manage-panel/manage-roles/name-the-roles', demosController.mpManageRolesNameTheRolesPost);
+router.get('/prototypes/manage-panel/manage-roles/assign-the-roles', demosController.mpManageRolesAssignTheRolesGet);
+router.post('/prototypes/manage-panel/manage-roles/assign-the-roles', demosController.mpManageRolesAssignTheRolesPost);
+router.get('/prototypes/manage-panel/manage-roles/review-panelists', demosController.mpManageRolesReviewPanelistsGet);
+router.post('/prototypes/manage-panel/manage-roles/review-panelists', demosController.mpManageRolesReviewPanelistsPost);
 
 /* *************************************************************** *
 

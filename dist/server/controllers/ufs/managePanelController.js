@@ -9,18 +9,24 @@ exports.mpPanelDashboardGet = mpPanelDashboardGet;
 exports.mpPanelDashboardPost = mpPanelDashboardPost;
 exports.mpManageApplicationsGet = mpManageApplicationsGet;
 exports.mpManageApplicationsPost = mpManageApplicationsPost;
-exports.mpManageMembersGet = mpManageMembersGet;
-exports.mpManageMembersPost = mpManageMembersPost;
-exports.mpManageMembersManageConflictsGet = mpManageMembersManageConflictsGet;
-exports.mpManageMembersManageConflictsPost = mpManageMembersManageConflictsPost;
-exports.mpManageMembersNameTheRolesGet = mpManageMembersNameTheRolesGet;
-exports.mpManageMembersNameTheRolesPost = mpManageMembersNameTheRolesPost;
-exports.mpManageMembersAssignTheRolesGet = mpManageMembersAssignTheRolesGet;
-exports.mpManageMembersAssignTheRolesPost = mpManageMembersAssignTheRolesPost;
-exports.mpManageMembersReviewPanelistsGet = mpManageMembersReviewPanelistsGet;
-exports.mpManageMembersReviewPanelistsPost = mpManageMembersReviewPanelistsPost;
+exports.mpManageApplicationsAssignApplicationsGet = mpManageApplicationsAssignApplicationsGet;
+exports.mpManageApplicationsAssignApplicationsPost = mpManageApplicationsAssignApplicationsPost;
+exports.mpManageApplicationsReviewAssignedApplicationsGet = mpManageApplicationsReviewAssignedApplicationsGet;
+exports.mpManageApplicationsReviewAssignedApplicationsPost = mpManageApplicationsReviewAssignedApplicationsPost;
 exports.mpManageRolesGet = mpManageRolesGet;
 exports.mpManageRolesPost = mpManageRolesPost;
+exports.mpManageRolesManageConflictsGet = mpManageRolesManageConflictsGet;
+exports.mpManageRolesManageConflictsPost = mpManageRolesManageConflictsPost;
+exports.mpManageRolesNameTheRolesGet = mpManageRolesNameTheRolesGet;
+exports.mpManageRolesNameTheRolesPost = mpManageRolesNameTheRolesPost;
+exports.mpManageRolesAssignTheRolesGet = mpManageRolesAssignTheRolesGet;
+exports.mpManageRolesAssignTheRolesPost = mpManageRolesAssignTheRolesPost;
+exports.mpManageRolesReviewPanelistsGet = mpManageRolesReviewPanelistsGet;
+exports.mpManageRolesReviewPanelistsPost = mpManageRolesReviewPanelistsPost;
+exports.mpManageMembersGet = mpManageMembersGet;
+exports.mpManageMembersPost = mpManageMembersPost;
+exports.mpManageMembersManageMembersGet = mpManageMembersManageMembersGet;
+exports.mpManageMembersManageMembersPost = mpManageMembersManageMembersPost;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 
@@ -28,7 +34,8 @@ const prototypeData = {
   userName: 'Winifred Bobbins',
   awardName: 'AWA184: Environmental research grants 2022',
   currentEndDate: '30 October 2023',
-  panelName: 'PAN414: Inform design of cross-council digital research environments'
+  panelName: 'PAN414: Inform design of cross-council digital research environments',
+  showExternalNav: ''
 };
 
 let savedSession;
@@ -120,25 +127,28 @@ function mpManageApplicationsPost(req, res) {
   targetURL = '/prototypes/manage-panel/panel-dashboard';
   return res.redirect(targetURL);
 }
+/*
+*  manage-applications/assign-applications
+* */
 
-// ************************************************************************
-//
-//        manage members
-//
-// ************************************************************************
-function mpManageMembersGet(req, res) {
+function mpManageApplicationsAssignApplicationsGet(req, res) {
   let viewData;
+
+  const appData = generalData.megaDataReviews;
+  const oppData = generalData.megaDataAwards;
 
   let allData = req.session;
   viewData = {
     allData,
-    prototypeData
+    appData,
+    prototypeData,
+    oppData
   };
 
-  return res.render('prototypes/manage-panel/manage-members', viewData);
+  return res.render('prototypes/manage-panel/manage-applications/assign-applications', viewData);
 }
 
-function mpManageMembersPost(req, res) {
+function mpManageApplicationsAssignApplicationsPost(req, res) {
   const {} = req.body;
 
   let targetURL;
@@ -147,9 +157,9 @@ function mpManageMembersPost(req, res) {
 }
 
 /*
-*   manage-applications/manage-conflicts
+*  manage-applications/review-assigned-applications
 * */
-function mpManageMembersManageConflictsGet(req, res) {
+function mpManageApplicationsReviewAssignedApplicationsGet(req, res) {
   let viewData;
 
   let allData = req.session;
@@ -158,77 +168,10 @@ function mpManageMembersManageConflictsGet(req, res) {
     prototypeData
   };
 
-  return res.render('prototypes/manage-panel/manage-members/manage-conflicts', viewData);
+  return res.render('prototypes/manage-panel/manage-applications/review-assigned-applications', viewData);
 }
 
-function mpManageMembersManageConflictsPost(req, res) {
-  const {} = req.body;
-
-  let targetURL;
-  targetURL = '/prototypes/manage-panel/panel-dashboard';
-  return res.redirect(targetURL);
-}
-
-/*
-*   manage-applications/name-the-roles
-* */
-function mpManageMembersNameTheRolesGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = {
-    allData,
-    prototypeData
-  };
-
-  return res.render('prototypes/manage-panel/manage-members/name-the-roles', viewData);
-}
-
-function mpManageMembersNameTheRolesPost(req, res) {
-  const {} = req.body;
-
-  let targetURL;
-  targetURL = '/prototypes/manage-panel/panel-dashboard';
-  return res.redirect(targetURL);
-}
-/*
-*   manage-applications/assign-the-roles
-* */
-function mpManageMembersAssignTheRolesGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = {
-    allData,
-    prototypeData
-  };
-
-  return res.render('prototypes/manage-panel/manage-members/assign-the-roles', viewData);
-}
-
-function mpManageMembersAssignTheRolesPost(req, res) {
-  const {} = req.body;
-
-  let targetURL;
-  targetURL = '/prototypes/manage-panel/panel-dashboard';
-  return res.redirect(targetURL);
-}
-/*
-*   manage-applications/review-panelists
-* */
-function mpManageMembersReviewPanelistsGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = {
-    allData,
-    prototypeData
-  };
-
-  return res.render('prototypes/manage-panel/manage-members/review-panelists', viewData);
-}
-
-function mpManageMembersReviewPanelistsPost(req, res) {
+function mpManageApplicationsReviewAssignedApplicationsPost(req, res) {
   const {} = req.body;
 
   let targetURL;
@@ -254,6 +197,148 @@ function mpManageRolesGet(req, res) {
 }
 
 function mpManageRolesPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/manage-panel/panel-dashboard';
+  return res.redirect(targetURL);
+}
+/*
+*   manage-roles/manage-conflicts
+* */
+function mpManageRolesManageConflictsGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData
+  };
+
+  return res.render('prototypes/manage-panel/manage-roles/manage-conflicts', viewData);
+}
+
+function mpManageRolesManageConflictsPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/manage-panel/panel-dashboard';
+  return res.redirect(targetURL);
+}
+
+/*
+*   manage-roles/name-the-roles
+* */
+function mpManageRolesNameTheRolesGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData
+  };
+
+  return res.render('prototypes/manage-panel/manage-roles/name-the-roles', viewData);
+}
+
+function mpManageRolesNameTheRolesPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/manage-panel/panel-dashboard';
+  return res.redirect(targetURL);
+}
+/*
+*   manage-roles/assign-the-roles
+* */
+function mpManageRolesAssignTheRolesGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData
+  };
+
+  return res.render('prototypes/manage-panel/manage-roles/assign-the-roles', viewData);
+}
+
+function mpManageRolesAssignTheRolesPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/manage-panel/panel-dashboard';
+  return res.redirect(targetURL);
+}
+/*
+*   manage-roles/review-panelists
+* */
+function mpManageRolesReviewPanelistsGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData
+  };
+
+  return res.render('prototypes/manage-panel/manage-roles/review-panelists', viewData);
+}
+
+function mpManageRolesReviewPanelistsPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/manage-panel/panel-dashboard';
+  return res.redirect(targetURL);
+}
+
+// ************************************************************************
+//
+//        manage members
+//
+// ************************************************************************
+
+function mpManageMembersGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData
+  };
+
+  return res.render('prototypes/manage-panel/manage-members', viewData);
+}
+
+function mpManageMembersPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/manage-panel/panel-dashboard';
+  return res.redirect(targetURL);
+}
+/*
+*   manage-members/manage-members
+* */
+
+function mpManageMembersManageMembersGet(req, res) {
+  let viewData;
+
+  const allPanelists = generalData.panelists;
+  console.log(allPanelists);
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+    allPanelists
+  };
+
+  return res.render('prototypes/manage-panel/manage-members/manage-members', viewData);
+}
+
+function mpManageMembersManageMembersPost(req, res) {
   const {} = req.body;
 
   let targetURL;

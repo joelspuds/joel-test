@@ -1,0 +1,462 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+{% set showStickyNavscripts = true %}
+
+{% set pageTitle = 'Home' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/post-decision/award-start', text:'Back to award overview'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+     {% call components.bulmaRow(extraClass='print-hide') %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-notification-banner govuk-notification-banner--info" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">
+                        The award agreement has been createed using the information from award setup.
+                    </p>
+                    <p class="govuk-body">
+                        You must review the award agreement. Only <a class="govuk-notification-banner__link" href="#">complete the agreement</a> if all the details are correct.
+                    </p>
+                </div>
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Award agreement', caption='AWA222: Development of a Novel Inhibitor of Ricin') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-3') %}
+
+            <nav class="sticky-nav u-space-b45">
+                <h2 class="govuk-heading-s  govuk-heading--link">Contents</h2>
+                <ul class="govuk-list">
+                    <li>
+                        <a href="#offerLetter" class="govuk-link govuk-link--no-visited-state ">Offer letter</a>
+                    </li>
+                    <li>
+                        <a href="#awardDetails" class="govuk-link govuk-link--no-visited-state ">Award details</a>
+                    </li>
+                    <li>
+                        <a href="#team" class="govuk-link govuk-link--no-visited-state ">Team</a>
+                    </li>
+                    <li>
+                        <a href="#resourcesAndCosts" class="govuk-link govuk-link--no-visited-state ">Resources and costs</a>
+                    </li>
+                    <li>
+                        <a href="#paymentSchedule" class="govuk-link govuk-link--no-visited-state ">Payment schedule</a>
+                    </li>
+                    <li>
+                        <a href="#termsAndConditions" class="govuk-link govuk-link--no-visited-state ">Terms and conditions</a>
+                    </li>
+                    <li>
+                        <a href="#tc1" class="govuk-link govuk-link--no-visited-state ">Award terms and conditions</a>
+                    </li>
+                    <li>
+                        <a href="#tc2" class="govuk-link govuk-link--no-visited-state ">Opportunity terms and conditions</a>
+                    </li>
+                    <li>
+                        <a href="#tc3" class="govuk-link govuk-link--no-visited-state ">Standard terms and conditions</a>
+                    </li>
+                    <li>
+                        <a href="#completeAgreement" class="govuk-link govuk-link--no-visited-state ">Complete agreement</a>
+                    </li>
+                </ul>
+                <a href="#" class="govuk-link js-only print-link print-link--tabs" id="printThis" onclick="window.print();return false;">Print this page</a>
+            </nav>
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-9') %}
+
+            {% call components.bulmaRow(extraClass='') %}
+                {% call components.bulmaColumnAny(size='is-4') %}
+                    {{ components.captionHeading(text='Award prepared', size='s ', tag='h2', extraClass='u-space-b10') }}
+                    <p class="govuk-body  ">
+                        Ronaldo Pumpernickle, UKRI<br>
+                        <span class="meta govuk-!-font-size-16">on 14 September 2022, 9.45am</span>
+                    </p>
+                {%- endcall %}
+                {% call components.bulmaColumnAny(size='is-4') %}
+                    {{ components.captionHeading(text='Award authorised', size='s ', tag='h2', extraClass='u-space-b10') }}
+                    <p class="govuk-body  ">
+                        <span class="meta govuk-!-font-size-16">N/A</span>
+                    </p>
+                {%- endcall %}
+                {% call components.bulmaColumnAny(size='is-4') %}
+                    {{ components.captionHeading(text='Award accepted', size='s ', tag='h2', extraClass='u-space-b10') }}
+                    <p class="govuk-body  ">
+                        <span class="meta govuk-!-font-size-16">N/A</span>
+                    </p>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow(extraClass='') %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+                    {{ components.captionHeading(text='Offer letter', size='m', tag='h2', extraClass='u-space-b10', id='offerLetter') }}
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow(extraClass='') %}
+                {% call components.bulmaColumnAny(size='is-half') %}
+                    <p class="govuk-body u-space-b5">
+                        <strong>Award holder</strong>: Dr. Philomena Humperdink
+                    </p>
+                    <p class="govuk-body  u-space-b5">
+                        <strong>Organisation</strong>: Wales Institute of Studies
+                    </p>
+                    <p class="govuk-body ">
+                        <strong>Funders</strong>: BBSRC
+                    </p>
+
+                {%- endcall %}
+                {% call components.bulmaColumnAny(size='is-half') %}
+                    <p class="govuk-body u-space-b5">
+                        <strong>Latest start date</strong>: 21 November 2022
+                    </p>
+                    <p class="govuk-body  u-space-b5">
+                        <strong>Latest end date</strong>: December 2024
+                    </p>
+                    <p class="govuk-body">
+                        <strong>Award value</strong>: £4,500,000
+                    </p>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow(extraClass='u-space-b20') %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+                    <p class="govuk-body u-space-b5">
+                        <strong>Opportunity</strong>: OPP404: Dimensional transmogrification techniques in Northern Europe
+                    </p>
+                    <p class="govuk-body">
+                        <strong>Application</strong>: APP918: Wind turbine efficiency; positional and directional accoustics
+                    </p>
+
+                    <p class="govuk-body">
+                        BBSRC part of UK Reaseach and Innnovation is offering an award to the cost of the above project, subject to the terms and conditions set out below.
+                    </p>
+                    <p class="govuk-body">
+                        Awards are cash limited and expenditure against the proejct must not exceed the value awarded apart for reasons stated in the standard terms and conditions.
+                    </p>
+                {%- endcall %}
+            {%- endcall %}
+
+
+            {% call components.bulmaRow(extraClass='u-space-b20') %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+
+                    {{ components.captionHeading(text='Award details', size='m', tag='h2', id='awardDetails') }}
+
+                    <table class="govuk-table">
+
+                        <tbody>
+                        <tr class="">
+                            <th class="govuk-table__header cell-min-200">Award name</th>
+                            <td class="govuk-table__cell">UK science awards Autumn 2022</td>
+                        </tr>
+
+                        <tr>
+                            <th class="govuk-table__header">Latest start date</th>
+                            <td class="govuk-table__cell">30 November 2022</td>
+                        </tr>
+                        <tr>
+                            <th class="govuk-table__header">Latest end date</th>
+                            <td class="govuk-table__cell">December 2024</td>
+                        </tr>
+                        <tr class="">
+                        <tr class="">
+                            <th class="govuk-table__header">Duration in months</th>
+                            <td class="govuk-table__cell">24</td>
+                        </tr>
+                        <tr class="">
+                            <th class="govuk-table__header govuk-table__header--top">Summary</th>
+                            <td class="govuk-table__cell">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow(extraClass='u-space-b20') %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+                    {{ components.captionHeading(text='Team', size='m', tag='h2', id='team') }}
+
+                    <table class="govuk-table">
+                        <caption class="govuk-table__caption govuk-visually-hidden">University of Wales team members</caption>
+                        <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header _cell-max-35">Name</th>
+                            <th scope="col" class="govuk-table__header _cell-max-35">Email address</th>
+                            <th scope="col" class="govuk-table__header ">Role</th>
+                            <th scope="col" class="govuk-table__header ">Organisation</th>
+                        </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell  ">Prof. Jane Doe</td>
+                            <td class="govuk-table__cell ">j.doe@cardiffuniversity.ac.uk</td>
+                            <td class="govuk-table__cell ">Lead applicant</td>
+                            <td class="govuk-table__cell ">Cardiff University</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell ">Dr. Phoebe Buffay-Hannigan</td>
+                            <td class="govuk-table__cell ">p.buffay-hanningane@cardiffuniversity.ac.uk</td>
+                            <td class="govuk-table__cell ">Co-investigator</td>
+                            <td class="govuk-table__cell ">Cardiff University</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell ">Dr. Annabel Hatt</td>
+                            <td class="govuk-table__cell ">a.hatt@manchester.ac.uk</td>
+                            <td class="govuk-table__cell ">Lead applicant</td>
+                            <td class="govuk-table__cell ">Manchester University</td>
+
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">Dr. David Burson</td>
+                            <td class="govuk-table__cell ">d.burson@manchester.ac.uk</td>
+                            <td class="govuk-table__cell ">Co-investigator</td>
+                            <td class="govuk-table__cell ">Manchester University</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">Mildred Hubble</td>
+                            <td class="govuk-table__cell ">m.hibble@manchester.ac.uk</td>
+                            <td class="govuk-table__cell ">Researcher</td>
+                            <td class="govuk-table__cell ">Manchester University</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow(extraClass='u-space-b20') %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+
+                    {{ components.captionHeading(text='Resources and costs', size='m', tag='h2', id='resourcesAndCosts') }}
+
+                    <p class="govuk-body u-space-b5">
+                        <strong>Total authorised fEC</strong>: £1,234,567
+                    </p>
+                    <p class="govuk-body u-space-b5">
+                        <strong>Contribution from applying organisation</strong>: £234,567
+                    </p>
+                    <p class="govuk-body">
+                        <strong>Award total</strong>: £1,234,000
+                    </p>
+
+                    <table class="govuk-table govuk-table--stripes">
+
+                        {# TODO: update cols and values #}
+
+                        <thead>
+                        <tr>
+                            <th class="govuk-table__header">Category</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Full economic<br>cost (£)</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Funding applied for<br>(£)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="govuk-table__cell">Staff</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Equipment</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Other</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Animals</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Estates and indirects</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell govuk-table__cell--mega">Total</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£330,000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£1,000,000</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow(extraClass='u-space-b20') %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+
+                    {{ components.captionHeading(text='Payment schedule', size='m', tag='h2', id='paymentSchedule') }}
+
+                    <div class="responsive-table">
+                        <table class="govuk-table govuk-table--edges">
+                            <thead>
+                            <tr>
+                                <th class="govuk-table__header">Quarter</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Payment date</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Payment total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr class="_govuk-table--current">
+                                <td class="govuk-table__cell">Aug to Oct 2022</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">1 Aug 2022</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">£300,208.40</td>
+                            </tr>
+                            <tr>
+                                <td class="govuk-table__cell">Nov to Jan 2023</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">1 Nov 2022</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">£75,285.55</td>
+                            </tr>
+                            <tr>
+                                <td class="govuk-table__cell">Feb to Apr 2023</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">1 Feb 2023</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">£75,285.55</td>
+                            </tr>
+                            <tr>
+                                <td class="govuk-table__cell">May to Jul 2023</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">1 May 2023</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">£75,285.55</td>
+                            </tr>
+                            <tr>
+                                <td class="govuk-table__cell">Aug to Oct 2023</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">1 Aug 2023</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">£75,285.55</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow(extraClass='u-space-b20') %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+
+                    {{ components.captionHeading(text='Terms and conditions', size='m', tag='h2', id='termsAndConditions') }}
+
+                    {{ components.captionHeading(text='Award terms and conditions', size='s', tag='h3', id='tc1') }}
+                    {% include '../../layouts/partials/terms-and-conditions-awards.njk' %}
+
+                    {{ components.captionHeading(text='Opportunity terms and conditions', size='s', tag='h3', id='tc2') }}
+                    {% include '../../layouts/partials/terms-and-conditions-awards.njk' %}
+
+                    {{ components.captionHeading(text='Standard terms and conditions', size='s', tag='h3', id='tc3') }}
+                    {% include '../../layouts/partials/terms-and-conditions-awards.njk' %}
+
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow(extraClass='u-space-b40 print-hide') %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+
+                    {% call components.form(action='#', method='POST', name='details') %}
+
+                        {{ components.captionHeading(text='Complete agreement', size='m', tag='h2', id='completeAgreement') }}
+
+                        {% call components.formGroup() %}
+                            <div class="application-item">
+                                <div class="application-item__contents">
+                                    <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                        <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                            <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                        </legend>
+                                        <div class="govuk-checkboxes">
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox">
+                                                <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">I confirm that all the information given above is true and complete on behalf of UKRI</label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+
+                            <div class="application-controls govuk-clearfix u-space-t45">
+                                {{ components.button(text='Complete agreement', extraClass="application-controls__submit")}}
+                               <a href="#" class="govuk-link application-controls__cancel">Cancel and return to award overview</a>
+                            </div>
+
+                    {%- endcall %} {# end form #}
+                    {%- endcall %}
+
+                {%- endcall %}
+            {%- endcall %}
+
+        {%- endcall %}
+
+      {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script type="text/javascript">
+        /* smooth-scroll.js v1.3.1 */
+        /*
+        n=0,
+        r=500,
+        i=15,
+        */
+        (function(e,t){
+            "use strict";
+            var n=0,
+                r=250,
+                i=15,
+                s=document.getElementsByTagName("a"),
+                o;
+            for(var u=0;u<s.length;u++){o=s[u].attributes.href===t?null:s[u].attributes.href.nodeValue.toString();if(o!==null&&o.length>1&&o.indexOf("#")!=-1){s[u].onclick=function(){var n,s=this.attributes.href.nodeValue.toString(),o=s.substr(0,s.indexOf("#")),u=s.substr(s.indexOf("#")+1);if(n=document.getElementById(u)){var l=(r-r%i)/i,c=f(),h=(a(n)-c)/l;if(e.history&&typeof e.history.pushState=="function")e.history.pushState({},t,o+"#"+u);for(var p=1;p<=l;p++){(function(){var t=h*p;setTimeout(function(){e.scrollTo(0,t+c)},i*p)})()}return false}}}}var a=function(e){var r=n*-1;while(e.offsetParent!=t&&e.offsetParent!=null){r+=e.offsetTop+(e.clientTop!=null?e.clientTop:0);e=e.offsetParent}return r};var f=function(){return e.pageYOffset!==t?e.pageYOffset:document.documentElement.scrollTop!==t?document.documentElement.scrollTop:document.body.scrollTop}})(window)
+    </script>
+
+
+    <script>
+        Zepto(function($){
+            $(window).on('load', function() {
+                console.log('window loaded');
+                $('.govuk-tabs__tab').attr('tabindex', '');
+            });
+        });
+    </script>
+{% endblock %}
+

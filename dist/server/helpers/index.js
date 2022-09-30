@@ -63,3 +63,15 @@ Object.keys(_showMonth).forEach(function (key) {
     }
   });
 });
+
+var _toLowerCase = require('./to-lower-case');
+
+Object.keys(_toLowerCase).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _toLowerCase[key];
+    }
+  });
+});

@@ -1,4 +1,4 @@
-{% set showExternalNav = true %}
+{% set showExternalNav = false %}
 {% set activeNavItem = 'panel' %}
 {% set navArea = 'personal' %}
 {% set applicationsLink = '#' %}
@@ -10,6 +10,8 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 {% set isAdminUser = true %}
 {% set loggedOut = false %}
+
+{% set navType = 'admin' %}
 
 {% set allData = allData if allData %}
 {% set externalAwardPrototypeData = prototypeData if prototypeData %}
@@ -108,7 +110,7 @@
                 <div class="application-item application-item--summary">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
-                            <a href="/prototypes/manage-panel/manage-applications" class="govuk-link govuk-!-font-size-24 ">Manage applications</a>
+                            <a href="/prototypes/manage-panel/manage-applications/assign-applications" class="govuk-link govuk-!-font-size-24 ">Manage applications</a>
                             <div class="application-item__data">
                                 <div class="application-item__data-item">
                                     <span class="application-item__data-text"><strong>Applications</strong><br>0</span>
@@ -125,7 +127,7 @@
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
                             {#<a href="/prototypes/manage-panel/manage-members" class="govuk-link govuk-!-font-size-24 ">Manage members</a>#}
-                            <a href="/prototypes/manage-panel/manage-members/manage-conflicts" class="govuk-link govuk-!-font-size-24 ">Manage members</a>
+                            <a href="/prototypes/manage-panel/manage-members/manage-members" class="govuk-link govuk-!-font-size-24 ">Manage members</a>
                             <div class="application-item__data">
                                 <div class="application-item__data-item">
                                     <span class="application-item__data-text"><strong>Chair</strong><br>0</span>
@@ -144,7 +146,7 @@
                 <div class="application-item application-item--summary">
                     <div class="application-item__contents govuk-clearfix">
                         <div class="application-item__left">
-                            <a href="/prototypes/manage-panel/manage-roles" class="govuk-link govuk-!-font-size-24 ">Manage roles</a>
+                            <a href="/prototypes/manage-panel/manage-roles/manage-conflicts" class="govuk-link govuk-!-font-size-24 ">Manage roles</a>
                             <div class="application-item__data">
                                 <div class="application-item__data-item">
                                     <span class="application-item__data-text"><strong>First introducers</strong><br>0</span>

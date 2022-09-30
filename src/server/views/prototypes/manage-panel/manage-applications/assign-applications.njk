@@ -10,6 +10,7 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 {% set isAdminUser = true %}
 {% set loggedOut = false %}
+
 {% set navType = 'admin' %}
 
 {% set allData = allData if allData %}
@@ -61,86 +62,83 @@
 
     {% call components.form(action='#', method='POST', name='submitForm') %}
 
-
-
-
         {% call components.bulmaRow() %}
 
-        {% call components.bulmaColumnAny(size='column is-full') %}
-            <div class="govuk-tabs" data-module="_govuk-tabs">
-                <h2 class="govuk-tabs__title">
-                    Contents
-                </h2>
-                <ul class="govuk-tabs__list sticky-tabs menu" id="stickyBar" style="background-color:white;">
-                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-                        <a class="govuk-tabs__tab" id="link_one" data-tab="one" href="#one" data-scroll="">
-                            Assign applications
-                        </a>
-                    </li>
-                    <li class="govuk-tabs__list-item">
-                        <a class="govuk-tabs__tab" id="link_two" data-tab="two" href="#two" data-scroll="">
-                            Review assigned applications
-                        </a>
-                    </li>
-                </ul>
+            {% call components.bulmaColumnAny(size='column is-full') %}
+                <div class="govuk-tabs" data-module="_govuk-tabs">
+                    <h2 class="govuk-tabs__title">
+                        Contents
+                    </h2>
+                    <ul class="govuk-tabs__list sticky-tabs menu" id="stickyBar" style="background-color:white;">
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                            <a class="govuk-tabs__tab" id="link_one" data-tab="one" href="/prototypes/manage-panel/manage-applications/assign-applications" data-scroll="">
+                                Assign applications
+                            </a>
+                        </li>
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" id="link_two" data-tab="two" href="/prototypes/manage-panel/manage-applications/review-assigned-applications" data-scroll="">
+                                Review assigned applications
+                            </a>
+                        </li>
+                    </ul>
 
-                <div class="govuk-tabs__panel govuk-tabs__panel--borderless" id="one">
+                    <div class="govuk-tabs__panel govuk-tabs__panel--borderless" id="one">
 
 
-                    {% call components.bulmaRow() %}
-                        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+                        {% call components.bulmaRow() %}
+                            {% call components.bulmaColumnAny(size='is-two-thirds') %}
 
-                            {{ components.captionHeading(text='Assign applications',tag='h2', size='m', extraClass='_u-space-b5') }}
+                                {{ components.captionHeading(text='Assign applications',tag='h2', size='m', extraClass='_u-space-b5') }}
 
+                            {%- endcall %}
                         {%- endcall %}
-                    {%- endcall %}
 
-                    {% call components.bulmaRow() %}
-                        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+                        {% call components.bulmaRow() %}
+                            {% call components.bulmaColumnAny(size='is-two-thirds') %}
 
-                            <div class="govuk-form-group">
-                                <label class="govuk-label govuk-label--s" for="opportunities">Add Opportunity</label>
-                                <span class="govuk-hint">Start typing an Opportunity reference or name</span>
-                                <select name="opportunities" class="govuk-select control" id="opportunities">
-                                    {#<option></option>
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-label--s" for="opportunities">Add Opportunity</label>
+                                    <span class="govuk-hint">Start typing an Opportunity reference or name</span>
+                                    <select name="opportunities" class="govuk-select control" id="opportunities">
+                                        {#<option></option>
                         {% for item in oppData %}
                             <option value="{{ item.id }}">{{ item.id}}: {{ item.name }}</option>
                         {% endfor %}#}
-                                    <option value="{{ item.id }}">OPP4418: Modern science research techniques, Summer 2022</option>
-                                </select>
-                            </div>
+                                        <option value="{{ item.id }}">OPP4418: Modern science research techniques, Summer 2022</option>
+                                    </select>
+                                </div>
 
-                            <p class="{#govuk-!-font-weight-bold#} govuk-body">
-                                Showing <strong>9</strong> applications for <strong>"OPP4418: Modern science research techniques, Summer 2022"</strong>
-                            </p>
+                                <p class="{#govuk-!-font-weight-bold#} govuk-body">
+                                    Showing <strong>9</strong> applications for <strong>"OPP4418: Modern science research techniques, Summer 2022"</strong>
+                                </p>
 
+                            {%- endcall %}
                         {%- endcall %}
-                    {%- endcall %}
 
-                    {% call components.bulmaRow() %}
-                        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+                        {% call components.bulmaRow() %}
+                            {% call components.bulmaColumnAny(size='is-two-thirds') %}
 
-                            <p class="{#govuk-!-font-weight-bold#} govuk-body">
-                                <strong>7</strong> of <strong>9</strong> applications selected
-                            </p>
+                                <p class="{#govuk-!-font-weight-bold#} govuk-body">
+                                    <strong>7</strong> of <strong>9</strong> applications selected
+                                </p>
 
-                            <p class="govuk-body">
-                                <button class="govuk-button">Assign selected applications to panel</button>
-                            </p>
+                                <p class="govuk-body">
+                                    <button class="govuk-button">Assign selected applications to panel</button>
+                                </p>
 
+                            {%- endcall %}
                         {%- endcall %}
-                    {%- endcall %}
 
-                    {% call components.bulmaRow() %}
+                        {% call components.bulmaRow() %}
 
-                        {% call components.bulmaColumnAny(size='is-full', extraClass='{#u-space-t20#}') %}
-
+                            {% call components.bulmaColumnAny(size='is-full', extraClass='{#u-space-t20#}') %}
 
 
-                            <div class="responsive-table">
 
-                                <table class="govuk-table">
-                                    <caption class="govuk-table__caption govuk-visually-hidden">Applications</caption>
+                                <div class="responsive-table">
+
+                                    <table class="govuk-table">
+                                        <caption class="govuk-table__caption govuk-visually-hidden">Applications</caption>
                                         <thead class="govuk-table__head">
                                         <tr class="govuk-table__row">
                                             <th scope="col" class="govuk-table__header">
@@ -157,8 +155,8 @@
                                         </tr>
                                         </thead>
                                         <tbody class="govuk-table__body">
-                                            <tr class="govuk-table__row">
-                                                <td class="govuk-table__cell">
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell">
                                                 <div class="govuk-checkboxes__item govuk-checkboxes__item--snug govuk-checkboxes--small">
                                                     <input class="govuk-checkboxes__input govuk-checkboxes--small" id="staticApp" name="staticApp" type="checkbox" value="">
                                                     <label class="govuk-label govuk-checkboxes__label govuk-label--s " for="staticApp">
@@ -166,15 +164,15 @@
                                                     Contribution of Local Pollutants</span>
                                                     </label>
                                                 </div>
-                                                </td>
-                                                <td class="govuk-table__cell"><a href="#" class="govuk-link">APP335: Molecular Level Understanding of New Particle Formation in the Urban Atmosphere: Contribution of Local Pollutants</a></td>
-                                                <td class="govuk-table__cell">Cardiff University</td>
-                                                <td class="govuk-table__cell">
-                                                   Prof. Gillian Mitochondria
-                                                </td>
-                                            </tr>
+                                            </td>
+                                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP335: Molecular Level Understanding of New Particle Formation in the Urban Atmosphere: Contribution of Local Pollutants</a></td>
+                                            <td class="govuk-table__cell">Cardiff University</td>
+                                            <td class="govuk-table__cell">
+                                                Prof. Gillian Mitochondria
+                                            </td>
+                                        </tr>
 
-                                            {% for item in appData %}
+                                        {% for item in appData %}
 
                                             <tr class="govuk-table__row">
                                                 <td class="govuk-table__cell">
@@ -193,52 +191,52 @@
                                         {% endfor %}
 
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
 
-                            </div>
+                                </div>
 
-                        {%- endcall %}
-
-                    {%- endcall %}
-
-                </div>
-                {#
-
-
-                END TAB ONE
-
-
-                #}
-
-                <div class="govuk-tabs__panel govuk-tabs__panel--borderless govuk-tabs__panel--hidden" id="two">
-
-                    {% call components.bulmaRow() %}
-
-                        {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
-
-                            {{ components.captionHeading(text='Review assigned applications',tag='h2', size='m', extraClass='_u-space-b5') }}
+                            {%- endcall %}
 
                         {%- endcall %}
 
-                    {%- endcall %}
+                    </div>
+                    {#
+
+
+                    END TAB ONE
+
+
+                    #}
+
+                    <div class="govuk-tabs__panel govuk-tabs__panel--borderless govuk-tabs__panel--hidden" id="two">
+
+                        {% call components.bulmaRow() %}
+
+                            {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
+
+                                {{ components.captionHeading(text='Review assigned applications',tag='h2', size='m', extraClass='_u-space-b5') }}
+
+                            {%- endcall %}
+
+                        {%- endcall %}
+                    </div>
+                    {#
+
+
+                    END TAB TWO
+
+
+                    #}
+
                 </div>
-                {#
+            {%- endcall %}
 
-
-                END TAB TWO
-
-
-                #}
-
-            </div>
         {%- endcall %}
-
-    {%- endcall %}
 
     {%- endcall %} {# end form #}
 
-    {% include '../../layouts/partials/user-contact.njk' %}
+    {% include '../../../layouts/partials/user-contact.njk' %}
 
 {% endblock %}
 {% block bodyScripts %}
@@ -314,7 +312,7 @@
             }
         });
 
-        $('.govuk-tabs__tab').each(function(index){
+       /* $('.govuk-tabs__tab').each(function(index){
             $(this).on('click', function(e){
                 e.preventDefault();
                 console.log('clicking');
@@ -329,7 +327,7 @@
                 // scroll to active tab
                 $(document).scrollTop(parseInt($(this).attr('data-scroll')));
             });
-        });
+        });*/
     </script>
 
     <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>

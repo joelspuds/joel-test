@@ -49,6 +49,7 @@ export const startApp = async () => {
   env.addFilter('dateAndTime', Helpers.dayAndTime);
   env.addFilter('showMonth', Helpers.showMonth);
   env.addFilter('giveMeAName', Helpers.namer);
+  env.addFilter('toLowerCase', Helpers.changeToLowerCase);
 
   // Add lodash as a global for view templates
   env.addGlobal('_', _);

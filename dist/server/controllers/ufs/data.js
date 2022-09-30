@@ -977,3 +977,127 @@ let allColours = [{
   'govuk-colour-turquoise': '#28A197'
 }];
 const colourPalette = exports.colourPalette = allColours;
+
+let panelistPeople = [{
+  panelistID: 'CZYPTL9QR216GT21',
+  firstName: 'Clare',
+  lastName: 'Bess',
+  organisation: 'Bath',
+  role: 'Panel chair'
+}, {
+  panelistID: '3DX29D9OZ2ZBQ052',
+  firstName: 'Burt',
+  lastName: 'Keeton',
+  organisation: 'Southampton',
+  role: 'Panel chair'
+}, {
+  panelistID: 'DJGBA5EHA9303PQ2',
+  firstName: 'Mariann',
+  lastName: 'Herbert',
+  organisation: 'Nottingham',
+  role: 'Deputy chair'
+}, {
+  panelistID: 'JRFJIJ8RV9O1I69M',
+  firstName: 'Lina',
+  lastName: 'Ramos',
+  organisation: 'Leicester',
+  role: 'Deputy chair'
+}, {
+  panelistID: 'U8K5X27Q8MUAC7R2',
+  firstName: 'Lorean',
+  lastName: 'Roderick',
+  organisation: 'Liverpool',
+  role: 'Panelist'
+}, {
+  panelistID: 'J0KFCBTZR59US0US',
+  firstName: 'Mistie',
+  lastName: 'Pennington',
+  organisation: 'Swansea',
+  role: 'Panelist'
+}, {
+  panelistID: '5TI4D8BX64NQ48A0',
+  firstName: 'Sherrill',
+  lastName: 'Reiter',
+  organisation: 'Cardiff',
+  role: 'Panelist'
+}, {
+  panelistID: '26DFBYMHCH2UNQZH',
+  firstName: 'Hayley',
+  lastName: 'Sam',
+  organisation: 'Hayward',
+  role: 'Panelist'
+}, {
+  panelistID: 'VUHUF7Q9PV8ZULIM',
+  firstName: 'Megan',
+  lastName: 'Noonan',
+  organisation: 'Kings',
+  role: 'Panelist'
+}, {
+  panelistID: 'DNRMSUB907C3UFS2',
+  firstName: 'Virgilio',
+  lastName: 'Barnhill',
+  organisation: 'Manchester',
+  role: 'Panelist'
+}, {
+  panelistID: 'HMY3UTFN4QMN1VS5',
+  firstName: 'Sunni',
+  lastName: 'Haag',
+  organisation: 'Imperial',
+  role: 'Panelist'
+}, {
+  panelistID: 'E5Q1NZQ4THHD3BX3',
+  firstName: 'Ariel',
+  lastName: 'Edge',
+  organisation: 'Glasgow',
+  role: 'Panelist'
+}, {
+  panelistID: 'U6YLG27RUQNU4O7B',
+  firstName: 'Williemae',
+  lastName: 'Coggins',
+  organisation: 'Barnstable',
+  role: 'Panelist'
+}, {
+  panelistID: '893CJLI4OQRMONJP',
+  firstName: 'Charlsie',
+  lastName: 'Stringer',
+  organisation: 'Cambridge',
+  role: 'Panelist'
+}, {
+  panelistID: 'NUEURXTN1REDLV4A',
+  firstName: 'Angelic',
+  lastName: 'Pedigo',
+  organisation: 'Leeds',
+  role: 'Panelist'
+}, {
+  panelistID: '9YULNP3F7QJC0IXD',
+  firstName: 'June',
+  lastName: 'Coates',
+  organisation: 'Green Bay',
+  role: 'Panelist'
+}, {
+  panelistID: 'PZP5HCAZ2UXH9JHU',
+  firstName: 'Natividad',
+  lastName: 'Schmitt',
+  organisation: 'Oxford',
+  role: 'Panelist'
+}, {
+  panelistID: 'J806IQDP91GGXZVQ',
+  firstName: 'Christiana',
+  lastName: 'Venegas',
+  organisation: 'Bristol',
+  role: 'Panelist'
+}, {
+  panelistID: '1VHNQS0RV9ABDFRL',
+  firstName: 'Hanh',
+  lastName: 'Daly',
+  organisation: 'Waterloo',
+  role: 'Panelist'
+}, {
+  panelistID: '036DKXQM19FIN0RY',
+  firstName: 'Johana',
+  lastName: 'Carmichael',
+  organisation: 'Birmingham',
+  role: 'Panelist'
+}];
+
+const panelists = exports.panelists = panelistPeople;

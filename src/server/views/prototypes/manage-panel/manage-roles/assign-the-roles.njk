@@ -10,6 +10,7 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 {% set isAdminUser = true %}
 {% set loggedOut = false %}
+{% set navType = 'admin' %}
 
 {% set allData = allData if allData %}
 {% set externalAwardPrototypeData = prototypeData if prototypeData %}
@@ -113,22 +114,22 @@
                 </h2>
                 <ul class="govuk-tabs__list sticky-tabs menu" id="stickyBar" style="background-color:white;">
                     <li class="govuk-tabs__list-item ">
-                        <a class="govuk-tabs__tab" id="link_one" data-tab="_one" href="/prototypes/manage-panel/manage-members/manage-conflicts" data-scroll="">
+                        <a class="govuk-tabs__tab" id="link_one" data-tab="_one" href="/prototypes/manage-panel/manage-roles/manage-conflicts" data-scroll="">
                             Manage conflicts
                         </a>
                     </li>
                     <li class="govuk-tabs__list-item ">
-                        <a class="govuk-tabs__tab" id="link_two" data-tab="_two" href="/prototypes/manage-panel/manage-members/name-the-roles" data-scroll="">
+                        <a class="govuk-tabs__tab" id="link_two" data-tab="_two" href="/prototypes/manage-panel/manage-roles/name-the-roles" data-scroll="">
                             Name the roles
                         </a>
                     </li>
                     <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-                        <a class="govuk-tabs__tab" id="link_three" data-tab="_three" href="/prototypes/manage-panel/manage-members/assign-the-roles" data-scroll="">
+                        <a class="govuk-tabs__tab" id="link_three" data-tab="_three" href="/prototypes/manage-panel/manage-roles/assign-the-roles" data-scroll="">
                             Assign the roles
                         </a>
                     </li>
                     <li class="govuk-tabs__list-item">
-                        <a class="govuk-tabs__tab" id="link_four" data-tab="_four" href="/prototypes/manage-panel/manage-members/review-panelists" data-scroll="">
+                        <a class="govuk-tabs__tab" id="link_four" data-tab="_four" href="/prototypes/manage-panel/manage-roles/review-panelists" data-scroll="">
                             Review panelists
                         </a>
                     </li>
@@ -159,7 +160,7 @@
                                 <div class="radio-toggles__item govuk-radios columns">
                                     <div class="radio-toggles__radio column is-1">
                                         <div class="govuk-radios__item ">
-                                            <input class="govuk-radios__input" id="item1" name="item1" type="radio" value="rolesRadios">
+                                            <input class="govuk-radios__input rolesRadio" id="item1" name="item1" type="radio" value="rolesRadios" data-radio="one">
                                             <label class="govuk-label govuk-radios__label " for="item1">
                                                 <span class="govuk-visually-hidden">APP090: Atmospheric fluxes of mineral dust-derived soluble trace elements to the ocean using thorium isotopes (ThorMap)</span>
                                             </label>
@@ -171,13 +172,13 @@
                                             <div class="radio-toggles__contents-left column is-9">
                                                 <div class="radio-toggles__top">
                                                     <h3 class="govuk-heading-s"><a href="#" class="govuk-link govuk-!-display-inline-block">Atmospheric fluxes of mineral dust-derived soluble trace elements to the ocean using thorium isotopes (ThorMap)</a></h3>
-                                                    <p class="govuk-body">
+                                                    <p class="govuk-body u-space-b0">
                                                         <strong>Panel reference: </strong>APP090
                                                         <br>
                                                         <strong>Lead organisation: </strong>University of South Wales
                                                     </p>
                                                 </div>
-                                                <div class="radio-toggles__bottom">
+                                                <div class="radio-toggles__bottom u-space-t20 govuk-visually-hidden" data-content="one">
                                                     bottom stuff
                                                 </div>
                                             </div>
@@ -194,7 +195,7 @@
                                 <div class="radio-toggles__item govuk-radios columns">
                                     <div class="radio-toggles__radio column is-1">
                                         <div class="govuk-radios__item ">
-                                            <input class="govuk-radios__input" id="item1" name="item1" type="radio" value="rolesRadios">
+                                            <input class="govuk-radios__input rolesRadio" id="item1" name="item1" type="radio" value="rolesRadios" data-radio="two">
                                             <label class="govuk-label govuk-radios__label " for="item1">
                                                 <span class="govuk-visually-hidden">APP123: Feline dimensional transmogrification techniques for the 21st century</span>
                                             </label>
@@ -206,13 +207,13 @@
                                             <div class="radio-toggles__contents-left column is-9">
                                                 <div class="radio-toggles__top">
                                                     <h3 class="govuk-heading-s">  <a href="#" class="govuk-link govuk-!-display-inline-block">Feline dimensional transmogrification techniques for the 21st century </a></h3>
-                                                    <p class="govuk-body">
+                                                    <p class="govuk-body u-space-b0">
                                                         <strong>Panel reference: </strong>APP123
                                                         <br>
                                                         <strong>Lead organisation: </strong>Oxford University
                                                     </p>
                                                 </div>
-                                                <div class="radio-toggles__bottom">
+                                                <div class="radio-toggles__bottom u-space-t20 govuk-visually-hidden" data-content="two">
                                                     bottom stuff
                                                 </div>
                                             </div>
@@ -223,13 +224,10 @@
                                     </div>
                                 </div>
 
-
-
-
                                 <div class="radio-toggles__item govuk-radios columns">
                                     <div class="radio-toggles__radio column is-1">
                                         <div class="govuk-radios__item ">
-                                            <input class="govuk-radios__input" id="item1" name="item1" type="radio" value="rolesRadios">
+                                            <input class="govuk-radios__input rolesRadio" id="item1" name="item1" type="radio" value="rolesRadios" data-radio="three">
                                             <label class="govuk-label govuk-radios__label " for="item1">
                                                 <span class="govuk-visually-hidden">APP404: Feline dimensional transmogrification techniques for the 21st century</span>
                                             </label>
@@ -241,13 +239,13 @@
                                             <div class="radio-toggles__contents-left column is-9">
                                                 <div class="radio-toggles__top">
                                                     <h3 class="govuk-heading-s"><a href="#" class="govuk-link govuk-!-display-inline-block">The scientific realities of generating pseudo-babble nonsense as placeholder text - the impact on creators.</a></h3>
-                                                    <p class="govuk-body">
+                                                    <p class="govuk-body u-space-b0">
                                                         <strong>Panel reference: </strong>APP999
                                                         <br>
                                                         <strong>Lead organisation: </strong>Fulchester College, The Institute of Studies
                                                     </p>
                                                 </div>
-                                                <div class="radio-toggles__bottom">
+                                                <div class="radio-toggles__bottom u-space-t20 govuk-visually-hidden" data-content="three">
                                                     bottom stuff
                                                 </div>
                                             </div>
@@ -364,6 +362,40 @@
                  $(document).scrollTop(parseInt($(this).attr('data-scroll')));
              });
          });*/
+    </script>
+
+    <script>
+        $('.rolesRadio').each(function(index){
+            $(this).on('change', function(e){
+                e.preventDefault();
+                console.log('clicking');
+                // set previous scroll before doing anything
+                let marker = $(this).attr('data-radio');
+                // $('.radio-toggles__bottom').addClass('govuk-visually-hidden');
+                // $('div').attr('data-content', marker).removeClass('govuk-visually-hidden');
+
+                $('.radio-toggles__bottom').each(function(index){
+                    if($(this).attr('data-content') != marker) {
+                        $(this).addClass('govuk-visually-hidden');
+                    } else {
+                        $(this).removeClass('govuk-visually-hidden');
+                    }
+                });
+
+
+                console.log(marker);
+               /* $('.govuk-tabs__list-item--selected a').attr('data-scroll', $(document).scrollTop());
+                // hide all tabs
+                $('.govuk-tabs__panel').addClass('govuk-tabs__panel--hidden');
+                $('.govuk-tabs__list-item').removeClass('govuk-tabs__list-item--selected');
+                // activate desired tab
+                $('#' + $(this).data('tab')).removeClass('govuk-tabs__panel--hidden');
+                $(this).parent().addClass('govuk-tabs__list-item--selected');
+                // scroll to active tab
+                $(document).scrollTop(parseInt($(this).attr('data-scroll')));*/
+            });
+        });
+
     </script>
 
 

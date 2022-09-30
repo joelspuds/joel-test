@@ -6,6 +6,7 @@ const prototypeData = {
   awardName: 'AWA184: Environmental research grants 2022',
   currentEndDate: '30 October 2023',
   panelName: 'PAN414: Inform design of cross-council digital research environments',
+  showExternalNav: '',
 };
 
 let savedSession;
@@ -97,25 +98,28 @@ export function mpManageApplicationsPost(req, res) {
   targetURL = '/prototypes/manage-panel/panel-dashboard';
   return res.redirect(targetURL);
 }
+/*
+*  manage-applications/assign-applications
+* */
 
-// ************************************************************************
-//
-//        manage members
-//
-// ************************************************************************
-export function mpManageMembersGet(req, res) {
+export function mpManageApplicationsAssignApplicationsGet(req, res) {
   let viewData;
+
+  const appData = generalData.megaDataReviews;
+  const oppData = generalData.megaDataAwards;
 
   let allData = req.session;
   viewData = {
     allData,
+    appData,
     prototypeData,
+    oppData,
   };
 
-  return res.render('prototypes/manage-panel/manage-members', viewData);
+  return res.render('prototypes/manage-panel/manage-applications/assign-applications', viewData);
 }
 
-export function mpManageMembersPost(req, res) {
+export function mpManageApplicationsAssignApplicationsPost(req, res) {
   const {} = req.body;
 
   let targetURL;
@@ -124,9 +128,9 @@ export function mpManageMembersPost(req, res) {
 }
 
 /*
-*   manage-applications/manage-conflicts
+*  manage-applications/review-assigned-applications
 * */
-export function mpManageMembersManageConflictsGet(req, res) {
+export function mpManageApplicationsReviewAssignedApplicationsGet(req, res) {
   let viewData;
 
   let allData = req.session;
@@ -135,77 +139,10 @@ export function mpManageMembersManageConflictsGet(req, res) {
     prototypeData,
   };
 
-  return res.render('prototypes/manage-panel/manage-members/manage-conflicts', viewData);
+  return res.render('prototypes/manage-panel/manage-applications/review-assigned-applications', viewData);
 }
 
-export function mpManageMembersManageConflictsPost(req, res) {
-  const {} = req.body;
-
-  let targetURL;
-  targetURL = '/prototypes/manage-panel/panel-dashboard';
-  return res.redirect(targetURL);
-}
-
-/*
-*   manage-applications/name-the-roles
-* */
-export function mpManageMembersNameTheRolesGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = {
-    allData,
-    prototypeData,
-  };
-
-  return res.render('prototypes/manage-panel/manage-members/name-the-roles', viewData);
-}
-
-export function mpManageMembersNameTheRolesPost(req, res) {
-  const {} = req.body;
-
-  let targetURL;
-  targetURL = '/prototypes/manage-panel/panel-dashboard';
-  return res.redirect(targetURL);
-}
-/*
-*   manage-applications/assign-the-roles
-* */
-export function mpManageMembersAssignTheRolesGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = {
-    allData,
-    prototypeData,
-  };
-
-  return res.render('prototypes/manage-panel/manage-members/assign-the-roles', viewData);
-}
-
-export function mpManageMembersAssignTheRolesPost(req, res) {
-  const {} = req.body;
-
-  let targetURL;
-  targetURL = '/prototypes/manage-panel/panel-dashboard';
-  return res.redirect(targetURL);
-}
-/*
-*   manage-applications/review-panelists
-* */
-export function mpManageMembersReviewPanelistsGet(req, res) {
-  let viewData;
-
-  let allData = req.session;
-  viewData = {
-    allData,
-    prototypeData,
-  };
-
-  return res.render('prototypes/manage-panel/manage-members/review-panelists', viewData);
-}
-
-export function mpManageMembersReviewPanelistsPost(req, res) {
+export function mpManageApplicationsReviewAssignedApplicationsPost(req, res) {
   const {} = req.body;
 
   let targetURL;
@@ -231,6 +168,148 @@ export function mpManageRolesGet(req, res) {
 }
 
 export function mpManageRolesPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/manage-panel/panel-dashboard';
+  return res.redirect(targetURL);
+}
+/*
+*   manage-roles/manage-conflicts
+* */
+export function mpManageRolesManageConflictsGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/manage-panel/manage-roles/manage-conflicts', viewData);
+}
+
+export function mpManageRolesManageConflictsPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/manage-panel/panel-dashboard';
+  return res.redirect(targetURL);
+}
+
+/*
+*   manage-roles/name-the-roles
+* */
+export function mpManageRolesNameTheRolesGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/manage-panel/manage-roles/name-the-roles', viewData);
+}
+
+export function mpManageRolesNameTheRolesPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/manage-panel/panel-dashboard';
+  return res.redirect(targetURL);
+}
+/*
+*   manage-roles/assign-the-roles
+* */
+export function mpManageRolesAssignTheRolesGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/manage-panel/manage-roles/assign-the-roles', viewData);
+}
+
+export function mpManageRolesAssignTheRolesPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/manage-panel/panel-dashboard';
+  return res.redirect(targetURL);
+}
+/*
+*   manage-roles/review-panelists
+* */
+export function mpManageRolesReviewPanelistsGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/manage-panel/manage-roles/review-panelists', viewData);
+}
+
+export function mpManageRolesReviewPanelistsPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/manage-panel/panel-dashboard';
+  return res.redirect(targetURL);
+}
+
+// ************************************************************************
+//
+//        manage members
+//
+// ************************************************************************
+
+export function mpManageMembersGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/manage-panel/manage-members', viewData);
+}
+
+export function mpManageMembersPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/manage-panel/panel-dashboard';
+  return res.redirect(targetURL);
+}
+/*
+*   manage-members/manage-members
+* */
+
+export function mpManageMembersManageMembersGet(req, res) {
+  let viewData;
+
+  const allPanelists = generalData.panelists;
+  console.log(allPanelists);
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+    allPanelists,
+  };
+
+  return res.render('prototypes/manage-panel/manage-members/manage-members', viewData);
+}
+
+export function mpManageMembersManageMembersPost(req, res) {
   const {} = req.body;
 
   let targetURL;

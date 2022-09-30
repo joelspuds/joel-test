@@ -37,6 +37,10 @@
                             <a href="{{ awardSetUpLink }}" class="new-header__nav-link {% if activeNavItem == 'awardSetUp' %} new-header__nav-link--active {% endif %}">Award setup</a>
                         </li>
 
+                        <li class="new-header__nav-item">
+                            <a href="{{ panelLink }}" class="new-header__nav-link {% if activeNavItem == 'panel' %} new-header__nav-link--active {% endif %}">Panels</a>
+                        </li>
+
 
                         <li class="new-header__nav-item new-header__nav-item--user">
                             <a href="{{ accountSettingsLink }}" class="new-header__nav-link {% if activeNavItem == 'profile' %}new-header__nav-link--active{% endif %}">Account settings</a>
@@ -83,7 +87,7 @@
             <div class="container">
                 <div class="columns">
                     <div class="column">
-                        <span class="new-header__service">Funding Service(I)</span>
+                        <span class="new-header__service">Funding Service</span>
                         {% if not loggedOut %}
                             <div class="nav-wrapper">
                                 {% if not hideAccountLinks %}
