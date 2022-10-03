@@ -24,58 +24,58 @@
 {% block content %}
     {% call components.form(action='#', method='POST',name='submitForm') %}
 
-    {% call components.bulmaRow() %}
-        {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Manage members', caption=externalAwardPrototypeData.panelName) }}
-        {%- endcall %}
-    {%- endcall %}
-
-    {% call components.bulmaRow(extraClass='_u-space-b45') %}
-        {% call components.bulmaColumnAny(size='is-full') %}
-            <p class="govuk-body">
-                <a href="/prototypes/manage-panel/manage-members/add-member" class="govuk-button">Add panel member</a>
-            </p>
-        {%- endcall %}
-    {%- endcall %}
-
-    {% call components.bulmaRow() %}
-
-        {% call components.bulmaColumnAny(size='column is-three-quarters') %}
-            {{ components.captionHeading(text='Panel chair', tag='h2', size='m', extraClass='u-space-b5') }}
-            <p class="govuk-body">Each panel has a chair person to lead the meeting and ensure panel decisions are delivered to UKRI.</p>
-
-            {% if allPanelists %}
-                <table class="govuk-table">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Organisation</th>
-                        <th><span class="govuk-visually-hidden">Actions</span></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    {% for item in allPanelists %}
-                        {% if item.role == 'Panelisterge' %}
-                            <tr>
-                                <td class="govuk-table__cell">{{ item.firstName }} {{ item.lastName }}</td>
-                                <td class="govuk-table__cell">{{ item.firstName | toLowerCase }}.{{ item.lastName | toLowerCase  }}@{{ item.organisation | toLowerCase  }}.ac.uk</td>
-                                <td class="govuk-table__cell">{{ item.organisation }} University</td>
-                                <td class="govuk-table__cell"><a href="#" class="govuk-link">Edit</a>| <a href="#" class="govuk-link">Remove</a></td>
-                            </tr>
-                        {% endif %}
-                    {% endfor %}
-
-                    </tbody>
-                </table>
-            {% else %}
-                <p class="govuk-body meta" colspan="4">No panelists have been added yet</p>
-            {% endif %}
-
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-two-thirds') %}
+                {{ components.captionHeading(text='Manage members', caption=externalAwardPrototypeData.panelName) }}
+            {%- endcall %}
         {%- endcall %}
 
-    {%- endcall %}
+        {% call components.bulmaRow(extraClass='_u-space-b45') %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <p class="govuk-body">
+                    <a href="/prototypes/manage-panel/manage-members/add-member" class="govuk-button">Add panel member</a>
+                </p>
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-three-quarters') %}
+                {{ components.captionHeading(text='Panel chair', tag='h2', size='m', extraClass='u-space-b5') }}
+                <p class="govuk-body">Each panel has a chair person to lead the meeting and ensure panel decisions are delivered to UKRI.</p>
+
+                {% if allPanelists %}
+                    <table class="govuk-table">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Organisation</th>
+                            <th><span class="govuk-visually-hidden">Actions</span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for item in allPanelists %}
+                            {% if item.role == 'Panelist' %}
+                                <tr>
+                                    <td class="govuk-table__cell">{{ item.firstName }} {{ item.lastName }}</td>
+                                    <td class="govuk-table__cell">{{ item.firstName | toLowerCase }}.{{ item.lastName | toLowerCase  }}@{{ item.organisation | toLowerCase  }}.ac.uk</td>
+                                    <td class="govuk-table__cell">{{ item.organisation }} University</td>
+                                    <td class="govuk-table__cell"><a href="#" class="govuk-link">Edit</a>| <a href="#" class="govuk-link">Remove</a></td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="govuk-body meta" colspan="4">No panelists have been added yet</p>
+                {% endif %}
+
+            {%- endcall %}
+
+        {%- endcall %}
 
         {% call components.bulmaRow() %}
 
