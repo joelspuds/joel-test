@@ -1,0 +1,62 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set pageTitle = 'Add applicant' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set projectName = projectName if projectName %}
+{% set allApplicationTeam = allApplicationTeam if allApplicationTeam %}
+{% set backLinkContents =  [{url:'/prototypes/application-v2/application-team', text:'Back to applicants'}] %}
+{% set allOrgs = allOrgs if allOrgs %}
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Scratch') }}
+        {%- endcall %}
+    {%- endcall %}
+
+
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <h2 class="govuk-heading-m">Date and time</h2>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <hr class="section-break">
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-col-3') %}
+            <strong>Day Month Year</strong>
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-col-3') %}
+            <strong>Start time</strong>
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-col-3') %}
+            <strong>End time</strong>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <hr class="section-break">
+        {%- endcall %}
+    {%- endcall %}
+
+
+    {% call components.bulmaRow(extraClass='_u-space-b45') %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <p class="govuk-body">
+                <button class="govuk-button">Do stuff</button>
+            </p>
+        {%- endcall %}
+    {%- endcall %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+{% endblock %}

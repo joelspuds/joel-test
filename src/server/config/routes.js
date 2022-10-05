@@ -869,6 +869,8 @@ router.get('/prototypes/manage-panel/manage-members', demosController.mpManageMe
 router.post('/prototypes/manage-panel/manage-members', demosController.mpManageMembersPost);
 router.get('/prototypes/manage-panel/manage-members/manage-members', demosController.mpManageMembersManageMembersGet);
 router.post('/prototypes/manage-panel/manage-members/manage-members', demosController.mpManageMembersManageMembersPost);
+router.get('/prototypes/manage-panel/manage-members/add-member', demosController.mpManageMembersAddMemberGet);
+router.post('/prototypes/manage-panel/manage-members/add-member', demosController.mpManageMembersAddMemberPost);
 
 /* manage roles */
 router.get('/prototypes/manage-panel/manage-roles', demosController.mpManageRolesGet);

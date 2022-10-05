@@ -27,6 +27,8 @@ exports.mpManageMembersGet = mpManageMembersGet;
 exports.mpManageMembersPost = mpManageMembersPost;
 exports.mpManageMembersManageMembersGet = mpManageMembersManageMembersGet;
 exports.mpManageMembersManageMembersPost = mpManageMembersManageMembersPost;
+exports.mpManageMembersAddMemberGet = mpManageMembersAddMemberGet;
+exports.mpManageMembersAddMemberPost = mpManageMembersAddMemberPost;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 
@@ -343,5 +345,36 @@ function mpManageMembersManageMembersPost(req, res) {
 
   let targetURL;
   targetURL = '/prototypes/manage-panel/panel-dashboard';
+  return res.redirect(targetURL);
+}
+
+/*
+*   manage-members/add-member
+* */
+
+function mpManageMembersAddMemberGet(req, res) {
+  let viewData;
+
+  const allPanelists = generalData.panelists;
+  console.log(allPanelists);
+
+  const allOrgs = generalData.allOrgs2;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+    allPanelists,
+    allOrgs
+  };
+
+  return res.render('prototypes/manage-panel/manage-members/add-member', viewData);
+}
+
+function mpManageMembersAddMemberPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/manage-panel/manage-members/manage-members';
   return res.redirect(targetURL);
 }

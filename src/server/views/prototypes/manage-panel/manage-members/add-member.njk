@@ -12,6 +12,8 @@
 {% set loggedOut = false %}
 {% set navType = 'admin' %}
 
+{% set allOrgs = allOrgs if allOrgs %}
+
 {% set allData = allData if allData %}
 {% set externalAwardPrototypeData = prototypeData if prototypeData %}
 {% set userName = externalAwardPrototypeData.userName %}
@@ -26,8 +28,129 @@
 
         {% call components.bulmaRow() %}
             {% call components.bulmaColumnAny(size='is-two-thirds') %}
-                {{ components.captionHeading(text='Manage members', caption=externalAwardPrototypeData.panelName) }}
+                {{ components.captionHeading(text='Add panel member', caption=externalAwardPrototypeData.panelName) }}
             {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+
+                <div class="govuk-form-group {% if firstNameError %}govuk-form-group--error{% endif %}">
+                    <label class="govuk-label govuk-label--s" for="firstName" id="firstNameLabel">First name
+                        {% if firstNameError %}
+                            <span class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> You must enter a first name
+                            </span>
+                        {% endif %}
+                    </label>
+                    <input class="govuk-input govuk-input--width-20 {% if firstNameError %}govuk-input--error{% endif %}" id="firstName" type="text" name="firstName" value="{{ firstName }}">
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen') %}
+
+                <div class="govuk-form-group {% if lastNameError %}govuk-form-group--error{% endif %}">
+                    <label class="govuk-label govuk-label--s" for="lastName" id="lastNameLabel">Last name
+                        {% if lastNameError %}
+                            <span class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> You must enter a last name
+                            </span>
+                        {% endif %}
+                    </label>
+                    <input class="govuk-input govuk-input--width-20 {% if lastNameError %}govuk-input--error{% endif %}" id="lastName" type="text" name="lastName" value="{{ lastName }}">
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen') %}
+
+                <div class="govuk-form-group {% if emailError %}govuk-form-group--error{% endif %}">
+                    <label class="govuk-label govuk-label--s" for="emailAddress" id="emailLabel">Email address
+                        {% if emailError %}
+                            <span class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span>You must enter a valid email address                                                         </span>
+                        {% endif %}
+                    </label>
+                    <input class="govuk-input govuk-input--width-30 {% if emailError %}govuk-input--error{% endif %}" id="emailAddress" type="text" name="emailAddress" value="{{ emailAddress }}">
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen') %}
+
+                {#<p class="govuk-body">Only bodies registered with the UKRI Funding Service can apply for this Opportunity.</p>#}
+
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-visually-hidden">Add the relevant organisation</legend>
+
+                    <div class="govuk-form-group {% if organisationNameError %} govuk-form-group--error {% endif %}">
+                        <label class="govuk-label govuk-label--s" for="organisation">Organisation</label>
+                        {#<span class="govuk-hint">This will be the lead organisation for your application. Only organisations registered with the UKRI Funding Service can apply for this Opportunity.</span>#}
+                        {% if organisationNameError %}
+                            <span id="organisation-error" class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> You must enter an organisation that is registered with the UKRI Funding Service
+                            </span>
+                        {% endif %}
+                        <select name="organisation" class="govuk-select {% if organisationNameError %} govuk-select--error {% endif %} control" id="organisation">
+                            <option></option>
+                            {% for item in allOrgs %}
+                                <option value="{{ item.name }}">{{ item.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </fieldset>
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen') %}
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Select a panel membership type</legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="panelChair" name="panelRole" type="radio" value="Panel chair">
+                                <label class="govuk-label govuk-radios__label" for="panelChair">
+                                    Panel chair
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="deputyChair" name="panelRole" type="radio" value="Deputy chair">
+                                <label class="govuk-label govuk-radios__label" for="deputyChair">
+                                    Deputy chair
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="panelist" name="panelRole" type="radio" value="Panelilst">
+                                <label class="govuk-label govuk-radios__label" for="panelist">
+                                    Panelist
+                                </label>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </div>
+
+
+            {%- endcall %}
+
         {%- endcall %}
 
         {% call components.bulmaRow(extraClass='_u-space-b45') %}
@@ -38,121 +161,7 @@
             {%- endcall %}
         {%- endcall %}
 
-        {% call components.bulmaRow() %}
 
-            {% call components.bulmaColumnAny(size='column is-three-quarters') %}
-                {{ components.captionHeading(text='Panel chair', tag='h2', size='m', extraClass='u-space-b5') }}
-                <p class="govuk-body">Each panel has a chair person to lead the meeting and ensure panel decisions are delivered to UKRI.</p>
-
-                {% if allPanelists %}
-                    <table class="govuk-table">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Organisation</th>
-                            <th><span class="govuk-visually-hidden">Actions</span></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        {% for item in allPanelists %}
-                            {% if item.role == 'Panelist' %}
-                                <tr>
-                                    <td class="govuk-table__cell">{{ item.firstName }} {{ item.lastName }}</td>
-                                    <td class="govuk-table__cell">{{ item.firstName | toLowerCase }}.{{ item.lastName | toLowerCase  }}@{{ item.organisation | toLowerCase  }}.ac.uk</td>
-                                    <td class="govuk-table__cell">{{ item.organisation }} University</td>
-                                    <td class="govuk-table__cell"><a href="#" class="govuk-link">Edit</a>| <a href="#" class="govuk-link">Remove</a></td>
-                                </tr>
-                            {% endif %}
-                        {% endfor %}
-
-                        </tbody>
-                    </table>
-                {% else %}
-                    <p class="govuk-body meta" colspan="4">No panelists have been added yet</p>
-                {% endif %}
-
-            {%- endcall %}
-
-        {%- endcall %}
-
-        {% call components.bulmaRow() %}
-
-            {% call components.bulmaColumnAny(size='column is-three-quarters') %}
-                {{ components.captionHeading(text='Deputy chair', tag='h2', size='m', extraClass='u-space-b5') }}
-                <p class="govuk-body">The Deputy will  assumes responsibilities if the Chair is conflicted for an application. </p>
-
-                {% if allPanelists %}
-                    <table class="govuk-table">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Organisation</th>
-                            <th><span class="govuk-visually-hidden">Actions</span></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        {% for item in allPanelists %}
-                            {% if item.role == 'Panelist' %}
-                                <tr>
-                                    <td class="govuk-table__cell">{{ item.firstName }} {{ item.lastName }}</td>
-                                    <td class="govuk-table__cell">{{ item.firstName | toLowerCase }}.{{ item.lastName | toLowerCase  }}@{{ item.organisation | toLowerCase  }}.ac.uk</td>
-                                    <td class="govuk-table__cell">{{ item.organisation }} University</td>
-                                    <td class="govuk-table__cell"><a href="#" class="govuk-link">Edit</a>| <a href="#" class="govuk-link">Remove</a></td>
-                                </tr>
-                            {% endif %}
-                        {% endfor %}
-
-                        </tbody>
-                    </table>
-                {% else %}
-                    <p class="govuk-body meta" colspan="4">No panelists have been added yet</p>
-                {% endif %}
-
-            {%- endcall %}
-
-        {%- endcall %}
-
-        {% call components.bulmaRow() %}
-
-            {% call components.bulmaColumnAny(size='column is-three-quarters') %}
-                {{ components.captionHeading(text='Panelists', tag='h2', size='m', extraClass='u-space-b5') }}
-                <p class="govuk-body">Panelist assess the applications in a fair, evidence-based and objective manner using the application documentation, you can assign panelist roles and applications in the ‘Manage Roles’ section.</p>
-                {% if allPanelists %}
-                    <table class="govuk-table">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Organisation</th>
-                            <th><span class="govuk-visually-hidden">Actions</span></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        {% for item in allPanelists %}
-                            {% if item.role == 'Panelist' %}
-                                <tr>
-                                    <td class="govuk-table__cell">{{ item.firstName }} {{ item.lastName }}</td>
-                                    <td class="govuk-table__cell">{{ item.firstName | toLowerCase }}.{{ item.lastName | toLowerCase  }}@{{ item.organisation | toLowerCase  }}.ac.uk</td>
-                                    <td class="govuk-table__cell">{{ item.organisation }} University</td>
-                                    <td class="govuk-table__cell"><a href="#" class="govuk-link">Edit</a>| <a href="#" class="govuk-link">Remove</a></td>
-                                </tr>
-                            {% endif %}
-                        {% endfor %}
-
-                        </tbody>
-                    </table>
-                {% else %}
-                    <p class="govuk-body meta" colspan="4">No panelists have been added yet</p>
-                {% endif %}
-
-            {%- endcall %}
-
-        {%- endcall %}
 
     {%- endcall %} {# end form #}
 
@@ -160,128 +169,15 @@
 
 {% endblock %}
 {% block bodyScripts %}
+    <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
     <script type="text/javascript">
-        /* smooth-scroll.js v1.3.1 */
-        /*
-        n=0,
-        r=500,
-        i=15,
-        */
-        (function(e, t) {
-            "use strict";
-            // n is the offset value to get the title showing below the tabs
-            var n = 60,
-                r = 250,
-                i = 15,
-                /*s=document.getElementsByTagName("a"),*/
-                s = document.getElementsByClassName('canScroll'),
-                o;
-            for (var u = 0; u < s.length; u++) {
-                o = s[u].attributes.href === t ? null : s[u].attributes.href.nodeValue.toString();
-                if (o !== null && o.length > 1 && o.indexOf("#") != -1) {
-                    s[u].onclick = function() {
-                        var n, s = this.attributes.href.nodeValue.toString(),
-                            o = s.substr(0, s.indexOf("#")),
-                            u = s.substr(s.indexOf("#") + 1);
-                        if (n = document.getElementById(u)) {
-                            var l = (r - r % i) / i,
-                                c = f(),
-                                h = (a(n) - c) / l;
-                            if (e.history && typeof e.history.pushState == "function") e.history.pushState({}, t, o + "#" + u);
-                            for (var p = 1; p <= l; p++) {
-                                (function() {
-                                    var t = h * p;
-                                    setTimeout(function() {
-                                        e.scrollTo(0, t + c)
-                                    }, i * p)
-                                })()
-                            }
-                            return false
-                        }
-                    }
-                }
-            }
-            var a = function(e) {
-                var r = n * -1;
-                while (e.offsetParent != t && e.offsetParent != null) {
-                    r += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);
-                    e = e.offsetParent
-                }
-                return r
-            };
-            var f = function() {
-                return e.pageYOffset !== t ? e.pageYOffset : document.documentElement.scrollTop !== t ? document.documentElement.scrollTop : document.body.scrollTop
-            }
-        })(window)
-    </script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script>
-        let div_top = $('.menu').offset().top;
-        console.log('div_top = ' + div_top);
-        $(window).load(function () {
-            console.log($('.menu').offset().top);
+        var selectEl = document.querySelector('#organisation');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 1,
+            selectElement: selectEl
         });
-        $(window).scroll(function () {
-            var window_top = $(window).scrollTop() - 0;
-            if (window_top > div_top) {
-                if (!$('.menu').is('.sticky')) {
-                    $('.menu').addClass('sticky');
-                }
-            } else {
-                $('.menu').removeClass('sticky');
-            }
-        });
-
-        /* $('.govuk-tabs__tab').each(function(index){
-             $(this).on('click', function(e){
-                 e.preventDefault();
-                 console.log('clicking');
-                 // set previous scroll before doing anything
-                 $('.govuk-tabs__list-item--selected a').attr('data-scroll', $(document).scrollTop());
-                 // hide all tabs
-                 $('.govuk-tabs__panel').addClass('govuk-tabs__panel--hidden');
-                 $('.govuk-tabs__list-item').removeClass('govuk-tabs__list-item--selected');
-                 // activate desired tab
-                 $('#' + $(this).data('tab')).removeClass('govuk-tabs__panel--hidden');
-                 $(this).parent().addClass('govuk-tabs__list-item--selected');
-                 // scroll to active tab
-                 $(document).scrollTop(parseInt($(this).attr('data-scroll')));
-             });
-         });*/
-    </script>
-
-    <script>
-        $('.rolesRadio').each(function(index){
-            $(this).on('change', function(e){
-                e.preventDefault();
-                console.log('clicking');
-                // set previous scroll before doing anything
-                let marker = $(this).attr('data-radio');
-                // $('.radio-toggles__bottom').addClass('govuk-visually-hidden');
-                // $('div').attr('data-content', marker).removeClass('govuk-visually-hidden');
-
-                $('.radio-toggles__bottom').each(function(index){
-                    if($(this).attr('data-content') != marker) {
-                        $(this).addClass('govuk-visually-hidden');
-                    } else {
-                        $(this).removeClass('govuk-visually-hidden');
-                    }
-                });
-
-
-                console.log(marker);
-                /* $('.govuk-tabs__list-item--selected a').attr('data-scroll', $(document).scrollTop());
-                 // hide all tabs
-                 $('.govuk-tabs__panel').addClass('govuk-tabs__panel--hidden');
-                 $('.govuk-tabs__list-item').removeClass('govuk-tabs__list-item--selected');
-                 // activate desired tab
-                 $('#' + $(this).data('tab')).removeClass('govuk-tabs__panel--hidden');
-                 $(this).parent().addClass('govuk-tabs__list-item--selected');
-                 // scroll to active tab
-                 $(document).scrollTop(parseInt($(this).attr('data-scroll')));*/
-            });
-        });
-
     </script>
 
 

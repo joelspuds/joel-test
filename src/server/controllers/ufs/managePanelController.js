@@ -316,3 +316,34 @@ export function mpManageMembersManageMembersPost(req, res) {
   targetURL = '/prototypes/manage-panel/panel-dashboard';
   return res.redirect(targetURL);
 }
+
+/*
+*   manage-members/add-member
+* */
+
+export function mpManageMembersAddMemberGet(req, res) {
+  let viewData;
+
+  const allPanelists = generalData.panelists;
+  console.log(allPanelists);
+
+  const allOrgs = generalData.allOrgs2;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+    allPanelists,
+    allOrgs,
+  };
+
+  return res.render('prototypes/manage-panel/manage-members/add-member', viewData);
+}
+
+export function mpManageMembersAddMemberPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/manage-panel/manage-members/manage-members';
+  return res.redirect(targetURL);
+}
