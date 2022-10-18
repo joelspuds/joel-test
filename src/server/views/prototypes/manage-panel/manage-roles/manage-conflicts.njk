@@ -16,7 +16,7 @@
 {% set externalAwardPrototypeData = prototypeData if prototypeData %}
 {% set userName = externalAwardPrototypeData.userName %}
 
-{% set pageTitle = 'Manage members' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Manage roles' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/manage-panel/panel-dashboard', text:'Back to panel dashboard'}] %}
 
 {% block content %}
@@ -53,7 +53,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Manage members', caption=externalAwardPrototypeData.panelName) }}
+            {{ components.captionHeading(text='Manage roles', caption=externalAwardPrototypeData.panelName) }}
         {%- endcall %}
     {%- endcall %}
 
@@ -145,6 +145,53 @@
                         {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
 
                             {{ components.captionHeading(text='Manage conflicts',tag='h2', size='m', extraClass='_u-space-b5') }}
+
+                            <p class="govuk-body">Add conflicts of interest to restrict access to applications for selected users.</p>
+                            <p class="govuk-body">Panelists will have to complete a self declaration to confirm they do not have a conflict when accessing a application for the first time. </p>
+
+                        {%- endcall %}
+
+                    {%- endcall %}
+
+                    {% call components.bulmaRow() %}
+
+                        {% call components.bulmaColumnAny(size='is-full', extraClass='{#u-space-t20#}') %}
+
+                            <div class="responsive-table">
+
+                                <table class="govuk-table">
+                                    <caption class="govuk-table__caption govuk-visually-hidden">Applications</caption>
+                                    <thead class="govuk-table__head">
+                                    <tr class="govuk-table__row">
+                                        <th scope="col" class="govuk-table__header _cell-max-25">Name</th>
+                                        <th scope="col" class="govuk-table__header">Lead organisation</th>
+                                        <th scope="col" class="govuk-table__header cell-150 govuk-table__header--numeric">Conflicts</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="govuk-table__body">
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell"><a href="#" class="govuk-link">APP335: Molecular Level Understanding of New Particle Formation in the Urban Atmosphere: Contribution of Local Pollutants</a></td>
+                                        <td class="govuk-table__cell">Cardiff University</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                            <a href="#" class="govuk-link ">Add conflicts</a>
+                                        </td>
+                                    </tr>
+
+                                    {% for item in appData %}
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP{{ item.id }}: {{ item.name }}</a></td>
+                                            <td class="govuk-table__cell">{{ item.org }}</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                                <a href="#" class="govuk-link">Add conflicts</a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+
+                            </div>
 
                         {%- endcall %}
 

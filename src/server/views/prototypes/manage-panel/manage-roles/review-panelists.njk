@@ -12,11 +12,15 @@
 {% set loggedOut = false %}
 {% set navType = 'admin' %}
 
+{#{% set appData = appData if appData %}
+{% set oppData = oppData if oppData %}#}
+{% set allPanelists = allPanelists if allPanelists %}
+
 {% set allData = allData if allData %}
 {% set externalAwardPrototypeData = prototypeData if prototypeData %}
 {% set userName = externalAwardPrototypeData.userName %}
 
-{% set pageTitle = 'Manage members' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Manage roles' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/manage-panel/panel-dashboard', text:'Back to panel dashboard'}] %}
 
 {% block content %}
@@ -53,7 +57,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Manage members', caption=externalAwardPrototypeData.panelName) }}
+            {{ components.captionHeading(text='Manage roles', caption=externalAwardPrototypeData.panelName) }}
         {%- endcall %}
     {%- endcall %}
 
@@ -145,6 +149,135 @@
                         {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
 
                             {{ components.captionHeading(text='Review panelists',tag='h2', size='m', extraClass='_u-space-b5') }}
+
+                        {%- endcall %}
+
+                    {%- endcall %}
+
+                    {% call components.bulmaRow() %}
+
+                        {% call components.bulmaColumnAny(size='column is-three-quarters') %}
+                            {{ components.captionHeading(text='Panel chair', tag='h2', size='m', extraClass='u-space-b5') }}
+
+                            {% if allPanelists %}
+                                <table class="govuk-table">
+                                    <thead>
+                                    <tr>
+                                        <th class="govuk-table__header">Name</th>
+                                        <th class="govuk-table__header">Organisation</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Conflict</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    {% if allData.panelRole == 'Panel chair' %}
+                                        <tr>
+                                            <td class="govuk-table__cell">{{ allData.firstName }} {{ allData.lastName }}</td>
+                                            <td class="govuk-table__cell">{{ allData.organisation }}</td>
+                                            <td  class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                                        </tr>
+                                    {% endif %}
+
+                                    {% for item in allPanelists %}
+                                        {% if item.role == 'Panel chair' %}
+                                            <tr>
+                                                <td class="govuk-table__cell">{{ item.firstName }} {{ item.lastName }}</td>
+                                                <td class="govuk-table__cell">{{ item.organisation }} University</td>
+                                                <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            {% else %}
+                                <p class="govuk-body meta" colspan="3">No panel chairs have been added yet</p>
+                            {% endif %}
+
+                        {%- endcall %}
+
+                    {%- endcall %}
+
+                    {#{% call components.bulmaRow() %}
+
+                        {% call components.bulmaColumnAny(size='column is-three-quarters') %}
+                            {{ components.captionHeading(text='Deputy chair', tag='h2', size='m', extraClass='u-space-b5') }}
+                            {% if allPanelists %}
+                                <table class="govuk-table">
+                                    <thead>
+                                    <tr>
+                                        <th class="govuk-table__header">Name</th>
+                                        <th class="govuk-table__header">Organisation</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Conflict</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    {% if allData.panelRole == 'Deputy chair' %}
+                                        <tr>
+                                            <td class="govuk-table__cell">{{ allData.firstName }} {{ allData.lastName }}</td>
+                                            <td class="govuk-table__cell">{{ allData.organisation }}</td>
+                                            <td  class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                                        </tr>
+                                    {% endif %}
+
+                                    {% for item in allPanelists %}
+                                        {% if item.role == 'Deputy chair' %}
+                                            <tr>
+                                                <td class="govuk-table__cell">{{ item.firstName }} {{ item.lastName }}</td>
+                                                <td class="govuk-table__cell">{{ item.organisation }} University</td>
+                                                <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            {% else %}
+                                <p class="govuk-body meta" colspan="3">No deputy chairs have been added yet</p>
+                            {% endif %}
+
+                        {%- endcall %}
+
+                    {%- endcall %}#}
+
+                    {% call components.bulmaRow() %}
+
+                        {% call components.bulmaColumnAny(size='column is-three-quarters') %}
+                            {{ components.captionHeading(text='Panelists', tag='h2', size='m', extraClass='u-space-b5') }}
+                            {% if allPanelists %}
+                                <table class="govuk-table">
+                                    <thead>
+                                    <tr>
+                                        <th class="govuk-table__header">Name</th>
+                                        <th class="govuk-table__header">Organisation</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">First<br>introducer</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Second<br>introducer</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Third<br>introducer</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Conflict</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    {% for item in allPanelists %}
+                                        {% if item.role !== 'Panel chair' %}
+                                            <tr>
+                                                <td class="govuk-table__cell">{{ item.firstName }} {{ item.lastName }} {% if item.role == 'Deputy chair' %}<strong>(Deputy chair)</strong>{% endif %}</td>
+                                                <td class="govuk-table__cell">{{ item.organisation }} University</td>
+                                                <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(0, 4) | random }}</td>
+                                                <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(0, 4) | random }}</td>
+                                                <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(0, 4) | random }}</td>
+                                                <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(0, 2) | random }}</td>
+
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            {% else %}
+                                <p class="govuk-body meta" colspan="3">No deputy chairs have been added yet</p>
+                            {% endif %}
 
                         {%- endcall %}
 

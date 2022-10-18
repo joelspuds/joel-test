@@ -1,0 +1,25 @@
+.panelists {
+
+  &--empty {
+    color: govuk-colour("red");
+
+    span {
+      display: block;
+      @include govuk-font($size: 19, $weight: bold);
+    }
+  }
+
+  &--assigned {
+    display: block;
+    @include govuk-font($size: 19, $weight: bold);
+
+    span {
+      display: block;
+    }
+  }
+
+  &__title {
+    font-weight: normal!important;
+  }
+
+}

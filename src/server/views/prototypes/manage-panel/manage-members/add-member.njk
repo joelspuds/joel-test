@@ -99,12 +99,6 @@
 
                     <div class="govuk-form-group {% if organisationNameError %} govuk-form-group--error {% endif %}">
                         <label class="govuk-label govuk-label--s" for="organisation">Organisation</label>
-                        {#<span class="govuk-hint">This will be the lead organisation for your application. Only organisations registered with the UKRI Funding Service can apply for this Opportunity.</span>#}
-                        {% if organisationNameError %}
-                            <span id="organisation-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> You must enter an organisation that is registered with the UKRI Funding Service
-                            </span>
-                        {% endif %}
                         <select name="organisation" class="govuk-select {% if organisationNameError %} govuk-select--error {% endif %} control" id="organisation">
                             <option></option>
                             {% for item in allOrgs %}
@@ -155,9 +149,17 @@
 
         {% call components.bulmaRow(extraClass='_u-space-b45') %}
             {% call components.bulmaColumnAny(size='is-full') %}
-                <p class="govuk-body">
-                    <a href="/prototypes/manage-panel/manage-members/add-member" class="govuk-button">Add panel member</a>
-                </p>
+                {#<p class="govuk-body">
+                    <button class="govuk-button">Add panel member</button>
+                </p>#}
+                {% call components.bulmaRow() %}
+                    {% call components.bulmaColumnAny(size='is-full') %}
+                        <div class="application-controls govuk-clearfix">
+                            {{ components.button(text='Add panel member', extraClass="application-controls__submit")}}
+                            {{ components.link(text='Cancel and return to manage members', url='/prototypes/manage-panel/manage-members/manage-members', extraClass="application-controls__cancel")}}
+                        </div>
+                    {%- endcall %}
+                {%- endcall %}
             {%- endcall %}
         {%- endcall %}
 

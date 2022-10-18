@@ -16,10 +16,16 @@
 {% set externalAwardPrototypeData = prototypeData if prototypeData %}
 {% set userName = externalAwardPrototypeData.userName %}
 
-{% set pageTitle = 'Manage members' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set assignedRolesHasBeenUpdated = assignedRolesHasBeenUpdated if assignedRolesHasBeenUpdated %}
+
+{% set allPanelists = allPanelists if allPanelists %}
+
+{% set pageTitle = 'Manage roles' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/manage-panel/panel-dashboard', text:'Back to panel dashboard'}] %}
 
 {% block content %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
 
     <style>
         .sticky-tabs {
@@ -51,9 +57,31 @@
         }
     </style>
 
+    {% if assignedRolesHasBeenUpdated %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="govuk-notification-banner govuk-notification-banner--success" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <p class="govuk-notification-banner__heading">
+                            Assigned roles have been updated
+                        </p>
+                    </div>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+    {% endif %}
+
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Manage members', caption=externalAwardPrototypeData.panelName) }}
+            {{ components.captionHeading(text='Manage roles', caption=externalAwardPrototypeData.panelName) }}
         {%- endcall %}
     {%- endcall %}
 
@@ -179,18 +207,73 @@
                                                     </p>
                                                 </div>
                                                 <div class="radio-toggles__bottom u-space-t20 govuk-visually-hidden" data-content="one">
-                                                    bottom stuff
+                                                    {% call components.bulmaRow() %}
+                                                        {% call components.bulmaColumnAny(size='is-full', extraClass='{#u-space-t20#}') %}
+                                                            <div class="govuk-warning-text u-space-b10">
+                                                                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                                                                <strong class="govuk-warning-text__text"><span class="govuk-warning-text__assistive">Warning</span>1 Conflict</strong>
+                                                            </div>
+                                                            <p class="govuk-body u-space-t0">Randolph McWerter</p>
+                                                        {%- endcall %}
+                                                    {%- endcall %}
+                                                    {% call components.bulmaRow() %}
+                                                        {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                            <div class="govuk-form-group">
+                                                                <label class="govuk-label govuk-label--s" for="select11">First introducer</label>
+                                                                <select class="govuk-select govuk-select--full-width" id="select11" name="select11">
+                                                                    <option value="-">Select a panelist</option>
+                                                                    {% for item in allPanelists %}
+                                                                        {% set tempName11 = item.firstName + ' ' + item.lastName %}
+                                                                        <option value="{{ item.firstName }} {{ item.lastName }}"{% if allData.select11 == tempName11  %} selected {% endif %}>{{ tempName11 }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>
+                                                        {%- endcall %}
+                                                        {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                            <div class="govuk-form-group">
+                                                                <label class="govuk-label govuk-label--s" for="select12">Second introducer</label>
+                                                                <select class="govuk-select govuk-select--full-width" id="select12" name="select12">
+                                                                    <option value="-">Select a panelist</option>
+                                                                    {% for item in allPanelists %}
+                                                                        {% set tempName12 = item.firstName + ' ' + item.lastName %}
+                                                                        <option value="{{ item.firstName }} {{ item.lastName }}"{% if allData.select12 == tempName12  %} selected {% endif %}>{{ tempName12 }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>
+                                                        {%- endcall %}
+                                                        {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                            <div class="govuk-form-group">
+                                                                <label class="govuk-label govuk-label--s" for="select13">Third introducer</label>
+                                                                <select class="govuk-select govuk-select--full-width" id="select13" name="select13">
+                                                                   <option value="-">Select a panelist</option>
+                                                                   {% for item in allPanelists %}
+                                                                       {% set tempName13 = item.firstName + ' ' + item.lastName %}
+                                                                       <option value="{{ item.firstName }} {{ item.lastName }}"{% if allData.select13 == tempName13  %} selected {% endif %}>{{ tempName13 }}</option>
+                                                                   {% endfor %}
+                                                                </select>
+                                                            </div>
+                                                        {%- endcall %}
+                                                    {%- endcall %}
                                                 </div>
                                             </div>
                                             <div class="radio-toggles__contents-right column is-3">
-                                                right stuff
+
+                                                <div class="{% if allData.select1HasData %} govuk-visually-hidden {% endif %} panelists panelists--empty" id="empty_select1">
+                                                    <span class="panelists__title">Panelists</span>
+                                                    <span class="" id="">0 assigned</span>
+                                                </div>
+                                                <div class="{% if not allData.select1HasData %} govuk-visually-hidden {% endif %} panelists panelists--assigned" id="assigned_select1">
+                                                    <span class="panelists__title">Panelists</span>
+                                                    <span class="" id="span_select11">{{ allData.select11 }}</span>
+                                                    <span class="" id="span_select12">{{ allData.select12 }}</span>
+                                                    <span class="" id="span_select13">{{ allData.select13 }}</span>
+                                                </div>
+
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
-
 
                                 <div class="radio-toggles__item govuk-radios columns">
                                     <div class="radio-toggles__radio column is-1">
@@ -214,11 +297,59 @@
                                                     </p>
                                                 </div>
                                                 <div class="radio-toggles__bottom u-space-t20 govuk-visually-hidden" data-content="two">
-                                                    bottom stuff
+                                                    {% call components.bulmaRow() %}
+                                                        {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                            <div class="govuk-form-group">
+                                                                <label class="govuk-label govuk-label--s" for="select21">First introducer</label>
+                                                                <select class="govuk-select govuk-select--full-width" id="select21" name="select21">
+                                                                    <option value="-">Select a panelist</option>
+                                                                    {% for item in allPanelists %}
+                                                                        {% set tempName21 = item.firstName + ' ' + item.lastName %}
+                                                                        <option value="{{ item.firstName }} {{ item.lastName }}"{% if allData.select21 == tempName21  %} selected {% endif %}>{{ tempName21 }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>
+                                                        {%- endcall %}
+                                                        {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                            <div class="govuk-form-group">
+                                                                <label class="govuk-label govuk-label--s" for="select22">Second introducer</label>
+                                                                <select class="govuk-select govuk-select--full-width" id="select22" name="select22">
+                                                                    <option value="-">Select a panelist</option>
+                                                                    {% for item in allPanelists %}
+                                                                        {% set tempName22 = item.firstName + ' ' + item.lastName %}
+                                                                        <option value="{{ item.firstName }} {{ item.lastName }}"{% if allData.select22 == tempName22  %} selected {% endif %}>{{ tempName22 }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>
+                                                        {%- endcall %}
+                                                        {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                            <div class="govuk-form-group">
+                                                                <label class="govuk-label govuk-label--s" for="select23">Third introducer</label>
+                                                                <select class="govuk-select govuk-select--full-width" id="select23" name="select23">
+                                                                    <option value="-">Select a panelist</option>
+                                                                    {% for item in allPanelists %}
+                                                                        {% set tempName23 = item.firstName + ' ' + item.lastName %}
+                                                                        <option value="{{ item.firstName }} {{ item.lastName }}"{% if allData.select23 == tempName23  %} selected {% endif %}>{{ tempName23 }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>
+                                                        {%- endcall %}
+                                                    {%- endcall %}
                                                 </div>
                                             </div>
                                             <div class="radio-toggles__contents-right column is-3">
-                                                right stuff
+                                                <div class="panelists panelists--empty {% if allData.select2HasData %} govuk-visually-hidden {% endif %}" id="empty_select2">
+                                                    <span class="panelists__title">Panelists</span>
+                                                    <span class="" id="">0 assigned</span>
+                                                </div>
+                                                <div class="{% if not allData.select2HasData %} govuk-visually-hidden {% endif %} panelists panelists--assigned" id="assigned_select2">
+                                                    <span class="panelists__title">Panelists</span>
+                                                    <span class="" id="span_select21">{{ allData.select21 }}</span>
+                                                    <span class="" id="span_select22">{{ allData.select22 }}</span>
+                                                    <span class="" id="span_select23">{{ allData.select23 }}</span>
+
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -246,11 +377,67 @@
                                                     </p>
                                                 </div>
                                                 <div class="radio-toggles__bottom u-space-t20 govuk-visually-hidden" data-content="three">
-                                                    bottom stuff
+                                                    {% call components.bulmaRow() %}
+                                                        {% call components.bulmaColumnAny(size='is-full', extraClass='{#u-space-t20#}') %}
+                                                            <div class="govuk-warning-text u-space-b10">
+                                                                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                                                                <strong class="govuk-warning-text__text"><span class="govuk-warning-text__assistive">Warning</span>1 Conflict</strong>
+                                                            </div>
+                                                            <p class="govuk-body u-space-t0">Rhiannon Glasson</p>
+                                                        {%- endcall %}
+                                                    {%- endcall %}
+                                                    {% call components.bulmaRow() %}
+                                                        {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                            <div class="govuk-form-group">
+                                                                <label class="govuk-label govuk-label--s" for="select31">First introducer</label>
+                                                                <select class="govuk-select govuk-select--full-width" id="select31" name="select31">
+                                                                    <option value="-">Select a panelist 31</option>
+                                                                    {% for item in allPanelists %}
+                                                                        {% set tempName31 = item.firstName + ' ' + item.lastName %}
+                                                                        <option value="{{ item.firstName }} {{ item.lastName }}"{% if allData.select31 == tempName31  %} selected {% endif %}>{{ tempName31 }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>
+                                                        {%- endcall %}
+                                                        {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                            <div class="govuk-form-group">
+                                                                <label class="govuk-label govuk-label--s" for="select32">Second introducer</label>
+                                                                <select class="govuk-select govuk-select--full-width" id="select32" name="select32">
+                                                                    <option value="-">Select a panelist 32</option>
+                                                                    {% for item in allPanelists %}
+                                                                        {% set tempName32 = item.firstName + ' ' + item.lastName %}
+                                                                        <option value="{{ item.firstName }} {{ item.lastName }}"{% if allData.select32 == tempName32  %} selected {% endif %}>{{ tempName32 }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>
+                                                        {%- endcall %}
+                                                        {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                            <div class="govuk-form-group">
+                                                                <label class="govuk-label govuk-label--s" for="select33">Third introducer</label>
+                                                                <select class="govuk-select govuk-select--full-width" id="select33" name="select33">
+                                                                    <option value="-">Select a panelist 33</option>
+                                                                    {% for item in allPanelists %}
+                                                                        {% set tempName33 = item.firstName + ' ' + item.lastName %}
+                                                                        <option value="{{ item.firstName }} {{ item.lastName }}"{% if allData.select33 == tempName33  %} selected {% endif %}>{{ tempName33 }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>
+                                                        {%- endcall %}
+                                                    {%- endcall %}
                                                 </div>
                                             </div>
                                             <div class="radio-toggles__contents-right column is-3">
-                                                right stuff
+                                                <div class="panelists panelists--empty {% if allData.select3HasData %} govuk-visually-hidden {% endif %}" id="empty_select3">
+                                                    <span class="panelists__title">Panelists</span>
+                                                    <span class="" id="">0 assigned</span>
+                                                </div>
+                                                <div class="{% if not allData.select3HasData %} govuk-visually-hidden {% endif %} panelists panelists--assigned" id="assigned_select3">
+                                                    <span class="panelists__title">Panelists</span>
+                                                    <span class="" id="span_select21">{{ allData.select31 }}</span>
+                                                    <span class="" id="span_select22">{{ allData.select32 }}</span>
+                                                    <span class="" id="span_select23">{{ allData.select33 }}</span>
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -270,64 +457,21 @@
     {%- endcall %}
     </section>
 
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            <div class="application-controls govuk-clearfix">
+                <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Save assigned roles</button>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
     {% include '../../../layouts/partials/user-contact.njk' %}
 
 {% endblock %}
 {% block bodyScripts %}
-    <script type="text/javascript">
-        /* smooth-scroll.js v1.3.1 */
-        /*
-        n=0,
-        r=500,
-        i=15,
-        */
-        (function(e, t) {
-            "use strict";
-            // n is the offset value to get the title showing below the tabs
-            var n = 60,
-                r = 250,
-                i = 15,
-                /*s=document.getElementsByTagName("a"),*/
-                s = document.getElementsByClassName('canScroll'),
-                o;
-            for (var u = 0; u < s.length; u++) {
-                o = s[u].attributes.href === t ? null : s[u].attributes.href.nodeValue.toString();
-                if (o !== null && o.length > 1 && o.indexOf("#") != -1) {
-                    s[u].onclick = function() {
-                        var n, s = this.attributes.href.nodeValue.toString(),
-                            o = s.substr(0, s.indexOf("#")),
-                            u = s.substr(s.indexOf("#") + 1);
-                        if (n = document.getElementById(u)) {
-                            var l = (r - r % i) / i,
-                                c = f(),
-                                h = (a(n) - c) / l;
-                            if (e.history && typeof e.history.pushState == "function") e.history.pushState({}, t, o + "#" + u);
-                            for (var p = 1; p <= l; p++) {
-                                (function() {
-                                    var t = h * p;
-                                    setTimeout(function() {
-                                        e.scrollTo(0, t + c)
-                                    }, i * p)
-                                })()
-                            }
-                            return false
-                        }
-                    }
-                }
-            }
-            var a = function(e) {
-                var r = n * -1;
-                while (e.offsetParent != t && e.offsetParent != null) {
-                    r += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);
-                    e = e.offsetParent
-                }
-                return r
-            };
-            var f = function() {
-                return e.pageYOffset !== t ? e.pageYOffset : document.documentElement.scrollTop !== t ? document.documentElement.scrollTop : document.body.scrollTop
-            }
-        })(window)
-    </script>
+
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script>
         let div_top = $('.menu').offset().top;
@@ -345,27 +489,10 @@
                 $('.menu').removeClass('sticky');
             }
         });
-
-        /* $('.govuk-tabs__tab').each(function(index){
-             $(this).on('click', function(e){
-                 e.preventDefault();
-                 console.log('clicking');
-                 // set previous scroll before doing anything
-                 $('.govuk-tabs__list-item--selected a').attr('data-scroll', $(document).scrollTop());
-                 // hide all tabs
-                 $('.govuk-tabs__panel').addClass('govuk-tabs__panel--hidden');
-                 $('.govuk-tabs__list-item').removeClass('govuk-tabs__list-item--selected');
-                 // activate desired tab
-                 $('#' + $(this).data('tab')).removeClass('govuk-tabs__panel--hidden');
-                 $(this).parent().addClass('govuk-tabs__list-item--selected');
-                 // scroll to active tab
-                 $(document).scrollTop(parseInt($(this).attr('data-scroll')));
-             });
-         });*/
     </script>
 
     <script>
-        $('.rolesRadio').each(function(index){
+        $('.rolesRadio').each(function(index) {
             $(this).on('change', function(e){
                 e.preventDefault();
                 console.log('clicking');
@@ -381,10 +508,98 @@
                         $(this).removeClass('govuk-visually-hidden');
                     }
                 });
-
-
                 console.log(marker);
-               /* $('.govuk-tabs__list-item--selected a').attr('data-scroll', $(document).scrollTop());
+            });
+        });
+
+        $('.govuk-select').each(function(index){
+            $(this).on('change', function(e){
+                e.preventDefault();
+                let selectName = $(this).attr('name');
+                // console.log('selectName = ' + selectName);
+                // console.log('$(this).val().length = ' + $(this).val().length);
+                // console.log('$(this).val() = ' + $(this).val());
+                $('#span_'+selectName).text($('#'+selectName + ' option:selected').val());
+                $('#empty_'+selectName.substring(0, selectName.length - 1)).addClass('govuk-visually-hidden');
+                $('#assigned_'+selectName.substring(0, selectName.length - 1)).removeClass('govuk-visually-hidden');
+            });
+        // }).trigger('load');
+        });
+
+
+        /*let selectPanelists = function() {
+            $('.govuk-select').each(function(index){
+                $(this).on('change', function(e){
+                    e.preventDefault();
+                    let selectName = $(this).attr('name');
+                    // console.log('selectName = ' + selectName);
+                    // console.log('$(this).val().length = ' + $(this).val().length);
+                    // console.log('$(this).val() = ' + $(this).val());
+                    $('#span_'+selectName).text($('#'+selectName + ' option:selected').val());
+                    $('#empty_'+selectName.substring(0, selectName.length - 1)).addClass('govuk-visually-hidden');
+                    $('#assigned_'+selectName.substring(0, selectName.length - 1)).removeClass('govuk-visually-hidden');
+                });
+            });
+        }
+
+        $(window).on('load', function() {
+            selectPanelists();
+        });*/
+
+        /*let selectPanelists2 = function(e) {
+            e.preventDefault();
+            let selectName = $(this).attr('name');
+            // console.log('selectName = ' + selectName);
+            // console.log('$(this).val().length = ' + $(this).val().length);
+            // console.log('$(this).val() = ' + $(this).val());
+            $('#span_'+selectName).text($('#'+selectName + ' option:selected').val());
+            $('#empty_'+selectName.substring(0, selectName.length - 1)).addClass('govuk-visually-hidden');
+            $('#assigned_'+selectName.substring(0, selectName.length - 1)).removeClass('govuk-visually-hidden');
+        }*/
+
+       /* $('.govuk-select').load(selectPanelists2).change(selectPanelists2);
+        $(window).on('load', function() {
+            // $('.govuk-select').trigger('change');
+            $('.govuk-select').each(function(index){
+                if($(this).val() !== '-' || $(this).val() !== 'Select a panelist') {
+                    $(this).trigger('change');
+                }
+               /!* $(this).on('change', function(e){
+                    e.preventDefault();
+                    let selectName = $(this).attr('name');
+                    // console.log('selectName = ' + selectName);
+                    // console.log('$(this).val().length = ' + $(this).val().length);
+                    // console.log('$(this).val() = ' + $(this).val());
+                    $('#span_'+selectName).text($('#'+selectName + ' option:selected').val());
+                    $('#empty_'+selectName.substring(0, selectName.length - 1)).addClass('govuk-visually-hidden');
+                    $('#assigned_'+selectName.substring(0, selectName.length - 1)).removeClass('govuk-visually-hidden');
+                });*!/
+            });
+        })*/
+
+
+    </script>
+
+
+    {#
+    /*if ($('#'+selectName + ' option:selected').val().length < 1) {
+                    $('#span_'+selectName).text('testing');
+                    console.log('should be empty');
+                } else {
+                    if ($(this).val() === 'Select a panelist') {
+                        $('#span_'+selectName).text('-');
+                    } else {
+                        $('#span_'+selectName).text($('#'+selectName + ' option:selected').val());
+                        $('#empty_'+selectName.substring(0, selectName.length - 1)).addClass('govuk-visually-hidden');
+                        $('#assigned_'+selectName.substring(0, selectName.length - 1)).removeClass('govuk-visually-hidden');
+                    }
+                }*/
+
+
+
+
+
+        /* $('.govuk-tabs__list-item--selected a').attr('data-scroll', $(document).scrollTop());
                 // hide all tabs
                 $('.govuk-tabs__panel').addClass('govuk-tabs__panel--hidden');
                 $('.govuk-tabs__list-item').removeClass('govuk-tabs__list-item--selected');
@@ -393,11 +608,7 @@
                 $(this).parent().addClass('govuk-tabs__list-item--selected');
                 // scroll to active tab
                 $(document).scrollTop(parseInt($(this).attr('data-scroll')));*/
-            });
-        });
-
-    </script>
-
+    #}
 
 {% endblock %}
 
