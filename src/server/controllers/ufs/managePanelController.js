@@ -246,12 +246,17 @@ export function mpManageRolesAssignTheRolesGet(req, res) {
 
   let assignedRolesHasBeenUpdated = req.session.assignedRolesHasBeenUpdated;
 
+  const appData = generalData.megaDataReviews;
+  const oppData = generalData.megaDataAwards;
+
   let allData = req.session;
   viewData = {
     allData,
     prototypeData,
     allPanelists,
     assignedRolesHasBeenUpdated,
+    appData,
+    oppData,
   };
 
   return res.render('prototypes/manage-panel/manage-roles/assign-the-roles', viewData);
@@ -267,22 +272,12 @@ export function mpManageRolesAssignTheRolesPost(req, res) {
 
   console.log(req.body);
 
-  if (req.session.select11 !== '-' || req.session.select12 !== '-' || req.session.select13 !== '-') {
-    req.session.select1HasData = true;
-  } else {
-    req.session.select1HasData = false;
-  }
-
-  if (req.session.select21 !== '-' || req.session.select22 !== '-' || req.session.select23 !== '-') {
-    req.session.select2HasData = true;
-  } else {
-    req.session.select2HasData = false;
-  }
-
-  if (req.session.select31 !== '-' || req.session.select32 !== '-' || req.session.select33 !== '-') {
-    req.session.select3HasData = true;
-  } else {
-    req.session.select3HasData = false;
+  for (let i = 0; i < 20; i++) {
+    if (req.session['select' + i + '1'] !== '-' || req.session['select' + i + '2'] !== '-' || req.session['select' + i + '3'] !== '-') {
+      req.session['select' + i + 'HasData'] = true;
+    } else {
+      req.session['select' + i + 'HasData'] = false;
+    }
   }
 
   req.session.assignedRolesHasBeenUpdated = true;
