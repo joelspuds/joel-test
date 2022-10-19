@@ -226,7 +226,7 @@
                                                                     <div class="govuk-form-group">
                                                                         {#<span class="meta">{{ motherLoopIndex }}{{ panelistLooper }} | {{ thisItemReference }}</span>#}
                                                                         <label class="govuk-label govuk-label--s" for="{{ thisItemReference }}">First introducer</label>
-                                                                        <select class="govuk-select govuk-select--full-width" id="{{ thisItemReference }}" name="{{ thisItemReference }}">
+                                                                        <select class="govuk-select govuk-select--full-width" id="{{ thisItemReference }}" data-parent='{{ motherLoopIndex }}' name="{{ thisItemReference }}">
                                                                             <option value="-">Select a panelist</option>
                                                                             {% for item in allPanelists %}
                                                                                 {% set tempName = item.firstName + ' ' + item.lastName %}
@@ -334,17 +334,129 @@
             $(this).on('change', function(e){
                 e.preventDefault();
                 let selectName = $(this).attr('name');
-                // console.log('selectName = ' + selectName);
+                let parentIndex = $(this).attr('data-parent');
+                console.log('selectName = ' + selectName + ' and parentIndex = ' + parentIndex);
                 // console.log('$(this).val().length = ' + $(this).val().length);
-                // console.log('$(this).val() = ' + $(this).val());
+                console.log('$(this).val() = ' + $(this).val());
+                let currentOptionValue = $(this).val();
                 $('#span_'+selectName).text($('#'+selectName + ' option:selected').val());
                 $('#empty_'+selectName.substring(0, selectName.length - 1)).addClass('govuk-visually-hidden');
                 $('#assigned_'+selectName.substring(0, selectName.length - 1)).removeClass('govuk-visually-hidden');
+
+
+                if (selectName.charAt(selectName.length-1) === '1') {
+                    // $()
+                    console.log('selectName.charAt(selectName.length-1) = ' + selectName.charAt(selectName.length-1));
+                    //$('#'+selectName + parentIndex + '2')
+                    // $('#select' + parentIndex + '2' + ' option').val(currentOptionValue).attr('disabled', true);
+
+                    Array.from(document.querySelector('#select' + parentIndex + '2').options).forEach(function(option_element) {
+                        if (option_element.value === currentOptionValue) {
+                            console.log('option_element.value = ' + option_element.value);
+                            console.log('currentOptionValue = ' + currentOptionValue);
+                            $(this).attr('disabled', true);
+                            option_element.disabled = true;
+                        } else {
+                            option_element.disabled = false;
+                        }
+                    });
+                    Array.from(document.querySelector('#select' + parentIndex + '3').options).forEach(function(option_element) {
+                        if (option_element.value === currentOptionValue) {
+                            console.log('option_element.value = ' + option_element.value);
+                            console.log('currentOptionValue = ' + currentOptionValue);
+                            $(this).attr('disabled', true);
+                            option_element.disabled = true;
+                        } else {
+                            option_element.disabled = false;
+                        }
+                    });
+                }
+
+                if (selectName.charAt(selectName.length-1) === '2') {
+                    // $()
+                    console.log('selectName.charAt(selectName.length-1) = ' + selectName.charAt(selectName.length-1));
+                    //$('#'+selectName + parentIndex + '2')
+                    // $('#select' + parentIndex + '2' + ' option').val(currentOptionValue).attr('disabled', true);
+
+                    Array.from(document.querySelector('#select' + parentIndex + '3').options).forEach(function(option_element) {
+                        if (option_element.value === currentOptionValue) {
+                            console.log('option_element.value = ' + option_element.value);
+                            console.log('currentOptionValue = ' + currentOptionValue);
+                            $(this).attr('disabled', true);
+                            option_element.disabled = true;
+                        } else {
+                            option_element.disabled = false;
+                        }
+                    });
+                    Array.from(document.querySelector('#select' + parentIndex + '1').options).forEach(function(option_element) {
+                        if (option_element.value === currentOptionValue) {
+                            console.log('option_element.value = ' + option_element.value);
+                            console.log('currentOptionValue = ' + currentOptionValue);
+                            $(this).attr('disabled', true);
+                            option_element.disabled = true;
+                        } else {
+                            option_element.disabled = false;
+                        }
+                    });
+                }
+
+                if (selectName.charAt(selectName.length-1) === '3') {
+                    // $()
+                    console.log('selectName.charAt(selectName.length-1) = ' + selectName.charAt(selectName.length-1));
+                    //$('#'+selectName + parentIndex + '2')
+                    // $('#select' + parentIndex + '2' + ' option').val(currentOptionValue).attr('disabled', true);
+
+                    Array.from(document.querySelector('#select' + parentIndex + '2').options).forEach(function(option_element) {
+                        if (option_element.value === currentOptionValue) {
+                            console.log('option_element.value = ' + option_element.value);
+                            console.log('currentOptionValue = ' + currentOptionValue);
+                            $(this).attr('disabled', true);
+                            option_element.disabled = true;
+                        } else {
+                            option_element.disabled = false;
+                        }
+                    });
+                    Array.from(document.querySelector('#select' + parentIndex + '1').options).forEach(function(option_element) {
+                        if (option_element.value === currentOptionValue) {
+                            console.log('option_element.value = ' + option_element.value);
+                            console.log('currentOptionValue = ' + currentOptionValue);
+                            $(this).attr('disabled', true);
+                            option_element.disabled = true;
+                        } else {
+                            option_element.disabled = false;
+                        }
+                    });
+                }
+
+
             });
         // }).trigger('load');
         });
 
     </script>
+
+    {#
+
+    /*const selectSuffixChars = ['1','2','3'];
+                selectSuffixChars.forEach(checkDropDownOptions);
+                function checkDropDownOptions(selectID) {
+                    console.log(selectID);
+                    /!*if (selectName.charAt(selectName.length-1) !== selectID) {
+                        // $()
+                        // console.log('selectName.charAt(selectName.length-1) = ' + selectName.charAt(selectName.length-1));
+                        // $('#select' + parentIndex + selectSuffixChars)
+                        if() {
+
+                        }
+                    }*!/
+                    if($('#select' + parentIndex + selectSuffixChars + ' option').val() === currentOptionValue  ) {
+                        console.log('test');
+                    }
+                }*/
+
+
+    #}
+
     {#    /*let selectPanelists = function() {
       $('.govuk-select').each(function(index){
           $(this).on('change', function(e){
