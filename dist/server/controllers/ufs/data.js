@@ -947,6 +947,71 @@ let megaDataReviewsList = [{
   status: 'Incomplete',
   completeness: '',
   active: false
+}, {
+  id: '420',
+  name: 'CBD and THC efficacy in blocking poison-infected protein pathways',
+  oppName: 'Modern poisons research opportunity',
+  funder: 'NERC',
+  org: 'Blaze University',
+  daysLeft: '',
+  progressMessage: 'Deadline 20 Jan 2021',
+  finalMessage: 'Closed',
+  action: 'Remove application',
+  status: 'Incomplete',
+  completeness: '',
+  active: false
+}, {
+  id: '455',
+  name: 'Dihydrogen Monoxide in living environments, an investigation of dangers and toxicity',
+  oppName: 'Modern poisons research opportunity',
+  funder: 'NERC',
+  org: 'Fulchester University',
+  daysLeft: '',
+  progressMessage: 'Deadline 20 Jan 2023',
+  finalMessage: 'Closed',
+  action: 'Remove application',
+  status: 'Incomplete',
+  completeness: '',
+  active: false
+}, {
+  id: '468',
+  name: 'Vaccines - Ivermectin and Ketamin, that wonder chemicals that keep on giving',
+  oppName: 'Modern poisons research opportunity',
+  funder: 'NERC',
+  org: 'Trump University, NYC',
+  daysLeft: '',
+  progressMessage: 'Deadline 20 Jan 2023',
+  finalMessage: 'Closed',
+  action: 'Remove application',
+  status: 'Incomplete',
+  completeness: '',
+  active: false
+}, {
+  id: '501',
+  name: 'Genes, jeans and jeggings, and their role in Gen Y toxicity',
+  oppName: 'Modern poisons research opportunity',
+  funder: 'NERC',
+  org: 'JNCO Millennial Institute of Research',
+  daysLeft: '',
+  progressMessage: 'Deadline 20 Jan 2023',
+  finalMessage: 'Closed',
+  action: 'Remove application',
+  status: 'Incomplete',
+  completeness: '',
+  active: false
+}, {
+  id: '503',
+  name: 'Error handling in computational research networks',
+  oppName: 'Modern poisons research opportunity',
+  funder: 'NERC',
+  org: 'Enginecks University',
+  daysLeft: '',
+  progressMessage: 'Deadline 20 Jan 2023',
+  finalMessage: 'Closed',
+  action: 'Remove application',
+  status: 'Incomplete',
+  completeness: '',
+  active: false
 }];
 const megaDataReviews = exports.megaDataReviews = megaDataReviewsList;
 
