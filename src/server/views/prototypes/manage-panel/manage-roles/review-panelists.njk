@@ -124,7 +124,7 @@
                     </li>
                     <li class="govuk-tabs__list-item">
                         <a class="govuk-tabs__tab" id="link_two" data-tab="_two" href="/prototypes/manage-panel/manage-roles/name-the-roles" data-scroll="">
-                            Name the roles
+                            {% if allData.prototypeConfig == 'multiple' %}Select the Roles{% else %}Name the roles{% endif%}
                         </a>
                     </li>
                     <li class="govuk-tabs__list-item">

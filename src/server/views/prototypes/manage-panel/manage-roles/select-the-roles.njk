@@ -168,9 +168,9 @@
 
         {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
 
-            {{ components.captionHeading(text='Role names',tag='h2', size='m', extraClass='_u-space-b5') }}
+            {{ components.captionHeading(text='Available roles',tag='h2', size='m', extraClass='_u-space-b5') }}
 
-            <p class="govuk-body">Manage the role names for the panel</p>
+            <p class="govuk-body">Select the roles available for this panel</p>
 
         {%- endcall %}
 
@@ -181,28 +181,46 @@
         {% call components.bulmaColumnAny(size='is-7', extraClass='{#u-space-t20#}') %}
 
             <div class="govuk-form-group">
-                <label class="govuk-label govuk-label--s" for="role1Name">Role 1</label>
-                <input class="govuk-input govuk-input--width-20" id="role1Name" name="role1Name" type="text" value="First introducer">
-                <a href="#" class="govuk-link u-space-x20">Remove <span class="govuk-visually-hidden">this role</span></a>
-            </div>
-
-            <div class="govuk-form-group">
-                <label class="govuk-label govuk-label--s" for="role2Name">Role 2</label>
-                <input class="govuk-input govuk-input--width-20" id="role2Name" name="role2Name" type="text" value="Second introducer">
-                <a href="#" class="govuk-link u-space-x20">Remove <span class="govuk-visually-hidden">this role</span></a>
-            </div>
-
-            <div class="govuk-form-group">
-                <label class="govuk-label govuk-label--s" for="role3Name">Role 3</label>
-                <input class="govuk-input govuk-input--width-20" id="role3Name" name="role3Name" type="text" value="Third introducer">
-                <a href="#" class="govuk-link u-space-x20">Remove <span class="govuk-visually-hidden">this role</span></a>
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-visually-hidden">Roles available for this panel</legend>
+                    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="first" name="first" type="checkbox" value="First introducer" checked>
+                            <label class="govuk-label govuk-checkboxes__label" for="first">First introducer</label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="second" name="second" type="checkbox" value="Second introducer" checked>
+                            <label class="govuk-label govuk-checkboxes__label" for="second">Second introducer</label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="third" name="third" type="checkbox" value="Third introducer" checked>
+                            <label class="govuk-label govuk-checkboxes__label" for="third">Third introducer</label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="roving" name="roving" type="checkbox" value="Roving introducer">
+                            <label class="govuk-label govuk-checkboxes__label" for="roving">Roving introducer</label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="reader" name="reader" type="checkbox" value="Reader">
+                            <label class="govuk-label govuk-checkboxes__label" for="reader">Reader</label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="genre" name="genre" type="checkbox" value="Genre introducer" >
+                            <label class="govuk-label govuk-checkboxes__label" for="genre">Genre introducer</label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="advisor" name="advisor" type="checkbox" value="Advisor">
+                            <label class="govuk-label govuk-checkboxes__label" for="advisor">Advisor</label>
+                        </div>
+                    </div>
+                </fieldset>
             </div>
 
         {%- endcall %}
 
     {%- endcall %}
 
-    {% call components.bulmaRow() %}
+    {#{% call components.bulmaRow() %}
 
         {% call components.bulmaColumnAny(size='is-7', extraClass='') %}
 
@@ -212,7 +230,7 @@
 
         {%- endcall %}
 
-    {%- endcall %}
+    {%- endcall %}#}
 
     {% call components.bulmaRow() %}
 

@@ -65,7 +65,16 @@ function mpIndexGet(req, res) {
 }
 
 function mpIndexPost(req, res) {
-  const {} = req.body;
+  const { prototypeConfig } = req.body;
+
+  req.session.prototypeConfig = prototypeConfig;
+  console.log(req.session.prototypeConfig);
+
+  if (prototypeConfig === 'multiple') {
+    req.session.rolesJourneyLabel = 'Select the roles';
+  } else {
+    req.session.rolesJourneyLabel = 'Name the roles';
+  }
 
   req.session.organisation = 'University of Wales';
   req.session.userName = 'Linda Squires';
@@ -247,6 +256,8 @@ function mpManageRolesNameTheRolesGet(req, res) {
   let nameTheRolesUpdated = req.session.nameTheRolesUpdated;
   req.session.nameTheRolesUpdated = null;
 
+  let prototypeConfig = req.session.prototypeConfig;
+
   let allData = req.session;
   viewData = {
     allData,
@@ -254,7 +265,11 @@ function mpManageRolesNameTheRolesGet(req, res) {
     nameTheRolesUpdated
   };
 
-  return res.render('prototypes/manage-panel/manage-roles/name-the-roles', viewData);
+  if (prototypeConfig === 'multiple') {
+    return res.render('prototypes/manage-panel/manage-roles/select-the-roles', viewData);
+  } else {
+    return res.render('prototypes/manage-panel/manage-roles/name-the-roles', viewData);
+  }
 }
 
 function mpManageRolesNameTheRolesPost(req, res) {

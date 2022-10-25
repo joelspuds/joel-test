@@ -32,15 +32,54 @@
 
         {% call components.bulmaRow() %}
 
-            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+            {% call components.bulmaColumnAny(size='is-two-thirds') %}
+
+                {#<input type="hidden" name="userName" value="Dr. Patricia Winslet">#}
+
+                <style>
+                    a.govuk-button.govuk-button--secondary {
+                        text-decoration: none;
+                    }
+                </style>
+
+                <a class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Find address
+                </a>
 
 
-                <h2 class="govuk-heading-m">Prototype</h2>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li><a class="govuk-link" href="/prototypes/manage-panel/panel-dashboard">Start Manage Panel journey</a><br><br></li>
-                    {#<li><a class="govuk-link" href="/prototypes/external-award/email-accepted">Change request accepted</a> </li>
-                    <li><a class="govuk-link" href="/prototypes/external-award/email-rejected">Change request rejected</a><br><br></li>#}
-                </ul>
+                <div class="govuk-form-group ">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            <h2 class="govuk-fieldset__heading">Panel roles</h2>
+                            <span  class="govuk-hint">Amount of roles available</span>
+                        </legend>
+
+                        <div class="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="routeA" name="prototypeConfig" type="radio" value="minimal">
+                                <label class="govuk-label govuk-radios__label" for="routeA">Minimal</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="routeB" name="prototypeConfig" type="radio" value="multiple">
+                                <label class="govuk-label govuk-radios__label" for="routeB">Multiple</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-two-thirds') %}
+
+                {% call components.formGroup() %}
+
+                    {{ components.button(text='Continue', extraClass="application-controls__submit")}}
+
+                {%- endcall %}
 
             {%- endcall %}
 
@@ -61,7 +100,7 @@
 
         {%- endcall %}
 
-    {%- endcall %}
+    {%- endcall %} {# end form #}
     {% include '../../layouts/partials/user-contact.njk' %}
 {% endblock %}
 {% block bodyScripts %}
