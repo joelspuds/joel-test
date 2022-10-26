@@ -64,7 +64,7 @@
                         <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
                     </div>
                     <div class="govuk-notification-banner__content">
-                        <p class="govuk-notification-banner__heading">Roles names for this panel have been updated</p>
+                        <p class="govuk-notification-banner__heading">Roles for this panel have been updated</p>
                         {#<p class="govuk-body">By {{ externalAwardPrototypeData.userName }} on behalf University of Wales on {{ 'dataAndTime' | dateAndTime() }}</p>#}
                     </div>
                 </div>
@@ -185,31 +185,31 @@
                     <legend class="govuk-visually-hidden">Roles available for this panel</legend>
                     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                         <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="first" name="first" type="checkbox" value="First introducer" checked>
+                            <input class="govuk-checkboxes__input" id="first" name="first" type="checkbox" value="First introducer" {% if allData.first == 'First introducer' %} checked{% endif %} >
                             <label class="govuk-label govuk-checkboxes__label" for="first">First introducer</label>
                         </div>
                         <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="second" name="second" type="checkbox" value="Second introducer" checked>
+                            <input class="govuk-checkboxes__input" id="second" name="second" type="checkbox" value="Second introducer" {% if allData.second == 'Second introducer' %} checked{% endif %} >
                             <label class="govuk-label govuk-checkboxes__label" for="second">Second introducer</label>
                         </div>
                         <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="third" name="third" type="checkbox" value="Third introducer" checked>
+                            <input class="govuk-checkboxes__input" id="third" name="third" type="checkbox" value="Third introducer" {% if allData.third == 'Third introducer' %} checked{% endif %} >
                             <label class="govuk-label govuk-checkboxes__label" for="third">Third introducer</label>
                         </div>
                         <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="roving" name="roving" type="checkbox" value="Roving introducer">
+                            <input class="govuk-checkboxes__input" id="roving" name="roving" type="checkbox" value="Roving introducer" {% if allData.roving == 'Roving introducer' %} checked{% endif %}>
                             <label class="govuk-label govuk-checkboxes__label" for="roving">Roving introducer</label>
                         </div>
                         <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="reader" name="reader" type="checkbox" value="Reader">
+                            <input class="govuk-checkboxes__input" id="reader" name="reader" type="checkbox" value="Reader" {% if allData.reader == 'Reader' %} checked{% endif %}>
                             <label class="govuk-label govuk-checkboxes__label" for="reader">Reader</label>
                         </div>
                         <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="genre" name="genre" type="checkbox" value="Genre introducer" >
+                            <input class="govuk-checkboxes__input" id="genre" name="genre" type="checkbox" value="Genre introducer" {% if allData.genre == 'Genre introducer' %} checked{% endif %}>
                             <label class="govuk-label govuk-checkboxes__label" for="genre">Genre introducer</label>
                         </div>
                         <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="advisor" name="advisor" type="checkbox" value="Advisor">
+                            <input class="govuk-checkboxes__input" id="advisor" name="advisor" type="checkbox" value="Advisor" {% if allData.advisor == 'Advisor' %} checked{% endif %}>
                             <label class="govuk-label govuk-checkboxes__label" for="advisor">Advisor</label>
                         </div>
                     </div>

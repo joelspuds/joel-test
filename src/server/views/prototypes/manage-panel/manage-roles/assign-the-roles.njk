@@ -217,12 +217,16 @@
                                                                 <p class="govuk-body u-space-t0">{{ '' | giveMeAName }}</p>
                                                             {%- endcall %}
                                                         {%- endcall %}
+
+                                                        {% if allData.prototypeConfig != 'multiple' %}
+
+
                                                         {% call components.bulmaRow() %}
 
                                                             {% set thisIndex = ['1', '2', '3'] %}
                                                             {% for panelistLooper in thisIndex %}
                                                                 {% set thisItemReference = 'select' + motherLoopIndex + loop.index %}
-                                                                {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                                {% call components.bulmaColumnAny(size='is-one-third', extraClass='u-space-t20') %}
                                                                     <div class="govuk-form-group">
                                                                         {#<span class="meta">{{ motherLoopIndex }}{{ panelistLooper }} | {{ thisItemReference }}</span>#}
                                                                         <label class="govuk-label govuk-label--s" for="{{ thisItemReference }}">
@@ -245,19 +249,184 @@
                                                             {% endfor %}
 
                                                         {%- endcall %}
+
+                                                        {% else %}
+
+                                                        {% call components.bulmaContainer() %}
+                                                            {% call components.bulmaColumns(extraClass='rowTest is-multiline') %}
+
+                                                                {% if allData.first == 'First introducer' %}
+                                                                    {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                                        <div class="govuk-form-group u-space-b0">
+                                                                            <label class="govuk-label govuk-label--s" for="select{{ motherLoopIndex }}1">First introducer</label>
+                                                                            {#<p>{{ allData['select'+motherLoopIndex+'1'] }}</p>#}
+                                                                            <select class="govuk-select govuk-select--full-width" id="select{{ motherLoopIndex }}1" data-parent='{{ motherLoopIndex }}' name="select{{ motherLoopIndex }}1">
+                                                                                <option value="-">Select a panelist</option>
+                                                                                {% for item in allPanelists %}
+                                                                                    {% set tempName = item.firstName + ' ' + item.lastName %}
+                                                                                    <option value="{{ item.firstName }} {{ item.lastName }}"{% if allData['select'+motherLoopIndex+'1'] == tempName  %} selected {% endif %}>{{ tempName }}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    {%- endcall %}
+                                                                {% endif %}
+
+                                                                {% if allData.second == 'Second introducer' %}
+                                                                    {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                                        <div class="govuk-form-group u-space-b0">
+                                                                            <label class="govuk-label govuk-label--s" for="select{{ motherLoopIndex }}2">Second introducer</label>
+                                                                            <select class="govuk-select govuk-select--full-width" id="select{{ motherLoopIndex }}2" data-parent='{{ motherLoopIndex }}' name="select{{ motherLoopIndex }}2">
+                                                                                <option value="-">Select a panelist</option>
+                                                                                {% for item in allPanelists %}
+                                                                                    {% set tempName = item.firstName + ' ' + item.lastName %}
+                                                                                    <option value="{{ item.firstName }} {{ item.lastName }}"{% if allData['select'+motherLoopIndex+'2'] == tempName  %} selected {% endif %}>{{ tempName }}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    {%- endcall %}
+                                                                {% endif %}
+
+                                                                {% if allData.third == 'Third introducer' %}
+                                                                    {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                                        <div class="govuk-form-group u-space-b0">
+                                                                            <label class="govuk-label govuk-label--s" for="select{{ motherLoopIndex }}3">Third introducer</label>
+                                                                            <select class="govuk-select govuk-select--full-width" id="select{{ motherLoopIndex }}3" data-parent='{{ motherLoopIndex }}' name="select{{ motherLoopIndex }}3">
+                                                                                <option value="-">Select a panelist</option>
+                                                                                {% for item in allPanelists %}
+                                                                                    {% set tempName = item.firstName + ' ' + item.lastName %}
+                                                                                    <option value="{{ item.firstName }} {{ item.lastName }}"{% if allData['select'+motherLoopIndex+'3'] == tempName  %} selected {% endif %}>{{ tempName }}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    {%- endcall %}
+                                                                {% endif %}
+
+                                                                {% if allData.roving == 'Roving introducer' %}
+                                                                    {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                                        <div class="govuk-form-group u-space-b0">
+                                                                            <label class="govuk-label govuk-label--s" for="{{ thisItemReference }}">Roving introducer</label>
+                                                                            <select class="govuk-select govuk-select--full-width" id="select{{ motherLoopIndex }}4" data-parent='{{ motherLoopIndex }}' name="select{{ motherLoopIndex }}4">
+                                                                                <option value="-">Select a panelist</option>
+                                                                                {% for item in allPanelists %}
+                                                                                    {% set tempName = item.firstName + ' ' + item.lastName %}
+                                                                                    <option value="{{ item.firstName }} {{ item.lastName }}"{% if allData['select'+motherLoopIndex+'4'] == tempName  %} selected {% endif %}>{{ tempName }}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    {%- endcall %}
+                                                                {% endif %}
+
+                                                                {% if allData.reader == 'Reader' %}
+                                                                    {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                                        <div class="govuk-form-group u-space-b0">
+                                                                            <label class="govuk-label govuk-label--s" for="{{ thisItemReference }}">Reader</label>
+                                                                            <select class="govuk-select govuk-select--full-width" id="select{{ motherLoopIndex }}5" data-parent='{{ motherLoopIndex }}' name="select{{ motherLoopIndex }}5">
+                                                                                <option value="-">Select a panelist</option>
+                                                                                {% for item in allPanelists %}
+                                                                                    {% set tempName = item.firstName + ' ' + item.lastName %}
+                                                                                    <option value="{{ item.firstName }} {{ item.lastName }}"{% if allData['select'+motherLoopIndex+'5'] == tempName  %} selected {% endif %}>{{ tempName }}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    {%- endcall %}
+                                                                {% endif %}
+
+                                                                {% if allData.genre == 'Genre introducer' %}
+                                                                    {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                                        <div class="govuk-form-group u-space-b0">
+                                                                            <label class="govuk-label govuk-label--s" for="{{ thisItemReference }}">Genre introducer</label>
+                                                                            <select class="govuk-select govuk-select--full-width" id="select{{ motherLoopIndex }}6" data-parent='{{ motherLoopIndex }}' name="select{{ motherLoopIndex }}6">
+                                                                                <option value="-">Select a panelist</option>
+                                                                                {% for item in allPanelists %}
+                                                                                    {% set tempName = item.firstName + ' ' + item.lastName %}
+                                                                                    <option value="{{ item.firstName }} {{ item.lastName }}"{% if allData['select'+motherLoopIndex+'6'] == tempName  %} selected {% endif %}>{{ tempName }}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    {%- endcall %}
+                                                                {% endif %}
+
+                                                                {% if allData.advisor == 'Advisor' %}
+                                                                    {% call components.bulmaColumnAny(size='is-one-third', extraClass='{#u-space-t20#}') %}
+                                                                        <div class="govuk-form-group u-space-b0">
+                                                                            <label class="govuk-label govuk-label--s" for="{{ thisItemReference }}">Advisor</label>
+                                                                            <select class="govuk-select govuk-select--full-width" id="select{{ motherLoopIndex }}7" data-parent='{{ motherLoopIndex }}' name="select{{ motherLoopIndex }}7">
+                                                                                <option value="-">Select a panelist</option>
+                                                                                {% for item in allPanelists %}
+                                                                                    {% set tempName = item.firstName + ' ' + item.lastName %}
+                                                                                    <option value="{{ item.firstName }} {{ item.lastName }}"{% if allData['select'+motherLoopIndex+'7'] == tempName  %} selected {% endif %}>{{ tempName }}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    {%- endcall %}
+                                                                {% endif %}
+                                                            {%- endcall %}
+                                                        {%- endcall %}
+
+
+
+
+
+
+                                                        {% endif%}
+
+
+
                                                     </div>
                                                 </div>
                                                 <div class="radio-toggles__contents-right column is-3">
+
+                                                    {#<p>motherLoopIndex = {{ motherLoopIndex }}</p>
+                                                    <p>allData['select'+motherLoopIndex+'HasData'] = {{ allData['select'+motherLoopIndex+'HasData'] }}</p>#}
 
                                                     <div class="{% if allData['select'+motherLoopIndex+'HasData'] %} govuk-visually-hidden {% endif %} panelists panelists--empty" id="empty_select{{ motherLoopIndex }}">
                                                         <span class="panelists__title">Panelists</span>
                                                         <span class="" id="">0 assigned</span>
                                                     </div>
                                                     <div class="{% if not allData['select'+motherLoopIndex+'HasData'] %} govuk-visually-hidden {% endif %} panelists panelists--assigned" id="assigned_select{{ motherLoopIndex }}">
-                                                        <span class="panelists__title">Panelists</span>
-                                                        <span class="" id="span_select{{ motherLoopIndex }}1">{{ allData['select'+motherLoopIndex+'1'] }}</span>
-                                                        <span class="" id="span_select{{ motherLoopIndex }}2">{{ allData['select'+motherLoopIndex+'2'] }}</span>
-                                                        <span class="" id="span_select{{ motherLoopIndex }}3">{{ allData['select'+motherLoopIndex+'3'] }}</span>
+
+
+                                                        {% if allData.prototypeConfig != 'multiple' %}
+                                                            <span class="panelists__title">Panelists</span>
+                                                            <span class="" id="span_select{{ motherLoopIndex }}1">{{ allData['select'+motherLoopIndex+'1'] }}</span>
+                                                            <span class="" id="span_select{{ motherLoopIndex }}2">{{ allData['select'+motherLoopIndex+'2'] }}</span>
+                                                            <span class="" id="span_select{{ motherLoopIndex }}3">{{ allData['select'+motherLoopIndex+'3'] }}</span>
+
+                                                        {% else %}
+
+                                                            <span class="panelists__title">Panelists</span>
+                                                            {% if allData.first == 'First introducer' %}
+                                                                <span class="" id="span_select{{ motherLoopIndex }}1">{{ allData['select'+motherLoopIndex+'1'] }}</span>
+                                                            {% endif %}
+                                                            {% if allData.second == 'Second introducer' %}
+                                                                <span class="" id="span_select{{ motherLoopIndex }}2">{{ allData['select'+motherLoopIndex+'2'] }}</span>
+                                                            {% endif %}
+                                                            {% if allData.third == 'Third introducer' %}
+                                                                <span class="" id="span_select{{ motherLoopIndex }}3">{{ allData['select'+motherLoopIndex+'3'] }}</span>
+                                                            {% endif %}
+                                                            {% if allData.roving == 'Roving introducer' %}
+                                                                <span class="" id="span_select{{ motherLoopIndex }}4">{{ allData['select'+motherLoopIndex+'4'] }}</span>
+                                                            {% endif %}
+                                                            {% if allData.reader == 'Reader' %}
+                                                                <span class="" id="span_select{{ motherLoopIndex }}5">{{ allData['select'+motherLoopIndex+'5'] }}</span>
+                                                            {% endif %}
+                                                            {% if allData.genre == 'Genre introducer' %}
+                                                                <span class="" id="span_select{{ motherLoopIndex }}6">{{ allData['select'+motherLoopIndex+'6'] }}</span>
+                                                            {% endif %}
+                                                            {% if allData.advisor == 'Advisor' %}
+                                                                <span class="" id="span_select{{ motherLoopIndex }}7">{{ allData['select'+motherLoopIndex+'7'] }}</span>
+                                                            {% endif %}
+
+
+
+
+
+
+                                                        {% endif %}
+
+
+
+
                                                     </div>
                                                 </div>
                                             </div>

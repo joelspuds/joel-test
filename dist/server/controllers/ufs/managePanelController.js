@@ -50,6 +50,10 @@ let savedSession;
 function mpIndexGet(req, res) {
   let viewData;
 
+  req.session.first = 'First introducer';
+  req.session.second = 'Second introducer';
+  req.session.third = 'Third introducer';
+
   let clearSession = req.param('clearSession');
   if (clearSession === 'true') {
     req.session.destroy();
@@ -66,7 +70,11 @@ function mpIndexGet(req, res) {
 
 function mpIndexPost(req, res) {
   const { prototypeConfig } = req.body;
+  // const { } = req.body;
 
+  //req.session.prototypeConfig = prototypeConfig;
+  // req.session.prototypeConfig = 'multiple';
+  // let prototypeConfig = 'multiple';
   req.session.prototypeConfig = prototypeConfig;
   console.log(req.session.prototypeConfig);
 
@@ -75,6 +83,10 @@ function mpIndexPost(req, res) {
   } else {
     req.session.rolesJourneyLabel = 'Name the roles';
   }
+
+  req.session.first = 'First introducer';
+  req.session.second = 'Second introducer';
+  req.session.third = 'Third introducer';
 
   req.session.organisation = 'University of Wales';
   req.session.userName = 'Linda Squires';
@@ -257,6 +269,10 @@ function mpManageRolesNameTheRolesGet(req, res) {
   req.session.nameTheRolesUpdated = null;
 
   let prototypeConfig = req.session.prototypeConfig;
+  console.log('req.session.prototypeConfig = ' + req.session.prototypeConfig);
+  // req.session.first = 'First introducer';
+  // req.session.second = 'Second introducer';
+  // req.session.third = 'Third introducer';
 
   let allData = req.session;
   viewData = {
@@ -274,6 +290,22 @@ function mpManageRolesNameTheRolesGet(req, res) {
 
 function mpManageRolesNameTheRolesPost(req, res) {
   const {} = req.body;
+
+  req.session.first = req.body.first;
+  req.session.second = req.body.second;
+  req.session.third = req.body.third;
+  req.session.roving = req.body.roving;
+  req.session.reader = req.body.reader;
+  req.session.genre = req.body.genre;
+  req.session.advisor = req.body.advisor;
+
+  if (req.session.roving || req.session.reader || req.session.genre || req.session.advisor) {
+    req.session.extraRoles = true;
+  } else {
+    req.session.extraRoles = null;
+  }
+
+  console.log(req.session);
 
   req.session.nameTheRolesUpdated = true;
 
@@ -319,7 +351,7 @@ function mpManageRolesAssignTheRolesPost(req, res) {
   console.log(req.body);
 
   for (let i = 0; i < 20; i++) {
-    if (req.session['select' + i + '1'] !== '-' || req.session['select' + i + '2'] !== '-' || req.session['select' + i + '3'] !== '-') {
+    if (req.session['select' + i + '1'] !== '-' && req.session['select' + i + '2'] !== '-' && req.session['select' + i + '3'] !== '-' && req.session['select' + i + '4'] !== '-' && req.session['select' + i + '5'] !== '-' && req.session['select' + i + '6'] !== '-' && req.session['select' + i + '7'] !== '-') {
       req.session['select' + i + 'HasData'] = true;
     } else {
       req.session['select' + i + 'HasData'] = false;
