@@ -223,10 +223,14 @@
                                             <tr>
                                                 <td class="govuk-table__cell">{{ item.firstName }} {{ item.lastName }} {% if item.role == 'Deputy chair' %}<strong>(Deputy chair)</strong>{% endif %}</td>
                                                 <td class="govuk-table__cell">{{ item.organisation }} University</td>
-                                                <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(0, 4) | random }}</td>
-                                                <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(0, 4) | random }}</td>
-                                                <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(0, 4) | random }}</td>
-                                                <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(2, 5) | random }}</td>
+                                                {% set number1 = range(0, 4) | random %}
+                                                {% set number2 = range(0, 4) | random %}
+                                                {% set number3 = range(0, 4) | random %}
+                                                {% set numberTotal = number1 + number2 + number3 %}
+                                                <td class="govuk-table__cell govuk-table__cell--numeric">{{ number1 }}</td>
+                                                <td class="govuk-table__cell govuk-table__cell--numeric">{{ number2 }}</td>
+                                                <td class="govuk-table__cell govuk-table__cell--numeric">{{ number3 }}</td>
+                                                <td class="govuk-table__cell govuk-table__cell--numeric">{{ numberTotal }}</td>
                                                 <td class="govuk-table__cell govuk-table__cell--numeric">{{ range(0, 2) | random }}</td>
 
                                             </tr>
