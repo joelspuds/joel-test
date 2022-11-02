@@ -61,6 +61,10 @@
       }
     }
 
+    &--current:before {
+      background-color: govuk-colour("blue");
+    }
+
     .govuk-tag {
       position: absolute;
       right:0;
