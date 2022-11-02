@@ -63,7 +63,7 @@
                         <a href="#offerLetter" class="govuk-link govuk-link--no-visited-state ">Offer letter</a>
                     </li>
                     <li>
-                        <a href="#awardDetails" class="govuk-link govuk-link--no-visited-state ">Award details</a>
+                        <a href="#awardDetails" class="govuk-link govuk-link--no-visited-state ">Award summary</a>
                     </li>
                     <li>
                         <a href="#team" class="govuk-link govuk-link--no-visited-state ">Team</a>
@@ -144,6 +144,9 @@
                     <p class="govuk-body u-space-b5">
                         <strong>Earliest start date</strong>: 21 November 2022
                     </p>
+                    <p class="govuk-body u-space-b5">
+                        <strong>Award duration</strong>: 24 months
+                    </p>
                     <p class="govuk-body">
                         <strong>Award value</strong>: &pound;4,500,000
                     </p>
@@ -175,9 +178,9 @@
             {% call components.bulmaRow(extraClass='u-space-b20') %}
                 {% call components.bulmaColumnAny(size='is-full') %}
 
-                    {{ components.captionHeading(text='Award details', size='m', tag='h2', id='awardDetails') }}
+                    {{ components.captionHeading(text='Award summary', size='m', tag='h2', id='awardDetails') }}
 
-                    <table class="govuk-table">
+                    {#<table class="govuk-table">
 
                         <tbody>
                         <tr class="">
@@ -200,7 +203,9 @@
                             </td>
                         </tr>
                         </tbody>
-                    </table>
+                    </table>#}
+
+                    <p class="govuk-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 
                 {%- endcall %}
             {%- endcall %}
