@@ -1,0 +1,112 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'awards' %}
+{% set navArea = 'home' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/post-decision/awards' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% set pageTitle = 'Extension' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set prototypeData = prototypeData if prototypeData %}
+{% set savedSession = savedSession if savedSession %}
+{% set userName = prototypeData.userName %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Awards ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/change-request/create', text:'Back to view and create award change request'}] %}
+
+{% set inviteResponse = inviteResponse if inviteResponse %}
+
+{% block content %}
+
+    {#{% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Extension', caption='AWA184: Name of award') }}
+        {%- endcall %}
+    {%- endcall %}#}
+    <div class="container ">
+        <div class="columns">
+            <div class="column is-two-thirds ">
+                <span class="govuk-caption-xl">AWA184: Name of award</span>
+                <h1 class="govuk-heading-xl govuk-heading--has-tag ">Extension <strong class="govuk-tag govuk-tag--yellow">Submitted</strong></h1>
+            </div>
+        </div>
+    </div>
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-9') %}
+
+            <div class="timeline">
+                <ul class="timeline__list">
+                    <li class="timeline__item  timeline__item--live ">
+                        <span class="timeline__title">Change request submitted</span>
+                        <span class="timeline__meta">By Arden Pimenta, University of Wales, <span class="meta">2 November 2022  at 0:17 pm</span></span>
+                        <details class="govuk-details govuk-details--list-data u-space-t20 u-space-b0 js-only" data-module="govuk-details" role="group">
+                            <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                <span class="govuk-details__summary-text"><span class="show">Show</span><span class="hide" style="display:none">Hide</span> change details</span>
+                            </summary>
+                            <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                <table class="govuk-table">
+
+                                    <tbody>
+                                    <tr class="">
+                                        <th class="govuk-table__header cell-min-200">Current end date</th>
+                                        <td class="govuk-table__cell">21 November 2025</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th class="govuk-table__header">Requested end date</th>
+                                        <td class="govuk-table__cell">21 August 2026</td>
+                                    </tr>
+
+                                    <tr class="">
+                                        <th class="govuk-table__header">Extension in months</th>
+                                        <td class="govuk-table__cell">9</td>
+                                    </tr>
+                                    <tr class="">
+                                        <th class="govuk-table__header govuk-table__header--top">Justification</th>
+                                        <td class="govuk-table__cell">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+
+
+                            </div>
+                        </details>
+                    </li>
+
+                    <li class="timeline__item  ">
+                        <span class="timeline__title">Response from UKRI</span>
+                        <span class="timeline__meta">MRC, UKRI</span>
+
+                        <p class="govuk-body u-space-t20 u-space-b0">
+                            <strong>Comment</strong><br>
+                            We have received your change request and accepted the changes. There is no further action required and the payment schedule will be updated to reflect the new timelines. <br>Thanks, Sheila Biggins, MRC
+                        </p>
+                    </li>
+
+                </ul>
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+
