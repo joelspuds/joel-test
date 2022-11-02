@@ -309,7 +309,6 @@ body {
   text-align: center!important;
 }
 
-
 .govuk-details--list-data {
 
   .govuk-details__text {
@@ -317,22 +316,12 @@ body {
     border-left: none;
   }
 
-  .govuk-details__summary-text {
-    // @include govuk-font($size: 16);
-  }
-
-  &[open] {
-    .show {
-      display:none;
-    }
-  }
-  &[open] {
+ &[open] {
     .show {
       display:none;
     }
     .hide {
       display: inline!important;
-      // text-decoration: underline;
     }
   }
 

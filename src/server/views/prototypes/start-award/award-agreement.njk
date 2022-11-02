@@ -373,7 +373,7 @@
                                 <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
                             </tr>
                             <tr class="govuk-table__cell-bb">
-                                <td class="govuk-table__cell">DA - Indirect costs</td>
+                                <td class="govuk-table__cell">Indirect costs</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
@@ -614,7 +614,7 @@
 
                     {% call components.form(action='#', method='POST', name='details') %}
 
-                        {{ components.captionHeading(text='Complete agreement', size='m', tag='h2', id='completeAgreement') }}
+                        {{ components.captionHeading(text='Authorise agreement', size='m', tag='h2', id='completeAgreement') }}
 
                         {% call components.formGroup() %}
                             <div class="application-item">
@@ -634,7 +634,7 @@
                             </div>
 
                             <div class="application-controls govuk-clearfix u-space-t45">
-                                {{ components.button(text='Complete agreement', extraClass="application-controls__submit")}}
+                                {{ components.button(text='Authorise agreement', extraClass="application-controls__submit")}}
                                <a href="#" class="govuk-link application-controls__cancel">Cancel and return to award overview</a>
                             </div>
 
