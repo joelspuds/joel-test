@@ -49,7 +49,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Award agreement', caption='AWA222: Development of a Novel Inhibitor of Ricin') }}
+            {{ components.captionHeading(text='Award agreement', caption='AWA1024: Wind turbine efficiency; positional and directional accoustics') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -70,6 +70,9 @@
                     </li>
                     <li>
                         <a href="#resourcesAndCosts" class="govuk-link govuk-link--no-visited-state ">Resources and costs</a>
+                    </li>
+                    <li>
+                        <a href="#staff" class="govuk-link govuk-link--no-visited-state ">Staff</a>
                     </li>
                     <li>
                         <a href="#paymentSchedule" class="govuk-link govuk-link--no-visited-state ">Payment schedule</a>
@@ -128,10 +131,10 @@
             {% call components.bulmaRow(extraClass='') %}
                 {% call components.bulmaColumnAny(size='is-half') %}
                     <p class="govuk-body u-space-b5">
-                        <strong>Award holder</strong>: Dr. Philomena Longname-Smyth
+                        <strong>Award holder</strong>: Prof. Jane Doe
                     </p>
                     <p class="govuk-body  u-space-b5">
-                        <strong>Organisation</strong>: Wales Institute of Studies
+                        <strong>Organisation</strong>: Cardiff University
                     </p>
                     <p class="govuk-body ">
                         <strong>Funders</strong>: BBSRC
@@ -142,7 +145,7 @@
                         <strong>Earliest start date</strong>: 21 November 2022
                     </p>
                     <p class="govuk-body">
-                        <strong>Award value</strong>: £4,500,000
+                        <strong>Award value</strong>: &pound;4,500,000
                     </p>
                 {%- endcall %}
             {%- endcall %}
@@ -152,9 +155,13 @@
                     <p class="govuk-body u-space-b5">
                         <strong>Opportunity</strong>: OPP404: Dimensional transmogrification techniques in Northern Europe
                     </p>
-                    <p class="govuk-body">
+                    <p class="govuk-body u-space-b5">
                         <strong>Application</strong>: APP918: Wind turbine efficiency; positional and directional accoustics
                     </p>
+                    <p class="govuk-body">
+                        <strong>Award</strong>: AWA1024: Wind turbine efficiency; positional and directional accoustics
+                    </p>
+
 
                     <p class="govuk-body">
                         BBSRC part of UK Research and Innovation is offering an award to the cost of the above project, subject to the terms and conditions set out below.
@@ -175,7 +182,7 @@
                         <tbody>
                         <tr class="">
                             <th class="govuk-table__header cell-min-200">Award name</th>
-                            <td class="govuk-table__cell">UK science awards Autumn 2022</td>
+                            <td class="govuk-table__cell">AWA1024: Wind turbine efficiency; positional and directional accoustics</td>
                         </tr>
 
                         <tr>
@@ -256,60 +263,16 @@
                     {{ components.captionHeading(text='Resources and costs', size='m', tag='h2', id='resourcesAndCosts') }}
 
                     <p class="govuk-body u-space-b5">
-                        <strong>Total authorised fEC</strong>: £1,234,567
+                        <strong>Total authorised fEC</strong>: &pound;4,000,000
                     </p>
                     <p class="govuk-body u-space-b5">
-                        <strong>Contribution from applying organisation</strong>: £234,567
+                        <strong>Contribution from applying organisation</strong>: &pound;500,000
                     </p>
                     <p class="govuk-body">
-                        <strong>Award total</strong>: £1,234,000
+                        <strong>Award total</strong>: &pound;4,500,000
                     </p>
 
-                    {#<table class="govuk-table govuk-table--stripes">
 
-                        #}{# TODO: update cols and values #}{#
-
-                        <thead>
-                        <tr>
-                            <th class="govuk-table__header">Category</th>
-                            <th class="govuk-table__header govuk-table__header--numeric">Full economic<br>cost (£)</th>
-                            <th class="govuk-table__header govuk-table__header--numeric">Funding applied for<br>(£)</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td class="govuk-table__cell">Staff</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
-                        </tr>
-                        <tr>
-                            <td class="govuk-table__cell">Equipment</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
-                        </tr>
-                        <tr>
-                            <td class="govuk-table__cell">Other</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
-                        </tr>
-                        <tr>
-                            <td class="govuk-table__cell">Animals</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
-                        </tr>
-                        <tr>
-                            <td class="govuk-table__cell">Estates and indirects</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">£66,000</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
-                        </tr>
-
-                        <tr>
-                            <td class="govuk-table__cell govuk-table__cell--mega">Total</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£330,000</td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric  govuk-table__cell--mega">£1,000,000</td>
-                        </tr>
-                        </tbody>
-                    </table>#}
                     <div class="responsive-table">
 
                         <table class="govuk-table govuk-table--stripes _govuk-table--finance govuk-table--indents responsive-table__table">
@@ -317,8 +280,8 @@
                             <tr>
                                 <th rowspan="2" class="govuk-table__header u-brd-l0">Cost category</th>
                                 <th rowspan="2" class="govuk-table__header govuk-table__header--numeric">% fEC</th>
-                                <th colspan="3" class="govuk-table__header govuk-table__cell--centre ">Authorised fEC (£)</th>
-                                <th colspan="3" class="govuk-table__header govuk-table__cell--centre">RC Contribution (£)</th>
+                                <th colspan="3" class="govuk-table__header govuk-table__cell--centre ">Authorised fEC (&pound;)</th>
+                                <th colspan="3" class="govuk-table__header govuk-table__cell--centre">RC Contribution (&pound;)</th>
 
                             </tr>
                             <tr>
@@ -467,6 +430,117 @@
             {% call components.bulmaRow(extraClass='u-space-b20') %}
                 {% call components.bulmaColumnAny(size='is-full') %}
 
+                    {{ components.captionHeading(text='Staff', size='m', tag='h2', id='staff') }}
+
+
+                    {{ components.captionHeading(text='Staff summary', tag='h3', size='s') }}
+                    <div class="responsive-table">
+
+                        <table class="govuk-table responsive-table__table">
+                            <thead>
+                            <tr>
+                                <th class="govuk-table__header u-brd-l0">Role</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Authorised fEC<br> net</th>
+                                <th class="govuk-table__header govuk-table__header--numeric ">RC contribution<br> new</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Number of <br>staff months</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="govuk-table__cell">Investigator</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">450,000</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">250,000</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">36</td>
+                            </tr>
+                            <tr>
+                                <td class="govuk-table__cell">Other</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">150,000</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">150,000</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">36</td>
+                            </tr>
+                            <tr>
+                                <td class="govuk-table__cell">Researcher</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">300,000</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">200,000</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">36</td>
+                            </tr>
+                            <tr>
+                                <td class="govuk-table__cell">Technician</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">100,000</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">50,000</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">24</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {{ components.captionHeading(text='Staff and DI investigator details', tag='h3', size='s') }}
+                    <div class="responsive-table">
+
+                        <table class="govuk-table responsive-table__table">
+                            <thead>
+                            <tr>
+                                <th class="govuk-table__header">Start date</th>
+                                <th class="govuk-table__header">End date</th>
+                                <th class="govuk-table__header govuk-table__header--centre">Duration</th>
+                                <th class="govuk-table__header govuk-table__header--centre">FTE<br>percent</th>
+                                <th class="govuk-table__header">Name or post<br>identifier</th>
+                                <th class="govuk-table__header">Summary fund<br>heading</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Authorised cost<br><span class="govuk-!-font-size-16 govuk-!-font-weight-regular">(Excluding indexation)</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% set monthsRange = ["6","12","18","24","36","48"] %}
+                            {% for i in range(0,8) %}
+                                <tr>
+                                    <td class="govuk-table__cell">1 Feb 2023</td>
+                                    <td class="govuk-table__cell">31 Jan 2025</td>
+                                    <td class="govuk-table__cell govuk-table__cell--centre u-align-center">{{ monthsRange[range(1, 6) | random] }}</td>
+                                    <td class="govuk-table__cell govuk-table__cell--centre">{{ (range(14, 20) | random) * 5 }}</td>
+                                    <td class="govuk-table__cell">{{ 'firstAndLast' | giveMeAName }}</td>
+                                    <td class="govuk-table__cell">Directly Incurred</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">&pound;{{ ((range(1, 100) | random) * 2500) | numberFormat() }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='column is-4') %}
+
+                    {{ components.captionHeading(text='DA investigator details', tag='h3', size='s') }}
+                    <div class="responsive-table">
+
+                        <table class="govuk-table responsive-table__table">
+                            <thead>
+                            <tr>
+                                <th class="govuk-table__header">Name or post identifier</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Average hours<br>per week</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for i in range(0,8) %}
+                                <tr>
+                                    <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">{{ (range(1, 8) | random) * 5 }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+            {% call components.bulmaRow(extraClass='u-space-b20') %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+
                     {{ components.captionHeading(text='Payment schedule', size='m', tag='h2', id='paymentSchedule') }}
 
                     <div class="responsive-table">
@@ -483,27 +557,27 @@
                             <tr class="_govuk-table--current">
                                 <td class="govuk-table__cell">Aug to Oct 2022</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric">1 Aug 2022</td>
-                                <td class="govuk-table__cell govuk-table__cell--numeric">£300,208.40</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">&pound;300,208.40</td>
                             </tr>
                             <tr>
                                 <td class="govuk-table__cell">Nov to Jan 2023</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric">1 Nov 2022</td>
-                                <td class="govuk-table__cell govuk-table__cell--numeric">£75,285.55</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">&pound;75,285.55</td>
                             </tr>
                             <tr>
                                 <td class="govuk-table__cell">Feb to Apr 2023</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric">1 Feb 2023</td>
-                                <td class="govuk-table__cell govuk-table__cell--numeric">£75,285.55</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">&pound;75,285.55</td>
                             </tr>
                             <tr>
                                 <td class="govuk-table__cell">May to Jul 2023</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric">1 May 2023</td>
-                                <td class="govuk-table__cell govuk-table__cell--numeric">£75,285.55</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">&pound;75,285.55</td>
                             </tr>
                             <tr>
                                 <td class="govuk-table__cell">Aug to Oct 2023</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric">1 Aug 2023</td>
-                                <td class="govuk-table__cell govuk-table__cell--numeric">£75,285.55</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">&pound;75,285.55</td>
                             </tr>
                             </tbody>
                         </table>

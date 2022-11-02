@@ -285,11 +285,9 @@ body {
   }
 }
 
-
 .govuk-link--disabled {
   color: govuk-colour("dark-grey");
 }
-
 
 .govuk-tabs__list-item--disabled {
   color: govuk-colour("mid-grey") !important;
@@ -303,7 +301,10 @@ body {
   }
 }
 
-
 .govuk-select--full-width {
   width:100%;
+}
+
+.govuk-table__header--centre {
+  text-align: center!important;
 }
