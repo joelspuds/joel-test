@@ -36,7 +36,9 @@
   { text: 'FSB-740', url: '/prototypes/stories/fsb-740' },
   { text: 'FSB-2730', url: '/prototypes/stories/fsb-2730' },
   { text: 'FSB-3036', url: '/prototypes/stories/fsb-3036' },
-  { text: 'FSB-3124', url: '/prototypes/stories/fsb-3124-applicants' }
+  { text: 'FSB-3124', url: '/prototypes/stories/fsb-3124-applicants' },
+  { text: 'UFSPA-713: Timeline with modified details block and tags in H1', url: '/prototypes/change-request/change-request-detail-static' }
+
 ] %}
 
 {% block content %}
@@ -77,6 +79,8 @@
 
         <li>
           <a href="/prototypes/start-award" class="govuk-link govuk-link--no-visited-state ">Start award, v2 static pages</a>
+          <br>
+           - <a href="/prototypes/start-award/award-agreement" class="govuk-link govuk-link--no-visited-state ">Award agreement</a>
         </li>
 
         <li>
@@ -99,7 +103,7 @@
 
   {% call components.gridRow() %}
 
-    {% call components.columnHalf() %}
+    {% call components.columnFull() %}
 
       {{ components.heading(text='Stories', tag='h3', size='medium') }}
 

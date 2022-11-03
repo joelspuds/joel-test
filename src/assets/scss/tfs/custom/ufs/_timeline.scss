@@ -10,18 +10,11 @@
 
     border-top: 1px solid govuk-colour("mid-grey");
     padding-top:12px;
-
-    &:first-of-type {
-
-    }
   }
 
   &__item {
     padding-bottom: 12px;
     position: relative;
-
-    /*margin-bottom: 10px;*/
-    /*padding-top: 12px;*/
 
     &:before {
       position: absolute;
@@ -54,9 +47,7 @@
     }
 
     &:first-of-type {
-
       .timeline__title {
-        // background-color: lime;
         border-top:none;
       }
     }
