@@ -1,13 +1,13 @@
 {% call components.bulmaRow(extraClass='') %}
 
     {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
-        <div class="service-help u-space-b20 u-space-t30" {#aria-expanded="false"#}>
+        <div class="service-help u-space-b20 u-space-t30">
             <h2 class="govuk-heading-s service-help__heading">
                 <span class="service-help__plain">Need help with this service?</span>
-                <a href="/help-me/" class="govuk-link service-help__link js-only">Contact us</a>
+                <button class="govuk-button--link service-help__link js-only " aria-hidden="true">Contact us</button>
             </h2>
 
-            <div class="service-help__text js-hidden" {#aria-hidden="true"#}>
+            <div class="service-help__text js-hidden">
                 <p class="govuk-body">You can either email us: <a href="mailto:support@funding-service.ukri.org" class="govuk-link">support@funding-service.ukri.org</a></p>
                 <p class="govuk-body">Or call the UKRI Funding Service Helpline: <a href="tel:+441793442900" class="govuk-link" >+44 (0)1793 44 2900</a></p>
             </div>
@@ -20,12 +20,8 @@
             e.preventDefault();
             if(serviceHelpContent.classList.contains('js-hidden')) {
               serviceHelpContent.classList.remove('js-hidden');
-              /*serviceHelpWrapper.setAttribute('aria-expanded', true);
-              serviceHelpContent.setAttribute('aria-hidden', false);*/
             } else {
               serviceHelpContent.classList.add('js-hidden');
-              /*serviceHelpWrapper.setAttribute('aria-expanded', false);
-              serviceHelpContent.setAttribute('aria-hidden', true);*/
             }
           });
         </script>
