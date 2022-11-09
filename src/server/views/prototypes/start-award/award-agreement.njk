@@ -60,7 +60,7 @@
                 <h2 class="govuk-heading-s  govuk-heading--link">Contents</h2>
                 <ul class="govuk-list">
                     <li>
-                        <a href="#offerLetter" class="govuk-link govuk-link--no-visited-state ">Offer letter</a>
+                        <a href="#offerLetter" class="govuk-link govuk-link--no-visited-state ">Award details</a>
                     </li>
                     <li>
                         <a href="#awardDetails" class="govuk-link govuk-link--no-visited-state ">Award summary</a>
@@ -75,8 +75,18 @@
                         <a href="#staff" class="govuk-link govuk-link--no-visited-state ">Staff</a>
                     </li>
                     <li>
+                        <a href="#partners" class="govuk-link govuk-link--no-visited-state ">Project partners</a>
+                    </li>
+                    <li>
                         <a href="#paymentSchedule" class="govuk-link govuk-link--no-visited-state ">Payment schedule</a>
                     </li>
+                    <li>
+                        <a href="#equipment" class="govuk-link govuk-link--no-visited-state ">Equipment details</a>
+                    </li>
+                    <li>
+                        <a href="#facilities" class="govuk-link govuk-link--no-visited-state ">Facilities and service details</a>
+                    </li>
+
                     <li>
                         <a href="#termsAndConditions" class="govuk-link govuk-link--no-visited-state ">Terms and conditions</a>
                     </li>
@@ -124,7 +134,7 @@
 
             {% call components.bulmaRow(extraClass='') %}
                 {% call components.bulmaColumnAny(size='is-full') %}
-                    {{ components.captionHeading(text='Offer letter', size='m', tag='h2', extraClass='u-space-b10', id='offerLetter') }}
+                    {{ components.captionHeading(text='Award details', size='m', tag='h2', extraClass='u-space-b10', id='offerLetter') }}
                 {%- endcall %}
             {%- endcall %}
 
@@ -166,12 +176,12 @@
                     </p>
 
 
-                    <p class="govuk-body">
+                    {#<p class="govuk-body">
                         BBSRC part of UK Research and Innovation is offering an award to the cost of the above project, subject to the terms and conditions set out below.
                     </p>
                     <p class="govuk-body">
                         Awards are cash limited and expenditure against the project must not exceed the value awarded apart for reasons stated in the standard terms and conditions.
-                    </p>
+                    </p>#}
                 {%- endcall %}
             {%- endcall %}
 
@@ -436,11 +446,8 @@
                 {% call components.bulmaColumnAny(size='is-full') %}
 
                     {{ components.captionHeading(text='Staff', size='m', tag='h2', id='staff') }}
-
-
                     {{ components.captionHeading(text='Staff summary', tag='h3', size='s') }}
                     <div class="responsive-table">
-
                         <table class="govuk-table responsive-table__table">
                             <thead>
                             <tr>
@@ -513,6 +520,16 @@
                     </div>
                 {%- endcall %}
             {%- endcall %}
+
+
+            {% call components.bulmaRow(extraClass='u-space-b20') %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+                    {{ components.captionHeading(text='Project partners', size='m', tag='h2', id='partners') }}
+                    <p class="govuk-body">[Placeholder]</p>
+                {%- endcall %}
+            {%- endcall %}
+
+
             {% call components.bulmaRow() %}
 
                 {% call components.bulmaColumnAny(size='column is-4') %}
@@ -589,6 +606,20 @@
 
                     </div>
 
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow(extraClass='u-space-b20') %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+                    {{ components.captionHeading(text='Equipment details', size='m', tag='h2', id='equipment') }}
+                    <p class="govuk-body">[Placeholder]</p>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow(extraClass='u-space-b20') %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+                    {{ components.captionHeading(text='Facilities and service details', size='m', tag='h2', id='facilities') }}
+                    <p class="govuk-body">[Placeholder]</p>
                 {%- endcall %}
             {%- endcall %}
 

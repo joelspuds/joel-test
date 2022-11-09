@@ -333,6 +333,10 @@ body {
       }
     }
   }
+
+  p:last-of-type {
+    margin-bottom: 0!important;
+  }
 }
 
 .govuk-heading--has-tag {
