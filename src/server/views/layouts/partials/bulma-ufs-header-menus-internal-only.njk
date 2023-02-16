@@ -106,17 +106,19 @@
                                 </div>
                                 {% endif %}
 
-                                <div class="nav-bar" aria-label="User Navigation" role="navigation">
-                                    <ul class="nav-bar__list">
-                                        <li class="dropdown">
-                                            <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="user-dropdown">{{ userName }}</button>
-                                            <ul class="dropdown__menu" id="user-dropdown">
-                                                <li><a href="{{ accountSettingsLink }}" class="{% if navArea == 'profile' %}dropdown__link--active{% endif %}" role="menuitem">Account settings</a></li>
-                                                <li><a href="{{ signOutLink }}" role="menuitem">Sign out</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
+                                {% if not hideUserMenu %}
+                                    <div class="nav-bar" aria-label="User Navigation" role="navigation">
+                                        <ul class="nav-bar__list">
+                                            <li class="dropdown">
+                                                <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="user-dropdown">{{ userName }}</button>
+                                                <ul class="dropdown__menu" id="user-dropdown">
+                                                    <li><a href="{{ accountSettingsLink }}" class="{% if navArea == 'profile' %}dropdown__link--active{% endif %}" role="menuitem">Account settings</a></li>
+                                                    <li><a href="{{ signOutLink }}" role="menuitem">Sign out</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                {% endif %}
                             </div>
                         {% else %}
                             <div class="nav-wrapper">

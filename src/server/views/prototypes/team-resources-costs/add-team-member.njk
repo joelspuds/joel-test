@@ -1,0 +1,158 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/team-resources-costs/awards' %}
+{% set applicationsLink = '/prototypes/team-resources-costs/applications' %}
+{% set awardSetUpLink = '/prototypes/team-resources-costs/#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set limitedOrgList = limitedOrgList if limitedOrgList %}
+
+
+{% set pageTitle = 'Add team member ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/team-resources-costs/application-overview', text:'Back to application overview'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Add team member', caption='APP171: Bio-detoxification of Ricin in castor bean') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-5') %}
+
+            <p class="govuk-body">
+                <strong>Role type</strong><br>
+                <span>{{ allData.tempRoleType if allData.tempRoleType else '<span class="meta">Role type not set</span>' }}</span>
+                <span class="u-float-right"><a href="/prototypes/team-resources-costs/select-role-type" class="govuk-link">Change <span class="govuk-visually-hidden">role type</span></a> </span>
+            </p>
+            <p class="govuk-body">
+                <strong>Role</strong><br>
+                <span>{{ allData.tempRole if allData.tempRole else '<span class="meta">Role not set</span>' }}</span>
+                <span class="u-float-right"><a href="/prototypes/team-resources-costs/select-role" class="govuk-link">Change <span class="govuk-visually-hidden">role</span></a> </span>
+
+            </p>
+
+         {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        <section class="section" id="mainContent">
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-5') %}
+
+                    <div class="govuk-form-group ">
+                        <label class="govuk-label govuk-label--s" for="firstName" id="firstNameLabel">First name</label>
+                        <input class="govuk-input _govuk-input--width-20" id="firstName" type="text" name="firstName" value="{{ allData.firstName }}">
+                    </div>
+
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="lastName" id="lastNameLabel">Last name</label>
+                        <input class="govuk-input _govuk-input--width-20 " id="lastName" type="text" name="lastName" value=" {{ allData.lastName }} ">
+                    </div>
+
+                    <div class="govuk-form-group ">
+                        <label class="govuk-label govuk-label--s" for="email" id="emailAddressInput">Email address</label>
+                        <input class="govuk-input _govuk-input--width-20" id="email" name="email" type="text" value="{{ allData.email }}">
+                    </div>
+
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="organisation">Organisation name</label>
+                        <input class="govuk-input _govuk-input--width-20" id="organisation" name="organisation" type="text" disabled value="{{ allData.selectedOrganisation if allData.selectedOrganisation else 'Organisation not set' }}">
+                        {#<span class="govuk-hint">Start entering, then select the organisation's name</span>#}
+                        {#<select name="transferOrganisation" class="govuk-select control" id="transferOrganisation">
+                            <option></option>
+                            {% for item in limitedOrgList %}
+                                <option value="{{ item.n }}" {% if item.n == allData.transferOrganisation %} selected {% endif %}>{{ item.n }}</option>
+                            {% endfor %}
+                        </select>#}
+                        <p class="govuk-body u-space-t10"><a href="/prototypes/team-resources-costs/organisation-search" class="govuk-link">Change organisation</a> </p>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-5', customID='') %}
+
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="timeSpent" id="timeSpentLabel">Time spent FTE on project (%)</label>
+                        <input class="govuk-input govuk-input--width-4 " id="timeSpent" type="number" name="timeSpent" value="{{ allData.timespent }}">
+                    </div>
+
+                    <div class="govuk-form-group ">
+                        <label class="govuk-label govuk-label--s" for="averageHours" id="averageHoursLabel">Average hours per week on project</label>
+                        <input class="govuk-input govuk-input--width-4" id="averageHours" name="averageHours" type="number" value="{{ allData.averageHours }}">
+                    </div>
+
+                {%- endcall %}
+            {%- endcall %}
+
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-5', customID='') %}
+
+                    <div class="govuk-warning-text">
+                        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                        <strong class="govuk-warning-text__text">
+                            <span class="govuk-warning-text__assistive">Warning</span>
+                            An email will be sent to the team member to notify them of their involvement in this award
+                        </strong>
+                    </div>
+
+
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
+                    {% call components.formGroup() %}
+                        <div class="application-controls govuk-clearfix">
+                            {{ components.button(text='Add team member', extraClass="application-controls__submit")}}
+                            <a href="/prototypes/team-resources-costs/team" class="govuk-link application-controls__cancel">Cancel and return to team</a>
+                        </div>
+                    {%- endcall %}
+                {%- endcall %}
+            {%- endcall %}
+
+        </section>
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        var selectEl = document.querySelector('#transferOrganisation');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 1,
+            selectElement: selectEl
+        });
+    </script>
+{% endblock %}

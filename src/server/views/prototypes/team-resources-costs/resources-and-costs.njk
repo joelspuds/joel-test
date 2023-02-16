@@ -1,0 +1,232 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/team-resources-costs/awards' %}
+{% set applicationsLink = '/prototypes/team-resources-costs/applications' %}
+{% set awardSetUpLink = '/prototypes/team-resources-costs/#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = true %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else '' %}
+{% set prototypeData = prototypeData if prototypeData %}
+{% set allTeamMembers = allTeamMembers if allTeamMembers %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Resources and cost ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/team-resources-costs/application-overview', text:'Back to application overview'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Resources and cost', caption='APP171: Bio-detoxification of Ricin in castor bean') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        <section class="section" id="mainContent">
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
+                    <p class="govuk-body govuk-!-font-size-24">All costs that contribute to the full economic cost (fEC) of the application should be included for each cost category.</p>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
+                    {{ components.captionHeading(text='Resources and cost summary', tag='h2', size='m') }}
+                    <p class="govuk-body">This is a breakdown of your resources and cost and sources of funding.</p>
+                {%- endcall %}
+            {%- endcall %}
+            {% call components.bulmaRow(extraClass='u-space-b45') %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+                    <div class="big-numbers">
+
+                        <div class="big-numbers__biggy">
+                            <div class="big-numbers__title">
+                                Total full economic costs (fEC)
+                            </div>
+                            <div class="big-numbers__number">
+                                £0.00
+                            </div>
+                        </div>
+
+                        <div class="big-numbers__biggy">
+                            <div class="big-numbers__title">
+                                Contribution from applying organisations
+                            </div>
+                            <div class="big-numbers__number">
+                                £0.00
+                            </div>
+                        </div>
+
+                        <div class="big-numbers__biggy">
+                            <div class="big-numbers__title">
+                                Funding applied for
+                            </div>
+                            <div class="big-numbers__number">
+                                £0.00
+                            </div>
+                        </div>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
+                    {{ components.captionHeading(text='Provide resources and costs for the application organisation(s) ', tag='h2', size='m') }}
+                    <p class="govuk-body">This is a breakdown of your resources and cost and sources of funding.</p>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
+
+                    <div class="application-items u-space-b30">
+
+                        {#{{ allData.uniqueOrgs[1] }}#}
+
+                        {% set orgsArrayIndex = 0 %}
+
+                        {% for item in allData.uniqueOrgs %}
+
+                            <div class="application-item {% if item.isComplete == true %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <a href="/prototypes/team-resources-costs/organisation-costs?orgsArrayIndex={{ orgsArrayIndex }}" class="govuk-link  ">{{ item.name }}</a>
+                                        {% if orgsArrayIndex == 0 %}
+                                            <span class="{#govuk-tag govuk-tag--blue#} badge badge--info badge--smaller">LEAD</span>
+                                        {% endif %}
+                                    </div>
+                                    <div class="application-item__right">
+                                        <span class="application-item__control">£0</span>
+                                        {% if item.isComplete == true %}
+                                            <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                                        {% else %}
+                                            <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> incomplete</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% set orgsArrayIndex = orgsArrayIndex + 1 %}
+                        {% endfor %}
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='', extraClass='') %}
+                    {{ components.captionHeading(text='Justification of resources and cost', tag='h2', size='m') }}
+
+                    {#{{ components.textarea(options=selectOptions, label='Enter your case for support', labelBold=true, name='htmlTest', id='tinyMCEInput', hint='What will you need to deliver your proposed work and how much it will cost?', group=true, rows='8', size='', value=exampleHTML, extraClass='', visuallyHidden=true) }}#}
+                    <div class="form-group u-space-b45 ">
+                        <label class="govuk-label form-label form-label-bold " for="tinyMCEInput">What will you need to deliver your proposed work and how much it will cost?</label>
+                        <details class="govuk-details u-space-y20" data-module="govuk-details" role="group">
+                            <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                <span class="govuk-details__summary-text">What the assessors are looking for in your response</span>
+                            </summary>
+                            <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                <p class="govuk-body">Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam elit sem, euismod non nisi nec, dapibus molestie urna. Ut ut pellentesque magna, non mattis eros. Maecenas pretium massa a mauris elementum vulputate. Etiam commodo gravida felis ut imperdiet. Aliquam sagittis, quam quis laoreet tempus, quam massa pretium leo, id lobortis ante lorem ac risus. Vestibulum tristique lectus sed nunc lacinia, ultrices finibus nunc sollicitudin.</p>
+                            </div>
+                        </details>
+                        <textarea class="govuk-textarea form-control " name="htmlTest" id="tinyMCEInput" rows="8"></textarea>
+                        <p class="u-space-t20">
+                            <span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite"></span>
+                        </p>
+                    </div>
+
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='', extraClass='_u-space-t40') %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-item">
+                            <div class="application-item__contents application-item__contents--mac">
+                                <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                    <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                        <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                    </legend>
+                                    <div class="govuk-checkboxes">
+                                        <div class="govuk-checkboxes__item">
+                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox">
+                                            <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    {%- endcall %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-controls govuk-clearfix">
+
+                            {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
+
+                        </div>
+                    {%- endcall %}
+
+                {%- endcall %}
+            {%- endcall %}
+
+
+        </section>
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        let wordy, count, newCount, overCount;
+        let limit = 400;
+        let countOutput = document.getElementById('wordCount');
+        countOutput.innerHTML = 'You have ' +  limit + ' words remaining';
+
+        tinymce.init({
+            selector: 'textarea',
+            height: 400,
+            menubar: false,
+            plugins: [
+                'lists charmap anchor',
+                'paste code wordcount '
+            ],
+            toolbar: 'formatselect | bold italic | numlist bullist |',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ],
+            setup: function(editor) {
+                editor.on('keyup', function(e) {
+                    wordy = editor.plugins.wordcount;
+                    count = parseInt(wordy.body.getWordCount());
+                    newCount = limit - count;
+                    // overCount =  limit + count;
+                    overCount =  count - limit;
+                    if (newCount < 0) {
+                        countOutput.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>'
+                    } else {
+                        countOutput.innerHTML = 'You have ' +  newCount + ' words remaining'
+                    }
+                }).on('load');
+            }
+        });
+    </script>
+{% endblock %}

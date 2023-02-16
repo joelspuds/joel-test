@@ -886,6 +886,39 @@ router.post('/prototypes/manage-panel/manage-roles/review-panelists', demosContr
 
 /* *************************************************************** *
 
+    Team resources costs prototype
+
+ * *************************************************************** */
+// Create new opportunity
+router.get('/prototypes/team-resources-costs', demosController.trcIndexGet);
+router.post('/prototypes/team-resources-costs', demosController.trcIndexPost);
+router.get('/prototypes/team-resources-costs/home', demosController.trcHomeGet);
+router.post('/prototypes/team-resources-costs/home', demosController.trcHomePost);
+router.get('/prototypes/team-resources-costs/applications', demosController.trcApplicationsGet);
+router.post('/prototypes/team-resources-costs/applications', demosController.trcApplicationsPost);
+router.get('/prototypes/team-resources-costs/application-overview', demosController.trcApplicationOverviewGet);
+router.post('/prototypes/team-resources-costs/application-overview', demosController.trcApplicationOverviewPost);
+router.get('/prototypes/team-resources-costs/team', demosController.trcTeamGet);
+router.post('/prototypes/team-resources-costs/team', demosController.trcTeamPost);
+router.get('/prototypes/team-resources-costs/resources-and-costs', demosController.trcResourcesAndCostsGet);
+router.post('/prototypes/team-resources-costs/resources-and-costs', demosController.trcResourcesAndCostsPost);
+router.get('/prototypes/team-resources-costs/select-role-type', demosController.trcSelectRoleTypeGet);
+router.post('/prototypes/team-resources-costs/select-role-type', demosController.trcSelectRoleTypePost);
+router.get('/prototypes/team-resources-costs/select-role', demosController.trcSelectRoleGet);
+router.post('/prototypes/team-resources-costs/select-role', demosController.trcSelectRolePost);
+router.get('/prototypes/team-resources-costs/organisation-search', demosController.trcOrganisationSearchGet);
+router.post('/prototypes/team-resources-costs/organisation-search', demosController.trcOrganisationSearchPost);
+router.get('/prototypes/team-resources-costs/add-team-member', demosController.trcAddTeamMemberGet);
+router.post('/prototypes/team-resources-costs/add-team-member', demosController.trcAddTeamMemberPost);
+router.get('/prototypes/team-resources-costs/add-team-member-alt', demosController.trcAddTeamMemberAltGet);
+router.post('/prototypes/team-resources-costs/add-team-member-alt', demosController.trcAddTeamMemberAltPost);
+router.get('/prototypes/team-resources-costs/team-member', demosController.trcTeamMemberDetailsGet);
+router.post('/prototypes/team-resources-costs/team-member', demosController.trcTeamMemberDetailsPost);
+router.get('/prototypes/team-resources-costs/organisation-costs', demosController.trcOrganisationCostsGet);
+router.post('/prototypes/team-resources-costs/organisation-costs', demosController.trcOrganisationCostsPost);
+
+/* *************************************************************** *
+
   Design section
 
 * *************************************************************** */

@@ -1,0 +1,115 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/team-resources-costs/awards' %}
+{% set applicationsLink = '/prototypes/team-resources-costs/applications' %}
+{% set awardSetUpLink = '/prototypes/team-resources-costs/#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set limitedOrgList = limitedOrgList if limitedOrgList %}
+
+
+{% set pageTitle = 'Team member details ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/team-resources-costs/application-overview', text:'Back to application overview'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Team member details', caption='APP171: Bio-detoxification of Ricin in castor bean') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% set teamMamberArrayPos = teamMemberID - 1 %}
+
+        <section class="section" id="mainContent">
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='column is-5') %}
+
+                    <p class="govuk-body">
+                        <strong>Role</strong><br>
+                        <span>{{ allTeamMembers2[teamMamberArrayPos].role  if allTeamMembers2[teamMamberArrayPos].role else '<span class="meta">Role not set</span>' }}</span>
+
+                    </p>
+                    <p class="govuk-body">
+                        <strong>Role type</strong><br>
+                        <span>{{ allTeamMembers2[teamMamberArrayPos].roleType  if allTeamMembers2[teamMamberArrayPos].roleType else '<span class="meta">Role type not set</span>' }}</span>
+                    </p>
+                    <p class="govuk-body">
+                        <strong>First name</strong><br>
+                        <span>{{ allTeamMembers2[teamMamberArrayPos].firstName  if allTeamMembers2[teamMamberArrayPos].firstName else '<span class="meta">First name not set</span>' }}</span>
+                    </p>
+                    <p class="govuk-body">
+                        <strong>Last name</strong><br>
+                        <span>{{ allTeamMembers2[teamMamberArrayPos].lastName  if allTeamMembers2[teamMamberArrayPos].lastName else '<span class="meta">Last name not set</span>' }}</span>
+                    </p>
+                    <p class="govuk-body">
+                        <strong>Email address</strong><br>
+                        <span>{{ allTeamMembers2[teamMamberArrayPos].email  if allTeamMembers2[teamMamberArrayPos].roleType else '<span class="meta">Email not set</span>' }}</span>
+                    </p>
+                    <p class="govuk-body">
+                        <strong>Organisation</strong><br>
+                        <span>{{ allTeamMembers2[teamMamberArrayPos].organisation  if allTeamMembers2[teamMamberArrayPos].organisation else '<span class="meta">Organisation not set</span>' }}</span>
+                    </p>
+                    <p class="govuk-body">
+                        <strong>Time spent FTE on project (%)</strong><br>
+                        <span>{{ allTeamMembers2[teamMamberArrayPos].timeSpent  if allTeamMembers2[teamMamberArrayPos].timeSpent else '<span class="meta">Time spent not set</span>' }}</span>
+                    </p>
+                    <p class="govuk-body">
+                        <strong>Average hours per week</strong><br>
+                        <span>{{ allTeamMembers2[teamMamberArrayPos].averageHours  if allTeamMembers2[teamMamberArrayPos].roleTaverageHoursype else '<span class="meta">Total hours type not set</span>' }}</span>
+                    </p>
+                {%- endcall %}
+
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='column is-5') %}
+                    {% call components.formGroup() %}
+                        <a class="govuk-button govuk-button--secondary " href="/prototypes/team-resources-costs/select-role-type?action=edit&teamMemberType={{ allTeamMembers2[teamMamberArrayPos].roleType }}&teamMemberID={{ teamMemberID }}" role="button">Edit team member</a>
+                        <br>
+                        <a href="/prototypes/team-resources-costs/team" class="govuk-link application-controls__cancel">Cancel and return to team</a>
+                    {%- endcall %}
+                {%- endcall %}
+            {%- endcall %}
+
+        </section>
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        var selectEl = document.querySelector('#transferOrganisation');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 1,
+            selectElement: selectEl
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,120 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/team-resources-costs/awards' %}
+{% set applicationsLink = '/prototypes/team-resources-costs/applications' %}
+{% set awardSetUpLink = '/prototypes/team-resources-costs/#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Select team member type ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/team-resources-costs/team', text:'Back to Team'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Select team member type', caption='Add  team member') }}
+
+            <details class="govuk-details u-space-t20 js-only" data-module="govuk-details" role="group">
+                <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                    <span class="govuk-details__summary-text">Guidance on selecting a team member type</span>
+                </summary>
+                <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                    <div class="tiny-spoof">
+                        <p class="govuk-body">You can add some content here that is slightly more relevant.</p>
+                        <ul class="govuk-list govuk-list--bullet u-space-b0">
+                            <li>Item one</li>
+                            <li>Something else </li>
+                            <li>Important note</li>
+                            <li>Useful point</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        <section class="section" id="mainContent">
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-8', customID='') %}
+
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <legend class="govuk-label govuk-label--s u-space-b20 govuk-visually-hidden">Select the role for the new team member</legend>
+                            <div class="govuk-radios" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="roleType1" name="roleType" type="radio" value="Directly allocated" {% if allData.tempRoleType == 'Directly allocated' %} checked {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="roleType1" >Directly allocated</label>
+                                    <span class="govuk-hint govuk-radios__hint">Individuals who are employed, or will be employed when this award starts</span>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="roleType2" name="roleType" type="radio" value="Directly incurred" {% if allData.tempRoleType == 'Directly incurred' %} checked {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="roleType2">Directly incurred</label>
+                                    <span class="govuk-hint govuk-radios__hint">Individuals who will work specifically on this project, whose salaries are dependent on this award</span>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="roleType3" name="roleType" type="radio" value="Exception" {% if allData.tempRoleType == 'Exception' %} checked {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="roleType3">Exception</label>
+                                    <span class="govuk-hint govuk-radios__hint">Individuals who are non-UK co-investigators</span>
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+                {%- endcall %}
+            {%- endcall %}
+
+
+
+
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-controls govuk-clearfix">
+
+                            {{ components.button(text='Continue', extraClass="application-controls__submit")}}
+                            <a href="/prototypes/team-resources-costs/team" class="govuk-link application-controls__cancel">Cancel and return to Team</a>
+                        </div>
+                    {%- endcall %}
+
+                {%- endcall %}
+            {%- endcall %}
+
+
+
+
+        </section>
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    {#<script>
+    </script>#}
+{% endblock %}

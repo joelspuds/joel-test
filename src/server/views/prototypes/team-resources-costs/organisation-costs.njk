@@ -1,0 +1,570 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '/prototypes/team-resources-costs/awards' %}
+{% set applicationsLink = '/prototypes/team-resources-costs/applications' %}
+{% set awardSetUpLink = '/prototypes/team-resources-costs/#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+{% set prototypeData = prototypeData if prototypeData %}
+{% set allTeamMembers = allTeamMembers if allTeamMembers %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set organisationName = allData.uniqueOrgs[orgsArrayIndex].name %}
+
+{% set pageTitle = organisationName + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/team-resources-costs/application-overview', text:'Back to application overview'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {#{{ components.captionHeading(text=organisationName, caption='APP171: Bio-detoxification of Ricin in castor bean') }}<span class="#}{#govuk-tag govuk-tag--blue#}{# badge badge--info badge--smaller">LEAD</span>#}
+
+            <span class="govuk-caption-xl">APP171: Bio-detoxification of Ricin in castor bean</span>
+            <h1 class="govuk-heading-xl govuk-heading--has-tag ">{{ organisationName }} <strong class="badge badge--info badge--smaller">LEAD</strong></h1>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        <section class="section" id="mainContent">
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
+                    <p class="govuk-body govuk-!-font-size-24">All costs that contribute to the full economic costs (fEC) of the application should be included for each cost category.</p>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
+                    {{ components.captionHeading(text='Resources and cost summary', tag='h2', size='m') }}
+                    <p class="govuk-body">This is a breakdown of your resources and cost and sources of funding.</p>
+                {%- endcall %}
+            {%- endcall %}
+            {% call components.bulmaRow(extraClass='u-space-b45') %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+                    <div class="big-numbers">
+
+                        <div class="big-numbers__biggy">
+                            <div class="big-numbers__title">
+                                Total full economic costs (fEC)
+                            </div>
+                            <div class="big-numbers__number">
+                                £0.00
+                            </div>
+                        </div>
+
+                        <div class="big-numbers__biggy">
+                            <div class="big-numbers__title">
+                                Contribution from applying organisations
+                            </div>
+                            <div class="big-numbers__number">
+                                £0.00
+                            </div>
+                        </div>
+
+                        <div class="big-numbers__biggy">
+                            <div class="big-numbers__title">
+                                Funding applied for
+                            </div>
+                            <div class="big-numbers__number">
+                                £0.00
+                            </div>
+                        </div>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
+                    {{ components.captionHeading(text='Directly allocated team members', tag='h2', size='m') }}
+                    <p class="govuk-body">This is a breakdown of your resources and cost and sources of funding.</p>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-full', customID='') %}
+                    {{ components.captionHeading(text='Directly allocated', tag='h2', size='m') }}
+                    <div class="responsive-table ">
+                        <table class="govuk-table responsive-table__table">
+                            <thead>
+                            <tr>
+                                <th class="govuk-table__header cell-max-300 cell-min-200 ">Name</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in allTeamMembers2 %}
+                                {% if item.isComplete and item.roleType == 'Directly allocated' and item.organisation == organisationName %}
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">{{ item.firstName }} {{ item.lastName }}</td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                            <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">
+                                        </td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                                    </tr>
+                                {% endif %}
+
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-full', customID='') %}
+                    {{ components.captionHeading(text='Directly incurred team members', tag='h2', size='m') }}
+                    <div class="responsive-table ">
+                        <table class="govuk-table responsive-table__table" id="diTable">
+                            <thead>
+                                <tr>
+                                    <th class="govuk-table__header cell-max-300 cell-min-200">Name</th>
+                                    <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                    <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                    <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in allTeamMembers2 %}
+                                {% if item.isComplete and item.roleType == 'Directly incurred' and item.organisation == organisationName %}
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">
+                                            {% if item.firstName %}
+                                                {{ item.firstName }} {{ item.lastName }}
+                                            {% else %}
+                                                Unknown
+                                            {% endif %}
+                                        </td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                            <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">
+                                        </td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                        <div class="govuk-visually-hidden" id="diNullMessage">
+                            <p class="govuk-body">No exception team members included in the team section for this organisation.</p>
+                        </div>
+                        <script>
+                            let diTable = document.getElementById('diTable');
+                            let diNullMessage = document.getElementById('diNullMessage');
+                            if(diTable.rows.length <= 1) {
+                                diNullMessage.classList.remove('govuk-visually-hidden');
+                                diTable.classList.add('govuk-visually-hidden');
+                            }
+                        </script>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-full', customID='', extraClass='') %}
+                    {{ components.captionHeading(text='Exception staff team members', tag='h2', size='m') }}
+
+                    <div class="responsive-table ">
+                        <table class="govuk-table responsive-table__table exceptions-table" id="exceptionTable">
+                            <thead class="">
+                            <tr>
+                                <th class="govuk-table__header cell-max-300 cell-min-200">Name</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in allTeamMembers2 %}
+                                {% if item.isComplete and item.roleType == 'Exception' and item.organisation == organisationName %}
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">
+                                            {% if item.firstName %}
+                                                {{ item.firstName }} {{ item.lastName }}
+                                            {% else %}
+                                                Unknown
+                                            {% endif %}
+                                        </td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                            <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">
+                                        </td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                                    </tr>
+
+                                {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <div class="govuk-visually-hidden" id="exceptionNullMessage">
+                            <p class="govuk-body">No exception team members included in the team section for this organisation.</p>
+                        </div>
+                        <script>
+                            let exceptionTable = document.getElementById('exceptionTable');
+                            let exceptionNullMessage = document.getElementById('exceptionNullMessage');
+                            if(exceptionTable.rows.length <= 1) {
+                                exceptionNullMessage.classList.remove('govuk-visually-hidden');
+                                exceptionTable.classList.add('govuk-visually-hidden');
+                            }
+                        </script>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-full', customID='', extraClass='') %}
+                    {{ components.captionHeading(text='Directly allocated', tag='h2', size='m') }}
+
+                    <details class="govuk-details u-space-y10 js-only" data-module="govuk-details" role="group">
+                        <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                            <span class="govuk-details__summary-text">Guidance for calculating directly allocated costs</span>
+                        </summary>
+                        <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                            <div class="tiny-spoof">
+                                <p class="govuk-body">You can add some content here that is slightly more relevant.</p>
+                                <ul class="govuk-list govuk-list--bullet u-space-b0">
+                                    <li>Item one</li>
+                                    <li>Something else </li>
+                                    <li>Important note</li>
+                                    <li>Useful point</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+
+                    <div class="responsive-table ">
+                        <table class="govuk-table responsive-table__table exceptions-table" id="exceptionTable">
+                            <thead class="">
+                            <tr>
+                                <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="govuk-table__cell govuk-table__cell--middle">Staff</td>
+                                <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                    {#<input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">#}0
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                            </tr>
+                            <tr>
+                                <td class="govuk-table__cell govuk-table__cell--middle">Estates</td>
+                                <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                    <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                            </tr>
+                            <tr>
+                                <td class="govuk-table__cell govuk-table__cell--middle">Other</td>
+                                <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                    <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-full', customID='', extraClass='') %}
+                    {{ components.captionHeading(text='Directly incurred', tag='h2', size='m') }}
+
+                    <details class="govuk-details u-space-y10 js-only" data-module="govuk-details" role="group">
+                        <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                            <span class="govuk-details__summary-text">Guidance for calculating directly incurred costs</span>
+                        </summary>
+                        <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                            <div class="tiny-spoof">
+                                <p class="govuk-body">You can add some content here that is slightly more relevant.</p>
+                                <ul class="govuk-list govuk-list--bullet u-space-b0">
+                                    <li>Item one</li>
+                                    <li>Something else </li>
+                                    <li>Important note</li>
+                                    <li>Useful point</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+
+                    <div class="responsive-table ">
+                        <table class="govuk-table responsive-table__table exceptions-table" id="exceptionTable">
+                            <thead class="">
+                            <tr>
+                                <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="govuk-table__cell govuk-table__cell--middle">Staff</td>
+                                    <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                        {#<input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">#}0
+                                    </td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                                </tr>
+                                <tr>
+                                    <td class="govuk-table__cell govuk-table__cell--middle">Equipment</td>
+                                    <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                        <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">
+                                    </td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                                </tr>
+                                <tr>
+                                    <td class="govuk-table__cell govuk-table__cell--middle">Travel and subsistence</td>
+                                    <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                        <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">
+                                    </td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                                </tr>
+                                <tr>
+                                    <td class="govuk-table__cell govuk-table__cell--middle">Other</td>
+                                    <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                        <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">
+                                    </td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-full', customID='', extraClass='') %}
+                    {{ components.captionHeading(text='Indirect costs', tag='h2', size='m') }}
+
+                    <details class="govuk-details u-space-y10 js-only" data-module="govuk-details" role="group">
+                        <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                            <span class="govuk-details__summary-text">Guidance for calculating indirect costs</span>
+                        </summary>
+                        <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                            <div class="tiny-spoof">
+                                <p class="govuk-body">You can add some content here that is slightly more relevant.</p>
+                                <ul class="govuk-list govuk-list--bullet u-space-b0">
+                                    <li>Item one</li>
+                                    <li>Something else </li>
+                                    <li>Important note</li>
+                                    <li>Useful point</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+
+                    <div class="responsive-table ">
+                        <table class="govuk-table responsive-table__table exceptions-table" id="exceptionTable">
+                            <thead class="">
+                                <tr>
+                                    <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
+                                    <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                    <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                    <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="govuk-table__cell govuk-table__cell--middle">Indirect costs</td>
+                                    <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                        <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">
+                                    </td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-full', customID='', extraClass='') %}
+                    {{ components.captionHeading(text='Exceptions', tag='h2', size='m') }}
+
+                    <details class="govuk-details u-space-y10 js-only" data-module="govuk-details" role="group">
+                        <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                            <span class="govuk-details__summary-text">Guidance for calculating exceptions costs</span>
+                        </summary>
+                        <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                            <div class="tiny-spoof">
+                                <p class="govuk-body">You can add some content here that is slightly more relevant.</p>
+                                <ul class="govuk-list govuk-list--bullet u-space-b0">
+                                    <li>Item one</li>
+                                    <li>Something else </li>
+                                    <li>Important note</li>
+                                    <li>Useful point</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+
+                    <div class="responsive-table ">
+                        <table class="govuk-table responsive-table__table exceptions-table" id="exceptionTable">
+                            <thead class="">
+                            <tr>
+                                <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="govuk-table__cell govuk-table__cell--middle">Staff</td>
+                                <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                    <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                            </tr>
+                            <tr>
+                                <td class="govuk-table__cell govuk-table__cell--middle">Equipment</td>
+                                <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                    <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                            </tr>
+                            <tr>
+                                <td class="govuk-table__cell govuk-table__cell--middle">Travel and subsistence</td>
+                                <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                    <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                            </tr>
+                            <tr>
+                                <td class="govuk-table__cell govuk-table__cell--middle">Other</td>
+                                <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                    <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+
+
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='', extraClass='_u-space-t40') %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-item">
+                            <div class="application-item__contents application-item__contents--mac">
+                                <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                    <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                        <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                    </legend>
+                                    <div class="govuk-checkboxes">
+                                        <div class="govuk-checkboxes__item">
+                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox">
+                                            <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    {%- endcall %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-controls govuk-clearfix">
+
+                            {{ components.button(text='Save and return', extraClass="application-controls__submit")}}
+
+                        </div>
+                    {%- endcall %}
+
+                {%- endcall %}
+            {%- endcall %}
+
+
+        </section>
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        let wordy, count, newCount, overCount;
+        let limit = 400;
+        let countOutput = document.getElementById('wordCount');
+        countOutput.innerHTML = 'You have ' +  limit + ' words remaining';
+
+        tinymce.init({
+            selector: 'textarea',
+            height: 400,
+            menubar: false,
+            plugins: [
+                'lists charmap anchor',
+                'paste code wordcount '
+            ],
+            toolbar: 'formatselect | bold italic | numlist bullist |',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ],
+            setup: function(editor) {
+                editor.on('keyup', function(e) {
+                    wordy = editor.plugins.wordcount;
+                    count = parseInt(wordy.body.getWordCount());
+                    newCount = limit - count;
+                    // overCount =  limit + count;
+                    overCount =  count - limit;
+                    if (newCount < 0) {
+                        countOutput.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>'
+                    } else {
+                        countOutput.innerHTML = 'You have ' +  newCount + ' words remaining'
+                    }
+                }).on('load');
+            }
+        });
+    </script>
+{% endblock %}
