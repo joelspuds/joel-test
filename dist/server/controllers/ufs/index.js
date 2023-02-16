@@ -411,3 +411,15 @@ Object.keys(_managePanelController).forEach(function (key) {
     }
   });
 });
+
+var _teamResourcesCostsController = require('./teamResourcesCostsController');
+
+Object.keys(_teamResourcesCostsController).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _teamResourcesCostsController[key];
+    }
+  });
+});
