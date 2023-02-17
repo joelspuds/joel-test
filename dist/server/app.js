@@ -119,6 +119,7 @@ const startApp = exports.startApp = async () => {
   env.addFilter('showMonth', Helpers.showMonth);
   env.addFilter('giveMeAName', Helpers.namer);
   env.addFilter('toLowerCase', Helpers.changeToLowerCase);
+  env.addFilter('removeSpaces', Helpers.removeSpaces);
 
   // Add lodash as a global for view templates
   env.addGlobal('_', _lodash2.default);

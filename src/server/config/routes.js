@@ -917,6 +917,10 @@ router.post('/prototypes/team-resources-costs/team-member', demosController.trcT
 router.get('/prototypes/team-resources-costs/organisation-costs', demosController.trcOrganisationCostsGet);
 router.post('/prototypes/team-resources-costs/organisation-costs', demosController.trcOrganisationCostsPost);
 
+router.get('/prototypes/team-resources-costs/submission-confirm', demosController.trcSubmissionConfirmGet);
+router.post('/prototypes/team-resources-costs/submission-confirm', demosController.trcSubmissionConfirmPost);
+router.get('/prototypes/team-resources-costs/submitted', demosController.trcSubmittedGet);
+
 /* *************************************************************** *
 
   Design section

@@ -75,3 +75,15 @@ Object.keys(_toLowerCase).forEach(function (key) {
     }
   });
 });
+
+var _removeSpaces = require('./removeSpaces');
+
+Object.keys(_removeSpaces).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _removeSpaces[key];
+    }
+  });
+});

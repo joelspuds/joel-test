@@ -347,3 +347,17 @@ body {
     margin:16px 0 0 20px;
   }
 }
+
+.govuk-input--secret {
+  text-align: right;
+  border: none!important;
+  width: 100px;
+  background-color: govuk-colour("white");
+  color: govuk-colour("black");
+
+  &:focus {
+    outline: none!important;
+    border: none!important;
+    box-shadow: none!important;
+  }
+}

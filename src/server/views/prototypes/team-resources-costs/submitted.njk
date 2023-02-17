@@ -26,6 +26,22 @@
 {% block content %}
 
     {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <h3 class="govuk-notification-banner__heading">
+                        Application submitted {{ 'dataAndTime' | dateAndTime() }}.
+                    </h3>
+                    {#<p class="govuk-body">The application is now with UKRI and they will respond when it has been reviewed.</p>#}
+                </div>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
 
         {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
 
@@ -56,7 +72,16 @@
 
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
-                <div class="application-items">
+                {{ components.captionHeading(text='What happens next?', tag='h2', size='s') }}
+
+                <p class="govuk-body">Your application has been received and, if eligible, will be sent for assessment. Assessors will create shortlists for consideration at a joint panel meeting in June.</p>
+
+                <p class="govuk-body">All applicants will be informed if they have, or have not been selected for the next stage by email between 7-11 July 2023. </p>
+                <h2 class="govuk-heading-s">Notification</h2>
+                <p class="govuk-body">We will inform you of our decision by email.</p>
+
+
+                {#<div class="application-items">
                     {% set detailsIsComplete = true %}
                     {% set caseForSupportIsComplete = true %}
 
@@ -87,28 +112,21 @@
                         </div>
                     </div>
 
-                    <div class="application-item {% if allData.teamMarkAsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
+                    <div class="application-item application-item--complete application-item--skinny ">
                         <div class="application-item__contents govuk-clearfix">
                             <div class="application-item__left">{{ components.link(text='3. Team', url='/prototypes/team-resources-costs/team')}}</div>
                             <div class="application-item__right">
-                                {% if allData.teamMarkAsComplete %}
                                     <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
-                                {% else %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
-                                {% endif %}
                             </div>
                         </div>
                     </div>
 
-                    <div class="application-item {% if allData.resourcesAndCostsIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
+                    <div class="application-item application-item--complete application-item--skinny ">
                         <div class="application-item__contents govuk-clearfix">
-                            <div class="application-item__left">{{ components.link(text='4. Resources and costs', url='/prototypes/team-resources-costs/resources-and-costs')}}</div>
+                            <div class="application-item__left">{{ components.link(text='4. Resources and costs', url='#')}}</div>
                             <div class="application-item__right">
-                                {% if allData.resourcesAndCostsIsComplete %}
                                     <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
-                                {% else %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
-                                {% endif %}
+
                             </div>
                         </div>
                     </div>
@@ -116,56 +134,14 @@
                 </div>
 
                 <div class="application-controls govuk-clearfix">
-                    <p class="govuk-body">When all the sections above are marked as complete, you can submit your application to UKRI. Once it has been submitted, you cannot make any further changes.</p>
-                    {% call components.form(action='#', method='POST',name='submitApplication') %}
-                        <button type="submit" class="govuk-button application-controls__submit" name="submitButton" value="startShare">Submit to UKRI</button>
-                    {%- endcall %}
-                </div>
+                    #}{#<p class="govuk-body">The a</p>#}{#
+
+                </div>#}
 
             {%- endcall %}
 
             {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
 
-                {% if allData.teamMarkAsComplete %}
-                    {% set progressPercentage = 75 %}
-                    {% set reverseProgressPercentage = 25 %}
-
-                    {% if allData.resourcesAndCostsIsComplete %}
-                        {% set progressPercentage = 100 %}
-                        {% set reverseProgressPercentage = 0 %}
-                    {% endif %}
-                {% elseif allData.resourcesAndCostsIsComplete %}
-                    {% set progressPercentage = 75 %}
-                    {% set reverseProgressPercentage = 25 %}
-                {% else %}
-                    {% set progressPercentage = 50 %}
-                    {% set reverseProgressPercentage = 50 %}
-                {% endif %}
-
-
-                <div class="progress-meter">
-                    <div class="progress-meter__text progress-meter__text--back" role="progress-bar" aria-valuenow="27%"><span class="govuk-visually-hidden">Your application is</span> {{ progressPercentage }}% complete</div>
-
-
-                    {% if sentBackToApplicant %}
-
-                        <div class="progress-meter__clipper" aria-hidden="true" style="clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%); -webkit-clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%)">
-                            <div class="progress-meter__text progress-meter__text--front"><strong>Returned to applicant</strong></div>
-                        </div>
-
-                    {% else %}
-
-                        <div class="progress-meter__clipper" aria-hidden="true" style="clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%); -webkit-clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%)">
-                            {% if progressPercentage == 100 %}
-                                <div class="progress-meter__text progress-meter__text--front"><strong>100% complete</strong></div>
-                            {% else %}
-                                <div class="progress-meter__text progress-meter__text--front">{{ progressPercentage }}% complete</div>
-                            {% endif %}
-                        </div>
-
-                    {% endif %}
-
-                </div>
                 <div class="application-data">
                     <dl class="application-data__list">
                         <dt class="application-data__key">Opportunity:</dt>

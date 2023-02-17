@@ -1,14 +1,15 @@
 {% set showExternalNav = true %}
 {% set activeNavItem = 'applications' %}
 {% set navArea = 'home' %}
-{% set homeLink = '/prototypes/post-decision/home' %}
-{% set awardsLink = '/prototypes/team-resources-costs/awards' %}
+{% set homeLink = '/prototypes/team-resources-costs/home' %}
+{% set awardsLink = '#' %}
 {% set applicationsLink = '/prototypes/team-resources-costs/applications' %}
-{% set awardSetUpLink = '/prototypes/team-resources-costs/#' %}
+{% set awardsLink = '#' %}
 {% set reviewsLink = '#' %}
 {% set hideAccountLinks = 'true' %}
 {% set altProfilePagelink = '#' %}
 {% set hideUserMenu = true %}
+
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
@@ -98,31 +99,83 @@
                     <div class="application-items u-space-b30">
 
                         {#{{ allData.uniqueOrgs[1] }}#}
-
                         {% set orgsArrayIndex = 0 %}
-
                         {% for item in allData.uniqueOrgs %}
-
-                            <div class="application-item {% if item.isComplete == true %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny">
+                            {#<div class="application-item {% if item.isComplete == true %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny">
                                 <div class="application-item__contents govuk-clearfix">
                                     <div class="application-item__left">
                                         <a href="/prototypes/team-resources-costs/organisation-costs?orgsArrayIndex={{ orgsArrayIndex }}" class="govuk-link  ">{{ item.name }}</a>
                                         {% if orgsArrayIndex == 0 %}
-                                            <span class="{#govuk-tag govuk-tag--blue#} badge badge--info badge--smaller">LEAD</span>
+                                            <span class="#}{#govuk-tag govuk-tag--blue#}{# badge badge--info badge--smaller">LEAD</span>
                                         {% endif %}
                                     </div>
                                     <div class="application-item__right">
                                         <span class="application-item__control">£0</span>
-                                        {% if item.isComplete == true %}
+                                        {% if allData.organisationComplete_+orgsArrayIndex == true %}
                                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
                                         {% else %}
                                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> incomplete</span>
                                         {% endif %}
                                     </div>
                                 </div>
-                            </div>
+                            </div>#}
                             {% set orgsArrayIndex = orgsArrayIndex + 1 %}
                         {% endfor %}
+
+
+                        <div class="application-item {% if allData.orgZeroComplete == true %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <a href="/prototypes/team-resources-costs/organisation-costs?orgsArrayIndex=0" class="govuk-link  ">{{ allData.uniqueOrgs[0].name }}</a>
+                                    <span class="{#govuk-tag govuk-tag--blue#} badge badge--info badge--smaller">LEAD</span>
+                                </div>
+                                <div class="application-item__right">
+                                    <span class="application-item__control">£0</span>
+                                    {% if allData.orgZeroComplete == true %}
+                                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                                    {% else %}
+                                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        {% if allData.uniqueOrgs[1].name %}
+                            <div class="application-item {% if allData.orgOneComplete == true %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <a href="/prototypes/team-resources-costs/organisation-costs?orgsArrayIndex=1" class="govuk-link  ">{{ allData.uniqueOrgs[1].name }}</a>
+                                    </div>
+                                    <div class="application-item__right">
+                                        <span class="application-item__control">£0</span>
+                                        {% if allData.orgOneComplete == true %}
+                                            <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                                        {% else %}
+                                            <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if allData.uniqueOrgs[2].name %}
+                            <div class="application-item {% if allData.orgTwoComplete == true %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <a href="/prototypes/team-resources-costs/organisation-costs?orgsArrayIndex=2" class="govuk-link  ">{{ allData.uniqueOrgs[2].name }}</a>
+                                    </div>
+                                    <div class="application-item__right">
+                                        <span class="application-item__control">£0</span>
+                                        {% if allData.orgTwoComplete == true %}
+                                            <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                                        {% else %}
+                                            <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+
                     </div>
                 {%- endcall %}
             {%- endcall %}
@@ -139,10 +192,22 @@
                                 <span class="govuk-details__summary-text">What the assessors are looking for in your response</span>
                             </summary>
                             <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
-                                <p class="govuk-body">Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam elit sem, euismod non nisi nec, dapibus molestie urna. Ut ut pellentesque magna, non mattis eros. Maecenas pretium massa a mauris elementum vulputate. Etiam commodo gravida felis ut imperdiet. Aliquam sagittis, quam quis laoreet tempus, quam massa pretium leo, id lobortis ante lorem ac risus. Vestibulum tristique lectus sed nunc lacinia, ultrices finibus nunc sollicitudin.</p>
+                                <p class="govuk-body">A degree of estimation is expected for some costs, such as consumables and travel, but carefully work out other costs, like staff and equipment.</p>
+
+                                <p class="govuk-body">We recommend that you work with your Research Office for this part of your application, as they will be familiar with the process. At least make sure you leave enough time for them to review this section before submission.</p>
+
+                                <p class="govuk-body">For detailed information, refer to our <a href="#">Full Economic Costing Guide (opens in a new window)</a>.</p>
+
+                                <ul class="govuk-list govuk-list--bullet">
+                                    <li><strong>Directly Incurred costs</strong> arise as a direct consequence of your project taking place. They must be actual, auditable and supported by invoices.</li>
+                                    <li><strong>Directly Allocated costs</strong> are incurred whether or not the project takes place and are estimated at project level. For example, Technician time and Estates costs.</li>
+                                    <li><strong>Indirect costs</strong> represent the costs of central and distributed services shared by other activities that are not project-specific. For example, Human Resources and IT.</li>
+                                    <li><strong>Exceptions</strong> can include Travel and subsistence, equipment, biological costs, charge-out facilities and postgraduate students.</li>
+                                    </li>
+                                </ul>
                             </div>
                         </details>
-                        <textarea class="govuk-textarea form-control " name="htmlTest" id="tinyMCEInput" rows="8"></textarea>
+                        <textarea class="govuk-textarea form-control " name="justification" id="tinyMCEInput" rows="8">{{ allData.justification }}</textarea>
                         <p class="u-space-t20">
                             <span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite"></span>
                         </p>
@@ -163,7 +228,7 @@
                                     </legend>
                                     <div class="govuk-checkboxes">
                                         <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox">
+                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if allData.resourcesAndCostsIsComplete %} checked {% endif %}>
                                             <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
                                         </div>
                                     </div>

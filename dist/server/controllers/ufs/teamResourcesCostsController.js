@@ -11,6 +11,9 @@ exports.trcApplicationsGet = trcApplicationsGet;
 exports.trcApplicationsPost = trcApplicationsPost;
 exports.trcApplicationOverviewGet = trcApplicationOverviewGet;
 exports.trcApplicationOverviewPost = trcApplicationOverviewPost;
+exports.trcSubmissionConfirmGet = trcSubmissionConfirmGet;
+exports.trcSubmissionConfirmPost = trcSubmissionConfirmPost;
+exports.trcSubmittedGet = trcSubmittedGet;
 exports.trcTeamGet = trcTeamGet;
 exports.trcTeamPost = trcTeamPost;
 exports.trcSelectRoleTypeGet = trcSelectRoleTypeGet;
@@ -47,8 +50,8 @@ let savedSession;
 // teamDataEmpty
 let teamData = require('./team-data');
 
-// let allTeamMembers2 = teamData.teamDataFull;
-// const originalNumberOfMembers = 4;
+//let allTeamMembers2 = teamData.teamDataFull;
+//const originalNumberOfMembers = 4;
 
 let allTeamMembers2 = teamData.teamDataEmpty;
 const originalNumberOfMembers = 1;
@@ -181,8 +184,49 @@ function trcApplicationOverviewPost(req, res) {
   const {} = req.body;
 
   let targetURL;
-  targetURL = '/prototypes/team-resources-costs/application-overview';
+  targetURL = '/prototypes/team-resources-costs/submission-confirm';
   return res.redirect(targetURL);
+}
+// ************************************************************************
+//
+//        submission confirm
+//
+// ************************************************************************
+function trcSubmissionConfirmGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData
+  };
+
+  return res.render('prototypes/team-resources-costs/submission-confirm', viewData);
+}
+
+function trcSubmissionConfirmPost(req, res) {
+  const {} = req.body;
+
+  let targetURL;
+  targetURL = '/prototypes/team-resources-costs/submitted';
+  return res.redirect(targetURL);
+}
+
+// ************************************************************************
+//
+//        submitted
+//
+// ************************************************************************
+function trcSubmittedGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData
+  };
+
+  return res.render('prototypes/team-resources-costs/submitted', viewData);
 }
 
 // ************************************************************************
@@ -407,7 +451,7 @@ function trcOrganisationSearchPost(req, res) {
 
   req.session.searchTerm = searchTerm;
   // console.log('req.params');
-  // console.log(req.body.submitSearch);
+  console.log(req.body.submitSearch);
   let targetURL;
 
   if (req.body.submitSearch === 'Search') {
@@ -671,13 +715,6 @@ function trcResourcesAndCostsGet(req, res) {
     }
   }
 
-  /*
-  * resultArray.push({
-            n: tempName,
-            c: tempPlace,
-          });
-  * */
-
   let uniqueOrgs = allKnownOrgs.reduce(function (a, b) {
     if (a.indexOf(b) < 0) a.push(b);
     return a;
@@ -705,10 +742,17 @@ function trcResourcesAndCostsGet(req, res) {
 }
 
 function trcResourcesAndCostsPost(req, res) {
-  const {} = req.body;
+  const { justification, isComplete } = req.body;
+
+  req.session.justification = justification;
+  if (isComplete === 'on') {
+    req.session.resourcesAndCostsIsComplete = true;
+  } else {
+    req.session.resourcesAndCostsIsComplete = false;
+  }
 
   let targetURL;
-  targetURL = '/prototypes/team-resources-costs/resources-and-costs';
+  targetURL = '/prototypes/team-resources-costs/application-overview';
   return res.redirect(targetURL);
 }
 
@@ -721,19 +765,20 @@ function trcOrganisationCostsGet(req, res) {
   let viewData;
 
   //spoof for now
-  /* req.session.uniqueOrgs = [
-      { name: 'University of Wales', isComplete: '' },
-      { name: 'University of Bristol', isComplete: '' },
-      { name: 'City of Bristol College', isComplete: '' }
-    ];*/
+  /*req.session.uniqueOrgs = [
+    { name: 'University of Wales', isComplete: '' },
+    { name: 'University of Bristol', isComplete: '' },
+    { name: 'City of Bristol College', isComplete: '' },
+  ];*/
 
   let orgsArrayIndex = req.param('orgsArrayIndex');
 
-  console.log('orgsArrayIndex = ' + orgsArrayIndex);
+  //console.log(req.session.uniqueOrgs);
+  //console.log('orgsArrayIndex = ' + orgsArrayIndex);
 
   let allData = req.session;
+
   console.log(allData);
-  console.log(allTeamMembers2);
 
   viewData = {
     allData,
@@ -746,7 +791,29 @@ function trcOrganisationCostsGet(req, res) {
 }
 
 function trcOrganisationCostsPost(req, res) {
-  const {} = req.body;
+  const { isComplete, orgName, orgsArrayIndex } = req.body;
+
+  console.log(isComplete);
+
+  if (isComplete === 'on' && orgsArrayIndex === '0') {
+    req.session.orgZeroComplete = true;
+  } else if (isComplete !== 'on' && orgsArrayIndex === '0') {
+    req.session.orgZeroComplete = false;
+  }
+
+  if (isComplete === 'on' && orgsArrayIndex === '1') {
+    req.session.orgOneComplete = true;
+  } else if (isComplete !== 'on' && orgsArrayIndex === '1') {
+    req.session.orgOneComplete = false;
+  }
+
+  if (isComplete === 'on' && orgsArrayIndex === '2') {
+    req.session.orgTwoComplete = true;
+  } else if (isComplete !== 'on' && orgsArrayIndex === '2') {
+    req.session.orgTwoComplete = false;
+  }
+
+  console.log(req.session);
 
   let targetURL;
   targetURL = '/prototypes/team-resources-costs/resources-and-costs';

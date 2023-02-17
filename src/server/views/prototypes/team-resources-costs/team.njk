@@ -1,13 +1,14 @@
 {% set showExternalNav = true %}
 {% set activeNavItem = 'applications' %}
 {% set navArea = 'home' %}
-{% set homeLink = '/prototypes/post-decision/home' %}
-{% set awardsLink = '/prototypes/team-resources-costs/awards' %}
+{% set homeLink = '/prototypes/team-resources-costs/home' %}
+{% set awardsLink = '#' %}
 {% set applicationsLink = '/prototypes/team-resources-costs/applications' %}
-{% set awardSetUpLink = '/prototypes/team-resources-costs/#' %}
+{% set awardsLink = '#' %}
 {% set reviewsLink = '#' %}
 {% set hideAccountLinks = 'true' %}
 {% set altProfilePagelink = '#' %}
+{% set hideUserMenu = true %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
@@ -95,13 +96,34 @@
                             <tr>
                                 <td class="govuk-table__cell"><a href="/prototypes/team-resources-costs/team-member?teamMemberID={{ item.id }}" class="govuk-link">{{ item.firstName }} {{ item.lastName }}</a> </td>
                                 <td class="govuk-table__cell">
-                                    {% if item.role %} {{ item.role }} {% else %} <a href="/prototypes/team-resources-costs/select-role?teamMemberID={{ item.id }}" class="govuk-link">Select</a>  {% endif %}
+                                    {% if item.role %}
+                                        {{ item.role }}
+                                    {% else %}
+                                        <span class="meta">Not set</span>
+                                    {% endif %}
                                 </td>
                                 <td class="govuk-table__cell">{{ item.organisation }}</td>
-                                <td class="govuk-table__cell govuk-table__cell--numeric">{% if item.timeSpent %} {{ item.timeSpent }} {% else %} <a href="/prototypes/team-resources-costs/add-team-member?teamMemberID={{ item.id }}" class="govuk-link">Select</a>  {% endif %}</td>
-                                <td class="govuk-table__cell govuk-table__cell--numeric">{% if item.averageHours %} {{ item.averageHours }} {% else %} <a href="/prototypes/team-resources-costs/add-team-member?teamMemberID={{ item.id }}" class="govuk-link">Select</a>  {% endif %}</td>
-
-                                    <td class=" govuk-table__cell govuk-table__cell--numeric"><a href="/prototypes/team-resources-costs/team?action=remove&teamMemberID={{ item.id }}" class="govuk-link {% if item.firstName == 'Manolo' %}govuk-visually-hidden{% endif %}">Remove</a></td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">
+                                    {% if item.timeSpent %}
+                                        {{ item.timeSpent }}
+                                    {% else %}
+                                        <span class="meta">Not set</span>
+                                    {% endif %}
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">
+                                    {% if item.averageHours %}
+                                        {{ item.averageHours }}
+                                    {% else %}
+                                        <span class="meta">Not set</span>
+                                    {% endif %}
+                                </td>
+                                <td class=" govuk-table__cell govuk-table__cell--numeric">
+                                    {% if item.id == '1' %}
+                                        <span class="meta">&mdash;</span>
+                                    {% else %}
+                                        <a href="/prototypes/team-resources-costs/team?action=remove&teamMemberID={{ item.id }}" class="govuk-link">Remove</a>
+                                    {% endif %}
+                                </td>
 
                             </tr>
                             {% endif %}
@@ -136,11 +158,11 @@
                                     <tr>
                                         <td class="govuk-table__cell"><a href="/prototypes/team-resources-costs/team-member?teamMemberID={{ item.id }}" class="govuk-link">{% if not item.firstName %}Unknown {% else %} {{ item.firstName }} {{ item.lastName }} {% endif %}</a> </td>
                                         <td class="govuk-table__cell">
-                                            {% if item.role %} {{ item.role }} {% else %} <a href="/prototypes/team-resources-costs/select-role?teamMemberID={{ item.id }}" class="govuk-link">Select</a>  {% endif %}
+                                            {% if item.role %} {{ item.role }} {% else %} <span class="meta">Not set</span>>  {% endif %}
                                         </td>
                                         <td class="govuk-table__cell">{{ item.organisation }}</td>
-                                        <td class="govuk-table__cell govuk-table__cell--numeric">{% if item.timeSpent %} {{ item.timeSpent }} {% else %} <a href="/prototypes/team-resources-costs/add-team-member-alt?teamMemberID={{ item.id }}" class="govuk-link">Select</a>  {% endif %}</td>
-                                        <td class="govuk-table__cell govuk-table__cell--numeric">{% if item.averageHours %} {{ item.averageHours }} {% else %} <a href="/prototypes/team-resources-costs/add-team-member-alt?teamMemberID={{ item.id }}" class="govuk-link">Select</a>  {% endif %}</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric">{% if item.timeSpent %} {{ item.timeSpent }} {% else %} <span class="meta">Not set</span>  {% endif %}</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric">{% if item.averageHours %} {{ item.averageHours }} {% else %} <span class="meta">Not set</span>  {% endif %}</td>
                                         <td class=" govuk-table__cell govuk-table__cell--numeric">{{ item.startDay }} {{ item.startMonth | showMonth() }} {{ item.startYear }}</td>
                                         <td class=" govuk-table__cell govuk-table__cell--numeric">{{ item.endDay }} {{ item.endMonth | showMonth() }} {{ item.endYear }}</td>
                                         <td class=" govuk-table__cell govuk-table__cell--numeric"><a href="/prototypes/team-resources-costs/team?action=remove&teamMemberID={{ item.id }}" class="govuk-link">Remove</a></td>
@@ -181,8 +203,8 @@
                                             {% if item.role %} {{ item.role }} {% else %} <a href="/prototypes/team-resources-costs/select-role?teamMemberID={{ item.id }}" class="govuk-link">Select</a>  {% endif %}
                                         </td>
                                         <td class="govuk-table__cell">{{ item.organisation }}</td>
-                                        <td class="govuk-table__cell govuk-table__cell--numeric">{% if item.timeSpent %} {{ item.timeSpent }} {% else %} <a href="/prototypes/team-resources-costs/add-team-member?teamMemberID={{ item.id }}" class="govuk-link">Select</a>  {% endif %}</td>
-                                        <td class="govuk-table__cell govuk-table__cell--numeric">{% if item.averageHours %} {{ item.averageHours }} {% else %} <a href="/prototypes/team-resources-costs/add-team-member?teamMemberID={{ item.id }}" class="govuk-link">Select</a>  {% endif %}</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric">{% if item.timeSpent %} {{ item.timeSpent }} {% else %} <span class="meta">Not set</span>  {% endif %}</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric">{% if item.averageHours %} {{ item.averageHours }} {% else %} <span class="meta">Not set</span>  {% endif %}</td>
                                         <td class=" govuk-table__cell govuk-table__cell--numeric">{{ item.startDay }} {{ item.startMonth | showMonth() }} {{ item.startYear }}</td>
                                         <td class=" govuk-table__cell govuk-table__cell--numeric">{{ item.endDay }} {{ item.endMonth | showMonth() }} {{ item.endYear }}</td>
                                         <td class=" govuk-table__cell govuk-table__cell--numeric"><a href="/prototypes/team-resources-costs/team?action=remove&teamMemberID={{ item.id }}" class="govuk-link">Remove</a></td>

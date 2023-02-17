@@ -1,13 +1,14 @@
 {% set showExternalNav = true %}
 {% set activeNavItem = 'applications' %}
 {% set navArea = 'home' %}
-{% set homeLink = '/prototypes/post-decision/home' %}
-{% set awardsLink = '/prototypes/team-resources-costs/awards' %}
+{% set homeLink = '/prototypes/team-resources-costs/home' %}
+{% set awardsLink = '#' %}
 {% set applicationsLink = '/prototypes/team-resources-costs/applications' %}
-{% set awardSetUpLink = '/prototypes/team-resources-costs/#' %}
+{% set awardsLink = '#' %}
 {% set reviewsLink = '#' %}
 {% set hideAccountLinks = 'true' %}
 {% set altProfilePagelink = '#' %}
+{% set hideUserMenu = true %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
@@ -48,7 +49,7 @@
                             <input class="govuk-input govuk-input--width-20" id="searchTerm" name="searchTerm" type="text" value="{{ allData.searchTerm }}">
                         </div>
                         <div class="govuk-form-group">
-                            {{ components.button(text='Search', extraClass="application-controls__submit", name='submitSearch')}}
+                            <input class="govuk-button application-controls__submit" type="submit" name="submitSearch" value="Search">
                         </div>
                     </fieldset>
 

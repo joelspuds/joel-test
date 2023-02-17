@@ -29,17 +29,39 @@
                         <li class="new-header__nav-item">
                             <a href="{{ homeLink }}" class="new-header__nav-link {% if activeNavItem == 'home' %} new-header__nav-link--active {% endif %}">Home</a>
                         </li>
-                        <li class="new-header__nav-item">
-                            <a href="{{ opportunitiesLink }}" class="new-header__nav-link {% if activeNavItem == 'opportunities' %} new-header__nav-link--active {% endif %}">Opportunities</a>
-                        </li>
 
-                        <li class="new-header__nav-item">
-                            <a href="{{ awardSetUpLink }}" class="new-header__nav-link {% if activeNavItem == 'awardSetUp' %} new-header__nav-link--active {% endif %}">Award setup</a>
-                        </li>
+                        {% if applicationsLink %}
+                            <li class="new-header__nav-item">
+                                <a href="{{ appicationsLink }}" class="new-header__nav-link {% if activeNavItem == 'applications' %} new-header__nav-link--active {% endif %}">Applications</a>
+                            </li>
+                        {% endif %}
 
-                        <li class="new-header__nav-item">
-                            <a href="{{ panelLink }}" class="new-header__nav-link {% if activeNavItem == 'panel' %} new-header__nav-link--active {% endif %}">Panels</a>
-                        </li>
+
+                        {% if opportunitiesLink %}
+                            <li class="new-header__nav-item">
+                                <a href="{{ opportunitiesLink }}" class="new-header__nav-link {% if activeNavItem == 'opportunities' %} new-header__nav-link--active {% endif %}">Opportunities</a>
+                            </li>
+                        {% endif %}
+
+                        {% if awardsLink %}
+                            <li class="new-header__nav-item">
+                                <a href="{{ awardsLink }}" class="new-header__nav-link {% if activeNavItem == 'awardSetUp' %} new-header__nav-link--active {% endif %}">Awards</a>
+                            </li>
+                        {% endif %}
+
+                        {% if awardSetUpLink %}
+                            <li class="new-header__nav-item">
+                                <a href="{{ awardSetUpLink }}" class="new-header__nav-link {% if activeNavItem == 'awardSetUp' %} new-header__nav-link--active {% endif %}">Award setup</a>
+                            </li>
+                        {% endif %}
+
+                        {% if panelLink %}
+                            <li class="new-header__nav-item">
+                                <a href="{{ panelLink }}" class="new-header__nav-link {% if activeNavItem == 'panel' %} new-header__nav-link--active {% endif %}">Panels</a>
+                            </li>
+                        {% endif %}
+
+
 
 
                         <li class="new-header__nav-item new-header__nav-item--user">

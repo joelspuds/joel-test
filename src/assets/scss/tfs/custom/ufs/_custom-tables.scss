@@ -153,8 +153,16 @@ td.u-align-right {
   width: 120px;
 }
 
-.cell-min-200 {
+.cell-max-200 {
   width: 200px;
+}
+
+.cell-max-300 {
+  max-width: 300px;
+}
+
+.cell-min-200 {
+  min-width: 200px;
 }
 
 .cell-150 {

@@ -1,7 +1,7 @@
 %badge {
-  border-radius: 2px;
+  // border-radius: 2px;
   display: inline-block;
-  font-weight: 700;
+  //font-weight: 700;
   line-height: 1;
   margin: -5px 0;
   min-width: 10px;
@@ -9,6 +9,7 @@
   text-align: center;
   vertical-align: middle;
   white-space: nowrap;
+  @include govuk-font($size: 19, $weight: bold);
 
   &:empty {
     display: none;
@@ -26,7 +27,7 @@
   @extend %badge;
   background-color: govuk-colour("white");
   // color: $text-colour;
-  border: 1px solid $govuk-border-colour;
+  //border: 1px solid $govuk-border-colour;
 
   &--success {
     @extend %badge;
@@ -56,8 +57,8 @@
     @extend %badge;
     background-color: govuk-colour("white");
     color: govuk-colour("black");
-    border: 1px solid govuk-colour("black");
-    border-radius: 2px;
+    //border: 1px solid govuk-colour("black");
+    //border-radius: 2px;
     padding: 4px 7px 2px;
   }
 
@@ -65,8 +66,8 @@
     @extend %badge;
     background-color: #666;
     color: govuk-colour("white");
-    border: 1px solid govuk-colour("black");
-    border-radius: 2px;
+    //border: 1px solid govuk-colour("black");
+    //border-radius: 2px;
     padding: 4px 7px 2px;
   }
 
@@ -74,8 +75,8 @@
     @extend %badge;
     background-color: govuk-colour("light-grey");
     color: govuk-colour("dark-grey");
-    border: 1px solid govuk-colour("white");
-    border-radius: 2px;
+    //border: 1px solid govuk-colour("white");
+    //border-radius: 2px;
     padding: 4px 7px 2px;
   }
 
@@ -83,13 +84,13 @@
     @extend %badge;
     background-color: govuk-colour("dark-blue");
     color: govuk-colour("white");
-    border: 1px solid govuk-colour("white");
-    border-radius: 2px;
+    //border: 1px solid govuk-colour("white");
+    //border-radius: 2px;
     padding: 4px 7px 2px;
   }
 
   &--smaller {
-    font-size: 80%;
+    @include govuk-font($size: 16, $weight: bold);
     padding: 3px 5px 2px;
   }
 
@@ -97,4 +98,8 @@
     border-radius: 0;
     border: 0;
   }
+}
+
+h1 .badge {
+  @include govuk-font($size: 19, $weight: bold);
 }
