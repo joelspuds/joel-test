@@ -3,6 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.trcConfigGet = trcConfigGet;
+exports.trcConfigPost = trcConfigPost;
 exports.trcIndexGet = trcIndexGet;
 exports.trcIndexPost = trcIndexPost;
 exports.trcHomeGet = trcHomeGet;
@@ -49,14 +51,38 @@ let savedSession;
 // teamDataFull
 // teamDataEmpty
 let teamData = require('./team-data');
-
-//let allTeamMembers2 = teamData.teamDataFull;
-//const originalNumberOfMembers = 4;
-
-let allTeamMembers2 = teamData.teamDataEmpty;
-const originalNumberOfMembers = 1;
+let allTeamMembers2;
+let originalNumberOfMembers;
 
 // console.log('originalNumberOfMembers = ' + originalNumberOfMembers);
+
+// ************************************************************************
+//
+//        config
+//
+// ************************************************************************
+function trcConfigGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData
+  };
+
+  return res.render('prototypes/team-resources-costs/config', viewData);
+}
+
+function trcConfigPost(req, res) {
+  const { config } = req.body;
+  //minimal & loads
+
+  req.session.configPreLoad = config;
+
+  let targetURL;
+  targetURL = '/prototypes/team-resources-costs';
+  return res.redirect(targetURL);
+}
 
 // ************************************************************************
 //
@@ -65,6 +91,14 @@ const originalNumberOfMembers = 1;
 // ************************************************************************
 function trcIndexGet(req, res) {
   let viewData;
+
+  if (req.session.configPreLoad === 'loads') {
+    allTeamMembers2 = teamData.teamDataFull;
+    originalNumberOfMembers = 4;
+  } else {
+    allTeamMembers2 = teamData.teamDataEmpty;
+    originalNumberOfMembers = 1;
+  }
 
   let clearSession = req.param('clearSession');
   if (clearSession === 'true') {

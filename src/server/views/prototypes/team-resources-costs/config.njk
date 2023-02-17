@@ -1,0 +1,76 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set accountSettingsLink = '' %}
+{% set showExternalFurniture = false %}
+
+{% set hideAccountLinks = true %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set userName = 'John  Doe' %}
+{% set isAdminUser = false %}
+{% set loggedOut = true %}
+{% set allData = allData if allData %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set pageTitle = 'Config' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Config', caption='Team, resources and costs prototype') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" >
+                        <legend class="govuk-label govuk-label--m u-space-b20">Pre-load the prototype with data?</legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="config1" name="config" type="radio" value="minimal">
+                                <label class="govuk-label govuk-radios__label" for="config1" >Minimal - only one incomplete PI user</label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="config2" name="config" type="radio" value="loads" >
+                                <label class="govuk-label govuk-radios__label" for="config2">Go nuts - gimme loads of dummy users</label>
+                            </div>
+
+                        </div>
+                    </fieldset>
+                </div>
+
+                {% call components.formGroup() %}
+                    <div class="application-controls govuk-clearfix">
+                        {{ components.button(text='Let\'s go!', extraClass="application-controls__submit")}}
+                    </div>
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+
+
+
+
+    {%- endcall %}
+    {#{% include '../../layouts/partials/user-contact.njk' %}#}
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+
+

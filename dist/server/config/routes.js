@@ -904,6 +904,8 @@ router.post('/prototypes/manage-panel/manage-roles/review-panelists', demosContr
 
  * *************************************************************** */
 // Create new opportunity
+router.get('/prototypes/team-resources-costs/config', demosController.trcConfigGet);
+router.post('/prototypes/team-resources-costs/config', demosController.trcConfigPost);
 router.get('/prototypes/team-resources-costs', demosController.trcIndexGet);
 router.post('/prototypes/team-resources-costs', demosController.trcIndexPost);
 router.get('/prototypes/team-resources-costs/home', demosController.trcHomeGet);
