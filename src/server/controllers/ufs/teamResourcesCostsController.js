@@ -10,13 +10,166 @@ const prototypeData = {
   currentEndDate: '30 October 2023',
 };
 
+let orgCosts = [
+  {
+    name: '',
+    totalFEC: 0,
+    contribution: 0,
+    fundingAppliedFor: 0,
+    daMemberFullCosts_1: '',
+    daCostAppliedFor_1: '',
+    daMemberFullCosts_2: '',
+    daCostAppliedFor_2: '',
+    daMemberFullCosts_3: '',
+    daCostAppliedFor_3: '',
+    diMemberFullCosts_1: '',
+    diCostAppliedFor_1: '',
+    diMemberFullCosts_2: '',
+    diCostAppliedFor_2: '',
+    diMemberFullCosts_3: '',
+    diCostAppliedFor_3: '',
+    exMemberFullCosts_1: '',
+    exCostAppliedFor_1: '',
+    exMemberFullCosts_2: '',
+    exCostAppliedFor_2: '',
+    exMemberFullCosts_3: '',
+    exCostAppliedFor_3: '',
+    daStaff: '',
+    daStaffAppliedFor: '',
+    daEstates: '',
+    daEstatesAppliedFor: '',
+    daOther: '',
+    daOtherAppliedFor: '',
+    diStaff: '',
+    diStaffAppliedFor: '',
+    diEquipment: '',
+    diEquipmentAppliedFor: '',
+    diTravel: '',
+    diTravelAppliedFor: '',
+    diOther: '',
+    diOtherAppliedFor: '',
+    indirectCosts: '',
+    indirectCostsAppliedFor: '',
+    exStaff: '',
+    exStaffAppliedFor: '',
+    exEquipment: '',
+    exEquipmentAppliedFor: '',
+    exTravel: '',
+    exTravelAppliedFor: '',
+    exOther: '',
+    exOtherAppliedFor: '',
+  },
+  {
+    name: '',
+    totalFEC: 0,
+    contribution: 0,
+    fundingAppliedFor: 0,
+    daMemberFullCosts_1: '',
+    daCostAppliedFor_1: '',
+    daMemberFullCosts_2: '',
+    daCostAppliedFor_2: '',
+    daMemberFullCosts_3: '',
+    daCostAppliedFor_3: '',
+    diMemberFullCosts_1: '',
+    diCostAppliedFor_1: '',
+    diMemberFullCosts_2: '',
+    diCostAppliedFor_2: '',
+    diMemberFullCosts_3: '',
+    diCostAppliedFor_3: '',
+    exMemberFullCosts_1: '',
+    exCostAppliedFor_1: '',
+    exMemberFullCosts_2: '',
+    exCostAppliedFor_2: '',
+    exMemberFullCosts_3: '',
+    exCostAppliedFor_3: '',
+    daStaff: '',
+    daStaffAppliedFor: '',
+    daEstates: '',
+    daEstatesAppliedFor: '',
+    daOther: '',
+    daOtherAppliedFor: '',
+    diStaff: '',
+    diStaffAppliedFor: '',
+    diEquipment: '',
+    diEquipmentAppliedFor: '',
+    diTravel: '',
+    diTravelAppliedFor: '',
+    diOther: '',
+    diOtherAppliedFor: '',
+    indirectCosts: '',
+    indirectCostsAppliedFor: '',
+    exStaff: '',
+    exStaffAppliedFor: '',
+    exEquipment: '',
+    exEquipmentAppliedFor: '',
+    exTravel: '',
+    exTravelAppliedFor: '',
+    exOther: '',
+    exOtherAppliedFor: '',
+  },
+  {
+    name: '',
+    totalFEC: 0,
+    contribution: 0,
+    fundingAppliedFor: 0,
+    daMemberFullCosts_1: '',
+    daCostAppliedFor_1: '',
+    daMemberFullCosts_2: '',
+    daCostAppliedFor_2: '',
+    daMemberFullCosts_3: '',
+    daCostAppliedFor_3: '',
+    diMemberFullCosts_1: '',
+    diCostAppliedFor_1: '',
+    diMemberFullCosts_2: '',
+    diCostAppliedFor_2: '',
+    diMemberFullCosts_3: '',
+    diCostAppliedFor_3: '',
+    exMemberFullCosts_1: '',
+    exCostAppliedFor_1: '',
+    exMemberFullCosts_2: '',
+    exCostAppliedFor_2: '',
+    exMemberFullCosts_3: '',
+    exCostAppliedFor_3: '',
+    daStaff: '',
+    daStaffAppliedFor: '',
+    daEstates: '',
+    daEstatesAppliedFor: '',
+    daOther: '',
+    daOtherAppliedFor: '',
+    diStaff: '',
+    diStaffAppliedFor: '',
+    diEquipment: '',
+    diEquipmentAppliedFor: '',
+    diTravel: '',
+    diTravelAppliedFor: '',
+    diOther: '',
+    diOtherAppliedFor: '',
+    indirectCosts: '',
+    indirectCostsAppliedFor: '',
+    exStaff: '',
+    exStaffAppliedFor: '',
+    exEquipment: '',
+    exEquipmentAppliedFor: '',
+    exTravel: '',
+    exTravelAppliedFor: '',
+    exOther: '',
+    exOtherAppliedFor: '',
+  },
+];
+
 let savedSession;
 
-// teamDataFull
-// teamDataEmpty
 let teamData = require('./team-data');
 let allTeamMembers2;
 let originalNumberOfMembers;
+
+allTeamMembers2 = teamData.teamDataEmpty;
+originalNumberOfMembers = 1;
+
+/*allTeamMembers2 = teamData.teamDataFull;
+originalNumberOfMembers = 5;*/
+
+let configOptions;
 
 // console.log('originalNumberOfMembers = ' + originalNumberOfMembers);
 
@@ -41,10 +194,10 @@ export function trcConfigPost(req, res) {
   const { config } = req.body;
   //minimal & loads
 
-  req.session.configPreLoad = config;
+  configOptions = config;
 
   let targetURL;
-  targetURL = '/prototypes/team-resources-costs';
+  targetURL = '/prototypes/team-resources-costs/?clearSession=true';
   return res.redirect(targetURL);
 }
 
@@ -56,13 +209,13 @@ export function trcConfigPost(req, res) {
 export function trcIndexGet(req, res) {
   let viewData;
 
-  if (req.session.configPreLoad === 'loads') {
+  /*if (configOptions === 'loads') {
     allTeamMembers2 = teamData.teamDataFull;
-    originalNumberOfMembers = 4;
+    originalNumberOfMembers = 5;
   } else {
     allTeamMembers2 = teamData.teamDataEmpty;
     originalNumberOfMembers = 1;
-  }
+  }*/
 
   let clearSession = req.param('clearSession');
   if (clearSession === 'true') {
@@ -296,6 +449,7 @@ export function trcTeamGet(req, res) {
 
   let allData = req.session;
   console.log(allData);
+  console.log(allTeamMembers2);
 
   viewData = {
     allData,
@@ -367,6 +521,8 @@ export function trcSelectRoleTypeGet(req, res) {
   req.session.tempLastNameNotification = null;
 
   let allData = req.session;
+  console.log(allData);
+  console.log(allTeamMembers2);
   viewData = {
     allData,
     prototypeData,
@@ -379,6 +535,9 @@ export function trcSelectRoleTypePost(req, res) {
   const { roleType } = req.body;
 
   req.session.tempRoleType = roleType;
+
+  console.log(req.session);
+  console.log(allTeamMembers2);
 
   let targetURL;
   targetURL = '/prototypes/team-resources-costs/select-role';
@@ -398,7 +557,10 @@ export function trcSelectRoleTypePost(req, res) {
 export function trcSelectRoleGet(req, res) {
   let viewData;
 
+  console.log(req.session);
+  console.log(allTeamMembers2);
   let allData = req.session;
+
   viewData = {
     allData,
     prototypeData,
@@ -413,6 +575,9 @@ export function trcSelectRolePost(req, res) {
   req.session.tempRole = roles;
 
   let targetURL;
+
+  console.log(req.session);
+  console.log(allTeamMembers2);
 
   if (req.session.action === 'edit' && req.session.tempRoleType === 'Directly allocated') {
     targetURL = '/prototypes/team-resources-costs/add-team-member';
@@ -435,7 +600,8 @@ export function trcOrganisationSearchGet(req, res) {
 
   let allData = req.session;
 
-  // console.log(allData);
+  console.log(req.session);
+  console.log(allTeamMembers2);
 
   viewData = {
     allData,
@@ -734,10 +900,23 @@ export function trcResourcesAndCostsGet(req, res) {
     organisationDetails.push({
       name: uniqueOrgs[j],
       isComplete: '',
+      costs: {},
     });
   }
 
-  // req.session.uniqueOrgs = uniqueOrgs;
+  let megaTotalFEC = 0;
+  let megaContribution = 0;
+  let megaFundingAppliedFor = 0;
+  for (let k = 0; k < orgCosts.length; k++) {
+    megaTotalFEC = megaTotalFEC + parseInt(orgCosts[k].totalFEC);
+    megaContribution = megaContribution + parseInt(orgCosts[k].contribution);
+    megaFundingAppliedFor = megaFundingAppliedFor + parseInt(orgCosts[k].fundingAppliedFor);
+  }
+
+  req.session.megaTotalFEC = megaTotalFEC;
+  req.session.megaContribution = megaContribution;
+  req.session.megaFundingAppliedFor = megaFundingAppliedFor;
+
   req.session.uniqueOrgs = organisationDetails;
   let allData = req.session;
   console.log(allData);
@@ -745,6 +924,7 @@ export function trcResourcesAndCostsGet(req, res) {
   viewData = {
     allData,
     prototypeData,
+    orgCosts,
   };
 
   return res.render('prototypes/team-resources-costs/resources-and-costs', viewData);
@@ -794,6 +974,7 @@ export function trcOrganisationCostsGet(req, res) {
     prototypeData,
     orgsArrayIndex,
     allTeamMembers2,
+    orgCosts,
   };
 
   return res.render('prototypes/team-resources-costs/organisation-costs', viewData);
@@ -822,7 +1003,100 @@ export function trcOrganisationCostsPost(req, res) {
     req.session.orgTwoComplete = false;
   }
 
+  let formStuff = req.body;
+  let uniqueOrgs = req.session.uniqueOrgs;
+  orgCosts[orgsArrayIndex].totalFEC = formStuff.totalFEC;
+  orgCosts[orgsArrayIndex].contribution = formStuff.contribution;
+  orgCosts[orgsArrayIndex].fundingAppliedFor = formStuff.fundingAppliedFor;
+  orgCosts[orgsArrayIndex].daMemberFullCosts_1 = formStuff.daMemberFullCosts_1;
+  orgCosts[orgsArrayIndex].daCostAppliedFor_1 = formStuff.daCostAppliedFor_1;
+  orgCosts[orgsArrayIndex].daMemberFullCosts_2 = formStuff.daMemberFullCosts_2;
+  orgCosts[orgsArrayIndex].daCostAppliedFor_2 = formStuff.daCostAppliedFor_2;
+  orgCosts[orgsArrayIndex].daMemberFullCosts_3 = formStuff.daMemberFullCosts_3;
+  orgCosts[orgsArrayIndex].daCostAppliedFor_3 = formStuff.daCostAppliedFor_3;
+  orgCosts[orgsArrayIndex].diMemberFullCosts_1 = formStuff.diMemberFullCosts_1;
+  orgCosts[orgsArrayIndex].diCostAppliedFor_1 = formStuff.diCostAppliedFor_1;
+  orgCosts[orgsArrayIndex].diMemberFullCosts_2 = formStuff.diMemberFullCosts_2;
+  orgCosts[orgsArrayIndex].diCostAppliedFor_2 = formStuff.diCostAppliedFor_2;
+  orgCosts[orgsArrayIndex].diMemberFullCosts_3 = formStuff.diMemberFullCosts_3;
+  orgCosts[orgsArrayIndex].diCostAppliedFor_3 = formStuff.diCostAppliedFor_3;
+  orgCosts[orgsArrayIndex].exMemberFullCosts_1 = formStuff.exMemberFullCosts_1;
+  orgCosts[orgsArrayIndex].exCostAppliedFor_1 = formStuff.exCostAppliedFor_1;
+  orgCosts[orgsArrayIndex].exMemberFullCosts_2 = formStuff.exMemberFullCosts_2;
+  orgCosts[orgsArrayIndex].exCostAppliedFor_2 = formStuff.exCostAppliedFor_2;
+  orgCosts[orgsArrayIndex].exMemberFullCosts_3 = formStuff.exMemberFullCosts_3;
+  orgCosts[orgsArrayIndex].exCostAppliedFor_3 = formStuff.exCostAppliedFor_3;
+  orgCosts[orgsArrayIndex].daStaff = formStuff.daStaff;
+  orgCosts[orgsArrayIndex].daStaffAppliedFor = formStuff.daStaffAppliedFor;
+  orgCosts[orgsArrayIndex].daEstates = formStuff.daEstates;
+  orgCosts[orgsArrayIndex].daEstatesAppliedFor = formStuff.daEstatesAppliedFor;
+  orgCosts[orgsArrayIndex].daOther = formStuff.daOther;
+  orgCosts[orgsArrayIndex].daOtherAppliedFor = formStuff.daOtherAppliedFor;
+  orgCosts[orgsArrayIndex].diStaff = formStuff.diStaff;
+  orgCosts[orgsArrayIndex].diStaffAppliedFor = formStuff.diStaffAppliedFor;
+  orgCosts[orgsArrayIndex].diEquipment = formStuff.diEquipment;
+  orgCosts[orgsArrayIndex].diEquipmentAppliedFor = formStuff.diEquipmentAppliedFor;
+  orgCosts[orgsArrayIndex].diTravel = formStuff.diTravel;
+  orgCosts[orgsArrayIndex].diTravelAppliedFor = formStuff.diTravelAppliedFor;
+  orgCosts[orgsArrayIndex].diOther = formStuff.diOther;
+  orgCosts[orgsArrayIndex].diOtherAppliedFor = formStuff.diOtherAppliedFor;
+  orgCosts[orgsArrayIndex].indirectCosts = formStuff.indirectCosts;
+  orgCosts[orgsArrayIndex].indirectCostsAppliedFor = formStuff.indirectCostsAppliedFor;
+  orgCosts[orgsArrayIndex].exStaff = formStuff.exStaff;
+  orgCosts[orgsArrayIndex].exStaffAppliedFor = formStuff.exStaffAppliedFor;
+  orgCosts[orgsArrayIndex].exEquipment = formStuff.exEquipment;
+  orgCosts[orgsArrayIndex].exEquipmentAppliedFor = formStuff.exEquipmentAppliedFor;
+  orgCosts[orgsArrayIndex].exTravel = formStuff.exTravel;
+  orgCosts[orgsArrayIndex].exTravelAppliedFor = formStuff.exTravelAppliedFor;
+  orgCosts[orgsArrayIndex].exOther = formStuff.exOther;
+  orgCosts[orgsArrayIndex].exOtherAppliedFor = formStuff.exOtherAppliedFor;
+
+  // orgCosts[orgsArrayIndex].costs = formStuff;
+  /*for (let i=0; i < formStuff.length; i++) {
+
+  }*/
+  //let specificCosts = orgCosts[orgsArrayIndex].costs;
+  //console.log(formStuff)
+  //for (const [key, value] of Object.entries(formStuff)) {
+  //console.log('looping');
+  //console.log(`${key} ${value}`);
+  // req.session[`${key}`] = `${value}`;
+  // specificCosts.push(key, value);
+  //specificCosts[`${key}`] = `${value}`;
+  //}
+
+  /*console.log('formStuff.daMemberFullCosts_1 = ' + formStuff.daMemberFullCosts_1 );
+  specificCosts.daMemberFullCosts_1 = formStuff.daMemberFullCosts_1;
+  orgCosts[orgsArrayIndex].costs = specificCosts;
+  orgCosts[orgsArrayIndex].name = orgName;
+  console.log(orgCosts[orgsArrayIndex].costs);*/
+
+  // orgCosts[orgsArrayIndex].costs = specificCosts;
+  //for (let j=0; j < orgCosts[orgsArrayIndex].costs ; j++) {
+  //console.log('fucking arrays');
+  //console.log(orgCosts[orgsArrayIndex].costs[j] );
+  //}
+
+  /*for (let j=0; j < specificCosts.length; j++) {
+    console.log(specificCosts[j]);
+  }*/
+  //console.log(formStuff);
+  // console.log('uniqueOrgs[0][0].name = ' + uniqueOrgs[0][0].name);
+  //console.log('uniqueOrgs[0].name');
+  //console.log(uniqueOrgs[0].name);
+  /* for (let i=0; i < uniqueOrgs.length; i++) {
+    if (uniqueOrgs[0].name === orgName ) {
+      uniqueOrgs[i].costs = formStuff;
+    }
+    console.log('LOOPING uniqueOrgs[0].name');
+    console.log(uniqueOrgs[i].name);
+  }*/
+
+  req.session.orgCosts = orgCosts;
+  console.log('req.session ===================================================================== ');
   console.log(req.session);
+  //console.log(orgCosts[orgsArrayIndex].costs);
+  //console.log(req.session);
 
   let targetURL;
   targetURL = '/prototypes/team-resources-costs/resources-and-costs';

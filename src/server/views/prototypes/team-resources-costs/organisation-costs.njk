@@ -25,6 +25,8 @@
 {% set pageTitle = organisationName + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/team-resources-costs/application-overview', text:'Back to application overview'}] %}
 
+{% set inputClasses = 'govuk-input govuk-input--width-4 govuk-table__cell--middle u-align-right' %}
+
 {% block content %}
 
     {% call components.bulmaRow() %}
@@ -60,12 +62,31 @@
                 {% call components.bulmaColumnAny(size='is-full') %}
                     <div class="big-numbers">
 
+                        <style>
+                            .big-input {
+                                font-size: 36px;
+                                border: none;
+                                outline: none;
+                                display: inline;
+                                /*padding-left: 25px;*/
+                                max-width: 90%;
+                            }
+                            .big-pound{
+                                font-size: 36px;
+                                display: inline-block;
+                                float:left;
+                                width:25px;
+                            }
+                        </style>
+
                         <div class="big-numbers__biggy">
                             <div class="big-numbers__title">
                                 Total full economic costs (fEC)
                             </div>
                             <div class="big-numbers__number">
-                                £0.00
+                                {#<span id="totalFEC">0.00</span>#}
+                                <span class="big-pound">&pound;</span>
+                                <input type="text" class="big-input" readonly id="totalFEC" value="£0" name="totalFEC">
                             </div>
                         </div>
 
@@ -74,7 +95,8 @@
                                 Contribution from applying organisations
                             </div>
                             <div class="big-numbers__number">
-                                £0.00
+                                <span class="big-pound">&pound;</span>
+                                <input type="text" class="big-input" readonly id="contribution" value="£0" name="contribution">
                             </div>
                         </div>
 
@@ -83,7 +105,9 @@
                                 Funding applied for
                             </div>
                             <div class="big-numbers__number">
-                                £0.00
+                                {#£<span id="fundingAppliedFor">0.00</span>#}
+                                <span class="big-pound">&pound;</span>
+                                <input type="text" class="big-input" readonly id="fundingAppliedFor" value="£0" name="fundingAppliedFor">
                             </div>
                         </div>
                     </div>
@@ -114,10 +138,22 @@
                                         <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
 
                                         <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                            <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="daMemberFullCosts_{{ daTeamMemberIndex }}">
+                                            {% if daTeamMemberIndex == 1 %}
+                                                <input type="text" class="{{ inputClasses }} magicStaffInput daInputs" id="daCost1" data-type="da" data-percent="80" data-target="daCostAppliedFor_1"  name="daMemberFullCosts_1" value="{{ orgCosts[orgsArrayIndex].daMemberFullCosts_1 if orgCosts[orgsArrayIndex].daMemberFullCosts_1 else "0" }}">
+                                            {% elseif daTeamMemberIndex == 2 %}
+                                                <input type="text" class="{{ inputClasses }} magicStaffInput daInputs" id="daCost2" data-type="da" data-percent="80" data-target="daCostAppliedFor_2"  name="daMemberFullCosts_2" value="{{ orgCosts[orgsArrayIndex].daMemberFullCosts_2 if orgCosts[orgsArrayIndex].daMemberFullCosts_2 else "0" }}">
+                                            {% elseif daTeamMemberIndex == 3 %}
+                                                <input type="text" class="{{ inputClasses }} magicStaffInput daInputs" id="daCost3" data-type="da" data-percent="80" data-target="daCostAppliedFor_3"  name="daMemberFullCosts_3" value="{{ orgCosts[orgsArrayIndex].daMemberFullCosts_3 if orgCosts[orgsArrayIndex].daMemberFullCosts_3 else "0" }}">
+                                            {% endif %}
                                         </td>
                                         <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                            <input type="text" class="govuk-input govuk-input--secret" value="0" disabled id="daAppliedFor_{{ daTeamMemberIndex }}">
+                                            {% if daTeamMemberIndex == 1 %}
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].daCostAppliedFor_1 if orgCosts[orgsArrayIndex].daCostAppliedFor_1 else "0" }}" readonly name="daCostAppliedFor_1" id="daCostAppliedFor_1">
+                                            {% elseif daTeamMemberIndex == 2 %}
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].daCostAppliedFor_2 if orgCosts[orgsArrayIndex].daCostAppliedFor_2 else "0" }}" readonly name="daCostAppliedFor_2" id="daCostAppliedFor_2">
+                                            {% elseif daTeamMemberIndex == 3 %}
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].daCostAppliedFor_3 if orgCosts[orgsArrayIndex].daCostAppliedFor_3 else "0" }}" readonly name="daCostAppliedFor_3" id="daCostAppliedFor_3">
+                                            {% endif %}
                                         </td>
                                     </tr>
                                     {% set daTeamMemberIndex = daTeamMemberIndex + 1 %}
@@ -131,7 +167,7 @@
                         <script>
                             let daTable = document.getElementById('daTable');
                             let daNullMessage = document.getElementById('daNullMessage');
-                            if(diTable.rows.length <= 1) {
+                            if(daTable.rows.length <= 1) {
                                 daNullMessage.classList.remove('govuk-visually-hidden');
                                 daTable.classList.add('govuk-visually-hidden');
                             }
@@ -167,15 +203,34 @@
                                         </td>
                                         <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
 
-                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                            <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="diMemberFullCosts_{{ diTeamMemberIndex }}">
+                                        {#<td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                            <input type="text" class="{{ inputClasses }}  magicStaffInput diInputs" data-type="di" id="diCost" data-percent="80" data-target="diCostAppliedFor_{{ diTeamMemberIndex }}" name="diMemberFullCosts_{{ diTeamMemberIndex }}" value="0">
                                         </td>
                                         <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                            <input type="text" class="govuk-input govuk-input--secret" value="0" disabled id="diAppliedFor_{{ diTeamMemberIndex }}">
+                                            <input type="text" class="govuk-input govuk-input--secret" value="0" name="diCostAppliedFor_{{ diTeamMemberIndex }}" readonly id="diCostAppliedFor_{{ diTeamMemberIndex }}">
+                                        </td>#}
+
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                            {% if diTeamMemberIndex == 1 %}
+                                                <input type="text" class="{{ inputClasses }} magicStaffInput diInputs" id="diCost1" data-type="di" data-percent="80" data-target="diCostAppliedFor_1"  name="diMemberFullCosts_1" value="{{ orgCosts[orgsArrayIndex].diMemberFullCosts_1 if orgCosts[orgsArrayIndex].diMemberFullCosts_1 else "0" }}">
+                                            {% elseif diTeamMemberIndex == 2 %}
+                                                <input type="text" class="{{ inputClasses }} magicStaffInput diInputs" id="diCost2" data-type="di" data-percent="80" data-target="diCostAppliedFor_2"  name="diaMemberFullCosts_2" value="{{ orgCosts[orgsArrayIndex].diMemberFullCosts_2 if orgCosts[orgsArrayIndex].diMemberFullCosts_2 else "0" }}">
+                                            {% elseif diTeamMemberIndex == 3 %}
+                                                <input type="text" class="{{ inputClasses }} magicStaffInput diInputs" id="daCost3" data-type="di" data-percent="80" data-target="diCostAppliedFor_3"  name="daMemberFullCosts_3" value="{{ orgCosts[orgsArrayIndex].diMemberFullCosts_3 if orgCosts[orgsArrayIndex].diMemberFullCosts_3 else "0" }}">
+                                            {% endif %}
+                                        </td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                            {% if diTeamMemberIndex == 1 %}
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].diCostAppliedFor_1 if orgCosts[orgsArrayIndex].diCostAppliedFor_1 else "0" }}" readonly name="diCostAppliedFor_1" id="diCostAppliedFor_1">
+                                            {% elseif diTeamMemberIndex == 2 %}
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].diCostAppliedFor_2 if orgCosts[orgsArrayIndex].diCostAppliedFor_2 else "0" }}" readonly name="diCostAppliedFor_2" id="diCostAppliedFor_2">
+                                            {% elseif diTeamMemberIndex == 3 %}
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].diCostAppliedFor_3 if orgCosts[orgsArrayIndex].diCostAppliedFor_3 else "0" }}" readonly name="diCostAppliedFor_3" id="diCostAppliedFor_3">
+                                            {% endif %}
                                         </td>
 
                                     </tr>
-                                    {% set diTeamMemberIndex = 1 %}
+                                    {% set diTeamMemberIndex = diTeamMemberIndex + 1 %}
                                 {% endif %}
 
                             {% endfor %}
@@ -223,12 +278,25 @@
                                                 Unknown
                                             {% endif %}
                                         </td>
-                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+
                                         <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                            <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="diMemberFullCosts_{{ exTeamMemberIndex }}">
+                                            {% if exTeamMemberIndex == 1 %}
+                                                <input type="text" class="{{ inputClasses }} magicStaffInput exInputs" id="exCost1" data-type="ex" data-percent="80" data-target="exCostAppliedFor_1"  name="exMemberFullCosts_1" value="{{ orgCosts[orgsArrayIndex].exMemberFullCosts_1 if orgCosts[orgsArrayIndex].exMemberFullCosts_1 else "0" }}">
+                                            {% elseif exTeamMemberIndex == 2 %}
+                                                <input type="text" class="{{ inputClasses }} magicStaffInput exInputs" id="exCost2" data-type="ex" data-percent="80" data-target="exCostAppliedFor_2"  name="exaMemberFullCosts_2" value="{{ orgCosts[orgsArrayIndex].exMemberFullCosts_2 if orgCosts[orgsArrayIndex].exMemberFullCosts_2 else "0" }}">
+                                            {% elseif exTeamMemberIndex == 3 %}
+                                                <input type="text" class="{{ inputClasses }} magicStaffInput exInputs" id="exCost3" data-type="ex" data-percent="80" data-target="exCostAppliedFor_3"  name="daMemberFullCosts_3" value="{{ orgCosts[orgsArrayIndex].exMemberFullCosts_3 if orgCosts[orgsArrayIndex].exMemberFullCosts_3 else "0" }}">
+                                            {% endif %}
                                         </td>
                                         <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                            <input type="text" class="govuk-input govuk-input--secret" value="0" disabled id="exAppliedFor_{{ exTeamMemberIndex }}">
+                                            {% if exTeamMemberIndex == 1 %}
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].exCostAppliedFor_1 if orgCosts[orgsArrayIndex].exCostAppliedFor_1 else "0" }}" readonly name="exCostAppliedFor_1" id="exCostAppliedFor_1">
+                                            {% elseif exTeamMemberIndex == 2 %}
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].exCostAppliedFor_2 if orgCosts[orgsArrayIndex].exCostAppliedFor_2 else "0" }}" readonly name="exCostAppliedFor_2" id="exCostAppliedFor_2">
+                                            {% elseif exTeamMemberIndex == 3 %}
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].exCostAppliedFor_3 if orgCosts[orgsArrayIndex].exCostAppliedFor_3 else "0" }}" readonly name="exCostAppliedFor_3" id="exCostAppliedFor_3">
+                                            {% endif %}
                                         </td>
                                     </tr>
                                     {% set exTeamMemberIndex = exTeamMemberIndex + 1 %}
@@ -274,7 +342,7 @@
                     </details>
 
                     <div class="responsive-table ">
-                        <table class="govuk-table responsive-table__table exceptions-table" id="exceptionTable">
+                        <table class="govuk-table responsive-table__table exceptions-table" id="">
                             <thead class="">
                             <tr>
                                 <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
@@ -288,30 +356,30 @@
                                 <td class="govuk-table__cell govuk-table__cell--middle">Staff</td>
                                 <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                    {#<input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">#}0
+                                    <input type="text" class="{{ inputClasses }} govuk-input--secret" name="daStaff" value="{{ orgCosts[orgsArrayIndex].daStaff if orgCosts[orgsArrayIndex].daStaff else "0" }}" id="daStaff" data-percent="80" data-target="daStaffAppliedFor">
                                 </td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                    <input type="text" class="govuk-input govuk-input--secret" value="0" disabled id="daStaffAppliedFor">
+                                    <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].daStaffAppliedFor if orgCosts[orgsArrayIndex].daStaffAppliedFor else "0" }}" name="daStaffAppliedFor" readonly id="daStaffAppliedFor">
                                 </td>
                             </tr>
                             <tr>
                                 <td class="govuk-table__cell govuk-table__cell--middle">Estates</td>
                                 <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                    <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle magicInput" name="daEstates" id="daEstates">
+                                    <input type="text" class="{{ inputClasses }}  magicInput" name="daEstates" id="daEstates" value="{{ orgCosts[orgsArrayIndex].daEstates if orgCosts[orgsArrayIndex].daEstates else "0" }}" data-percent="80" data-target="daEstatesAppliedFor">
                                 </td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                    <input type="text" class="govuk-input govuk-input--secret" value="0" name="daEstatesAppliedFor" disabled id="daEstatesAppliedFor">
+                                    <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].daEstatesAppliedFor if orgCosts[orgsArrayIndex].daEstatesAppliedFor else "0" }}" name="daEstatesAppliedFor" readonly id="daEstatesAppliedFor">
                                 </td>
                             </tr>
                             <tr>
                                 <td class="govuk-table__cell govuk-table__cell--middle">Other</td>
                                 <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                    <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle magicInput" name="daOther" id="daOther">
+                                    <input type="text" class="{{ inputClasses }}  magicInput" name="daOther" id="daOther" value="{{ orgCosts[orgsArrayIndex].daOther if orgCosts[orgsArrayIndex].daOther else "0" }}" data-percent="80" data-target="daOtherAppliedFor">
                                 </td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                    <input type="text" class="govuk-input govuk-input--secret" value="0" name="daOtherAppliedFor" disabled id="daOtherAppliedFor">
+                                    <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].daOtherAppliedFor if orgCosts[orgsArrayIndex].daOtherAppliedFor else "0" }}" name="daOtherAppliedFor" readonly id="daOtherAppliedFor">
                                 </td>
                             </tr>
                             </tbody>
@@ -341,7 +409,7 @@
                     </details>
 
                     <div class="responsive-table ">
-                        <table class="govuk-table responsive-table__table exceptions-table" id="exceptionTable">
+                        <table class="govuk-table responsive-table__table exceptions-table" id="">
                             <thead class="">
                             <tr>
                                 <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
@@ -355,38 +423,40 @@
                                     <td class="govuk-table__cell govuk-table__cell--middle">Staff</td>
                                     <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
                                     <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                        {#<input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">#}0
+                                        <input type="text" class="{{ inputClasses }} govuk-input--secret" name="diStaff" value="{{ orgCosts[orgsArrayIndex].diStaff if orgCosts[orgsArrayIndex].diStaff else "0" }}" id="diStaff" data-percent="80" data-target="diStaffAppliedFor">
                                     </td>
-                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                        <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].diStaffAppliedFor if orgCosts[orgsArrayIndex].diStaffAppliedFor else "0" }}" name="diStaffAppliedFor" readonly id="diStaffAppliedFor">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="govuk-table__cell govuk-table__cell--middle">Equipment</td>
                                     <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
                                     <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                        <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle magicInput" name="diEquipmemnt" id="diEquipmemnt">
+                                        <input type="text" class="{{ inputClasses }} magicInput" name="diEquipment" id="diEquipment" value="{{ orgCosts[orgsArrayIndex].diEquipment if orgCosts[orgsArrayIndex].diEquipment else "0" }}"  data-percent="80" data-target="diEquipmentAppliedFor">
                                     </td>
                                     <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                        <input type="text" class="govuk-input govuk-input--secret" value="0" name="diEquipmemntAppliedFor" disabled id="diEquipmemntAppliedFor">
+                                        <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].diEquipmentAppliedFor if orgCosts[orgsArrayIndex].diEquipmentAppliedFor else "0" }}" name="diEquipmentAppliedFor" readonly id="diEquipmentAppliedFor">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="govuk-table__cell govuk-table__cell--middle">Travel and subsistence</td>
                                     <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
                                     <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                        <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle magicInput" name="diTravel" id="diTravel">
+                                        <input type="text" class="{{ inputClasses }}  magicInput" name="diTravel" id="diTravel" value="{{ orgCosts[orgsArrayIndex].diTravel if orgCosts[orgsArrayIndex].diTravel else "0" }}" data-percent="80" data-target="diTravelAppliedFor">
                                     </td>
                                     <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                        <input type="text" class="govuk-input govuk-input--secret" value="0" name="diTravelAppliedFor" disabled id="diTravelAppliedFor">
+                                        <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].diTravelAppliedFor if orgCosts[orgsArrayIndex].diTravelAppliedFor else "0" }}" name="diTravelAppliedFor" readonly id="diTravelAppliedFor" >
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="govuk-table__cell govuk-table__cell--middle">Other</td>
                                     <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
                                     <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                        <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle magicInput" name="diOther" id="diOther">
+                                        <input type="text" class="{{ inputClasses }}  magicInput" name="diOther" id="diOther" value="{{ orgCosts[orgsArrayIndex].diOther if orgCosts[orgsArrayIndex].diOther else "0" }}" data-percent="80" data-target="diOtherAppliedFor">
                                     </td>
                                     <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                        <input type="text" class="govuk-input govuk-input--secret" value="0" name="diOtherAppliedFor" disabled id="diOtherAppliedFor">
+                                        <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].diOtherAppliedFor if orgCosts[orgsArrayIndex].diOtherAppliedFor else "0" }}" name="diOtherAppliedFor" readonly id="diOtherAppliedFor">
                                     </td>
                                 </tr>
 
@@ -414,7 +484,7 @@
                     </details>
 
                     <div class="responsive-table ">
-                        <table class="govuk-table responsive-table__table exceptions-table" id="exceptionTable">
+                        <table class="govuk-table responsive-table__table exceptions-table" id="">
                             <thead class="">
                                 <tr>
                                     <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
@@ -428,10 +498,10 @@
                                     <td class="govuk-table__cell govuk-table__cell--middle">Indirect costs</td>
                                     <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
                                     <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                        <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle magicInput" name="indirectCosts" id="indirectCosts">
+                                        <input type="text" class="{{ inputClasses }} magicInput u-align-right" name="indirectCosts" id="indirectCosts" value="{{ orgCosts[orgsArrayIndex].indirectCosts if orgCosts[orgsArrayIndex].indirectCosts else "0" }}" data-percent="80" data-target="indirectCostsAppliedFor">
                                     </td>
                                     <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                        <input type="text" class="govuk-input govuk-input--secret" value="0" name="indirectCostsAppliedFor" disabled id="indirectCostsAppliedFor">
+                                        <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].indirectCostsAppliedFor if orgCosts[orgsArrayIndex].indirectCostsAppliedFor else "0" }}" name="indirectCostsAppliedFor" readonly id="indirectCostsAppliedFor">
                                     </td>
                                 </tr>
                             </tbody>
@@ -456,7 +526,7 @@
                     </details>
 
                     <div class="responsive-table ">
-                        <table class="govuk-table responsive-table__table exceptions-table" id="exceptionTable">
+                        <table class="govuk-table responsive-table__table exceptions-table" id="">
                             <thead class="">
                             <tr>
                                 <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
@@ -470,38 +540,40 @@
                                 <td class="govuk-table__cell govuk-table__cell--middle">Staff</td>
                                 <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                    <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle" name="fullCosts">
+                                    <input type="text" class="{{ inputClasses }} govuk-input--secret" name="exStaff" value="{{ orgCosts[orgsArrayIndex].exStaff if orgCosts[orgsArrayIndex].exStaff else "0" }}" id="exStaff" data-percent="100" data-target="exStaffAppliedFor">
                                 </td>
-                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">0</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                    <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].exStaffAppliedFor if orgCosts[orgsArrayIndex].exStaffAppliedFor else "0" }}" name="exStaffAppliedFor" readonly id="exStaffAppliedFor">
+                                </td>
                             </tr>
                             <tr>
                                 <td class="govuk-table__cell govuk-table__cell--middle">Equipment</td>
                                 <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                    <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle magicInput" name="exEquipment" id="exEquipment">
+                                    <input type="text" class="{{ inputClasses }}  magicInput" name="exEquipment" id="exEquipment" value="{{ orgCosts[orgsArrayIndex].exEquipment if orgCosts[orgsArrayIndex].exEquipment else "0" }}" data-percent="100" data-target="exEquipmentAppliedFor">
                                 </td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                    <input type="text" class="govuk-input govuk-input--secret" value="0" name="exEquipmentAppliedFor" disabled id="exEquipmentAppliedFor">
+                                    <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].exEquipmentAppliedFor if orgCosts[orgsArrayIndex].exEquipmentAppliedFor else "0" }}" name="exEquipmentAppliedFor" readonly id="exEquipmentAppliedFor">
                                 </td>
                             </tr>
                             <tr>
                                 <td class="govuk-table__cell govuk-table__cell--middle">Travel and subsistence</td>
                                 <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                    <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle magicInput" name="exTravel" id="exTravel">
+                                    <input type="text" class="{{ inputClasses }}  magicInput" name="exTravel" id="exTravel" value="{{ orgCosts[orgsArrayIndex].exTravel if orgCosts[orgsArrayIndex].exTravel else "0" }}" data-percent="100" data-target="exTravelAppliedFor">
                                 </td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                    <input type="text" class="govuk-input govuk-input--secret" value="0" name="exTravelAppliedFor" disabled id="exTravelAppliedFor">
+                                    <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].exTravelAppliedFor if orgCosts[orgsArrayIndex].exTravelAppliedFor else "0" }}" name="exTravelAppliedFor" readonly id="exTravelAppliedFor">
                                 </td>
                             </tr>
                             <tr>
                                 <td class="govuk-table__cell govuk-table__cell--middle">Other</td>
                                 <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                    <input type="text" class="govuk-input govuk-input--width-4 govuk-table__cell--middle magicInput" name="exOther" id="exOther">
+                                    <input type="text" class="{{ inputClasses }}  magicInput" name="exOther" id="exOther" data-percent="100" data-target="exOtherAppliedFor" value="{{ orgCosts[orgsArrayIndex].exOther if orgCosts[orgsArrayIndex].exOther else "0" }}">
                                 </td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
-                                    <input type="text" class="govuk-input govuk-input--secret" value="0" name="exOtherAppliedFor" disabled id="exOtherAppliedFor">
+                                    <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].exOtherAppliedFor if orgCosts[orgsArrayIndex].exOtherAppliedFor else "0" }}" name="exOtherAppliedFor" readonly id="exOtherAppliedFor">
                                 </td>
                             </tr>
 
@@ -579,124 +651,121 @@
 {% endblock %}
 
 {% block bodyScripts %}
-    {#<script>
-        Zepto(function($){
-            console.log('zepto loaded');
-            /*
-                daMemberFullCosts_x			daAppliedFor_x
-                diMemberFullCosts_x			diAppliedfor_x
-                exMemberFullCosts_x			exAppliedFor_x
+     <script>
+    /*
+        daMemberFullCosts_x			daAppliedFor_x
+        diMemberFullCosts_x			diAppliedfor_x
+        exMemberFullCosts_x			exAppliedFor_x
 
-                daStaff                     daStaffAppliedFor
-                daEstates                   daEstatesAppliedFor
-                daOther                     daOtherAppliedFor
+        daStaff                     daStaffAppliedFor
+        daEstates                   daEstatesAppliedFor
+        daOther                     daOtherAppliedFor
 
-                diStaff						diStaffAppliedFor
-                diEquipmemnt				diEquipmemntAppliedFor
-                diTravel					diTravelAppliedFor
-                diOther						diOtherAppliedFor
+        diStaff						diStaffAppliedFor
+        diEquipmemnt				diEquipmemntAppliedFor
+        diTravel					diTravelAppliedFor
+        diOther						diOtherAppliedFor
 
-                indirectCosts				indirectCostsAppliedFor
+        indirectCosts				indirectCostsAppliedFor
 
-                exStaff						exStaffAppliedFor
-                exEquipment                 exEquipmentAppliedFor
-                exTravel                    exTravelAppliedFor
-                exOther                     exOtherAppliedFor
-            */
-
-            $()
-
-            $('#directlyIncurredCost, #directlyAllocatedCost, #indirectCost ,#exceptionCost').on('blur', function(event) {
-                let directlyIncurredCost = parseInt($('#directlyIncurredCost').val(), 10);
-                let directlyAllocatedCost = parseInt($('#directlyAllocatedCost').val(), 10);
-                let indirectlCost = parseInt($('#indirectCost').val(), 10);
-                let exceptionCost = parseInt($('#exceptionCost').val(), 10);
-                let totalValue = directlyIncurredCost + directlyAllocatedCost + indirectlCost + exceptionCost;
-                // let totalRequested =
-                console.log(totalValue);
-
-                /*
-                #totalCost
-                #totalContribution
-                #totalRequested
-                 */
-
-                let incurredContribution = (directlyIncurredCost/100)*80;
-                $('#incurredContribution').html('£'+parseFloat(incurredContribution).toFixed(0));
-
-                let alllocatedContribution = (directlyAllocatedCost/100)*80;
-                $('#alllocatedContribution').html('£'+parseFloat(alllocatedContribution).toFixed(0));
-
-                let indirectContribution = (indirectlCost/100)*80;
-                $('#indirectContribution').html('£'+parseFloat(indirectContribution).toFixed(0));
-
-                let exceptionsContribution = (exceptionCost/100)*100;
-                $('#exceptionsContribution').html('£'+parseFloat(exceptionsContribution).toFixed(0));
-
-
-                let totalRequested = parseFloat((incurredContribution + alllocatedContribution + indirectContribution + exceptionsContribution)).toFixed(0);
-
-                $('#totalContribution').html('£'+(totalValue-totalRequested));
-
-                $('#totalCost').html('£'+totalValue);
-
-                // $('#totalRequested').html('£'+parseFloat((incurredContribution + alllocatedContribution + indirectContribution + exceptionsContribution)).toFixed(0));
-
-                $('#totalRequested').html('£'+totalRequested);
-
-                event.preventDefault();
-            });
-        })#}
+        exStaff						exStaffAppliedFor
+        exEquipment                 exEquipmentAppliedFor
+        exTravel                    exTravelAppliedFor
+        exOther                     exOtherAppliedFor
+    */
     </script>
-
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-
     <script>
+        /*
+            totalFEC
+            fundingAppliedFor
+            fundingAppliedFor
+        */
+        let fullEconomicCost = 0;
+        let contribution = 0;
+        let fundingAppliedFor = 0;
+        let totalCost = 0;
+        // let fecBigNumber =
+
+        function getTotalCost() {
+            let totalCost = 0;
+
+            $('.magicInput').each(function(i, obj) {
+                let thisValue = $(this).val();
+                totalCost = totalCost + parseInt(thisValue);
+            });
+            $('.magicStaffInput').each(function(i, obj) {
+                let thisValue = $(this).val();
+                totalCost = totalCost + parseInt(thisValue);
+            });
+
+            console.log('totalCost = ' + totalCost);
+            $('#totalFEC').val(totalCost);
+            $('#contribution').val((totalCost - (totalCost*0.8)).toFixed(2));
+            $('#fundingAppliedFor').val((totalCost*0.8).toFixed(2));
+        }
+
+        function updateStaffCosts(dataType) {
+            let daTotalStaff = 0;
+            let diTotalStaff = 0;
+            let exTotalStaff = 0;
+            // target ID: daStaff, diStaff, exStaff
+            $('.'+dataType+'Inputs').each(function(){
+                let tempTotalCost = $(this).val();
+                if(dataType === 'da') {
+                    daTotalStaff = parseInt(daTotalStaff) + parseInt(tempTotalCost);
+                    $('#daStaff').val(daTotalStaff);
+                    $('#daStaffAppliedFor').val(parseInt(daTotalStaff)*0.8);
+                }
+                if(dataType === 'di') {
+                    diTotalStaff = diTotalStaff + parseInt(tempTotalCost);
+                    $('#diStaff').val(diTotalStaff);
+                    $('#diStaffAppliedFor').val(parseInt(diTotalStaff)*0.8);
+                }
+                if(dataType === 'ex') {
+                    exTotalStaff = exTotalStaff + parseInt(tempTotalCost);
+                    $('#exStaff').val(exTotalStaff);
+                    $('#exStaffAppliedFor').val(exTotalStaff);
+                }
+            });
+        }
 
         $('.magicInput').each(function(index){
             $(this).on('blur', function(e){
                 e.preventDefault();
                 let tempInputID = $(this).attr('id');
-                let tempTarget = tempInputID + 'AppliedFor';
-                let
-
+                let tempTargetID = $(this).attr('data-target');
+                let tempPercentage = $(this).attr('data-percent');
+                // console.log(tempInputID);
+                // let tempTarget = tempInputID + 'AppliedFor';
+                // console.log(tempTarget);
+                $('#'+tempTargetID).val(($('#'+tempInputID).val() * (tempPercentage/100)).toFixed(2));
+                getTotalCost();
             });
         });
 
 
-       /* let div_top = $('.menu').offset().top;
-        console.log('div_top = ' + div_top);
-        $(window).load(function () {
-            console.log($('.menu').offset().top);
-        });
-        $(window).scroll(function () {
-            var window_top = $(window).scrollTop() - 0;
-            if (window_top > div_top) {
-                if (!$('.menu').is('.sticky')) {
-                    $('.menu').addClass('sticky');
-                }
-            } else {
-                $('.menu').removeClass('sticky');
-            }
-        });
-
-        $('.govuk-tabs__tab').each(function(index){
-            $(this).on('click', function(e){
+        //magicStaffInput
+        $('.magicStaffInput').each(function(index){
+            $(this).on('blur', function(e){
                 e.preventDefault();
-                console.log('clicking');
-                // set previous scroll before doing anything
-                $('.govuk-tabs__list-item--selected a').attr('data-scroll', $(document).scrollTop());
-                // hide all tabs
-                $('.govuk-tabs__panel').addClass('govuk-tabs__panel--hidden');
-                $('.govuk-tabs__list-item').removeClass('govuk-tabs__list-item--selected');
-                // activate desired tab
-                $('#' + $(this).data('tab')).removeClass('govuk-tabs__panel--hidden');
-                $(this).parent().addClass('govuk-tabs__list-item--selected');
-                // scroll to active tab
-                $(document).scrollTop(parseInt($(this).attr('data-scroll')));
+                let tempInputID = $(this).attr('id');
+                let tempTargetID = $(this).attr('data-target');
+                let tempPercentage = $(this).attr('data-percent');
+                let dataType = $(this).attr('data-type');
+                $('#'+tempTargetID).val(($('#'+tempInputID).val() * (tempPercentage/100)).toFixed(2));
+                getTotalCost();
+                updateStaffCosts(dataType);
             });
-        });*/
+        });
+
+        $(window).on('load', function() {
+            getTotalCost();
+            updateStaffCosts('da');
+            updateStaffCosts('di');
+            updateStaffCosts('ex');
+        })
+
     </script>
 
 {% endblock %}
