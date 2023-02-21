@@ -254,8 +254,14 @@ function trcIndexGet(req, res) {
     savedSession = null;
     req.session.destroy();
     let targetURL = '/prototypes/team-resources-costs/';
-    //console.log('allTeamMembers2 = 👇👇👇👇👇👇');
-    //console.log(allTeamMembers2);
+    console.log('allTeamMembers2 = 👇👇👇👇👇👇');
+    console.log(allTeamMembers2);
+
+    // fix player one
+    allTeamMembers2[0].role = '';
+    allTeamMembers2[0].timeSpent = '';
+    allTeamMembers2[0].averageHours = '';
+
     for (let i = originalNumberOfMembers; i < allTeamMembers2.length; i++) {
       allTeamMembers2[i].firstName = '';
       allTeamMembers2[i].lastName = '';
@@ -275,6 +281,9 @@ function trcIndexGet(req, res) {
     }
     return res.redirect(targetURL);
   }
+
+  /*allTeamMembers2 = teamData.teamDataFull;
+  originalNumberOfMembers = 5;*/
 
   let allData = req.session;
   viewData = {
@@ -523,7 +532,7 @@ function trcSelectRoleTypeGet(req, res) {
   let teamMemberType = req.param('teamMemberType');
 
   if (action === 'edit' && parseInt(teamMemberID) >= 1) {
-    console.log('delete person');
+    // console.log('delete person');
     for (let j = 0; j < allTeamMembers2.length; j++) {
       if (allTeamMembers2[j].id === teamMemberID) {
         req.session.action = action;
@@ -755,6 +764,11 @@ function trcAddTeamMemberPost(req, res) {
     allTeamMembers2[arrayPos].organisation = req.session.selectedOrganisation;
     allTeamMembers2[arrayPos].timeSpent = timeSpent;
     allTeamMembers2[arrayPos].averageHours = averageHours;
+
+    // clear data
+    req.session.tempRole = null;
+    req.session.tempRoleType = null;
+    req.session.selectedOrganisation = null;
   } else {
     for (let i = 0; i < allTeamMembers2.length; i++) {
       if (!allTeamMembers2[i].isComplete) {
@@ -1026,9 +1040,9 @@ function trcOrganisationCostsPost(req, res) {
 
   let formStuff = req.body;
   let uniqueOrgs = req.session.uniqueOrgs;
-  orgCosts[orgsArrayIndex].totalFEC = formStuff.totalFEC;
-  orgCosts[orgsArrayIndex].contribution = formStuff.contribution;
-  orgCosts[orgsArrayIndex].fundingAppliedFor = formStuff.fundingAppliedFor;
+  orgCosts[orgsArrayIndex].totalFEC = parseFloat(formStuff.totalFEC.replace(/,/g, ''));
+  orgCosts[orgsArrayIndex].contribution = parseFloat(formStuff.contribution.replace(/,/g, ''));
+  orgCosts[orgsArrayIndex].fundingAppliedFor = parseFloat(formStuff.fundingAppliedFor.replace(/,/g, ''));
   orgCosts[orgsArrayIndex].daMemberFullCosts_1 = formStuff.daMemberFullCosts_1;
   orgCosts[orgsArrayIndex].daCostAppliedFor_1 = formStuff.daCostAppliedFor_1;
   orgCosts[orgsArrayIndex].daMemberFullCosts_2 = formStuff.daMemberFullCosts_2;

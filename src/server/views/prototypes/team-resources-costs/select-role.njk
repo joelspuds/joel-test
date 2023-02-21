@@ -52,10 +52,13 @@
                         <fieldset class="govuk-fieldset" >
                             <legend class="govuk-label govuk-label--s u-space-b20 govuk-visually-hidden">Select the role for the new team member</legend>
                             <div class="govuk-radios" data-module="govuk-radios">
+                                {#{% if allData.tempRoleType == 'Directly allocated' %}
                                 <div class="govuk-radios__item">
                                     <input class="govuk-radios__input" id="roles1" name="roles" type="radio" value="Principal investigator" {% if allData.tempRole == 'Principal investigator' %} checked {% endif %}>
                                     <label class="govuk-label govuk-radios__label" for="roles1" >Principal investigator</label>
                                 </div>
+                                {% endif %}
+
                                 <div class="govuk-radios__item">
                                     <input class="govuk-radios__input" id="roles2" name="roles" type="radio" value="Co-investigator" {% if allData.tempRole == 'Co-investigator' %} checked {% endif %}>
                                     <label class="govuk-label govuk-radios__label" for="roles2">Co-investigator</label>
@@ -64,14 +67,43 @@
                                     <input class="govuk-radios__input" id="roles3" name="roles" type="radio" value="Researcher" {% if allData.tempRole == 'Researcher' %} checked {% endif %}>
                                     <label class="govuk-label govuk-radios__label" for="roles3">Researcher</label>
                                 </div>
-                                {#<div class="govuk-radios__item">
+                                #}{#<div class="govuk-radios__item">
                                     <input class="govuk-radios__input" id="roles4" name="roles" type="radio" value="Business partner" >
                                     <label class="govuk-label govuk-radios__label" for="roles4">Business partner</label>
-                                </div>#}
+                                </div>#}{#
                                 <div class="govuk-radios__item">
                                     <input class="govuk-radios__input" id="roles5" name="roles" type="radio" value="Technician" {% if allData.tempRole == 'Technician' %} checked {% endif %}>
                                     <label class="govuk-label govuk-radios__label" for="roles5">Technician</label>
+                                </div>#}
+
+                                {% if allData.tempRoleType == 'Directly allocated' %}
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="rolesA" name="roles" type="radio" value="Project lead" {% if allData.tempRole == 'Project lead' %} checked {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="rolesA">Project lead</label>
+                                    <span class="govuk-radios__hint govuk-hint">Responsible for the intellectual leadership and overall management of the project</span>
                                 </div>
+                                {% endif %}
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="rolesB" name="roles" type="radio" value="Co-project lead" {% if allData.tempRole == 'Co-project lead' %} checked {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="rolesB">Co-project lead</label>
+                                    <span class="govuk-radios__hint govuk-hint">Assists the project lead and may take over the leadership of the project if required</span>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="rolesC" name="roles" type="radio" value="Specialist Technician" {% if allData.tempRole == 'Specialist Technician' %} checked {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="rolesC">Specialist Technician</label>
+                                    <span class="govuk-radios__hint govuk-hint">Provides specialist technical contributions to a project</span>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="rolesD" name="roles" type="radio" value="Postdoctoral Research Assistant" {% if allData.tempRole == 'Postdoctoral Research Assistant' %} checked {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="rolesD">Postdoctoral research assistant</label>
+                                    <span class="govuk-radios__hint govuk-hint">Carries out research or innovation work on a project</span>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="rolesE" name="roles" type="radio" value="Technician" {% if allData.tempRole == 'Technician' %} checked {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="rolesE">Technician</label>
+                                    <span class="govuk-radios__hint govuk-hint">Provides general support for a project, as required</span>
+                                </div>
+
                             </div>
                         </fieldset>
                     </div>

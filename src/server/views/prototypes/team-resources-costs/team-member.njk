@@ -80,6 +80,26 @@
                         <strong>Average hours per week</strong><br>
                         <span>{{ allTeamMembers2[teamMamberArrayPos].averageHours  if allTeamMembers2[teamMamberArrayPos].roleTaverageHoursype else '<span class="meta">Total hours type not set</span>' }}</span>
                     </p>
+                    {% if allTeamMembers2[teamMamberArrayPos].startDay %}
+                    <p class="govuk-body">
+                        <strong>Start date</strong><br>
+                        <span>
+                            {{ allTeamMembers2[teamMamberArrayPos].startDay if allTeamMembers2[teamMamberArrayPos].startDay else '<span class="meta">DD</span>' }}
+                            {{ allTeamMembers2[teamMamberArrayPos].startMonth | showMonth() if allTeamMembers2[teamMamberArrayPos].startMonth else '<span class="meta">MM</span>' }}
+                            {{ allTeamMembers2[teamMamberArrayPos].startYear if allTeamMembers2[teamMamberArrayPos].startYear else '<span class="meta">YYYY</span>' }}
+                        </span>
+                    </p>
+                    {% endif %}
+                    {% if allTeamMembers2[teamMamberArrayPos].endDay %}
+                    <p class="govuk-body">
+                        <strong>End date</strong><br>
+                        <span>
+                            {{ allTeamMembers2[teamMamberArrayPos].endDay if allTeamMembers2[teamMamberArrayPos].endDay else '<span class="meta">DD</span>' }}
+                            {{ allTeamMembers2[teamMamberArrayPos].endMonth | showMonth() if allTeamMembers2[teamMamberArrayPos].endMonth else '<span class="meta">MM</span>' }}
+                            {{ allTeamMembers2[teamMamberArrayPos].endYear if allTeamMembers2[teamMamberArrayPos].endYear else '<span class="meta">YYYY</span>' }}
+                        </span>
+                    </p>
+                    {% endif %}
                 {%- endcall %}
 
             {%- endcall %}

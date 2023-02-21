@@ -68,8 +68,9 @@
                                 border: none;
                                 outline: none;
                                 display: inline;
-                                /*padding-left: 25px;*/
                                 max-width: 90%;
+                                margin:0;
+                                padding: 0;
                             }
                             .big-pound{
                                 font-size: 36px;
@@ -685,7 +686,14 @@
         let contribution = 0;
         let fundingAppliedFor = 0;
         let totalCost = 0;
-        // let fecBigNumber =
+
+        let numberFormat = function(value) {
+            let newNumberAsString;
+            newNumberAsString = value.toString();
+            // newNumberAsString = newNumberAsString.replace(/\./g, ',');
+            newNumberAsString = newNumberAsString.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            return newNumberAsString;
+        };
 
         function getTotalCost() {
             let totalCost = 0;
@@ -700,9 +708,12 @@
             });
 
             console.log('totalCost = ' + totalCost);
-            $('#totalFEC').val(totalCost);
+            $('#totalFEC').val(numberFormat((totalCost).toFixed(2)));
+            $('#contribution').val(numberFormat((totalCost - (totalCost*0.8)).toFixed(2)));
+            $('#fundingAppliedFor').val(numberFormat((totalCost*0.8).toFixed(2)));
+            /*$('#totalFEC').val((totalCost).toFixed(2));
             $('#contribution').val((totalCost - (totalCost*0.8)).toFixed(2));
-            $('#fundingAppliedFor').val((totalCost*0.8).toFixed(2));
+            $('#fundingAppliedFor').val((totalCost*0.8).toFixed(2));*/
         }
 
         function updateStaffCosts(dataType) {

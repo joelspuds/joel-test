@@ -61,7 +61,7 @@
                                 Total full economic costs (fEC)
                             </div>
                             <div class="big-numbers__number">
-                                £{{ allData.megaTotalFEC }}
+                                £{{ allData.megaTotalFEC | numberFormat() }}
                             </div>
                         </div>
                         <div class="big-numbers__biggy">
@@ -69,7 +69,7 @@
                                 Contribution from applying organisations
                             </div>
                             <div class="big-numbers__number">
-                                £{{ allData.megaContribution }}
+                                £{{ allData.megaContribution | numberFormat() }}
                             </div>
                         </div>
                         <div class="big-numbers__biggy">
@@ -77,7 +77,7 @@
                                 Funding applied for
                             </div>
                             <div class="big-numbers__number">
-                                £{{ allData.megaFundingAppliedFor }}
+                                £{{ allData.megaFundingAppliedFor | numberFormat() }}
                             </div>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                                     <span class="{#govuk-tag govuk-tag--blue#} badge badge--info badge--smaller">LEAD</span>
                                 </div>
                                 <div class="application-item__right">
-                                    <span class="application-item__control">£{{ orgCosts[0].totalFEC }}</span>
+                                    <span class="application-item__control">£{{ orgCosts[0].totalFEC | numberFormat() }}</span>
                                     {% if allData.orgZeroComplete == true %}
                                         <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
                                     {% else %}
@@ -145,7 +145,7 @@
                                         <a href="/prototypes/team-resources-costs/organisation-costs?orgsArrayIndex=1" class="govuk-link  ">{{ allData.uniqueOrgs[1].name }}</a>
                                     </div>
                                     <div class="application-item__right">
-                                        <span class="application-item__control">£{{ orgCosts[1].totalFEC }}</span>
+                                        <span class="application-item__control">£{{ orgCosts[1].totalFEC | numberFormat() }}</span>
                                         {% if allData.orgOneComplete == true %}
                                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
                                         {% else %}
@@ -162,7 +162,7 @@
                                         <a href="/prototypes/team-resources-costs/organisation-costs?orgsArrayIndex=2" class="govuk-link  ">{{ allData.uniqueOrgs[2].name }}</a>
                                     </div>
                                     <div class="application-item__right">
-                                        <span class="application-item__control">£{{ orgCosts[2].totalFEC }}</span>
+                                        <span class="application-item__control">£{{ orgCosts[2].totalFEC  | numberFormat() }}</span>
                                         {% if allData.orgTwoComplete == true %}
                                             <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
                                         {% else %}
