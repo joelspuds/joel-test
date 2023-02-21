@@ -99,7 +99,7 @@
 
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--s" for="timeSpent" id="timeSpentLabel">Time spent FTE on project (%)</label>
-                        <input class="govuk-input govuk-input--width-4 " id="timeSpent" type="number" name="timeSpent" value="{{ allData.timespent }}">
+                        <input class="govuk-input govuk-input--width-4 " id="timeSpent" type="number" name="timeSpent" value="{{ allData.timeSpent }}">
                     </div>
 
                     <div class="govuk-form-group ">
@@ -130,7 +130,11 @@
                 {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
                     {% call components.formGroup() %}
                         <div class="application-controls govuk-clearfix">
-                            {{ components.button(text='Add team member', extraClass="application-controls__submit")}}
+                            {% if allData.action == 'edit' %}
+                                {{ components.button(text='Update team member', extraClass="application-controls__submit")}}
+                            {% else %}
+                                {{ components.button(text='Add team member', extraClass="application-controls__submit")}}
+                            {% endif %}
                             <a href="/prototypes/team-resources-costs/team" class="govuk-link application-controls__cancel">Cancel and return to team</a>
                         </div>
                     {%- endcall %}

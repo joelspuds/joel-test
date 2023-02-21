@@ -741,6 +741,10 @@
             });
         }
 
+        let isNumeric = function(n) {
+            return !isNaN(parseFloat(n)) && isFinite(n);
+        };
+
         $('.magicInput').each(function(index){
             $(this).on('blur', function(e){
                 e.preventDefault();
@@ -759,6 +763,10 @@
         //magicStaffInput
         $('.magicStaffInput').each(function(index){
             $(this).on('blur', function(e){
+                if($(this).val() === '') {
+                    // check if numeric?
+                    $(this).val('0');
+                }
                 e.preventDefault();
                 let tempInputID = $(this).attr('id');
                 let tempTargetID = $(this).attr('data-target');
@@ -768,6 +776,19 @@
                 getTotalCost();
                 updateStaffCosts(dataType);
             });
+        });
+
+        $('input[type=text]').each(function() {
+            $(this).on('focus', function() {
+                if($(this).val() === '0') {
+                    $(this).select();
+                }
+            });
+           /* $(this).on('blur', function() {
+                if($(this).val() === '' || !$(this).val().isNumeric()) {
+                    $(this).val('0');
+                }
+            });*/
         });
 
         $(window).on('load', function() {

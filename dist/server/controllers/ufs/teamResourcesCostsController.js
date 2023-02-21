@@ -732,13 +732,15 @@ function trcAddTeamMemberGet(req, res) {
   console.log(allData);
 
   let limitedOrgList = limitedOrgs.limitedOrgList;
+  let action = req.session.action;
   //console.log('limitedOrgList: ');
   //console.log(limitedOrgList);
 
   viewData = {
     allData,
     prototypeData,
-    limitedOrgList
+    limitedOrgList,
+    action
   };
 
   return res.render('prototypes/team-resources-costs/add-team-member', viewData);
@@ -769,6 +771,11 @@ function trcAddTeamMemberPost(req, res) {
     req.session.tempRole = null;
     req.session.tempRoleType = null;
     req.session.selectedOrganisation = null;
+    req.session.action = null;
+    req.session.teamMemberID = null;
+    req.session.firstName = null;
+    req.session.lastName = null;
+    req.session.email = null;
   } else {
     for (let i = 0; i < allTeamMembers2.length; i++) {
       if (!allTeamMembers2[i].isComplete) {
