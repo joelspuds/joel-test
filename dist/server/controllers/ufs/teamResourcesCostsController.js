@@ -733,8 +733,6 @@ function trcAddTeamMemberGet(req, res) {
 
   let limitedOrgList = limitedOrgs.limitedOrgList;
   let action = req.session.action;
-  //console.log('limitedOrgList: ');
-  //console.log(limitedOrgList);
 
   viewData = {
     allData,
@@ -994,14 +992,6 @@ function trcResourcesAndCostsPost(req, res) {
 // ************************************************************************
 function trcOrganisationCostsGet(req, res) {
   let viewData;
-
-  //spoof for now
-  /*req.session.uniqueOrgs = [
-    { name: 'University of Wales', isComplete: '' },
-    { name: 'University of Bristol', isComplete: '' },
-    { name: 'City of Bristol College', isComplete: '' },
-  ];*/
-
   let orgsArrayIndex = req.param('orgsArrayIndex');
 
   //console.log(req.session.uniqueOrgs);

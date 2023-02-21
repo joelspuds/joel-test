@@ -82,13 +82,7 @@
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--s" for="organisation">Organisation name</label>
                         <input class="govuk-input _govuk-input--width-20" id="organisation" name="organisation" type="text" disabled value="{{ allData.selectedOrganisation if allData.selectedOrganisation else 'Organisation not set' }}">
-                        {#<span class="govuk-hint">Start entering, then select the organisation's name</span>#}
-                        {#<select name="transferOrganisation" class="govuk-select control" id="transferOrganisation">
-                            <option></option>
-                            {% for item in limitedOrgList %}
-                                <option value="{{ item.n }}" {% if item.n == allData.transferOrganisation %} selected {% endif %}>{{ item.n }}</option>
-                            {% endfor %}
-                        </select>#}
+
                         <p class="govuk-body u-space-t10"><a href="/prototypes/team-resources-costs/organisation-search" class="govuk-link">Change organisation</a> </p>
                     </div>
                 {%- endcall %}
