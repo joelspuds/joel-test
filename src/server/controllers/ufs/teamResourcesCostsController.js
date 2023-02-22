@@ -473,6 +473,27 @@ export function trcTeamGet(req, res) {
   tempFirstNameNotification = null;
   tempLastNameNotification = null;
 
+  /* clear stuff from add/edit if cancelled */
+  req.session.tempRole = null;
+  req.session.tempRoleType = null;
+  req.session.selectedOrganisation = null;
+  req.session.finalNumber = null;
+  req.session.resultArray = null;
+  req.session.searchTerm = null;
+  req.session.searchFail = null;
+  req.session.newMemberAdded = true;
+  req.session.action = null;
+  req.session.teamMemberID = null;
+  req.session.firstName = null;
+  req.session.lastName = null;
+  req.session.email = null;
+  req.session.tempStartDay = null;
+  req.session.tempStartMonth = null;
+  req.session.tempStartYear = null;
+  req.session.tempEndDay = null;
+  req.session.tempEndMonth = null;
+  req.session.tempEndYear = null;
+
   return res.render('prototypes/team-resources-costs/team', viewData);
 }
 
@@ -514,12 +535,12 @@ export function trcSelectRoleTypeGet(req, res) {
         req.session.email = allTeamMembers2[j].email;
         req.session.timeSpent = allTeamMembers2[j].timeSpent;
         req.session.averageHours = allTeamMembers2[j].averageHours;
-        req.session.startDay = allTeamMembers2[j].startDay;
-        req.session.startMonth = allTeamMembers2[j].startMonth;
-        req.session.startYear = allTeamMembers2[j].startYear;
-        req.session.endDay = allTeamMembers2[j].endDay;
-        req.session.endMonth = allTeamMembers2[j].endMonth;
-        req.session.endYear = allTeamMembers2[j].endYear;
+        req.session.tempStartDay = allTeamMembers2[j].startDay;
+        req.session.tempStartMonth = allTeamMembers2[j].startMonth;
+        req.session.tempStartYear = allTeamMembers2[j].startYear;
+        req.session.tempEndDay = allTeamMembers2[j].endDay;
+        req.session.tempEndMonth = allTeamMembers2[j].endMonth;
+        req.session.tempEndYear = allTeamMembers2[j].endYear;
         req.session.isComplete = allTeamMembers2[j].isComplete;
       }
     }
@@ -795,13 +816,13 @@ export function trcAddTeamMemberAltGet(req, res) {
   console.log(allData);
 
   let limitedOrgList = limitedOrgs.limitedOrgList;
-  // console.log('limitedOrgList: ');
-  // console.log(limitedOrgList);
+  let action = req.session.action;
 
   viewData = {
     allData,
     prototypeData,
     limitedOrgList,
+    action,
   };
 
   return res.render('prototypes/team-resources-costs/add-team-member-alt', viewData);
@@ -823,33 +844,71 @@ export function trcAddTeamMemberAltPost(req, res) {
     knownDetails,
   } = req.body;
 
+  let action = req.session.action;
+  // let teamMemberType = req.session.teamMemberType;
+  let teamMemberID = req.session.teamMemberID;
+
   console.log(req.body);
 
-  for (let i = 0; i < allTeamMembers2.length; i++) {
-    if (!allTeamMembers2[i].isComplete) {
-      if (knownDetails === 'knownNo') {
-        allTeamMembers2[i].firstName = 'Unknown';
-        allTeamMembers2[i].lastName = '';
-        allTeamMembers2[i].email = '';
-      } else {
-        allTeamMembers2[i].firstName = firstName;
-        allTeamMembers2[i].lastName = lastName;
-        allTeamMembers2[i].email = email;
-      }
+  if (action === 'edit' && parseInt(teamMemberID) >= 1) {
+    let arrayPos = parseInt(teamMemberID) - 1;
+    allTeamMembers2[arrayPos].firstName = firstName;
+    allTeamMembers2[arrayPos].lastName = lastName;
+    allTeamMembers2[arrayPos].email = email;
+    allTeamMembers2[arrayPos].role = req.session.tempRole;
+    allTeamMembers2[arrayPos].roleType = req.session.tempRoleType;
+    allTeamMembers2[arrayPos].organisation = req.session.selectedOrganisation;
+    allTeamMembers2[arrayPos].timeSpent = timeSpent;
+    allTeamMembers2[arrayPos].averageHours = averageHours;
+    allTeamMembers2[arrayPos].startDay = startDay;
+    allTeamMembers2[arrayPos].startMonth = startMonth;
+    allTeamMembers2[arrayPos].startYear = startYear;
+    allTeamMembers2[arrayPos].endDay = endDay;
+    allTeamMembers2[arrayPos].endMonth = endMonth;
+    allTeamMembers2[arrayPos].endYear = endYear;
 
-      allTeamMembers2[i].role = req.session.tempRole;
-      allTeamMembers2[i].roleType = req.session.tempRoleType;
-      allTeamMembers2[i].organisation = req.session.selectedOrganisation;
-      allTeamMembers2[i].timeSpent = timeSpent;
-      allTeamMembers2[i].averageHours = averageHours;
-      allTeamMembers2[i].isComplete = true;
-      allTeamMembers2[i].startDay = startDay;
-      allTeamMembers2[i].startMonth = startMonth;
-      allTeamMembers2[i].startYear = startYear;
-      allTeamMembers2[i].endDay = endDay;
-      allTeamMembers2[i].endMonth = endMonth;
-      allTeamMembers2[i].endYear = endYear;
-      break;
+    // clear data
+    req.session.tempRole = null;
+    req.session.tempRoleType = null;
+    req.session.selectedOrganisation = null;
+    req.session.action = null;
+    req.session.teamMemberID = null;
+    req.session.firstName = null;
+    req.session.lastName = null;
+    req.session.email = null;
+    req.session.tempStartDay = null;
+    req.session.tempStartMonth = null;
+    req.session.tempStartYear = null;
+    req.session.tempEndDay = null;
+    req.session.tempEndMonth = null;
+    req.session.tempEndYear = null;
+  } else {
+    for (let i = 0; i < allTeamMembers2.length; i++) {
+      if (!allTeamMembers2[i].isComplete) {
+        if (knownDetails === 'knownNo') {
+          allTeamMembers2[i].firstName = 'Unknown';
+          allTeamMembers2[i].lastName = '';
+          allTeamMembers2[i].email = 'Unknown';
+        } else {
+          allTeamMembers2[i].firstName = firstName;
+          allTeamMembers2[i].lastName = lastName;
+          allTeamMembers2[i].email = email;
+        }
+
+        allTeamMembers2[i].role = req.session.tempRole;
+        allTeamMembers2[i].roleType = req.session.tempRoleType;
+        allTeamMembers2[i].organisation = req.session.selectedOrganisation;
+        allTeamMembers2[i].timeSpent = timeSpent;
+        allTeamMembers2[i].averageHours = averageHours;
+        allTeamMembers2[i].isComplete = true;
+        allTeamMembers2[i].startDay = startDay;
+        allTeamMembers2[i].startMonth = startMonth;
+        allTeamMembers2[i].startYear = startYear;
+        allTeamMembers2[i].endDay = endDay;
+        allTeamMembers2[i].endMonth = endMonth;
+        allTeamMembers2[i].endYear = endYear;
+        break;
+      }
     }
   }
 
@@ -861,6 +920,18 @@ export function trcAddTeamMemberAltPost(req, res) {
   req.session.searchTerm = null;
   req.session.searchFail = null;
   req.session.newMemberAdded = true;
+
+  /* req.session.action = null;
+  req.session.teamMemberID = null;
+  req.session.firstName = null;
+  req.session.lastName = null;
+  req.session.email = null;
+  req.session.tempStartDay = null;
+  req.session.tempStartMonth = null;
+  req.session.tempStartYear = null;
+  req.session.tempEndDay = null;
+  req.session.tempEndMonth = null;
+  req.session.tempEndYear = null;*/
 
   let targetURL;
   targetURL = '/prototypes/team-resources-costs/team';

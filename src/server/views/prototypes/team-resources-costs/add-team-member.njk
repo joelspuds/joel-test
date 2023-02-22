@@ -93,12 +93,12 @@
 
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--s" for="timeSpent" id="timeSpentLabel">Time spent FTE on project (%)</label>
-                        <input class="govuk-input govuk-input--width-4 " id="timeSpent" type="number" name="timeSpent" value="{{ allData.timeSpent }}">
+                        <input class="govuk-input govuk-input--width-4 " id="timeSpent" type="number" step="any" name="timeSpent" value="{{ allData.timeSpent }}">
                     </div>
 
                     <div class="govuk-form-group ">
                         <label class="govuk-label govuk-label--s" for="averageHours" id="averageHoursLabel">Average hours per week on project</label>
-                        <input class="govuk-input govuk-input--width-4" id="averageHours" name="averageHours" type="number" value="{{ allData.averageHours }}">
+                        <input class="govuk-input govuk-input--width-4" id="averageHours" name="averageHours" step="any" type="number" value="{{ allData.averageHours }}">
                     </div>
 
                 {%- endcall %}

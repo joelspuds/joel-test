@@ -94,7 +94,14 @@
                         {% for item in allTeamMembers2 %}
                             {% if item.isComplete and item.roleType == 'Directly allocated'%}
                             <tr>
-                                <td class="govuk-table__cell"><a href="/prototypes/team-resources-costs/team-member?teamMemberID={{ item.id }}" class="govuk-link">{{ item.firstName }} {{ item.lastName }}</a> </td>
+                                <td class="govuk-table__cell">
+                                    <a href="/prototypes/team-resources-costs/team-member?teamMemberID={{ item.id }}" class="govuk-link">
+                                        {% if not item.firstName %}
+                                            Unknown
+                                        {% else %}
+                                            {{ item.firstName }} {{ item.lastName }}
+                                        {% endif %}
+                                    </a> </td>
                                 <td class="govuk-table__cell">
                                     {% if item.role %}
                                         {{ item.role }}

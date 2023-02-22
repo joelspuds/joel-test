@@ -78,7 +78,7 @@
                     </p>
                     <p class="govuk-body">
                         <strong>Average hours per week</strong><br>
-                        <span>{{ allTeamMembers2[teamMamberArrayPos].averageHours  if allTeamMembers2[teamMamberArrayPos].roleTaverageHoursype else '<span class="meta">Total hours type not set</span>' }}</span>
+                        <span>{{ allTeamMembers2[teamMamberArrayPos].averageHours  if allTeamMembers2[teamMamberArrayPos].averageHours else '<span class="meta">Total hours type not set</span>' }}</span>
                     </p>
                     {% if allTeamMembers2[teamMamberArrayPos].startDay %}
                     <p class="govuk-body">

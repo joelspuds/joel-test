@@ -74,7 +74,7 @@
                             <div class="govuk-radios govuk-radios--conditional govuk-radios__item__hack" data-module="govuk-radios">
 
                                 <div class="govuk-radios__item govuk-radios__item__hack--left">
-                                    <input class="govuk-radios__input" id="knownYes" name="knownDetails" type="radio" value="yes" data-aria-controls="conditionalFile">
+                                    <input class="govuk-radios__input" id="knownYes" name="knownDetails" type="radio" value="yes" data-aria-controls="conditionalFile" {% if allData.firstName and allData.lastName %}checked{% endif %}>
                                     <label class="govuk-label govuk-radios__label" for="knownYes">
                                         Yes
                                     </label>
@@ -87,7 +87,7 @@
 
                                     <div class="govuk-form-group">
                                         <label class="govuk-label govuk-label--s" for="lastName" id="lastNameLabel">Last name</label>
-                                        <input class="govuk-input _govuk-input--width-20 " id="lastName" type="text" name="lastName" value=" {{ allData.firstName }} ">
+                                        <input class="govuk-input _govuk-input--width-20 " id="lastName" type="text" name="lastName" value=" {{ allData.lastName }} ">
                                     </div>
 
                                     <div class="govuk-form-group ">
@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
                                 <div class="govuk-radios__item govuk-radios__item__hack--right">
-                                    <input class="govuk-radios__input" id="knwonNo" name="knownDetails" type="radio" value="no">
+                                    <input class="govuk-radios__input" id="knwonNo" name="knownDetails" type="radio" value="no" {% if allData.firstName == '' %}checked{% endif %}>
                                     <label class="govuk-label govuk-radios__label" for="knownNo">No</label>
                                 </div>
                             </div>
@@ -123,7 +123,7 @@
 
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--s" for="timeSpent" id="timeSpentLabel">Time spent FTE on project (%)</label>
-                        <input class="govuk-input govuk-input--width-4 " id="timeSpent" type="number" name="timeSpent" value="{{ allData.timespent }}">
+                        <input class="govuk-input govuk-input--width-4 " id="timeSpent" type="number" name="timeSpent" value="{{ allData.timeSpent }}">
                     </div>
 
                     <div class="govuk-form-group ">
@@ -141,7 +141,7 @@
                                 <div class="govuk-date-input__item">
                                     <div class="govuk-form-group">
                                         <label class="govuk-label govuk-date-input__label" for="startDay">Day</label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="startDay" name="startDay" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ allData.tepStartDay }}">
+                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="startDay" name="startDay" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ allData.tempStartDay }}">
                                     </div>
                                 </div>
                                 <div class="govuk-date-input__item">
@@ -171,7 +171,7 @@
                                 <div class="govuk-date-input__item">
                                     <div class="govuk-form-group">
                                         <label class="govuk-label govuk-date-input__label" for="endDay">Day</label>
-                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="endDay" name="endDay" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ allData.tepEndDay }}">
+                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="endDay" name="endDay" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ allData.tempEndDay }}">
                                     </div>
                                 </div>
                                 <div class="govuk-date-input__item">
@@ -214,7 +214,12 @@
                 {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
                     {% call components.formGroup() %}
                         <div class="application-controls govuk-clearfix">
-                            {{ components.button(text='Add team member', extraClass="application-controls__submit")}}
+                            {% if allData.action == 'edit' %}
+                                {{ components.button(text='Update team member', extraClass="application-controls__submit")}}
+                            {% else %}
+                                {{ components.button(text='Add team member', extraClass="application-controls__submit")}}
+                            {% endif %}
+                            {#{{ components.button(text='Add team member', extraClass="application-controls__submit")}}#}
                             <a href="/prototypes/team-resources-costs/team" class="govuk-link application-controls__cancel">Cancel and return to team</a>
                         </div>
                     {%- endcall %}
