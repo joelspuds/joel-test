@@ -868,7 +868,6 @@ function trcAddTeamMemberAltPost(req, res) {
   } = req.body;
 
   let action = req.session.action;
-  // let teamMemberType = req.session.teamMemberType;
   let teamMemberID = req.session.teamMemberID;
 
   console.log(req.body);
