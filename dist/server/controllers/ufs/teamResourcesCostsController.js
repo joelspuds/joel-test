@@ -820,6 +820,8 @@ function trcAddTeamMemberPost(req, res) {
   req.session.searchTerm = null;
   req.session.searchFail = null;
   req.session.newMemberAdded = true;
+  req.session.timeSpent = null;
+  req.session.averageHours = null;
 
   let targetURL;
   targetURL = '/prototypes/team-resources-costs/team';
@@ -941,6 +943,8 @@ function trcAddTeamMemberAltPost(req, res) {
   req.session.searchTerm = null;
   req.session.searchFail = null;
   req.session.newMemberAdded = true;
+  req.session.timeSpent = null;
+  req.session.averageHours = null;
 
   /* req.session.action = null;
   req.session.teamMemberID = null;
