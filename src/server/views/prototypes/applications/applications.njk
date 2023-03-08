@@ -1,0 +1,297 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/team-resources-costs/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/team-resources-costs/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = true %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Applications ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/applications/home', text:'Back to home'}] %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Applications', caption='University of Wales') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='', customID='mainContent') %}
+
+        {% call components.bulmaColumnAny(size='is-half') %}
+
+            <form action="#" method="POST" role="search" name="searchForm" style="position:relative;">
+                <div class="search">
+                    <div class="govuk-form-group govuk-form-group--search">
+                        <label class="govuk-label govuk-visually-hidden" for="search">Search applications</label>
+                        <input class="govuk-input govuk-input--width-20 search__input" id="search" name="searchQuery" type="text" placeholder="Search all applications">
+                        <button type="submit" name="applicationSearch" class="search__submit" value="search">Search</button>
+                    </div>
+                </div>
+            </form>
+
+        {%- endcall %}
+        {% call components.bulmaColumnAny(size='is-half') %}
+
+            <div class="_u-float-right u-align-right " style="/*position:absolute; right:0;top:0;*/">
+                {#<a href="/prototypes/applications/new-applications" class="govuk-button govuk-button--s button--info">Show all applications started in the last 14 days</a>#}
+                <div class="govuk-!-font-size-24">
+                <strong>Sort by:</strong>
+                <a href="/prototypes/applications/new-applications" class="govuk-link">Recently started</a> | <a href="/prototypes/applications/new-applications" class="govuk-link" disabled="">Ending soonest</a>
+                </div>
+                <div class="govuk-!-font-size-19 u-space-t0">
+                Currently viewing applications ending soonest
+                </div>
+
+                {#<a href="#" class="govuk-button govuk-button--s button--info">Show all applications approiaching deadline</a>#}
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow(extraClass='') %}
+
+            {% call components.bulmaColumnAny(size='column is-3') %}
+                <div class="govuk-related-items govuk-related-items--flush">
+
+                    {{ components.captionHeading(text='Filters', tag='h2', size='s') }}
+
+                    <div class="filter">
+                        <h2 class="filter__title">Filter by status</h2>
+                        <span class="filter__toggle"></span>
+                        <ul class="filter__list u-clearfix govuk-radios govuk-radios--small">
+                            {% set uniqueStatuses = allData.uniqueStatuses %}
+                            {% for item in uniqueStatuses %}
+                                <li class="filter__item filter__item--small govuk-clearfix">
+                                    {#{{ loop.index }}#}
+                                    {#<div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                        <input class="govuk-checkboxes__input" id="statusFilter_{{ loop.index }}" type="checkbox" name="statusFilter_{{ loop.index }}" value="{{ item }}">
+                                        <label for="statusFilter_{{ loop.index }}" class="govuk-checkboxes__label u-display-ib">{{ item }}</label>
+                                    </div>#}
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="statusFilter_{{ loop.index }}" name="statusRadios" type="radio" value="{{ item }}" {% if allData.statusRadios == item %}checked{% endif %}>
+                                        <label class="govuk-label govuk-radios__label" for="statusFilter_{{ loop.index }}">
+                                            {{ item }}
+                                        </label>
+                                    </div>
+                                </li>
+                            {%  endfor %}
+                        </ul>
+                    </div>
+
+
+
+                    <div class="filter filter-toggle __filter-toggle--shut">
+                        <button class="filter__title filter__title--closed" type="button" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')" aria-expanded="true">Filter by council</button>
+                        {#<h2 class="filter__title" tabindex="0" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')">Filter by council</h2>#}
+                        <span class="filter__toggle"></span>
+                        <ul class="filter__list u-clearfix js-hidden" id="toggleCouncilsList">
+                            {% set uniqueFunders = allData.uniqueFunders %}
+                            {% for item in uniqueFunders %}
+                                <li class="filter__item filter__item--small">
+                                    {#{{ loop.index }}#}
+                                    <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                        <input class="govuk-checkboxes__input" id="councilFilter_{{ loop.index }}" type="checkbox" name="councilFilter_{{ loop.index }}" value="{{ uniqueFunders[loop.index - 1] }}">
+                                        <label for="councilFilter_{{ loop.index }}" class="govuk-checkboxes__label u-display-ib"> {{ uniqueFunders[loop.index - 1] }}</label>
+                                    </div>
+                                </li>
+                            {%  endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="filter filter-toggle __filter-toggle--shut">
+                        <button class="filter__title filter__title--closed" type="button" onclick="toggleVisibility(this, 'toggleGroupsList', 'js-hidden')" aria-expanded="true">Filter by group</button>
+
+                        <span class="filter__toggle"></span>
+                        <ul class="filter__list u-clearfix js-hidden" id="toggleGroupsList">
+                            {% set uniqueGroups = allData.uniqueGroups %}
+                            {% for item in uniqueGroups %}
+                                <li class="filter__item filter__item--small">
+                                    {#{{ loop.index }}#}
+                                    <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                        <input class="govuk-checkboxes__input" id="groupsFilter_{{ loop.index }}" type="checkbox" name="groupsFilter_{{ loop.index }}" value="{{ uniqueGroups[loop.index - 1] }}">
+                                        <label for="groupsFilter_{{ loop.index }}" class="govuk-checkboxes__label u-display-ib"> {{ uniqueGroups[loop.index - 1] }}</label>
+                                    </div>
+                                </li>
+                            {%  endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="_js-hidden">
+                        {% call components.formGroup() %}
+                            <button class="govuk-button" name="submitFilters" value="submitFilters">Apply filters</button>
+                            {#{{ components.button(text='Apply filters', extraClass='', name='submitFilters', value='apply', id='submitFilters')}}#}
+                            <br>
+                            <button class="govuk-button--link govuk-!-font-size-16n" name="clearFilters" value="clearFilters">Clear filters</button>
+                            {#{{ components.button(text='Clear all filters', extraClass='govuk-button--link govuk-!-font-size-16', name='clearFilters', value='clear', id='clearFilters')}}#}
+                        {%- endcall %}
+                    </div>
+
+                </div>
+            {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='column is-9') %}
+
+            <div class="responsive-table">
+
+                <table class="govuk-table responsive-table__table govuk-table--busy _mega-table">
+                    <thead>
+                    <tr class="govuk-table__header">
+
+                        <th class="govuk-table__header">Application title</th>
+                        <th class="govuk-table__header">Funder</th>
+                        <th class="govuk-table__header">Groups<br></th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Deadline</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for item in applicationsListv2  %}
+
+                        {% if loop.index < 400 %}
+
+                        {% set tempRandom = range(10, 90) | random %}
+
+                        {% if item.status == "With applicant" %}
+                            {% set tagClass = "govuk-tag--yellow"  %}
+                        {% elseif item.status == "Submitted" %}
+                            {% set tagClass = "govuk-tag--green" %}
+                        {% elseif item.status == "For checking" %}
+                            {% set tagClass = "govuk-tag--blue" %}
+                        {% elseif item.status == "Expired" %}
+                            {% set tagClass = "govuk-tag--grey" %}
+                        {% endif %}
+
+                        {# Don't do it like this :(
+                            {% if allData.statusRadios != item.status %}govuk-visually-hidden{% endif %}
+                        #}
+                        <tr data-status="{{ item.status }}" data-group="{{ item.groups }}" data-funder="{{ item.funder }}" class="">
+                            <td class="govuk-table__cell">
+                                <a href="#" class="govuk-link govuk-!-display-block">APP{{ item.randomID }}: {{ item.title }}</a>
+                                <span class="meta govuk-!-display-block u-space-t5"><strong class="meta">Project lead:</strong> <a href="#" class="govuk-link">{{ item.name }}</a></span>
+                                {% if item.additionalOrg %}
+                                <span class="meta govuk-!-display-block u-space-t5"><strong class="meta">Collaborator(s):</strong> {{ item.orgName }}</span>
+                                {% endif %}
+                            </td>
+
+                            <td class="govuk-table__cell">{{ item.funder }} </td>
+
+                            <td class="govuk-table__cell">
+                                {%  for group in item.groups %}
+                                    <span class="blob">{{ group }}</span>
+                                {% endfor %}
+                            </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                {#{{ allData.dateString }} and {{ item.dateAsString }}#}
+                                {% if allData.dateString > item.dateAsString  %}<strong class="red-text">{% endif %}
+                                {% set daysLeft = 14 - (allData.dateString - item.dateAsString) %}
+                                <span class="u-no-wrap">{{ item.deadlineDay }} {{ item.deadlineMonth | showMonth() }} {{ item.deadlineYear }}</span>
+
+                                {% if allData.dateString > item.dateAsString  %}
+                                    </strong>
+                                    {% if daysLeft == 1 %}
+                                        <span class="govuk-!-font-size-14 govuk-!-display-block">{{ daysLeft }} day left</span>
+                                    {% else %}
+                                        <span class="govuk-!-font-size-14 govuk-!-display-block">{{ daysLeft }} days left</span>
+                                    {% endif %}
+                                {% endif %}
+
+                                {#{% if not item.dateAsString %}
+                                    <span class="meta govuk-!-font-size-14 govuk-!-display-inline-block u-space-t5"><strong class="govuk-tag govuk-tag--red">New</strong></span>
+                                {% endif %}#}
+                            </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <strong class="govuk-tag govuk-tag--tiny {{ tagClass }}">{{ item.status }}</strong>
+                                {#{% if allData.dateString > item.dateAsString  %}
+                                    <span class="govuk-!-font-size-14 red-text">Deadline<br>approaching</span>
+                                {% endif %}#}
+                                {#<span class="meta govuk-!-font-size-14 govuk-!-display-inline-block u-space-t5">{{ tempRandom }}% complete</span>#}
+                            </td>
+                        </tr>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            {#{{ components.pagination(totalItems=46,currentPage=2) }}#}
+            {#{{ components.pagination(totalItems=99,itemsPerPage=10,currentPage=4) }}#}
+
+            {#<div class="pager">
+                <div class="pager__summary">
+                    Showing 1 to 3 of 3 items
+                </div>
+                <div class="pager__controls">
+                        <ul class="pager__list">
+                            <li class="pager__list-item">
+                                <a class="pager__list-link pager__prev govuk-link" href="#">Prev</a>
+                            </li>
+                            <li class="pager__list-item"><span class="pager__list-not-link">1</span></li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link govuk-link" href="#">2</a>
+                            </li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link govuk-link" href="#">3</a>
+                            </li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link pager__next govuk-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </div>
+            </div>#}
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        function toggleVisibility(_this, id, className) {
+            // event.preventDefault();
+            let toggleSwitch = _this;
+            let toggleItem = document.getElementById(id);
+            if (hasClass(toggleItem, className)) {
+                toggleSwitch.classList.add('filter__title--closed');
+                toggleItem.classList.remove(className);
+                toggleSwitch.setAttribute('aria-expanded', true);
+            }
+            else  {
+                toggleSwitch.classList.remove('filter__title--closed');
+                toggleItem.classList.add(className);
+                toggleSwitch.setAttribute('aria-expanded', false);
+            }
+            // return false;
+        }
+        function hasClass(target, className) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
+    </script>
+{% endblock %}
+

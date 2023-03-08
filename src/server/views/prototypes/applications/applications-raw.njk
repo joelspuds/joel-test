@@ -1,0 +1,116 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/team-resources-costs/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/team-resources-costs/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = true %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Applications ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/team-resources-costs/home', text:'Back to home'}] %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Applications', caption='University of Wales') }}
+        {%- endcall %}
+    {%- endcall %}
+
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow(extraClass='') %}
+
+
+
+        {% call components.bulmaColumnAny(size='column is-full') %}
+
+            <div class="responsive-table" style="font-size:12px">
+
+                <table class="">
+                    <thead>
+                        <tr class="">
+                            <th>funder</th>
+                            <th>groups</th>
+                            <th>randomID<br></th>
+                            <th>orgName</th>
+                            {#<th>piLastName</th>#}
+                            <th>{#piFirstName#}name</th>
+                            <th>title</th>
+                            <th>status</th>
+                            <th>start</th>
+                            <th>end</th>
+                            <th>awardValue</th>
+                            <th>additionalOrg</th>
+                            <th>deadlineDay</th>
+                            <th>deadlineMonth</th>
+                            <th>deadlineYear</th>
+                            <th>dateAsString</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for item in applicationsList  %}
+
+                    {% set tempDay = item.deadlineDay %}
+
+                        <tr>
+                            <td>{{ item.funder }}</td>
+                            <td>
+                                {% for group in item.groups %}
+                                {{ group }}|
+                                {% endfor %}
+                                {#{{ item.groups }}#}
+                            </td>
+                            <td>{{ item.randomID }}</td>
+                            <td>{{ item.orgName }}</td>
+                            {#<td>{{ item.piFirstName }}</td>#}
+                            <td>{{ '' | giveMeAName }} {#{{ item.piLastName }}#}</td>
+                            <td>{{ item.title }}</td>
+                            <td>{{ item.status }}</td>
+                            <td>{{ item.start }}</td>
+                            <td>{{ item.end }}</td>
+                            <td>{{ item.awardValue }}</td>
+                            <td>{{ item.additionalOrg }}</td>
+                            <td>{{ item.deadlineDay | checkString }}</td>
+                            <td>{{ item.deadlineMonth | checkString }}</td>
+                            <td>{{ item.deadlineYear }}</td>
+                            <td>{#{{ item.dateAsString }}#}{{ item.deadlineYear }}{{ item.deadlineMonth | checkString }}{{ item.deadlineDay | checkString }}</td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+

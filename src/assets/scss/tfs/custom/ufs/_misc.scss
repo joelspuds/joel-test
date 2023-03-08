@@ -103,3 +103,48 @@
   }
 
 }
+
+.blob {
+  display: inline-block;
+  font-weight: 400;
+  font-size: 12px!important;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  padding:2px 4px;
+  border: 1px solid govuk-colour("light-grey");
+  border-radius: 4px;
+  margin-bottom: 2px;
+}
+
+.button--info {
+  background-color: govuk-colour("blue");
+}
+
+
+// Filter mini radios
+.filter__list.govuk-radios--small {
+
+  .govuk-radios__label {
+    padding-top:13px!important;
+    padding-left: 10px;
+  }
+
+  .govuk-radios__label:before {
+    top: 11px!important;
+    width: 24px;
+    height: 24px;
+    left: 8px;
+  }
+
+  .govuk-radios__label:after {
+    top: 18px;
+    left: 15px;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-checkboxes--small .govuk-checkboxes__label {
+    padding: 7px 15px 10px 1px;
+    float: none;
+  }
+}

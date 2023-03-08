@@ -1,0 +1,450 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/team-resources-costs/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/team-resources-costs/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = true %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'New applications ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/applications/home', text:'Back to home'}] %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Applications started within the last 14 days', caption='University of Wales') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='', customID='mainContent') %}
+
+        {% call components.bulmaColumnAny(size='is-half') %}
+
+            <div class="govuk-summary-card">
+                <div class="govuk-summary-card__title-wrapper">
+                    <h2 class="govuk-summary-card__title">Lead tenant</h2>
+                </div>
+                <div class="govuk-summary-card__content">
+                    <dl class="govuk-summary-list">
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Age
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                38
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#">
+                                    Change<span class="govuk-visually-hidden"> age</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Nationality
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                UK national resident in UK
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#">
+                                    Change<span class="govuk-visually-hidden"> nationality</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Working situation
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                Part time – less than 30 hours a week
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#">
+                                    Change<span class="govuk-visually-hidden"> working situation</span>
+                                </a>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+            <div class="govuk-summary-card">
+                <div class="govuk-summary-card__title-wrapper">
+                    <h2 class="govuk-summary-card__title">Person 2</h2>
+                </div>
+                <div class="govuk-summary-card__content">
+                    <dl class="govuk-summary-list">
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Details known
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                Yes
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#">
+                                    Change<span class="govuk-visually-hidden"> whether details are known</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Relationship to lead tenant
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                Partner
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#">
+                                    Change<span class="govuk-visually-hidden"> relationship to lead tenant</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Age
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                42
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#">
+                                    Change<span class="govuk-visually-hidden"> age</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Working situation
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                Unable to work because of long-term sickness or disability
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#">
+                                    Change<span class="govuk-visually-hidden"> working situation</span>
+                                </a>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+            <div class="govuk-summary-card">
+                <div class="govuk-summary-card__title-wrapper">
+                    <h2 class="govuk-summary-card__title">Person 3</h2>
+                </div>
+                <div class="govuk-summary-card__content">
+                    <dl class="govuk-summary-list">
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Details known
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                Yes
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#">
+                                    Change<span class="govuk-visually-hidden"> whether details are known</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Relationship to lead tenant
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                Child
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#">
+                                    Change<span class="govuk-visually-hidden"> relationship to lead tenant</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Age
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                7
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#">
+                                    Change<span class="govuk-visually-hidden"> age</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Working situation
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                Child under 16
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#">
+                                    Change<span class="govuk-visually-hidden"> working situation</span>
+                                </a>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="govuk-summary-card">
+                <div class="govuk-summary-card__title-wrapper">
+                    <h2 class="govuk-summary-card__title">University of Gloucestershire</h2>
+                    <ul class="govuk-summary-card__actions">
+                        <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                                Delete choice<span class="govuk-visually-hidden"> of University of Gloucestershire</span>
+                            </a>
+                        </li>
+                        <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                                Withdraw<span class="govuk-visually-hidden"> from University of Gloucestershire</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="govuk-summary-card__content">
+                    <dl class="govuk-summary-list">
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Course
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                English (3DMD)<br>PGCE with QTS full time
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Location
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                School name<br>Road, City, SW1 1AA
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+            <div class="govuk-summary-card">
+                <div class="govuk-summary-card__title-wrapper">
+                    <h2 class="govuk-summary-card__title">University of Bristol</h2>
+                    <ul class="govuk-summary-card__actions">
+                        <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                                Delete choice<span class="govuk-visually-hidden"> of University of Bristol</span>
+                            </a>
+                        </li>
+                        <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                                Withdraw<span class="govuk-visually-hidden"> from University of Bristol</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="govuk-summary-card__content">
+                    <dl class="govuk-summary-list">
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Course
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                English (Q3X1)<br>PGCE with QTS full time
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Location
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                School name<br>Road, City, SW2 1AA
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+
+            <p class="govuk-body-l">This is a list of applications that have recently been started. You should contact the Project Lead and add the application to appropriate groups.</p>
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-half') %}
+
+            <div class="_u-float-right u-align-right" style="/*position:absolute; right:0;top:0;*/">
+                <a href="/prototypes/applications/applications" class="govuk-button govuk-button--s button--info">Show all applications</a>
+
+            </div>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow(extraClass='') %}
+
+        {% call components.bulmaColumnAny(size='column is-full') %}
+
+            <div class="responsive-table">
+
+                <table class="govuk-table responsive-table__table govuk-table--busy _mega-table">
+                    <thead>
+                    <tr class="govuk-table__header">
+
+                        <th class="govuk-table__header">Application title</th>
+                        <th class="govuk-table__header">Funder</th>
+                        <th class="govuk-table__header">Groups<br></th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Deadline</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for item in applicationsListv2  %}
+
+                        {% if (loop.index > 400) and (loop.index < 432) %}
+
+                        {% set tempRandom = range(10, 90) | random %}
+
+                        {% if item.status == "With applicant" %}
+                            {% set tagClass = "govuk-tag--blue"  %}
+                        {% elseif item.status == "Submitted" %}
+                            {% set tagClass = "govuk-tag--green" %}
+                        {% elseif item.status == "For checking" %}
+                            {% set tagClass = "govuk-tag--yellow" %}
+                        {% elseif item.status == "Expired" %}
+                            {% set tagClass = "govuk-tag--grey" %}
+                        {% endif %}
+
+                            {% if item.status != 'Submitted' %}
+
+                        <tr data-status="{{ item.status }}" data-group="{{ item.groups }}" data-funder="{{ item.funder }}" class="{#{% if allData.statusRadios != item.status %}govuk-visually-hidden{% endif %}#}">
+                            <td class="govuk-table__cell">
+                                <a href="#" class="govuk-link govuk-!-display-block">APP{{ item.randomID }}: {{ item.title }}</a>
+                                <span class="meta govuk-!-display-block u-space-t5"><strong class="meta">Project lead:</strong> <a href="#" class="govuk-link">{{ item.name }}</a></span>
+                                {% if item.additionalOrg %}
+                                <span class="meta govuk-!-display-block u-space-t5"><strong class="meta">Collaborator(s):</strong> {{ item.orgName }}</span>
+                                {% endif %}
+                            </td>
+
+                            <td class="govuk-table__cell">{{ item.funder }} </td>
+
+                            <td class="govuk-table__cell">
+                                {#{% if item.groups | length > 1 %}#}
+                                {% if item.status == 'With applicant' %}
+                                    <span class="meta">&mdash;</span>
+                                {% else %}
+                                    {%  for group in item.groups %}
+                                        <span class="blob">{{ group }}</span>
+                                    {% endfor %}
+                                {% endif %}
+                            </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                {#{{ allData.dateString }} and {{ item.dateAsString }}#}
+                                {% if allData.dateString > item.dateAsString  %}<strong class="red-text">{% endif %}
+                                {% set daysLeft = 14 - (allData.dateString - item.dateAsString) %}
+                                <span class="u-no-wrap">{{ item.deadlineDay }} {{ item.deadlineMonth | showMonth() }} {{ item.deadlineYear }}</span>
+
+                                {% if allData.dateString > item.dateAsString  %}
+                                    </strong>
+                                    {% if daysLeft == 1 %}
+                                        <span class="govuk-!-font-size-14 govuk-!-display-block">{{ daysLeft }} day left</span>
+                                    {% else %}
+                                        <span class="govuk-!-font-size-14 govuk-!-display-block">{{ daysLeft }} days left</span>
+                                    {% endif %}
+                                {% endif %}
+
+                                {#{% if not item.dateAsString %}
+                                    <span class="meta govuk-!-font-size-14 govuk-!-display-inline-block u-space-t5"><strong class="govuk-tag govuk-tag--red">New</strong></span>
+                                {% endif %}#}
+                            </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <strong class="govuk-tag govuk-tag--tiny {{ tagClass }}">{{ item.status }}</strong>
+                                {#{% if allData.dateString > item.dateAsString  %}
+                                    <span class="govuk-!-font-size-14 red-text">Deadline<br>approaching</span>
+                                {% endif %}#}
+                                {#<span class="meta govuk-!-font-size-14 govuk-!-display-inline-block u-space-t5">{{ tempRandom }}% complete</span>#}
+                            </td>
+                        </tr>
+
+                            {% endif %}
+                        {% endif %}
+
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            {#{{ components.pagination(totalItems=46,currentPage=2) }}#}
+            {#{{ components.pagination(totalItems=99,itemsPerPage=10,currentPage=4) }}#}
+
+            {#<div class="pager">
+                <div class="pager__summary">
+                    Showing 1 to 3 of 3 items
+                </div>
+                <div class="pager__controls">
+                        <ul class="pager__list">
+                            <li class="pager__list-item">
+                                <a class="pager__list-link pager__prev govuk-link" href="#">Prev</a>
+                            </li>
+                            <li class="pager__list-item"><span class="pager__list-not-link">1</span></li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link govuk-link" href="#">2</a>
+                            </li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link govuk-link" href="#">3</a>
+                            </li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link pager__next govuk-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </div>
+            </div>#}
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script>
+        function toggleVisibility(_this, id, className) {
+            // event.preventDefault();
+            let toggleSwitch = _this;
+            let toggleItem = document.getElementById(id);
+            if (hasClass(toggleItem, className)) {
+                toggleSwitch.classList.add('filter__title--closed');
+                toggleItem.classList.remove(className);
+                toggleSwitch.setAttribute('aria-expanded', true);
+            }
+            else  {
+                toggleSwitch.classList.remove('filter__title--closed');
+                toggleItem.classList.add(className);
+                toggleSwitch.setAttribute('aria-expanded', false);
+            }
+            // return false;
+        }
+        function hasClass(target, className) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
+    </script>
+{% endblock %}
+

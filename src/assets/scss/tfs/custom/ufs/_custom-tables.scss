@@ -119,6 +119,10 @@ table td:not([align]), table th:not([align]) {
   }
 }
 
+.govuk-table--busy {
+  @include govuk-font($size: 16);
+}
+
 .govuk-table__header--top {
   vertical-align: top !important;
 }

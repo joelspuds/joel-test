@@ -40,3 +40,4 @@ export * from './externalAwardsController';
 export * from './startAwardController';
 export * from './managePanelController';
 export * from './teamResourcesCostsController';
+export * from './applicationsListerController';

@@ -5,3 +5,4 @@ export * from './names';
 export * from './showMonth';
 export * from './to-lower-case';
 export * from './removeSpaces';
+export * from './charLength';
