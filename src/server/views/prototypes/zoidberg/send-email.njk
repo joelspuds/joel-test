@@ -1,0 +1,148 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+
+{% set pageTitle = 'Peer review' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-three-quaters u-space-t30') %}
+            {{ components.captionHeading(text='Notify panelists') }}
+     
+
+
+    <table class="govuk-table" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col" id="select-all"></th>
+          <th class="govuk-table__header" scope="col">Notification type </th>
+          <th class="govuk-table__header" scope="col">Last 
+            notification </th>
+          <th class="govuk-table__header" scope="col">Status since 
+            last notification</th>
+          <th class="govuk-table__header" scope="col">Recipients</th>
+          <th class="govuk-table__header" scope="col">Status 
+             </th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row govuk-table__row--selected">
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+              <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+              <label class="govuk-label govuk-checkboxes__label" for="Panel-invitation">
+                <span class="govuk-visually-hidden">Panel invitation</span>
+              </label>
+            </div>
+          </td>
+          <td class="govuk-table__cell">Panel invitation</td>
+          <td class="govuk-table__cell">12:31, 22/12/22</td>
+          <td class="govuk-table__cell">1 new panel member</td>
+          <td class="govuk-table__cell" >1</td>
+          <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--yellow">
+            NOT NOTIFIED
+          </strong></td>
+        </tr>
+        <tr class="govuk-table__row govuk-table__row--selected">
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+              <input type="checkbox" class="govuk-checkboxes__input" id="Meeting-details">
+              <label class="govuk-label govuk-checkboxes__label" for="Meeting-details">
+                <span class="govuk-visually-hidden">Meeting details</span>
+              </label>
+            </div>
+          </td>
+          <td class="govuk-table__cell">Meeting details</td>
+          <td class="govuk-table__cell">10:31, 17/11/22</td>
+          <td class="govuk-table__cell">Updated time, date and details</td>
+          <td class="govuk-table__cell" >All panel members</td>
+          <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--yellow">
+            NOT NOTIFIED
+          </strong></td>
+        </tr>
+        <tr class="govuk-table__row govuk-table__row--selected">
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+              <input type="checkbox" class="govuk-checkboxes__input" id="Guidance">
+              <label class="govuk-label govuk-checkboxes__label" for="Guidance">
+                <span class="govuk-visually-hidden">Guidance</span>
+              </label>
+            </div>
+          </td>
+          <td class="govuk-table__cell">Guidance</td>
+          <td class="govuk-table__cell">15:00, 18/11/22</td>
+          <td class="govuk-table__cell">2 documents uploaded, 1 removed </td>
+          <td class="govuk-table__cell" >All panel members</td>
+          <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--yellow">
+            NOT NOTIFIED
+          </strong></td>
+        </tr>
+        <tr class="govuk-table__row govuk-table__row--selected">
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+              <input type="checkbox" class="govuk-checkboxes__input" id="Member-roles">
+              <label class="govuk-label govuk-checkboxes__label" for="Member-roles">
+                <span class="govuk-visually-hidden">Member roles</span>
+              </label>
+            </div>
+          </td>
+          <td class="govuk-table__cell">Member roles</td>
+          <td class="govuk-table__cell">15:00, 18/11/22</td>
+          <td class="govuk-table__cell">17 role changes </td>
+          <td class="govuk-table__cell" >6</td>
+          <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--yellow">
+            NOT NOTIFIED
+          </strong></td>
+        </tr>
+        <tr class="govuk-table__row govuk-table__row--selected">
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+              <input type="checkbox" class="govuk-checkboxes__input" id="Member-roles">
+              <label class="govuk-label govuk-checkboxes__label" for="Member-roles">
+                <span class="govuk-visually-hidden">Member roles</span>
+              </label>
+            </div>
+          </td>
+          <td class="govuk-table__cell">Incompleted Review reminder</td>
+          <td class="govuk-table__cell">12:00, 19/12/22</td>
+          <td class="govuk-table__cell">120 incomplete reviews</td>
+          <td class="govuk-table__cell" >8</td>
+          <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--yellow">
+            NOT NOTIFIED
+          </strong></td>
+        </tr>
+     
+
+       
+   
+      </tbody>
+    </table>
+
+  
+      
+      <div class="govuk-button-group" >
+        <a href="Review-notifications" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+          Review selected notifications
+        </a>
+      </div>
+
+
+
+    {%- endcall %}
+    
+
+    {%- endcall %}
+
+{% endblock %}
+{% block bodyScripts %}
+    {#<script>
+      Zepto(function($){
+        $('#thing').on('click', function() {
+        });
+      });
+    </script>#}
+{% endblock %}
+
+

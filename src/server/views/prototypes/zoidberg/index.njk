@@ -22,7 +22,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Zoidberg', caption='Zoirberg ticket numbers') }}
+            {{ components.captionHeading(text='Zoidberg', caption='Zoidberg stories') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -36,7 +36,30 @@
                     <button type="submit" class="govuk-button application-controls__submit" name="submitButton">Start journey</button>
                     {#<a href="/prototypes/orgs" class="govuk-link application-controls__cancel">Return to application</a>#}
                 {# </div> #}
-<p class="govuk-body">Hello there</p>
+<p class="govuk-body"><strong>Stories and tickets:</strong></p>
+
+<ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a class="govuk-link app-contact-panel__link" href="zoidberg/active-applications">
+          Co-applicants preview
+        </a>
+      </li>
+      <li>
+        <a class="govuk-link app-contact-panel__link" href="zoidberg/active-applications">PI speed bump</a>  
+        </a>
+      </li>
+    </li>
+    <li>
+      <a class="govuk-link app-contact-panel__link" href="zoidberg/panel-dashboard">Panel Prototype</a>  
+      </a>
+    </li>
+  </li>
+
+    </ul>
+
+
+
+
             {%- endcall %}
 
         {%- endcall %}

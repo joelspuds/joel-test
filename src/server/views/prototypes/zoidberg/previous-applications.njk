@@ -1,0 +1,185 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/team-resources-costs/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/team-resources-costs/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = true %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Applications ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/zoidberg', text:'Back'}] %}
+
+
+
+{% block content %}
+
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-12') %}
+
+            {{ components.notifications(title='Important information', text='You must complete your  
+            <a class="govuk-notification-banner__link" href="#">Equality, Diversity and Inclusion (EDI)</a> before any applications you contribute to can be submitted to UKRI')  }}
+        
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Applications', caption='Dr. John Doeington-Longname') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='', customID='mainContent') %}
+
+        {% call components.bulmaColumnAny(size='is-9') %}
+
+            
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='', customID='mainContent') %}
+
+    
+
+    {% call components.bulmaColumnAny(size='is-full') %}
+
+        <div class="govuk-tabs" data-module="govuk-tabs">
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item ">
+                        <a class="govuk-tabs__tab " href="/prototypes/zoidberg/active-applications">Active applications (8)</a>
+                    </li>
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected ">
+                        <a class="govuk-tabs__tab" href="#">Previous applications(4)</a>
+                    </li>
+               
+                </ul>
+         
+        </div>
+
+    {%- endcall %}
+{%- endcall %}
+
+
+
+   
+    {% call components.bulmaRow(extraClass='') %}
+
+        {% call components.bulmaColumnAny(size='column is-12') %}
+
+            <div class="responsive-table">
+
+                <table class="govuk-table responsive-table__table">
+                    <thead>
+                    <tr class="govuk-table__header">
+
+                        <th class="govuk-table__header">Application title</th>
+                        <th class="govuk-table__header">Opportunity</th>
+                        <th class="govuk-table__header">Applicant<br></th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Deadline</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Application<br>status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="govuk-table__cell"><a href="/prototypes/team-resources-costs/application-overview" class="govuk-link">APP171: Bio-detoxification of Ricin in castor bean</a></td>
+                            <td class="govuk-table__cell">New Generation Thinkers 2021</td>
+                            <td class="govuk-table__cell">Manolo Bauer</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">21 Jun 2023</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                {% if sentBackToApplicant %}
+                                    <strong>Returned to applicant</strong>
+                                    {#<span class="mega-table_item-meta">100% complete</span>#}
+                                {% else %}
+                                    <strong>In progress</strong>
+                                    {#<span class="mega-table_item-meta">100% complete</span>#}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP198: Environmental Energy Storage in Aqua Batteries</a></td>
+                            <td class="govuk-table__cell">Greener Futures Environmental Technology Awards 2023</td>
+                            <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">4 Jul 2023</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric"><strong>In progress</strong></td>
+                        </tr>
+                        <tr>
+
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">APP267: Solar Wings in Stratospheric Flight</a></td>
+                            <td class="govuk-table__cell">Modern Aeronautics</td>
+                            <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">19 Jul 2023</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric"><strong>In progress</strong></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            {#{{ components.pagination(totalItems=46,currentPage=2) }}#}
+            {#{{ components.pagination(totalItems=99,itemsPerPage=10,currentPage=4) }}#}
+
+            {#<div class="pager">
+                <div class="pager__summary">
+                    Showing 1 to 3 of 3 items
+                </div>
+                <div class="pager__controls">
+                        <ul class="pager__list">
+                            <li class="pager__list-item">
+                                <a class="pager__list-link pager__prev govuk-link" href="#">Prev</a>
+                            </li>
+                            <li class="pager__list-item"><span class="pager__list-not-link">1</span></li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link govuk-link" href="#">2</a>
+                            </li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link govuk-link" href="#">3</a>
+                            </li>
+                            <li class="pager__list-item">
+                                <a class="pager__list-link pager__next govuk-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </div>
+            </div>#}
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-3') %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+
