@@ -195,11 +195,11 @@ let teamData = require('./team-data');
 let allTeamMembers2;
 let originalNumberOfMembers;
 
-allTeamMembers2 = teamData.teamDataEmpty;
-originalNumberOfMembers = 1;
+/*allTeamMembers2 = teamData.teamDataEmpty;
+originalNumberOfMembers = 1;*/
 
-/*allTeamMembers2 = teamData.teamDataFull;
-originalNumberOfMembers = 5;*/
+allTeamMembers2 = teamData.teamDataFull;
+originalNumberOfMembers = 5;
 
 let configOptions;
 
@@ -254,7 +254,7 @@ function trcIndexGet(req, res) {
     savedSession = null;
     req.session.destroy();
     let targetURL = '/prototypes/team-resources-costs/';
-    console.log('allTeamMembers2 = 👇👇👇👇👇👇');
+    // console.log('allTeamMembers2 = 👇👇👇👇👇👇');
     console.log(allTeamMembers2);
 
     // fix player one
@@ -1157,51 +1157,9 @@ function trcOrganisationCostsPost(req, res) {
   orgCosts[orgsArrayIndex].exOther = formStuff.exOther;
   orgCosts[orgsArrayIndex].exOtherAppliedFor = formStuff.exOtherAppliedFor;
 
-  // orgCosts[orgsArrayIndex].costs = formStuff;
-  /*for (let i=0; i < formStuff.length; i++) {
-   }*/
-  //let specificCosts = orgCosts[orgsArrayIndex].costs;
-  //console.log(formStuff)
-  //for (const [key, value] of Object.entries(formStuff)) {
-  //console.log('looping');
-  //console.log(`${key} ${value}`);
-  // req.session[`${key}`] = `${value}`;
-  // specificCosts.push(key, value);
-  //specificCosts[`${key}`] = `${value}`;
-  //}
-
-  /*console.log('formStuff.daMemberFullCosts_1 = ' + formStuff.daMemberFullCosts_1 );
-  specificCosts.daMemberFullCosts_1 = formStuff.daMemberFullCosts_1;
-  orgCosts[orgsArrayIndex].costs = specificCosts;
-  orgCosts[orgsArrayIndex].name = orgName;
-  console.log(orgCosts[orgsArrayIndex].costs);*/
-
-  // orgCosts[orgsArrayIndex].costs = specificCosts;
-  //for (let j=0; j < orgCosts[orgsArrayIndex].costs ; j++) {
-  //console.log('fucking arrays');
-  //console.log(orgCosts[orgsArrayIndex].costs[j] );
-  //}
-
-  /*for (let j=0; j < specificCosts.length; j++) {
-    console.log(specificCosts[j]);
-  }*/
-  //console.log(formStuff);
-  // console.log('uniqueOrgs[0][0].name = ' + uniqueOrgs[0][0].name);
-  //console.log('uniqueOrgs[0].name');
-  //console.log(uniqueOrgs[0].name);
-  /* for (let i=0; i < uniqueOrgs.length; i++) {
-    if (uniqueOrgs[0].name === orgName ) {
-      uniqueOrgs[i].costs = formStuff;
-    }
-    console.log('LOOPING uniqueOrgs[0].name');
-    console.log(uniqueOrgs[i].name);
-  }*/
-
   req.session.orgCosts = orgCosts;
   console.log('req.session ===================================================================== ');
   console.log(req.session);
-  //console.log(orgCosts[orgsArrayIndex].costs);
-  //console.log(req.session);
 
   let targetURL;
   targetURL = '/prototypes/team-resources-costs/resources-and-costs';

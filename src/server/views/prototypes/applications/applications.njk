@@ -39,23 +39,45 @@
                 <div class="search">
                     <div class="govuk-form-group govuk-form-group--search">
                         <label class="govuk-label govuk-visually-hidden" for="search">Search applications</label>
-                        <input class="govuk-input govuk-input--width-20 search__input" id="search" name="searchQuery" type="text" placeholder="Search all applications">
+                        <input class="govuk-input govuk-input--width-20 search__input" id="search" name="searchQuery" type="text" placeholder="Search all applications or project leads">
                         <button type="submit" name="applicationSearch" class="search__submit" value="search">Search</button>
                     </div>
                 </div>
             </form>
 
+            {% if allData.doingSearch %}
+                <p class="govuk-body">There are {{ allData.finalNumber }} results for "<strong>{{ allData.searchQuery }}</strong>".
+                    <br>Search again, or <a href="/prototypes/applications/applications?clearSearch=true" class="govuk-link">clear the search results</a> to view all applications. </p>
+            {% endif %}
+
         {%- endcall %}
         {% call components.bulmaColumnAny(size='is-half') %}
+
+            <style>
+                .govuk-link.govuk-link--highligted {
+                    background-color: #ffdd00;
+                    color: black!important;
+                    text-decoration: none;
+                }
+            </style>
 
             <div class="_u-float-right u-align-right " style="/*position:absolute; right:0;top:0;*/">
                 {#<a href="/prototypes/applications/new-applications" class="govuk-button govuk-button--s button--info">Show all applications started in the last 14 days</a>#}
                 <div class="govuk-!-font-size-24">
-                <strong>Sort by:</strong>
-                <a href="/prototypes/applications/new-applications" class="govuk-link">Recently started</a> | <a href="/prototypes/applications/new-applications" class="govuk-link" disabled="">Ending soonest</a>
+                    <strong>Sort by:</strong>
+                    <a href="/prototypes/applications/applications?order=reverse" class="govuk-link {{ 'govuk-link--highligted' if allData.order == 'reverse' }}">Recently started</a> |
+                    <a href="/prototypes/applications/applications?order=deadline" class="govuk-link {{ 'govuk-link--highligted' if allData.order == 'deadline' }}">Ending soonest</a> |
+                    <a href="/prototypes/applications/applications?order=chaos" class="govuk-link {{ 'govuk-link--highligted' if allData.order == 'chaos' }}">All</a>
                 </div>
                 <div class="govuk-!-font-size-19 u-space-t0">
-                Currently viewing applications ending soonest
+                    {#{{ 'allData.order = ' + allData.order }}#}
+                    {% if allData.order == 'reverse' %}
+                        Currently viewing newest applications first
+                    {% elseif allData.order == 'deadline' %}
+                        Currently viewing applications approaching deadline
+                    {% elseif allData.order == 'chaos' %}
+                        Currently viewing oldest applications first
+                    {% endif %}
                 </div>
 
                 {#<a href="#" class="govuk-button govuk-button--s button--info">Show all applications approiaching deadline</a>#}
@@ -74,39 +96,108 @@
                     {{ components.captionHeading(text='Filters', tag='h2', size='s') }}
 
                     <div class="filter">
-                        <h2 class="filter__title">Filter by status</h2>
+                        <h2 class="filter__title">Filter by stage</h2>
                         <span class="filter__toggle"></span>
                         <ul class="filter__list u-clearfix govuk-radios govuk-radios--small">
                             {% set uniqueStatuses = allData.uniqueStatuses %}
-                            {% for item in uniqueStatuses %}
+                            {#{% for item in uniqueStatuses %}
+                                #}{#{% set filterName = 'statusFilter_' + loop.index %}#}{#
+                                #}{#{% set filterValue = allData. %}#}{#
+                                {% if loop.index == 1 %}
+                                    #}{#{% set tempValue = 'For checking'%}#}{#
+                                    {% set tempValue = allData.statusFilter_1 %}
+                                {% elseif loop.index == 2 %}
+                                    #}{#{% set tempValue = 'Submitted'%}#}{#
+                                    {% set tempValue = allData.statusFilter_2 %}
+                                {% elseif loop.index == 3 %}
+                                    #}{#{% set tempValue = 'With applicant'%}#}{#
+                                    {% set tempValue = allData.statusFilter_3 %}
+                                {% endif %}
+
                                 <li class="filter__item filter__item--small govuk-clearfix">
-                                    {#{{ loop.index }}#}
-                                    {#<div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                        <input class="govuk-checkboxes__input" id="statusFilter_{{ loop.index }}" type="checkbox" name="statusFilter_{{ loop.index }}" value="{{ item }}">
+                                    #}{#{{ eval(filterName) }} and#}{#
+                                    #}{#{{ loop.index }}#}{#
+                                    <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                        <input class="govuk-checkboxes__input" id="statusFilter_{{ loop.index }}" type="checkbox" name="statusFilter_{{ loop.index }}" value="{{ item }}" {% if tempValue == item %}checked{% endif %}>
                                         <label for="statusFilter_{{ loop.index }}" class="govuk-checkboxes__label u-display-ib">{{ item }}</label>
-                                    </div>#}
-                                    <div class="govuk-radios__item">
+                                    </div>
+                                    #}{#<div class="govuk-radios__item">
                                         <input class="govuk-radios__input" id="statusFilter_{{ loop.index }}" name="statusRadios" type="radio" value="{{ item }}" {% if allData.statusRadios == item %}checked{% endif %}>
                                         <label class="govuk-label govuk-radios__label" for="statusFilter_{{ loop.index }}">
                                             {{ item }}
                                         </label>
-                                    </div>
+                                    </div>#}{#
                                 </li>
-                            {%  endfor %}
+                            {%  endfor %}#}
+                            <li class="filter__item filter__item--small govuk-clearfix">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="statusFilter_1" type="checkbox" name="statusFilter_1" value="For checking" {% if allData.statusFilter_1 == 'For checking' %}checked{% endif %}>
+                                    <label for="statusFilter_1" class="govuk-checkboxes__label u-display-ib">For checking</label>
+                                </div>
+                            </li>
+                            <li class="filter__item filter__item--small govuk-clearfix">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="statusFilter_2" type="checkbox" name="statusFilter_2" value="With applicant" {% if allData.statusFilter_2 == 'With applicant' %}checked{% endif %}>
+                                    <label for="statusFilter_2" class="govuk-checkboxes__label u-display-ib">With applicant</label>
+                                </div>
+                            </li>
+                            <li class="filter__item filter__item--small govuk-clearfix">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="statusFilter_3" type="checkbox" name="statusFilter_3" value="Submitted" {% if allData.statusFilter_3 == 'Submitted' %}checked{% endif %}>
+                                    <label for="statusFilter_3" class="govuk-checkboxes__label u-display-ib">Submitted</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="filter">
+                        <h2 class="filter__title">Filter by outcome</h2>
+                        <span class="filter__toggle"></span>
+                        <ul class="filter__list u-clearfix govuk-radios govuk-radios--small">
+                            <li class="filter__item filter__item--small govuk-clearfix">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="outcomeFilter_1" type="checkbox" name="outcomeFilter_1" value="Successful" {% if allData.outcomeFilter_1 == 'Successful' %}checked{% endif %}>
+                                    <label for="outcomeFilter_1" class="govuk-checkboxes__label u-display-ib">Successful</label>
+                                </div>
+                            </li>
+                            <li class="filter__item filter__item--small govuk-clearfix">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="outcomeFilter_2" type="checkbox" name="outcomeFilter_2" value="Unsuccessful" {% if allData.outcomeFilter_2 == 'Unsuccessful' %}checked{% endif %}>
+                                    <label for="outcomeFilter_2" class="govuk-checkboxes__label u-display-ib">Unsuccessful</label>
+                                </div>
+                            </li>
+                            <li class="filter__item filter__item--small govuk-clearfix">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="outcomeFilter_3" type="checkbox" name="outcomeFilter_3" value="Deadline passed" {% if allData.outcomeFilter_3 == 'Deadline passed' %}checked{% endif %}>
+                                    <label for="outcomeFilter_3" class="govuk-checkboxes__label u-display-ib">Deadline passed</label>
+                                </div>
+                            </li>
+                            <li class="filter__item filter__item--small govuk-clearfix">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="outcomeFilter_4" type="checkbox" name="outcomeFilter_4" value="Withdrawn" {% if allData.outcomeFilter_4 == 'Withdrawn' %}checked{% endif %}>
+                                    <label for="outcomeFilter_4" class="govuk-checkboxes__label u-display-ib">Withdrawn</label>
+                                </div>
+                            </li>
+                            <li class="filter__item filter__item--small govuk-clearfix">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="outcomeFilter_5" type="checkbox" name="outcomeFilter_4" value="Rejected" {% if allData.outcomeFilter_5 == 'Rejected' %}checked{% endif %}>
+                                    <label for="outcomeFilter_5" class="govuk-checkboxes__label u-display-ib">Rejected</label>
+                                </div>
+                            </li>
                         </ul>
                     </div>
 
 
 
-                    <div class="filter filter-toggle __filter-toggle--shut">
+                   {# <div class="filter filter-toggle __filter-toggle--shut">
                         <button class="filter__title filter__title--closed" type="button" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')" aria-expanded="true">Filter by council</button>
-                        {#<h2 class="filter__title" tabindex="0" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')">Filter by council</h2>#}
+                        #}{#<h2 class="filter__title" tabindex="0" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')">Filter by council</h2>#}{#
                         <span class="filter__toggle"></span>
                         <ul class="filter__list u-clearfix js-hidden" id="toggleCouncilsList">
                             {% set uniqueFunders = allData.uniqueFunders %}
                             {% for item in uniqueFunders %}
                                 <li class="filter__item filter__item--small">
-                                    {#{{ loop.index }}#}
+                                    #}{#{{ loop.index }}#}{#
                                     <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
                                         <input class="govuk-checkboxes__input" id="councilFilter_{{ loop.index }}" type="checkbox" name="councilFilter_{{ loop.index }}" value="{{ uniqueFunders[loop.index - 1] }}">
                                         <label for="councilFilter_{{ loop.index }}" class="govuk-checkboxes__label u-display-ib"> {{ uniqueFunders[loop.index - 1] }}</label>
@@ -114,7 +205,7 @@
                                 </li>
                             {%  endfor %}
                         </ul>
-                    </div>
+                    </div>#}
 
                     <div class="filter filter-toggle __filter-toggle--shut">
                         <button class="filter__title filter__title--closed" type="button" onclick="toggleVisibility(this, 'toggleGroupsList', 'js-hidden')" aria-expanded="true">Filter by group</button>
@@ -151,12 +242,12 @@
 
             <div class="responsive-table">
 
-                <table class="govuk-table responsive-table__table govuk-table--busy _mega-table">
+                <table class="govuk-table responsive-table__table govuk-table--busy _mega-table context">
                     <thead>
                     <tr class="govuk-table__header">
 
                         <th class="govuk-table__header">Application title</th>
-                        <th class="govuk-table__header">Funder</th>
+                        {#<th class="govuk-table__header">Funder</th>#}
                         <th class="govuk-table__header">Groups<br></th>
                         <th class="govuk-table__header govuk-table__header--numeric">Deadline</th>
                         <th class="govuk-table__header govuk-table__header--numeric">Status</th>
@@ -167,33 +258,47 @@
                     {% for item in applicationsListv2  %}
 
                         {% if loop.index < 400 %}
-
                         {% set tempRandom = range(10, 90) | random %}
-
                         {% if item.status == "With applicant" %}
                             {% set tagClass = "govuk-tag--yellow"  %}
                         {% elseif item.status == "Submitted" %}
                             {% set tagClass = "govuk-tag--green" %}
                         {% elseif item.status == "For checking" %}
                             {% set tagClass = "govuk-tag--blue" %}
-                        {% elseif item.status == "Expired" %}
+                        {% else %}
                             {% set tagClass = "govuk-tag--grey" %}
                         {% endif %}
 
                         {# Don't do it like this :(
                             {% if allData.statusRadios != item.status %}govuk-visually-hidden{% endif %}
                         #}
+                            {#{% set queryString = 'item.dateAsString > (allData.dateString - 14)' %}
+                            {% if eval(queryString) %}#}
+                            {#{% if item.dateAsString > (allData.dateString - 14) %}#}
+
+                            {% set sortType = allData.order %}
+
+
+                            {% if sortType == 'chaos' %}
+                                {% set sortLimit = 900 %}
+                            {% else %}
+                                {% set sortLimit = allData.dateString - 14 %}
+                            {% endif %}
+
+                            {% if item.dateAsString > sortLimit %}
+
+
+
                         <tr data-status="{{ item.status }}" data-group="{{ item.groups }}" data-funder="{{ item.funder }}" class="">
                             <td class="govuk-table__cell">
+                                {{  item.dateAsString }} & {{ allData.dateString }}
                                 <a href="#" class="govuk-link govuk-!-display-block">APP{{ item.randomID }}: {{ item.title }}</a>
                                 <span class="meta govuk-!-display-block u-space-t5"><strong class="meta">Project lead:</strong> <a href="#" class="govuk-link">{{ item.name }}</a></span>
                                 {% if item.additionalOrg %}
                                 <span class="meta govuk-!-display-block u-space-t5"><strong class="meta">Collaborator(s):</strong> {{ item.orgName }}</span>
                                 {% endif %}
                             </td>
-
-                            <td class="govuk-table__cell">{{ item.funder }} </td>
-
+                           {# <td class="govuk-table__cell">{{ item.funder }} </td>#}
                             <td class="govuk-table__cell">
                                 {%  for group in item.groups %}
                                     <span class="blob">{{ group }}</span>
@@ -205,18 +310,17 @@
                                 {% set daysLeft = 14 - (allData.dateString - item.dateAsString) %}
                                 <span class="u-no-wrap">{{ item.deadlineDay }} {{ item.deadlineMonth | showMonth() }} {{ item.deadlineYear }}</span>
 
+
                                 {% if allData.dateString > item.dateAsString  %}
                                     </strong>
                                     {% if daysLeft == 1 %}
                                         <span class="govuk-!-font-size-14 govuk-!-display-block">{{ daysLeft }} day left</span>
+                                    {% elseif daysLeft < -1 %}
+                                        <span class="govuk-!-font-size-14 govuk-!-display-block">Opportunity<br>closed</span>
                                     {% else %}
                                         <span class="govuk-!-font-size-14 govuk-!-display-block">{{ daysLeft }} days left</span>
                                     {% endif %}
                                 {% endif %}
-
-                                {#{% if not item.dateAsString %}
-                                    <span class="meta govuk-!-font-size-14 govuk-!-display-inline-block u-space-t5"><strong class="govuk-tag govuk-tag--red">New</strong></span>
-                                {% endif %}#}
                             </td>
                             <td class="govuk-table__cell govuk-table__cell--numeric">
                                 <strong class="govuk-tag govuk-tag--tiny {{ tagClass }}">{{ item.status }}</strong>
@@ -227,7 +331,9 @@
                             </td>
                         </tr>
 
-                        {% endif %}
+                                {%  endif %}
+
+                        {% endif %} {#  #}
 
                     {% endfor %}
 
@@ -267,6 +373,12 @@
     {%- endcall %}
 
     {%- endcall %} {# end form #}
+    <style>
+        mark{
+            background: yellow;
+            color: black;
+        }
+    </style>
 
     {% include '../../layouts/partials/user-contact.njk' %}
 
@@ -293,5 +405,22 @@
             return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
         }
     </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.js"></script>
+    {% if allData.doingSearch %}
+    <script>
+        let markInstance = new Mark(document.querySelector('.context'));
+        function performMark() {
+            var keyword = '{{ allData.searchQuery }}';
+            markInstance.unmark({
+                done: function(){
+                    markInstance.mark(keyword);
+                }
+            });
+        };
+        window.addEventListener('load', performMark);
+    </script>
+    {% endif %}
+
 {% endblock %}
 

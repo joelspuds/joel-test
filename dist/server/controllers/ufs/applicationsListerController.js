@@ -1,4 +1,18 @@
-import { megaApplications1200v2Reversed } from './test_applications';
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.alIndexGet = alIndexGet;
+exports.alIndexPost = alIndexPost;
+exports.alHomeGet = alHomeGet;
+exports.alHomePost = alHomePost;
+exports.alApplicationsGet = alApplicationsGet;
+exports.alApplicationsPost = alApplicationsPost;
+exports.alNewApplicationsGet = alNewApplicationsGet;
+exports.alApplicationsRawGet = alApplicationsRawGet;
+
+var _test_applications = require('./test_applications');
 
 let generalData = require('./data');
 let genericFunctions = require('./generic');
@@ -16,14 +30,14 @@ let applicationsListv2 = megaApplications1200v2.megaApplications1200v2;
     Index
 
 *************** */
-export function alIndexGet(req, res) {
+function alIndexGet(req, res) {
   let viewData;
 
   viewData = {};
   return res.render('prototypes/applications/index', viewData);
 }
 
-export function alIndexPost(req, res) {
+function alIndexPost(req, res) {
   const {} = req.body;
 
   return res.redirect('/prototypes/awards/index');
@@ -34,7 +48,7 @@ export function alIndexPost(req, res) {
     Home
 
 *************** */
-export function alHomeGet(req, res) {
+function alHomeGet(req, res) {
   let viewData;
 
   let allStatuses = [];
@@ -52,19 +66,19 @@ export function alHomeGet(req, res) {
     }
   }
 
-  let uniqueStatuses = allStatuses.reduce(function(a, b) {
+  let uniqueStatuses = allStatuses.reduce(function (a, b) {
     if (a.indexOf(b) < 0) a.push(b);
     return a;
   }, []);
   req.session.uniqueStatuses = uniqueStatuses.sort();
 
-  let uniqueFunders = allFunders.reduce(function(a, b) {
+  let uniqueFunders = allFunders.reduce(function (a, b) {
     if (a.indexOf(b) < 0) a.push(b);
     return a;
   }, []);
   req.session.uniqueFunders = uniqueFunders.sort();
 
-  let uniqueGroups = allGroups.reduce(function(a, b) {
+  let uniqueGroups = allGroups.reduce(function (a, b) {
     if (a.indexOf(b) < 0) a.push(b);
     return a;
   }, []);
@@ -78,7 +92,7 @@ export function alHomeGet(req, res) {
   return res.render('prototypes/applications/home', viewData);
 }
 
-export function alHomePost(req, res) {
+function alHomePost(req, res) {
   const {} = req.body;
 
   return res.redirect('/prototypes/awards/home');
@@ -89,7 +103,7 @@ export function alHomePost(req, res) {
     Applications list
 
 *************** */
-export function alApplicationsGet(req, res) {
+function alApplicationsGet(req, res) {
   let viewData;
 
   let newDate = new Date();
@@ -155,7 +169,7 @@ export function alApplicationsGet(req, res) {
           deadlineDay: applicationsListv2[i].deadlineDay,
           deadlineMonth: applicationsListv2[i].deadlineMonth,
           deadlineYear: applicationsListv2[i].deadlineYear,
-          dateAsString: applicationsListv2[i].dateAsString,
+          dateAsString: applicationsListv2[i].dateAsString
         });
       }
     }
@@ -182,10 +196,7 @@ export function alApplicationsGet(req, res) {
         let tempName = applicationsListv2[i].name;
 
         // console.log('tempName = ' + tempName);
-        if (
-          tempTitle.toLowerCase().includes(searchTermTemp.toLowerCase()) ||
-          tempName.toLowerCase().includes(searchTermTemp.toLowerCase())
-        ) {
+        if (tempTitle.toLowerCase().includes(searchTermTemp.toLowerCase()) || tempName.toLowerCase().includes(searchTermTemp.toLowerCase())) {
           /*resultArray.push({
             n: tempName,
             c: tempPlace,
@@ -204,12 +215,12 @@ export function alApplicationsGet(req, res) {
   let allData = req.session;
   viewData = {
     allData,
-    applicationsListv2,
+    applicationsListv2
   };
   return res.render('prototypes/applications/applications', viewData);
 }
 
-export function alApplicationsPost(req, res) {
+function alApplicationsPost(req, res) {
   const { statusRadios, searchQuery } = req.body;
 
   // req.session.statusRadios = statusRadios;
@@ -233,8 +244,7 @@ export function alApplicationsPost(req, res) {
   // ********************************
   // ********************************
   // ********************************
-
-    req.session.statusFilter_1 = 'For checking';
+     req.session.statusFilter_1 = 'For checking';
   }*/
 
   if (req.body.statusFilter_1) {
@@ -283,7 +293,7 @@ export function alApplicationsPost(req, res) {
     New Applications only list
 
 *************** */
-export function alNewApplicationsGet(req, res) {
+function alNewApplicationsGet(req, res) {
   let viewData;
 
   let newDate = new Date();
@@ -297,7 +307,7 @@ export function alNewApplicationsGet(req, res) {
   let allData = req.session;
   viewData = {
     allData,
-    applicationsListv2,
+    applicationsListv2
   };
   return res.render('prototypes/applications/new-applications', viewData);
 }
@@ -307,14 +317,14 @@ export function alNewApplicationsGet(req, res) {
     Applications list RAW
 
 *************** */
-export function alApplicationsRawGet(req, res) {
+function alApplicationsRawGet(req, res) {
   let viewData;
 
   let allData = req.session;
 
   viewData = {
     allData,
-    applicationsList,
+    applicationsList
   };
   return res.render('prototypes/applications/applications-raw', viewData);
 }

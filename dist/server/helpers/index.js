@@ -87,3 +87,15 @@ Object.keys(_removeSpaces).forEach(function (key) {
     }
   });
 });
+
+var _charLength = require('./charLength');
+
+Object.keys(_charLength).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _charLength[key];
+    }
+  });
+});

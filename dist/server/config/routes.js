@@ -939,6 +939,20 @@ router.get('/prototypes/team-resources-costs/submitted', demosController.trcSubm
 
 /* *************************************************************** *
 
+    Applications lists
+
+ * *************************************************************** */
+router.get('/prototypes/applications', demosController.alIndexGet);
+router.post('/prototypes/applications', demosController.alIndexPost);
+router.get('/prototypes/applications/home', demosController.alHomeGet);
+router.post('/prototypes/applications/home', demosController.alHomePost);
+router.get('/prototypes/applications/applications', demosController.alApplicationsGet);
+router.post('/prototypes/applications/applications', demosController.alApplicationsPost);
+router.get('/prototypes/applications/applications-raw', demosController.alApplicationsRawGet);
+router.get('/prototypes/applications/new-applications', demosController.alNewApplicationsGet);
+
+/* *************************************************************** *
+
   Design section
 
 * *************************************************************** */
