@@ -277,8 +277,6 @@
                             {#{% if item.dateAsString > (allData.dateString - 14) %}#}
 
                             {% set sortType = allData.order %}
-
-
                             {% if sortType == 'chaos' %}
                                 {% set sortLimit = 900 %}
                             {% else %}
@@ -291,7 +289,7 @@
 
                         <tr data-status="{{ item.status }}" data-group="{{ item.groups }}" data-funder="{{ item.funder }}" class="">
                             <td class="govuk-table__cell">
-                                {{  item.dateAsString }} & {{ allData.dateString }}
+                                {#{{  item.dateAsString }} & {{ allData.dateString }}#}
                                 <a href="#" class="govuk-link govuk-!-display-block">APP{{ item.randomID }}: {{ item.title }}</a>
                                 <span class="meta govuk-!-display-block u-space-t5"><strong class="meta">Project lead:</strong> <a href="#" class="govuk-link">{{ item.name }}</a></span>
                                 {% if item.additionalOrg %}
