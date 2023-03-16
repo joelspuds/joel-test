@@ -97,20 +97,22 @@ export function alApplicationsGet(req, res) {
 
   newDate.setDate(newDate.getDate() + 14);
   dateString = newDate.getFullYear() + ('0' + (newDate.getMonth() + 1)).slice(-2) + ('0' + newDate.getDate()).slice(-2);
-  // console.log('dateString = ' + dateString);
+
   req.session.dateString = dateString;
 
-  let clearSession = req.param('clearSearch');
-  if (clearSession === 'true') {
+  let clearSearch = req.param('clearSearch');
+  if (clearSearch === 'true') {
     req.session.doingSearch = null;
     req.session.searchQuery = null;
   }
 
   let applicationsListv2 = megaApplications1200v2.megaApplications1200v2;
-  // let applicationsListv2 = megaReversed.megaApplications1200v2Reversed;
 
+  /*
+  * Do ordering
+  */
   let order = req.param('order');
-  console.log('order = ' + order);
+  //console.log('order = ' + order);
   if (order === 'reverse') {
     applicationsListv2 = megaApplications1200v2.megaApplications1200v2;
     applicationsListv2.reverse();
@@ -122,24 +124,67 @@ export function alApplicationsGet(req, res) {
       applicationsListv2.reverse();
       req.session.hasBeenReversed = false;
     }
-    // applicationsListv2 = megaApplications1200v2.megaApplications1200v2;
   } else if (order === 'deadline' || order === '' || order === null || !order) {
     req.session.order = 'deadline';
-    // applicationsListv2 = megaApplications1200v2.megaApplications1200v2;
     if (req.session.hasBeenReversed === true) {
       applicationsListv2.reverse();
       req.session.hasBeenReversed = false;
     }
   }
 
-  console.log(applicationsListv2);
+  //console.log(applicationsListv2);
 
-  let statusFilter = req.session.statusRadios;
   let tempAppList = [];
+  req.session.whichFunctionFirst = '';
+  /*
+  * Do search
+  * */
+  let searchTermTemp = req.session.searchQuery;
+  let finalNumber;
+  let searchFail;
 
-  if (req.session.statusRadios) {
+  function doTheSearch(searchTermTemp) {
+    if (searchTermTemp === ' ' || searchTermTemp === '' || searchTermTemp === null) {
+      searchFail = true;
+    } else {
+      searchFail = false;
+      let iterationNumber = 0;
+      for (let i = 0; i < applicationsListv2.length; i++) {
+        let tempTitle = applicationsListv2[i].title;
+        let tempName = applicationsListv2[i].name;
+
+        if (
+          tempTitle.toLowerCase().includes(searchTermTemp.toLowerCase()) ||
+          tempName.toLowerCase().includes(searchTermTemp.toLowerCase())
+        ) {
+          tempAppList.push(applicationsListv2[i]);
+          iterationNumber++;
+        }
+      }
+      finalNumber = iterationNumber;
+      req.session.finalNumber = finalNumber;
+      applicationsListv2 = tempAppList;
+    }
+
+    return applicationsListv2;
+  }
+
+  /*
+  * Do filters
+  * */
+  function applyTheFilters() {
+    req.session.order = 'chaos';
     for (let i = 0; i < applicationsListv2.length; i++) {
-      if (applicationsListv2[i].status === statusFilter) {
+      if (
+        applicationsListv2[i].status === req.session.statusFilter_1 ||
+        applicationsListv2[i].status === req.session.statusFilter_2 ||
+        applicationsListv2[i].status === req.session.statusFilter_3 ||
+        applicationsListv2[i].status === req.session.outcomeFilter_1 ||
+        applicationsListv2[i].status === req.session.outcomeFilter_2 ||
+        applicationsListv2[i].status === req.session.outcomeFilter_3 ||
+        applicationsListv2[i].status === req.session.outcomeFilter_4 ||
+        applicationsListv2[i].status === req.session.outcomeFilter_5
+      ) {
         tempAppList.push({
           funder: applicationsListv2[i].funder,
           groups: applicationsListv2[i].groups,
@@ -159,49 +204,70 @@ export function alApplicationsGet(req, res) {
         });
       }
     }
-    //console.log('tempAppList = ');
-    //console.log(tempAppList);
+
     applicationsListv2 = tempAppList;
+
+    return applicationsListv2;
   }
 
-  let searchTermTemp = req.session.searchQuery;
-  let doingSearch = req.session.doingSearch;
+  console.log('req.session.whichFunctionFirst = ' + req.session.whichFunctionFirst);
+  console.log('req.session.doingFilters = ' + req.session.doingFilters);
+  console.log('req.session.doingSearch = ' + req.session.doingSearch);
 
-  if (doingSearch === true) {
-    let searchFail;
-    let resultArray = [];
-    let finalNumber;
-
-    if (searchTermTemp === ' ' || searchTermTemp === '' || searchTermTemp === null) {
-      searchFail = true;
-    } else {
-      searchFail = false;
-      let iterationNumber = 0;
-      for (let i = 0; i < applicationsListv2.length; i++) {
-        let tempTitle = applicationsListv2[i].title;
-        let tempName = applicationsListv2[i].name;
-
-        // console.log('tempName = ' + tempName);
-        if (
-          tempTitle.toLowerCase().includes(searchTermTemp.toLowerCase()) ||
-          tempName.toLowerCase().includes(searchTermTemp.toLowerCase())
-        ) {
-          /*resultArray.push({
-            n: tempName,
-            c: tempPlace,
-          });*/
-
-          tempAppList.push(applicationsListv2[i]);
-          iterationNumber++;
-        }
-      }
-      finalNumber = iterationNumber;
-      req.session.finalNumber = finalNumber;
-      applicationsListv2 = tempAppList;
+  /*if (req.session.doingSearch === true && req.session.doingFilters === true) {
+    console.log('both');
+    if (req.session.whichFunctionFirst === 'search') {
+      req.session.whichFunctionFirst = 'filters';
+      req.session.doingSearch = null;
+      req.session.searchQuery = null;
+      applyTheFilters();
+    } else if (req.session.whichFunctionFirst === 'filters') {
+      req.session.whichFunctionFirst = 'search';
+      req.session.doingFilters = null;
+      // req.session.order = 'deadline';
+      req.session.statusFilter_1 = null;
+      req.session.statusFilter_2 = null;
+      req.session.statusFilter_3 = null;
+      req.session.outcomeFilter_1 = null;
+      req.session.outcomeFilter_2 = null;
+      req.session.outcomeFilter_3 = null;
+      req.session.outcomeFilter_4 = null;
+      req.session.outcomeFilter_5 = null;
+      doTheSearch(searchTermTemp);
     }
+  } else if (req.session.doingSearch === true) {
+    console.log('only search');
+    req.session.whichFunctionFirst = 'search';
+    doTheSearch(searchTermTemp);
+  } else if (req.session.doingFilters === true) {
+    console.log('only filters');
+    req.session.whichFunctionFirst = 'filters';
+    applyTheFilters();
+  }*/
+
+  if (req.session.doingSearch === true) {
+    console.log('only search');
+    req.session.doingFilters = null;
+    // req.session.doingSearch = null;
+    req.session.statusFilter_1 = null;
+    req.session.statusFilter_2 = null;
+    req.session.statusFilter_3 = null;
+    req.session.outcomeFilter_1 = null;
+    req.session.outcomeFilter_2 = null;
+    req.session.outcomeFilter_3 = null;
+    req.session.outcomeFilter_4 = null;
+    req.session.outcomeFilter_5 = null;
+    doTheSearch(searchTermTemp);
+  } else if (req.session.doingFilters === true) {
+    console.log('only filters');
+    // req.session.doingFilters = null;
+    req.session.doingSearch = null;
+    req.session.searchQuery = null;
+    applyTheFilters();
   }
 
   let allData = req.session;
+
   viewData = {
     allData,
     applicationsListv2,
@@ -210,32 +276,13 @@ export function alApplicationsGet(req, res) {
 }
 
 export function alApplicationsPost(req, res) {
-  const { statusRadios, searchQuery } = req.body;
+  const { searchQuery } = req.body;
 
-  // req.session.statusRadios = statusRadios;
-  console.log(req.body);
-  /*let formStuff = req.body;
-  for (const [key, value] of Object.entries(formStuff)) {
-    console.log(`${key} ${value}`);
-    if (key !== null) {
-      req.session[`${key}`] = `${value}`;
-    } else {
-      req.session[`${key}`] = 'null';
-    }
-  }*/
+  // console.log(req.body);
 
-  /*if(req.body.subitFilters) {
-  // ********************************
-  // ********************************
-  // ********************************
-  // ********************************
-  // ********************************
-  // ********************************
-  // ********************************
-  // ********************************
-
-    req.session.statusFilter_1 = 'For checking';
-  }*/
+  /*
+  * Statuses
+  * */
 
   if (req.body.statusFilter_1) {
     req.session.statusFilter_1 = 'For checking';
@@ -253,23 +300,62 @@ export function alApplicationsPost(req, res) {
     req.session.statusFilter_3 = null;
   }
 
+  /*
+ * Outcomes
+ * */
+
+  if (req.body.outcomeFilter_1) {
+    req.session.outcomeFilter_1 = 'Successful';
+  } else {
+    req.session.outcomeFilter_1 = null;
+  }
+  if (req.body.outcomeFilter_2) {
+    req.session.outcomeFilter_2 = 'Unsuccessful';
+  } else {
+    req.session.outcomeFilter_2 = null;
+  }
+  if (req.body.outcomeFilter_3) {
+    req.session.outcomeFilter_3 = 'Deadline passed';
+  } else {
+    req.session.outcomeFilter_3 = null;
+  }
+  if (req.body.outcomeFilter_4) {
+    req.session.outcomeFilter_4 = 'Withdrawn';
+  } else {
+    req.session.outcomeFilter_4 = null;
+  }
+  if (req.body.outcomeFilter_5) {
+    req.session.outcomeFilter_5 = 'Rejected';
+  } else {
+    req.session.outcomeFilter_5 = null;
+  }
+
   if (req.body.applicationSearch === 'search') {
     req.session.searchQuery = searchQuery;
     req.session.doingSearch = true;
+    req.session.whichFunctionFirst = 'search';
     console.log('doing a search!');
   }
 
   if (req.body.submitFilters === 'submitFilters') {
     // add filters stuff
     console.log('apply filters!');
+    req.session.whichFunctionFirst = 'filters';
+    req.session.doingFilters = true;
   }
 
   if (req.body.clearFilters === 'clearFilters') {
     // delete all filter stuff
-
+    req.session.doingFilters = null;
+    req.session.order = 'deadline';
     req.session.statusFilter_1 = null;
     req.session.statusFilter_2 = null;
     req.session.statusFilter_3 = null;
+    req.session.outcomeFilter_1 = null;
+    req.session.outcomeFilter_2 = null;
+    req.session.outcomeFilter_3 = null;
+    req.session.outcomeFilter_4 = null;
+    req.session.outcomeFilter_5 = null;
     console.log('clear filters!');
   }
 

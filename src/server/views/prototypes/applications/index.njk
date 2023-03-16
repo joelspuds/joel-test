@@ -17,14 +17,14 @@
 {% set allData = allData if allData %}
 {% set prototypeData = prototypeData if prototypeData %}
 
-{% set pageTitle = 'Team, resources and costs' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Applications list' + GLOBAL_TAG_TITLE_SUFFIX %}
 {#{% set backLinkContents =  [{url:'/prototypes/orgs3/', text:'Back to application'}] %}#}
 
 {% block content %}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Team, resources and costs', caption='') }}
+            {{ components.captionHeading(text='Applications list', caption='') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -37,7 +37,7 @@
 
                 <h2 class="govuk-heading-m">Prototype</h2>
                 <ul class="govuk-list govuk-list--bullet">
-                    <li><a class="govuk-link" href="/prototypes/applications/home">Application lists</a><br><br></li>
+                    <li><a class="govuk-link" href="/prototypes/applications/home">Applications list</a><br><br></li>
 
                 </ul>
 
