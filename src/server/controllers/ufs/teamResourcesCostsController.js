@@ -1144,3 +1144,30 @@ export function trcOrganisationCostsPost(req, res) {
   targetURL = '/prototypes/team-resources-costs/resources-and-costs';
   return res.redirect(targetURL);
 }
+
+// ************************************************************************
+//
+//        organisation-costs ACCORDION
+//
+// ************************************************************************
+export function trcOrganisationCostsAccordionGet(req, res) {
+  let viewData;
+  let orgsArrayIndex = req.param('orgsArrayIndex');
+
+  //console.log(req.session.uniqueOrgs);
+  //console.log('orgsArrayIndex = ' + orgsArrayIndex);
+
+  let allData = req.session;
+
+  console.log(allData);
+
+  viewData = {
+    allData,
+    prototypeData,
+    orgsArrayIndex,
+    allTeamMembers2,
+    orgCosts,
+  };
+
+  return res.render('prototypes/team-resources-costs/organisation-costs-accordion', viewData);
+}

@@ -99,3 +99,15 @@ Object.keys(_charLength).forEach(function (key) {
     }
   });
 });
+
+var _sentenceLength = require('./sentenceLength');
+
+Object.keys(_sentenceLength).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _sentenceLength[key];
+    }
+  });
+});

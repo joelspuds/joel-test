@@ -29,13 +29,13 @@
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
             {{ components.captionHeading(text='Applications', caption='University of Wales') }}
         {%- endcall %}
-    {%- endcall %} 
+    {%- endcall %}
 
     {% call components.bulmaRow(extraClass='', customID='mainContent') %}
 
         {% call components.bulmaColumnAny(size='is-half') %}
 
-            <form action="#" method="POST" role="search" name="searchForm" style="position:relative;">
+            {#<form action="#" method="POST" role="search" name="searchForm" style="position:relative;">
                 <div class="search">
                     <div class="govuk-form-group govuk-form-group--search">
                         <label class="govuk-label govuk-visually-hidden" for="search">Search applications</label>
@@ -43,12 +43,15 @@
                         <button type="submit" name="applicationSearch" class="search__submit" value="search">Search</button>
                     </div>
                 </div>
-            </form>
+            </form>#}
 
             {% if allData.doingSearch %}
-                <p class="govuk-body">There are {{ allData.finalNumber }} results for "<strong>{{ allData.searchQuery }}</strong>".
+                <p class="govuk-body">There are {{ allData.finalNumber }} results for "<strong>{{ allData.searchQuery }}</strong>" when searching Application name or Project Lead".
                     <br>Search again, or <a href="/prototypes/applications/applications?clearSearch=true" class="govuk-link">clear the search results</a> to view all applications. </p>
+            {% else %}
+                &nbsp;
             {% endif %}
+
 
         {%- endcall %}
         {% call components.bulmaColumnAny(size='is-half') %}
@@ -63,14 +66,28 @@
 
             <div class="_u-float-right u-align-right " style="/*position:absolute; right:0;top:0;*/">
                 {#<a href="/prototypes/applications/new-applications" class="govuk-button govuk-button--s button--info">Show all applications started in the last 14 days</a>#}
-                <div class="govuk-!-font-size-24">
-                    <strong>Sort by:</strong>
-                    <a href="/prototypes/applications/applications?order=reverse" class="govuk-link {{ 'govuk-link--highligted' if allData.order == 'reverse' }}">Recently started</a> |
-                    <a href="/prototypes/applications/applications?order=deadline" class="govuk-link {{ 'govuk-link--highligted' if allData.order == 'deadline' }}">Ending soonest</a> |
-                    <a href="/prototypes/applications/applications?order=chaos" class="govuk-link {{ 'govuk-link--highligted' if allData.order == 'chaos' }}">All</a>
+                <div class="govuk-!-font-size-19">
+                    <span>Applications sorted by:</span>
+                    {% if allData.order == 'reverse' %}
+                        <strong>Recently started</strong>
+                    {% else %}
+                        <a href="/prototypes/applications/applications?order=reverse" class="govuk-link {#{{ 'govuk-link--highligted' if allData.order == 'reverse' }}#}">Recently started</a>
+                    {% endif %}
+                    |
+                    {% if allData.order == 'deadline' %}
+                        <strong>Ending soonest</strong>
+                    {% else %}
+                        <a href="/prototypes/applications/applications?order=deadline" class="govuk-link {#{{ 'govuk-link--highligted' if allData.order == 'deadline' }}#}">Ending soonest</a>
+                    {% endif %}
+                    |
+                    {% if allData.order == 'chaos' %}
+                        <strong>All</strong>
+                    {% else %}
+                        <a href="/prototypes/applications/applications?order=chaos" class="govuk-link {#{{ 'govuk-link--highligted' if allData.order == 'chaos' }}#}">All</a>
+                    {% endif %}
                 </div>
-                <div class="govuk-!-font-size-19 u-space-t0">
-                    {#{{ 'allData.order = ' + allData.order }}#}
+                {#<div class="govuk-!-font-size-16 u-space-t0">
+                    #}{#{{ 'allData.order = ' + allData.order }}#}{#
                     {% if allData.order == 'reverse' %}
                         Currently viewing newest applications first
                     {% elseif allData.order == 'deadline' %}
@@ -78,7 +95,7 @@
                     {% elseif allData.order == 'chaos' %}
                         Currently viewing oldest applications first
                     {% endif %}
-                </div>
+                </div>#}
 
                 {#<a href="#" class="govuk-button govuk-button--s button--info">Show all applications approiaching deadline</a>#}
             </div>
@@ -86,18 +103,31 @@
         {%- endcall %}
     {%- endcall %}
 
-    {% call components.form(action='#', method='POST',name='submitForm') %}
+
 
         {% call components.bulmaRow(extraClass='') %}
 
             {% call components.bulmaColumnAny(size='column is-3') %}
                 <div class="govuk-related-items govuk-related-items--flush">
 
-                    {{ components.captionHeading(text='Filters', tag='h2', size='s') }}
+                    {#{{ components.captionHeading(text='Filters', tag='h2', size='s') }}#}
+
+                    <form action="#" method="POST" role="search" name="searchForm" style="position:relative;" class="u-space-t10">
+                        <div class="search">
+                            <div class="govuk-form-group govuk-form-group--search">
+                                <label class="govuk-label govuk-label--s" for="search">Search</label>
+                                <span class="govuk-hint">By application or applicant name</span>
+                                <input class="govuk-input govuk-input--width-10 search__input" id="search" name="searchQuery" type="text" placeholder="">
+                                <button type="submit" name="applicationSearch" class="search__submit" value="search">Search</button>
+                            </div>
+                        </div>
+                    </form>
+
+                {% call components.form(action='#', method='POST',name='submitForm') %}
 
                     <div class="filter">
-                        <h2 class="filter__title">Filter by stage</h2>
-                        <span class="filter__toggle"></span>
+                        <h2 class="filter__title">Filters</h2>
+                       {# <span class="filter__toggle"></span>#}
                         <ul class="filter__list u-clearfix govuk-radios govuk-radios--small">
                             {% set uniqueStatuses = allData.uniqueStatuses %}
                             {#{% for item in uniqueStatuses %}
@@ -129,12 +159,7 @@
                                     </div>#}{#
                                 </li>
                             {%  endfor %}#}
-                            <li class="filter__item filter__item--small govuk-clearfix">
-                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                    <input class="govuk-checkboxes__input" id="statusFilter_1" type="checkbox" name="statusFilter_1" value="For checking" {% if allData.statusFilter_1 == 'For checking' %}checked{% endif %}>
-                                    <label for="statusFilter_1" class="govuk-checkboxes__label u-display-ib">For checking</label>
-                                </div>
-                            </li>
+                            <li class="filter__item filter__item--small govuk-clearfix"><h3 class="govuk-heading-s u-space-t10 u-space-b5">Stages</h3></li>
                             <li class="filter__item filter__item--small govuk-clearfix">
                                 <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
                                     <input class="govuk-checkboxes__input" id="statusFilter_2" type="checkbox" name="statusFilter_2" value="With applicant" {% if allData.statusFilter_2 == 'With applicant' %}checked{% endif %}>
@@ -143,17 +168,18 @@
                             </li>
                             <li class="filter__item filter__item--small govuk-clearfix">
                                 <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                    <input class="govuk-checkboxes__input" id="statusFilter_1" type="checkbox" name="statusFilter_1" value="For checking" {% if allData.statusFilter_1 == 'For checking' %}checked{% endif %}>
+                                    <label for="statusFilter_1" class="govuk-checkboxes__label u-display-ib">For checking</label>
+                                </div>
+                            </li>
+                            <li class="filter__item filter__item--small govuk-clearfix">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
                                     <input class="govuk-checkboxes__input" id="statusFilter_3" type="checkbox" name="statusFilter_3" value="Submitted" {% if allData.statusFilter_3 == 'Submitted' %}checked{% endif %}>
                                     <label for="statusFilter_3" class="govuk-checkboxes__label u-display-ib">Submitted</label>
                                 </div>
                             </li>
-                        </ul>
-                    </div>
 
-                    <div class="filter">
-                        <h2 class="filter__title">Filter by outcome</h2>
-                        <span class="filter__toggle"></span>
-                        <ul class="filter__list u-clearfix govuk-radios govuk-radios--small">
+                            <li class="filter__item filter__item--small govuk-clearfix"><h3 class="govuk-heading-s u-space-t10 u-space-b5">Outcomes</h3></li>
                             <li class="filter__item filter__item--small govuk-clearfix">
                                 <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
                                     <input class="govuk-checkboxes__input" id="outcomeFilter_1" type="checkbox" name="outcomeFilter_1" value="Successful" {% if allData.outcomeFilter_1 == 'Successful' %}checked{% endif %}>
@@ -168,8 +194,8 @@
                             </li>
                             <li class="filter__item filter__item--small govuk-clearfix">
                                 <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                    <input class="govuk-checkboxes__input" id="outcomeFilter_3" type="checkbox" name="outcomeFilter_3" value="Deadline passed" {% if allData.outcomeFilter_3 == 'Deadline passed' %}checked{% endif %}>
-                                    <label for="outcomeFilter_3" class="govuk-checkboxes__label u-display-ib">Deadline passed</label>
+                                    <input class="govuk-checkboxes__input" id="outcomeFilter_3" type="checkbox" name="outcomeFilter_3" value="Deadline passed" {% if allData.outcomeFilter_3 == 'Missed deadline' %}checked{% endif %}>
+                                    <label for="outcomeFilter_3" class="govuk-checkboxes__label u-display-ib">Missed deadline</label>
                                 </div>
                             </li>
                             <li class="filter__item filter__item--small govuk-clearfix">
@@ -185,7 +211,11 @@
                                 </div>
                             </li>
                         </ul>
+
+
                     </div>
+
+
 
                    {# <div class="filter filter-toggle __filter-toggle--shut">
                         <button class="filter__title filter__title--closed" type="button" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')" aria-expanded="true">Filter by council</button>
@@ -233,18 +263,28 @@
                         {%- endcall %}
                     </div>
 
+                {%- endcall %} {# end form #}
+
                 </div>
             {%- endcall %}
 
         {% call components.bulmaColumnAny(size='column is-9') %}
 
+            <style>
+                .govuk-tag--void {
+                    background-color: #f1f1f1!important;
+                    color: slategrey;
+                }
+
+            </style>
+
             <div class="responsive-table">
 
-                <table class="govuk-table responsive-table__table govuk-table--busy _mega-table context">
+                <table class="govuk-table responsive-table__table govuk-table--busy _mega-table context" id="applicationsTable">
                     <thead>
                     <tr class="govuk-table__header">
 
-                        <th class="govuk-table__header">Application title</th>
+                        <th class="govuk-table__header">Application</th>
                         {#<th class="govuk-table__header">Funder</th>#}
                         <th class="govuk-table__header">Groups<br></th>
                         <th class="govuk-table__header govuk-table__header--numeric">Deadline</th>
@@ -258,13 +298,13 @@
                         {% if loop.index < 400 %}
                         {% set tempRandom = range(10, 90) | random %}
                         {% if item.status == "With applicant" %}
-                            {% set tagClass = "govuk-tag--yellow"  %}
+                            {% set tagClass = "govuk-tag govuk-tag--tiny govuk-tag--yellow"  %}
                         {% elseif item.status == "Submitted" %}
-                            {% set tagClass = "govuk-tag--green" %}
+                            {% set tagClass = "govuk-tag govuk-tag--tiny govuk-tag--green" %}
                         {% elseif item.status == "For checking" %}
-                            {% set tagClass = "govuk-tag--blue" %}
+                            {% set tagClass = "govuk-tag govuk-tag--tiny govuk-tag--blue" %}
                         {% else %}
-                            {% set tagClass = "govuk-tag--grey" %}
+                            {% set tagClass = "govuk-tag govuk-tag--tiny _govuk-tag--grey govuk-tag--void" %}
                         {% endif %}
 
                         {# Don't do it like this :(
@@ -288,13 +328,15 @@
                         <tr data-status="{{ item.status }}" data-group="{{ item.groups }}" data-funder="{{ item.funder }}" class="">
                             <td class="govuk-table__cell">
                                 {#{{  item.dateAsString }} & {{ allData.dateString }}#}
-                                <a href="#" class="govuk-link govuk-!-display-block">APP{{ item.randomID }}: {{ item.title }}</a>
-                                <span class="meta govuk-!-display-block u-space-t5"><strong class="meta">Project lead:</strong> <a href="#" class="govuk-link">{{ item.name }}</a></span>
-                                {% if item.additionalOrg %}
+                                <a href="#" class="govuk-link govuk-!-display-block">APP{{ item.randomID }}: {{ item.title | shortenSentence}}</a>
+                                <span class="meta govuk-!-display-block u-space-t5">
+                                    <strong class="meta">Applicant:</strong> <a href="#" class="govuk-link">{{ item.name }}</a> (Project lead)
+                                </span>
+                                {#{% if item.additionalOrg %}
                                 <span class="meta govuk-!-display-block u-space-t5"><strong class="meta">Collaborator(s):</strong> {{ item.orgName }}</span>
-                                {% endif %}
+                                {% endif %}#}
                             </td>
-                           {# <td class="govuk-table__cell">{{ item.funder }} </td>#}
+                            {#<td class="govuk-table__cell">{{ item.funder }} </td>#}
                             <td class="govuk-table__cell">
                                 {%  for group in item.groups %}
                                     <span class="blob">{{ group }}</span>
@@ -307,7 +349,7 @@
                                 <span class="u-no-wrap">{{ item.deadlineDay }} {{ item.deadlineMonth | showMonth() }} {{ item.deadlineYear }}</span>
 
 
-                                {% if allData.dateString > item.dateAsString  %}
+                                {#{% if allData.dateString > item.dateAsString  %}
                                     </strong>
                                     {% if daysLeft == 1 %}
                                         <span class="govuk-!-font-size-14 govuk-!-display-block">{{ daysLeft }} day left</span>
@@ -316,10 +358,10 @@
                                     {% else %}
                                         <span class="govuk-!-font-size-14 govuk-!-display-block">{{ daysLeft }} days left</span>
                                     {% endif %}
-                                {% endif %}
+                                {% endif %}#}
                             </td>
                             <td class="govuk-table__cell govuk-table__cell--numeric">
-                                <strong class="govuk-tag govuk-tag--tiny {{ tagClass }}">{{ item.status }}</strong>
+                                <strong class=" {{ tagClass }}">{{ item.status }}</strong>
                                 {#{% if allData.dateString > item.dateAsString  %}
                                     <span class="govuk-!-font-size-14 red-text">Deadline<br>approaching</span>
                                 {% endif %}#}
@@ -368,7 +410,7 @@
 
     {%- endcall %}
 
-    {%- endcall %} {# end form #}
+
     <style>
         mark{
             background: yellow;
@@ -380,6 +422,36 @@
 
 {% endblock %}
 {% block bodyScripts %}
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
+    <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#applicationsTable').DataTable({
+                paging: false,
+                // ordering: false,
+                // info: false,
+                filter: false,
+                order: [],
+                columns: [
+                    {
+                        orderable: true
+                    },
+                    {
+                        orderable: false
+                    },
+                    {
+                        orderable: true
+                    },
+                    {
+                        orderable: true
+                    }
+                ]
+            });
+        });
+    </script>
+
+
     <script>
         function toggleVisibility(_this, id, className) {
             // event.preventDefault();

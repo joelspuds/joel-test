@@ -121,6 +121,7 @@ const startApp = exports.startApp = async () => {
   env.addFilter('toLowerCase', Helpers.changeToLowerCase);
   env.addFilter('removeSpaces', Helpers.removeSpaces);
   env.addFilter('checkString', Helpers.charLength);
+  env.addFilter('shortenSentence', Helpers.sentenceLength);
 
   // Add lodash as a global for view templates
   env.addGlobal('_', _lodash2.default);

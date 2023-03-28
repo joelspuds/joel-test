@@ -72,7 +72,7 @@
 }
 
 .red-text {
-  color: red;
+  color: govuk-colour("red");
 }
 
 
@@ -146,5 +146,24 @@
   .govuk-checkboxes--small .govuk-checkboxes__label {
     padding: 7px 15px 10px 1px;
     float: none;
+  }
+}
+
+
+.govuk-accordion__section-heading {
+  position: relative;
+}
+.accordion-totals {
+  position:absolute;
+  top: 10px;
+  right: 100px;
+
+  &__label {
+    @include govuk-font($size: 19, $weight: bold);
+    color: govuk-colour("black")!important;
+  }
+
+  &__input {
+    @include govuk-font($size: 24);
   }
 }

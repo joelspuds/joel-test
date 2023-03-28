@@ -1,0 +1,800 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/post-decision/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/team-resources-costs/applications' %}
+{% set awardSetUpLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = true %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+{% set prototypeData = prototypeData if prototypeData %}
+{% set allTeamMembers = allTeamMembers if allTeamMembers %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set organisationName = allData.uniqueOrgs[orgsArrayIndex].name %}
+
+{% set pageTitle = organisationName + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/team-resources-costs/application-overview', text:'Back to application overview'}] %}
+
+{% set inputClasses = 'govuk-input govuk-input--width-4 govuk-table__cell--middle u-align-right' %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {#{{ components.captionHeading(text=organisationName, caption='APP171: Bio-detoxification of Ricin in castor bean') }}<span class="#}{#govuk-tag govuk-tag--blue#}{# badge badge--info badge--smaller">LEAD</span>#}
+
+            <span class="govuk-caption-xl">APP171: Bio-detoxification of Ricin in castor bean</span>
+            <h1 class="govuk-heading-xl govuk-heading--has-tag ">{{ organisationName }} <strong class="badge badge--info badge--smaller">LEAD</strong></h1>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        <section class="section" id="mainContent">
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
+                    <p class="govuk-body govuk-!-font-size-24">All costs that contribute to the full economic costs (fEC) of the application should be included for each cost category.</p>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
+                    {{ components.captionHeading(text='Resources and cost summary', tag='h2', size='m') }}
+                    <p class="govuk-body">This is a breakdown of your resources and cost and sources of funding.</p>
+                {%- endcall %}
+            {%- endcall %}
+            {% call components.bulmaRow(extraClass='u-space-b45') %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+                    <div class="big-numbers">
+
+                        <style>
+                            .big-input {
+                                font-size: 36px;
+                                border: none;
+                                outline: none;
+                                display: inline;
+                                max-width: 90%;
+                                margin:0;
+                                padding: 0;
+                            }
+                            .big-pound{
+                                font-size: 36px;
+                                display: inline-block;
+                                float:left;
+                                width:25px;
+                            }
+
+                            details {
+                                max-width: 600px;
+                            }
+                            .govuk-accordion__section-header {
+                                background-color: #f1f1f1;
+                                padding-left:10px;
+                            }
+                        </style>
+
+                        <div class="big-numbers__biggy">
+                            <div class="big-numbers__title">
+                                Total full economic costs (fEC)
+                            </div>
+                            <div class="big-numbers__number">
+                                {#<span id="totalFEC">0.00</span>#}
+                                <span class="big-pound">&pound;</span>
+                                <input type="text" class="big-input" readonly id="totalFEC" value="£0" name="totalFEC">
+                            </div>
+                        </div>
+
+                        <div class="big-numbers__biggy">
+                            <div class="big-numbers__title">
+                                Contribution from applying organisations
+                            </div>
+                            <div class="big-numbers__number">
+                                <span class="big-pound">&pound;</span>
+                                <input type="text" class="big-input" readonly id="contribution" value="£0" name="contribution">
+                            </div>
+                        </div>
+
+                        <div class="big-numbers__biggy">
+                            <div class="big-numbers__title">
+                                Funding applied for
+                            </div>
+                            <div class="big-numbers__number">
+                                {#£<span id="fundingAppliedFor">0.00</span>#}
+                                <span class="big-pound">&pound;</span>
+                                <input type="text" class="big-input" readonly id="fundingAppliedFor" value="£0" name="fundingAppliedFor">
+                            </div>
+                        </div>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-full', customID='') %}
+
+                    <div class="govuk-accordion ukri-accordion" data-module="govuk-accordion" id="accordion-default"><div class="govuk-accordion__controls"></div>
+
+                        <div class="govuk-accordion__section">
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading">
+                                    <button type="button" id="accordion-default-heading-1" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" aria-expanded="false">Directly allocated</button><span class="govuk-accordion__icon" aria-hidden="true"></span></h2>
+                                <div class="accordion-totals">
+                                    <label for="daAccordionTotal" class="accordion-totals__label"><span class="govuk-visually-hidden">Directly allocated </span>Total £: </label><input type="text" class="govuk-input govuk-input--secret accordion-totals__input" value="0" readonly="" name="daAccordionTotal" id="daAccordionTotal">
+                                </div>
+                            </div>
+                            <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+
+
+                                {#
+
+                                DIRECTLY ALLOCATED
+
+                                #}
+
+                                <details class="govuk-details u-space-y10 js-only" data-module="govuk-details" role="group">
+                                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                        <span class="govuk-details__summary-text">Guidance for calculating directly allocated costs</span>
+                                    </summary>
+                                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                        <div class="tiny-spoof">
+                                            <p class="govuk-body">
+                                                These are the costs of resources used by a project that are shared by other activities. They are charged to projects on the basis of estimates rather than actual costs and do not represent actual costs on a project-by-project basis. They include:</p>
+                                            <p class="govuk-body">
+                                                Estates: These costs may include building and premises costs, basic services and utilities, and any clerical staff and equipment maintenance or operational costs not already included under other cost headings.
+                                            </p>
+                                            <p class="govuk-body">Other Directly Allocated: These costs may include, for example, the costs of shared Pool staff or access to institutional research facilities such as equipment, IT systems.</p>
+
+                                        </div>
+                                    </div>
+                                </details>
+
+                                <div class="responsive-table ">
+                                    <table class="govuk-table responsive-table__table exceptions-table" id="">
+                                        <thead class="">
+                                        <tr>
+                                            <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
+                                            <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                            <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                            <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td class="govuk-table__cell govuk-table__cell--middle">Staff</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="{{ inputClasses }} govuk-input--secret" name="daStaff" value="{{ orgCosts[orgsArrayIndex].daStaff if orgCosts[orgsArrayIndex].daStaff else "0" }}" id="daStaff" data-percent="80" data-target="daStaffAppliedFor">
+                                            </td>
+                                            <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].daStaffAppliedFor if orgCosts[orgsArrayIndex].daStaffAppliedFor else "0" }}" name="daStaffAppliedFor" readonly id="daStaffAppliedFor">
+                                            </td>
+                                        </tr>
+                                        {% set daTeamMemberIndex = 1 %}
+                                        {% for item in allTeamMembers2 %}
+                                            {% if item.isComplete and item.roleType == 'Directly allocated' and item.organisation == organisationName %}
+                                                <tr>
+                                                    <td class="govuk-table__cell govuk-table__cell--middle" style="padding-left:20px;">{{ item.firstName }} {{ item.lastName }}</td>
+
+
+                                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                        {% if daTeamMemberIndex == 1 %}
+                                                            <input type="text" class="{{ inputClasses }} magicStaffInput daInputs" id="daCost1" data-type="da" data-percent="80" data-target="daCostAppliedFor_1"  name="daMemberFullCosts_1" value="{{ orgCosts[orgsArrayIndex].daMemberFullCosts_1 if orgCosts[orgsArrayIndex].daMemberFullCosts_1 else "0" }}">
+                                                        {% elseif daTeamMemberIndex == 2 %}
+                                                            <input type="text" class="{{ inputClasses }} magicStaffInput daInputs" id="daCost2" data-type="da" data-percent="80" data-target="daCostAppliedFor_2"  name="daMemberFullCosts_2" value="{{ orgCosts[orgsArrayIndex].daMemberFullCosts_2 if orgCosts[orgsArrayIndex].daMemberFullCosts_2 else "0" }}">
+                                                        {% elseif daTeamMemberIndex == 3 %}
+                                                            <input type="text" class="{{ inputClasses }} magicStaffInput daInputs" id="daCost3" data-type="da" data-percent="80" data-target="daCostAppliedFor_3"  name="daMemberFullCosts_3" value="{{ orgCosts[orgsArrayIndex].daMemberFullCosts_3 if orgCosts[orgsArrayIndex].daMemberFullCosts_3 else "0" }}">
+                                                        {% endif %}
+                                                    </td>
+                                                    <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                        {% if daTeamMemberIndex == 1 %}
+                                                            <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].daCostAppliedFor_1 if orgCosts[orgsArrayIndex].daCostAppliedFor_1 else "0" }}" readonly name="daCostAppliedFor_1" id="daCostAppliedFor_1">
+                                                        {% elseif daTeamMemberIndex == 2 %}
+                                                            <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].daCostAppliedFor_2 if orgCosts[orgsArrayIndex].daCostAppliedFor_2 else "0" }}" readonly name="daCostAppliedFor_2" id="daCostAppliedFor_2">
+                                                        {% elseif daTeamMemberIndex == 3 %}
+                                                            <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].daCostAppliedFor_3 if orgCosts[orgsArrayIndex].daCostAppliedFor_3 else "0" }}" readonly name="daCostAppliedFor_3" id="daCostAppliedFor_3">
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                                {% set daTeamMemberIndex = daTeamMemberIndex + 1 %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        <tr>
+                                            <td class="govuk-table__cell govuk-table__cell--middle">Estates</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="{{ inputClasses }}  magicInput" name="daEstates" id="daEstates" value="{{ orgCosts[orgsArrayIndex].daEstates if orgCosts[orgsArrayIndex].daEstates else "0" }}" data-percent="80" data-target="daEstatesAppliedFor">
+                                            </td>
+                                            <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].daEstatesAppliedFor if orgCosts[orgsArrayIndex].daEstatesAppliedFor else "0" }}" name="daEstatesAppliedFor" readonly id="daEstatesAppliedFor">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="govuk-table__cell govuk-table__cell--middle">Other</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="{{ inputClasses }}  magicInput" name="daOther" id="daOther" value="{{ orgCosts[orgsArrayIndex].daOther if orgCosts[orgsArrayIndex].daOther else "0" }}" data-percent="80" data-target="daOtherAppliedFor">
+                                            </td>
+                                            <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].daOtherAppliedFor if orgCosts[orgsArrayIndex].daOtherAppliedFor else "0" }}" name="daOtherAppliedFor" readonly id="daOtherAppliedFor">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="govuk-accordion__section">
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading">
+                                    <button type="button" id="accordion-default-heading-2" aria-controls="accordion-default-content-2" class="govuk-accordion__section-button" aria-expanded="false">Directly incurred</button><span class="govuk-accordion__icon" aria-hidden="true"></span></h2>
+                                <div class="accordion-totals">
+                                    <label for="diAccordionTotal" class="accordion-totals__label"><span class="govuk-visually-hidden">Directly incured </span>Total £: </label><input type="text" class="govuk-input govuk-input--secret accordion-totals__input" value="0" readonly="" name="diAccordionTotal" id="diAccordionTotal">
+                                </div>
+                            </div>
+                            <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+
+                               {#
+
+                                                    DIRECTLY INCURRED
+
+                               #}
+                                <details class="govuk-details u-space-y10 js-only" data-module="govuk-details" role="group">
+                                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                        <span class="govuk-details__summary-text">Guidance for calculating directly incurred costs</span>
+                                    </summary>
+                                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                        <div class="tiny-spoof">
+                                            <p class="govuk-body">These are costs that are explicitly identifiable as arising from the conduct of a project, are charged as the cash value actually spent and are supported by an audit record. They include: </p>
+                                            <p class="govuk-body">Equipment: The cost of individual items of equipment dedicated to the project and individually costing more than £10,000 (including VAT). Against each equipment item the applicant can specify the total cost of the equipment and the amount being requested from the Council. All equipment costs will now be shown under the Directly Incurred heading.
+                                            </p>
+                                            <p class="govuk-body">Travel and Subsistence: funds for travel and subsistence for use by staff who work on the project where these are required by the nature of the work.</p>
+                                            <p class="govuk-body">Other Costs of other items dedicated to the project, including consumables, books, survey fees, purchase/hire of vehicles, publication costs or recruitment and advertising costs for staff directly employed on the project. Items of equipment costing less than £10,000 should also be included under this heading.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </details>
+
+                                <div class="responsive-table ">
+                                    <table class="govuk-table responsive-table__table exceptions-table" id="">
+                                        <thead class="">
+                                        <tr>
+                                            <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
+                                            <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                            <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                            <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td class="govuk-table__cell govuk-table__cell--middle">Staff</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="{{ inputClasses }} govuk-input--secret" name="diStaff" value="{{ orgCosts[orgsArrayIndex].diStaff if orgCosts[orgsArrayIndex].diStaff else "0" }}" id="diStaff" data-percent="80" data-target="diStaffAppliedFor">
+                                            </td>
+                                            <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].diStaffAppliedFor if orgCosts[orgsArrayIndex].diStaffAppliedFor else "0" }}" name="diStaffAppliedFor" readonly id="diStaffAppliedFor">
+                                            </td>
+                                        </tr>
+                                        {% set diTeamMemberIndex = 1 %}
+                                        {% for item in allTeamMembers2 %}
+                                            {% if item.isComplete and item.roleType == 'Directly incurred' and item.organisation == organisationName %}
+                                                <tr>
+                                                    <td class="govuk-table__cell govuk-table__cell--middle" style="padding-left:20px;">
+                                                        {% if item.firstName %}
+                                                            {{ item.firstName }} {{ item.lastName }}
+                                                        {% else %}
+                                                            Unknown
+                                                        {% endif %}
+                                                    </td>
+
+                                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                        {% if diTeamMemberIndex == 1 %}
+                                                            <input type="text" class="{{ inputClasses }} magicStaffInput diInputs" id="diCost1" data-type="di" data-percent="80" data-target="diCostAppliedFor_1"  name="diMemberFullCosts_1" value="{{ orgCosts[orgsArrayIndex].diMemberFullCosts_1 if orgCosts[orgsArrayIndex].diMemberFullCosts_1 else "0" }}">
+                                                        {% elseif diTeamMemberIndex == 2 %}
+                                                            <input type="text" class="{{ inputClasses }} magicStaffInput diInputs" id="diCost2" data-type="di" data-percent="80" data-target="diCostAppliedFor_2"  name="diaMemberFullCosts_2" value="{{ orgCosts[orgsArrayIndex].diMemberFullCosts_2 if orgCosts[orgsArrayIndex].diMemberFullCosts_2 else "0" }}">
+                                                        {% elseif diTeamMemberIndex == 3 %}
+                                                            <input type="text" class="{{ inputClasses }} magicStaffInput diInputs" id="daCost3" data-type="di" data-percent="80" data-target="diCostAppliedFor_3"  name="daMemberFullCosts_3" value="{{ orgCosts[orgsArrayIndex].diMemberFullCosts_3 if orgCosts[orgsArrayIndex].diMemberFullCosts_3 else "0" }}">
+                                                        {% endif %}
+                                                    </td>
+                                                    <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                        {% if diTeamMemberIndex == 1 %}
+                                                            <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].diCostAppliedFor_1 if orgCosts[orgsArrayIndex].diCostAppliedFor_1 else "0" }}" readonly name="diCostAppliedFor_1" id="diCostAppliedFor_1">
+                                                        {% elseif diTeamMemberIndex == 2 %}
+                                                            <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].diCostAppliedFor_2 if orgCosts[orgsArrayIndex].diCostAppliedFor_2 else "0" }}" readonly name="diCostAppliedFor_2" id="diCostAppliedFor_2">
+                                                        {% elseif diTeamMemberIndex == 3 %}
+                                                            <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].diCostAppliedFor_3 if orgCosts[orgsArrayIndex].diCostAppliedFor_3 else "0" }}" readonly name="diCostAppliedFor_3" id="diCostAppliedFor_3">
+                                                        {% endif %}
+                                                    </td>
+
+                                                </tr>
+                                                {% set diTeamMemberIndex = diTeamMemberIndex + 1 %}
+                                            {% endif %}
+
+                                        {% endfor %}
+                                        <tr>
+                                            <td class="govuk-table__cell govuk-table__cell--middle">Equipment</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="{{ inputClasses }} magicInput" name="diEquipment" id="diEquipment" value="{{ orgCosts[orgsArrayIndex].diEquipment if orgCosts[orgsArrayIndex].diEquipment else "0" }}"  data-percent="80" data-target="diEquipmentAppliedFor">
+                                            </td>
+                                            <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].diEquipmentAppliedFor if orgCosts[orgsArrayIndex].diEquipmentAppliedFor else "0" }}" name="diEquipmentAppliedFor" readonly id="diEquipmentAppliedFor">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="govuk-table__cell govuk-table__cell--middle">Travel and subsistence</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="{{ inputClasses }}  magicInput" name="diTravel" id="diTravel" value="{{ orgCosts[orgsArrayIndex].diTravel if orgCosts[orgsArrayIndex].diTravel else "0" }}" data-percent="80" data-target="diTravelAppliedFor">
+                                            </td>
+                                            <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].diTravelAppliedFor if orgCosts[orgsArrayIndex].diTravelAppliedFor else "0" }}" name="diTravelAppliedFor" readonly id="diTravelAppliedFor" >
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="govuk-table__cell govuk-table__cell--middle">Other</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="{{ inputClasses }}  magicInput" name="diOther" id="diOther" value="{{ orgCosts[orgsArrayIndex].diOther if orgCosts[orgsArrayIndex].diOther else "0" }}" data-percent="80" data-target="diOtherAppliedFor">
+                                            </td>
+                                            <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].diOtherAppliedFor if orgCosts[orgsArrayIndex].diOtherAppliedFor else "0" }}" name="diOtherAppliedFor" readonly id="diOtherAppliedFor">
+                                            </td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="govuk-accordion__section">
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading">
+                                    <button type="button" id="accordion-default-heading-3" aria-controls="accordion-default-content-3" class="govuk-accordion__section-button" aria-expanded="false">Indirect costs</button><span class="govuk-accordion__icon" aria-hidden="true"></span></h2>
+                                <div class="accordion-totals">
+                                    <label for="icAccordionTotal" class="accordion-totals__label"><span class="govuk-visually-hidden">Indirect costs </span>Total £: </label><input type="text" class="govuk-input govuk-input--secret accordion-totals__input" value="0" readonly="" name="icAccordionTotal" id="icAccordionTotal">
+                                </div>
+                            </div>
+                            <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+                                {#
+
+                                INDIRECT COSTS
+
+                                #}
+                                <details class="govuk-details u-space-y10 js-only" data-module="govuk-details" role="group">
+                                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                        <span class="govuk-details__summary-text">Guidance for calculating indirect costs</span>
+                                    </summary>
+                                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                        <div class="tiny-spoof">
+                                            <p class="govuk-body">These include non-specific costs charged across all projects based on estimates that are not otherwise included as Directly Allocated costs. They include the costs of the Research Organisation's administration such as personnel, finance, library and some departmental services. </p>
+                                        </div>
+                                    </div>
+                                </details>
+
+                                <div class="responsive-table ">
+                                    <table class="govuk-table responsive-table__table exceptions-table" id="">
+                                        <thead class="">
+                                        <tr>
+                                            <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
+                                            <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                            <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                            <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td class="govuk-table__cell govuk-table__cell--middle">Indirect costs</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="{{ inputClasses }} magicInput u-align-right" name="indirectCosts" id="indirectCosts" value="{{ orgCosts[orgsArrayIndex].indirectCosts if orgCosts[orgsArrayIndex].indirectCosts else "0" }}" data-percent="80" data-target="indirectCostsAppliedFor">
+                                            </td>
+                                            <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].indirectCostsAppliedFor if orgCosts[orgsArrayIndex].indirectCostsAppliedFor else "0" }}" name="indirectCostsAppliedFor" readonly id="indirectCostsAppliedFor">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="govuk-accordion__section">
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading">
+                                    <button type="button" id="accordion-default-heading-4" aria-controls="accordion-default-content-4" class="govuk-accordion__section-button" aria-expanded="false">Exceptions</button><span class="govuk-accordion__icon" aria-hidden="true"></span></h2>
+                                <div class="accordion-totals">
+                                    <label for="exAccordionTotal" class="accordion-totals__label"><span class="govuk-visually-hidden">Indirect costs </span>Total £: </label><input type="text" class="govuk-input govuk-input--secret accordion-totals__input" value="0" readonly="" name="exAccordionTotal" id="exAccordionTotal">
+                                </div>
+                            </div>
+                            <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+                                {#
+
+                                EXCEPTIONS
+
+                                #}
+                                <details class="govuk-details u-space-y10 js-only" data-module="govuk-details" role="group">
+                                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                        <span class="govuk-details__summary-text">Guidance for calculating exceptions costs</span>
+                                    </summary>
+                                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                        <div class="tiny-spoof">
+                                            <p class="govuk-body">These are Directly Incurred costs that Research Councils will fund in full (i.e. at 100%), subject to actual expenditure incurred, or items that are outside fEC.</p>
+                                        </div>
+                                    </div>
+                                </details>
+
+                                <div class="responsive-table ">
+                                    <table class="govuk-table responsive-table__table exceptions-table" id="">
+                                        <thead class="">
+                                        <tr>
+                                            <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
+                                            <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                            <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                            <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td class="govuk-table__cell govuk-table__cell--middle">Staff</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="{{ inputClasses }} govuk-input--secret" name="exStaff" value="{{ orgCosts[orgsArrayIndex].exStaff if orgCosts[orgsArrayIndex].exStaff else "0" }}" id="exStaff" data-percent="100" data-target="exStaffAppliedFor">
+                                            </td>
+                                            <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].exStaffAppliedFor if orgCosts[orgsArrayIndex].exStaffAppliedFor else "0" }}" name="exStaffAppliedFor" readonly id="exStaffAppliedFor">
+                                            </td>
+                                        </tr>
+                                        {% set exTeamMemberIndex = 1 %}
+                                        {% for item in allTeamMembers2 %}
+                                            {% if item.isComplete and item.roleType == 'Exception' and item.organisation == organisationName %}
+                                                <tr>
+                                                    <td class="govuk-table__cell govuk-table__cell--middle">
+                                                        {% if item.firstName %}
+                                                            {{ item.firstName }} {{ item.lastName }}
+                                                        {% else %}
+                                                            Unknown
+                                                        {% endif %}
+                                                    </td>
+                                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                        {% if exTeamMemberIndex == 1 %}
+                                                            <input type="text" class="{{ inputClasses }} magicStaffInput exInputs" id="exCost1" data-type="ex" data-percent="80" data-target="exCostAppliedFor_1"  name="exMemberFullCosts_1" value="{{ orgCosts[orgsArrayIndex].exMemberFullCosts_1 if orgCosts[orgsArrayIndex].exMemberFullCosts_1 else "0" }}">
+                                                        {% elseif exTeamMemberIndex == 2 %}
+                                                            <input type="text" class="{{ inputClasses }} magicStaffInput exInputs" id="exCost2" data-type="ex" data-percent="80" data-target="exCostAppliedFor_2"  name="exaMemberFullCosts_2" value="{{ orgCosts[orgsArrayIndex].exMemberFullCosts_2 if orgCosts[orgsArrayIndex].exMemberFullCosts_2 else "0" }}">
+                                                        {% elseif exTeamMemberIndex == 3 %}
+                                                            <input type="text" class="{{ inputClasses }} magicStaffInput exInputs" id="exCost3" data-type="ex" data-percent="80" data-target="exCostAppliedFor_3"  name="daMemberFullCosts_3" value="{{ orgCosts[orgsArrayIndex].exMemberFullCosts_3 if orgCosts[orgsArrayIndex].exMemberFullCosts_3 else "0" }}">
+                                                        {% endif %}
+                                                    </td>
+                                                    <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                        {% if exTeamMemberIndex == 1 %}
+                                                            <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].exCostAppliedFor_1 if orgCosts[orgsArrayIndex].exCostAppliedFor_1 else "0" }}" readonly name="exCostAppliedFor_1" id="exCostAppliedFor_1">
+                                                        {% elseif exTeamMemberIndex == 2 %}
+                                                            <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].exCostAppliedFor_2 if orgCosts[orgsArrayIndex].exCostAppliedFor_2 else "0" }}" readonly name="exCostAppliedFor_2" id="exCostAppliedFor_2">
+                                                        {% elseif exTeamMemberIndex == 3 %}
+                                                            <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].exCostAppliedFor_3 if orgCosts[orgsArrayIndex].exCostAppliedFor_3 else "0" }}" readonly name="exCostAppliedFor_3" id="exCostAppliedFor_3">
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                                {% set exTeamMemberIndex = exTeamMemberIndex + 1 %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        <tr>
+                                            <td class="govuk-table__cell govuk-table__cell--middle">Equipment</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="{{ inputClasses }}  magicInput" name="exEquipment" id="exEquipment" value="{{ orgCosts[orgsArrayIndex].exEquipment if orgCosts[orgsArrayIndex].exEquipment else "0" }}" data-percent="100" data-target="exEquipmentAppliedFor">
+                                            </td>
+                                            <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].exEquipmentAppliedFor if orgCosts[orgsArrayIndex].exEquipmentAppliedFor else "0" }}" name="exEquipmentAppliedFor" readonly id="exEquipmentAppliedFor">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="govuk-table__cell govuk-table__cell--middle">Travel and subsistence</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="{{ inputClasses }}  magicInput" name="exTravel" id="exTravel" value="{{ orgCosts[orgsArrayIndex].exTravel if orgCosts[orgsArrayIndex].exTravel else "0" }}" data-percent="100" data-target="exTravelAppliedFor">
+                                            </td>
+                                            <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].exTravelAppliedFor if orgCosts[orgsArrayIndex].exTravelAppliedFor else "0" }}" name="exTravelAppliedFor" readonly id="exTravelAppliedFor">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="govuk-table__cell govuk-table__cell--middle">Other</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="{{ inputClasses }}  magicInput" name="exOther" id="exOther" data-percent="100" data-target="exOtherAppliedFor" value="{{ orgCosts[orgsArrayIndex].exOther if orgCosts[orgsArrayIndex].exOther else "0" }}">
+                                            </td>
+                                            <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle">
+                                                <input type="text" class="govuk-input govuk-input--secret" value="{{ orgCosts[orgsArrayIndex].exOtherAppliedFor if orgCosts[orgsArrayIndex].exOtherAppliedFor else "0" }}" name="exOtherAppliedFor" readonly id="exOtherAppliedFor">
+                                            </td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+
+            {#<div class="govuk-visually-hidden" id="daNullMessage">
+                <p class="govuk-body">No exception team members included in the team section for this organisation.</p>
+            </div>
+            <script>
+                let daTable = document.getElementById('daTable');
+                let daNullMessage = document.getElementById('daNullMessage');
+                if(daTable.rows.length <= 1) {
+                    daNullMessage.classList.remove('govuk-visually-hidden');
+                    daTable.classList.add('govuk-visually-hidden');
+                }
+            </script>
+            <div class="govuk-visually-hidden" id="exceptionNullMessage">
+                <p class="govuk-body">No exception team members included in the team section for this organisation.</p>
+            </div>
+            <script>
+                let exceptionTable = document.getElementById('exceptionTable');
+                let exceptionNullMessage = document.getElementById('exceptionNullMessage');
+                if(exceptionTable.rows.length <= 1) {
+                    exceptionNullMessage.classList.remove('govuk-visually-hidden');
+                    exceptionTable.classList.add('govuk-visually-hidden');
+                }
+            </script>
+            <div class="govuk-visually-hidden" id="diNullMessage">
+                <p class="govuk-body">No exception team members included in the team section for this organisation.</p>
+            </div>
+            <script>
+                let diTable = document.getElementById('diTable');
+                let diNullMessage = document.getElementById('diNullMessage');
+                if(diTable.rows.length <= 1) {
+                    diNullMessage.classList.remove('govuk-visually-hidden');
+                    diTable.classList.add('govuk-visually-hidden');
+                }
+            </script>#}
+
+
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='', extraClass='_u-space-t40') %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-item">
+                            <div class="application-item__contents application-item__contents--mac">
+                                <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                    <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                        <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                    </legend>
+                                    <div class="govuk-checkboxes">
+                                        <div class="govuk-checkboxes__item">
+
+                                            {% if orgsArrayIndex == 0 %}
+                                                {% if allData.orgZeroComplete %}
+                                                    <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" checked>
+                                                {% else %}
+                                                    <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" >
+                                                {% endif %}
+                                            {% endif %}
+
+                                            {% if orgsArrayIndex == 1 %}
+                                                {% if allData.orgOneComplete %}
+                                                    <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" checked>
+                                                {% else %}
+                                                    <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" >
+                                                {% endif %}
+                                            {% endif %}
+
+                                            {% if orgsArrayIndex == 2 %}
+                                                {% if allData.orgTwoComplete %}
+                                                    <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" checked>
+                                                {% else %}
+                                                    <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" >
+                                                {% endif %}
+                                            {% endif %}
+
+                                            {#<input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox">#}
+                                            <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    {%- endcall %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-controls govuk-clearfix">
+                            <input type="hidden" name="orgName" value="{{ organisationName }}">
+                            <input type="hidden" name="orgNameNoSpaces" value="{{ organisationName | removeSpaces}}">
+                            <input type="hidden" name="orgsArrayIndex" value="{{ orgsArrayIndex}}">
+                            {{ components.button(text='Save and return', extraClass="application-controls__submit")}}
+                        </div>
+                    {%- endcall %}
+
+                {%- endcall %}
+            {%- endcall %}
+
+
+        </section>
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+     <script>
+    /*
+        daMemberFullCosts_x			daAppliedFor_x
+        diMemberFullCosts_x			diAppliedfor_x
+        exMemberFullCosts_x			exAppliedFor_x
+
+        daStaff                     daStaffAppliedFor
+        daEstates                   daEstatesAppliedFor
+        daOther                     daOtherAppliedFor
+
+        diStaff						diStaffAppliedFor
+        diEquipmemnt				diEquipmemntAppliedFor
+        diTravel					diTravelAppliedFor
+        diOther						diOtherAppliedFor
+
+        indirectCosts				indirectCostsAppliedFor
+
+        exStaff						exStaffAppliedFor
+        exEquipment                 exEquipmentAppliedFor
+        exTravel                    exTravelAppliedFor
+        exOther                     exOtherAppliedFor
+    */
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script>
+        /*
+            totalFEC
+            fundingAppliedFor
+            fundingAppliedFor
+        */
+        let fullEconomicCost = 0;
+        let contribution = 0;
+        let fundingAppliedFor = 0;
+        let totalCost = 0;
+
+        let numberFormat = function(value) {
+            let newNumberAsString;
+            newNumberAsString = value.toString();
+            // newNumberAsString = newNumberAsString.replace(/\./g, ',');
+            newNumberAsString = newNumberAsString.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            return newNumberAsString;
+        };
+
+        function getTotalCost() {
+            let totalCost = 0;
+
+            $('.magicInput').each(function(i, obj) {
+                let thisValue = $(this).val();
+                totalCost = totalCost + parseInt(thisValue);
+            });
+            $('.magicStaffInput').each(function(i, obj) {
+                let thisValue = $(this).val();
+                totalCost = totalCost + parseInt(thisValue);
+            });
+
+            console.log('totalCost = ' + totalCost);
+            $('#totalFEC').val(numberFormat((totalCost).toFixed(2)));
+            $('#contribution').val(numberFormat((totalCost - (totalCost*0.8)).toFixed(2)));
+            $('#fundingAppliedFor').val(numberFormat((totalCost*0.8).toFixed(2)));
+            /*$('#totalFEC').val((totalCost).toFixed(2));
+            $('#contribution').val((totalCost - (totalCost*0.8)).toFixed(2));
+            $('#fundingAppliedFor').val((totalCost*0.8).toFixed(2));*/
+        }
+
+        function updateStaffCosts(dataType) {
+            let daTotalStaff = 0;
+            let diTotalStaff = 0;
+            let exTotalStaff = 0;
+            // target ID: daStaff, diStaff, exStaff
+            $('.'+dataType+'Inputs').each(function(){
+                let tempTotalCost = $(this).val();
+                if(dataType === 'da') {
+                    daTotalStaff = parseInt(daTotalStaff) + parseInt(tempTotalCost);
+                    $('#daStaff').val(daTotalStaff.toFixed(2));
+                    $('#daStaffAppliedFor').val(parseInt(daTotalStaff)*0.8);
+                    // $('#daAccordionTotal').val(parseInt($('#daAccordionTotal').val()) + parseInt(daTotalStaff)*0.8);
+                    // $('#daAccordionTotal').val(parseInt($('#daAccordionTotal').val()) + parseInt(daTotalStaff)*0.8);
+                }
+                if(dataType === 'di') {
+                    diTotalStaff = diTotalStaff + parseInt(tempTotalCost);
+                    $('#diStaff').val(diTotalStaff);
+                    $('#diStaffAppliedFor').val(parseInt(diTotalStaff)*0.8);
+                }
+                if(dataType === 'ex') {
+                    exTotalStaff = exTotalStaff + parseInt(tempTotalCost);
+                    $('#exStaff').val(exTotalStaff);
+                    $('#exStaffAppliedFor').val(exTotalStaff);
+                }
+            });
+        }
+
+        let isNumeric = function(n) {
+            return !isNaN(parseFloat(n)) && isFinite(n);
+        };
+
+        $('.magicInput').each(function(index){
+            $(this).on('blur', function(e){
+                e.preventDefault();
+                let tempInputID = $(this).attr('id');
+                let tempTargetID = $(this).attr('data-target');
+                let tempPercentage = $(this).attr('data-percent');
+                // console.log(tempInputID);
+                // let tempTarget = tempInputID + 'AppliedFor';
+                // console.log(tempTarget);
+                $('#'+tempTargetID).val(($('#'+tempInputID).val() * (tempPercentage/100)).toFixed(2));
+                getTotalCost();
+            });
+        });
+
+
+        //magicStaffInput
+        $('.magicStaffInput').each(function(index){
+            $(this).on('blur', function(e){
+                if($(this).val() === '') {
+                    // check if numeric?
+                    $(this).val('0');
+                }
+                e.preventDefault();
+                let tempInputID = $(this).attr('id');
+                let tempTargetID = $(this).attr('data-target');
+                let tempPercentage = $(this).attr('data-percent');
+                let dataType = $(this).attr('data-type');
+                $('#'+tempTargetID).val(($('#'+tempInputID).val() * (tempPercentage/100)).toFixed(2));
+                getTotalCost();
+                updateStaffCosts(dataType);
+            });
+        });
+
+        $('input[type=text]').each(function() {
+            $(this).on('focus', function() {
+                if($(this).val() === '0') {
+                    $(this).select();
+                }
+            });
+           /* $(this).on('blur', function() {
+                if($(this).val() === '' || !$(this).val().isNumeric()) {
+                    $(this).val('0');
+                }
+            });*/
+        });
+
+        $(window).on('load', function() {
+            getTotalCost();
+            updateStaffCosts('da');
+            updateStaffCosts('di');
+            updateStaffCosts('ex');
+        })
+
+    </script>
+
+{% endblock %}

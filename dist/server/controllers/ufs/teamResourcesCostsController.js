@@ -34,6 +34,7 @@ exports.trcResourcesAndCostsGet = trcResourcesAndCostsGet;
 exports.trcResourcesAndCostsPost = trcResourcesAndCostsPost;
 exports.trcOrganisationCostsGet = trcOrganisationCostsGet;
 exports.trcOrganisationCostsPost = trcOrganisationCostsPost;
+exports.trcOrganisationCostsAccordionGet = trcOrganisationCostsAccordionGet;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 let limitedOrgs = require('./orgs400');
@@ -1164,4 +1165,31 @@ function trcOrganisationCostsPost(req, res) {
   let targetURL;
   targetURL = '/prototypes/team-resources-costs/resources-and-costs';
   return res.redirect(targetURL);
+}
+
+// ************************************************************************
+//
+//        organisation-costs ACCORDION
+//
+// ************************************************************************
+function trcOrganisationCostsAccordionGet(req, res) {
+  let viewData;
+  let orgsArrayIndex = req.param('orgsArrayIndex');
+
+  //console.log(req.session.uniqueOrgs);
+  //console.log('orgsArrayIndex = ' + orgsArrayIndex);
+
+  let allData = req.session;
+
+  console.log(allData);
+
+  viewData = {
+    allData,
+    prototypeData,
+    orgsArrayIndex,
+    allTeamMembers2,
+    orgCosts
+  };
+
+  return res.render('prototypes/team-resources-costs/organisation-costs-accordion', viewData);
 }

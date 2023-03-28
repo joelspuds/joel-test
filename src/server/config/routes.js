@@ -918,6 +918,7 @@ router.get('/prototypes/team-resources-costs/team-member', demosController.trcTe
 router.post('/prototypes/team-resources-costs/team-member', demosController.trcTeamMemberDetailsPost);
 router.get('/prototypes/team-resources-costs/organisation-costs', demosController.trcOrganisationCostsGet);
 router.post('/prototypes/team-resources-costs/organisation-costs', demosController.trcOrganisationCostsPost);
+router.get('/prototypes/team-resources-costs/organisation-costs-accordion', demosController.trcOrganisationCostsAccordionGet);
 
 router.get('/prototypes/team-resources-costs/submission-confirm', demosController.trcSubmissionConfirmGet);
 router.post('/prototypes/team-resources-costs/submission-confirm', demosController.trcSubmissionConfirmPost);
