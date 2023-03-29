@@ -108,6 +108,7 @@ function alApplicationsGet(req, res) {
 
   let newDate = new Date();
   let dateString;
+  let itemCount = 0;
 
   newDate.setDate(newDate.getDate() + 14);
   dateString = newDate.getFullYear() + ('0' + (newDate.getMonth() + 1)).slice(-2) + ('0' + newDate.getDate()).slice(-2);
@@ -170,6 +171,7 @@ function alApplicationsGet(req, res) {
         if (tempTitle.toLowerCase().includes(searchTermTemp.toLowerCase()) || tempName.toLowerCase().includes(searchTermTemp.toLowerCase())) {
           tempAppList.push(applicationsListv2[i]);
           iterationNumber++;
+          itemCount++;
         }
       }
       finalNumber = iterationNumber;
@@ -204,6 +206,7 @@ function alApplicationsGet(req, res) {
           deadlineYear: applicationsListv2[i].deadlineYear,
           dateAsString: applicationsListv2[i].dateAsString
         });
+        itemCount++;
       }
     }
 
@@ -267,6 +270,17 @@ function alApplicationsGet(req, res) {
     req.session.searchQuery = null;
     applyTheFilters();
   }
+
+  if (itemCount === 0) {
+    itemCount = applicationsListv2.length;
+    req.session.showingAll = true;
+  } else {
+    req.session.showingAll = false;
+  }
+
+  console.log('itemCount = ' + itemCount);
+
+  req.session.itemCount = itemCount;
 
   let allData = req.session;
 
