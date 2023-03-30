@@ -56,7 +56,7 @@
                         <p class="govuk-body"><strong>{{ allData.itemCount }}</strong> applications</p>
                     {% endif %}
                 {% else %}
-                    <p class="govuk-body"><strong>{{ allData.itemCount }}</strong> applications with the status of <strong>[filter_name]</strong>. <a href="#" class="govuk-link" onClick="(function(){document.getElementById('clearFilterButton').click();; return false;})();return false;">Clear filters</a></p>
+                    <p class="govuk-body"><strong>{{ allData.itemCount }}</strong> applications with the status of <strong>[filter_name]</strong> <a href="#" class="govuk-link govuk-!-display-block" onClick="(function(){document.getElementById('clearFilterButton').click();; return false;})();return false;">Clear filters</a></p>
                 {% endif %}
             {% endif %}
         {%- endcall %}
@@ -140,7 +140,7 @@
                                 #}{#{% set filterName = 'statusFilter_' + loop.index %}#}{#
                                 #}{#{% set filterValue = allData. %}#}{#
                                 {% if loop.index == 1 %}
-                                    #}{#{% set tempValue = 'For checking'%}#}{#
+                                    #}{#{% set tempValue = 'With research office'%}#}{#
                                     {% set tempValue = allData.statusFilter_1 %}
                                 {% elseif loop.index == 2 %}
                                     #}{#{% set tempValue = 'Submitted'%}#}{#
@@ -174,8 +174,8 @@
                             </li>
                             <li class="filter__item filter__item--small govuk-clearfix">
                                 <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
-                                    <input class="govuk-checkboxes__input" id="statusFilter_1" type="checkbox" name="statusFilter_1" value="For checking" {% if allData.statusFilter_1 == 'For checking' %}checked{% endif %}>
-                                    <label for="statusFilter_1" class="govuk-checkboxes__label u-display-ib">For checking</label>
+                                    <input class="govuk-checkboxes__input" id="statusFilter_1" type="checkbox" name="statusFilter_1" value="With research office" {% if allData.statusFilter_1 == 'With research office' %}checked{% endif %}>
+                                    <label for="statusFilter_1" class="govuk-checkboxes__label u-display-ib">With research office</label>
                                 </div>
                             </li>
                             <li class="filter__item filter__item--small govuk-clearfix">
@@ -308,7 +308,7 @@
                             {% set tagClass = "govuk-tag govuk-tag--tiny govuk-tag--yellow"  %}
                         {% elseif item.status == "Submitted" %}
                             {% set tagClass = "govuk-tag govuk-tag--tiny govuk-tag--green" %}
-                        {% elseif item.status == "For checking" %}
+                        {% elseif item.status == "With research office" %}
                             {% set tagClass = "govuk-tag govuk-tag--tiny govuk-tag--blue" %}
                         {% else %}
                             {% set tagClass = "govuk-tag govuk-tag--tiny _govuk-tag--grey govuk-tag--void" %}

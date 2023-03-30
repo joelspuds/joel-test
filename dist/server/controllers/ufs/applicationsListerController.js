@@ -301,7 +301,7 @@ function alApplicationsPost(req, res) {
   * */
 
   if (req.body.statusFilter_1) {
-    req.session.statusFilter_1 = 'For checking';
+    req.session.statusFilter_1 = 'With research office';
   } else {
     req.session.statusFilter_1 = null;
   }
