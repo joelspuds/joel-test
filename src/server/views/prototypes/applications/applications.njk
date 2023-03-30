@@ -359,9 +359,10 @@
                                 </span>
                                 </strong>
                                 <br>
-                                {% if (daysLeft - 7) < 0 %}
-                                <span class="meta">4:00pm</span>
-                                    {% endif %}
+                                {% if (daysLeft - 7) < 0 and (item.status != "Submitted") %}
+                                    {% set tagClass = "govuk-tag govuk-tag--tiny govuk-tag--red" %}
+                                    <span class="meta">4:00pm</span>
+                                {% endif %}
 
 
                                 {#{% if allData.dateString > item.dateAsString  %}
