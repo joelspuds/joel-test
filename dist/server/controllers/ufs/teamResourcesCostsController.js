@@ -13,6 +13,7 @@ exports.trcApplicationsGet = trcApplicationsGet;
 exports.trcApplicationsPost = trcApplicationsPost;
 exports.trcApplicationOverviewGet = trcApplicationOverviewGet;
 exports.trcApplicationOverviewPost = trcApplicationOverviewPost;
+exports.trcReadApplicationGet = trcReadApplicationGet;
 exports.trcSubmissionConfirmGet = trcSubmissionConfirmGet;
 exports.trcSubmissionConfirmPost = trcSubmissionConfirmPost;
 exports.trcSubmittedGet = trcSubmittedGet;
@@ -379,6 +380,22 @@ function trcApplicationOverviewPost(req, res) {
   let targetURL;
   targetURL = '/prototypes/team-resources-costs/submission-confirm';
   return res.redirect(targetURL);
+}
+// ************************************************************************
+//
+//       read application
+//
+// ************************************************************************
+function trcReadApplicationGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData
+  };
+
+  return res.render('prototypes/team-resources-costs/read-application', viewData);
 }
 // ************************************************************************
 //

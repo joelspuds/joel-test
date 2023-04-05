@@ -72,9 +72,9 @@
 
 {{ components.captionHeading(text='2.1 Nominated team', tag='h3', size='s', extraClass='serif') }}
 <p class="govuk-body">
-    <strong>Principal investigator:</strong> Prof Giles Dexter, Coventry University<br>
-    <strong>Co-investigator:</strong> Prof Ian Charles,  Coventry University<br>
-    <strong>Researcher:</strong> Dr Maxwell Peterson,  Coventry University<br>
+    <strong>Principal investigator:</strong> Prof Gillian Dexter, Coventry University<br>
+    <strong>Co-investigator:</strong> Prof Una Charles,  Coventry University<br>
+    <strong>Researcher:</strong> Dr Maxine Peterson,  Coventry University<br>
 </p>
 
 <div class="u-align-right">
@@ -84,7 +84,7 @@
 {{ components.captionHeading(text='2.2 Relevant experience', tag='h3', size='s', extraClass='serif') }}
 
 <p class="govuk-body serif">
-    Professor Giles Dexter’s work on ribosome inactivating proteins (RIPs), such as ricin and Shiga toxin is well documented. He was the first to discover the relationship between Ricin toxin, produced by the castor bean plant, and the nervous system. Ricin is a well-known homicidal poison and has been used in several bioterrorist attacks. Shiga toxins are potentially lethal poisons, which as of yet, have no effective pharmaceutical treatments or preventions.
+    Professor Gillian Dexter’s work on ribosome inactivating proteins (RIPs), such as ricin and Shiga toxin is well documented. He was the first to discover the relationship between Ricin toxin, produced by the castor bean plant, and the nervous system. Ricin is a well-known homicidal poison and has been used in several bioterrorist attacks. Shiga toxins are potentially lethal poisons, which as of yet, have no effective pharmaceutical treatments or preventions.
 </p>
 
 
@@ -124,6 +124,7 @@
 
 {{ components.captionHeading(text='5. Finances', tag='h2', size='m', id='finances', extraClass='serif') }}
 {{ components.captionHeading(text='5.1 Financial summary', tag='h3', size='s', extraClass='serif') }}
+
 <table class="govuk-table">
     <thead>
     <tr>
@@ -193,6 +194,33 @@
     </tbody>
 </table>
 
+{% if showPopUpLink %}
+    <script>
+        /*function openModal(event) {
+            event.preventDefault();
+            alert('test');
+            return false;
+        }
+        function closeModal() {
+
+        }*/
+        let modal =
+        document.addEventListener('click', function (event) {
+           if (!event.target.matches('.openModal')) return;
+            event.preventDefault();
+
+
+            console.log(event.target);
+
+
+        }, false);
+    </script>
+    <p class="govuk-body" ><a href="#" id="showModal" class="govuk-link openModal" onclick="openModal();">Show full financial details</a></p>
+
+
+
+{% endif %}
+
 {{ components.captionHeading(text='5.2 Financial summary', tag='h3', size='s', extraClass='serif') }}
 
 <p class="govuk-body serif">
@@ -213,7 +241,7 @@
             <div class="application-item__left" style="width:100%;">
                 {#<img src="/images/svg/pdf.svg" style="width:40px;">#}
                 <a href="#" class="govuk-link  ">Letter of support: Prof Annie Robin</a><br>
-                <span class="govuk-!-font-size-14">File: Letter_Annie_Robin.pdf (Size 2.4mb)</span>
+                <span class="govuk-!-font-size-14">File: Letter_Annie_Robin.pdf (Size 2.4mb)</span>>
 
             </div>
         </div>
@@ -247,3 +275,6 @@
     <a class="govuk-link canScroll" href="#mainContent">Top of page</a>
 </div>
 <hr>
+
+
+<div class="modal" id="finainceModal"></div>

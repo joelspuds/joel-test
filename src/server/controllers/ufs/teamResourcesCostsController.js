@@ -349,6 +349,22 @@ export function trcApplicationOverviewPost(req, res) {
 }
 // ************************************************************************
 //
+//       read application
+//
+// ************************************************************************
+export function trcReadApplicationGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  viewData = {
+    allData,
+    prototypeData,
+  };
+
+  return res.render('prototypes/team-resources-costs/read-application', viewData);
+}
+// ************************************************************************
+//
 //        submission confirm
 //
 // ************************************************************************

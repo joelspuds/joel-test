@@ -1,0 +1,1772 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/team-resources-costs/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/team-resources-costs/applications' %}
+
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = true %}
+
+{% set pageTitle = 'Read applciation' %}
+{% set showStickyNavscripts = true %}
+{% set listItems = [
+    { text: 'Case for support', url: '#case', class:'canScroll' },
+    { text: 'Capability to deliver', url: '#capability', class:'canScroll' },
+    { text: 'Pathways to impact', url: '#pathways', class:'canScroll' },
+    { text: 'Data impact statement', url: '#data', class:'canScroll' },
+    { text: 'Resources and costs', url: '#finances', class:'canScroll' },
+    { text: 'Letters of support', url: '#letters', class:'canScroll' }
+] %}
+
+
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Read applciation ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/team-resources-costs/applications', text:'Back to applications'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+            {{ components.captionHeading(text='Read applciation', caption='APP171: Bio-detoxification of Ricin in castor bean') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full', customID='mainCntent') %}
+                <div class="govuk-tabs" data-module="govuk-tabs">
+                    <ul class="govuk-tabs__list">
+                        <li class="govuk-tabs__list-item ">
+                            <a class="govuk-tabs__tab" href="/prototypes/team-resources-costs/application-overview">Write application</a>
+                        </li>
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                            <a class="govuk-tabs__tab" href="#">Read application</a>
+                        </li>
+                    </ul>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-3') %}
+                <nav class="sticky-nav">
+                    {{ components.linkHeading(text='Contents', tag='h2', size='s')}}
+                    {{ components.list(items=listItems, parentClass='sticky-nav')}}
+                    {#<a href="#" class="govuk-link js-only print-link print-link--tabs" id="printThis" onclick="window.print();return false;">Print this page</a>#}
+                </nav>
+            {%- endcall %}
+
+            {#{% call components.bulmaColumnAny(size='is-7', extraClass='#}{#u-space-t20#}{#') %}
+
+                {% set showPopUpLink = true %}
+                {% include '../generic-includes/review-content.njk' %}
+
+            {%- endcall %}#}
+            <div class="column is-7 {#u-space-t20#}">
+                <h2 class="govuk-heading-l serif" id="top">
+                    Bio-detoxification of Ricin in castor bean
+                </h2>
+                <p class="govuk-body">
+                    <img src="/images/ufs/application_image1.png" alt="hand holding some beans">
+                </p>
+                <h2 class="govuk-heading-m serif" id="case">
+                    1. Case for support
+                </h2>
+                <h3 class="govuk-heading-s serif">
+                    1.1 Importance
+                </h3>
+                <p class="govuk-body serif">
+                    The PI proposes a high-impact collaborative research project to develop new inhibitors for ribosome inactivating proteins (RIPs), such as ricin and Shiga toxin. Ricin toxin, produced by the castor bean plant, has a
+                    nefarious past. Ricin is a well-known homicidal poison and has been used in several bioterrorist attacks. Shiga toxin is a deadly product of  Escherichia coli. RIPs are RNA  that enzymatically remove specific purine residues from the universally conserved sarin/ricin loop (S/R loop) of large ribosomal RNA, causing cellular death. There are no effective pharmaceuticals for either ricin or Shiga toxin poisoning. The PI proposes using a viral protein (VPg) from turnip mosaic virus that we have shown to inhibit ricin activity in vitro. The goals of this proposal are: 1) Establish conditions for VPg-ricin complex formation and the rates of VPg-ricin interactions; 2) Determine minimum VPg peptide that effectively inhibits ricin and Shiga toxins; and 3) Optimize conditions to enhance inhibition of these toxic proteins.
+                </p>
+                <h3 class="govuk-heading-s serif">
+                    1.2 Scientific potential
+                </h3>
+                <p class="govuk-body serif">
+                    Ricin and related Shiga toxins are potentially lethal poisons, which as of yet, have no effective pharmaceutical treatments or preventions. The global problem of these poisons is an increasing threat to public health, directly relating to the mission of the National Institutes of Allergy and Infectious Diseases.
+                </p>
+
+                <p class="govuk-body">
+                    <img src="/images/ufs/application_diagram1.png" alt="hand holding some beans">
+                </p>
+
+                <p class="govuk-body serif">
+                    There are no effective pharmaceuticals for either ricin or Shiga toxin poisoning. The PI proposes using a viral protein (VPg) from turnip mosaic virus that we have shown to inhibit ricin activity in vitro. The goals of this proposal are: 1) Establish conditions for VPg-ricin complex formation and the rates of VPg-ricin interactions;
+                </p>
+
+                <p class="govuk-body serif">
+                    Ricin, astoundingly easily acquired, is an ideal toxin for bioterrorism, while the widespread transmission of E. coli poisoning is responsible for many severe human illnesses and several fatalities. In the future, it may be possible to utilize these toxins for their public health benefit, by repurposing them to attack specific human and animal diseases.
+                </p>
+
+                <p class="govuk-body">
+                    <img src="/images/ufs/application_graph1.png" alt="hand holding some beans">
+                </p>
+
+                <p class="govuk-body serif">
+                    Ricin toxin, produced by the castor bean plant, has a nefarious past. Ricin is a well-known homicidal poison and has been used in several bioterrorist attacks. Shiga toxin is a deadly product of  Escherichia coli. RIPs are RNA  that enzymatically remove specific purine residues from the universally conserved sarin/ricin loop (S/R loop) of large ribosomal RNA, causing cellular death. There are no effective pharmaceuticals for either ricin or Shiga toxin poisoning. The PI proposes using a viral protein (VPg) from turnip mosaic virus that we have shown to inhibit ricin activity in vitro. The goals of this proposal are: 1) Establish conditions for VPg-ricin complex formation and the rates of VPg-ricin interactions; 2) Determine minimum VPg peptide that effectively inhibits ricin and Shiga toxins; and 3) Optimize conditions to enhance inhibition of these toxic proteins.
+                </p>
+
+                <p class="govuk-body serif">
+                    There are no effective pharmaceuticals for either ricin or Shiga toxin poisoning. The PI proposes using a viral protein (VPg) from turnip mosaic virus that we have shown to inhibit ricin activity in vitro. The goals of this proposal are: 1) Establish conditions for VPg-ricin complex formation and the rates of VPg-ricin interactions; 2) Determine minimum VPg peptide that effectively inhibits ricin and Shiga toxins; and 3) Optimize conditions to enhance inhibition of these toxic proteins.
+                </p>
+
+
+
+
+                <h3 class="govuk-heading-s serif">
+                    1.3 Ethics and research governance
+                </h3>
+
+
+
+                <p class="govuk-body serif">
+                    Ricin and related Shiga toxins are potentially lethal poisons, which as of yet, have no effective pharmaceutical treatments or preventions. The global problem of these poisons is an increasing threat to public health, directly relating to the mission of the National Institutes of Allergy and Infectious Diseases. Ricin, astoundingly easily acquired, is an ideal toxin for bioterrorism, while the widespread transmission of E. coli poisoning is responsible for many severe human illnesses and several fatalities.
+                </p>
+
+                <p class="govuk-body">
+                    <img src="/images/ufs/application_diagram2.png" alt="hand holding some beans">
+                </p>
+
+
+
+
+                <h3 class="govuk-heading-s serif">
+                    1.4 Exploitation and dissemination
+                </h3>
+
+
+
+                <p class="govuk-body serif">
+                    Ricin and related Shiga toxins are potentially lethal poisons, which as of yet, have no effective pharmaceutical treatments or preventions. The global problem of these poisons is an increasing threat to public health, directly relating to the mission of the National Institutes of Allergy and Infectious Diseases. Ricin, astoundingly easily acquired, is an ideal toxin for bioterrorism, while the widespread transmission of E. coli poisoning is responsible for many severe human illnesses and several fatalities.
+                </p>
+
+
+                <p class="govuk-body serif">
+                    Shiga toxins are potentially lethal poisons, which as of yet, have no effective pharmaceutical treatments or preventions. The global problem of these poisons is an increasing threat to public health, directly relating to the mission of the National Institutes of Allergy and Infectious Diseases. Ricin, astoundingly easily acquired, is an ideal toxin for bioterrorism, while the widespread transmission of E. coli poisoning is responsible for many severe human illnesses and several fatalities. In the last year, John Jay had a total enrollment of 12,969 undergraduates and 1,763 graduate students. Of the 14,732 enrolled students, 20% identify as African American/Black and nearly 41% identify as Hispanic. Nearly 57% of the student body is female. (John Jay College, Office of Institutional Research, Fall 2015).
+                </p>
+
+                <div class="u-align-right">
+                    <a class="govuk-link canScroll" href="#mainContent">Top of page</a>
+                </div>
+
+
+
+
+                <h2 class="govuk-heading-m serif" id="capability">
+                    2. Capability to deliver
+                </h2>
+
+
+
+
+
+
+                <h3 class="govuk-heading-s serif">
+                    2.1 Nominated team
+                </h3>
+
+
+                <p class="govuk-body">
+                    <strong>Principal investigator:</strong> Prof Gillian Dexter, Coventry University<br>
+                    <strong>Co-investigator:</strong> Prof Una Charles,  Coventry University<br>
+                    <strong>Researcher:</strong> Dr Maxine Peterson,  Coventry University<br>
+                </p>
+
+                <div class="u-align-right">
+                    <a class="govuk-link canScroll" href="#mainContent">Top of page</a>
+                </div>
+
+
+
+
+                <h3 class="govuk-heading-s serif">
+                    2.2 Relevant experience
+                </h3>
+
+
+
+                <p class="govuk-body serif">
+                    Professor Gillian Dexter’s work on ribosome inactivating proteins (RIPs), such as ricin and Shiga toxin is well documented. He was the first to discover the relationship between Ricin toxin, produced by the castor bean plant, and the nervous system. Ricin is a well-known homicidal poison and has been used in several bioterrorist attacks. Shiga toxins are potentially lethal poisons, which as of yet, have no effective pharmaceutical treatments or preventions.
+                </p>
+
+
+                <p class="govuk-body serif">The global problem of these poisons is an increasing threat to public health, directly relating to the mission of the National Institutes of Allergy and Infectious Diseases. Ricin, astoundingly easily acquired, is an ideal toxin for bioterrorism, while the widespread transmission of E. coli poisoning is responsible for many severe human illnesses and several fatalities. In the last year, John Jay had a total enrollment of 12,969 undergraduates and 1,763 graduate students. Of the 14,732 enrolled students, 20% identify as African American/Black and nearly 41% identify as Hispanic. Nearly 57% of the student body is female. (John Jay College, Office of Institutional Research, Fall 2015).</p>
+                <h3 class="govuk-heading-s serif">
+                    2.3 Relevant publications
+                </h3>
+                <p class="govuk-body serif">Dexter,G, 2019, <a href="#"> ‘The dynamic ATP-driven mechanism of bacterial protein translocation, and the critical role of phospholipids’. Frontiers in Microbiology</a>.</p>
+                <p class="govuk-body serif">Dexter,G, 2018, <a href="#">‘Ricin and Shiga different approachess’. Frontiers in Microbiology</a>.</p>
+                <h2 class="govuk-heading-m serif" id="pathways">
+                    3. Pathways to impact
+                </h2>
+                <p class="govuk-body serif">
+                    Mauris scelerisque rutrum nibh non malesuada. Suspendisse potenti. Aliquam vestibulum ut orci ac efficitur. Etiam vitae ex bibendum diam tincidunt vulputate. Nullam vel pretium lorem. Nam suscipit lacus nec nibh hendrerit gravida. In euismod lacinia tellus et varius. Sed a lacus id ante convallis tempor ac sed justo. Morbi ac turpis fringilla, tincidunt justo sit amet, pulvinar tellus.
+                </p>
+                <p class="govuk-body serif">Cras quis volutpat odio, gravida luctus metus. Integer lacinia malesuada eros ut gravida. Donec porta, libero vel gravida gravida, dui est imperdiet massa, quis pulvinar est arcu at augue. Vivamus est dui, iaculis eget placerat sit amet, viverra eget ligula. In rutrum orci id sapien ullamcorper, ut egestas sem luctus. Aenean malesuada posuere sem, et commodo massa fringilla quis. Curabitur sapien sem, rhoncus vel libero sed, porta hendrerit massa. In ex ligula, condimentum ac viverra sit amet, maximus a nulla.
+                </p>
+                <p class="govuk-body serif">    Suspendisse blandit ultricies vestibulum. Curabitur mollis tempus tempor. Nullam malesuada ipsum lacus, non posuere sem sagittis vel. Integer porttitor, lacus ut ultricies cursus, arcu augue auctor tellus, quis viverra ante tellus ac dui. Etiam sed velit non quam imperdiet interdum. Nam tristique, augue eget ultrices sodales, dolor orci condimentum sem, in eleifend diam ipsum at magna. Maecenas hendrerit, eros quis dignissim pretium, diam orci rutrum ipsum, a pharetra ligula orci non risus. Pellentesque sit amet nulla feugiat, posuere enim ac, convallis quam. Nulla hendrerit neque vitae enim rhoncus semper. Nunc nec facilisis enim. Maecenas cursus vulputate condimentum. Donec egestas faucibus dui. Curabitur non elit eget dui hendrerit tempor. Cras pellentesque et elit id faucibus. Pellentesque eleifend vel enim et sagittis.
+                </p>
+                <div class="u-align-right">
+                    <a class="govuk-link canScroll" href="#mainContent">Top of page</a>
+                </div>
+                <h2 class="govuk-heading-m serif" id="data">
+                    4. Data impact statement
+                </h2>
+                <p class="govuk-body serif">Cras quis volutpat odio, gravida luctus metus. Integer lacinia malesuada eros ut gravida. Donec porta, libero vel gravida gravida, dui est imperdiet massa, quis pulvinar est arcu at augue. Vivamus est dui, iaculis eget placerat sit amet, viverra eget ligula. In rutrum orci id sapien ullamcorper, ut egestas sem luctus. Aenean malesuada posuere sem, et commodo massa fringilla quis. Curabitur sapien sem, rhoncus vel libero sed, porta hendrerit massa. In ex ligula, condimentum ac viverra sit amet, maximus a nulla.
+                </p>
+                <p class="govuk-body serif">    Suspendisse blandit ultricies vestibulum. Curabitur mollis tempus tempor. Nullam malesuada ipsum lacus, non posuere sem sagittis vel. Integer porttitor, lacus ut ultricies cursus, arcu augue auctor tellus, quis viverra ante tellus ac dui. Etiam sed velit non quam imperdiet interdum. Nam tristique, augue eget ultrices sodales, dolor orci condimentum sem, in eleifend diam ipsum at magna. Maecenas hendrerit, eros quis dignissim pretium, diam orci rutrum ipsum, a pharetra ligula orci non risus. Pellentesque sit amet nulla feugiat, posuere enim ac, convallis quam. Nulla hendrerit neque vitae enim rhoncus semper. Nunc nec facilisis enim. Maecenas cursus vulputate condimentum. Donec egestas faucibus dui. Curabitur non elit eget dui hendrerit tempor. Cras pellentesque et elit id faucibus. Pellentesque eleifend vel enim et sagittis.
+                </p>
+                <h2 class="govuk-heading-m serif" id="finances">
+                    5. Resources and costs
+                </h2>
+                <style>
+                    .big-input {
+                        font-size: 36px;
+                        border: none;
+                        outline: none;
+                        display: inline;
+                        max-width: 90%;
+                        margin:0;
+                        padding: 0;
+                    }
+                    .big-pound{
+                        font-size: 36px;
+                        display: inline-block;
+                        float:left;
+                        width:25px;
+                    }
+
+                    details {
+                        max-width: 600px;
+                    }
+                    .govuk-accordion__section-header {
+                        background-color: #f1f1f1;
+                        padding-left:10px;
+                    }
+                </style>
+                <h3 class="govuk-heading-s serif">
+                    5.1 Summary
+                </h3>
+                <div class="big-numbers u-space-b45">
+
+                    <div class="big-numbers__biggy">
+                        <div class="big-numbers__title">
+                            Total full economic costs (fEC)
+                        </div>
+                        <div class="big-numbers__number">
+                            £880,600
+                        </div>
+                    </div>
+                    <div class="big-numbers__biggy">
+                        <div class="big-numbers__title">
+                            Contribution from applying organisations
+                        </div>
+                        <div class="big-numbers__number">
+                            £176,120
+                        </div>
+                    </div>
+                    <div class="big-numbers__biggy">
+                        <div class="big-numbers__title">
+                            Funding applied for
+                        </div>
+                        <div class="big-numbers__number">
+                            £704,480
+                        </div>
+                    </div>
+                </div>
+                <h2 class="govuk-heading-s govuk-heading--has-tag ">University of Wales <strong class="badge badge--info badge--smaller">LEAD</strong></h2>
+                <div class="govuk-accordion ukri-accordion" data-module="govuk-accordion" id="accordion-default">
+                    {#<div class="govuk-accordion__controls">
+                        <button aria-expanded="false" class="govuk-accordion__open-all" type="button">Open all <span class="govuk-visually-hidden">sections</span></button>
+                    </div>#}
+                    <div class="govuk-accordion__controls"></div>
+                    <div class="govuk-accordion__section">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading"><span aria-hidden="true" class="govuk-accordion__icon"></span><button aria-controls="accordion-default-content-1" aria-expanded="false" class="govuk-accordion__section-button" id="accordion-default-heading-1" type="button">Directly allocated<span aria-hidden="true" class="govuk-accordion__icon"></span></button></h2>
+                            <div class="accordion-totals accordion-totals--display">
+                                <span class="accordion-totals__big-text ">£240,000</span>
+                            </div>
+                        </div>
+                        <div aria-labelledby="accordion-default-heading-1" class="govuk-accordion__section-content" id="accordion-default-content-1">
+                            <details class="govuk-details u-space-y10 js-only" data-module="govuk-details" role="group">
+                                <summary aria-controls="details-content-0" aria-expanded="false" class="govuk-details__summary" role="button">
+                                    <span class="govuk-details__summary-text">Guidance for calculating directly allocated costs</span>
+                                </summary>
+                                <div aria-hidden="true" class="govuk-details__text" id="details-content-0">
+                                    <div class="tiny-spoof">
+                                        <p class="govuk-body">These are the costs of resources used by a project that are shared by other activities. They are charged to projects on the basis of estimates rather than actual costs and do not represent actual costs on a project-by-project basis. They include:</p>
+                                        <p class="govuk-body">Estates: These costs may include building and premises costs, basic services and utilities, and any clerical staff and equipment maintenance or operational costs not already included under other cost headings.</p>
+                                        <p class="govuk-body">Other Directly Allocated: These costs may include, for example, the costs of shared Pool staff or access to institutional research facilities such as equipment, IT systems.</p>
+                                    </div>
+                                </div>
+                            </details>
+                            <div class="responsive-table">
+                                <table class="govuk-table responsive-table__table exceptions-table" id="">
+                                    <thead class="">
+                                    <tr>
+                                        <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Staff</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right govuk-input--secret" data-percent="80" data-target="daStaffAppliedFor" id="daStaff" name="daStaff" type="text" value="150,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="daStaffAppliedFor" name="daStaffAppliedFor" readonly type="text" value="120,000"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Estates</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput" data-percent="80" data-target="daEstatesAppliedFor" id="daEstates" name="daEstates" type="text" value="100,00"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="daEstatesAppliedFor" name="daEstatesAppliedFor" readonly type="text" value="80,000"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Other</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput" data-percent="80" data-target="daOtherAppliedFor" id="daOther" name="daOther" type="text" value="50,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="daOtherAppliedFor" name="daOtherAppliedFor" readonly type="text" value="40,000"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="govuk-accordion__section">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading"><span aria-hidden="true" class="govuk-accordion__icon"></span><button aria-controls="accordion-default-content-2" aria-expanded="false" class="govuk-accordion__section-button" id="accordion-default-heading-2" type="button">Directly incurred<span aria-hidden="true" class="govuk-accordion__icon"></span></button></h2>
+                            <div class="accordion-totals accordion-totals--display">
+                                <span class="accordion-totals__big-text ">£188,400</span>
+                            </div>
+                        </div>
+                        <div aria-labelledby="accordion-default-heading-2" class="govuk-accordion__section-content" id="accordion-default-content-2">
+                            <details class="govuk-details u-space-y10 js-only" data-module="govuk-details" role="group">
+                                <summary aria-controls="details-content-0" aria-expanded="false" class="govuk-details__summary" role="button">
+                                    <span class="govuk-details__summary-text">Guidance for calculating directly incurred costs</span>
+                                </summary>
+                                <div aria-hidden="true" class="govuk-details__text" id="details-content-0">
+                                    <div class="tiny-spoof">
+                                        <p class="govuk-body">These are costs that are explicitly identifiable as arising from the conduct of a project, are charged as the cash value actually spent and are supported by an audit record. They include:</p>
+                                        <p class="govuk-body">Equipment: The cost of individual items of equipment dedicated to the project and individually costing more than £10,000 (including VAT). Against each equipment item the applicant can specify the total cost of the equipment and the amount being requested from the Council. All equipment costs will now be shown under the Directly Incurred heading.</p>
+                                        <p class="govuk-body">Travel and Subsistence: funds for travel and subsistence for use by staff who work on the project where these are required by the nature of the work.</p>
+                                        <p class="govuk-body">Other Costs of other items dedicated to the project, including consumables, books, survey fees, purchase/hire of vehicles, publication costs or recruitment and advertising costs for staff directly employed on the project. Items of equipment costing less than £10,000 should also be included under this heading.</p>
+                                    </div>
+                                </div>
+                            </details>
+                            <div class="responsive-table">
+                                <table class="govuk-table responsive-table__table exceptions-table" id="">
+                                    <thead class="">
+                                    <tr>
+                                        <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Staff</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right govuk-input--secret" data-percent="80" data-target="diStaffAppliedFor" id="diStaff" name="diStaff" type="text" value="120,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="diStaffAppliedFor" name="diStaffAppliedFor" readonly type="text" value="96,000"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Equipment</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput" data-percent="80" data-target="diEquipmentAppliedFor" id="diEquipment" name="diEquipment" type="text" value="55,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="diEquipmentAppliedFor" name="diEquipmentAppliedFor" readonly type="text" value="44,000"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Travel and subsistence</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput" data-percent="80" data-target="diTravelAppliedFor" id="diTravel" name="diTravel" type="text" value="12,500"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="diTravelAppliedFor" name="diTravelAppliedFor" readonly type="text" value="10,000"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Other</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput" data-percent="80" data-target="diOtherAppliedFor" id="diOther" name="diOther" type="text" value="48,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="diOtherAppliedFor" name="diOtherAppliedFor" readonly type="text" value="38,400"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="govuk-accordion__section">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading"><span aria-hidden="true" class="govuk-accordion__icon"></span><button aria-controls="accordion-default-content-3" aria-expanded="false" class="govuk-accordion__section-button" id="accordion-default-heading-3" type="button">Indirect costs<span aria-hidden="true" class="govuk-accordion__icon"></span></button></h2>
+                            <div class="accordion-totals accordion-totals--display">
+                                <span class="accordion-totals__big-text ">£148,800</span>
+                            </div>
+                        </div>
+                        <div aria-labelledby="accordion-default-heading-3" class="govuk-accordion__section-content" id="accordion-default-content-3">
+                            <details class="govuk-details u-space-y10 js-only" data-module="govuk-details" role="group">
+                                <summary aria-controls="details-content-0" aria-expanded="false" class="govuk-details__summary" role="button">
+                                    <span class="govuk-details__summary-text">Guidance for calculating indirect costs</span>
+                                </summary>
+                                <div aria-hidden="true" class="govuk-details__text" id="details-content-0">
+                                    <div class="tiny-spoof">
+                                        <p class="govuk-body">These include non-specific costs charged across all projects based on estimates that are not otherwise included as Directly Allocated costs. They include the costs of the Research Organisation's administration such as personnel, finance, library and some departmental services.</p>
+                                    </div>
+                                </div>
+                            </details>
+                            <div class="responsive-table">
+                                <table class="govuk-table responsive-table__table exceptions-table" id="">
+                                    <thead class="">
+                                    <tr>
+                                        <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Indirect costs</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput u-align-right" data-percent="80" data-target="indirectCostsAppliedFor" id="indirectCosts" name="indirectCosts" type="text" value="186,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="indirectCostsAppliedFor" name="indirectCostsAppliedFor" readonly type="text" value="148,800"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="govuk-accordion__section">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading"><span aria-hidden="true" class="govuk-accordion__icon"></span><button aria-controls="accordion-default-content-4" aria-expanded="false" class="govuk-accordion__section-button" id="accordion-default-heading-4" type="button">Exceptions<span aria-hidden="true" class="govuk-accordion__icon"></span></button></h2>
+                            <div class="accordion-totals accordion-totals--display">
+                                <span class="accordion-totals__big-text ">£488,400</span>
+                            </div>
+                        </div>
+                        <div aria-labelledby="accordion-default-heading-4" class="govuk-accordion__section-content" id="accordion-default-content-4">
+                            <details class="govuk-details u-space-y10 js-only" data-module="govuk-details" role="group">
+                                <summary aria-controls="details-content-0" aria-expanded="false" class="govuk-details__summary" role="button">
+                                    <span class="govuk-details__summary-text">Guidance for calculating exceptions costs</span>
+                                </summary>
+                                <div aria-hidden="true" class="govuk-details__text" id="details-content-0">
+                                    <div class="tiny-spoof">
+                                        <p class="govuk-body">These are Directly Incurred costs that Research Councils will fund in full (i.e. at 100%), subject to actual expenditure incurred, or items that are outside fEC.</p>
+                                    </div>
+                                </div>
+                            </details>
+                            <div class="responsive-table">
+                                <table class="govuk-table responsive-table__table exceptions-table" id="">
+                                    <thead class="">
+                                    <tr>
+                                        <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Staff</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right govuk-input--secret" data-percent="100" data-target="exStaffAppliedFor" id="exStaff" name="exStaff" type="text" value="150,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="exStaffAppliedFor" name="exStaffAppliedFor" readonly type="text" value="120,000"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Equipment</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput" data-percent="100" data-target="exEquipmentAppliedFor" id="exEquipment" name="exEquipment" type="text" value="420,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="exEquipmentAppliedFor" name="exEquipmentAppliedFor" readonly type="text" value="336,000"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Travel and subsistence</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput" data-percent="100" data-target="exTravelAppliedFor" id="exTravel" name="exTravel" type="text" value="14,500"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="exTravelAppliedFor" name="exTravelAppliedFor" readonly type="text" value="11,600"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Other</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput" data-percent="100" data-target="exOtherAppliedFor" id="exOther" name="exOther" type="text" value="26,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="exOtherAppliedFor" name="exOtherAppliedFor" readonly type="text" value="20,800"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <h2 class="govuk-heading-s govuk-heading--has-tag ">Manchester University</h2>
+
+                <div class="govuk-accordion ukri-accordion" data-module="govuk-accordion" id="accordion-default">
+                    {#<div class="govuk-accordion__controls">
+                        <button aria-expanded="false" class="govuk-accordion__open-all" type="button">Open all <span class="govuk-visually-hidden">sections</span></button>
+                    </div>#}
+                    <div class="govuk-accordion__controls"></div>
+                    <div class="govuk-accordion__section">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading"><span aria-hidden="true" class="govuk-accordion__icon"></span><button aria-controls="accordion-default-content-1" aria-expanded="false" class="govuk-accordion__section-button" id="accordion-default-heading-1" type="button">Directly allocated<span aria-hidden="true" class="govuk-accordion__icon"></span></button></h2>
+                            <div class="accordion-totals accordion-totals--display">
+                                <span class="accordion-totals__big-text ">£160,000</span>
+                            </div>
+                        </div>
+                        <div aria-labelledby="accordion-default-heading-1" class="govuk-accordion__section-content" id="accordion-default-content-1">
+                            <details class="govuk-details u-space-y10 js-only" data-module="govuk-details" role="group">
+                                <summary aria-controls="details-content-0" aria-expanded="false" class="govuk-details__summary" role="button">
+                                    <span class="govuk-details__summary-text">Guidance for calculating directly allocated costs</span>
+                                </summary>
+                                <div aria-hidden="true" class="govuk-details__text" id="details-content-0">
+                                    <div class="tiny-spoof">
+                                        <p class="govuk-body">These are the costs of resources used by a project that are shared by other activities. They are charged to projects on the basis of estimates rather than actual costs and do not represent actual costs on a project-by-project basis. They include:</p>
+                                        <p class="govuk-body">Estates: These costs may include building and premises costs, basic services and utilities, and any clerical staff and equipment maintenance or operational costs not already included under other cost headings.</p>
+                                        <p class="govuk-body">Other Directly Allocated: These costs may include, for example, the costs of shared Pool staff or access to institutional research facilities such as equipment, IT systems.</p>
+                                    </div>
+                                </div>
+                            </details>
+                            <div class="responsive-table">
+                                <table class="govuk-table responsive-table__table exceptions-table" id="">
+                                    <thead class="">
+                                    <tr>
+                                        <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Staff</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right govuk-input--secret" data-percent="80" data-target="daStaffAppliedFor" id="daStaff" name="daStaff" type="text" value="150,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="daStaffAppliedFor" name="daStaffAppliedFor" readonly type="text" value="120,000"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Estates</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput" data-percent="80" data-target="daEstatesAppliedFor" id="daEstates" name="daEstates" type="text" value="100,00"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="daEstatesAppliedFor" name="daEstatesAppliedFor" readonly type="text" value="80,000"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Other</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput" data-percent="80" data-target="daOtherAppliedFor" id="daOther" name="daOther" type="text" value="50,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="daOtherAppliedFor" name="daOtherAppliedFor" readonly type="text" value="40,000"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="govuk-accordion__section">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading"><span aria-hidden="true" class="govuk-accordion__icon"></span><button aria-controls="accordion-default-content-2" aria-expanded="false" class="govuk-accordion__section-button" id="accordion-default-heading-2" type="button">Directly incurred<span aria-hidden="true" class="govuk-accordion__icon"></span></button></h2>
+                            <div class="accordion-totals accordion-totals--display">
+                                <span class="accordion-totals__big-text ">£96,400</span>
+                            </div>
+                        </div>
+                        <div aria-labelledby="accordion-default-heading-2" class="govuk-accordion__section-content" id="accordion-default-content-2">
+                            <details class="govuk-details u-space-y10 js-only" data-module="govuk-details" role="group">
+                                <summary aria-controls="details-content-0" aria-expanded="false" class="govuk-details__summary" role="button">
+                                    <span class="govuk-details__summary-text">Guidance for calculating directly incurred costs</span>
+                                </summary>
+                                <div aria-hidden="true" class="govuk-details__text" id="details-content-0">
+                                    <div class="tiny-spoof">
+                                        <p class="govuk-body">These are costs that are explicitly identifiable as arising from the conduct of a project, are charged as the cash value actually spent and are supported by an audit record. They include:</p>
+                                        <p class="govuk-body">Equipment: The cost of individual items of equipment dedicated to the project and individually costing more than £10,000 (including VAT). Against each equipment item the applicant can specify the total cost of the equipment and the amount being requested from the Council. All equipment costs will now be shown under the Directly Incurred heading.</p>
+                                        <p class="govuk-body">Travel and Subsistence: funds for travel and subsistence for use by staff who work on the project where these are required by the nature of the work.</p>
+                                        <p class="govuk-body">Other Costs of other items dedicated to the project, including consumables, books, survey fees, purchase/hire of vehicles, publication costs or recruitment and advertising costs for staff directly employed on the project. Items of equipment costing less than £10,000 should also be included under this heading.</p>
+                                    </div>
+                                </div>
+                            </details>
+                            <div class="responsive-table">
+                                <table class="govuk-table responsive-table__table exceptions-table" id="">
+                                    <thead class="">
+                                    <tr>
+                                        <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Staff</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right govuk-input--secret" data-percent="80" data-target="diStaffAppliedFor" id="diStaff" name="diStaff" type="text" value="120,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="diStaffAppliedFor" name="diStaffAppliedFor" readonly type="text" value="96,000"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Equipment</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput" data-percent="80" data-target="diEquipmentAppliedFor" id="diEquipment" name="diEquipment" type="text" value="55,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="diEquipmentAppliedFor" name="diEquipmentAppliedFor" readonly type="text" value="44,000"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Travel and subsistence</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput" data-percent="80" data-target="diTravelAppliedFor" id="diTravel" name="diTravel" type="text" value="12,500"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="diTravelAppliedFor" name="diTravelAppliedFor" readonly type="text" value="10,000"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Other</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput" data-percent="80" data-target="diOtherAppliedFor" id="diOther" name="diOther" type="text" value="48,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="diOtherAppliedFor" name="diOtherAppliedFor" readonly type="text" value="38,400"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="govuk-accordion__section">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading"><span aria-hidden="true" class="govuk-accordion__icon"></span><button aria-controls="accordion-default-content-3" aria-expanded="false" class="govuk-accordion__section-button" id="accordion-default-heading-3" type="button">Indirect costs<span aria-hidden="true" class="govuk-accordion__icon"></span></button></h2>
+                            <div class="accordion-totals accordion-totals--display">
+                                <span class="accordion-totals__big-text ">£82,500</span>
+                            </div>
+                        </div>
+                        <div aria-labelledby="accordion-default-heading-3" class="govuk-accordion__section-content" id="accordion-default-content-3">
+                            <details class="govuk-details u-space-y10 js-only" data-module="govuk-details" role="group">
+                                <summary aria-controls="details-content-0" aria-expanded="false" class="govuk-details__summary" role="button">
+                                    <span class="govuk-details__summary-text">Guidance for calculating indirect costs</span>
+                                </summary>
+                                <div aria-hidden="true" class="govuk-details__text" id="details-content-0">
+                                    <div class="tiny-spoof">
+                                        <p class="govuk-body">These include non-specific costs charged across all projects based on estimates that are not otherwise included as Directly Allocated costs. They include the costs of the Research Organisation's administration such as personnel, finance, library and some departmental services.</p>
+                                    </div>
+                                </div>
+                            </details>
+                            <div class="responsive-table">
+                                <table class="govuk-table responsive-table__table exceptions-table" id="">
+                                    <thead class="">
+                                    <tr>
+                                        <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Indirect costs</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput u-align-right" data-percent="80" data-target="indirectCostsAppliedFor" id="indirectCosts" name="indirectCosts" type="text" value="186,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">80%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="indirectCostsAppliedFor" name="indirectCostsAppliedFor" readonly type="text" value="148,800"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="govuk-accordion__section">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading"><span aria-hidden="true" class="govuk-accordion__icon"></span><button aria-controls="accordion-default-content-4" aria-expanded="false" class="govuk-accordion__section-button" id="accordion-default-heading-4" type="button">Exceptions<span aria-hidden="true" class="govuk-accordion__icon"></span></button></h2>
+                            <div class="accordion-totals accordion-totals--display">
+                                <span class="accordion-totals__big-text ">£165,400</span>
+                            </div>
+                        </div>
+                        <div aria-labelledby="accordion-default-heading-4" class="govuk-accordion__section-content" id="accordion-default-content-4">
+                            <details class="govuk-details u-space-y10 js-only" data-module="govuk-details" role="group">
+                                <summary aria-controls="details-content-0" aria-expanded="false" class="govuk-details__summary" role="button">
+                                    <span class="govuk-details__summary-text">Guidance for calculating exceptions costs</span>
+                                </summary>
+                                <div aria-hidden="true" class="govuk-details__text" id="details-content-0">
+                                    <div class="tiny-spoof">
+                                        <p class="govuk-body">These are Directly Incurred costs that Research Councils will fund in full (i.e. at 100%), subject to actual expenditure incurred, or items that are outside fEC.</p>
+                                    </div>
+                                </div>
+                            </details>
+                            <div class="responsive-table">
+                                <table class="govuk-table responsive-table__table exceptions-table" id="">
+                                    <thead class="">
+                                    <tr>
+                                        <th class="govuk-table__header cell-max-300 cell-min-200">Fund headings</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Full costs (£)</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">fEC (%)</th>
+                                        <th class="govuk-table__header govuk-table__header--numeric">Funding applied for (£)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Staff</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right govuk-input--secret" data-percent="100" data-target="exStaffAppliedFor" id="exStaff" name="exStaff" type="text" value="150,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="exStaffAppliedFor" name="exStaffAppliedFor" readonly type="text" value="120,000"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Equipment</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput" data-percent="100" data-target="exEquipmentAppliedFor" id="exEquipment" name="exEquipment" type="text" value="420,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="exEquipmentAppliedFor" name="exEquipmentAppliedFor" readonly type="text" value="336,000"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Travel and subsistence</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput" data-percent="100" data-target="exTravelAppliedFor" id="exTravel" name="exTravel" type="text" value="14,500"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="exTravelAppliedFor" name="exTravelAppliedFor" readonly type="text" value="11,600"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="govuk-table__cell govuk-table__cell--middle">Other</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--width-4 govuk-input--secret govuk-table__cell--middle u-align-right magicInput" data-percent="100" data-target="exOtherAppliedFor" id="exOther" name="exOther" type="text" value="26,000"></td>
+                                        <td class="govuk-table__cell govuk-table__header--numeric govuk-table__cell--middle">100%</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric govuk-table__cell--middle"><input class="govuk-input govuk-input--secret" id="exOtherAppliedFor" name="exOtherAppliedFor" readonly type="text" value="20,800"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <p class="govuk-body"><a href="#" id="showModal" class="govuk-link openModal">Show full financial details</a></p>
+
+                <h3 class="govuk-heading-s serif">
+                    5.2 Justification of resources
+                </h3>
+                <p class="govuk-body serif">
+                    In a velit quis dolor dictum rutrum. Donec gravida velit vitae justo imperdiet rhoncus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent ac leo tortor. Sed varius leo et eros maximus hendrerit. Nulla condimentum et nibh ac molestie. Suspendisse blandit dictum neque ut pulvinar. Sed aliquam, lorem nec laoreet pulvinar, mi lorem porttitor nisl, ut convallis felis mauris sed justo. Nam dictum lorem nulla, in tincidunt urna facilisis quis. Aliquam ornare risus eget eros fermentum viverra. Sed hendrerit urna non massa porttitor pulvinar. Nam nec porttitor nisi. Duis malesuada turpis ac libero blandit, quis lacinia urna efficitur. Phasellus sed quam sed leo ullamcorper ullamcorper ac at ex. Maecenas felis leo, sagittis in pharetra at, feugiat in sem. Vestibulum tempus erat vel tellus iaculis, quis mollis ante accumsan.
+                </p>
+                <h2 class="govuk-heading-m serif" id="letters">
+                    6. Letters of support
+                </h2>
+                <p class="govuk-body serif">
+                    Please see below for the our letters of support from the following academics: Prof Annie Robin, Prof Anthony Readhead, Prof John Curtin
+                </p>
+                <div class="application-items u-space-b30">
+
+                    <div class="application-item application-item--incomplete">
+                        <div class="application-item__contents govuk-clearfix" style="padding-left:50px;background-image: url(/images/svg/pdf_icon.svg); background-repeat:no-repeat;background-size: 32px; background-position: 10px 50%;">
+                            <div class="application-item__left" style="width:100%;">
+
+                                <a href="#" class="govuk-link  ">Letter of support: Prof Annie Robin</a><br>
+                                <span class="govuk-!-font-size-14">File: Letter_Annie_Robin.pdf (Size 2.4mb)</span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="application-item application-item--incomplete">
+                        <div class="application-item__contents govuk-clearfix" style="padding-left:50px;background-image: url(/images/svg/pdf_icon.svg); background-repeat:no-repeat;background-size: 32px; background-position: 10px 50%;">
+                            <div class="application-item__left" style="width:100%;">
+
+                                <a href="#" class="govuk-link  ">Letter of support: Prof Anthony Readhead</a><br>
+                                <span class="govuk-!-font-size-14">File: Letter-Prof-Anthony-Readhead.pdf (Size 1.2mb)</span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="application-item application-item--incomplete">
+                        <div class="application-item__contents govuk-clearfix" style="padding-left:50px;background-image: url(/images/svg/pdf_icon.svg); background-repeat:no-repeat;background-size: 32px; background-position: 10px 50%;">
+                            <div class="application-item__left" style="width:100%;">
+
+                                <a href="#" class="govuk-link  ">Letter of support: Letter of support: Prof John Curtin</a><br>
+                                <span class="govuk-!-font-size-14">File: letter_curtin.pdf (Size 2.1mb)</span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="u-align-right">
+                    <a class="govuk-link canScroll" href="#mainContent">Top of page</a>
+                </div>
+                <hr>
+            </div>
+        {%- endcall %}
+
+    </section>
+
+    <section id="fullTables" style="" class="js-hidden">
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+
+                {{ components.captionHeading(text='Costs by category', tag='h2', size='m') }}
+
+                <div class="responsive-table">
+
+                    <table class="govuk-table govuk-table--stripes _govuk-table--finance govuk-table--indents responsive-table__table">
+                        <thead>
+                        <tr>
+                            <th rowspan="2" class="govuk-table__header u-brd-l0">Cost category</th>
+                            <th rowspan="2" class="govuk-table__header govuk-table__header--numeric">% fEC</th>
+                            <th colspan="3" class="govuk-table__header govuk-table__cell--centre ">Authorised fEC (£)</th>
+                            <th colspan="3" class="govuk-table__header govuk-table__cell--centre">RC Contribution (£)</th>
+
+                        </tr>
+                        <tr>
+                            <th class="govuk-table__header govuk-table__header--numeric u-brd-r0">Net</th>
+                            <th class="govuk-table__header govuk-table__header--numeric u-brd-r0">Indexation</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Total</th>
+                            <th class="govuk-table__header govuk-table__header--numeric u-brd-r0">Net</th>
+                            <th class="govuk-table__header govuk-table__header--numeric u-brd-r0">Indexation</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="govuk-table__cell">DI - Staff</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">DI - Equipment</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">DI - T&amp;S</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+
+                        </tr>
+                        <tr class="govuk-table__cell-bb">
+                            <td class="govuk-table__cell">DI - Other</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">DA - Investigator</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">DA - Estates</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">DA - Other</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        <tr class="govuk-table__cell-bb">
+                            <td class="govuk-table__cell">DA - Indirect costs</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Ex - Staff</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">100</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Ex - T&amp;S</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">100</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        <tr class="">
+                            <td class="govuk-table__cell">Ex - Other</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">100</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr class="govuk-table__row--mega">
+                            <td class="govuk-table__cell">Total value</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+
+
+
+                <div class="responsive-table">
+
+                    <table class="govuk-table govuk-table--stripes govuk-table--finance responsive-table__table">
+                        <thead>
+                        <tr>
+                            <th rowspan="2" class="govuk-table__header u-brd-l0">Cost category</th>
+                            <th rowspan="2" class="govuk-table__header govuk-table__header--numeric">% fEC</th>
+                            <th colspan="3" class="govuk-table__header govuk-table__cell--centre ">Authorised fEC (£)</th>
+                            <th colspan="3" class="govuk-table__header govuk-table__cell--centre">RC Contribution (£)</th>
+
+                        </tr>
+                        <tr>
+                            <th class="govuk-table__header govuk-table__header--numeric u-brd-r0">Net</th>
+                            <th class="govuk-table__header govuk-table__header--numeric u-brd-r0">Indexation</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Total</th>
+                            <th class="govuk-table__header govuk-table__header--numeric u-brd-r0">Net</th>
+                            <th class="govuk-table__header govuk-table__header--numeric u-brd-r0">Indexation</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="govuk-table__cell">DI - Staff</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">DI - Equipment</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">DI - T&amp;S</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+
+                        </tr>
+                        <tr class="govuk-table__cell-bb">
+                            <td class="govuk-table__cell">DI - Other</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">DA - Investigator</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">DA - Estates</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">DA - Other</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        <tr class="govuk-table__cell-bb">
+                            <td class="govuk-table__cell">DA - Indirect costs</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">80</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Ex - Staff</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">100</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">Ex - T&amp;S</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">100</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        <tr class="">
+                            <td class="govuk-table__cell">Ex - Other</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">100</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr class="govuk-table__row--mega">
+                            <td class="govuk-table__cell">Total value</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">&nbsp;</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">50, 000</td>
+                        </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+
+                {{ components.captionHeading(text='Staff and DI investigator details', tag='h3', size='s') }}
+                <div class="responsive-table">
+
+                    <table class="govuk-table responsive-table__table">
+                        <thead>
+                        <tr>
+                            <th class="govuk-table__header">Start date</th>
+                            <th class="govuk-table__header">End date</th>
+                            <th class="govuk-table__header govuk-table__header--centre">Duration</th>
+                            <th class="govuk-table__header govuk-table__header--centre">FTE<br>percent</th>
+                            <th class="govuk-table__header">Name or post<br>identifier</th>
+                            <th class="govuk-table__header">Summary fund<br>heading</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Authorised cost<br><span class="govuk-!-font-size-16 govuk-!-font-weight-regular">(Excluding indexation)</span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">24</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">{{ range(10, 100) | random }}</td>
+                            <td class="govuk-table__cell">{{ 'firstAndLast' | giveMeAName }}</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">123,500</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">24</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">{{ range(10, 100) | random }}</td>
+                            <td class="govuk-table__cell">{{ 'firstAndLast' | giveMeAName }}</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">123,500</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">24</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">{{ range(10, 100) | random }}</td>
+                            <td class="govuk-table__cell">{{ 'firstAndLast' | giveMeAName }}</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">123,500</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">24</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">{{ range(10, 100) | random }}</td>
+                            <td class="govuk-table__cell">{{ 'firstAndLast' | giveMeAName }}</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">123,500</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">24</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">{{ range(10, 100) | random }}</td>
+                            <td class="govuk-table__cell">{{ 'firstAndLast' | giveMeAName }}</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">123,500</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">24</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">{{ range(10, 100) | random }}</td>
+                            <td class="govuk-table__cell">{{ 'firstAndLast' | giveMeAName }}</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">123,500</td>
+                        </tr>
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">24</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">{{ range(10, 100) | random }}</td>
+                            <td class="govuk-table__cell">{{ 'firstAndLast' | giveMeAName }}</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">123,500</td>
+                        </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <h3 class="govuk-heading-s ">
+                    Staff summary
+                </h3>
+
+                <div class="responsive-table">
+
+                    <table class="govuk-table responsive-table__table">
+                        <thead>
+                        <tr>
+                            <th class="govuk-table__header">Start date</th>
+                            <th class="govuk-table__header">End date</th>
+                            <th class="govuk-table__header govuk-table__header--centre">Duration</th>
+                            <th class="govuk-table__header govuk-table__header--centre">FTE<br>percent</th>
+                            <th class="govuk-table__header">Name or post<br>identifier</th>
+                            <th class="govuk-table__header">Summary fund<br>heading</th>
+                            <th class="govuk-table__header govuk-table__header--numeric">Authorised cost<br><span class="govuk-!-font-size-16 govuk-!-font-weight-regular">(Excluding indexation)</span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">48</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">70</td>
+                            <td class="govuk-table__cell">Eisa Decker</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£50,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">48</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">90</td>
+                            <td class="govuk-table__cell">Brian Osborne</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£32,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">12</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">75</td>
+                            <td class="govuk-table__cell">Eiddon Bradford</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£222,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">48</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">75</td>
+                            <td class="govuk-table__cell">Jesse Padilla</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£182,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">12</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">95</td>
+                            <td class="govuk-table__cell">Jia Kent</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£75,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">18</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">80</td>
+                            <td class="govuk-table__cell">Sulayman Lewis</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£62,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">24</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">95</td>
+                            <td class="govuk-table__cell">Milosz Wright</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£25,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">18</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">80</td>
+                            <td class="govuk-table__cell">Musa Walton</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£200,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">48</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">80</td>
+                            <td class="govuk-table__cell">Tisloh Becker</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£125,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">36</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">90</td>
+                            <td class="govuk-table__cell">Zhuo Meyers</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£165,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">12</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">70</td>
+                            <td class="govuk-table__cell">Louie Lindsay</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£150,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">18</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">85</td>
+                            <td class="govuk-table__cell">Drakeo Jones</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£87,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">12</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">75</td>
+                            <td class="govuk-table__cell">Rhudi Cummings</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£17,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">12</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">95</td>
+                            <td class="govuk-table__cell">Jayden Graves</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£177,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">18</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">75</td>
+                            <td class="govuk-table__cell">Nikita Rush</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£227,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">48</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">75</td>
+                            <td class="govuk-table__cell">Macsen Hebert</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£112,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">18</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">75</td>
+                            <td class="govuk-table__cell">Taliesin Crosby</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£190,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">18</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">90</td>
+                            <td class="govuk-table__cell">Luc Holt</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£152,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">48</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">75</td>
+                            <td class="govuk-table__cell">Aliekber Pitts</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£197,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">36</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">95</td>
+                            <td class="govuk-table__cell">Miller Silva</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£110,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">48</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">75</td>
+                            <td class="govuk-table__cell">Lockey Gamble</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£95,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">18</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">95</td>
+                            <td class="govuk-table__cell">Allesandro Parks</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£232,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">24</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">90</td>
+                            <td class="govuk-table__cell">Michael-Alexander Mcintosh</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£177,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">36</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">80</td>
+                            <td class="govuk-table__cell">Mahdi Nolan</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£207,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">12</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">85</td>
+                            <td class="govuk-table__cell">Kaydin Valenzuela</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£170,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">18</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">85</td>
+                            <td class="govuk-table__cell">Darius Cash</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£222,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">48</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">70</td>
+                            <td class="govuk-table__cell">Faysal Langley</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£50,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">48</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">90</td>
+                            <td class="govuk-table__cell">Airlie Levy</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£190,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">18</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">80</td>
+                            <td class="govuk-table__cell">Marcous Foley</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£207,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">36</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">70</td>
+                            <td class="govuk-table__cell">Okeoghene Sanford</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£5,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">12</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">85</td>
+                            <td class="govuk-table__cell">Wilkie Logan</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£127,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">36</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">80</td>
+                            <td class="govuk-table__cell">Denver Wolfe</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£62,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">12</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">70</td>
+                            <td class="govuk-table__cell">Aiman Brewer</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£117,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">36</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">80</td>
+                            <td class="govuk-table__cell">Tye Barber</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£60,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">36</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">90</td>
+                            <td class="govuk-table__cell">Michael-James Padilla</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£157,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">24</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">85</td>
+                            <td class="govuk-table__cell">Caolan Rose</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£127,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">18</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">80</td>
+                            <td class="govuk-table__cell">Umer Caldwell</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£177,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">24</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">85</td>
+                            <td class="govuk-table__cell">Yu Owens</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£92,500</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">36</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">75</td>
+                            <td class="govuk-table__cell">Cillian White</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£190,000</td>
+                        </tr>
+
+                        <tr>
+                            <td class="govuk-table__cell">1 Feb 2023</td>
+                            <td class="govuk-table__cell">31 Jan 2025</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre u-align-center">24</td>
+                            <td class="govuk-table__cell govuk-table__cell--centre">70</td>
+                            <td class="govuk-table__cell">Montague Silva</td>
+                            <td class="govuk-table__cell">Directly Incurred</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric">£245,000</td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+    </section>
+
+
+
+    <style>
+        body.noscroll {
+            /*margin: 0;
+            height: 100%;
+            overflow: hidden;*/
+            /*position: fixed;*/
+        }
+        .modal2-outer {
+            background-color: rgba(0,0, 0, 0.25);
+            width:100%;
+            height: 100%;
+            position: fixed;
+            top:0;
+            left:0;
+            margin:0;
+            padding:20px;
+            z-index: 1000;
+        }
+
+        .modal2-inner {
+            position: relative;
+            background-color: white;
+            width:100%;
+            height: 100%;
+            top:0;
+            left:0;
+            /*margin:20px;*/
+            padding:60px 20px 20px;
+            z-index: 1001;
+            overflow: scroll;
+        }
+
+        .modal2-close {
+            position: absolute;
+            top:10px;
+            right:10px;
+            font-size: 24px;
+        }
+    </style>
+    <div class="govuk-visually-hidden modal2-outer" id="modal" >
+        <div class="modal2-inner" id="">
+            <div class="modal2-close"><a href="#" id="closeModal" class="govuk-link closeModal">Close modal window</a></div>
+            <div id="modalTarget"></div>
+        </div>
+    </div>
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    <script>
+        const tableContents = document.getElementById('fullTables').innerHTML;
+        const modalTarget = document.getElementById('modalTarget');
+        const bodyTag = document.body;
+        const modalContainer = document.getElementById('modal');
+        const showModalButton = document.getElementById('showModal');
+        const closeModalButton = document.getElementById('closeModal');
+
+        window.addEventListener('scroll', () => {
+            document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
+        });
+
+        showModalButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            //console.log(event.target);
+            modalTarget.innerHTML = tableContents;
+            // bodyTag.classList.add('noscroll');
+
+            const scrollY = document.documentElement.style.getPropertyValue('--scroll-y');
+            console.log('scrollY = ' + scrollY);
+            const body = document.body;
+            body.style.position = 'fixed';
+            body.style.top = `-${scrollY}`;
+
+
+            modalContainer.classList.remove('govuk-visually-hidden');
+
+            console.log('hello');
+        }, false)
+
+        closeModalButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            // console.log(event.target);
+            // bodyTag.classList.remove('noscroll');
+            // const scrollY = document.body.style.top;
+
+            const body = document.body;
+            const scrollY = body.style.top;
+            console.log('scrollY = ' + scrollY);
+            body.style.position = '';
+            body.style.top = '';
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+
+
+            modalContainer.classList.add('govuk-visually-hidden');
+            console.log('goodbye');
+        }, false);
+
+        /*document.addEventListener('click', function (event) {
+            if (!event.target.matches('.openModal')) return;
+            event.preventDefault();
+
+            console.log(event.target);
+            // console.log(tableContents);
+
+            //modalTarget.innerHTML('tableContents');
+            bodyTag.classList.toggle('noscroll');
+            modalContainer.classList.toggle('govuk-visually-hidden');
+
+            alert('hello');
+        }, false);*/
+
+        /*document.addEventListener('click', function (event) {
+            if (!event.target.matches('.closeModal')) return;
+            event.preventDefault();
+
+            console.log(event.target);
+
+            bodyTag.classList.toggle('noscroll');
+            modalContainer.classList.toggle('govuk-visually-hidden');
+
+            alert('goodbye');
+        }, false);*/
+    </script>
+    <script type="text/javascript">
+        /* smooth-scroll.js v1.3.1 */
+        /*
+        n=0,
+        r=500,
+        i=15,
+        */
+        (function(e,t){
+            "use strict";
+            var n=0,
+                r=250,
+                i=15,
+                /*s=document.getElementsByTagName("a"),*/
+                s=document.getElementsByClassName('canScroll'),
+                o;
+            for(var u=0;u<s.length;u++){
+                o=s[u].attributes.href===t?null:s[u].attributes.href.nodeValue.toString();
+                if(o!==null&&o.length>1&&o.indexOf("#")!=-1){
+                    s[u].onclick=function(){
+                        var n,s=this.attributes.href.nodeValue.toString(),o=s.substr(0,s.indexOf("#")),u=s.substr(s.indexOf("#")+1);if(n=document.getElementById(u)){var l=(r-r%i)/i,c=f(),h=(a(n)-c)/l;if(e.history&&typeof e.history.pushState=="function")e.history.pushState({},t,o+"#"+u);for(var p=1;p<=l;p++){(function(){var t=h*p;setTimeout(function(){e.scrollTo(0,t+c)},i*p)})()}return false}}}}var a=function(e){var r=n*-1;while(e.offsetParent!=t&&e.offsetParent!=null){r+=e.offsetTop+(e.clientTop!=null?e.clientTop:0);e=e.offsetParent}return r};var f=function(){return e.pageYOffset!==t?e.pageYOffset:document.documentElement.scrollTop!==t?document.documentElement.scrollTop:document.body.scrollTop}})(window)
+    </script>
+{% endblock %}

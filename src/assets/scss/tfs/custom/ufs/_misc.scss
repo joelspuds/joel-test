@@ -166,4 +166,14 @@
   &__input {
     @include govuk-font($size: 24);
   }
+
+  &--display {
+   top:15px;
+  }
+
+  &__big-text {
+    @include govuk-font($size: 24, $weight: normal);
+    color: govuk-colour("black")!important;
+  }
+
 }

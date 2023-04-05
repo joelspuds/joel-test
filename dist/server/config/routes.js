@@ -914,6 +914,7 @@ router.get('/prototypes/team-resources-costs/applications', demosController.trcA
 router.post('/prototypes/team-resources-costs/applications', demosController.trcApplicationsPost);
 router.get('/prototypes/team-resources-costs/application-overview', demosController.trcApplicationOverviewGet);
 router.post('/prototypes/team-resources-costs/application-overview', demosController.trcApplicationOverviewPost);
+router.get('/prototypes/team-resources-costs/read-application', demosController.trcReadApplicationGet);
 router.get('/prototypes/team-resources-costs/team', demosController.trcTeamGet);
 router.post('/prototypes/team-resources-costs/team', demosController.trcTeamPost);
 router.get('/prototypes/team-resources-costs/resources-and-costs', demosController.trcResourcesAndCostsGet);

@@ -241,7 +241,7 @@
                         </ul>
                     </div>#}
 
-                    {#<div class="filter filter-toggle __filter-toggle--shut">
+                    <div class="filter filter-toggle __filter-toggle--shut">
                         <button class="filter__title filter__title--closed" type="button" onclick="toggleVisibility(this, 'toggleGroupsList', 'js-hidden')" aria-expanded="true">Filter by group</button>
 
                         <span class="filter__toggle"></span>
@@ -249,7 +249,7 @@
                             {% set uniqueGroups = allData.uniqueGroups %}
                             {% for item in uniqueGroups %}
                                 <li class="filter__item filter__item--small">
-                                    #}{#{{ loop.index }}#}{#
+                                    {#{{ loop.index }}#}
                                     <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
                                         <input class="govuk-checkboxes__input" id="groupsFilter_{{ loop.index }}" type="checkbox" name="groupsFilter_{{ loop.index }}" value="{{ uniqueGroups[loop.index - 1] }}">
                                         <label for="groupsFilter_{{ loop.index }}" class="govuk-checkboxes__label u-display-ib"> {{ uniqueGroups[loop.index - 1] }}</label>
@@ -257,7 +257,7 @@
                                 </li>
                             {%  endfor %}
                         </ul>
-                    </div>#}
+                    </div>
 
                     <div class="_js-hidden">
                         {% call components.formGroup() %}
