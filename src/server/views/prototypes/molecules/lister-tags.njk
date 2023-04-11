@@ -1,0 +1,381 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set pageTitle = OPPORTUNITY_TITLE_TAG + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set listItemsActions = [
+    { text: 'List of things', url: '/prototypes/opportunity-v3/create' }
+] %}
+
+{% set allCouncils = allCouncils %}
+
+{% block content %}
+
+    {% call components.bulmaRow(extraClass='') %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Lister') }}
+        {%- endcall %}
+    {%- endcall %}
+
+   {# {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-9') %}
+
+            <form action="#" method="get" role="search">
+                <div class="search">
+                    <div class="govuk-form-group govuk-form-group--search">
+                        <label class="govuk-label govuk-visually-hidden" for="search">Event name</label>
+                        <input class="govuk-input govuk-input--width-20 search__input" id="search" name="event-name" type="text" placeholder="Search all Opportunities">
+                        <button type="submit" class="search__submit">Search</button>
+                    </div>
+                </div>
+            </form>
+
+            <p class="govuk-body">
+                Showing <strong>3</strong> Opportunities filtered by <strong>MRC</strong> in award set-up
+            </p>
+
+        {%- endcall %}
+    {%- endcall %}#}
+
+    {% call components.bulmaRow(extraClass='', customID='mainContent') %}
+
+        {% call components.bulmaColumnAny(size='is-half') %}
+            <p class="govuk-body"><strong>123</strong> applications with the status of <strong>[filter_name_1]</strong>, <strong>[filter_name_2]</strong>, <strong>[filter_name_3]</strong> <br><a href="#" class="govuk-link govuk-!-display-inline-block">Clear filters</a></p>
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-half') %}
+            <div class="_u-float-right u-align-right " >
+                <div class="govuk-!-font-size-19">
+                    <span>Applications sorted by:</span>
+                    <a href="/prototypes/applications/applications?order=reverse" class="govuk-link">Criteria One</a> |
+                    <strong>Selected criteria</strong> |
+                    <a href="#" class="govuk-link">Final critera</a>
+                </div>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-3') %}
+
+            <div class="govuk-related-items govuk-related-items--flush _u-space-t15">
+
+                {{ components.captionHeading(text='Filters and sorting', tag='h2', size='s') }}
+
+                <div class="filter">
+                    <h2 class="filter__title">Filter by status</h2>
+                    <span class="filter__toggle"></span>
+                    <ul class="filter__list u-clearfix ">
+                        <li class="filter__item filter__item--small ">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input govuk-checkboxes--small" id="filterDraft" type="checkbox" name="filterDraft" value="draft">
+                                <label for="filterDraft" class="govuk-checkboxes__label u-display-ib">With applicant</label>
+                            </div>
+                        </li>
+                        <li class="filter__item filter__item--small">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input" id="filterReady" type="checkbox" name="filterReady" value="open">
+                                <label for="filterReady" class="govuk-checkboxes__label u-display-ib">With research office</label>
+                            </div>
+                        </li>
+                        <li class="filter__item filter__item--small">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input" id="filterOpen" type="checkbox" name="filterOpen" value="open">
+                                <label for="filterOpen" class="govuk-checkboxes__label u-display-ib">Submitted</label>
+                            </div>
+                        </li>
+                        <li class="filter__item filter__item--small">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input" id="filterPrePanel" type="checkbox" name="prePanel" value="prePanel">
+                                <label for="filterPrePanel" class="govuk-checkboxes__label u-display-ib">Successful</label>
+                            </div>
+                        </li>
+                        <li class="filter__item filter__item--small">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input" id="filterPrePanel" type="checkbox" name="prePanel" value="prePanel">
+                                <label for="filterPrePanel" class="govuk-checkboxes__label u-display-ib">Unsuccessful</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="filter">
+                    <h2 class="filter__title">Filter by criteria</h2>
+                    <span class="filter__toggle"></span>
+                    <ul class="filter__list u-clearfix ">
+                        <li class="filter__item filter__item--small ">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input govuk-checkboxes--small" id="filterOne" type="checkbox" name="filterOne" value="one">
+                                <label for="filterOne" class="govuk-checkboxes__label u-display-ib">Criteria one</label>
+                            </div>
+                        </li>
+                        <li class="filter__item filter__item--small">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input" id="filterTwo" type="checkbox" name="filterTwo" value="two">
+                                <label for="filterTwo" class="govuk-checkboxes__label u-display-ib">Criteria two</label>
+                            </div>
+                        </li>
+                        <li class="filter__item filter__item--small">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input" id="filterThree" type="checkbox" name="filterThree" value="three">
+                                <label for="filterThree" class="govuk-checkboxes__label u-display-ib">Criteria three</label>
+                            </div>
+                        </li>
+                        <li class="filter__item filter__item--small">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input" id="filterFour" type="checkbox" name="filterFour" value="four">
+                                <label for="filterFour" class="govuk-checkboxes__label u-display-ib">Criteria four</label>
+                            </div>
+                        </li>
+                        <li class="filter__item filter__item--small">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input" id="filterFive" type="checkbox" name="filterFive" value="five">
+                                <label for="filterFive" class="govuk-checkboxes__label u-display-ib">Criteria five</label>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="filter filter-toggle __filter-toggle--shut">
+                    <button class="filter__title" type="button" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')" aria-expanded="false">Filter by council</button>
+                    {#<h2 class="filter__title" tabindex="0" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')">Filter by council</h2>#}
+                    <span class="filter__toggle"></span>
+                    <ul class="filter__list u-clearfix js-hidden" id="toggleCouncilsList">
+
+                        <li class="filter__item filter__item--small govuk-clearfix">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input " id="filterCouncils_0" type="checkbox" name="filterCouncils_0" value="Arts and Humanities Research Council">
+                                <label for="filterCouncils_0" class="govuk-checkboxes__label u-display-ib">AHRC</label>
+                            </div>
+                        </li>
+
+                        <li class="filter__item filter__item--small govuk-clearfix">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input " id="filterCouncils_1" type="checkbox" name="filterCouncils_1" value="Biotechnology and Biological Sciences Research Council">
+                                <label for="filterCouncils_1" class="govuk-checkboxes__label u-display-ib">BBSRC</label>
+                            </div>
+                        </li>
+
+                        <li class="filter__item filter__item--small govuk-clearfix">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input " id="filterCouncils_2" type="checkbox" name="filterCouncils_2" value="Economic and Social Research Council">
+                                <label for="filterCouncils_2" class="govuk-checkboxes__label u-display-ib">ESRC</label>
+                            </div>
+                        </li>
+
+                        <li class="filter__item filter__item--small govuk-clearfix">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input " id="filterCouncils_3" type="checkbox" name="filterCouncils_3" value="Engineering and Physical Sciences Research Council">
+                                <label for="filterCouncils_3" class="govuk-checkboxes__label u-display-ib">EPSRC</label>
+                            </div>
+                        </li>
+
+                        <li class="filter__item filter__item--small govuk-clearfix">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input " id="filterCouncils_4" type="checkbox" name="filterCouncils_4" value="Innovate UK">
+                                <label for="filterCouncils_4" class="govuk-checkboxes__label u-display-ib">Innovate UK</label>
+                            </div>
+                        </li>
+
+                        <li class="filter__item filter__item--small govuk-clearfix">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input " id="filterCouncils_5" type="checkbox" name="filterCouncils_5" value="Medical Research Council">
+                                <label for="filterCouncils_5" class="govuk-checkboxes__label u-display-ib">MRC</label>
+                            </div>
+                        </li>
+
+                        <li class="filter__item filter__item--small govuk-clearfix">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input " id="filterCouncils_6" type="checkbox" name="filterCouncils_6" value="Natural Environment Research Council">
+                                <label for="filterCouncils_6" class="govuk-checkboxes__label u-display-ib">NERC</label>
+                            </div>
+                        </li>
+
+                        <li class="filter__item filter__item--small govuk-clearfix">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input " id="filterCouncils_7" type="checkbox" name="filterCouncils_7" value="Research England">
+                                <label for="filterCouncils_7" class="govuk-checkboxes__label u-display-ib">Research England</label>
+                            </div>
+                        </li>
+
+                        <li class="filter__item filter__item--small govuk-clearfix">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input " id="filterCouncils_8" type="checkbox" name="filterCouncils_8" value="Science and Technology Facilities Council">
+                                <label for="filterCouncils_8" class="govuk-checkboxes__label u-display-ib">STFC</label>
+                            </div>
+                        </li>
+
+                        <li class="filter__item filter__item--small govuk-clearfix">
+                            <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                <input class="govuk-checkboxes__input " id="filterCouncils_9" type="checkbox" name="filterCouncils_9" value="UK Research and Innovation">
+                                <label for="filterCouncils_9" class="govuk-checkboxes__label u-display-ib">UKRI</label>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="js-hidden">
+                    {% call components.formGroup() %}
+                        {{ components.button(text='Apply filters', extraClass='')}}
+                    {%- endcall %}
+                </div>
+            </div>
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-9', customID='mainContent') %}
+
+            {{ components.captionHeading(text='Applications list for Research Office', tag='h2', size='m') }}
+
+            <div class="responsive-table">
+                <table class="govuk-table responsive-table__table govuk-table--busy _mega-table context" id="applicationsTable">
+                    <thead>
+                    <tr class="govuk-table__header">
+                        <th class="govuk-table__header">Application</th>
+                        <th class="govuk-table__header">Applicant</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Deadline</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="" data-funder="NERC" data-group="Environment and ecology,Biological sciences" data-status="Successful">
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-!-display-block" href="#">APP2732: LEGACY: Labrador Current Governs North Atlantic Climate Syst…</a>
+                            <span class=""><strong>BLUE</strong> Something needs doing by this user.</span>
+                        </td>
+                        <td class="govuk-table__cell">Harnek Hickman</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><span class="_red-text"><span class="u-no-wrap">28 Apr 2023</span></span><br>
+                            {#<span class="meta">4:00pm</span></td>#}
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class=" govuk-tag govuk-tag--tiny govuk-tag--blue">With research office</strong></td>
+                    </tr>
+
+                    <tr class="" data-funder="UKRI" data-group="Science and engineering" data-status="Unsuccessful">
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-!-display-block" href="#">APP3604: UGP: Unified Global Poverty: An Absolute and Relative Cost o…</a>
+                            <span class=""><strong>YELLOW</strong> Something needs doing by another user.</span>
+                        </td>
+                        <td class="govuk-table__cell">Kurt Carpenter</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><span class="_red-text"><span class="u-no-wrap">29 Apr 2023</span></span><br>
+                            {#<span class="meta">4:00pm</span></td>#}
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class=" govuk-tag govuk-tag--tiny govuk-tag--yellow">With applicant</strong></td>
+                    </tr>
+
+                    <tr class="" data-funder="BBSRC" data-group="Sciences and engineering" data-status="Missed deadline">
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-!-display-block" href="#">APP9849: Does functional misfolding of TonB drive import across the o…</a>
+                            <span class=""><strong>RED</strong> Something needs doing urgently by this or any other user.</span>
+                        </td>
+                        <td class="govuk-table__cell">Keiryn Snyder</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="red-text"><span class="u-no-wrap">9 Apr 2023</span></strong><br>
+                            <span class="meta">4:00pm</span></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class=" govuk-tag govuk-tag--tiny govuk-tag--red">With applicant</strong></td>
+                    </tr>
+
+                    <tr class="" data-funder="BBSRC" data-group="Sciences and engineering" data-status="Withdrawn">
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-!-display-block" href="#">APP6798: Signalling Sex in Plants: The Role of Peptide Signals and th…</a>
+                            <span class=""><strong>RED</strong> Something needs doing urgently by this or any other user (as per above).</span>
+                        </td>
+                        <td class="govuk-table__cell">Raheem Boyd</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="red-text"><span class="u-no-wrap">11 Apr 2023</span></strong><br>
+                            <span class="meta">4:00pm</span></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class=" govuk-tag govuk-tag--tiny govuk-tag--red">With research office</strong></td>
+                    </tr>
+
+                    <tr class="" data-funder="BBSRC" data-group="Sciences and engineering" data-status="Missed deadline">
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-!-display-block" href="#">APP6003: Modelling metabolism in the human gut to understand inter-ti…</a>
+                            <span class=""><strong>GREEN</strong> Something has been deemed complete or successful and is still relevant with regards date.</span>
+                        </td>
+                        <td class="govuk-table__cell">Nico Maxwell</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><span class="_red-text"><span class="u-no-wrap">21 Apr 2023</span></span><br>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class=" govuk-tag govuk-tag--tiny govuk-tag--green">Submitted</strong></td>
+                    </tr>
+
+                    <tr data-status="With applicant" data-group="Law and economics,Science and engineering" data-funder="Innovate UK" class="">
+                        <td class="govuk-table__cell">
+                            <a href="#" class="govuk-link govuk-!-display-block">APP6719: MusicBirdy™ - Music Therapy Robot Innovation for Patient Di…</a>
+                            <span class=""><strong>GREY</strong> Something has been deemed complete or successful and is now NOT relevant with regards date.</span>
+                        </td>
+                        <td class="govuk-table__cell">Kaleem Gilbert </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            <span class="_red-text"><span class="u-no-wrap">21 Mar 2023</span></span>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            <strong class=" govuk-tag govuk-tag--tiny govuk-tag--grey">Submitted</strong>
+                        </td>
+                    </tr>
+
+                    <tr class="" data-funder="MRC" data-group="Medical and biomedical sciences" data-status="Missed deadline">
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-!-display-block" href="#">APP5715: The epidemiology and host-fungal neuroimmune interaction of …</a>
+                            <span class=""><strong>GREY</strong> Something qualifies to go in the list but status is now immutable.</span>
+                        </td>
+                        <td class="govuk-table__cell">Howard Marsh</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><span class="_red-text"><span class="u-no-wrap">03 Mar 2023</span></span><br>
+                            {#<span class="meta">4:00pm</span></td>#}
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class=" govuk-tag govuk-tag--tiny govuk-tag--grey">Missed deadline</strong></td>
+                    </tr>
+
+                    <tr class="" data-funder="Innovate UK" data-group="Law and economics,Science and engineering" data-status="Unsuccessful">
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-!-display-block" href="#">APP10407: Machine Learning Driven Diagnosis of Low Bone Density on Pla…</a>
+                            <span class=""><strong>GREY</strong> Something qualifies to go in the list but status is now immutable.</span>
+                        </td>
+                        <td class="govuk-table__cell">Peiyan Mullen</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><span class="_red-text"><span class="u-no-wrap">03 Mar 2023</span></span><br>
+                            {#<span class="meta">4:00pm</span></td>#}
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class=" govuk-tag govuk-tag--tiny govuk-tag--grey">Unsuccessful</strong></td>
+                    </tr>
+                    <tr class="" data-funder="NERC" data-group="Environment and ecology,Biological sciences" data-status="Successful">
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-!-display-block" href="#">APP6793: Assessing the impacts of aquaculture and pesticide use in a …</a>
+                            <span class=""><strong>GREY</strong> Something qualifies to go in the list but status is now immutable.</span>
+                        </td>
+                        <td class="govuk-table__cell">Daryl Oneill</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><span class="_red-text"><span class="u-no-wrap">04 Mar 2023</span></span><br>
+
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class=" govuk-tag govuk-tag--tiny govuk-tag--grey">Successful</strong></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            {#{{ components.pagination(totalItems=46,currentPage=2) }}#}
+            {#{{ components.pagination(totalItems=99,itemsPerPage=20,currentPage=4) }}#}
+
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    <script>
+      function toggleVisibility(_this, id, className) {
+        // event.preventDefault();
+        let toggleSwitch = _this;
+        let toggleItem = document.getElementById(id);
+        if (hasClass(toggleItem, className)) {
+          toggleSwitch.classList.add('filter__title--closed');
+          toggleItem.classList.remove(className);
+          toggleSwitch.setAttribute('aria-expanded', true);
+        }
+        else  {
+          toggleSwitch.classList.remove('filter__title--closed');
+          toggleItem.classList.add(className);
+          toggleSwitch.setAttribute('aria-expanded', false);
+        }
+        // return false;
+      }
+      function hasClass(target, className) {
+        return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+      }
+    </script>
+{% endblock %}
