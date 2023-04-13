@@ -118,16 +118,16 @@
 
                     {#{{ components.captionHeading(text='Filters', tag='h2', size='s') }}#}
 
-                    {#<form action="#" method="POST" role="search" name="searchForm" style="position:relative;" class="u-space-t10">
+                    <form action="#" method="POST" role="search" name="searchForm" style="position:relative;" class="u-space-t10">
                         <div class="search">
                             <div class="govuk-form-group govuk-form-group--search">
-                                <label class="govuk-label govuk-label--s" for="search">Search</label>
-                                <span class="govuk-hint">By application or applicant name</span>
+                                <label class="govuk-label govuk-label--s" for="search">Keyword search</label>
+                                <span class="govuk-hint">Applicant, application title, funder</span>
                                 <input class="govuk-input govuk-input--width-10 search__input" id="search" name="searchQuery" type="text" placeholder="">
                                 <button type="submit" name="applicationSearch" class="search__submit" value="search">Search</button>
                             </div>
                         </div>
-                    </form>#}
+                    </form>
 
                 {% call components.form(action='#', method='POST',name='submitForm') %}
 
@@ -302,7 +302,7 @@
 
                     {% for item in applicationsListv2  %}
 
-                        {% if loop.index < 400 %}
+                        {% if loop.index < 1400 %}
                         {% set tempRandom = range(10, 90) | random %}
                         {% if item.status == "With applicant" %}
                             {% set tagClass = "govuk-tag govuk-tag--tiny govuk-tag--yellow"  %}
