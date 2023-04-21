@@ -46,8 +46,8 @@
             </form>#}
 
             {% if allData.doingSearch %}
-                <p class="govuk-body">There are {{ allData.finalNumber }} results for "<strong>{{ allData.searchQuery }}</strong>" when searching Application name or Project Lead".
-                    <br>Search again, or <a href="/prototypes/applications/applications?clearSearch=true" class="govuk-link">clear the search results</a> to view all applications. </p>
+                <p class="govuk-body"><strong>{{ allData.finalNumber }}</strong> results for "<strong>{{ allData.searchQuery }}</strong>"  - filtered by "<strong>[filter_name_1]</strong>", "<strong>[filter_name_1]</strong>".
+                    <br><a href="/prototypes/applications/applications?clearSearch=true" class="govuk-link">Clear search and filters</a></p>
             {% else %}
                 {% if  allData.showingAll %}
                     {% if  allData.itemCount == 1%}
@@ -56,7 +56,8 @@
                         <p class="govuk-body"><strong>{{ allData.itemCount }}</strong> applications</p>
                     {% endif %}
                 {% else %}
-                    <p class="govuk-body"><strong>{{ allData.itemCount }}</strong> applications with the status of <strong>[filter_name]</strong> <a href="#" class="govuk-link govuk-!-display-block" onClick="(function(){document.getElementById('clearFilterButton').click();; return false;})();return false;">Clear filters</a></p>
+                    <p class="govuk-body"><strong>{{ allData.itemCount }}</strong> filtered by "<strong>[filter_name_1]</strong>", "<strong>[filter_name_2]</strong>",
+                        <br><a href="#" class="govuk-link govuk-!-display-inline-block" onClick="(function(){document.getElementById('clearFilterButton').click();; return false;})();return false;">Clear filters</a></p>
                 {% endif %}
             {% endif %}
         {%- endcall %}
@@ -123,7 +124,7 @@
                             <div class="govuk-form-group govuk-form-group--search">
                                 <label class="govuk-label govuk-label--s" for="search">Keyword search</label>
                                 <span class="govuk-hint">Applicant, application title, funder</span>
-                                <input class="govuk-input govuk-input--width-10 search__input" id="search" name="searchQuery" type="text" placeholder="">
+                                <input class="govuk-input govuk-input--width-10 search__input" id="search" name="searchQuery" type="text" placeholder="" value="{{ allData.searchQuery }}">
                                 <button type="submit" name="applicationSearch" class="search__submit" value="search">Search</button>
                             </div>
                         </div>
@@ -281,7 +282,17 @@
                     background-color: #f1f1f1!important;
                     color: slategrey;
                 }
+                .post-hellip {
+                    display: none;
+                }
 
+                /*mark > .post-hellip {
+                    display:inline!important;
+                }*/
+                mark {
+                    background: #fd0!important;
+                    color: black!important;
+                }
             </style>
 
             <div class="responsive-table">
@@ -333,9 +344,17 @@
 
 
                         <tr data-status="{{ item.status }}" data-group="{{ item.groups }}" data-funder="{{ item.funder }}" class="">
+
                             <td class="govuk-table__cell">
                                 {#{{  item.dateAsString }} & {{ allData.dateString }}#}
-                                <a href="#" class="govuk-link govuk-!-display-block">APP{{ item.randomID }}: {{ item.title | shortenSentence}}</a>
+                                <a href="#" class="govuk-link _govuk-!-display-inline-block">APP{{ item.randomID }}:
+                                {#{% if allData.searchQuery %}
+                                    {{ item.title }}
+                                {% else %}
+                                    {{ item.title | shortenSentence}}
+                                {% endif %}#}
+                                    {{ item.title | shortenSentence}}
+                                </a>
                                 {#<span class="meta govuk-!-display-block u-space-t5">
                                     <strong class="meta">Applicant:</strong> <a href="#" class="govuk-link">{{ item.name }}</a> (Project lead)
                                 </span>#}
@@ -496,11 +515,17 @@
         let markInstance = new Mark(document.querySelector('.context'));
         function performMark() {
             var keyword = '{{ allData.searchQuery }}';
+            // var options = {};
             markInstance.unmark({
                 done: function(){
                     markInstance.mark(keyword);
-                }
+                },
+
             });
+            /*markInstance.mark('{{ allData.searchQuery }}', {
+                "element": "span",
+                "className": "highlight"
+            });*/
         };
         window.addEventListener('load', performMark);
     </script>
