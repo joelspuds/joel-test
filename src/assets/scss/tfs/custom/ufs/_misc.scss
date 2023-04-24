@@ -177,3 +177,27 @@
   }
 
 }
+
+.big-input {
+  font-size: 36px;
+  border: none;
+  outline: none;
+  display: inline;
+  max-width: 90%;
+  margin:0;
+  padding: 0;
+}
+.big-pound{
+  font-size: 36px;
+  display: inline-block;
+  float:left;
+  width:25px;
+}
+
+details {
+  max-width: 600px;
+}
+.govuk-accordion__section-header--costs {
+  background-color: #f1f1f1;
+  padding-left:10px;
+}

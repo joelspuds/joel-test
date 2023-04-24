@@ -61,33 +61,6 @@
             {% call components.bulmaRow(extraClass='u-space-b45') %}
                 {% call components.bulmaColumnAny(size='is-full') %}
                     <div class="big-numbers">
-
-                        <style>
-                            .big-input {
-                                font-size: 36px;
-                                border: none;
-                                outline: none;
-                                display: inline;
-                                max-width: 90%;
-                                margin:0;
-                                padding: 0;
-                            }
-                            .big-pound{
-                                font-size: 36px;
-                                display: inline-block;
-                                float:left;
-                                width:25px;
-                            }
-
-                            details {
-                                max-width: 600px;
-                            }
-                            .govuk-accordion__section-header {
-                                background-color: #f1f1f1;
-                                padding-left:10px;
-                            }
-                        </style>
-
                         <div class="big-numbers__biggy">
                             <div class="big-numbers__title">
                                 Total full economic costs (fEC)
@@ -95,7 +68,7 @@
                             <div class="big-numbers__number">
                                 {#<span id="totalFEC">0.00</span>#}
                                 <span class="big-pound">&pound;</span>
-                                <input type="text" class="big-input" readonly id="totalFEC" value="£0" name="totalFEC">
+                                <input type="text" class="big-input" readonly id="totalFEC" value="" name="totalFEC">
                             </div>
                         </div>
 
@@ -105,7 +78,7 @@
                             </div>
                             <div class="big-numbers__number">
                                 <span class="big-pound">&pound;</span>
-                                <input type="text" class="big-input" readonly id="contribution" value="£0" name="contribution">
+                                <input type="text" class="big-input" readonly id="contribution" value="" name="contribution">
                             </div>
                         </div>
 
@@ -116,7 +89,7 @@
                             <div class="big-numbers__number">
                                 {#£<span id="fundingAppliedFor">0.00</span>#}
                                 <span class="big-pound">&pound;</span>
-                                <input type="text" class="big-input" readonly id="fundingAppliedFor" value="£0" name="fundingAppliedFor">
+                                <input type="text" class="big-input" readonly id="fundingAppliedFor" value="" name="fundingAppliedFor">
                             </div>
                         </div>
                     </div>
@@ -130,11 +103,11 @@
                     <div class="govuk-accordion ukri-accordion" data-module="govuk-accordion" id="accordion-default"><div class="govuk-accordion__controls"></div>
 
                         <div class="govuk-accordion__section">
-                            <div class="govuk-accordion__section-header">
+                            <div class="govuk-accordion__section-header govuk-accordion__section-header--costs">
                                 <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading">
                                     <button type="button" id="accordion-default-heading-1" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" aria-expanded="false">Directly allocated</button><span class="govuk-accordion__icon" aria-hidden="true"></span></h2>
-                                <div class="accordion-totals">
-                                    <label for="daAccordionTotal" class="accordion-totals__label"><span class="govuk-visually-hidden">Directly allocated </span>Total £: </label><input type="text" class="govuk-input govuk-input--secret accordion-totals__input" value="0" readonly="" name="daAccordionTotal" id="daAccordionTotal">
+                                <div class="accordion-totals js-only">
+                                    <label for="daAccordionTotal" class="accordion-totals__label"><span class="govuk-visually-hidden">Directly allocated </span>Total applied for £: </label><input type="text" class="govuk-input govuk-input--secret accordion-totals__input" value="0" readonly="" name="daAccordionTotal" id="daAccordionTotal">
                                 </div>
                             </div>
                             <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
@@ -241,11 +214,11 @@
                         </div>
 
                         <div class="govuk-accordion__section">
-                            <div class="govuk-accordion__section-header">
+                            <div class="govuk-accordion__section-header govuk-accordion__section-header--costs">
                                 <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading">
                                     <button type="button" id="accordion-default-heading-2" aria-controls="accordion-default-content-2" class="govuk-accordion__section-button" aria-expanded="false">Directly incurred</button><span class="govuk-accordion__icon" aria-hidden="true"></span></h2>
-                                <div class="accordion-totals">
-                                    <label for="diAccordionTotal" class="accordion-totals__label"><span class="govuk-visually-hidden">Directly incured </span>Total £: </label><input type="text" class="govuk-input govuk-input--secret accordion-totals__input" value="0" readonly="" name="diAccordionTotal" id="diAccordionTotal">
+                                <div class="accordion-totals js-only">
+                                    <label for="diAccordionTotal" class="accordion-totals__label"><span class="govuk-visually-hidden">Directly incured </span>Total applied for £: </label><input type="text" class="govuk-input govuk-input--secret accordion-totals__input" value="0" readonly="" name="diAccordionTotal" id="diAccordionTotal">
                                 </div>
                             </div>
                             <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
@@ -371,11 +344,11 @@
                         </div>
 
                         <div class="govuk-accordion__section">
-                            <div class="govuk-accordion__section-header">
+                            <div class="govuk-accordion__section-header govuk-accordion__section-header--costs">
                                 <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading">
                                     <button type="button" id="accordion-default-heading-3" aria-controls="accordion-default-content-3" class="govuk-accordion__section-button" aria-expanded="false">Indirect costs</button><span class="govuk-accordion__icon" aria-hidden="true"></span></h2>
-                                <div class="accordion-totals">
-                                    <label for="icAccordionTotal" class="accordion-totals__label"><span class="govuk-visually-hidden">Indirect costs </span>Total £: </label><input type="text" class="govuk-input govuk-input--secret accordion-totals__input" value="0" readonly="" name="icAccordionTotal" id="icAccordionTotal">
+                                <div class="accordion-totals js-only">
+                                    <label for="icAccordionTotal" class="accordion-totals__label"><span class="govuk-visually-hidden">Indirect costs </span>Total applied for £: </label><input type="text" class="govuk-input govuk-input--secret accordion-totals__input" value="0" readonly="" name="icAccordionTotal" id="icAccordionTotal">
                                 </div>
                             </div>
                             <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
@@ -423,11 +396,11 @@
                         </div>
 
                         <div class="govuk-accordion__section">
-                            <div class="govuk-accordion__section-header">
+                            <div class="govuk-accordion__section-header govuk-accordion__section-header--costs">
                                 <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading">
                                     <button type="button" id="accordion-default-heading-4" aria-controls="accordion-default-content-4" class="govuk-accordion__section-button" aria-expanded="false">Exceptions</button><span class="govuk-accordion__icon" aria-hidden="true"></span></h2>
-                                <div class="accordion-totals">
-                                    <label for="exAccordionTotal" class="accordion-totals__label"><span class="govuk-visually-hidden">Indirect costs </span>Total £: </label><input type="text" class="govuk-input govuk-input--secret accordion-totals__input" value="0" readonly="" name="exAccordionTotal" id="exAccordionTotal">
+                                <div class="accordion-totals js-only">
+                                    <label for="exAccordionTotal" class="accordion-totals__label"><span class="govuk-visually-hidden">Indirect costs </span>Total applied for £: </label><input type="text" class="govuk-input govuk-input--secret accordion-totals__input" value="0" readonly="" name="exAccordionTotal" id="exAccordionTotal">
                                 </div>
                             </div>
                             <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
