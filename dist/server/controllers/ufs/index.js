@@ -435,3 +435,15 @@ Object.keys(_applicationsListerController).forEach(function (key) {
     }
   });
 });
+
+var _editController = require('./editController');
+
+Object.keys(_editController).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _editController[key];
+    }
+  });
+});
