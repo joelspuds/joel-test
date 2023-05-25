@@ -1,0 +1,111 @@
+{%
+    set listOfGroups = [
+        "Biophysical Sciences Institute",
+        "Durham Energy Institute",
+        "Institute for Computational Cosmology",
+        "Institute for Data Science",
+        "Institute for Medical Humanities",
+        "Institute for Particle Physics Phenomenology",
+        "Institute of Advanced Study",
+        "Institute of Hazard, Risk and Resilience",
+        "Institute of Medieval and Early Modern Studies",
+        "Wolfson Research Institute for Health and Wellbeing",
+        "Research Centres",
+        "Advanced Instrumentation, Centre for",
+        "Banking, Institutions and Development, Centre for",
+        "Behaviour, Ecology and Evolution Research Centre",
+        "Catholic Studies, Centre for (CCS)",
+        "Chinese Law and Policy, Centre for",
+        "Classical Reception, Durham Centre for",
+        "Commercial & Corporate Law, Centre for",
+        "Communications Systems, Centre for",
+        "Condensed Matter Physics",
+        "Contemporary Chinese Studies, Centre for",
+        "Criminal Law & Justice, Centre for",
+        "Crop Improvement Technology, Centre for",
+        "Culture and Ecology, Centre for",
+        "Death and Life Studies, Centre for (CDALS)",
+        "Digital Theology, Centre for",
+        "DurhamARCTIC Research Centre",
+        "Durham CELLS (Centre for Ethics and Law in the Life Sciences)",
+        "Durham Centre for Ancient and Medieval Philosophy (DCAMP)",
+        "Durham Centre for Bioimaging Technology (DCBT)",
+        "Durham Centre for Indian Law and Policy",
+        "Durham Centre for Law and Philosophy",
+        "Durham Centre for Soft Matter",
+        "Durham Cultural Evolution Research Centre",
+        "Durham European Law Institute",
+        "Durham Geochemistry Centre",
+        "Durham Infancy and Sleep Centre (DISC)",
+        "Durham International Dispute Resolution Institute",
+        "Durham Research in Economic Analysis and Mechanisms",
+        "Durham University Evidence Centre for Education (DECE)",
+        "El Sharaani Centre for Ethical Finance, Accountability and Governance",
+        "Environmental and Energy Economics, Centre for",
+        "Ethics of Cultural Heritage, Centre for the (CECH)",
+        "Experimental Methods in Business Research Group",
+        "Extragalactic Astronomy, Durham Centre for",
+        "Gender and Law at Durham",
+        "Global Infectious Disease, Centre for",
+        "Global Policy Institute",
+        "HH Sheikh Nasser al-Mohammad al-Sabah Programme",
+        "History of Medicine and Disease, Centre for the (CHMD)",
+        "Human Rights Centre",
+        "Humanities Engaging Science and Society, Centre for (CHESS)",
+        "IBRU: Centre for Borders Research",
+        "Innovation and Technology Management, Centre for",
+        "Institutions and Political Behaviour, Centre for",
+        "Intercultural Mediation, Centre for (CIM)",
+        "International Centre of Public Accountability",
+        "International Centre for Moral Injury",
+        "Law and Global Justice, Centre for",
+        "Leadership & Followership, Centre for",
+        "Learning and Memory Processes (LAMP)",
+        "Macroeconomic Policy, Centre for (CEMAP)",
+        "Marketing and International Business (MIB)",
+        "Michael Ramsey Centre for Anglican Studies, The",
+        "Modern Conflicts and Cultures, Centre for",
+        "Molecular and Nanoscale Electronics, Centre for",
+        "Monks in Motion",
+        "Neurodiversity & Development, Centre for",
+        "Nineteenth-Century Studies, Centre for (CNCS)",
+        "Organisations and Society, Centre for",
+        "Particle Theory, Centre for",
+        "Physics Education and Scholarship",
+        "Poetry and Poetics, Centre for (CPP)",
+        "Political Thought, Centre for",
+        "Quantitative Research in Financial Economics",
+        "Quantum Light and Matter (QLM)",
+        "Research into Inner Experience, Centre for (CRIE)",
+        "Research into Violence and Abuse, Centre for (CRiVA)",
+        "Research Methods Centre",
+        "Social Justice & Community Action, Centre for",
+        "Spirituality, Theology and Health, Centre for (CSTH)",
+        "Study of the Ancient Mediterranean and the Near East, Centre for the (CAMNE)",
+        "Study of Jewish Culture, Society and Politics, Centre for the",
+        "Sustainable Chemical Processes, Centre in",
+        "Sustainable Development Law and Policy, Centre for",
+        "Vision and Visual Cognition, Centre for",
+        "Visual Arts and Cultures, Centre for (CVAC)",
+        "XRDur (Durham X-Ray Centre)",
+        "Zurbarán Centre for Spanish and Latin American Art and Culture"
+]
+ %}
+
+<div class="filter filter-toggle __filter-toggle--shut">
+    <button class="filter__title filter__title--closed" type="button" onclick="toggleVisibility(this, 'toggleGroupsList', 'js-hidden')" aria-expanded="true">Filter by group</button>
+
+    <span class="filter__toggle"></span>
+    <ul class="filter__list u-clearfix {#js-hidden#}" id="toggleGroupsList">
+
+        {% for item in listOfGroups %}
+            <li class="filter__item filter__item--small">
+                {#{{ loop.index }}#}
+                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                    <input class="govuk-checkboxes__input" id="groupsFilter_{{ loop.index }}" type="checkbox" name="groupsFilter_{{ loop.index }}" value="{{ item }}">
+                    <label for="groupsFilter_{{ loop.index }}" class="govuk-checkboxes__label u-display-ib"> {{ item }}</label>
+                </div>
+            </li>
+        {%  endfor %}
+    </ul>
+</div>

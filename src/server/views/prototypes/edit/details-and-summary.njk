@@ -1,0 +1,302 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/edit/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/edit/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = '' %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+
+{% set pageTitle = 'Details and summary' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Drummond Acaster' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Details and summary ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/edit/application-overview', text:'Back to Appliction overview'}] %}
+
+
+{% block content %}
+
+    <style>
+        .tox-statusbar__wordcount, .tox-statusbar__branding { display: none!important}
+    </style>
+
+    {% if prototypeData.detailsEditMode == 'locked' %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="govuk-notification-banner" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="_govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Information</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <h3 class="govuk-notification-banner__heading">This section is currently in read only view</h3>
+                        <p class="govuk-body">If you need to make changes to this section, you can <a href="/prototypes/edit/details-and-summary?detailsEditMode=unlocked">take ownership and edit the document</a>. </p>
+                        <p class="govuk-body">This will prevent other users from making changes for 30 minutes while you make your edits. Your editing period will end when you save your changes, but you can restart the editing process to make more.</p>
+                    </div>
+                </div>
+                <style>
+                    /*.mce-content-body {
+                        background-color: #fafafa!important;
+                        border-color: #b1b4b6;
+                    }*/
+                    .tox .tox-edit-area__iframe {
+                        background-color: #fafafa!important;
+                    }
+                </style>
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
+
+    {% if prototypeData.detailsEditMode == 'unlocked' %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="govuk-notification-banner" role="alert" aria-labelledby="_govuk-notification-banner-title" data-module="_govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Information</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <h3 class="govuk-notification-banner__heading">This section is currently in edit mode</h3>
+                        <p class="govuk-body">You can make changes to this section for 30 minutes and it is locked for other users.</p>
+                        <p class="govuk-body-l">Your time ends at <strong>{{ prototypeData.hoursInThirty }}:{{ prototypeData.minutesInThirty }}</strong> in <strong><span id="timer" class="red-text">30:00</span></strong></p>
+                        <p class="govuk-body">You can <a href="/prototypes/edit/details-and-summary?detailsEditMode=locked">cancel a lock the document</a>. </p>
+                    </div>
+                </div>
+
+                <script>
+                    function startTimer(duration, display) {
+                        var timer = duration, minutes, seconds;
+                        setInterval(function () {
+                            minutes = parseInt(timer / 60, 10);
+                            seconds = parseInt(timer % 60, 10);
+
+                            minutes = minutes < 10 ? "0" + minutes : minutes;
+                            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                            display.textContent = minutes + ":" + seconds;
+
+                            if (--timer < 0) {
+                                timer = duration;
+                            }
+                        }, 1000);
+                    }
+                    window.onload = function () {
+                        var thirtyMinutes = 60 * 30,
+                            display = document.querySelector('#timer');
+                        startTimer(thirtyMinutes, display);
+                    };
+                </script>
+
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Details and summary', caption=prototypeData.applicationTitle) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+
+
+        {% call components.form(action='/prototypes/multi-user-application/details', method='POST',name='formProjectTeam') %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+                    {% call components.formGroup() %}
+
+                        <div class="govuk-form-group ">
+                            <label class="govuk-label govuk-label--s  govuk-!-font-weight-bold " for="projectName">Application name
+                                <span class="govuk-hint">Make this the title of your research proposal.</span>
+                            </label>
+                            <input class="govuk-input " id="projectName" type="text" name="projectName" value="{{ prototypeData.applicationTitle }}" {% if prototypeData.detailsEditMode == 'locked' %} disabled {% endif %}>
+                        </div>
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+                    <div class="govuk-form-group ">
+                        <label class="govuk-label govuk-label--s  govuk-!-font-weight-bold " for="projectSummary">Summary
+                            <span class="govuk-hint">Provide a brief synopsis of the research programme your proposing to conduct over a 2-year period. You have 250 words.</span>
+                        </label>
+                        <details class="govuk-details" data-module="govuk-details" role="group">
+                            <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                <span class="govuk-details__summary-text">Guidance for writing a summary</span>
+                            </summary>
+                            <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                <p class="govuk-body">Summarise how your proposal will explore new areas, including other user communities. It can include innovative approaches but must be arts and humanities-led, with a majority of the methodologies, research questions and outputs falling within AHRC’s subject remit. Give details of the aims and objectives, the timetable for any proposed activities, proposed participants and key speakers, and plans for management and coordination, including the membership of any proposed advisory group or steering committee.</p>
+                                <p class="govuk-body">You should also clearly outline the rationale for the activities, approach and the research context by explaining:</p>
+                                <ul class="govuk-list govuk-list--bullet">
+                                    <li>the central theme of the proposed activity and why it is innovative</li>
+                                    <li>the importance of this theme being explored</li>
+                                    <li>how the proposed activities will create genuine interaction across boundaries and advance understanding</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <textarea class="govuk-textarea govuk-js-character-count" name="projectSummary" id="projectSummary" rows="18" {% if prototypeData.detailsEditMode == 'locked' %} disabled {% endif %}>{{ prototypeData.summary }}</textarea>
+                        <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 250 words remaining</span></p>
+                    </div>
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-item">
+                            <div class="application-item__contents application-item__contents--mac">
+                                <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                    <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                        <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                    </legend>
+                                    <div class="govuk-checkboxes">
+                                        <div class="govuk-checkboxes__item">
+                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if detailsIsComplete %} checked{% endif %} {% if readOnly %} disabled {% endif %}>
+                                            <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    {%- endcall %}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-controls govuk-clearfix">
+                            {% if readOnly %}
+                                <a href="/prototypes/multi-user-application/" class="govuk-link">Return to application</a>
+                            {% else %}
+                                {{ components.button(text='Save and return', extraClass="application-controls__submit")}}
+                            {% endif %}
+                        </div>
+                    {%- endcall %}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+    </section>
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+
+
+
+{% block bodyScripts %}
+   {# <script>
+        ;(function(){
+            let wordcounter = document.getElementById('projectSummary');
+            let counteroutputFoot = document.getElementById('wordCount');
+            let words;
+            const limit = 400;
+
+            function countemwords(){
+                words = (wordcounter.value == '')? 0 : wordcounter.value.split(' ').length;
+                let remainder = limit - words;
+                if (words < limit) {
+                    wordcounter.classList.remove('govuk-textarea--error');
+                    counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                } else {
+                    let overCount = words - limit;
+                    wordcounter.classList.add('govuk-textarea--error');
+                    counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+                }
+            }
+            wordcounter.addEventListener('input', function(e){
+                countemwords()
+            }, false);
+            document.addEventListener("DOMContentLoaded", function(event) {
+                countemwords()
+            }, false);
+            window.addEventListener("load", function(event) {
+                countemwords();
+            }, false)
+        })();
+    </script>#}
+
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        const counteroutputFoot = document.getElementById('wordCount');
+        let words = 0;
+        const limit = 500;
+        let tinyMCEWordCount;
+
+        tinymce.init({
+            selector: '#projectSummary',
+            height: 500,
+            {% if prototypeData.detailsEditMode == 'locked' %} readonly : 1, {% endif %}
+            plugins: [
+                'advlist autolink lists link image preview anchor',
+                'media table paste  wordcount'
+            ],
+            setup: function(editor) {
+
+                editor.on('keyup', function(e) {
+                    tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                    console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                    words = tinyMCEWordCount;
+                    let remainder = limit - words;
+                    if (words < limit) {
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    } else {
+                        let overCount = words - limit;
+                        counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+                    }
+                });
+
+                editor.on('init', function(e) {
+                    setTimeout(function(){
+                        tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                        console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                        words = tinyMCEWordCount;
+                        let remainder = limit - words;
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    }, 500);
+                });
+            },
+            toolbar: 'formatselect | bold italic | bullist numlist | align | indent outdent | link | table |',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ],
+            menubar: false,
+        });
+    </script>
+{% endblock %}
+

@@ -1,0 +1,51 @@
+{%
+    set listOfGroups = [
+        "Barts Cancer Institute",
+        "Biological and Behavioural Sciences",
+        "Business and Management",
+        "Centre for Bioengineering",
+        "Centre for Commercial Law Studies",
+        "Comparative Literature",
+        "Department of Law",
+        "Drama",
+        "Economics and Finance",
+        "Electronic Engineering and Computer Science",
+        "Engineering and Materials Science",
+        "English",
+        "Film Studies",
+        "Geography",
+        "History",
+        "Institute of Dentistry",
+        "Institute of Health Sciences Education",
+        "Language Centre",
+        "Languages, Linguistics and Film",
+        "Linguistics",
+        "Materials Research Institute",
+        "Mathematical Sciences",
+        "Modern Languages and Cultures",
+        "Physical and Chemical Sciences",
+        "Politics and International Relations",
+        "The Blizard Institute",
+        "The Centre of the Cell",
+        "William Harvey Research Institute",
+        "Wolfson Institute of Population Health"
+]
+ %}
+
+<div class="filter filter-toggle __filter-toggle--shut">
+    <button class="filter__title filter__title--closed" type="button" onclick="toggleVisibility(this, 'toggleGroupsList', 'js-hidden')" aria-expanded="true">Filter by group</button>
+
+    <span class="filter__toggle"></span>
+    <ul class="filter__list u-clearfix {#js-hidden#}" id="toggleGroupsList">
+
+        {% for item in listOfGroups %}
+            <li class="filter__item filter__item--small">
+                {#{{ loop.index }}#}
+                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                    <input class="govuk-checkboxes__input" id="groupsFilter_{{ loop.index }}" type="checkbox" name="groupsFilter_{{ loop.index }}" value="{{ item }}">
+                    <label for="groupsFilter_{{ loop.index }}" class="govuk-checkboxes__label u-display-ib"> {{ item }}</label>
+                </div>
+            </li>
+        {%  endfor %}
+    </ul>
+</div>

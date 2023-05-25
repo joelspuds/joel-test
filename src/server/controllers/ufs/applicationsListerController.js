@@ -6,7 +6,7 @@ const megaApplications = require('./realApplications');
 const megaApplications1200 = require('./realApplications1200');
 const megaApplications1200v2 = require('./realApplications1200_v2');
 const megaReversed = require('./test_applications');
-// let applicationsList = megaApplications1200.megaApplications1200;
+let applicationsList = megaApplications1200.megaApplications1200;
 let applicationsListv2 = megaApplications1200v2.megaApplications1200v2;
 // let applicationsListv2 = megaReversed.megaApplications1200v2Reversed;
 
@@ -279,6 +279,19 @@ export function alApplicationsGet(req, res) {
   console.log('itemCount = ' + itemCount);
 
   req.session.itemCount = itemCount;
+
+  let fakeFilters = req.param('fakeFilters');
+  if (fakeFilters === 'unsorted') {
+    req.session.fakeFilters = 'unsorted';
+  }
+  if (fakeFilters === 'sorted') {
+    req.session.fakeFilters = 'sorted';
+  }
+  if (fakeFilters === 'durham') {
+    req.session.fakeFilters = 'durham';
+  }
+
+  console.log('req.session.showFakeFilters = ' + req.session.showFakeFilters);
 
   let allData = req.session;
 

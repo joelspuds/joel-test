@@ -941,6 +941,24 @@ router.get('/prototypes/applications/new-applications', demosController.alNewApp
 
 /* *************************************************************** *
 
+    Edit stuff
+
+ * *************************************************************** */
+router.get('/prototypes/edit', demosController.editIndexGet);
+router.post('/prototypes/edit', demosController.editIndexPost);
+router.get('/prototypes/edit/home', demosController.editHomeGet);
+router.post('/prototypes/edit/home', demosController.editHomePost);
+router.get('/prototypes/edit/applications', demosController.editApplicationsGet);
+router.post('/prototypes/edit/applications', demosController.editApplicationsPost);
+router.get('/prototypes/edit/application-overview', demosController.editApplicationOverviewGet);
+router.post('/prototypes/edit/application-overview', demosController.editApplicationOverviewPost);
+router.get('/prototypes/edit/case-for-support', demosController.editCaseGet);
+router.post('/prototypes/edit/case-for-support', demosController.editCasePost);
+router.get('/prototypes/edit/details-and-summary', demosController.editDetailsGet);
+router.post('/prototypes/edit/details-and-summary', demosController.editDetailsPost);
+
+/* *************************************************************** *
+
   Design section
 
 * *************************************************************** */

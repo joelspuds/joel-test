@@ -242,6 +242,21 @@
                         </ul>
                     </div>#}
 
+
+                    {% if allData.fakeFilters == 'unsorted' %}
+
+                        {% include './fake-filters.njk' %}
+
+                    {% elseif allData.fakeFilters == 'sorted' %}
+
+                        {% include './fake-filters-sorted.njk' %}
+
+                    {% elseif allData.fakeFilters == 'durham' %}
+
+                        {% include './fake-filters-durham.njk' %}
+
+                    {% else %}
+
                     <div class="filter filter-toggle __filter-toggle--shut">
                         <button class="filter__title filter__title--closed" type="button" onclick="toggleVisibility(this, 'toggleGroupsList', 'js-hidden')" aria-expanded="true">Filter by group</button>
 
@@ -259,6 +274,8 @@
                             {%  endfor %}
                         </ul>
                     </div>
+
+                    {% endif %}
 
                     <div class="_js-hidden">
                         {% call components.formGroup() %}

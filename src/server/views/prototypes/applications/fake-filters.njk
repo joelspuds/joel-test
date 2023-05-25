@@ -1,0 +1,54 @@
+{%
+    set listOfGroups = [
+        "School of Business and Management",
+        "School of Economics and Finance",
+        "School of English and Drama",
+        "Department of English",
+        "Department of Drama",
+        "School of Languages, Linguistics and Film",
+        "Comparative Literature",
+        "Film Studies",
+        "Modern Languages and Cultures",
+        "Language Centre",
+        "Linguistics",
+        "School of Geography",
+        "School of History",
+        "School of Law",
+        "Centre for Commercial Law Studies",
+        "Department of Law",
+        "School of Politics and International Relations",
+        "Faculty of Medicine and Dentistry",
+        "Barts Cancer Institute",
+        "The Blizard Institute",
+        "Institute of Dentistry",
+        "Institute of Health Sciences Education",
+        "William Harvey Research Institute",
+        "Wolfson Institute of Population Health",
+        "The Centre of the Cell",
+        "School of Biological and Behavioural Sciences",
+        "School of Electronic Engineering and Computer Science",
+        "School of Engineering and Materials Science",
+        "School of Mathematical Sciences",
+        "School of Physical and Chemical Sciences",
+        "Materials Research Institute",
+        "Centre for Bioengineering"
+    ]
+ %}
+
+<div class="filter filter-toggle __filter-toggle--shut">
+    <button class="filter__title filter__title--closed" type="button" onclick="toggleVisibility(this, 'toggleGroupsList', 'js-hidden')" aria-expanded="true">Filter by group</button>
+
+    <span class="filter__toggle"></span>
+    <ul class="filter__list u-clearfix {#js-hidden#}" id="toggleGroupsList">
+
+        {% for item in listOfGroups %}
+            <li class="filter__item filter__item--small">
+                {#{{ loop.index }}#}
+                <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                    <input class="govuk-checkboxes__input" id="groupsFilter_{{ loop.index }}" type="checkbox" name="groupsFilter_{{ loop.index }}" value="{{ item }}">
+                    <label for="groupsFilter_{{ loop.index }}" class="govuk-checkboxes__label u-display-ib"> {{ item }}</label>
+                </div>
+            </li>
+        {%  endfor %}
+    </ul>
+</div>

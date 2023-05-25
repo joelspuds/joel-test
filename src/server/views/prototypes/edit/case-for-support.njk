@@ -1,0 +1,235 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/edit/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/edit/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = '' %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+
+{% set pageTitle = 'Case for support' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Drummond Acaster' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Case for support ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/edit/application-overview', text:'Back to Appliction overview'}] %}
+
+
+{% block content %}
+
+    <style>
+        .tox-statusbar__wordcount, .tox-statusbar__branding { display: none!important}
+    </style>
+
+
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="govuk-notification-banner" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="_govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Information</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <h3 class="govuk-notification-banner__heading">The section is locked for editing</h3>
+                        <p class="govuk-body">The seciton is being edited by <strong>Renata Minchin (renata.minchin@wales.ac.uk)</strong>.</p>
+                        <p class="govuk-body">The current editing time is due to end at <strong>{{ prototypeData.finishTime }}</strong></p>
+                    </div>
+                </div>
+                <style>
+
+                    .tox .tox-edit-area__iframe {
+                        background-color: #fafafa!important;
+                    }
+                </style>
+            {%- endcall %}
+        {%- endcall %}
+
+
+
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Case for support', caption=prototypeData.applicationTitle) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+
+
+
+        {% call components.form(action='/prototypes/multi-user-application/details', method='POST',name='formProjectTeam') %}
+
+
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+                    <div class="govuk-form-group ">
+                        <label class="govuk-label govuk-label--s  govuk-!-font-weight-bold " for="projectSummary">Case for support
+                            <span class="govuk-hint">Provide full details for your Case for support outlining how the project with proceed. You have 2000 words.</span>
+                        </label>
+                        <details class="govuk-details" data-module="govuk-details" role="group">
+                            <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                <span class="govuk-details__summary-text">Guidance for case for support</span>
+                            </summary>
+                            <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                <p class="govuk-body">Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis.</p>
+                            </div>
+                        </details>
+                        <textarea class="govuk-textarea govuk-js-character-count" name="projectSummary" id="projectSummary" rows="18" {% if prototypeData.detailsEditMode == 'locked' %} disabled {% endif %}>{{ prototypeData.summary }}</textarea>
+                        <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 250 words remaining</span></p>
+                    </div>
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-item">
+                            <div class="application-item__contents application-item__contents--mac">
+                                <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                    <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                        <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                    </legend>
+                                    <div class="govuk-checkboxes">
+                                        <div class="govuk-checkboxes__item">
+                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if detailsIsComplete %} checked{% endif %} {% if readOnly %} disabled {% endif %}>
+                                            <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    {%- endcall %}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-controls govuk-clearfix">
+                            {% if readOnly %}
+                                <a href="/prototypes/multi-user-application/" class="govuk-link">Return to application</a>
+                            {% else %}
+                                {{ components.button(text='Save and return', extraClass="application-controls__submit")}}
+                            {% endif %}
+                        </div>
+                    {%- endcall %}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+    </section>
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+
+
+
+{% block bodyScripts %}
+    {# <script>
+        ;(function(){
+            let wordcounter = document.getElementById('projectSummary');
+            let counteroutputFoot = document.getElementById('wordCount');
+            let words;
+            const limit = 400;
+
+            function countemwords(){
+                words = (wordcounter.value == '')? 0 : wordcounter.value.split(' ').length;
+                let remainder = limit - words;
+                if (words < limit) {
+                    wordcounter.classList.remove('govuk-textarea--error');
+                    counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                } else {
+                    let overCount = words - limit;
+                    wordcounter.classList.add('govuk-textarea--error');
+                    counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+                }
+            }
+            wordcounter.addEventListener('input', function(e){
+                countemwords()
+            }, false);
+            document.addEventListener("DOMContentLoaded", function(event) {
+                countemwords()
+            }, false);
+            window.addEventListener("load", function(event) {
+                countemwords();
+            }, false)
+        })();
+    </script>#}
+
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        const counteroutputFoot = document.getElementById('wordCount');
+        let words = 0;
+        const limit = 2000;
+        let tinyMCEWordCount;
+
+        tinymce.init({
+            selector: '#projectSummary',
+            height: 500,
+            {% if prototypeData.detailsEditMode == 'locked' %} readonly : 1, {% endif %}
+            plugins: [
+                'advlist autolink lists link image preview anchor',
+                'media table paste  wordcount'
+            ],
+            setup: function(editor) {
+
+                editor.on('keyup', function(e) {
+                    tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                    console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                    words = tinyMCEWordCount;
+                    let remainder = limit - words;
+                    if (words < limit) {
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    } else {
+                        let overCount = words - limit;
+                        counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+                    }
+                });
+
+                editor.on('init', function(e) {
+                    setTimeout(function(){
+                        tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                        console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                        words = tinyMCEWordCount;
+                        let remainder = limit - words;
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    }, 500);
+                });
+            },
+            toolbar: 'formatselect | bold italic | bullist numlist | align | indent outdent | link | table |',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ],
+            menubar: false,
+        });
+    </script>
+{% endblock %}
+
