@@ -14,8 +14,11 @@ let prototypeData = {
   summary:
     '<h2>Lorem ipsum nunc est bibendum</h2><p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p><h2>Header Level 2</h2><ol><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li></ol><h3>Header Level 3</h3><ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li></ul><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>',
   detailsEditMode: 'locked',
+  detailsMarkAsComplete: true,
   teamMarkAsComplete: true,
+  caseMarkAsComplete: true,
   resourcesAndCostsIsComplete: true,
+  detailsJustBeenUpdated: false,
 };
 
 /* **************
@@ -82,6 +85,18 @@ export function editApplicationsPost(req, res) {
 export function editApplicationOverviewGet(req, res) {
   let viewData;
 
+  let detailsEditMode = req.param('detailsEditMode');
+  if (detailsEditMode === 'locked') {
+    prototypeData.detailsEditMode = 'locked';
+  }
+
+  prototypeData.detailsJustBeenUpdated = false;
+  let detailsJustBeenUpdated = req.session.detailsJustBeenUpdated;
+  if (detailsJustBeenUpdated === true) {
+    prototypeData.detailsJustBeenUpdated = true;
+    req.session.detailsJustBeenUpdated = null;
+  }
+
   viewData = {
     prototypeData,
   };
@@ -104,9 +119,12 @@ export function editCaseGet(req, res) {
 
   let utcMilli = new Date().getTime() + 3600000;
   let utcMilliPlusThirty = utcMilli + 1400000;
-
-  prototypeData.finishTime = new Date(utcMilliPlusThirty).getUTCHours() + ':' + new Date(utcMilliPlusThirty).getUTCMinutes();
-  // prototypeData.minutesInThirty = new Date(utcMilliPlusThirty).getUTCMinutes();
+  let minutesInThirty = new Date(utcMilliPlusThirty).getUTCMinutes();
+  minutesInThirty = minutesInThirty.toString();
+  if (minutesInThirty.length <= 1) {
+    minutesInThirty = '0' + minutesInThirty;
+  }
+  prototypeData.finishTime = new Date(utcMilliPlusThirty).getUTCHours() + ':' + minutesInThirty;
 
   viewData = {
     prototypeData,
@@ -138,14 +156,15 @@ export function editDetailsGet(req, res) {
     console.log('utcMilli = ' + utcMilli);
 
     prototypeData.UTCtimeNow = utcMilli;
-    /*console.log(new Date().getUTCHours());
-    console.log(new Date().getUTCMinutes());
-    console.log(new Date(utcMilliPlusThirty).getUTCHours());
-    console.log(new Date(utcMilliPlusThirty).getUTCMinutes());*/
     prototypeData.UTCtimeNowDate = new Date(utcMilli);
     prototypeData.UTCtimeInThirty = utcMilliPlusThirty;
     prototypeData.hoursInThirty = new Date(utcMilliPlusThirty).getUTCHours();
-    prototypeData.minutesInThirty = new Date(utcMilliPlusThirty).getUTCMinutes();
+    let minutesInThirty = new Date(utcMilliPlusThirty).getUTCMinutes();
+    minutesInThirty = minutesInThirty.toString();
+    if (minutesInThirty.length <= 1) {
+      minutesInThirty = '0' + minutesInThirty;
+    }
+    prototypeData.minutesInThirty = minutesInThirty;
   }
   if (detailsEditMode === 'locked') {
     prototypeData.detailsEditMode = 'locked';
@@ -158,7 +177,20 @@ export function editDetailsGet(req, res) {
 }
 
 export function editDetailsPost(req, res) {
-  const {} = req.body;
+  const { projectName, projectSummary, isComplete } = req.body;
 
-  return res.redirect('/prototypes/edit/details-and-summary');
+  prototypeData.applicationTitle = projectName;
+  prototypeData.summary = projectSummary;
+  if (isComplete === 'on') {
+    prototypeData.detailsMarkAsComplete = true;
+  } else {
+    prototypeData.detailsMarkAsComplete = false;
+  }
+  prototypeData.detailsEditMode = 'locked';
+
+  console.log(prototypeData);
+
+  req.session.detailsJustBeenUpdated = true;
+
+  return res.redirect('/prototypes/edit/application-overview');
 }

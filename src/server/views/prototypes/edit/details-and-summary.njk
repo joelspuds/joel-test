@@ -22,7 +22,12 @@
 {%  set loggedOut = false %}
 
 {% set pageTitle = 'Details and summary ' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/edit/application-overview', text:'Back to Appliction overview'}] %}
+
+{% if prototypeData.detailsEditMode == 'unlocked' %}
+    {% set backLinkContents =  [{url:'/prototypes/edit/application-overview?detailsEditMode=locked', text:'Back to Appliction overview (and lock document)'}] %}
+{% else %}
+    {% set backLinkContents =  [{url:'/prototypes/edit/application-overview', text:'Back to Appliction overview'}] %}
+{% endif %}
 
 
 {% block content %}
@@ -66,9 +71,11 @@
                     </div>
                     <div class="govuk-notification-banner__content">
                         <h3 class="govuk-notification-banner__heading">This section is currently in edit mode</h3>
-                        <p class="govuk-body">You can make changes to this section for 30 minutes and it is locked for other users.</p>
-                        <p class="govuk-body-l">Your time ends at <strong>{{ prototypeData.hoursInThirty }}:{{ prototypeData.minutesInThirty }}</strong> in <strong><span id="timer" class="red-text">30:00</span></strong></p>
-                        <p class="govuk-body">You can <a href="/prototypes/edit/details-and-summary?detailsEditMode=locked">cancel a lock the document</a>. </p>
+                        <p class="govuk-body">You can make changes to this section for 30 minutes and it is locked for other users. If you leave the page before saving anything, the document will be locked. You can unlock the document as many times as you need.</p>
+                        <div id="displayWrapper">
+                        <p class="govuk-body-l">Your time ends at <strong>{{ prototypeData.hoursInThirty }}:{{ prototypeData.minutesInThirty }}</strong> in <strong><span id="timer" class="red-text">30:00</span></strong> minutes.</p>
+                        <p class="govuk-body">You can <a href="/prototypes/edit/details-and-summary?detailsEditMode=locked">cancel and lock the document</a>. </p>
+                        </div>
                     </div>
                 </div>
 
@@ -84,14 +91,26 @@
 
                             display.textContent = minutes + ":" + seconds;
 
+                            console.log('timer = ' + timer);
+                            console.log('duration = ' + duration);
+
                             if (--timer < 0) {
                                 timer = duration;
+                            } else if (timer === 0) {
+                                displayWrapper.innerHTML = '<p class="govuk-body-l"><strong class="red-text">You are out of time. Refresh the page to make further edits.</strong></p>';
+                                window.location.href ='/prototypes/edit/details-and-summary?detailsEditMode=locked&countdownFinished=true';
+                                return;
                             }
+
                         }, 1000);
+
+
                     }
                     window.onload = function () {
-                        var thirtyMinutes = 60 * 30,
-                            display = document.querySelector('#timer');
+                        let thirtyMinutes = 60 * 30;
+                        // let thirtyMinutes = 4;
+                        let display = document.querySelector('#timer');
+                        let displayWrapper = document.querySelector('#timerWrapper')
                         startTimer(thirtyMinutes, display);
                     };
                 </script>
@@ -110,7 +129,7 @@
 
 
 
-        {% call components.form(action='/prototypes/multi-user-application/details', method='POST',name='formProjectTeam') %}
+        {% call components.form(action='#', method='POST',name='submitForm') %}
 
             {% call components.bulmaRow() %}
 
@@ -174,7 +193,7 @@
                                     </legend>
                                     <div class="govuk-checkboxes">
                                         <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if detailsIsComplete %} checked{% endif %} {% if readOnly %} disabled {% endif %}>
+                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if prototypeData.detailsMarkAsComplete %} checked{% endif %} {% if prototypeData.detailsEditMode == 'locked' %} disabled {% endif %}>
                                             <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
                                         </div>
                                     </div>
@@ -193,11 +212,17 @@
 
                     {% call components.formGroup() %}
                         <div class="application-controls govuk-clearfix">
-                            {% if readOnly %}
-                                <a href="/prototypes/multi-user-application/" class="govuk-link">Return to application</a>
+                            {% if prototypeData.detailsEditMode == 'locked' %}
+                                <a href="/prototypes/edit/application-overview/" class="govuk-link">Return to application overview</a>
                             {% else %}
-                                {{ components.button(text='Save and return', extraClass="application-controls__submit")}}
+                                {#{{ components.button(text='Save and return', extraClass="application-controls__submit")}}#}
+                                <input class="govuk-button application-controls__submit" type="submit" value="Save and return" {% if prototypeData.detailsEditMode == 'locked' %} disabled {% endif %}>
+
+
+                                <a class="govuk-link" href="/prototypes/edit/application-overview?detailsEditMode=locked">Cancel editing and return to Application overview</a>
                             {% endif %}
+
+                            {#<br><br><a href="/prototypes/change-request/create-type" class="govuk-link application-controls__cancel">Cancel and return to create award change request</a>#}
                         </div>
                     {%- endcall %}
 
@@ -219,37 +244,6 @@
 
 
 {% block bodyScripts %}
-   {# <script>
-        ;(function(){
-            let wordcounter = document.getElementById('projectSummary');
-            let counteroutputFoot = document.getElementById('wordCount');
-            let words;
-            const limit = 400;
-
-            function countemwords(){
-                words = (wordcounter.value == '')? 0 : wordcounter.value.split(' ').length;
-                let remainder = limit - words;
-                if (words < limit) {
-                    wordcounter.classList.remove('govuk-textarea--error');
-                    counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
-                } else {
-                    let overCount = words - limit;
-                    wordcounter.classList.add('govuk-textarea--error');
-                    counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
-                }
-            }
-            wordcounter.addEventListener('input', function(e){
-                countemwords()
-            }, false);
-            document.addEventListener("DOMContentLoaded", function(event) {
-                countemwords()
-            }, false);
-            window.addEventListener("load", function(event) {
-                countemwords();
-            }, false)
-        })();
-    </script>#}
-
     <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         const counteroutputFoot = document.getElementById('wordCount');

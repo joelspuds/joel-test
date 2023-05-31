@@ -54,24 +54,14 @@
         {%- endcall %}
 
 
-
-
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
             {{ components.captionHeading(text='Case for support', caption=prototypeData.applicationTitle) }}
         {%- endcall %}
     {%- endcall %}
-
     <section class="section" id="mainContent">
-
-
-
         {% call components.form(action='/prototypes/multi-user-application/details', method='POST',name='formProjectTeam') %}
-
-
-
             {% call components.bulmaRow() %}
-
                 {% call components.bulmaColumnAny(size='is-8') %}
 
                     <div class="govuk-form-group ">
@@ -107,7 +97,7 @@
                                     </legend>
                                     <div class="govuk-checkboxes">
                                         <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if detailsIsComplete %} checked{% endif %} {% if readOnly %} disabled {% endif %}>
+                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if prototypeData.caseMarkAsComplete %} checked{% endif %} disabled >
                                             <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
                                         </div>
                                     </div>
@@ -126,8 +116,8 @@
 
                     {% call components.formGroup() %}
                         <div class="application-controls govuk-clearfix">
-                            {% if readOnly %}
-                                <a href="/prototypes/multi-user-application/" class="govuk-link">Return to application</a>
+                            {% if prototypeData.caseMarkAsComplete %}
+                                <a href="/prototypes/edit/application-overview" class="govuk-link">Return to application overview</a>
                             {% else %}
                                 {{ components.button(text='Save and return', extraClass="application-controls__submit")}}
                             {% endif %}

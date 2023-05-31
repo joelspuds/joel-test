@@ -197,11 +197,11 @@ let teamData = require('./team-data');
 let allTeamMembers2;
 let originalNumberOfMembers;
 
-/*allTeamMembers2 = teamData.teamDataEmpty;
-originalNumberOfMembers = 1;*/
+allTeamMembers2 = teamData.teamDataEmpty;
+originalNumberOfMembers = 1;
 
-allTeamMembers2 = teamData.teamDataFull;
-originalNumberOfMembers = 5;
+/*allTeamMembers2 = teamData.teamDataFull;
+originalNumberOfMembers = 5;*/
 
 let configOptions;
 
