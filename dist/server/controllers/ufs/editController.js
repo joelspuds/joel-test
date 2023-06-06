@@ -15,6 +15,8 @@ exports.editCaseGet = editCaseGet;
 exports.editCasePost = editCasePost;
 exports.editDetailsGet = editDetailsGet;
 exports.editDetailsPost = editDetailsPost;
+exports.editApplicationOverview2Get = editApplicationOverview2Get;
+exports.editApplicationOverview2Post = editApplicationOverview2Post;
 
 var _test_applications = require('./test_applications');
 
@@ -27,15 +29,19 @@ const megaReversed = require('./test_applications');
 let applicationsListv2 = megaApplications1200v2.megaApplications1200v2;
 
 let prototypeData = {
-  oppTitle: 'Cleaner marine ecosystems',
+  oppTitle: 'OPP147: Cleaner marine ecosystems',
   applicationTitle: 'Marine-degradable bio plastics and bacterial digestion',
+  applicant1: 'Manolo Bauer',
   summary: '<h2>Lorem ipsum nunc est bibendum</h2><p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p><h2>Header Level 2</h2><ol><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li></ol><h3>Header Level 3</h3><ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li></ul><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>',
   detailsEditMode: 'locked',
   detailsMarkAsComplete: true,
   teamMarkAsComplete: true,
   caseMarkAsComplete: true,
   resourcesAndCostsIsComplete: true,
-  detailsJustBeenUpdated: false
+  detailsJustBeenUpdated: false,
+  oppTitle2: 'OPP018: Greener Futures Environmental Technology Awards 2023',
+  applicationTitle2: 'Environmental Energy Storage in Aqua Batteries',
+  applicant2: 'Chadwell Brotwurst'
 };
 
 /* **************
@@ -210,4 +216,24 @@ function editDetailsPost(req, res) {
   req.session.detailsJustBeenUpdated = true;
 
   return res.redirect('/prototypes/edit/application-overview');
+}
+
+/* **************
+
+    Application overview TWO
+
+*************** */
+function editApplicationOverview2Get(req, res) {
+  let viewData;
+
+  viewData = {
+    prototypeData
+  };
+  return res.render('prototypes/edit/application-overview-2', viewData);
+}
+
+function editApplicationOverview2Post(req, res) {
+  const {} = req.body;
+
+  return res.redirect('/prototypes/edit/application-overview-2');
 }

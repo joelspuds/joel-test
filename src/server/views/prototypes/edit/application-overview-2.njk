@@ -27,26 +27,9 @@
 
 {% block content %}
 
-    {% if prototypeData.detailsJustBeenUpdated %}
-
-        {% call components.bulmaRow() %}
-            {% call components.bulmaColumnAny(size='is-full') %}
-                <div class="govuk-notification-banner govuk-notification-banner--success " role="alert" aria-labelledby="govuk-notification-banner-title" data-module="_govuk-notification-banner">
-                    <div class="govuk-notification-banner__header">
-                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
-                    </div>
-                    <div class="govuk-notification-banner__content">
-                        <h3 class="govuk-notification-banner__heading">You have successfully updated the Details and summary section</h3>
-                    </div>
-                </div>
-            {%- endcall %}
-        {%- endcall %}
-
-    {% endif %}
-
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Application overview', caption='APP171: ' + prototypeData.applicationTitle) }}
+            {{ components.captionHeading(text='Application overview', caption='APP420: ' + prototypeData.applicationTitle2) }}
         {%- endcall %}
     {%- endcall %}
 
@@ -75,62 +58,45 @@
                     {% set detailsIsComplete = true %}
                     {% set caseForSupportIsComplete = true %}
 
-                    <div class="application-item {% if prototypeData.detailsMarkAsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
+                    <div class="application-item application-item--complete application-item--skinny ">
                         <div class="application-item__contents govuk-clearfix">
-                            <div class="application-item__left">{{ components.link(text='1. Details and summary', url='/prototypes/edit/details-and-summary')}}</div>
+                            <div class="application-item__left">{{ components.link(text='1. Details and summary', url='#')}}</div>
                             <div class="application-item__right">
-
-                                {% if prototypeData.detailsMarkAsComplete %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
-                                {% else %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
-                                {% endif %}
+                                <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="application-item {% if caseForSupportIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
+                    <div class="application-item application-item--complete application-item--skinny ">
                         <div class="application-item__contents govuk-clearfix">
                             <div class="application-item__left">
-                                {{ components.link(text='2. Case for support', url='#')}}
+                                {{ components.link(text='2. Case for support', url='/prototypes/edit/case-for-support')}}
                             </div>
 
                             <div class="application-item__right">
-                                {% if caseForSupportIsComplete %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
-                                {% else %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
-                                {% endif %}
+                                <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
                             </div>
-                            {#<div class="u-space-t30">
+                            <div class="u-space-t30">
                                 <strong class="govuk-tag govuk-tag--red">Locked</strong>
                                 <span>This section is being edited by <strong>Renata Minchin</strong></span>
-                            </div>#}
+                            </div>
                         </div>
                     </div>
 
-                    <div class="application-item {% if prototypeData.teamMarkAsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
+                    <div class="application-item application-item--complete application-item--skinny ">
                         <div class="application-item__contents govuk-clearfix">
                             <div class="application-item__left">{{ components.link(text='3. Team', url='#')}}</div>
                             <div class="application-item__right">
-                                {% if prototypeData.teamMarkAsComplete %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
-                                {% else %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
-                                {% endif %}
+                               <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="application-item {% if prototypeData.resourcesAndCostsIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
+                    <div class="application-item application-item--complete application-item--skinny ">
                         <div class="application-item__contents govuk-clearfix">
                             <div class="application-item__left">{{ components.link(text='4. Resources and costs', url='#')}}</div>
                             <div class="application-item__right">
-                                {% if prototypeData.resourcesAndCostsIsComplete %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
-                                {% else %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
-                                {% endif %}
+                                <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
                             </div>
                         </div>
                     </div>
@@ -198,17 +164,17 @@
                 <div class="application-data">
                     <dl class="application-data__list">
                         <dt class="application-data__key">Opportunity:</dt>
-                        <dd class="application-data__value"><a href="#" class="govuk-link" target="_blank">{{ prototypeData.oppTitle }}</a></dd>
+                        <dd class="application-data__value"><a href="#" class="govuk-link" target="_blank">{{ prototypeData.oppTitle2 }}</a></dd>
                         <dt class="application-data__key">Application reference:</dt>
-                        <dd class="application-data__value">APP171</dd>
+                        <dd class="application-data__value">APP420</dd>
 
                         <dt class="application-data__key">Applicant:</dt>
-                        <dd class="application-data__value">{{ prototypeData.applicant1 }}</dd>
+                        <dd class="application-data__value">{{ prototypeData.applicant2 }}</dd>
                         <dt class="application-data__key">Application status:</dt>
                         <dd class="application-data__value"><strong class="govuk-tag govuk-tag--blue">With research office</strong></dd>
 
                         <dt class="application-data__key">Application deadline:</dt>
-                        <dd class="application-data__value">14 April 2023, 4:00pm</dd>
+                        <dd class="application-data__value">24 June 2023, 4:00pm</dd>
                         <dt class="application-data__key">Funder:</dt>
                         <dd class="application-data__value">NERC</dd>
                     </dl>

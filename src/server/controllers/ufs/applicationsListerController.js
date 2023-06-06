@@ -431,3 +431,20 @@ export function alApplicationsRawGet(req, res) {
   };
   return res.render('prototypes/applications/applications-raw', viewData);
 }
+
+/* **************
+
+    Applications filter demo
+
+*************** */
+export function alApplicationsFilterGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  console.log(applicationsListv2);
+  viewData = {
+    allData,
+    applicationsListv2,
+  };
+  return res.render('prototypes/applications/filter', viewData);
+}

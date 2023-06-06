@@ -1,0 +1,162 @@
+{% set showExternalNav = false %}
+{% set activeNavItem = '' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/applications/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/applications/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = true %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+{% set prototypeData = prototypeData if prototypeData %}
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Applications ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'#', text:'Back to all Opportunities'}] %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            {{ components.captionHeading(text='Applications', caption='OPP:1234 Example Opportunity name that has garnered myriad applications') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='', customID='mainContent') %}
+        {% call components.bulmaColumnAny(size='is-half') %}
+            <div class="">
+                <div class="search">
+                    <div class="govuk-form-group govuk-form-group--search">
+                        <label class="govuk-label govuk-label--s" for="search">Filter by text</label>
+                        {#<span class="govuk-hint">Find an application</span>#}
+                        <input class="govuk-input govuk-input--width-10 search__input" id="search" name="searchQuery" type="text" placeholder="" value="{{ allData.searchQuery }}" onkeyup="filterAppList()" onfocus="this.select();">
+                        {#<button type="submit" name="applicationSearch" class="search__submit" value="search">Search</button>#}
+                    </div>
+                </div>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+    {% call components.bulmaRow(extraClass='') %}
+        {% call components.bulmaColumnAny(size='column is-full') %}
+
+            <style>
+                .govuk-checkboxes__item {
+                    padding-left:0!important;
+                }
+            </style>
+
+            <div class="responsive-table">
+
+                <table class="govuk-table responsive-table__table govuk-table--busy _mega-table context" id="applicationsTable">
+                    <thead>
+                    <tr class="govuk-table__header">
+                        <th class="govuk-table__header"><span class="govuk-visually-hidden">Select item for action</span> </th>
+                        <th class="govuk-table__header">Application</th>
+                        <th class="govuk-table__header">Lead organisation</th>
+                        <th class="govuk-table__header">Applicant</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for item in applicationsListv2  %}
+
+                        <tr class="appItem">
+                            <td class="govuk-table__cell">
+                                <div class="govuk-checkboxes__item govuk-checkboxes--small">
+                                    <input type="checkbox" class="govuk-checkboxes__input" id="item_{{ item.index }}" value="APP{{ item.randomID }}:{{ item.title }}">
+                                    <label class="govuk-label govuk-checkboxes__label " for="item_{{ item.index }}"><span class="govuk-visually-hidden">Select</span></label>
+                                </div>
+                            </td>
+                            <td class="govuk-table__cell appName" >
+                               <a href="#" class="govuk-link _govuk-!-display-inline-block">APP{{ item.randomID }}:{{ item.title }}</a>
+                            </td>
+                            <td class="govuk-table__cell">{{ item.orgName }} </td>
+                            <td class="govuk-table__cell">{#{{ item.name }}#} {{ 'addHonorific' | giveMeAName }} </td>
+
+                            <td class="govuk-table__cell govuk-table__cell--numeric">
+                                <strong class="govuk-tag govuk-tag--grey govuk-tag--tiny">undecided</strong>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            </div>
+        {%- endcall %}
+
+    {%- endcall %}
+    {%- endcall %}  {# end form #}
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+    <script>
+        function filterStuff() {
+            // Declare variables
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById('search');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("applicationsTable");
+            // li = ul.getElementsByTagName('li');
+            li = ul.getElementsByClassName('appName');
+            console.log(li);
+
+
+
+
+            // Loop through all list items, and hide those who don't match the search query
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+
+        function filterAppList() {
+            let input = document.getElementById('search');
+            let filter = input.value.toUpperCase();
+            let fields = document.getElementsByClassName('appItem');
+            console.log(fields);
+
+            for (i = 0; i < fields.length; i++) {
+                a = fields[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    fields[i].style.display = "";
+                } else {
+                    fields[i].style.display = "none";
+                }
+            }
+
+        }
+    </script>
+
+
+{% endblock %}
+

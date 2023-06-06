@@ -11,6 +11,7 @@ exports.alApplicationsGet = alApplicationsGet;
 exports.alApplicationsPost = alApplicationsPost;
 exports.alNewApplicationsGet = alNewApplicationsGet;
 exports.alApplicationsRawGet = alApplicationsRawGet;
+exports.alApplicationsFilterGet = alApplicationsFilterGet;
 
 var _test_applications = require('./test_applications');
 
@@ -432,4 +433,21 @@ function alApplicationsRawGet(req, res) {
     applicationsList
   };
   return res.render('prototypes/applications/applications-raw', viewData);
+}
+
+/* **************
+
+    Applications filter demo
+
+*************** */
+function alApplicationsFilterGet(req, res) {
+  let viewData;
+
+  let allData = req.session;
+  console.log(applicationsListv2);
+  viewData = {
+    allData,
+    applicationsListv2
+  };
+  return res.render('prototypes/applications/filter', viewData);
 }

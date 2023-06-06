@@ -937,6 +937,7 @@ router.post('/prototypes/applications/home', demosController.alHomePost);
 router.get('/prototypes/applications/applications', demosController.alApplicationsGet);
 router.post('/prototypes/applications/applications', demosController.alApplicationsPost);
 router.get('/prototypes/applications/applications-raw', demosController.alApplicationsRawGet);
+router.get('/prototypes/applications/filter', demosController.alApplicationsFilterGet);
 router.get('/prototypes/applications/new-applications', demosController.alNewApplicationsGet);
 
 /* *************************************************************** *
@@ -952,6 +953,8 @@ router.get('/prototypes/edit/applications', demosController.editApplicationsGet)
 router.post('/prototypes/edit/applications', demosController.editApplicationsPost);
 router.get('/prototypes/edit/application-overview', demosController.editApplicationOverviewGet);
 router.post('/prototypes/edit/application-overview', demosController.editApplicationOverviewPost);
+router.get('/prototypes/edit/application-overview-2', demosController.editApplicationOverview2Get);
+router.post('/prototypes/edit/application-overview-2', demosController.editApplicationOverview2Post);
 router.get('/prototypes/edit/case-for-support', demosController.editCaseGet);
 router.post('/prototypes/edit/case-for-support', demosController.editCasePost);
 router.get('/prototypes/edit/details-and-summary', demosController.editDetailsGet);

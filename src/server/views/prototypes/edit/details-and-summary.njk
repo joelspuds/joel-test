@@ -24,7 +24,7 @@
 {% set pageTitle = 'Details and summary ' + GLOBAL_TAG_TITLE_SUFFIX %}
 
 {% if prototypeData.detailsEditMode == 'unlocked' %}
-    {% set backLinkContents =  [{url:'/prototypes/edit/application-overview?detailsEditMode=locked', text:'Back to Appliction overview (and lock document)'}] %}
+    {% set backLinkContents =  [{url:'/prototypes/edit/application-overview?detailsEditMode=locked', text:'Back to Appliction overview'}] %}
 {% else %}
     {% set backLinkContents =  [{url:'/prototypes/edit/application-overview', text:'Back to Appliction overview'}] %}
 {% endif %}
@@ -44,9 +44,9 @@
                         <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Information</h2>
                     </div>
                     <div class="govuk-notification-banner__content">
-                        <h3 class="govuk-notification-banner__heading">This section is currently in read only view</h3>
-                        <p class="govuk-body">If you need to make changes to this section, you can <a href="/prototypes/edit/details-and-summary?detailsEditMode=unlocked">take ownership and edit the document</a>. </p>
-                        <p class="govuk-body">This will prevent other users from making changes for 30 minutes while you make your edits. Your editing period will end when you save your changes, but you can restart the editing process to make more.</p>
+                        <h3 class="govuk-notification-banner__heading">This section is currently 'read-only'</h3>
+                        <p class="govuk-body">If you need to make changes, you can temporarily <a href="/prototypes/edit/details-and-summary?detailsEditMode=unlocked">become the section editor</a>.</p>
+                        <p class="govuk-body">You'll have <strong>30</strong> minutes to save any changes. During this time, no one else can edit the section. If you need more time, you can restart the editing process at any point.</p>
                     </div>
                 </div>
                 <style>
@@ -70,18 +70,39 @@
                         <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Information</h2>
                     </div>
                     <div class="govuk-notification-banner__content">
-                        <h3 class="govuk-notification-banner__heading">This section is currently in edit mode</h3>
+                        <h3 class="govuk-notification-banner__heading">You have temporarily locked this section for editing</h3>
                         <p class="govuk-body">You can make changes to this section for 30 minutes and it is locked for other users. If you leave the page before saving anything, the document will be locked. You can unlock the document as many times as you need.</p>
                         <div id="displayWrapper">
-                        <p class="govuk-body-l">Your time ends at <strong>{{ prototypeData.hoursInThirty }}:{{ prototypeData.minutesInThirty }}</strong> in <strong><span id="timer" class="red-text">30:00</span></strong> minutes.</p>
-                        <p class="govuk-body">You can <a href="/prototypes/edit/details-and-summary?detailsEditMode=locked">cancel and lock the document</a>. </p>
+                            <p class="govuk-body-l">You have until  <strong id="timeWrapper">{{ prototypeData.hoursInThirty }}:{{ prototypeData.minutesInThirty }}</strong> to save any changes.
+
+                            <strong><span id="timer" class="red-text">30:00</span></strong> minutes remaining.</p>
+                            {#<p class="govuk-body">You can <a href="/prototypes/edit/details-and-summary?detailsEditMode=locked">cancel and lock the document</a>. </p>#}
+                            <p class="govuk-body">If you need more time, you can <a href="#" id="restartCounter">restart the counter</a>. </p>
                         </div>
                     </div>
                 </div>
 
                 <script>
+
                     function startTimer(duration, display) {
-                        var timer = duration, minutes, seconds;
+                        let timer = duration, minutes, seconds;
+                        let restart = document.querySelector('#restartCounter');
+
+                        restart.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            timer = duration;
+                            let timeWrapper = document.querySelector('#timeWrapper');
+                            let utcMilli = new Date().getTime() + 3600000;
+                            let utcMilliPlusThirty = utcMilli + 1800000;
+                            let newHours = new Date(utcMilliPlusThirty).getUTCHours();
+                            let newMinutes = new Date(utcMilliPlusThirty).getUTCMinutes();
+                            newMinutes = newMinutes.toString();
+                            if (newMinutes.length <= 1) {
+                                newMinutes = '0' + newMinutes;
+                            }
+                            timeWrapper.innerHTML = newHours + ':' + newMinutes;
+                        });
+
                         setInterval(function () {
                             minutes = parseInt(timer / 60, 10);
                             seconds = parseInt(timer % 60, 10);
@@ -91,12 +112,10 @@
 
                             display.textContent = minutes + ":" + seconds;
 
-                            console.log('timer = ' + timer);
-                            console.log('duration = ' + duration);
-
                             if (--timer < 0) {
                                 timer = duration;
                             } else if (timer === 0) {
+
                                 displayWrapper.innerHTML = '<p class="govuk-body-l"><strong class="red-text">You are out of time. Refresh the page to make further edits.</strong></p>';
                                 window.location.href ='/prototypes/edit/details-and-summary?detailsEditMode=locked&countdownFinished=true';
                                 return;
@@ -108,11 +127,12 @@
                     }
                     window.onload = function () {
                         let thirtyMinutes = 60 * 30;
-                        // let thirtyMinutes = 4;
                         let display = document.querySelector('#timer');
                         let displayWrapper = document.querySelector('#timerWrapper')
                         startTimer(thirtyMinutes, display);
                     };
+
+
                 </script>
 
             {%- endcall %}
@@ -121,7 +141,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Details and summary', caption=prototypeData.applicationTitle) }}
+            {{ components.captionHeading(text='Details and summary', caption='APP171: ' + prototypeData.applicationTitle) }}
         {%- endcall %}
     {%- endcall %}
 
