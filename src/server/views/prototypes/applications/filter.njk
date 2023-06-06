@@ -34,29 +34,39 @@
     {% call components.bulmaRow(extraClass='', customID='mainContent') %}
         {% call components.bulmaColumnAny(size='is-half') %}
             <div class="js-only">
-                <div class="search">
-                    <div class="govuk-form-group govuk-form-group--search">
-                        <label class="govuk-label govuk-label--s" for="search">Filter by text</label>
-                        {#<span class="govuk-hint">Find an application</span>#}
-                        <input class="govuk-input govuk-input--width-10 search__input" id="search" name="searchQuery" type="text" placeholder="" value="{{ allData.searchQuery }}" onkeyup="filterAppList()" onfocus="this.select();">
-                        {#<button type="submit" name="applicationSearch" class="search__submit" value="search">Search</button>#}
+
+                <details class="govuk-details u-space-t20" data-module="govuk-details" role="group">
+                    <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                        <span class="govuk-details__summary-text">Select applications by reference number</span>
+                    </summary>
+                    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                        <div class="govuk-form-group govuk-form-group--search">
+                            <label class="govuk-label govuk-label--s" for="search">Filter by text</label>
+                            {#<span class="govuk-hint">Find an application</span>#}
+                            <input class="govuk-input govuk-input--width-10 search__input" id="search" name="searchQuery" type="text" placeholder="" value="{{ allData.searchQuery }}" onkeyup="filterAppList()" onfocus="this.select();">
+                            {#<a href="#" onClick="clearFilterText" class="govuk-link govuk-!-display-inline-block">Clear filter text</a>#}
+                            {#<button type="submit" name="applicationSearch" class="search__submit" value="search">Search</button>#}
+
+                        </div>
                     </div>
-                </div>
+                </details>
+                <button type="submit" name="submitSelection" class="govuk-button" value="search">Select decision for <span id="numberSelected">0</span> applicants</button>
             </div>
         {%- endcall %}
     {%- endcall %}
 
-    {% call components.bulmaRow(extraClass='', customID='mainContent') %}
+    {#{% call components.bulmaRow(extraClass='', customID='mainContent') %}
         {% call components.bulmaColumnAny(size='is-full') %}
-            <p class="govuk-body-l">
+            #}{#<p class="govuk-body-l">
                 Mark <strong id="js-only"><span id="numberSelected">0</span></strong> applications as:
                 <button class="govuk-button govuk-!-display-inline govuk-button--secondary actionButton" >Successful</button>
                 <button class="govuk-button govuk-!-display-inline govuk-button--secondary actionButton" >Rules rejects</button>
                 <button class="govuk-button govuk-!-display-inline govuk-button--secondary actionButton" >Review reject</button>
                 <button class="govuk-button govuk-!-display-inline govuk-button--secondary actionButton" >Panel reject</button>
-            </p>
+            </p>#}{#
+
         {%- endcall %}
-    {%- endcall %}
+    {%- endcall %}#}
 
 
     {% call components.form(action='#', method='POST',name='submitForm') %}
