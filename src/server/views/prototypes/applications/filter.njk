@@ -33,7 +33,7 @@
 
     {% call components.bulmaRow(extraClass='', customID='mainContent') %}
         {% call components.bulmaColumnAny(size='is-half') %}
-            <div class="">
+            <div class="js-only">
                 <div class="search">
                     <div class="govuk-form-group govuk-form-group--search">
                         <label class="govuk-label govuk-label--s" for="search">Filter by text</label>
@@ -43,6 +43,18 @@
                     </div>
                 </div>
             </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='', customID='mainContent') %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <p class="govuk-body-l">
+                Mark <strong id="js-only"><span id="numberSelected">0</span></strong> applications as:
+                <button class="govuk-button govuk-!-display-inline govuk-button--secondary actionButton" >Successful</button>
+                <button class="govuk-button govuk-!-display-inline govuk-button--secondary actionButton" >Rules rejects</button>
+                <button class="govuk-button govuk-!-display-inline govuk-button--secondary actionButton" >Review reject</button>
+                <button class="govuk-button govuk-!-display-inline govuk-button--secondary actionButton" >Panel reject</button>
+            </p>
         {%- endcall %}
     {%- endcall %}
 
@@ -71,13 +83,14 @@
                     </thead>
                     <tbody>
 
-                    {% for item in applicationsListv2  %}
+                    {% for item in applicationsListv2 %}
+                        {% if loop.index < 60 %}
 
                         <tr class="appItem">
                             <td class="govuk-table__cell">
                                 <div class="govuk-checkboxes__item govuk-checkboxes--small">
-                                    <input type="checkbox" class="govuk-checkboxes__input" id="item_{{ item.index }}" value="APP{{ item.randomID }}:{{ item.title }}">
-                                    <label class="govuk-label govuk-checkboxes__label " for="item_{{ item.index }}"><span class="govuk-visually-hidden">Select</span></label>
+                                    <input type="checkbox" class="govuk-checkboxes__input" id="item_{{ loop.index }}" value="APP{{ item.randomID }}:{{ item.title }}" onchange="getTotalChecked()">
+                                    <label class="govuk-label govuk-checkboxes__label " for="item_{{ loop.index }}"><span class="govuk-visually-hidden">Select</span></label>
                                 </div>
                             </td>
                             <td class="govuk-table__cell appName" >
@@ -91,6 +104,7 @@
 
                             </td>
                         </tr>
+                        {% endif %}
                     {% endfor %}
 
                     </tbody>
@@ -113,48 +127,64 @@
 {% block bodyScripts %}
 
     <script>
-        function filterStuff() {
-            // Declare variables
-            var input, filter, ul, li, a, i, txtValue;
-            input = document.getElementById('search');
-            filter = input.value.toUpperCase();
-            ul = document.getElementById("applicationsTable");
-            // li = ul.getElementsByTagName('li');
-            li = ul.getElementsByClassName('appName');
-            console.log(li);
-
-
-
-
-            // Loop through all list items, and hide those who don't match the search query
-            for (i = 0; i < li.length; i++) {
-                a = li[i].getElementsByTagName("a")[0];
-                txtValue = a.textContent || a.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    li[i].style.display = "";
-                } else {
-                    li[i].style.display = "none";
-                }
-            }
-        }
 
         function filterAppList() {
             let input = document.getElementById('search');
             let filter = input.value.toUpperCase();
             let fields = document.getElementsByClassName('appItem');
-            console.log(fields);
-
+            // console.log(fields);
             for (i = 0; i < fields.length; i++) {
-                a = fields[i].getElementsByTagName("a")[0];
-                txtValue = a.textContent || a.innerText;
+                let a = fields[i].getElementsByTagName("a")[0];
+                //let thisInput = fields[i].getElementsByTagName('input');
+                let txtValue = a.textContent || a.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
                     fields[i].style.display = "";
+                    //thisInput.classList.add('isSelected');
                 } else {
                     fields[i].style.display = "none";
+                    //thisInput.classList.remove('isSelected');
+                }
+            }
+        }
+
+        function getTotalChecked() {
+            let numberSelected = document.getElementById('numberSelected');
+            //let howMany = 0;
+            //let allCheckboxes = document.getElementsByClassName('govuk-checkboxes__input');
+            let totalChecked = document.querySelectorAll('input[class=govuk-checkboxes__input]:checked');
+            console.log('totalChecked = ' + totalChecked.length);
+            numberSelected.textContent = totalChecked.length;
+            let actionButtonsList = document.getElementsByClassName('actionButton');
+            console.log(actionButtonsList);
+            if(totalChecked.length >= 1) {
+                console.log('bah');
+                for(let i = 0; i < actionButtonsList.length; i++ ){
+                    console.log('doing something 1');
+                    actionButtonsList[i].removeAttribute('disabled');
+                    //console.log(actionButtonsList[i]);
+                }
+            } else {
+                console.log('humbug');
+                for(let i = 0; i < actionButtonsList.length; i++ ){
+                    console.log('doing something 2');
+                    actionButtonsList[i].setAttribute('disabled', true);
+                    //console.log(actionButtonsList[i]);
                 }
             }
 
         }
+
+        window.addEventListener('load',
+            function() {
+                console.log('hello');
+                let actionButtonsList = document.getElementsByClassName('actionButton');
+                console.log('actionButtonsList.length = ' + actionButtonsList.length);
+                for(let i = 0; i < actionButtonsList.length; i++ ){
+                    actionButtonsList[i].setAttribute('disabled', true);
+                    console.log(actionButtonsList[i]);
+                }
+            }, false);
+
     </script>
 
 
