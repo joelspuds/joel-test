@@ -36,12 +36,12 @@
             {% call components.bulmaColumnAny(size='is-full') %}
                 <div class="govuk-notification-banner" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="_govuk-notification-banner">
                     <div class="govuk-notification-banner__header">
-                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Information</h2>
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
                     </div>
                     <div class="govuk-notification-banner__content">
-                        <h3 class="govuk-notification-banner__heading">The section is locked for editing</h3>
-                        <p class="govuk-body">The seciton is being edited by <strong>Renata Minchin (renata.minchin@wales.ac.uk)</strong>.</p>
-                        <p class="govuk-body">The current editing time is due to end at <strong>{{ prototypeData.finishTime }}</strong></p>
+                        <h3 class="govuk-notification-banner__heading">Renata Minchin has temporarily locked this section for editing.</h3>
+                        {#<p class="govuk-body"><strong>Renata Minchin</strong> has temporarily locked this section for editing.</p>#}
+                        <p class="govuk-body">They have until <strong>{{ prototypeData.finishTime }}</strong> to save their changes. <br><strong>15:21</strong> remaining.</p>
                     </div>
                 </div>
                 <style>
@@ -125,6 +125,56 @@
                     {%- endcall %}
 
                 {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow(extraClass='u-space-t45') %}
+
+            {% call components.bulmaColumnAny(size='is-8') %}
+
+                {{ components.captionHeading(text='Change history', tag='h2', size='s') }}
+
+                <div class="application-items u-space-b45">
+                    <div class="application-item  application-item--skinny">
+                        <div class="application-item__contents govuk-clearfix">
+                            <div class="application-item__left">
+                                <h3 class="govuk-heading-xs">Text change and marked as complete</h3>
+                                <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Manolo Bauer <span></span></p>
+
+                            </div>
+                            <div class="application-item__right u-align-right">
+                                <span class="meta">6 June 2022, 11.03am</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="application-item  application-item--skinny">
+                        <div class="application-item__contents govuk-clearfix">
+                            <div class="application-item__left">
+                                <h3 class="govuk-heading-xs">Text change</h3>
+                                <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Manolo Bauer <span></span></p>
+
+                            </div>
+                            <div class="application-item__right u-align-right">
+                                <span class="meta">6 June 2022, 9.45am</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="application-item  application-item--skinny">
+                        <div class="application-item__contents govuk-clearfix">
+                            <div class="application-item__left">
+                                <h3 class="govuk-heading-xs">Text change</h3>
+                                <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Manolo Bauer <span></span></p>
+
+                            </div>
+                            <div class="application-item__right u-align-right">
+                                <span class="meta">4 June 2022, 10.48am</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
             {%- endcall %}
 
