@@ -447,3 +447,27 @@ Object.keys(_editController).forEach(function (key) {
     }
   });
 });
+
+var _editControllerV = require('./editControllerV2');
+
+Object.keys(_editControllerV).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _editControllerV[key];
+    }
+  });
+});
+
+var _classificationsController = require('./classificationsController');
+
+Object.keys(_classificationsController).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _classificationsController[key];
+    }
+  });
+});

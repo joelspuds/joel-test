@@ -42,3 +42,5 @@ export * from './managePanelController';
 export * from './teamResourcesCostsController';
 export * from './applicationsListerController';
 export * from './editController';
+export * from './editControllerV2';
+export * from './classificationsController';

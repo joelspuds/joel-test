@@ -1,0 +1,121 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/editv2/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/editv2/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = '' %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+
+{% set pageTitle = 'Applciations' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Drummond Acaster' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Applciations ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/editv2/home', text:'Back to Home'}] %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Applications', caption='University of Wales') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='', customID='mainContent') %}
+
+        {% call components.bulmaColumnAny(size='is-9') %}
+
+            <form action="#" method="get" role="search">
+                <div class="search">
+                    <div class="govuk-form-group govuk-form-group--search">
+                        <label class="govuk-label govuk-visually-hidden" for="search">Search applications</label>
+                        <input class="govuk-input govuk-input--width-20 search__input" id="search" name="event-name" type="text" placeholder="Search all applications">
+                        <button type="submit" class="search__submit">Search</button>
+                    </div>
+                </div>
+            </form>
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='') %}
+
+        {% call components.bulmaColumnAny(size='column is-12') %}
+
+            <div class="responsive-table">
+
+                <table class="govuk-table responsive-table__table">
+                    <thead>
+                    <tr class="govuk-table__header">
+
+                        <th class="govuk-table__header">Application title</th>
+                        <th class="govuk-table__header">Opportunity</th>
+                        <th class="govuk-table__header">Applicant<br></th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Deadline</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Application<br>status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="govuk-table__cell"><a href="/prototypes/editv2/application-overview" class="govuk-link">APP171: {{ prototypeData.applicationTitle }}</a></td>
+                        <td class="govuk-table__cell">{{ prototypeData.oppTitle }}</td>
+                        <td class="govuk-table__cell">{{ prototypeData.applicant1 }}</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">21 Jun 2023</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            {% if sentBackToApplicant %}
+                                <strong>Returned to applicant</strong>
+                                {#<span class="mega-table_item-meta">100% complete</span>#}
+                            {% else %}
+                                <strong>In progress</strong>
+                                {#<span class="mega-table_item-meta">100% complete</span>#}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell"><a href="/prototypes/editv2/application-overview-2" class="govuk-link">APP420: {{ prototypeData.applicationTitle2 }}</a></td>
+                        <td class="govuk-table__cell">{{ prototypeData.oppTitle2 }}</td>
+                        <td class="govuk-table__cell">{{ prototypeData.applicant2 }}</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">4 Jul 2023</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong>In progress</strong></td>
+                    </tr>
+                    <tr>
+
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">APP267: Solar Wings in Stratospheric Flight</a></td>
+                        <td class="govuk-table__cell">OPP009: Modern Aeronautics</td>
+                        <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">19 Jul 2023</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong>In progress</strong></td>
+                    </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+
+
+
+{% block bodyScripts %}
+
+{% endblock %}
+

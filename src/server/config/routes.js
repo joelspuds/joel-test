@@ -962,6 +962,42 @@ router.post('/prototypes/edit/details-and-summary', demosController.editDetailsP
 
 /* *************************************************************** *
 
+    Edit stuff VERSION 2
+
+ * *************************************************************** */
+router.get('/prototypes/editv2', demosController.editv2IndexGet);
+router.post('/prototypes/editv2', demosController.editv2IndexPost);
+router.get('/prototypes/editv2/home', demosController.editv2HomeGet);
+router.post('/prototypes/editv2/home', demosController.editv2HomePost);
+router.get('/prototypes/editv2/applications', demosController.editv2ApplicationsGet);
+router.post('/prototypes/editv2/applications', demosController.editv2ApplicationsPost);
+router.get('/prototypes/editv2/application-overview', demosController.editv2ApplicationOverviewGet);
+router.post('/prototypes/editv2/application-overview', demosController.editv2ApplicationOverviewPost);
+router.get('/prototypes/editv2/application-overview-2', demosController.editv2ApplicationOverview2Get);
+router.post('/prototypes/editv2/application-overview-2', demosController.editv2ApplicationOverview2Post);
+router.get('/prototypes/editv2/case-for-support', demosController.editv2CaseGet);
+router.post('/prototypes/editv2/case-for-support', demosController.editv2CasePost);
+router.get('/prototypes/editv2/details-and-summary', demosController.editv2DetailsGet);
+router.post('/prototypes/editv2/details-and-summary', demosController.editv2DetailsPost);
+
+/* *************************************************************** *
+
+    Classifications stuff
+
+ * *************************************************************** */
+router.get('/prototypes/classifications', demosController.classificationsIndexGet);
+router.post('/prototypes/classifications', demosController.classificationsIndexPost);
+router.get('/prototypes/classifications/home', demosController.classificationsHomeGet);
+router.post('/prototypes/classifications/home', demosController.classificationsHomePost);
+router.get('/prototypes/classifications/applications', demosController.classificationsApplicationsGet);
+router.post('/prototypes/classifications/applications', demosController.classificationsApplicationsPost);
+router.get('/prototypes/classifications/application-overview', demosController.classificationsApplicationOverviewGet);
+router.post('/prototypes/classifications/application-overview', demosController.classificationsApplicationOverviewPost);
+router.get('/prototypes/classifications/research-areas', demosController.classificationsResearchAreasGet);
+router.post('/prototypes/classifications/research-areas', demosController.classificationsResearchAreasPost);
+
+/* *************************************************************** *
+
   Design section
 
 * *************************************************************** */

@@ -1,0 +1,70 @@
+
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'personal' %}
+{% set applicationsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set accountSettingsLink = '' %}
+{% set showExternalFurniture = false %}
+
+{% set hideAccountLinks = true %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set userName = 'John Doe' %}
+{% set isAdminUser = false %}
+{% set loggedOut = true %}
+{% set allData = allData if allData %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set pageTitle = 'Taxonomy &amp; classification' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Taxonomy &amp; classification', caption='') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='submitForm') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+
+                <h2 class="govuk-heading-m">Prototype</h2>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li><a class="govuk-link" href="/prototypes/classifications/home">Applicants: Taxonomy &amp; classification journey</a><br><br></li>
+                    {#<li><a class="govuk-link" href="/prototypes/change-request/email-accepted">Change request accepted</a> </li>
+                    <li><a class="govuk-link" href="/prototypes/change-request/email-rejected">Change request rejected</a><br><br></li>#}
+                </ul>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-3', extraClass='u-space-t20') %}
+
+                <div class="is-warning u-pad-20" style="border:1px solid #909090; padding-bottom:0!important">
+                    <p class="govuk-body">
+                        Remove session data.
+                    </p>
+                    <a href="/prototypes/classifications/?clearSession=true" class="govuk-button govuk-button--secondary" >Clear session</a>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %}
+    {% include '../../layouts/partials/user-contact.njk' %}
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+
+
