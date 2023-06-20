@@ -25,7 +25,7 @@ const dayAndTime = (exports.dayAndTime = format => {
       ' ' +
       d.getFullYear() +
       ' ' +
-      ' at ' +
+      ', ' +
       actualHours +
       ':' +
       (d.getMinutes() < 10 ? '0' : '') +

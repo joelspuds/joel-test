@@ -27,23 +27,6 @@
 
 {% block content %}
 
-    {% if prototypeData.detailsJustBeenUpdated %}
-
-        {% call components.bulmaRow() %}
-            {% call components.bulmaColumnAny(size='is-full') %}
-                <div class="govuk-notification-banner govuk-notification-banner--success " role="alert" aria-labelledby="govuk-notification-banner-title" data-module="_govuk-notification-banner">
-                    <div class="govuk-notification-banner__header">
-                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
-                    </div>
-                    <div class="govuk-notification-banner__content">
-                        <h3 class="govuk-notification-banner__heading">You have successfully updated the Details and summary section</h3>
-                    </div>
-                </div>
-            {%- endcall %}
-        {%- endcall %}
-
-    {% endif %}
-
     {% if prototypeData.detailsEditMode == 'locked' %}
         {% call components.bulmaRow() %}
             {% call components.bulmaColumnAny(size='is-full') %}
@@ -53,19 +36,9 @@
                     </div>
                     <div class="govuk-notification-banner__content">
                         <h3 class="govuk-notification-banner__heading">This application is currently 'read-only'</h3>
-                        <p class="govuk-body">If you need to make changes, you can temporarily <a href="/prototypes/editv2/application-overview?detailsEditMode=unlocked">become the application editor</a>.</p>
-                        <p class="govuk-body">During this time, no one else can edit or submit the application until you save your changes.</p>
+                        <p class="govuk-body">If you need to make changes, you can  <a href="/prototypes/editv2/application-overview?detailsEditMode=unlocked">become the application editor</a>.</p>
                     </div>
                 </div>
-                <style>
-                    /*.mce-content-body {
-                        background-color: #fafafa!important;
-                        border-color: #b1b4b6;
-                    }*/
-                    .tox .tox-edit-area__iframe {
-                        background-color: #fafafa!important;
-                    }
-                </style>
             {%- endcall %}
         {%- endcall %}
     {% endif %}
@@ -73,17 +46,33 @@
     {% if prototypeData.detailsEditMode == 'unlocked' %}
         {% call components.bulmaRow() %}
             {% call components.bulmaColumnAny(size='is-full') %}
-                <div class="govuk-notification-banner" role="alert" aria-labelledby="_govuk-notification-banner-title" data-module="_govuk-notification-banner">
-                    <div class="govuk-notification-banner__header">
-                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
-                    </div>
-                    <div class="govuk-notification-banner__content">
-                        <div id="displayWrapper">
-                            <h3 class="govuk-notification-banner__heading">You have locked this application for editing</h3>
-                            <p class="govuk-body">During this time, no one else can edit the application until you save your changes. You can lock it agian if you need to make more, or <a href="/prototypes/editv2/application-overview?detailsEditMode=locked">cancel and unlock the application</a> if you change your mind.</p>
+
+                {% if prototypeData.detailsJustBeenUpdated %}
+                    <div class="govuk-notification-banner govuk-notification-banner--success " role="alert" aria-labelledby="govuk-notification-banner-title" data-module="_govuk-notification-banner">
+                        <div class="govuk-notification-banner__header">
+                            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
+                        </div>
+                        <div class="govuk-notification-banner__content">
+                            <h3 class="govuk-notification-banner__heading">You have successfully updated the Details and summary section</h3>
+                            <p class="govuk-body">You are still the application editor. No one else can edit or submit the application until you <a href="/prototypes/editv2/application-overview?detailsEditMode=locked">stop being the application editor</a>.</p>
                         </div>
                     </div>
-                </div>
+
+                {% else %}
+
+                    <div class="govuk-notification-banner" role="alert" aria-labelledby="_govuk-notification-banner-title" data-module="_govuk-notification-banner">
+                        <div class="govuk-notification-banner__header">
+                            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                        </div>
+                        <div class="govuk-notification-banner__content">
+                            <div id="displayWrapper">
+                                <h3 class="govuk-notification-banner__heading">You have locked this application for editing</h3>
+                                <p class="govuk-body">No one else can edit or submit the application until you <a href="/prototypes/editv2/application-overview?detailsEditMode=locked">stop being the application editor</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
             {%- endcall %}
         {%- endcall %}
     {% endif %}

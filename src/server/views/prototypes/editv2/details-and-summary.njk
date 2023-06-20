@@ -40,6 +40,15 @@
     {% if prototypeData.detailsEditMode == 'locked' %}
         {% call components.bulmaRow() %}
             {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="govuk-notification-banner" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="_govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <h3 class="govuk-notification-banner__heading">This application is currently 'read-only'</h3>
+                        <p class="govuk-body">If you need to make changes, you can  <a href="/prototypes/editv2/details-and-summary?detailsEditMode=unlocked">become the application editor</a>.</p>
+                    </div>
+                </div>
                 <style>
                     .tox .tox-edit-area__iframe {
                         background-color: #fafafa!important;
@@ -48,6 +57,31 @@
             {%- endcall %}
         {%- endcall %}
     {% endif %}
+
+    {% if prototypeData.detailsEditMode == 'unlocked' %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="govuk-notification-banner" role="alert" aria-labelledby="_govuk-notification-banner-title" data-module="_govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <div id="displayWrapper">
+                            <h3 class="govuk-notification-banner__heading">You have locked this application for editing</h3>
+                            <p class="govuk-body">No one else can edit or submit the application until you <a href="/prototypes/editv2/details-and-summary?detailsEditMode=locked">stop being the application editor</a>.</p>
+                        </div>
+                    </div>
+                </div>
+
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
+
+
+
+
+
 
 
     {% call components.bulmaRow() %}
@@ -140,15 +174,16 @@
 
                     {% call components.formGroup() %}
                         <div class="application-controls govuk-clearfix">
-                            {% if prototypeData.detailsEditMode == 'locked' %}
+                            {#{% if prototypeData.detailsEditMode == 'locked' %}
                                 <a href="/prototypes/editv2/application-overview/" class="govuk-link">Return to application overview</a>
                             {% else %}
-                                {#{{ components.button(text='Save and return', extraClass="application-controls__submit")}}#}
+                                #}{#{{ components.button(text='Save and return', extraClass="application-controls__submit")}}#}{#
                                 <input class="govuk-button application-controls__submit" type="submit" value="Save and return" {% if prototypeData.detailsEditMode == 'locked' %} disabled {% endif %}>
+                                <a class="govuk-link" href="/prototypes/editv2/application-overview#}{#?detailsEditMode=locked#}{#">Return to Application overview</a>
+                            {% endif %}#}
 
-
-                                <a class="govuk-link" href="/prototypes/editv2/application-overview{#?detailsEditMode=locked#}">Cancel editing and return to Application overview</a>
-                            {% endif %}
+                            <input class="govuk-button application-controls__submit" type="submit" value="Save and return" {% if prototypeData.detailsEditMode == 'locked' %} disabled {% endif %}>
+                            <a class="govuk-link" href="/prototypes/editv2/application-overview{#?detailsEditMode=locked#}">Return to Application overview</a>
 
                             {#<br><br><a href="/prototypes/change-request/create-type" class="govuk-link application-controls__cancel">Cancel and return to create award change request</a>#}
                         </div>
@@ -165,10 +200,36 @@
                     {{ components.captionHeading(text='Change history', tag='h2', size='s') }}
 
                     <div class="application-items u-space-b45">
+                        {% if prototypeData.detailsJustBeenUpdated %}
+                        <div class="application-item  application-item--skinny">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <h3 class="govuk-heading-xs">Text change</h3>
+                                    <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Drummond Acaster<span></span></p>
+
+                                </div>
+                                <div class="application-item__right u-align-right">
+                                    <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
                         <div class="application-item  application-item--skinny">
                             <div class="application-item__contents govuk-clearfix">
                                 <div class="application-item__left">
                                     <h3 class="govuk-heading-xs">Text change and marked as complete</h3>
+                                    <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Manolo Bauer <span></span></p>
+
+                                </div>
+                                <div class="application-item__right u-align-right">
+                                    <span class="meta">12 June 2022, 10.14am</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="application-item  application-item--skinny">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <h3 class="govuk-heading-xs">Text change</h3>
                                     <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Manolo Bauer <span></span></p>
 
                                 </div>

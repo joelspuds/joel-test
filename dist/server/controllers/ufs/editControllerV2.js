@@ -143,6 +143,13 @@ function editv2ApplicationOverviewPost(req, res) {
 function editv2DetailsGet(req, res) {
   let viewData;
 
+  let detailsEditMode = req.param('detailsEditMode');
+  if (detailsEditMode === 'locked') {
+    prototypeData.detailsEditMode = 'locked';
+  } else if (detailsEditMode === 'unlocked') {
+    prototypeData.detailsEditMode = 'unlocked';
+  }
+
   //detailsEditMode
 
   viewData = {
@@ -161,7 +168,7 @@ function editv2DetailsPost(req, res) {
   } else {
     prototypeData.detailsMarkAsComplete = false;
   }
-  prototypeData.detailsEditMode = 'locked';
+  // prototypeData.detailsEditMode = 'locked';
 
   console.log(prototypeData);
 
