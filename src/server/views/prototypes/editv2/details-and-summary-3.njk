@@ -1,0 +1,347 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/editv2/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/editv2/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = '' %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+
+{% set pageTitle = 'Details and summary' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Drummond Acaster' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Details and summary ' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{#{% if prototypeData.detailsEditMode == 'unlocked' %}
+    {% set backLinkContents =  [{url:'/prototypes/editv2/application-overview?detailsEditMode=locked', text:'Back to Appliction overview'}] %}
+{% else %}
+    {% set backLinkContents =  [{url:'/prototypes/editv2/application-overview', text:'Back to Appliction overview'}] %}
+{% endif %}#}
+{% set backLinkContents =  [{url:'/prototypes/editv2/application-overview-3', text:'Back to Appliction overview'}] %}
+
+
+{% block content %}
+
+    <style>
+        .tox-statusbar__wordcount, .tox-statusbar__branding { display: none!important}
+    </style>
+
+    {% if prototypeData.detailsEditMode3 == 'locked' %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+                <div class="govuk-notification-banner" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="_govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <h3 class="govuk-notification-banner__heading">This application is currently 'read-only'</h3>
+                        <p class="govuk-body">If you need to make changes, you can  <a href="/prototypes/editv2/details-and-summary-3?detailsEditMode3=unlocked">become the application editor</a>.</p>
+                    </div>
+                </div>
+                <style>
+                    .tox .tox-edit-area__iframe {
+                        background-color: #fafafa!important;
+                    }
+                </style>
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
+
+    {% if prototypeData.detailsEditMode3 == 'unlocked' %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="govuk-notification-banner" role="alert" aria-labelledby="_govuk-notification-banner-title" data-module="_govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <div id="displayWrapper">
+                            <h3 class="govuk-notification-banner__heading">You have locked this application for editing</h3>
+                            <p class="govuk-body">No one else can edit or submit the application until you <a href="/prototypes/editv2/details-and-summary-3?detailsEditMode3=locked">stop being the application editor</a>.</p>
+                        </div>
+                    </div>
+                </div>
+
+            {%- endcall %}
+        {%- endcall %}
+    {% endif %}
+
+
+
+
+
+
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Details and summary', caption='APP171: ' + prototypeData.applicationTitle3) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    <section class="section" id="mainContent">
+        {% call components.form(action='#', method='POST',name='submitForm') %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+                    {% call components.formGroup() %}
+
+                        <div class="govuk-form-group ">
+                            <label class="govuk-label govuk-label--s  govuk-!-font-weight-bold " for="projectName">Application name
+                                <span class="govuk-hint">Make this the title of your research proposal.</span>
+                            </label>
+                            <input class="govuk-input " id="projectName" type="text" name="projectName" value="{{ prototypeData.applicationTitle3 }}" {% if prototypeData.detailsEditMode3 == 'locked' %} disabled {% endif %}>
+                        </div>
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+                    <div class="govuk-form-group ">
+                        <label class="govuk-label govuk-label--s  govuk-!-font-weight-bold " for="projectSummary">Summary
+                            <span class="govuk-hint">Provide a brief synopsis of the research programme your proposing to conduct over a 2-year period. You have 250 words.</span>
+                        </label>
+                        <details class="govuk-details" data-module="govuk-details" role="group">
+                            <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                <span class="govuk-details__summary-text">Guidance for writing a summary</span>
+                            </summary>
+                            <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                <p class="govuk-body">Summarise how your proposal will explore new areas, including other user communities. It can include innovative approaches but must be arts and humanities-led, with a majority of the methodologies, research questions and outputs falling within AHRC’s subject remit. Give details of the aims and objectives, the timetable for any proposed activities, proposed participants and key speakers, and plans for management and coordination, including the membership of any proposed advisory group or steering committee.</p>
+                                <p class="govuk-body">You should also clearly outline the rationale for the activities, approach and the research context by explaining:</p>
+                                <ul class="govuk-list govuk-list--bullet">
+                                    <li>the central theme of the proposed activity and why it is innovative</li>
+                                    <li>the importance of this theme being explored</li>
+                                    <li>how the proposed activities will create genuine interaction across boundaries and advance understanding</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <textarea class="govuk-textarea govuk-js-character-count" name="projectSummary" id="projectSummary" rows="18" {% if prototypeData.detailsEditMode3 == 'locked' %} disabled {% endif %}>{{ prototypeData.summary3 }}</textarea>
+                        <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 250 words remaining</span></p>
+                    </div>
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-item">
+                            <div class="application-item__contents application-item__contents--mac">
+                                <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                    <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                        <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                    </legend>
+                                    <div class="govuk-checkboxes">
+                                        <div class="govuk-checkboxes__item">
+                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if prototypeData.detailsMarkAsComplete3 %} checked{% endif %} {% if prototypeData.detailsEditMode3 == 'locked' %} disabled {% endif %}>
+                                            <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    {%- endcall %}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-controls govuk-clearfix">
+                            {#{% if prototypeData.detailsEditMode == 'locked' %}
+                                <a href="/prototypes/editv2/application-overview/" class="govuk-link">Return to application overview</a>
+                            {% else %}
+                            #}{#{{ components.button(text='Save and return', extraClass="application-controls__submit")}}#}{#
+                            <input class="govuk-button application-controls__submit" type="submit" value="Save and return" {% if prototypeData.detailsEditMode == 'locked' %} disabled {% endif %}>
+                            <a class="govuk-link" href="/prototypes/editv2/application-overview#}{#?detailsEditMode=locked#}{#">Return to Application overview</a>
+                            {% endif %}#}
+
+                            <input class="govuk-button application-controls__submit" type="submit" value="Save and return" {% if prototypeData.detailsEditMode3 == 'locked' %} disabled {% endif %}>
+                            <a class="govuk-link" href="/prototypes/editv2/application-overview-3{#?detailsEditMode=locked#}">Return to Application overview</a>
+
+                            {#<br><br><a href="/prototypes/change-request/create-type" class="govuk-link application-controls__cancel">Cancel and return to create award change request</a>#}
+                        </div>
+                    {%- endcall %}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+            {% call components.bulmaRow(extraClass='u-space-t45') %}
+
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+                    {{ components.captionHeading(text='Change history', tag='h2', size='s') }}
+
+                    <div class="application-items u-space-b45">
+                        {% if prototypeData.detailsJustBeenUpdated3 %}
+                            <div class="application-item  application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <h3 class="govuk-heading-xs">Text change</h3>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Drummond Acaster<span></span></p>
+
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="application-item  application-item--skinny">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <h3 class="govuk-heading-xs">Sent to research office</h3>
+                                    <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Randy Mitchell <span></span></p>
+
+                                </div>
+                                <div class="application-item__right u-align-right">
+                                    <span class="meta">12 June 2022, 10.16am</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="application-item  application-item--skinny">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <h3 class="govuk-heading-xs">Text change and marked as complete</h3>
+                                    <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Randy Mitchell <span></span></p>
+
+                                </div>
+                                <div class="application-item__right u-align-right">
+                                    <span class="meta">12 June 2022, 10.14am</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="application-item  application-item--skinny">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <h3 class="govuk-heading-xs">Text change</h3>
+                                    <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Randy Mitchell <span></span></p>
+
+                                </div>
+                                <div class="application-item__right u-align-right">
+                                    <span class="meta">6 June 2022, 11.03am</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="application-item  application-item--skinny">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <h3 class="govuk-heading-xs">Text change</h3>
+                                    <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Randy Mitchell <span></span></p>
+
+                                </div>
+                                <div class="application-item__right u-align-right">
+                                    <span class="meta">6 June 2022, 9.45am</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="application-item  application-item--skinny">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <h3 class="govuk-heading-xs">Text change</h3>
+                                    <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Randy Mitchell <span></span></p>
+
+                                </div>
+                                <div class="application-item__right u-align-right">
+                                    <span class="meta">4 June 2022, 10.48am</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+    </section>
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+
+
+
+{% block bodyScripts %}
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        const counteroutputFoot = document.getElementById('wordCount');
+        let words = 0;
+        const limit = 500;
+        let tinyMCEWordCount;
+
+        tinymce.init({
+            selector: '#projectSummary',
+            height: 500,
+            {% if prototypeData.detailsEditMode == 'locked' %} readonly : 1, {% endif %}
+            plugins: [
+                'advlist autolink lists link image preview anchor',
+                'media table paste  wordcount'
+            ],
+            setup: function(editor) {
+
+                editor.on('keyup', function(e) {
+                    tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                    console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                    words = tinyMCEWordCount;
+                    let remainder = limit - words;
+                    if (words < limit) {
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    } else {
+                        let overCount = words - limit;
+                        counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+                    }
+                });
+
+                editor.on('init', function(e) {
+                    setTimeout(function(){
+                        tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                        console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                        words = tinyMCEWordCount;
+                        let remainder = limit - words;
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    }, 500);
+                });
+            },
+            toolbar: 'formatselect | bold italic | bullist numlist | align | indent outdent | link | table |',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ],
+            menubar: false,
+        });
+    </script>
+{% endblock %}
+

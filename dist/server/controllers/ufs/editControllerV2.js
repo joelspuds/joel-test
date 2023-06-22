@@ -17,16 +17,20 @@ exports.editv2CaseGet = editv2CaseGet;
 exports.editv2CasePost = editv2CasePost;
 exports.editv2ApplicationOverview2Get = editv2ApplicationOverview2Get;
 exports.editv2ApplicationOverview2Post = editv2ApplicationOverview2Post;
+exports.editv2ApplicationOverview3Get = editv2ApplicationOverview3Get;
+exports.editv2ApplicationOverview3Post = editv2ApplicationOverview3Post;
+exports.editv2Details3Get = editv2Details3Get;
+exports.editv2Details3Post = editv2Details3Post;
 
 var _test_applications = require('./test_applications');
 
 let generalData = require('./data');
 let genericFunctions = require('./generic');
-const megaApplications = require('./realApplications');
-const megaApplications1200 = require('./realApplications1200');
-const megaApplications1200v2 = require('./realApplications1200_v2');
-const megaReversed = require('./test_applications');
-let applicationsListv2 = megaApplications1200v2.megaApplications1200v2;
+//const megaApplications = require('./realApplications');
+//const megaApplications1200 = require('./realApplications1200');
+//const megaApplications1200v2 = require('./realApplications1200_v2');
+//const megaReversed = require('./test_applications');
+//let applicationsListv2 = megaApplications1200v2.megaApplications1200v2;
 
 let prototypeData = {
   oppTitle: 'OPP147: African sleeping sickness - pathways to treatment',
@@ -41,7 +45,13 @@ let prototypeData = {
   detailsJustBeenUpdated: false,
   oppTitle2: 'OPP018: Greener Futures Environmental Technology Awards 2023',
   applicationTitle2: 'Environmental Energy Storage in Aqua Batteries',
-  applicant2: 'Chadwell Brotwurst'
+  applicant2: 'Chadwell Brotwurst',
+  summary3: '<p class="govuk-body">will complete later</p>',
+  detailsEditMode3: 'locked',
+  oppTitle3: 'OPP009: Modern Aeronautics',
+  applicationTitle3: 'Solar Wings in Stratospheric Flight',
+  applicant3: 'Randy Mitchell',
+  returnToApplicant3: false
 };
 
 /* **************
@@ -51,6 +61,30 @@ let prototypeData = {
 *************** */
 function editv2IndexGet(req, res) {
   let viewData;
+
+  let clearSession = req.param('clearSession');
+  if (clearSession === 'true') {
+    req.session.destroy();
+    prototypeData.oppTitle = 'OPP147: African sleeping sickness - pathways to treatment';
+    prototypeData.applicationTitle = 'Ribosome profiling of Trypanosoma brucei';
+    prototypeData.applicant1 = 'Manolo Bauer';
+    prototypeData.detailsEditMode = 'locked';
+    prototypeData.detailsMarkAsComplete = true;
+    prototypeData.teamMarkAsComplete = true;
+    prototypeData.caseMarkAsComplete = true;
+    prototypeData.resourcesAndCostsIsComplete = true;
+    prototypeData.detailsJustBeenUpdated = false;
+    prototypeData.oppTitle2 = 'OPP018: Greener Futures Environmental Technology Awards 2023';
+    prototypeData.applicationTitle2 = 'Environmental Energy Storage in Aqua Batteries';
+    prototypeData.applicant2 = 'Chadwell Brotwurst';
+    prototypeData.summary3 = '<p class="govuk-body">will complete later</p>';
+    prototypeData.detailsEditMode3 = 'locked';
+    prototypeData.oppTitle3 = 'OPP009: Modern Aeronautics';
+    prototypeData.applicationTitle3 = 'Solar Wings in Stratospheric Flight';
+    prototypeData.applicant3 = 'Randy Mitchell';
+    prototypeData.returnToApplicant3 = false;
+  }
+
   viewData = {};
   return res.render('prototypes/editv2/index', viewData);
 }
@@ -224,4 +258,91 @@ function editv2ApplicationOverview2Post(req, res) {
   const {} = req.body;
 
   return res.redirect('/prototypes/editv2/application-overview-2');
+}
+
+/* **************
+
+    Application overview 3
+
+*************** */
+function editv2ApplicationOverview3Get(req, res) {
+  let viewData;
+
+  let detailsEditMode = req.param('detailsEditMode');
+  if (detailsEditMode === 'locked') {
+    prototypeData.detailsEditMode = 'locked';
+  } else if (detailsEditMode === 'unlocked') {
+    prototypeData.detailsEditMode = 'unlocked';
+  }
+
+  console.log('prototypeData.detailsEditMode = ' + prototypeData.detailsEditMode);
+
+  prototypeData.detailsJustBeenUpdated = false;
+  let detailsJustBeenUpdated = req.session.detailsJustBeenUpdated;
+  if (detailsJustBeenUpdated === true) {
+    prototypeData.detailsJustBeenUpdated = true;
+    req.session.detailsJustBeenUpdated = null;
+  }
+
+  // console.log(prototypeData);
+
+  viewData = {
+    prototypeData
+  };
+
+  return res.render('prototypes/editv2/application-overview-3', viewData);
+}
+
+function editv2ApplicationOverview3Post(req, res) {
+  const { submitButton } = req.body;
+
+  console.log(req.body);
+  console.log('submitButton = ' + submitButton);
+  if (submitButton === 'returnToApplicant3') {
+    prototypeData.returnToApplicant3 = true;
+  }
+
+  return res.redirect('/prototypes/editv2/application-overview-3');
+}
+
+/* **************
+
+    Details and summary 3
+
+*************** */
+function editv2Details3Get(req, res) {
+  let viewData;
+
+  let detailsEditMode = req.param('detailsEditMode3');
+  if (detailsEditMode === 'locked') {
+    prototypeData.detailsEditMode3 = 'locked';
+  } else if (detailsEditMode === 'unlocked') {
+    prototypeData.detailsEditMode3 = 'unlocked';
+  }
+
+  //detailsEditMode
+
+  viewData = {
+    prototypeData
+  };
+  return res.render('prototypes/editv2/details-and-summary-3', viewData);
+}
+
+function editv2Details3Post(req, res) {
+  const { projectName, projectSummary, isComplete } = req.body;
+
+  prototypeData.applicationTitle3 = projectName;
+  prototypeData.summary3 = projectSummary;
+  if (isComplete === 'on') {
+    prototypeData.detailsMarkAsComplete3 = true;
+  } else {
+    prototypeData.detailsMarkAsComplete3 = false;
+  }
+  // prototypeData.detailsEditMode = 'locked';
+
+  console.log(prototypeData);
+
+  req.session.detailsJustBeenUpdated3 = true;
+
+  return res.redirect('/prototypes/editv2/application-overview-3');
 }

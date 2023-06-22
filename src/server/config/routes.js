@@ -980,6 +980,11 @@ router.post('/prototypes/editv2/case-for-support', demosController.editv2CasePos
 router.get('/prototypes/editv2/details-and-summary', demosController.editv2DetailsGet);
 router.post('/prototypes/editv2/details-and-summary', demosController.editv2DetailsPost);
 
+router.get('/prototypes/editv2/application-overview-3', demosController.editv2ApplicationOverview3Get);
+router.post('/prototypes/editv2/application-overview-3', demosController.editv2ApplicationOverview3Post);
+router.get('/prototypes/editv2/details-and-summary-3', demosController.editv2Details3Get);
+router.post('/prototypes/editv2/details-and-summary-3', demosController.editv2Details3Post);
+
 /* *************************************************************** *
 
     Classifications stuff

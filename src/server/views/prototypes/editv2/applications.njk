@@ -52,7 +52,55 @@
 
     {% call components.bulmaRow(extraClass='') %}
 
-        {% call components.bulmaColumnAny(size='column is-12') %}
+
+        {% call components.bulmaColumnAny(size='column is-3') %}
+
+            <div class="filter">
+                <h2 class="filter__title">Filter by status</h2>
+                <ul class="filter__list u-clearfix govuk-radios govuk-radios--small">
+                    <li class="filter__item filter__item--small govuk-clearfix">
+                        <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                            <input class="govuk-checkboxes__input" id="statusFilter_2" type="checkbox" name="statusFilter_2" value="With applicant" {% if allData.statusFilter_2 == 'With applicant' %}checked{% endif %}>
+                            <label for="statusFilter_2" class="govuk-checkboxes__label u-display-ib">With applicant</label>
+                        </div>
+                    </li>
+                    <li class="filter__item filter__item--small govuk-clearfix">
+                        <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                            <input class="govuk-checkboxes__input" id="statusFilter_1" type="checkbox" name="statusFilter_1" value="With research office" {% if allData.statusFilter_1 == 'With research office' %}checked{% endif %}>
+                            <label for="statusFilter_1" class="govuk-checkboxes__label u-display-ib">With research office</label>
+                        </div>
+                    </li>
+                    <li class="filter__item filter__item--small govuk-clearfix">
+                        <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                            <input class="govuk-checkboxes__input" id="statusFilter_3" type="checkbox" name="statusFilter_3" value="Submitted" {% if allData.statusFilter_3 == 'Submitted' %}checked{% endif %}>
+                            <label for="statusFilter_3" class="govuk-checkboxes__label u-display-ib">Submitted</label>
+                        </div>
+                    </li>
+                    <li class="filter__item filter__item--small govuk-clearfix">
+                        <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                            <input class="govuk-checkboxes__input" id="outcomeFilter_1" type="checkbox" name="outcomeFilter_1" value="Successful" {% if allData.outcomeFilter_1 == 'Successful' %}checked{% endif %}>
+                            <label for="outcomeFilter_1" class="govuk-checkboxes__label u-display-ib">Successful</label>
+                        </div>
+                    </li>
+                    <li class="filter__item filter__item--small govuk-clearfix">
+                        <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                            <input class="govuk-checkboxes__input" id="outcomeFilter_2" type="checkbox" name="outcomeFilter_2" value="Unsuccessful" {% if allData.outcomeFilter_2 == 'Unsuccessful' %}checked{% endif %}>
+                            <label for="outcomeFilter_2" class="govuk-checkboxes__label u-display-ib">Unsuccessful</label>
+                        </div>
+                    </li>
+                    <li class="filter__item filter__item--small govuk-clearfix">
+                        <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                            <input class="govuk-checkboxes__input" id="outcomeFilter_3" type="checkbox" name="outcomeFilter_3" value="Deadline passed" {% if allData.outcomeFilter_3 == 'Missed deadline' %}checked{% endif %}>
+                            <label for="outcomeFilter_3" class="govuk-checkboxes__label u-display-ib">Missed deadline</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='column is-9') %}
 
             <div class="responsive-table">
 
@@ -64,7 +112,7 @@
                         <th class="govuk-table__header">Opportunity</th>
                         <th class="govuk-table__header">Applicant<br></th>
                         <th class="govuk-table__header govuk-table__header--numeric">Deadline</th>
-                        <th class="govuk-table__header govuk-table__header--numeric">Application<br>status</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -72,31 +120,50 @@
                         <td class="govuk-table__cell"><a href="/prototypes/editv2/application-overview" class="govuk-link">APP171: {{ prototypeData.applicationTitle }}</a></td>
                         <td class="govuk-table__cell">{{ prototypeData.oppTitle }}</td>
                         <td class="govuk-table__cell">{{ prototypeData.applicant1 }}</td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric">21 Jun 2023</td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric">
-                            {% if sentBackToApplicant %}
-                                <strong>Returned to applicant</strong>
-                                {#<span class="mega-table_item-meta">100% complete</span>#}
-                            {% else %}
-                                <strong>In progress</strong>
-                                {#<span class="mega-table_item-meta">100% complete</span>#}
-                            {% endif %}
-                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">25 Jun 2023</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--blue govuk-tag--tiny">With research office</strong></td>
                     </tr>
                     <tr>
                         <td class="govuk-table__cell"><a href="/prototypes/editv2/application-overview-2" class="govuk-link">APP420: {{ prototypeData.applicationTitle2 }}</a></td>
                         <td class="govuk-table__cell">{{ prototypeData.oppTitle2 }}</td>
                         <td class="govuk-table__cell">{{ prototypeData.applicant2 }}</td>
                         <td class="govuk-table__cell govuk-table__cell--numeric">4 Jul 2023</td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong>In progress</strong></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--blue govuk-tag--tiny">With research office</strong></td>
                     </tr>
                     <tr>
-
-                        <td class="govuk-table__cell"><a href="#" class="govuk-link">APP267: Solar Wings in Stratospheric Flight</a></td>
-                        <td class="govuk-table__cell">OPP009: Modern Aeronautics</td>
-                        <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
+                        <td class="govuk-table__cell"><a href="/prototypes/editv2/application-overview-3" class="govuk-link">APP267: {{ prototypeData.applicationTitle3 }}</a></td>
+                        <td class="govuk-table__cell">{{ prototypeData.oppTitle3 }}</td>
+                        <td class="govuk-table__cell">{{ prototypeData.applicant3 }}</td>
                         <td class="govuk-table__cell govuk-table__cell--numeric">19 Jul 2023</td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong>In progress</strong></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--blue govuk-tag--tiny">With research office</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">APP127: Localised hydroelectric storage cells</a></td>
+                        <td class="govuk-table__cell">OPP012: Green energies - summer 2023 </td>
+                        <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">21 Jul 2023</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--yellow govuk-tag--tiny">With applicant</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">APP129: Municipal waste recycling and energy generation</a></td>
+                        <td class="govuk-table__cell">OPP012: Green energies - summer 2023 </td>
+                        <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">21 Jul 2023</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--yellow govuk-tag--tiny">With applicant</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">APP008: Plastic-affected rebound modelling in steel safety barriers</a></td>
+                        <td class="govuk-table__cell">OPP004: Highways saftey </td>
+                        <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">4 Jun 2023</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--grey govuk-tag--tiny">Missed deadline</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">APP008: Deep-sea geotechnical concrete for rig piling</a></td>
+                        <td class="govuk-table__cell">OPP002: Managed marine ecosystems </td>
+                        <td class="govuk-table__cell">{{ 'addHonorific' | giveMeAName }}</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">23 May 2023</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--grey govuk-tag--tiny">Unsuccessful</strong></td>
                     </tr>
                     </tbody>
 
