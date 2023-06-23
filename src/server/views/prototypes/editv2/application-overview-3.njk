@@ -33,13 +33,13 @@
         {% if prototypeData.detailsEditMode3 == 'locked' %}
             {% call components.bulmaRow() %}
                 {% call components.bulmaColumnAny(size='is-full') %}
-                    <div class="govuk-notification-banner" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="_govuk-notification-banner">
+                    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="_govuk-notification-banner">
                         <div class="govuk-notification-banner__header">
-                            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
                         </div>
                         <div class="govuk-notification-banner__content">
-                            <h3 class="govuk-notification-banner__heading">This application is currently assigned to the applicant</h3>
-                            <p class="govuk-body">They will send it to the research office when they need you to check and submit to UKRI</a>.</p>
+                            <h3 class="govuk-notification-banner__heading">Application returned</h3>
+                            <p class="govuk-body">Ensure the applicant has been made aware of the changes they need to make.</p>
                         </div>
                     </div>
                 {%- endcall %}
@@ -47,7 +47,6 @@
         {% endif %}
 
     {% else %}
-
 
 
 
@@ -205,16 +204,19 @@
 
                     {% if prototypeData.returnToApplicant3 %}
 
-                        <p class="govuk-body">The application is currently being edited by the Lead Applicant. You can still view the sections above, but you cannot submit it until it has been sent to the research office.</p>
+                        <div class="govuk-warning-text">
+                            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                            <strong class="govuk-warning-text__text">
+                                <span class="govuk-warning-text__assistive">Warning</span>
+                                Read only view
+                            </strong>
+                        </div>
 
-                        {% call components.form(action='#', method='POST',name='submitApplication') %}
-                            <button type="submit" class="govuk-button application-controls__submit govuk-!-display-inline" name="submitButton" value="submit3" disabled>Submit to UKRI</button>
-                        {%- endcall %}
-
+                        <p class="govuk-body">You can view any of the sections above, however the applicant can still edit their application. Only when they have marked it as 100% complete, and sent it to your Research Office, can it be submitted to UKRI.</p>
 
                     {% else %}
 
-                        <p class="govuk-body">When all the sections above are marked as complete, you can submit your application to UKRI. Once it has been submitted, you cannot make any further changes.</p>
+                        <p class="govuk-body">{{ prototypeData.submitText }}</p>
 
                         {% call components.form(action='#', method='POST',name='submitApplication') %}
                             <button type="submit" class="govuk-button application-controls__submit govuk-!-display-inline" name="submitButton" value="submit3">Submit to UKRI</button>
@@ -223,12 +225,6 @@
                         {%- endcall %}
 
                     {%  endif %}
-
-
-
-
-
-
 
                 </div>
 
@@ -266,7 +262,7 @@
                     {% if prototypeData.returnToApplicant3 %}
 
                         <div class="progress-meter__clipper" aria-hidden="true" style="clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%); -webkit-clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%)">
-                            <div class="progress-meter__text progress-meter__text--front"><strong>Returned to applicant</strong></div>
+                            <div class="progress-meter__text progress-meter__text--front"><strong>With applicant</strong></div>
                         </div>
 
                     {% else %}

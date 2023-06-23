@@ -173,7 +173,7 @@
                 </div>
 
                 <div class="application-controls govuk-clearfix">
-                    <p class="govuk-body">When all the sections above are marked as complete, you can submit your application to UKRI. Once it has been submitted, you cannot make any further changes.</p>
+                    <p class="govuk-body">{{ prototypeData.submitText }}</p>
                     {#{% call components.form(action='#', method='POST',name='submitApplication') %}#}
                         <button type="submit" class="govuk-button application-controls__submit govuk-!-display-inline" name="submitButton" value="startShare">Submit to UKRI</button>
                         &nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="govuk-button govuk-button--secondary application-controls__submit govuk-!-display-inline" name="submitButton"  value="stopShare">Return to applicant</button>

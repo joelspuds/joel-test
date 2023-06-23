@@ -34,6 +34,8 @@ let prototypeData = {
   applicationTitle3: 'Solar Wings in Stratospheric Flight',
   applicant3: 'Randy Mitchell',
   returnToApplicant3: false,
+  submitText:
+    'The applicant has marked this as 100% complete and sent it to your Research Office to be checked. If revisions need to be made, it must be returned to the applicant for editing. Otherwise, it can be submitted to UKRI for assessment.',
 };
 
 /* **************
