@@ -10,7 +10,7 @@
 {% set altProfilePagelink = '#' %}
 {% set hideUserMenu = false %}
 
-{% set pageTitle = 'Case for support' %}
+{% set pageTitle = 'Details and summary' %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
@@ -21,7 +21,8 @@
 {% set isAdminUser = false %}
 {%  set loggedOut = false %}
 
-{% set pageTitle = 'Case for support ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set pageTitle = 'Details and summary ' + GLOBAL_TAG_TITLE_SUFFIX %}
+
 {% set backLinkContents =  [{url:'/prototypes/editv2/application-overview-2', text:'Back to Appliction overview'}] %}
 
 
@@ -30,7 +31,6 @@
     <style>
         .tox-statusbar__wordcount, .tox-statusbar__branding { display: none!important}
     </style>
-
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-full') %}
@@ -56,37 +56,62 @@
         {%- endcall %}
     {%- endcall %}
 
-    <style>
 
-        .tox .tox-edit-area__iframe {
-            background-color: #fafafa!important;
-        }
-    </style>
+
+
 
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Case for support', caption='APP420: ' + prototypeData.applicationTitle2) }}
+            {{ components.captionHeading(text='Details and summary', caption='APP171: ' + prototypeData.applicationTitle2) }}
         {%- endcall %}
     {%- endcall %}
+
     <section class="section" id="mainContent">
-        {% call components.form(action='/prototypes/multi-user-application/details', method='POST',name='formProjectTeam') %}
+        {% call components.form(action='#', method='POST',name='submitForm') %}
+
             {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+                    {% call components.formGroup() %}
+
+                        <div class="govuk-form-group ">
+                            <label class="govuk-label govuk-label--s  govuk-!-font-weight-bold " for="projectName">Application name
+                                <span class="govuk-hint">Make this the title of your research proposal.</span>
+                            </label>
+                            <input class="govuk-input " id="projectName" type="text" name="projectName" value="{{ prototypeData.applicationTitle2 }}"  disabled >
+                        </div>
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
                 {% call components.bulmaColumnAny(size='is-8') %}
 
                     <div class="govuk-form-group ">
-                        <label class="govuk-label govuk-label--s  govuk-!-font-weight-bold " for="projectSummary">Case for support
-                            <span class="govuk-hint">Provide full details for your Case for support outlining how the project with proceed. You have 2000 words.</span>
+                        <label class="govuk-label govuk-label--s  govuk-!-font-weight-bold " for="projectSummary">Summary
+                            <span class="govuk-hint">Provide a brief synopsis of the research programme your proposing to conduct over a 2-year period. You have 250 words.</span>
                         </label>
                         <details class="govuk-details" data-module="govuk-details" role="group">
                             <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
-                                <span class="govuk-details__summary-text">Guidance for case for support</span>
+                                <span class="govuk-details__summary-text">Guidance for writing a summary</span>
                             </summary>
                             <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
-                                <p class="govuk-body">Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis.</p>
+                                <p class="govuk-body">Summarise how your proposal will explore new areas, including other user communities. It can include innovative approaches but must be arts and humanities-led, with a majority of the methodologies, research questions and outputs falling within AHRC’s subject remit. Give details of the aims and objectives, the timetable for any proposed activities, proposed participants and key speakers, and plans for management and coordination, including the membership of any proposed advisory group or steering committee.</p>
+                                <p class="govuk-body">You should also clearly outline the rationale for the activities, approach and the research context by explaining:</p>
+                                <ul class="govuk-list govuk-list--bullet">
+                                    <li>the central theme of the proposed activity and why it is innovative</li>
+                                    <li>the importance of this theme being explored</li>
+                                    <li>how the proposed activities will create genuine interaction across boundaries and advance understanding</li>
+                                </ul>
                             </div>
                         </details>
-                        <textarea class="govuk-textarea govuk-js-character-count" name="projectSummary" id="projectSummary" rows="18" disabled >{{ prototypeData.summary2 }}</textarea>
+                        <textarea class="govuk-textarea govuk-js-character-count" name="projectSummary" id="projectSummary" rows="18" disabled>{{ prototypeData.summary2 }}</textarea>
                         <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 250 words remaining</span></p>
                     </div>
 
@@ -107,7 +132,7 @@
                                     </legend>
                                     <div class="govuk-checkboxes">
                                         <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if prototypeData.caseMarkAsComplete %} checked{% endif %} disabled >
+                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" checked disabled >
                                             <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
                                         </div>
                                     </div>
@@ -126,11 +151,18 @@
 
                     {% call components.formGroup() %}
                         <div class="application-controls govuk-clearfix">
-                            {% if prototypeData.caseMarkAsComplete %}
-                                <a href="/prototypes/editv2/application-overview-2" class="govuk-link">Return to application overview</a>
+                            {#{% if prototypeData.detailsEditMode == 'locked' %}
+                                <a href="/prototypes/editv2/application-overview/" class="govuk-link">Return to application overview</a>
                             {% else %}
-                                {{ components.button(text='Save and return', extraClass="application-controls__submit")}}
-                            {% endif %}
+                                #}{#{{ components.button(text='Save and return', extraClass="application-controls__submit")}}#}{#
+                                <input class="govuk-button application-controls__submit" type="submit" value="Save and return" {% if prototypeData.detailsEditMode == 'locked' %} disabled {% endif %}>
+                                <a class="govuk-link" href="/prototypes/editv2/application-overview#}{#?detailsEditMode=locked#}{#">Return to Application overview</a>
+                            {% endif %}#}
+
+                            <input class="govuk-button application-controls__submit" type="submit" value="Save and return" disabled >
+                            <a class="govuk-link" href="/prototypes/editv2/application-overview-2">Return to Application overview</a>
+
+                            {#<br><br><a href="/prototypes/change-request/create-type" class="govuk-link application-controls__cancel">Cancel and return to create award change request</a>#}
                         </div>
                     {%- endcall %}
 
@@ -138,53 +170,53 @@
 
             {%- endcall %}
 
-        {%- endcall %}
+            {% call components.bulmaRow(extraClass='u-space-t45') %}
 
-        {% call components.bulmaRow(extraClass='u-space-t45') %}
+                {% call components.bulmaColumnAny(size='is-8') %}
 
-            {% call components.bulmaColumnAny(size='is-8') %}
+                    {{ components.captionHeading(text='Change history', tag='h2', size='s') }}
 
-                {{ components.captionHeading(text='Change history', tag='h2', size='s') }}
+                    <div class="application-items u-space-b45">
+                        <div class="application-item  application-item--skinny">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <h3 class="govuk-heading-xs">Text change and marked as complete</h3>
+                                    <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Chadwell Brotwurst <span></span></p>
 
-                <div class="application-items u-space-b45">
-                    <div class="application-item  application-item--skinny">
-                        <div class="application-item__contents govuk-clearfix">
-                            <div class="application-item__left">
-                                <h3 class="govuk-heading-xs">Text change and marked as complete</h3>
-                                <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Chadwell Brotwurst <span></span></p>
-
+                                </div>
+                                <div class="application-item__right u-align-right">
+                                    <span class="meta">6 June 2022, 11.03am</span>
+                                </div>
                             </div>
-                            <div class="application-item__right u-align-right">
-                                <span class="meta">6 June 2022, 11.03am</span>
+                        </div>
+                        <div class="application-item  application-item--skinny">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <h3 class="govuk-heading-xs">Text change</h3>
+                                    <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Chadwell Brotwurst <span></span></p>
+
+                                </div>
+                                <div class="application-item__right u-align-right">
+                                    <span class="meta">6 June 2022, 9.45am</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="application-item  application-item--skinny">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    <h3 class="govuk-heading-xs">Text change</h3>
+                                    <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Chadwell Brotwurst <span></span></p>
+
+                                </div>
+                                <div class="application-item__right u-align-right">
+                                    <span class="meta">4 June 2022, 10.48am</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="application-item  application-item--skinny">
-                        <div class="application-item__contents govuk-clearfix">
-                            <div class="application-item__left">
-                                <h3 class="govuk-heading-xs">Text change</h3>
-                                <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Chadwell Brotwurst <span></span></p>
 
-                            </div>
-                            <div class="application-item__right u-align-right">
-                                <span class="meta">6 June 2022, 9.45am</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="application-item  application-item--skinny">
-                        <div class="application-item__contents govuk-clearfix">
-                            <div class="application-item__left">
-                                <h3 class="govuk-heading-xs">Text change</h3>
-                                <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Chadwell Brotwurst <span></span></p>
 
-                            </div>
-                            <div class="application-item__right u-align-right">
-                                <span class="meta">4 June 2022, 10.48am</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                {%- endcall %}
 
             {%- endcall %}
 
@@ -202,42 +234,11 @@
 
 
 {% block bodyScripts %}
-    {# <script>
-        ;(function(){
-            let wordcounter = document.getElementById('projectSummary');
-            let counteroutputFoot = document.getElementById('wordCount');
-            let words;
-            const limit = 400;
-
-            function countemwords(){
-                words = (wordcounter.value == '')? 0 : wordcounter.value.split(' ').length;
-                let remainder = limit - words;
-                if (words < limit) {
-                    wordcounter.classList.remove('govuk-textarea--error');
-                    counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
-                } else {
-                    let overCount = words - limit;
-                    wordcounter.classList.add('govuk-textarea--error');
-                    counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
-                }
-            }
-            wordcounter.addEventListener('input', function(e){
-                countemwords()
-            }, false);
-            document.addEventListener("DOMContentLoaded", function(event) {
-                countemwords()
-            }, false);
-            window.addEventListener("load", function(event) {
-                countemwords();
-            }, false)
-        })();
-    </script>#}
-
     <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         const counteroutputFoot = document.getElementById('wordCount');
         let words = 0;
-        const limit = 2000;
+        const limit = 500;
         let tinyMCEWordCount;
 
         tinymce.init({

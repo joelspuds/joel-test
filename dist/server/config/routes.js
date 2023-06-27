@@ -989,10 +989,15 @@ router.get('/prototypes/editv2/application-overview', demosController.editv2Appl
 router.post('/prototypes/editv2/application-overview', demosController.editv2ApplicationOverviewPost);
 router.get('/prototypes/editv2/application-overview-2', demosController.editv2ApplicationOverview2Get);
 router.post('/prototypes/editv2/application-overview-2', demosController.editv2ApplicationOverview2Post);
-router.get('/prototypes/editv2/case-for-support', demosController.editv2CaseGet);
-router.post('/prototypes/editv2/case-for-support', demosController.editv2CasePost);
+
 router.get('/prototypes/editv2/details-and-summary', demosController.editv2DetailsGet);
 router.post('/prototypes/editv2/details-and-summary', demosController.editv2DetailsPost);
+
+router.get('/prototypes/editv2/case-for-support', demosController.editv2CaseGet);
+router.post('/prototypes/editv2/case-for-support', demosController.editv2CasePost);
+router.get('/prototypes/editv2/details-and-summary-2', demosController.editv2Details2Get);
+router.get('/prototypes/editv2/team-2', demosController.editv2Team2Get);
+router.get('/prototypes/editv2/resources-2', demosController.editv2Resources2Get);
 
 router.get('/prototypes/editv2/application-overview-3', demosController.editv2ApplicationOverview3Get);
 router.post('/prototypes/editv2/application-overview-3', demosController.editv2ApplicationOverview3Post);

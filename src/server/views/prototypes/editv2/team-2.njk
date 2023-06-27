@@ -1,0 +1,388 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/editv2/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/editv2/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = '' %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+
+{% set pageTitle = 'Team' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Drummond Acaster' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Team ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/editv2/application-overview-2', text:'Back to Appliction overview'}] %}
+
+
+{% block content %}
+
+    <style>
+        .tox-statusbar__wordcount, .tox-statusbar__branding { display: none!important}
+    </style>
+
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <div class="govuk-notification-banner" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="_govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <h3 class="govuk-notification-banner__heading">This application is currently being edited by Renata Minchin</h3>
+
+                    <p class="govuk-body">No one else can edit or submit the application until they stop being the application editor.</p>
+                </div>
+            </div>
+            <style>
+                /*.mce-content-body {
+                    background-color: #fafafa!important;
+                    border-color: #b1b4b6;
+                }*/
+                .tox .tox-edit-area__iframe {
+                    background-color: #fafafa!important;
+                }
+            </style>
+        {%- endcall %}
+    {%- endcall %}
+
+    <style>
+
+        .tox .tox-edit-area__iframe {
+            background-color: #fafafa!important;
+        }
+    </style>
+
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Team', caption='APP420: ' + prototypeData.applicationTitle2) }}
+        {%- endcall %}
+    {%- endcall %}
+    <section class="section" id="mainContent">
+
+
+        <div class="container ">
+            <div class="columns">
+
+                <div class="column is-three-quarters ">
+                    <p class="govuk-body govuk-!-font-size-24">Name all contributors to the proposed work and the amount of time they will spend contributing towards the project.</p></div>
+            </div>
+        </div>
+
+
+
+        <div class="container ">
+            <div class="columns">
+
+                <div class="column is-three-quarters ">
+
+                    <div class="form-group ">
+                        <fieldset>
+                            <legend>
+
+
+
+                            </legend>
+
+
+
+                            <a class="govuk-button govuk-button--secondary " href="/prototypes/team-resources-costs/select-role-type" role="button">Add team member</a>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="container ">
+            <div class="columns">
+
+                <div class="column is-full ">
+
+
+
+                    <h2 class="govuk-heading-m ">
+                        Directly allocated
+                    </h2>
+
+
+                    <div class="responsive-table ">
+                        <table class="govuk-table responsive-table__table">
+                            <thead>
+                            <tr>
+                                <th class="govuk-table__header">Name</th>
+                                <th class="govuk-table__header">Role</th>
+                                <th class="govuk-table__header">Organisation</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Time spent FTE<br>on project (%)</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Average hours per<br>week on project</th>
+                                <th class="govuk-table__header govuk-table__header--numeric"><span class="govuk-visually-hidden">Actions</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+
+                            <tr>
+                                <td class="govuk-table__cell">
+                                    <a href="/prototypes/team-resources-costs/team-member?teamMemberID=1" class="govuk-link">
+
+                                        Manolo  Bauer
+
+                                    </a> </td>
+                                <td class="govuk-table__cell">
+
+                                    Project lead
+
+                                </td>
+                                <td class="govuk-table__cell">University of Wales</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">
+
+                                    50
+
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">
+
+                                    20
+
+                                </td>
+                                <td class=" govuk-table__cell govuk-table__cell--numeric">
+
+                                    <span class="meta">—</span>
+
+                                </td>
+
+                            </tr>
+
+
+
+                            <tr>
+                                <td class="govuk-table__cell">
+                                    <a href="/prototypes/team-resources-costs/team-member?teamMemberID=2" class="govuk-link">
+
+                                        Dave Nelson
+
+                                    </a> </td>
+                                <td class="govuk-table__cell">
+
+                                    Co-project lead
+
+                                </td>
+                                <td class="govuk-table__cell">University of Wales</td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">
+
+                                    100
+
+                                </td>
+                                <td class="govuk-table__cell govuk-table__cell--numeric">
+
+                                    40
+
+                                </td>
+                                <td class=" govuk-table__cell govuk-table__cell--numeric">
+
+                                    <a href="/prototypes/team-resources-costs/team?action=remove&amp;teamMemberID=2" class="govuk-link">Remove</a>
+
+                                </td>
+
+                            </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </tbody>
+                        </table>
+                    </div></div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="container ">
+            <div class="columns">
+
+                <div class="column is-three-quarters ">
+
+
+                    <div class="form-group ">
+                        <fieldset>
+                            <legend>
+                            </legend>
+
+                            <div class="application-item">
+                                <div class="application-item__contents application-item__contents--mac">
+                                    <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                        <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                            <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                        </legend>
+                                        <div class="govuk-checkboxes">
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" disabled>
+                                                <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-8') %}
+
+                {% call components.formGroup() %}
+                    <div class="application-controls govuk-clearfix">
+                        {#{% if prototypeData.detailsEditMode == 'locked' %}
+                                <a href="/prototypes/editv2/application-overview/" class="govuk-link">Return to application overview</a>
+                            {% else %}
+                        #}{#{{ components.button(text='Save and return', extraClass="application-controls__submit")}}#}{#
+                        <input class="govuk-button application-controls__submit" type="submit" value="Save and return" {% if prototypeData.detailsEditMode == 'locked' %} disabled {% endif %}>
+                        <a class="govuk-link" href="/prototypes/editv2/application-overview#}{#?detailsEditMode=locked#}{#">Return to Application overview</a>
+                            {% endif %}#}
+
+                        <input class="govuk-button application-controls__submit" type="submit" value="Save and return" disabled >
+                        <a class="govuk-link" href="/prototypes/editv2/application-overview-2">Return to Application overview</a>
+
+                        {#<br><br><a href="/prototypes/change-request/create-type" class="govuk-link application-controls__cancel">Cancel and return to create award change request</a>#}
+                    </div>
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+    </section>
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+
+
+
+{% block bodyScripts %}
+    {# <script>
+        ;(function(){
+            let wordcounter = document.getElementById('projectSummary');
+            let counteroutputFoot = document.getElementById('wordCount');
+            let words;
+            const limit = 400;
+
+            function countemwords(){
+                words = (wordcounter.value == '')? 0 : wordcounter.value.split(' ').length;
+                let remainder = limit - words;
+                if (words < limit) {
+                    wordcounter.classList.remove('govuk-textarea--error');
+                    counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                } else {
+                    let overCount = words - limit;
+                    wordcounter.classList.add('govuk-textarea--error');
+                    counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+                }
+            }
+            wordcounter.addEventListener('input', function(e){
+                countemwords()
+            }, false);
+            document.addEventListener("DOMContentLoaded", function(event) {
+                countemwords()
+            }, false);
+            window.addEventListener("load", function(event) {
+                countemwords();
+            }, false)
+        })();
+    </script>#}
+
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        const counteroutputFoot = document.getElementById('wordCount');
+        let words = 0;
+        const limit = 2000;
+        let tinyMCEWordCount;
+
+        tinymce.init({
+            selector: '#projectSummary',
+            height: 500,
+            {% if prototypeData.detailsEditMode == 'locked' %} readonly : 1, {% endif %}
+            plugins: [
+                'advlist autolink lists link image preview anchor',
+                'media table paste  wordcount'
+            ],
+            setup: function(editor) {
+
+                editor.on('keyup', function(e) {
+                    tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                    console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                    words = tinyMCEWordCount;
+                    let remainder = limit - words;
+                    if (words < limit) {
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    } else {
+                        let overCount = words - limit;
+                        counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+                    }
+                });
+
+                editor.on('init', function(e) {
+                    setTimeout(function(){
+                        tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                        console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                        words = tinyMCEWordCount;
+                        let remainder = limit - words;
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    }, 500);
+                });
+            },
+            toolbar: 'formatselect | bold italic | bullist numlist | align | indent outdent | link | table |',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ],
+            menubar: false,
+        });
+    </script>
+{% endblock %}
+
