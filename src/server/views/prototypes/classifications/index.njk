@@ -1,5 +1,5 @@
 
-{% set showExternalNav = true %}
+{% set showExternalNav = false %}
 {% set activeNavItem = 'applications' %}
 {% set navArea = 'personal' %}
 {% set applicationsLink = '#' %}
@@ -7,12 +7,13 @@
 {% set reviewsLink = '#' %}
 {% set accountSettingsLink = '' %}
 {% set showExternalFurniture = false %}
+{% set navType = 'admin' %}
 
 {% set hideAccountLinks = true %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 {% set userName = 'John Doe' %}
-{% set isAdminUser = false %}
+{% set isAdminUser = true %}
 {% set loggedOut = true %}
 {% set allData = allData if allData %}
 {% set prototypeData = prototypeData if prototypeData %}

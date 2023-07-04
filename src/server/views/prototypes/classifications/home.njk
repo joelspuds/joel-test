@@ -1,4 +1,4 @@
-{% set showExternalNav = true %}
+{% set showExternalNav = false %}
 {% set activeNavItem = 'home' %}
 {% set navArea = 'home' %}
 {% set homeLink = '/prototypes/edit/home' %}
@@ -6,19 +6,19 @@
 {% set applicationsLink = '/prototypes/edit/applications' %}
 {% set awardsLink = '#' %}
 {% set reviewsLink = '#' %}
-{% set hideAccountLinks = '' %}
+{% set hideAccountLinks = true %}
 {% set altProfilePagelink = '#' %}
 {% set hideUserMenu = false %}
-
 {% set pageTitle = 'Home' %}
+{% set navType = 'admin' %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set allData = allData if allData %}
-{% set userName = allData.userName if allData.userName else 'Drummond Acaster' %}
+{% set userName = allData.userName if allData.userName else 'Dareh Justice' %}
 {% set prototypeData = prototypeData if prototypeData %}
 
-{% set isAdminUser = false %}
+{% set isAdminUser = true %}
 {%  set loggedOut = false %}
 
 {% set pageTitle = 'Home ' + GLOBAL_TAG_TITLE_SUFFIX %}
@@ -29,7 +29,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Home', caption='University of Wales') }}
+            {{ components.captionHeading(text='Home', caption='Medical Research Council') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -66,11 +66,11 @@
 
     {% call components.bulmaRow(extraClass='u-space-t20') %}
 
-        {% call components.bulmaColumnAny(size='column is-3') %}
+        {#{% call components.bulmaColumnAny(size='column is-3') %}
             <a href="#" class="govuk-link govuk-!-font-weight-bold govuk-!-font-size-19">Manage University of Wales</a>
             <br>
             <p class="govuk-body u-space-y10">Manage users and permissions for your organisations.</p>
-        {%- endcall %}
+        {%- endcall %}#}
 
         {% call components.bulmaColumnAny(size='column is-3') %}
             <a href="#" class="govuk-link govuk-!-font-weight-bold govuk-!-font-size-19">Account settings</a>

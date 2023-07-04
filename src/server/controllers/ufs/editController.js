@@ -221,5 +221,25 @@ export function editApplicationOverview2Get(req, res) {
 export function editApplicationOverview2Post(req, res) {
   const {} = req.body;
 
-  return res.redirect('/prototypes/edit/application-overview-2');
+  return res.redirect('/prototypes/edit/application-overview-2-confirm');
 }
+
+/*/!* **************
+
+    Application overview TWO
+
+*************** *!/
+export function editApplicationOverview2Get(req, res) {
+  let viewData;
+
+  viewData = {
+    prototypeData,
+  };
+  return res.render('prototypes/edit/application-overview-2', viewData);
+}
+
+export function editApplicationOverview2Post(req, res) {
+  const {} = req.body;
+
+  return res.redirect('/prototypes/edit/application-overview-2-confirm');
+}*/

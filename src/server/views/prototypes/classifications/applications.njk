@@ -1,4 +1,4 @@
-{% set showExternalNav = true %}
+{% set showExternalNav = false %}
 {% set activeNavItem = 'home' %}
 {% set navArea = 'home' %}
 {% set homeLink = '/prototypes/edit/home' %}
@@ -6,19 +6,20 @@
 {% set applicationsLink = '/prototypes/edit/applications' %}
 {% set awardsLink = '#' %}
 {% set reviewsLink = '#' %}
-{% set hideAccountLinks = '' %}
+{% set hideAccountLinks = true %}
 {% set altProfilePagelink = '#' %}
 {% set hideUserMenu = false %}
+{% set navType = 'admin' %}
 
 {% set pageTitle = 'Applciations' %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set allData = allData if allData %}
-{% set userName = allData.userName if allData.userName else 'Drummond Acaster' %}
+{% set userName = allData.userName if allData.userName else 'Dareh Justice' %}
 {% set prototypeData = prototypeData if prototypeData %}
 
-{% set isAdminUser = false %}
+{% set isAdminUser = true %}
 {%  set loggedOut = false %}
 
 {% set pageTitle = 'Applciations ' + GLOBAL_TAG_TITLE_SUFFIX %}
@@ -29,7 +30,7 @@
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Applications', caption='University of Wales') }}
+            {{ components.captionHeading(text='Applications', caption='Medical Research Council') }}
         {%- endcall %}
     {%- endcall %}
 

@@ -987,8 +987,13 @@ router.get('/prototypes/editv2/applications', demosController.editv2Applications
 router.post('/prototypes/editv2/applications', demosController.editv2ApplicationsPost);
 router.get('/prototypes/editv2/application-overview', demosController.editv2ApplicationOverviewGet);
 router.post('/prototypes/editv2/application-overview', demosController.editv2ApplicationOverviewPost);
+
 router.get('/prototypes/editv2/application-overview-2', demosController.editv2ApplicationOverview2Get);
 router.post('/prototypes/editv2/application-overview-2', demosController.editv2ApplicationOverview2Post);
+router.get('/prototypes/editv2/application-overview-2-confirm', demosController.editv2ApplicationOverview2ConfirmGet);
+router.get('/prototypes/editv2/application-overview-2-submitted', demosController.editv2ApplicationOverview2SubmittedGet);
+//
+
 
 router.get('/prototypes/editv2/details-and-summary', demosController.editv2DetailsGet);
 router.post('/prototypes/editv2/details-and-summary', demosController.editv2DetailsPost);
@@ -1019,6 +1024,8 @@ router.get('/prototypes/classifications/application-overview', demosController.c
 router.post('/prototypes/classifications/application-overview', demosController.classificationsApplicationOverviewPost);
 router.get('/prototypes/classifications/research-areas', demosController.classificationsResearchAreasGet);
 router.post('/prototypes/classifications/research-areas', demosController.classificationsResearchAreasPost);
+router.get('/prototypes/classifications/research-tags', demosController.classificationsAddGet);
+router.post('/prototypes/classifications/research-tags', demosController.classificationsAddPost);
 
 /* *************************************************************** *
 

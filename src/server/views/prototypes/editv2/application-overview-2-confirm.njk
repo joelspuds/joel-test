@@ -1,0 +1,91 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/editv2/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/editv2/Applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = '' %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+
+{% set pageTitle = 'Applciation overview' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Drummond Acaster' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Home ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/editv2/application-overview-2', text:'Back to Application overview'}] %}
+
+
+{% block content %}
+
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Are you sure you want to submit this application?', caption='APP420: ' + prototypeData.applicationTitle2) }}
+        {%- endcall %}
+    {%- endcall %}
+
+
+
+    <section class="section" id="mainContent">
+
+
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                <div class="govuk-warning-text">
+                    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                    <strong class="govuk-warning-text__text">
+                        <span class="govuk-warning-text__assistive">Warning</span>
+                        This application is currently being edited by Renata Minchin. The last saved version will be submitted to UKRI, so some recent changes may be lost.
+                    </strong>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='is-7', extraClass='_u-space-t20') %}
+
+                <div class="application-controls application-controls--paired-buttons govuk-clearfix _u-space-t45">
+
+                    {% call components.form(action='#', method='POST',name='submitApplicationConfirm') %}
+
+                        <a type="submit" class="govuk-button application-controls__submit" name="submitButton" value="submitToUKRI" href="/prototypes/editv2/application-overview-2-submitted">Submit application to UKRI</a>
+
+                        <a href="/prototypes/editv2/application-overview-2" class="govuk-link application-controls__cancel u-space-x45" >Return to application overview</a>
+                    {%- endcall %}
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+    </section>
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+
+
+
+{% block bodyScripts %}
+
+{% endblock %}
+

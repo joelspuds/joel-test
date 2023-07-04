@@ -1,4 +1,4 @@
-{% set showExternalNav = true %}
+{% set showExternalNav = false %}
 {% set activeNavItem = 'home' %}
 {% set navArea = 'home' %}
 {% set homeLink = '/prototypes/edit/home' %}
@@ -6,20 +6,21 @@
 {% set applicationsLink = '/prototypes/edit/Applications' %}
 {% set awardsLink = '#' %}
 {% set reviewsLink = '#' %}
-{% set hideAccountLinks = '' %}
+{% set hideAccountLinks = true %}
 {% set altProfilePagelink = '#' %}
 {% set hideUserMenu = false %}
+{% set navType = 'admin' %}
 
 {% set pageTitle = 'Applciation overview' %}
 
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set allData = allData if allData %}
-{% set userName = allData.userName if allData.userName else 'Drummond Acaster' %}
+{% set userName = allData.userName if allData.userName else 'Dareh Justice' %}
 {% set prototypeData = prototypeData if prototypeData %}
 
-{% set isAdminUser = false %}
-{%  set loggedOut = false %}
+{% set isAdminUser = true %}
+{% set loggedOut = false %}
 
 {% set pageTitle = 'Home ' + GLOBAL_TAG_TITLE_SUFFIX %}
 {% set backLinkContents =  [{url:'/prototypes/edit/applications', text:'Back to Applications'}] %}
@@ -218,7 +219,7 @@
                         <dt class="application-data__key">Applicant:</dt>
                         <dd class="application-data__value">{{ prototypeData.applicant1 }}</dd>
                         <dt class="application-data__key">Application status:</dt>
-                        <dd class="application-data__value"><strong class="govuk-tag govuk-tag--blue">With research office</strong></dd>
+                        <dd class="application-data__value"><strong class="govuk-tag govuk-tag--blue">With applicant</strong></dd>
 
                         <dt class="application-data__key">Application deadline:</dt>
                         <dd class="application-data__value">14 April 2023, 4:00pm</dd>

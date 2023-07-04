@@ -17,6 +17,8 @@ exports.editv2CaseGet = editv2CaseGet;
 exports.editv2CasePost = editv2CasePost;
 exports.editv2ApplicationOverview2Get = editv2ApplicationOverview2Get;
 exports.editv2ApplicationOverview2Post = editv2ApplicationOverview2Post;
+exports.editv2ApplicationOverview2ConfirmGet = editv2ApplicationOverview2ConfirmGet;
+exports.editv2ApplicationOverview2SubmittedGet = editv2ApplicationOverview2SubmittedGet;
 exports.editv2Details2Get = editv2Details2Get;
 exports.editv2Team2Get = editv2Team2Get;
 exports.editv2Resources2Get = editv2Resources2Get;
@@ -262,7 +264,26 @@ function editv2ApplicationOverview2Get(req, res) {
 function editv2ApplicationOverview2Post(req, res) {
   const {} = req.body;
 
-  return res.redirect('/prototypes/editv2/application-overview-2');
+  return res.redirect('/prototypes/editv2/application-overview-2-confirm');
+}
+
+// CONFIRM editv2ApplicationOverview2ConfirmGet
+function editv2ApplicationOverview2ConfirmGet(req, res) {
+  let viewData;
+
+  viewData = {
+    prototypeData
+  };
+  return res.render('prototypes/editv2/application-overview-2-confirm', viewData);
+}
+// SUBMITTED editv2ApplicationOverview2ConfirmGet
+function editv2ApplicationOverview2SubmittedGet(req, res) {
+  let viewData;
+
+  viewData = {
+    prototypeData
+  };
+  return res.render('prototypes/editv2/application-overview-2-submitted', viewData);
 }
 
 /* **************
