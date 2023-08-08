@@ -202,3 +202,99 @@ details {
   background-color: #f1f1f1;
   padding-left:10px;
 }
+
+
+.ra-items {
+  @include govuk-font($size: 16, $weight: normal);
+
+  span {
+    display: block;
+  }
+
+  a span {
+    display: none!important;
+  }
+}
+
+
+// vertical table
+.vt {
+
+  a {
+    display: block;
+    margin: 4px 0 0 0;
+  }
+
+  &__prime {
+    font-weight: bold;
+    display: block;
+  }
+
+  @include touch {
+
+    &__prime {
+      font-weight: normal;
+      position: relative;
+      padding-top: 20px;
+
+      &:before {
+        position: absolute;
+        font-weight: bold;
+        font-size:19px;
+        top:-6px;
+        left:0;
+        content:attr(data-label);
+      }
+
+      /*&--partner {
+        &:before {
+          content: "Project partner"
+        }
+      }
+
+      &--name {
+        &:before {
+          content: "Contact's details"
+        }
+      }
+
+      &--direct {
+        &:before {
+          content: "Direct contribution"
+        }
+      }
+
+      &--kind {
+        &:before {
+          content: "In-kind contribution"
+        }
+      }*/
+
+
+    }
+
+    th {
+      display: none;
+    }
+    td {
+      display: block;
+      border-bottom: 0;
+
+      &:last-of-type {
+        border-bottom: 1px solid #c0c0c0;
+        margin-bottom: 10px;
+      }
+    }
+
+    a {
+      display: inline-block;
+      margin: 0 8px 0 0;
+
+      &:first-of-type {
+        border-right: 1px solid #c0c0c0;
+        padding-right: 12px;
+      }
+    }
+
+  }
+}

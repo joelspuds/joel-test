@@ -14,6 +14,10 @@
     list-style-type: none;
   }
 
+  ol li {
+    list-style-type: decimal!important;
+  }
+
   &--flush {
     margin-top: 0;
   }

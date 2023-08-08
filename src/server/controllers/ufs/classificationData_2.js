@@ -1433,12 +1433,12 @@ let reportingData = [
 export const reportingTags = reportingData;
 
 let routingData = [
-  { council: 'MRC', name: 'NMHB' },
-  { council: 'MRC', name: 'DPFS/DCS/BMC' },
-  { council: 'MRC', name: 'BMBR' },
-  { council: 'MRC', name: 'NPRI' },
-  { council: 'MRC', name: 'PHIND' },
-  { council: 'MRC', name: 'RMRC' },
+  { council: 'MRC', name: 'NMHB ' },
+  { council: 'MRC', name: 'DPFS/DCS/BMC ' },
+  { council: 'MRC', name: 'BMBR ' },
+  { council: 'MRC', name: 'npri ' },
+  { council: 'MRC', name: 'PHIND ' },
+  { council: 'MRC', name: 'RMRC ' },
   { council: 'MRC', name: 'Newton Fund' },
   { council: 'MRC', name: 'Trials' },
   { council: 'STFC', name: 'Astronomy Grants Panel: Astronomy Solar Studies' },
@@ -1459,7 +1459,7 @@ let routingData = [
   { council: 'BBSRC', name: 'Committee A' },
   { council: 'BBSRC', name: 'Committee B' },
   { council: 'BBSRC', name: 'Committee C' },
-  { council: 'BBSRC', name: 'committee D' },
+  { council: 'BBSRC', name: 'Committee D' },
 ];
 export const allRoutingData = routingData;
 

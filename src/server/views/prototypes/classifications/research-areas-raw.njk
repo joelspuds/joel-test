@@ -1,0 +1,89 @@
+{% set showExternalNav = false %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/classifications/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/classifications/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+
+{% set pageTitle = 'Research areas' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dareh Justice' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Research areas ' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+
+{% block content %}
+
+    <style>
+        header,footer,.ufs-footer__branding {
+            display: none!important;
+        }
+    </style>
+    <section class="section" id="mainContent">
+
+
+
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+
+                            {% for item in allTheCats %}
+                                    {% if item.subjects %}
+                                        {% for subjects in item.subjects %}
+                                            {% if subjects.topics %}
+                                                {% for topics in subjects.topics %}
+
+
+                                                            <span class="catItemText">
+                                                                {"a": "{{ item.areaName }}", "s":  "{{ subjects.subjectName }}", "t": "{{ topics }}"},
+                                                            </span>
+
+                                                    <br>
+                                                {% endfor %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+
+                            {% endfor %}
+
+
+
+                {%- endcall %}
+
+
+            {%- endcall %}
+
+
+
+
+
+
+
+    </section>
+
+
+
+
+{% endblock %}
+
+
+
+
+{% block bodyScripts %}
+
+{% endblock %}
+

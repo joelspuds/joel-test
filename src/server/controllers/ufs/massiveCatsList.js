@@ -14986,58 +14986,58 @@ let massiveCatsList = [
           'Weather forecasting',
         ],
       },
+    ],
+  },
+  {
+    areaName: 'Visual arts',
+    subjects: [
       {
-        areaName: 'Visual arts',
-        subjects: [
-          {
-            subjectName: 'Applied Arts HTP',
-            topics: ['(null)'],
-          },
-          {
-            subjectName: 'Art History',
-            topics: ['(null)'],
-          },
-          {
-            subjectName: 'Art Theory & Aesthetics',
-            topics: ['(null)'],
-          },
-          {
-            subjectName: 'Design HTP',
-            topics: ['(null)'],
-          },
-          {
-            subjectName: 'Digital Arts HTP',
-            topics: ['(null)'],
-          },
-          {
-            subjectName: 'Fine Art HTP',
-            topics: ['(null)'],
-          },
-          {
-            subjectName: 'Installation & Sound Art HTP',
-            topics: ['(null)'],
-          },
-          {
-            subjectName: 'Photography HTP',
-            topics: ['(null)'],
-          },
-          {
-            subjectName: 'Time-Based Media HTP',
-            topics: ['(null)'],
-          },
-          {
-            subjectName: 'Ethnography & Anthropology',
-            topics: ['(null)'],
-          },
-          {
-            subjectName: 'Film-based media (H T & P)',
-            topics: ['(null)'],
-          },
-          {
-            subjectName: 'Community Ar,t inc A & H',
-            topics: ['(null)'],
-          },
-        ],
+        subjectName: 'Applied Arts HTP',
+        topics: ['(null)'],
+      },
+      {
+        subjectName: 'Art History',
+        topics: ['(null)'],
+      },
+      {
+        subjectName: 'Art Theory & Aesthetics',
+        topics: ['(null)'],
+      },
+      {
+        subjectName: 'Design HTP',
+        topics: ['(null)'],
+      },
+      {
+        subjectName: 'Digital Arts HTP',
+        topics: ['(null)'],
+      },
+      {
+        subjectName: 'Fine Art HTP',
+        topics: ['(null)'],
+      },
+      {
+        subjectName: 'Installation & Sound Art HTP',
+        topics: ['(null)'],
+      },
+      {
+        subjectName: 'Photography HTP',
+        topics: ['(null)'],
+      },
+      {
+        subjectName: 'Time-Based Media HTP',
+        topics: ['(null)'],
+      },
+      {
+        subjectName: 'Ethnography & Anthropology',
+        topics: ['(null)'],
+      },
+      {
+        subjectName: 'Film-based media (H T & P)',
+        topics: ['(null)'],
+      },
+      {
+        subjectName: 'Community Art inc A & H',
+        topics: ['(null)'],
       },
     ],
   },

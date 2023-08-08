@@ -1,0 +1,177 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set navType = 'admin' %}
+{% set createOpportunityError = createOpportunityError if createOpportunityError %}
+{% set createOpportunityErrorMessage = createOpportunityErrorMessage if createOpportunityErrorMessage %}
+{% set opportunityName = opportunityName if opportunityName %}
+{% set createOpportunityErrorMessageInputLevel = createOpportunityErrorMessageInputLevel if createOpportunityErrorMessageInputLevel %}
+{% set isAdminUser = true %}
+{% set useAltSaveMethod = useAltSaveMethod if useAltSaveMethod %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set pageTitle = 'Vertical tables' + GLOBAL_TAG_TITLE_SUFFIX %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds u-space-t30') %}
+            {{ components.captionHeading(text='Vertical tables') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            {{ components.captionHeading(text='One project partner', size='m', tag='h2') }}
+            <p class="govuk-body">There is <strong>1 project partner</strong> on this application</p>
+            <table class="govuk-table vt">
+
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">Project partner</th>
+                        <th scope="col" class="govuk-table__header">Contact's details</th>
+                        <th scope="col" class="govuk-table__header">Direct contribution</th>
+                        <th scope="col" class="govuk-table__header">In-kind contribution</th>
+                        <th scope="col" class="govuk-table__header"><span class="govuk-visually-hidden">Action</span></th>
+                    </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <span class="vt__prime vt__prime--partner" data-label="Project partner">Royce Rolls</span>
+                            <span>Derby, UK</span>
+                        </td>
+                        <td class="govuk-table__cell">
+                            <span class="vt__prime vt__prime--name" data-label="Contact's details">Dr. Stilton Chutney</span>
+                            <span>stilton.chutney@rr.com</span>
+                        </td>
+                        <td class="govuk-table__cell">
+                            <span class="vt__prime vt__prime--direct" data-label="Direct contribution">£45,000</span>
+                            <span>Funding for lab research</span>
+                        </td>
+                        <td class="govuk-table__cell">
+                            <span class="vt__prime vt__prime--kind" data-label="In-kind contribution">£28,000</span>
+                            <span>Funding for lab research</span>
+                        </td>
+                        <td class="govuk-table__cell ">
+                            <a href="#" class="govuk-link">Edit</a>
+                            <a href="#" class="govuk-link">Remove</a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            {{ components.captionHeading(text='Multiple project partners', size='m', tag='h2') }}
+
+            <p class="govuk-body">There are <strong>3 project partners</strong> on this application</p>
+
+            <table class="govuk-table vt">
+
+                <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header {#govuk-!-width-one-half#}">Project partner</th>
+                    <th scope="col" class="govuk-table__header {#govuk-!-width-one-quarter#}">Contact's details</th>
+                    <th scope="col" class="govuk-table__header {#govuk-!-width-one-quarter#}">Direct contribution</th>
+                    <th scope="col" class="govuk-table__header {#govuk-!-width-one-quarter#}">In-kind contribution</th>
+                    <th scope="col" class="govuk-table__header {#govuk-!-width-one-quarter#}"><span class="govuk-visually-hidden">Action</span></th>
+                </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <span class="vt__prime" data-label="Project partner">Royce Rolls</span>
+                            <span>Derby, UK</span>
+                        </td>
+                        <td class="govuk-table__cell">
+                            <span class="vt__prime" data-label="Contact's details">Dr. Stilton Chutney</span>
+                            <span>stilton.chutney@rr.com</span>
+                        </td>
+                        <td class="govuk-table__cell">
+                            <span class="vt__prime" data-label="Direct contribution">£45,000</span>
+                            <span>Funding for lab research</span>
+                        </td>
+                        <td class="govuk-table__cell" data-label="In-kind contribution">
+                            <span class="vt__prime" data-label="Direct contribution">£45,000</span>
+                            <span>Funding for lab research</span>
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a href="#" class="govuk-link">Edit</a>
+                            <a href="#" class="govuk-link">Remove</a>
+                        </td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <span class="vt__prime" data-label="Project partner">Superfly Longname Project Pardners Ltd.</span>
+                            <span>Birminghamton-on-sea, UK</span>
+                        </td>
+                        <td class="govuk-table__cell">
+                            <span class="vt__prime" data-label="Contact's details">Prof. El Stinko Rafflasia-Twoflower</span>
+                            <span>stinko.rafflasia-twoflower@superfly.win</span>
+                        </td>
+                        <td class="govuk-table__cell">
+                            <span class="vt__prime" data-label="Direct contribution">£8,750,000</span>
+                            <span>Staff drinks</span>
+                        </td>
+                        <td class="govuk-table__cell">
+                            <span class="vt__prime" data-label="In-kind contribution">£168,000</span>
+                            <span>Party clean-up operations and redecorating</span>
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a href="#" class="govuk-link">Edit</a>
+                            <a href="#" class="govuk-link">Remove</a>
+                        </td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <span class="vt__prime" data-label="Project partner">Normal Company Name</span>
+                            <span>Bristol, UK</span>
+                        </td>
+                        <td class="govuk-table__cell">
+                            <span class="vt__prime" data-label="Contact's details">Cassandra Boggins</span>
+                            <span>c.boggins@normal.co.uk</span>
+                        </td>
+                        <td class="govuk-table__cell" data-label="Direct contribution">
+                            <span class="vt__prime" data-label="Direct contribution">£0</span>
+                            <span></span>
+                        </td>
+                        <td class="govuk-table__cell">
+                            <span class="vt__prime" data-label="In-kind contribution">£1</span>
+                            <span>Tea bags from Poundland</span>
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a href="#" class="govuk-link">Edit</a>
+                            <a href="#" class="govuk-link">Remove</a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+{% endblock %}
+{% block bodyScripts %}
+    {#<script>
+       Zepto(function($){
+         $('#thing').on('click', function() {
+         });
+       });
+     </script>#}
+{% endblock %}
+
+

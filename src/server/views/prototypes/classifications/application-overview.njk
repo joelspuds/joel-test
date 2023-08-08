@@ -53,7 +53,7 @@
 
     <section class="section" id="mainContent">
 
-        {% call components.bulmaRow() %}
+       {# {% call components.bulmaRow() %}
             {% call components.bulmaColumnAny(size='is-full', customID='mainCntent') %}
                 <div class="govuk-tabs" data-module="govuk-tabs">
                     <ul class="govuk-tabs__list">
@@ -61,12 +61,12 @@
                             <a class="govuk-tabs__tab" href="#">Write application</a>
                         </li>
                         <li class="govuk-tabs__list-item">
-                            <a class="govuk-tabs__tab" href="{#/prototypes/edit/read-application#}#">Read application</a>
+                            <a class="govuk-tabs__tab" href="#}{#/prototypes/edit/read-application#}{##">Read application</a>
                         </li>
                     </ul>
                 </div>
             {%- endcall %}
-        {%- endcall %}
+        {%- endcall %}#}
 
         {% call components.bulmaRow() %}
 
@@ -91,7 +91,7 @@
                     </div>
                     <div class="application-item {% if prototypeData.classificationsMarkAsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
                         <div class="application-item__contents govuk-clearfix">
-                            <div class="application-item__left">{{ components.link(text='2. Research areas', url='/prototypes/classifications/research-areas')}}</div>
+                            <div class="application-item__left">{{ components.link(text='2. Research areas', url='/prototypes/classifications/research-tags')}}</div>
                             <div class="application-item__right">
 
                                 {% if prototypeData.classificationsMarkAsComplete %}
@@ -151,12 +151,14 @@
 
                 </div>
 
-                <div class="application-controls govuk-clearfix">
+                <style> .application-item__right { display: none; }</style>
+
+               {# <div class="application-controls govuk-clearfix">
                     <p class="govuk-body">When all the sections above are marked as complete, you can submit your application to UKRI. Once it has been submitted, you cannot make any further changes.</p>
                     {% call components.form(action='#', method='POST',name='submitApplication') %}
                         <button type="submit" class="govuk-button application-controls__submit" name="submitButton" value="startShare">Submit to UKRI</button>
                     {%- endcall %}
-                </div>
+                </div>#}
 
             {%- endcall %}
 
@@ -186,7 +188,7 @@
                 {% endif %}
 
 
-                <div class="progress-meter">
+                {#<div class="progress-meter">
                     <div class="progress-meter__text progress-meter__text--back" role="progress-bar" aria-valuenow="27%"><span class="govuk-visually-hidden">Your application is</span> {{ progressPercentage }}% complete</div>
 
 
@@ -208,7 +210,7 @@
 
                     {% endif %}
 
-                </div>
+                </div>#}
                 <div class="application-data">
                     <dl class="application-data__list">
                         <dt class="application-data__key">Opportunity:</dt>
@@ -219,7 +221,7 @@
                         <dt class="application-data__key">Applicant:</dt>
                         <dd class="application-data__value">{{ prototypeData.applicant1 }}</dd>
                         <dt class="application-data__key">Application status:</dt>
-                        <dd class="application-data__value"><strong class="govuk-tag govuk-tag--blue">With applicant</strong></dd>
+                        <dd class="application-data__value"><strong class="govuk-tag govuk-tag--blue">submitted</strong></dd>
 
                         <dt class="application-data__key">Application deadline:</dt>
                         <dd class="application-data__value">14 April 2023, 4:00pm</dd>

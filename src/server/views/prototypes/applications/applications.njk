@@ -527,26 +527,26 @@
     </script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.js"></script>
-    {% if allData.doingSearch %}
-    <script>
-        let markInstance = new Mark(document.querySelector('.context'));
-        function performMark() {
-            var keyword = '{{ allData.searchQuery }}';
-            // var options = {};
-            markInstance.unmark({
-                done: function(){
-                    markInstance.mark(keyword);
-                },
+    {#{% if allData.doingSearch %}#}
+        <script>
+            let markInstance = new Mark(document.querySelector('.context'));
+            function performMark() {
+                var keyword = '{{ prototypeData.searchQuery }}';
+                // var options = {};
+                markInstance.unmark({
+                    done: function(){
+                        markInstance.mark(keyword);
+                    },
 
-            });
-            /*markInstance.mark('{{ allData.searchQuery }}', {
+                });
+                /*markInstance.mark('{{ allData.searchQuery }}', {
                 "element": "span",
                 "className": "highlight"
             });*/
-        };
-        window.addEventListener('load', performMark);
-    </script>
-    {% endif %}
+            };
+            window.addEventListener('load', performMark);
+        </script>
+    {{#% endif %}#}
 
 {% endblock %}
 
