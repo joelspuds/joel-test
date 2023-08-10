@@ -228,6 +228,47 @@
                         <dt class="application-data__key">Funder:</dt>
                         <dd class="application-data__value">NERC</dd>
                     </dl>
+                    <h3 class="govuk-heading-s">Research areas</h3>
+                    <dl>
+                        <dt class="application-data__key">Classifications</dt>
+                        {% if prototypeData.classificationSavedTags|length > 1 %}
+                            {% for item in prototypeData.classificationSavedTags %}
+                                <dd class="application-data__value">{{ item }}</dd>
+                            {% endfor %}
+                        {% else %}
+                            <dd class="application-data__value meta">No classification tags added</dd>
+                        {% endif %}
+                    </dl>
+                    <dl>
+                        <dt class="application-data__key">Routing</dt>
+                        {% if prototypeData.routingSavedTags|length > 1 %}
+                            {% for item in prototypeData.routingSavedTags %}
+                                <dd class="application-data__value">{{ item }}</dd>
+                            {% endfor %}
+                        {% else %}
+                            <dd class="application-data__value meta">No routing tags added</dd>
+                        {% endif %}
+                    </dl>
+                    <dl>
+                        <dt class="application-data__key">Qualifiers</dt>
+                        {% if prototypeData.qualifierSavedTags|length > 1 %}
+                            {% for item in prototypeData.qualifierSavedTags %}
+                                <dd class="application-data__value">{{ item }}</dd>
+                            {% endfor %}
+                        {% else %}
+                            <dd class="application-data__value meta">No qualifiers added</dd>
+                        {% endif %}
+                    </dl>
+                    <dl>
+                        <dt class="application-data__key">Reporting</dt>
+                        {% if prototypeData.reportingSavedTags|length > 1 %}
+                            {% for item in prototypeData.reportingSavedTags %}
+                                <dd class="application-data__value">{{ item }}</dd>
+                            {% endfor %}
+                        {% else %}
+                            <dd class="application-data__value meta">No reporting tags added</dd>
+                        {% endif %}
+                    </dl>
                 </div>
 
             {%- endcall %}

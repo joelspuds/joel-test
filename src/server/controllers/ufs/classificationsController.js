@@ -202,10 +202,10 @@ export function classificationsAddGet(req, res) {
       // console.log(routingTags[j]);
 
       tempRoutingName = tempRoutingName.toLowerCase();
-      console.log('tempRoutingName = ' + tempRoutingName);
+      //console.log('tempRoutingName = ' + tempRoutingName);
 
       if (tempRoutingName.includes(searchText) || tempRoutingName === searchText) {
-        console.log('tempRoutingName = ' + tempRoutingName + ' AND searchText = ' + searchText);
+        //console.log('tempRoutingName = ' + tempRoutingName + ' AND searchText = ' + searchText);
         resultsArrayRouting.push(routingTags[j]);
         countRouting++;
       }
@@ -236,7 +236,7 @@ export function classificationsAddGet(req, res) {
     prototypeData.countReporting = countReporting;
     let countAll = countClassifications + countRouting + countQualifiers + countReporting;
     prototypeData.countAll = countAll;
-    console.log(countClassifications + ' + ' + countRouting + ' + ' + countQualifiers + ' + ' + countReporting + ' = ' + countAll);
+    //console.log(countClassifications + ' + ' + countRouting + ' + ' + countQualifiers + ' + ' + countReporting + ' = ' + countAll);
 
     // console.log(resultsArrayClassifications);
 
@@ -258,7 +258,7 @@ export function classificationsAddGet(req, res) {
 
   //console.log(resultsArrayClassifications);
   //console.log(resultsArrayRouting);
-  console.log(resultsArrayQualifiers);
+  //console.log(resultsArrayQualifiers);
 
   if (
     resultsArrayClassifications.length > 1 ||
@@ -283,12 +283,58 @@ export function classificationsAddGet(req, res) {
 }
 
 export function classificationsAddPost(req, res) {
-  const { searchQuery } = req.body;
-
+  const { searchQuery, tagSearch, saveAndReturn } = req.body;
+  // console.log(req.body);
   // console.log(allTheCats);
   console.log('searchQuery = ' + searchQuery);
 
+  let classificationSavedTags = [];
+  let routingSavedTags = [];
+  let qualifierSavedTags = [];
+  let reportingSavedTags = [];
+
+  let formStuff = req.body;
+  for (const [key, value] of Object.entries(formStuff)) {
+    //console.log(`${key} ${value}`);
+
+    if (key.includes('classification')) {
+      classificationSavedTags.push(value);
+    }
+    if (key.includes('routing')) {
+      routingSavedTags.push(value);
+    }
+    if (key.includes('qualifier')) {
+      qualifierSavedTags.push(value);
+    }
+    if (key.includes('reporting')) {
+      reportingSavedTags.push(value);
+    }
+
+    //console.log('key = ' + key);
+
+    prototypeData.classificationSavedTags = classificationSavedTags;
+    prototypeData.routingSavedTags = routingSavedTags;
+    prototypeData.qualifierSavedTags = qualifierSavedTags;
+    prototypeData.reportingSavedTags = reportingSavedTags;
+    req.session[`${key}`] = `${value}`;
+  }
+
+  console.log('prototypeData = ');
+  console.log(prototypeData);
+  console.log('req.session = ');
+  console.log(req.session);
+
   prototypeData.searchQuery = searchQuery.toLowerCase();
 
-  return res.redirect('/prototypes/classifications/research-tags');
+  let redirect = '/prototypes/classifications/research-tags';
+  // let submitButtonValue = req.body.saveAndReturn;
+  // console.log('submitButtonValue = ' + submitButtonValue);
+  console.log(tagSearch + ' ' + saveAndReturn);
+  console.log(req.body.tagSearch);
+
+  if (saveAndReturn === 'saveAndReturn') {
+    redirect = '/prototypes/classifications/application-overview';
+  }
+
+  return res.redirect(redirect);
 }

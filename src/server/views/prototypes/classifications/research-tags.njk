@@ -31,6 +31,9 @@
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
             {{ components.captionHeading(text='Research areas', caption='APP420: ' + prototypeData.applicationTitle) }}
+
+            {#<p>prototypeData.classificationSavedTags|length = {{ prototypeData.classificationSavedTags|length }}</p>
+            <p>{{ prototypeData.classificationSavedTags }}</p>#}
         {%- endcall %}
     {%- endcall %}
 
@@ -49,7 +52,7 @@
             {% call components.bulmaColumnAny(size='is-8') %}
                 <div class="findThings">
 
-                    <p class="govuk-body-l">Use the search input to find and add classification and research areas to this application.</p>
+                    <p class="govuk-body-l">Start searching to find some research areas to add to this application.</p>
 
                     <div class="govuk-form-group govuk-form-group--search">
                         <style>
@@ -278,7 +281,10 @@
                             {% if prototypeData.caseMarkAsComplete %}
                                 <a href="/prototypes/editv2/application-overview-2" class="govuk-link">Return to application overview</a>
                             {% else %}
-                                {{ components.button(text='Save and return', extraClass="application-controls__submit")}}
+                                {#{{ components.button(text='Save and return', name='saveAndReturn', extraClass="application-controls__submit")}}#}
+
+                                <button class="govuk-button application-controls__submit" type="submit" name='saveAndReturn' value="saveAndReturn">Save and return</button>
+
                             {% endif %}
                         </div>
                     {%- endcall %}
@@ -286,6 +292,8 @@
                 {%- endcall %}
 
             {%- endcall %}
+
+
 
     </section>
     {%- endcall %} {# end form #}
@@ -313,61 +321,88 @@
             let qualifierIndex = 0;
             let reportingIndex = 0;*/
 
-            let classificationItems = [];
-            let routingItems = [];
-            let qualifierItems = [];
-            let reportingItems = [];
+            {#{{ prototypeData.classificationSavedTags }}
+            {{ prototypeData.routingSavedTags }}
+            {{ prototypeData.qualifierSavedTags }}
+            {{ prototypeData.reportingSavedTags }}#}
 
-            function removeItem() {
-                // alert('hi');
-                console.log('test');
-                /*let thisArray = $(this).attr('data-array');
-                let thisIndex = $(this).attr('data-index');
-                console.log(thisArray + ' ' + thisIndex);*/
-            };
+            let classificationItems = [];
+            {% if prototypeData.classificationSavedTags|length > 1 %}
+                {% set tempString = '' %}
+                {% for item in prototypeData.classificationSavedTags %}
+                    {% set tempString = tempString + '"' + item + '",' %}
+                {% endfor %}
+                {% set tempString = '[' + tempString + ']' %}
+                classificationItems = {{ tempString }}
+                displayArrays('classification');
+            {% endif %}
+
+            let routingItems = [];
+            {% if prototypeData.routingSavedTags|length > 1 %}
+                {% set tempString = '' %}
+                {% for item in prototypeData.routingSavedTags %}
+                    {% set tempString = tempString + '"' + item + '",' %}
+                {% endfor %}
+                {% set tempString = '[' + tempString + ']' %}
+                    routingItems = {{ tempString }}
+                displayArrays('routing');
+            {% endif %}
+
+            let qualifierItems = [];
+            {% if prototypeData.qualifierSavedTags|length > 1 %}
+                {% set tempString = '' %}
+                {% for item in prototypeData.qualifierSavedTags %}
+                    {% set tempString = tempString + '"' + item + '",' %}
+                {% endfor %}
+                {% set tempString = '[' + tempString + ']' %}
+                qualifierItems = {{ tempString }}
+                displayArrays('qualifier');
+            {% endif %}
+
+            let reportingItems = [];
+            {% if prototypeData.reportingSavedTags|length > 1 %}
+                {% set tempString = '' %}
+                {% for item in prototypeData.reportingSavedTags %}
+                    {% set tempString = tempString + '"' + item + '",' %}
+                {% endfor %}
+                {% set tempString = '[' + tempString + ']' %}
+                reportingItems = {{ tempString }}
+                displayArrays('reporting');
+            {% endif %}
 
             function displayArrays(arrayInQuestion) {
-
-                console.log('arrayInQuestion = ' + arrayInQuestion);
+                //console.log('arrayInQuestion = ' + arrayInQuestion);
                 $('#noTagsMessage').addClass('govuk-visually-hidden');
                 $('#tagsExist').removeClass('govuk-visually-hidden');
                 let tempHTMLString = '';
                 for(let i = 0; i < eval(arrayInQuestion + "Items").length; i++) {
-                    tempHTMLString += '<li class="ra-items"><input type="hidden" class="tags-input" id="' + arrayInQuestion + 'Hidden' + i + '" name="' + arrayInQuestion + i + '" value="' + eval(arrayInQuestion + "Items")[i] + '">' + '<span id="' + arrayInQuestion + 'Visible' + i + '" class="">' + eval(arrayInQuestion + "Items")[i] + '</span> <a class="govuk-link itemRemover" href="#" data-item="' + eval(arrayInQuestion + "Items")[i] + '" data-array="' + arrayInQuestion +'" data-index="'+i+'" onFocus="">Remove<span> item from this list</span></a></li>';
+                    tempHTMLString += '<li class="ra-items"><input type="hidden" class="tags-input" id="' + arrayInQuestion + 'Hidden' + i + '" name="' + arrayInQuestion + i + '" value="' + eval(arrayInQuestion + "Items")[i] + '">' + '<span id="' + arrayInQuestion + 'Visible' + i + '" class="">' + eval(arrayInQuestion + "Items")[i] + '</span> <a class="govuk-link itemRemover" href="#" data-item="' + eval(arrayInQuestion + "Items")[i] + '" data-array="' + arrayInQuestion +'" data-index="'+i+'">Remove<span> item from this list</span></a></li>';
 
                 };
-
-                let allTheNewButtons = document.getElementsByClassName('itemRemover');
-                allTheNewButtons.onClick = function(){removeItem()};
-
 
                 $('ol[data-container=' + arrayInQuestion + ']').html(tempHTMLString).removeClass('govuk-visually-hidden');
             };
 
-
-
-            $('.___itemRemover').each(function(index){
-                $(this).on('click', function(e){
-                    e.preventDefault();
-                    let thisArray = $(this).attr('data-array');
-                    let thisIndex = $(this).attr('data-index');
-                    console.log(thisArray + ' ' + thisIndex);
-                    // let thisValue = $(this).attr('data-item');
-                    /*eval(thisArray + "Items").splice(thisIndex,1);
-                    displayArrays(thisArray);*/
-                });
+            $('body').on('click', '.itemRemover', function(e) {
+                console.log('bah!');
+                e.preventDefault();
+                let thisArray = $(this).attr('data-array');
+                let thisIndex = $(this).attr('data-index');
+                console.log('thisArray = ' + thisArray + ', thisIndex = ' + thisIndex);
+                // let thisValue = $(this).attr('data-item');
+                eval(thisArray + "Items").splice(thisIndex,1);
+                displayArrays(thisArray);
             });
-
 
             $('.tagShifter').each(function(index){
                 $(this).on('click', function(e){
                     e.preventDefault();
                     let thisType = $(this).attr('data-type');
                     let thisValue = $(this).attr('data-value');
-                    console.log('thisType = ' + thisType + ' thisValue = ' + thisValue);
+                    //console.log('thisType = ' + thisType + ' thisValue = ' + thisValue);
 
                     let relevantArray = eval(thisType + "Items");
-                    console.log('relevantArray = ' + relevantArray);
+                    //console.log('relevantArray = ' + relevantArray);
 
                     if(eval(thisType + "Items").includes(thisValue)) {
                         console.log('already exists in array');
@@ -377,7 +412,6 @@
                         } else {
                             console.log('This array is full');
                         }
-
                     }
 
                     displayArrays(thisType);
@@ -388,8 +422,6 @@
                     console.log(reportingItems);
                 });
             });
-
-
         });
 
         /*
