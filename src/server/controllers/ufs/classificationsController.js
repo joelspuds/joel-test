@@ -25,6 +25,13 @@ let prototypeData = {
   caseForSupportIsComplete: false,
   resourcesAndCostsIsComplete: false,
   detailsJustBeenUpdated: false,
+  summary:
+    '<p class="govuk-body">Trypanosoma brucei, the causative agent of African trypanosomiasis (&ldquo;sleeping sickness&rdquo;), causes more than 50,000 deaths annually. Related trypanosomatid pathogens, including <em>Trypanosoma cruzi </em>(the causative agent of Chagas&rsquo; disease) and numerous <em>Leishmania </em>species (which cause a diverse spectrum of visceral, mucocutaneous, and cutaneous disease), cause even more morbidity and mortality worldwide. Each of these parasites undergoes a complex developmental cycle, alternating between mammalian and insect hosts, as well as proliferating and non-proliferating stages. Exactly how trypanosomatid gene expression gives rise to the different phenotypes at each stage is currently not well understood, but the relative contribution of gene-specific transcriptional control is low.</p>\r\n' +
+    '<p class="govuk-body">Differences in post-transcriptional mRNA processing and stability undoubtedly play major roles but the poor correlation between mRNA and protein abundance during parasite development indicates that translational and/or post-translational controls are also important. </p>\r\n' +
+    '<p class="govuk-body"This project seeks to globally and quantitatively assess the rate at which each mRNA is actively translated at any particular time by applying a recently-described technology that couples the ability to isolate the specific &ldquo;footprints&rdquo; of mRNAs that are occupied by ribosomes (an indicator of translation) with the depth and breadth of next generation sequencing. </p>\r\n' +
+    '<p class="govuk-body"Aim 1 will establish the ribosome protection technology in <em>T. brucei</em>, using readily cultured non-pathogenic insect stage forms. It will optimize conditions for nuclease treatment to preserve mRNA fragments protected by ribosomes and for the generation of unbiased libraries from the RNA samples for next generation sequencing. It will also include maturation of the bioinformatics pipeline to analyze resulting sequence data. </p>\r\n' +
+    '<p class="govuk-body"Aim 2 will expand into the pathogenic, mammalian stages of the parasite, and identify genes that are regulated at the level of translation during <em>T. brucei </em>development in infective as compared to non-infective forms. The proposed work will provide an important new tool for studying trypanosomatid gene expression, yielding a comprehensive view of the role of translational control in <em>T. brucei </em>and clues to it mechanisms, as well as new information on the extent of translation of individual gene products, such as potential drug targets. </p>\r\n' +
+    '<p class="govuk-body"In addition, it should resolve the current debate over the function of the numerous recently identified RNAs that contain only short open-reading frames, and has the potential to identify non-canonical protein-coding open-reading frames, thus significantly enhancing the ongoing genome annotation.</p>',
 };
 
 /* **************
@@ -34,6 +41,11 @@ let prototypeData = {
 *************** */
 export function classificationsIndexGet(req, res) {
   let viewData;
+
+  let clearSession = req.param('clearSession');
+  if (clearSession === 'true') {
+    req.session.destroy();
+  }
 
   viewData = {};
   return res.render('prototypes/classifications/index', viewData);
@@ -61,6 +73,27 @@ export function classificationsHomePost(req, res) {
   const {} = req.body;
 
   return res.redirect('/prototypes/classifications/home');
+}
+
+/* **************
+
+    Opportunities
+
+*************** */
+export function classificationsOpportunitiesGet(req, res) {
+  let viewData;
+
+  viewData = {
+    prototypeData,
+  };
+
+  return res.render('prototypes/classifications/opportunities', viewData);
+}
+
+export function classificationsOpportunitiesPost(req, res) {
+  const {} = req.body;
+
+  return res.redirect('/prototypes/classifications/opportunities');
 }
 
 /* **************
@@ -160,12 +193,6 @@ export function classificationsResearchAreasRawGet(req, res) {
 *************** */
 export function classificationsAddGet(req, res) {
   let viewData;
-
-  // allTheCats  NONONONO
-  // reportingTags
-  // routingTags
-  // qualifierTags
-  // flatCatsList
 
   let finalNumber;
   let searchFail;
@@ -319,20 +346,21 @@ export function classificationsAddPost(req, res) {
     req.session[`${key}`] = `${value}`;
   }
 
-  console.log('prototypeData = ');
+  /*console.log('prototypeData = ');
   console.log(prototypeData);
   console.log('req.session = ');
-  console.log(req.session);
+  console.log(req.session);*/
 
   prototypeData.searchQuery = searchQuery.toLowerCase();
 
   let redirect = '/prototypes/classifications/research-tags';
   // let submitButtonValue = req.body.saveAndReturn;
   // console.log('submitButtonValue = ' + submitButtonValue);
-  console.log(tagSearch + ' ' + saveAndReturn);
-  console.log(req.body.tagSearch);
+  /*console.log(tagSearch + ' ' + saveAndReturn);
+  console.log(req.body.tagSearch);*/
 
   if (saveAndReturn === 'saveAndReturn') {
+    prototypeData.searchQuery = null;
     redirect = '/prototypes/classifications/application-overview';
   }
 

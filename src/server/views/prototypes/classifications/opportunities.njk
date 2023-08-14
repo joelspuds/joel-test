@@ -1,0 +1,168 @@
+{% set showExternalNav = false %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/edit/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/edit/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+{% set navType = 'admin' %}
+
+{% set pageTitle = 'Applciations' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dareh Justice' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = true %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Applciations ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/classifications/home', text:'Back to Home'}] %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Opportunities', caption='Medical Research Council') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {#{% call components.bulmaRow(extraClass='', customID='mainContent') %}
+
+        {% call components.bulmaColumnAny(size='is-9') %}
+
+            <form action="#" method="get" role="search">
+                <div class="search">
+                    <div class="govuk-form-group govuk-form-group--search">
+                        <label class="govuk-label govuk-visually-hidden" for="search">Search applications</label>
+                        <input class="govuk-input govuk-input--width-20 search__input" id="search" name="event-name" type="text" placeholder="Search all applications">
+                        <button type="submit" class="search__submit">Search</button>
+                    </div>
+                </div>
+            </form>
+
+        {%- endcall %}
+    {%- endcall %}#}
+
+    {% call components.bulmaRow(extraClass='') %}
+
+        {% call components.bulmaColumnAny(size='column is-3') %}
+
+        <div class="govuk-related-items govuk-related-items--flush">
+
+            <form action="#" method="POST" role="search" name="searchForm" style="position:relative;" class="u-space-t10">
+                <div class="search">
+                    <div class="govuk-form-group govuk-form-group--search">
+                        <label class="govuk-label govuk-label--s" for="search">Opportunity search</label>
+                        <input class="govuk-input govuk-input--width-10 search__input" id="search" name="searchQuery" type="text" placeholder="" value="{{ allData.searchQuery }}">
+                        <button type="submit" name="applicationSearch" class="search__submit" value="search">Search</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="filter">
+                <h2 class="filter__title">Filter by status</h2>
+
+                <ul class="filter__list u-clearfix govuk-radios govuk-radios--small">
+
+
+                    <li class="filter__item filter__item--small govuk-clearfix">
+                        <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                            <input class="govuk-checkboxes__input" id="statusFilter_2" type="checkbox" name="statusFilter_2" value="Draft" >
+                            <label for="statusFilter_2" class="govuk-checkboxes__label u-display-ib">Draft</label>
+                        </div>
+                    </li>
+                    <li class="filter__item filter__item--small govuk-clearfix">
+                        <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                            <input class="govuk-checkboxes__input" id="statusFilter_1" type="checkbox" name="statusFilter_1" value="Open" >
+                            <label for="statusFilter_1" class="govuk-checkboxes__label u-display-ib">Open</label>
+                        </div>
+                    </li>
+                    <li class="filter__item filter__item--small govuk-clearfix">
+                        <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                            <input class="govuk-checkboxes__input" id="statusFilter_3" type="checkbox" name="statusFilter_3" value="Closed" >
+                            <label for="statusFilter_3" class="govuk-checkboxes__label u-display-ib">Closed</label>
+                        </div>
+                    </li>
+
+
+                </ul>
+
+
+            </div>
+
+            <div class="_js-hidden">
+                {% call components.formGroup() %}
+                    <button class="govuk-button" name="submitFilters" value="submitFilters">Apply filters</button>
+                    {#{{ components.button(text='Apply filters', extraClass='', name='submitFilters', value='apply', id='submitFilters')}}#}
+                    <br>
+                    <button class="govuk-button--link govuk-!-font-size-16n" name="clearFilters" value="clearFilters" id="clearFilterButton">Clear filters</button>
+                    {#{{ components.button(text='Clear all filters', extraClass='govuk-button--link govuk-!-font-size-16', name='clearFilters', value='clear', id='clearFilters')}}#}
+                {%- endcall %}
+            </div>
+
+        </div>
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='column is-9') %}
+
+            <div class="responsive-table">
+
+                <table class="govuk-table responsive-table__table">
+                    <thead>
+                    <tr class="govuk-table__header">
+                        <th class="govuk-table__header">Opportunity name</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Deadline date</th>
+                        <th class="govuk-table__header govuk-table__header--numeric">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">OPP420: Viral hemorrhagic fevers - containment and treatment strategies</a></td>
+
+                        <td class="govuk-table__cell govuk-table__cell--numeric">-</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--blue govuk-tag--tiny">Draft</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell">
+                            <a href="/prototypes/classifications/applications" class="govuk-link">OPP147: African sleeping sickness - pathways to treatment</a>
+                        </td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">14 Sep 2023</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                            <strong class="govuk-tag govuk-tag--green govuk-tag--tiny">Open</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">OPP038: Covid transmission in closed environments</a></td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">12 Jun 2023</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--grey govuk-tag--tiny">Closed</strong></td>
+                    </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+
+
+
+{% block bodyScripts %}
+
+{% endblock %}
+

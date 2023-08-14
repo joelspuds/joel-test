@@ -1017,6 +1017,8 @@ router.get('/prototypes/classifications', demosController.classificationsIndexGe
 router.post('/prototypes/classifications', demosController.classificationsIndexPost);
 router.get('/prototypes/classifications/home', demosController.classificationsHomeGet);
 router.post('/prototypes/classifications/home', demosController.classificationsHomePost);
+router.get('/prototypes/classifications/opportunities', demosController.classificationsOpportunitiesGet);
+router.post('/prototypes/classifications/opportunities', demosController.classificationsOpportunitiesPost);
 router.get('/prototypes/classifications/applications', demosController.classificationsApplicationsGet);
 router.post('/prototypes/classifications/applications', demosController.classificationsApplicationsPost);
 router.get('/prototypes/classifications/application-overview', demosController.classificationsApplicationOverviewGet);

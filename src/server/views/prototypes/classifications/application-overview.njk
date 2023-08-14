@@ -23,7 +23,7 @@
 {% set loggedOut = false %}
 
 {% set pageTitle = 'Home ' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/edit/applications', text:'Back to Applications'}] %}
+{% set backLinkContents =  [{url:'/prototypes/classifications/applications', text:'Back to Applications'}] %}
 
 
 {% block content %}
@@ -51,6 +51,25 @@
         {%- endcall %}
     {%- endcall %}
 
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-full') %}
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#">Summary</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#">Read</a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#">Review</a>
+                    </li>
+                </ul>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
     <section class="section" id="mainContent">
 
        {# {% call components.bulmaRow() %}
@@ -72,146 +91,18 @@
 
             {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
 
-                <div class="application-items">
-                    {% set detailsIsComplete = true %}
-                    {% set caseForSupportIsComplete = true %}
-
-                    <div class="application-item {% if prototypeData.detailsMarkAsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
-                        <div class="application-item__contents govuk-clearfix">
-                            <div class="application-item__left">{{ components.link(text='1. Details and summary', url='#')}}</div>
-                            <div class="application-item__right">
-
-                                {% if prototypeData.detailsMarkAsComplete %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
-                                {% else %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="application-item {% if prototypeData.classificationsMarkAsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
-                        <div class="application-item__contents govuk-clearfix">
-                            <div class="application-item__left">{{ components.link(text='2. Research areas', url='/prototypes/classifications/research-tags')}}</div>
-                            <div class="application-item__right">
-
-                                {% if prototypeData.classificationsMarkAsComplete %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
-                                {% else %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="application-item {% if prototypeData.caseForSupportIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
-                        <div class="application-item__contents govuk-clearfix">
-                            <div class="application-item__left">
-                                {{ components.link(text='3. Case for support', url='#')}}
-                            </div>
-
-                            <div class="application-item__right">
-                                {% if prototypeData.caseForSupportIsComplete %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
-                                {% else %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
-                                {% endif %}
-                            </div>
-                            {#<div class="u-space-t30">
-                                <strong class="govuk-tag govuk-tag--red">Locked</strong>
-                                <span>This section is being edited by <strong>Renata Minchin</strong></span>
-                            </div>#}
-                        </div>
-                    </div>
-
-                    <div class="application-item {% if prototypeData.teamMarkAsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
-                        <div class="application-item__contents govuk-clearfix">
-                            <div class="application-item__left">{{ components.link(text='4. Team', url='#')}}</div>
-                            <div class="application-item__right">
-                                {% if prototypeData.teamMarkAsComplete %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
-                                {% else %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="application-item {% if prototypeData.resourcesAndCostsIsComplete %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
-                        <div class="application-item__contents govuk-clearfix">
-                            <div class="application-item__left">{{ components.link(text='5. Resources and costs', url='#')}}</div>
-                            <div class="application-item__right">
-                                {% if prototypeData.resourcesAndCostsIsComplete %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
-                                {% else %}
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                <h2 class="govuk-heading-m">Application summary</h2>
+                {{ prototypeData.summary }}
 
                 <style> .application-item__right { display: none; }</style>
 
-               {# <div class="application-controls govuk-clearfix">
-                    <p class="govuk-body">When all the sections above are marked as complete, you can submit your application to UKRI. Once it has been submitted, you cannot make any further changes.</p>
-                    {% call components.form(action='#', method='POST',name='submitApplication') %}
-                        <button type="submit" class="govuk-button application-controls__submit" name="submitButton" value="startShare">Submit to UKRI</button>
-                    {%- endcall %}
-                </div>#}
 
             {%- endcall %}
 
             {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
 
-               {# {% if prototypeData.detailsMarkAsComplete %}
-                    {% set progressPercentage = 75 %}
-                    {% set reverseProgressPercentage = 25 %}
-
-                    {% if prototypeData.resourcesAndCostsIsComplete %}
-                        {% set progressPercentage = 100 %}
-                        {% set reverseProgressPercentage = 0 %}
-                    {% endif %}
-                {% elseif prototypeData.resourcesAndCostsIsComplete %}
-                    {% set progressPercentage = 75 %}
-                    {% set reverseProgressPercentage = 25 %}
-                {% else %}
-                    {% set progressPercentage = 50 %}
-                    {% set reverseProgressPercentage = 50 %}
-                {% endif %}#}
-                {% if prototypeData.detailsMarkAsComplete %}
-                    {% set progressPercentage = 100 %}
-                    {% set reverseProgressPercentage = 0 %}
-                {% else %}
-                    {% set progressPercentage = 75 %}
-                    {% set reverseProgressPercentage = 25 %}
-                {% endif %}
-
-
-                {#<div class="progress-meter">
-                    <div class="progress-meter__text progress-meter__text--back" role="progress-bar" aria-valuenow="27%"><span class="govuk-visually-hidden">Your application is</span> {{ progressPercentage }}% complete</div>
-
-
-                    {% if sentBackToApplicant %}
-
-                        <div class="progress-meter__clipper" aria-hidden="true" style="clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%); -webkit-clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%)">
-                            <div class="progress-meter__text progress-meter__text--front"><strong>Returned to applicant</strong></div>
-                        </div>
-
-                    {% else %}
-
-                        <div class="progress-meter__clipper" aria-hidden="true" style="clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%); -webkit-clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%)">
-                            {% if progressPercentage == 100 %}
-                                <div class="progress-meter__text progress-meter__text--front"><strong>100% complete</strong></div>
-                            {% else %}
-                                <div class="progress-meter__text progress-meter__text--front">{{ progressPercentage }}% complete</div>
-                            {% endif %}
-                        </div>
-
-                    {% endif %}
-
-                </div>#}
                 <div class="application-data">
+                    <h3 class="govuk-heading-m u-space-t20 u-space-b10">Details</h3>
                     <dl class="application-data__list">
                         <dt class="application-data__key">Opportunity:</dt>
                         <dd class="application-data__value"><a href="#" class="govuk-link" target="_blank">{{ prototypeData.oppTitle }}</a></dd>
@@ -221,54 +112,60 @@
                         <dt class="application-data__key">Applicant:</dt>
                         <dd class="application-data__value">{{ prototypeData.applicant1 }}</dd>
                         <dt class="application-data__key">Application status:</dt>
-                        <dd class="application-data__value"><strong class="govuk-tag govuk-tag--blue">submitted</strong></dd>
+                        <dd class="application-data__value"><strong class="govuk-tag govuk-tag--green govuk-tag--tiny">Submitted</strong></dd>
 
                         <dt class="application-data__key">Application deadline:</dt>
-                        <dd class="application-data__value">14 April 2023, 4:00pm</dd>
+                        <dd class="application-data__value">4 Aug 2023 2023</dd>
                         <dt class="application-data__key">Funder:</dt>
-                        <dd class="application-data__value">NERC</dd>
+                        <dd class="application-data__value">MRC, UKRI</dd>
                     </dl>
-                    <h3 class="govuk-heading-s">Research areas</h3>
-                    <dl>
-                        <dt class="application-data__key">Classifications</dt>
-                        {% if prototypeData.classificationSavedTags|length > 1 %}
-                            {% for item in prototypeData.classificationSavedTags %}
-                                <dd class="application-data__value">{{ item }}</dd>
-                            {% endfor %}
+
+                    <div class="title-link">
+                        <h3 class="govuk-heading-m u-space-t20 u-space-b10">Tags</h3>
+                        {% if prototypeData.classificationSavedTags|length > 1 or prototypeData.routingSavedTags|length > 1 or prototypeData.qualifierSavedTags|length > 1 or prototypeData.reportingSavedTags|length > 1 %}
+                            <a href="/prototypes/classifications/research-tags" class="govuk-link govuk-!-font-size-16">Manage tags</a>
                         {% else %}
-                            <dd class="application-data__value meta">No classification tags added</dd>
+                            <a href="/prototypes/classifications/research-tags" class="govuk-link govuk-!-font-size-16">Add tags</a>
                         {% endif %}
-                    </dl>
-                    <dl>
-                        <dt class="application-data__key">Routing</dt>
-                        {% if prototypeData.routingSavedTags|length > 1 %}
+                    </div>
+
+
+
+                    {% if prototypeData.classificationSavedTags|length > 1 %}
+                        <dl>
+                        <dt class="application-data__key">Classifications</dt>
+                        {% for item in prototypeData.classificationSavedTags %}
+                            <dd class="application-data__value">{{ item }}</dd>
+                        {% endfor %}
+                        </dl>
+                    {% endif %}
+                    {% if prototypeData.routingSavedTags|length > 1 %}
+                        <dl>
+                            <dt class="application-data__key">Routing</dt>
                             {% for item in prototypeData.routingSavedTags %}
                                 <dd class="application-data__value">{{ item }}</dd>
                             {% endfor %}
-                        {% else %}
-                            <dd class="application-data__value meta">No routing tags added</dd>
-                        {% endif %}
-                    </dl>
-                    <dl>
-                        <dt class="application-data__key">Qualifiers</dt>
-                        {% if prototypeData.qualifierSavedTags|length > 1 %}
+                        </dl>
+                    {% endif %}
+                    {% if prototypeData.qualifierSavedTags|length > 1 %}
+                        <dl>
+                            <dt class="application-data__key">Qualifiers</dt>
                             {% for item in prototypeData.qualifierSavedTags %}
                                 <dd class="application-data__value">{{ item }}</dd>
                             {% endfor %}
-                        {% else %}
-                            <dd class="application-data__value meta">No qualifiers added</dd>
-                        {% endif %}
-                    </dl>
-                    <dl>
-                        <dt class="application-data__key">Reporting</dt>
-                        {% if prototypeData.reportingSavedTags|length > 1 %}
-                            {% for item in prototypeData.reportingSavedTags %}
+                        </dl>
+                    {% endif %}
+
+
+                    {% if prototypeData.reportingSavedTags|length > 1 %}
+                        <dl>
+                            <dt class="application-data__key">Reporting</dt>
+                           {% for item in prototypeData.reportingSavedTags %}
                                 <dd class="application-data__value">{{ item }}</dd>
                             {% endfor %}
-                        {% else %}
-                            <dd class="application-data__value meta">No reporting tags added</dd>
-                        {% endif %}
-                    </dl>
+                        </dl>
+                    {% endif %}
+
                 </div>
 
             {%- endcall %}

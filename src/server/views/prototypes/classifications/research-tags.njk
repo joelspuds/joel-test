@@ -77,39 +77,44 @@
                         <div class="tag-selecta">
                             Show:
 
-                            <a href="#" class="govuk-link govuk-!-display-inline-block u-space-x10" id="selectaAll">All ({{ prototypeData.countAll }})</a>
-
+                            <a href="#" class="govuk-link govuk-!-display-inline-block u-space-x10 typeSelecta" data-type="all" id="selectaAll">All ({{ prototypeData.countAll }})</a>
                             {% if prototypeData.countClassifications > 0 %}
-                                <a href="#" class="govuk-link govuk-!-display-inline-block u-space-x10" id="selectaClassifications">Classifications ({{ prototypeData.countClassifications }})</a>
+                                <a href="#" class="govuk-link govuk-!-display-inline-block u-space-x10 typeSelecta" data-type="classification" id="selectaClassifications">Classifications ({{ prototypeData.countClassifications }})</a>
                             {% else %}
                                 <span class="govuk-!-display-inline-block u-space-x10">Classifications (0)</span>
                             {% endif %}
 
                             {% if prototypeData.countRouting > 0 %}
-                                <a href="#" class="govuk-link govuk-!-display-inline-block u-space-x10" id="selectaRouting">Routing ({{ prototypeData.countRouting }})</a>
+                                <a href="#" class="govuk-link govuk-!-display-inline-block u-space-x10 typeSelecta" data-type="routing" id="selectaRouting">Routing ({{ prototypeData.countRouting }})</a>
                             {% else %}
                                 <span class="govuk-!-display-inline-block u-space-x10">Routing (0)</span>
                             {% endif %}
 
                             {% if prototypeData.countQualifiers > 0 %}
-                                <a href="#" class="govuk-link govuk-!-display-inline-block u-space-x10" id="selectaQualifiers">Qualifiers ({{ prototypeData.countQualifiers }})</a>
+                                <a href="#" class="govuk-link govuk-!-display-inline-block u-space-x10 typeSelecta" data-type="qualifier" id="selectaQualifiers">Qualifiers ({{ prototypeData.countQualifiers }})</a>
                             {% else %}
                                 <span class="govuk-!-display-inline-block u-space-x10">Qualifiers (0)</span>
                             {% endif %}
 
                             {% if prototypeData.countReporting > 0 %}
-                                <a href="#" class="govuk-link govuk-!-display-inline-block u-space-x10" id="selectaReporting">Reporting tags ({{ prototypeData.countReporting }})</a>
+                                <a href="#" class="govuk-link govuk-!-display-inline-block u-space-x10 typeSelecta" data-type="reporting" id="selectaReporting">Reporting tags ({{ prototypeData.countReporting }})</a>
                             {% else %}
                                 <span class="govuk-!-display-inline-block u-space-x10">Reporting tags (0)</span>
                             {% endif %}
                         </div>
 
+                        <style>
+                            .govuk-link--selected {
+                                background: #ffdd00;
+                                color: #000!important
+                            }
+                        </style>
+
                         <div class="responsive-table">
-                            <table class="govuk-table responsive-table__table context">
+                            <table class="govuk-table responsive-table__table context selectaTable">
                                 <thead>
                                 <tr class="govuk-table__header">
                                     <th class="govuk-table__header">Tag</th>
-                                    <th class="govuk-table__header">Type</th>
                                     <th class="govuk-table__header"><span class="govuk-visually-hidden">Action</span></th>
                                 </tr>
                                 </thead>
@@ -121,20 +126,15 @@
                                         {% if classifications.t == "(null)" %}
                                             <td class="govuk-table__cell">
                                                 {{ classifications.a }} &gt; {{ classifications.s }}
-                                            </td>
-                                            <td class="govuk-table__cell">
-                                                Classification
+                                                <span class="govuk-!-display-block meta">(Classification)</span>
                                             </td>
                                             <td class="govuk-table__cell govuk-table__cell--numeric">
                                                 <a href="#" class="govuk-link tagShifter" data-type="classification" data-value="{{ classifications.a }} {{ classifications.s }} {{ classifications.t }}">Add <span class="govuk-visually-hidden">this item to my list of research areas</span></a>
                                             </td>
                                         {% else %}
                                             <td class="govuk-table__cell">
-                                                {{ classifications.t }}
-                                                <span class="meta govuk-!-display-block">{{ classifications.a }} &gt; {{ classifications.s }}</span>
-                                            </td>
-                                            <td class="govuk-table__cell">
-                                                Classification
+                                                {{ classifications.a }} &gt; {{ classifications.s }} > {{ classifications.t }}
+                                                <span class="govuk-!-display-block meta">(Classification)</span>
                                             </td>
                                             <td class="govuk-table__cell govuk-table__cell--numeric">
                                                 <a href="#" class="govuk-link tagShifter" data-type="classification" data-value="{{ classifications.a }} {{ classifications.s }} {{ classifications.t }}">Add <span class="govuk-visually-hidden">this item to my list of research areas</span></a>
@@ -150,9 +150,7 @@
                                     <tr class="routingItem">
                                         <td class="govuk-table__cell">
                                             {{ routes.name }}
-                                        </td>
-                                        <td class="govuk-table__cell">
-                                            Routing - {{ routes.council }}
+                                            <span class="govuk-!-display-block meta">(Routing - {{ routes.council }})</span>
                                         </td>
                                         <td class="govuk-table__cell govuk-table__cell--numeric">
                                             <a href="#" class="govuk-link tagShifter" data-type="routing" data-value="{{ routes.name }}">Add <span class="govuk-visually-hidden">this item to my list of research areas</span></a>
@@ -165,9 +163,7 @@
                                     <tr class="qualifierItem">
                                         <td class="govuk-table__cell">
                                             {{ qualifier }}
-                                        </td>
-                                        <td class="govuk-table__cell">
-                                            Qualifiers
+                                            <span class="govuk-!-display-block meta">(Qualifiers)</span>
                                         </td>
                                         <td class="govuk-table__cell govuk-table__cell--numeric">
                                             <a href="#" class="govuk-link tagShifter" data-type="qualifier" data-value="{{ qualifier }}">Add <span class="govuk-visually-hidden">this item to my list of research areas</span></a>
@@ -180,9 +176,7 @@
                                     <tr class="reportingItem">
                                         <td class="govuk-table__cell">
                                             {{ reporting }}
-                                        </td>
-                                        <td class="govuk-table__cell">
-                                            Reporting tags
+                                            <span class="govuk-!-display-block meta">(Reporting tags)</span>
                                         </td>
                                         <td class="govuk-table__cell govuk-table__cell--numeric">
                                             <a href="#" class="govuk-link tagShifter" data-type="reporting" data-value="{{ reporting }}">Add <span class="govuk-visually-hidden">this item to my list of research areas</span></a>
@@ -224,8 +218,12 @@
                             </ol>
 
                             <h3 class="govuk-heading-xs">Qualifiers</h3>
-                            <ol class="govuk-list govuk-list--number u-space-t10" data-container="qualifier">
-                            </ol>
+                            {% if prototypeData.qualifierSavedTags|length <= 0 %}
+                                <p class="meta u-space-b10">None selected</p>
+                            {% else %}
+                                <ol class="govuk-list govuk-list--number u-space-t10" data-container="qualifier">
+                                </ol>
+                            {% endif %}
 
                             <h3 class="govuk-heading-xs">Reporting tags</h3>
                             <ol class="govuk-list govuk-list--number u-space-t10" data-container="reporting">
@@ -246,7 +244,7 @@
 
             {%- endcall %}
 
-            {% call components.bulmaRow() %}
+            {#{% call components.bulmaRow() %}
 
                 {% call components.bulmaColumnAny(size='is-8') %}
 
@@ -270,7 +268,7 @@
 
                 {%- endcall %}
 
-            {%- endcall %}
+            {%- endcall %}#}
 
             {% call components.bulmaRow() %}
 
@@ -422,53 +420,29 @@
                     console.log(reportingItems);
                 });
             });
-        });
 
-        /*
-        *   selectaAll
-            selectaClassifications
-            selectaRouting
-            selectaQualifiers
-        * */
-        $('#selectaAll').on('click', function() {
-            $('#selectaClassifications, #selectaRouting, #selectaQualifiers, #selectaReporting').css('cssText', 'background: #fff; color: #003078;');
-            $('.classificationItem').css('display', 'table-row');
-            $('.routingItem').css('display', 'table-row');
-            $('.qualifierItem').css('display', 'table-row');
-            $('.reportingItem').css('display', 'table-row');
-        });
-        $('#selectaClassifications').on('click', function() {
-            // $(this).css('background', '#ffdd00').css('color', '#000');
-            $(this).css('cssText', 'background: #ffdd00; color: #000!important');
-            $('#selectaRouting, #selectaQualifiers, #selectaReporting').css('cssText', 'background: #fff; color: #003078;');
-            $('.classificationItem').css('display', 'table-row');
-            $('.routingItem').css('display', 'none');
-            $('.qualifierItem').css('display', 'none');
-            $('.reportingItem').css('display', 'none');
-        });
-        $('#selectaRouting').on('click', function() {
-            $(this).css('cssText', 'background: #ffdd00; color: #000!important');
-            $('#selectaClassifications, #selectaQualifiers, #selectaReporting').css('cssText', 'background: #fff; color: #003078;');
-            $('.classificationItem').css('display', 'none');
-            $('.routingItem').css('display', 'table-row');
-            $('.qualifierItem').css('display', 'none');
-            $('.reportingItem').css('display', 'none');
-        });
-        $('#selectaQualifiers').on('click', function() {
-            $(this).css('cssText', 'background: #ffdd00; color: #000!important');
-            $('#selectaClassifications, #selectaRouting, #selectaReporting').css('cssText', 'background: #fff; color: #003078;');
-            $('.classificationItem').css('display', 'none');
-            $('.routingItem').css('display', 'none');
-            $('.qualifierItem').css('display', 'table-row');
-            $('.reportingItem').css('display', 'none');
-        });
-        $('#selectaReporting').on('click', function() {
-            $(this).css('cssText', 'background: #ffdd00; color: #000!important');
-            $('#selectaClassifications, #selectaRouting, #selectaQualifiers').css('cssText', 'background: #fff; color: #003078;');
-            $('.classificationItem').css('display', 'none');
-            $('.routingItem').css('display', 'none');
-            $('.qualifierItem').css('display', 'none');
-            $('.reportingItem').css('display', 'table-row');
+
+
+
+
+
+            $('.typeSelecta').each(function(index){
+                $(this).on('click', function(e){
+                    e.preventDefault();
+                    let typeToShow = $(this).attr('data-type');
+                    console.log('typeToShow = ' + typeToShow);
+
+                    $('.typeSelecta').removeClass('govuk-link--selected');
+                    $(this).addClass('govuk-link--selected');
+
+                    if(typeToShow !== 'all') {
+                        $('.selectaTable tbody tr').css('display', 'none');
+                        $('tr.'+typeToShow+'Item').css('cssText', 'display: table-row!important;');
+                    } else {
+                        $('.selectaTable tbody tr').css('display', 'table-row');
+                    }
+                });
+            });
         });
 
     </script>
