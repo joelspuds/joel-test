@@ -298,11 +298,20 @@ function alApplicationsGet(req, res) {
 
   let allData = req.session;
 
+  let template;
+  let templateVersion = req.param('templateVersion');
+  console.log('templateVersion = ' + templateVersion);
+  if (templateVersion === 'two') {
+    template = 'prototypes/applications/applicationsTwo';
+  } else {
+    template = 'prototypes/applications/applications';
+  }
+
   viewData = {
     allData,
     applicationsListv2
   };
-  return res.render('prototypes/applications/applications', viewData);
+  return res.render(template, viewData);
 }
 
 function alApplicationsPost(req, res) {

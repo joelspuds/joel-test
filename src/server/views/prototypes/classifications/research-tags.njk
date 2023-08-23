@@ -210,6 +210,7 @@
                         <div class="tags-input govuk-visually-hidden u-space-t10" id="tagsExist">
 
                             <h3 class="govuk-heading-xs">Classifications</h3>
+                            <button class="govuk-button--link govuk-!-font-size-16" name="weightings" value="weightings">Add classification weightings</button>
                             <ol class="govuk-list govuk-list--number u-space-t10" data-container="classification">
                             </ol>
 
@@ -328,7 +329,7 @@
             {% if prototypeData.classificationSavedTags|length > 1 %}
                 {% set tempString = '' %}
                 {% for item in prototypeData.classificationSavedTags %}
-                    {% set tempString = tempString + '"' + item + '",' %}
+                    {% set tempString = tempString + '"' + item.tag + '",' %}
                 {% endfor %}
                 {% set tempString = '[' + tempString + ']' %}
                 classificationItems = {{ tempString }}

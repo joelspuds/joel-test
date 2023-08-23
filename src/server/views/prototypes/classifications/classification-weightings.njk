@@ -1,0 +1,204 @@
+{% set showExternalNav = false %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/classifications/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/classifications/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+
+{% set pageTitle = 'Research areas' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dareh Justice' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set navType = 'admin' %}
+{% set isAdminUser = true %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Research areas ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/classifications/research-tags', text:'Back to Research areas'}] %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Classification weightings', caption='APP420: ' + prototypeData.applicationTitle) }}
+
+            {#<p>prototypeData.classificationSavedTags|length = {{ prototypeData.classificationSavedTags|length }}</p>
+            <p>{{ prototypeData.classificationSavedTags }}</p>#}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST',name='formTags') %}
+        <section class="section" id="mainContent">
+
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+                    <p class="govuk-body">Add the weighting as a percentage for each tag, the total must add up to 100%</p>
+
+                    <div class="responsive-table">
+                        <table class="govuk-table responsive-table__table">
+                            <thead>
+                            <tr class="govuk-table__header">
+                                <th class="govuk-table__header">Tag</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Weighting value</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for classifications in prototypeData.classificationSavedTags %}
+                                    <tr>
+                                        <td class="govuk-table__cell">
+                                            {{ classifications.tag }}
+                                        </td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                            <label for="weighting_{{ loop.index }}" class="govuk-visually-hidden">Percentage weighting value for {{ classifications }}</label>
+                                            <input type="text" class="govuk-input govuk-input--width-4" id="weighting_{{ loop.index }}" name="weighting_{{ loop.index }}" value="{{ classifications.value }}">
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-controls govuk-clearfix">
+                            <button class="govuk-button application-controls__submit" type="submit" name='saveAndReturn' value="saveAndReturn">Save and return</button>
+                        </div>
+                    {%- endcall %}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+        </section>
+    {%- endcall %} {# end form #}
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+
+
+
+{% block bodyScripts %}
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script>
+        // tagShifter
+        // data-type="classification | routing | qualifier"
+        // data-value
+        // classification1 | routing1 | qualifier1
+        $( document ).ready(function() {
+            console.log( "ready!" );
+
+            /*let classificationIndex = 0;
+            let routingIndex = 0;
+            let qualifierIndex = 0;
+            let reportingIndex = 0;*/
+
+            {#{{ prototypeData.classificationSavedTags }}
+            {{ prototypeData.routingSavedTags }}
+            {{ prototypeData.qualifierSavedTags }}
+            {{ prototypeData.reportingSavedTags }}#}
+
+            let classificationItems = [];
+            {% if prototypeData.classificationSavedTags|length > 1 %}
+            {% set tempString = '' %}
+            {% for item in prototypeData.classificationSavedTags %}
+            {% set tempString = tempString + '"' + item + '",' %}
+            {% endfor %}
+            {% set tempString = '[' + tempString + ']' %}
+            classificationItems = {{ tempString }}
+                displayArrays('classification');
+            {% endif %}
+
+
+
+
+            $('body').on('click', '.itemRemover', function(e) {
+                console.log('bah!');
+                e.preventDefault();
+                let thisArray = $(this).attr('data-array');
+                let thisIndex = $(this).attr('data-index');
+                console.log('thisArray = ' + thisArray + ', thisIndex = ' + thisIndex);
+                // let thisValue = $(this).attr('data-item');
+                eval(thisArray + "Items").splice(thisIndex,1);
+                displayArrays(thisArray);
+            });
+
+            $('.tagShifter').each(function(index){
+                $(this).on('click', function(e){
+                    e.preventDefault();
+                    let thisType = $(this).attr('data-type');
+                    let thisValue = $(this).attr('data-value');
+                    //console.log('thisType = ' + thisType + ' thisValue = ' + thisValue);
+
+                    let relevantArray = eval(thisType + "Items");
+                    //console.log('relevantArray = ' + relevantArray);
+
+                    if(eval(thisType + "Items").includes(thisValue)) {
+                        console.log('already exists in array');
+                    } else {
+                        if(eval(thisType + "Items").length < 5) {
+                            eval(thisType + "Items").push(thisValue);
+                        } else {
+                            console.log('This array is full');
+                        }
+                    }
+
+                    displayArrays(thisType);
+
+                    console.log(classificationItems);
+                    console.log(routingItems);
+                    console.log(qualifierItems);
+                    console.log(reportingItems);
+                });
+            });
+
+
+
+            $('.typeSelecta').each(function(index){
+                $(this).on('click', function(e){
+                    e.preventDefault();
+                    let typeToShow = $(this).attr('data-type');
+                    console.log('typeToShow = ' + typeToShow);
+
+                    $('.typeSelecta').removeClass('govuk-link--selected');
+                    $(this).addClass('govuk-link--selected');
+
+                    if(typeToShow !== 'all') {
+                        $('.selectaTable tbody tr').css('display', 'none');
+                        $('tr.'+typeToShow+'Item').css('cssText', 'display: table-row!important;');
+                    } else {
+                        $('.selectaTable tbody tr').css('display', 'table-row');
+                    }
+                });
+            });
+        });
+
+    </script>
+
+
+
+{% endblock %}
+

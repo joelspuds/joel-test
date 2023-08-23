@@ -310,7 +310,7 @@ export function classificationsAddGet(req, res) {
 }
 
 export function classificationsAddPost(req, res) {
-  const { searchQuery, tagSearch, saveAndReturn } = req.body;
+  const { searchQuery, tagSearch, saveAndReturn, weightings } = req.body;
   // console.log(req.body);
   // console.log(allTheCats);
   console.log('searchQuery = ' + searchQuery);
@@ -325,7 +325,10 @@ export function classificationsAddPost(req, res) {
     //console.log(`${key} ${value}`);
 
     if (key.includes('classification')) {
-      classificationSavedTags.push(value);
+      classificationSavedTags.push({
+        tag: value,
+        value: '',
+      });
     }
     if (key.includes('routing')) {
       routingSavedTags.push(value);
@@ -364,5 +367,33 @@ export function classificationsAddPost(req, res) {
     redirect = '/prototypes/classifications/application-overview';
   }
 
+  if (weightings === 'weightings') {
+    prototypeData.searchQuery = null;
+    redirect = '/prototypes/classifications/classification-weightings';
+  }
+
   return res.redirect(redirect);
+}
+
+/* **************
+
+    Weightings
+
+*************** */
+export function classificationsWeightingsGet(req, res) {
+  let viewData;
+
+  console.log(prototypeData.classificationSavedTags);
+
+  viewData = {
+    prototypeData,
+    allTheCats,
+  };
+  return res.render('prototypes/classifications/classification-weightings', viewData);
+}
+
+export function classificationsWeightingsPost(req, res) {
+  const {} = req.body;
+
+  return res.redirect('/prototypes/classifications/research-tags');
 }

@@ -1016,6 +1016,8 @@ router.get('/prototypes/classifications/research-areas-raw', demosController.cla
 router.post('/prototypes/classifications/research-areas', demosController.classificationsResearchAreasPost);
 router.get('/prototypes/classifications/research-tags', demosController.classificationsAddGet);
 router.post('/prototypes/classifications/research-tags', demosController.classificationsAddPost);
+router.get('/prototypes/classifications/classification-weightings', demosController.classificationsWeightingsGet);
+router.post('/prototypes/classifications/classification-weightings', demosController.classificationsWeightingsPost);
 
 /* *************************************************************** *
 
