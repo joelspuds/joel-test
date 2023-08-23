@@ -242,6 +242,7 @@
                         </ul>
                     </div>#}
 
+                    {% include './fake-filters-sorted.njk' %}
 
                     {% if allData.fakeFilters == 'unsorted' %}
 
@@ -322,6 +323,7 @@
                         {#<th class="govuk-table__header">Funder</th>#}
                         {#<th class="govuk-table__header">Groups<br></th>#}
                         <th class="govuk-table__header">Applicant</th>
+                        <th class="govuk-table__header">Groups</th>
                         <th class="govuk-table__header govuk-table__header--numeric">Deadline</th>
                         <th class="govuk-table__header govuk-table__header--numeric">Status</th>
                     </tr>
@@ -386,6 +388,7 @@
                                 {% endfor %}
                             </td>#}
                             <td class="govuk-table__cell">{{ item.name }} </td>
+                            <td class="govuk-table__cell">Group name</td>
                             <td class="govuk-table__cell govuk-table__cell--numeric">
                                 {#{{ allData.dateString }} and {{ item.dateAsString }}#}
                                 {% if allData.dateString > item.dateAsString  %}<strong class="red-text">{% endif %}
