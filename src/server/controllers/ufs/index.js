@@ -43,4 +43,5 @@ export * from './teamResourcesCostsController';
 export * from './applicationsListerController';
 export * from './editController';
 export * from './editControllerV2';
+export * from './editControllerV3';
 export * from './classificationsController';

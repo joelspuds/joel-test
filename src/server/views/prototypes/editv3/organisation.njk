@@ -1,0 +1,101 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/editv2/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/editv2/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+
+{% set pageTitle = 'Select your organisation' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Rosaria Linguinni' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+
+
+{% set pageTitle = 'Select your organisation ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/editv3/opportunity', text:'Back to Opportunity'}] %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Select your organisation', caption=prototypeData.oppTitle) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST', name='form') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+
+                {#<p class="govuk-body">Only bodies registered with the UKRI Funding Service can apply for this Opportunity.</p>#}
+
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-visually-hidden">Add the relevant organisation</legend>
+
+                    <div class="govuk-form-group {% if organisationNameError %} govuk-form-group--error {% endif %}">
+                        <label class="govuk-label govuk-label--s" for="organisation">Start entering, then select, your organisation's name</label>
+                        <span class="govuk-hint">This will be the lead organisation for your application. Only organisations registered with the UKRI Funding Service can apply for this Opportunity.</span>
+                        {% if organisationNameError %}
+                            <span id="organisation-error" class="govuk-error-message">
+                                    <span class="govuk-visually-hidden">Error:</span> You must enter an organisation that is registered with the UKRI Funding Service
+                                </span>
+                        {% endif %}
+                        <select name="organisation" class="govuk-select {% if organisationNameError %} govuk-select--error {% endif %} control" id="organisation">
+                            <option></option>
+                            {% for item in allOrgs %}
+                                <option value="{{ item.name }}">{{ item.name }}</option>
+                            {% endfor %}
+                        </select>
+
+                    </div>
+
+                </fieldset>
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen') %}
+
+                {% call components.formGroup() %}
+                    {{ components.button(text='Continue', extraClass="application-controls__submit")}}
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        var selectEl = document.querySelector('#organisation');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 1,
+            selectElement: selectEl
+        });
+    </script>
+{% endblock %}
+
+

@@ -1,0 +1,134 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/editv2/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/editv2/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+
+{% set pageTitle = 'Select your group' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Rosaria Linguinni' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+
+
+{% set pageTitle = 'Home ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/editv3/role', text:'Back to role'}] %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Select your group', caption=prototypeData.oppTitle) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST', name='form') %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+
+                <p class="govuk-body">You can select a suitable group for your application. These groups are defined by your research office. </p>
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-visually-hidden">Select a group </legend>
+                        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="groups1" name="groups" type="radio" value="Arts and humanities" {% if prototypeData.group == 'Arts and humanities' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="groups1" >Arts and humanities</label>
+                                <span class="govuk-hint govuk-radios__hint">Arts and hums faculty</span>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="groups2" name="groups" type="radio" value="Languages" {% if prototypeData.group == 'Languages' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="groups2" >Languages</label>
+                                <span class="govuk-hint govuk-radios__hint">Modern and ancient languages and linguistics</span>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="groups3" name="groups" type="radio" value="Law, politics, philosophy and economics" {% if prototypeData.group == 'Law, politics, philosophy and economics' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="groups3" >Law, politics, philosophy and economics</label>
+                                <span class="govuk-hint govuk-radios__hint">Law, politics, philosophy and economics faculty</span>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="groups4" name="groups" type="radio" value="Medicine" {% if prototypeData.group == 'Medicine' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="groups4" >Medicine</label>
+                                <span class="govuk-hint govuk-radios__hint">Medicine, dentistry and medical sciences faculty</span>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="groups5" name="groups" type="radio" value="Science and engineering" {% if prototypeData.group == 'Science and engineering' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="groups5" >Science and engineering</label>
+                                <span class="govuk-hint govuk-radios__hint">All science and engineering application support</span>
+                            </div>
+
+                            <p class="govuk-body u-space-y20 u-space-x10">
+                                <span class="">Or</span>
+                            </p>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="groups6" name="groups" type="radio" value="Ungrouped" {% if prototypeData.group =='Ungrouped' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="groups6" >Cannot find a suitable group</label>
+                            </div>
+
+
+
+
+                        </div>
+                    </fieldset>
+                </div>
+
+
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen') %}
+
+                {% call components.formGroup() %}
+                    {{ components.button(text='Continue', extraClass="application-controls__submit")}}
+                {%- endcall %}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        var selectEl = document.querySelector('#organisation');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 1,
+            selectElement: selectEl
+        });
+    </script>
+{% endblock %}
+
+

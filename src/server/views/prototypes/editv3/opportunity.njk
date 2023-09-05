@@ -1,0 +1,637 @@
+{% set showExternalFurniture = true %}
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set pageTitle = 'AHRC New Generation Thinkers scheme ' + ' - UKRI Funding service' %}
+
+{% set backLinkContents =  [{url:'#', text:'Back to all Opportunities'}] %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Innovation in environmental monitoring') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='is-8', extraClass='u-space-t20') %}
+
+            <ul class="opportunity-meta govuk-list">
+                <li class="opportunity-meta__item">
+                    <span class="opportunity-meta__title">Opportunity status:</span>
+                    <span class="opportunity-meta__details">Open</span>
+                </li>
+                <li class="opportunity-meta__item">
+                    <span class="opportunity-meta__title">Funder:</span>
+                    <span class="opportunity-meta__details"><a href="#" class="govuk-link">Biotechnology and Biological Sciences Research Council (BBSRC)</a></span>
+                </li>
+                <li class="opportunity-meta__item">
+                    <span class="opportunity-meta__title">Funding type:</span>
+                    <span class="opportunity-meta__details">Grant</span>
+                </li>
+                <li class="opportunity-meta__item">
+                    <span class="opportunity-meta__title">Maximum award:</span>
+                    <span class="opportunity-meta__details">£3,000,000</span>
+                </li>
+                <li class="opportunity-meta__item">
+                    <span class="opportunity-meta__title">Publication date:</span>
+                    <span class="opportunity-meta__details">20 August 2023</span>
+                </li>
+                <li class="opportunity-meta__item">
+                    <span class="opportunity-meta__title">Opening date:</span>
+                    <span class="opportunity-meta__details">1 September 2023</span>
+                </li>
+                <li class="opportunity-meta__item">
+                    <span class="opportunity-meta__title">Closing date:</span>
+                    <span class="opportunity-meta__details">31 October 2023</span>
+                </li>
+            </ul>
+
+
+
+            <p class="govuk-body"><a href="/prototypes/editv3/organisation" class="govuk-button govuk-button--start">Start an application</a> </p>
+
+            <p class="govuk-body">This is an open capital funding opportunity for projects demonstrating innovative approaches toward environmental monitoring at a sensor or systems-based level, with collaborative applications encouraged from across the environmental science, environment-focused informatics and wider data science communities.</p>
+
+            <p class="govuk-body">The full economic cost (FEC) of your project can be between £450,000 and £750,000. We will fund 100% for equipment only, and 80% FEC for other resources.</p>
+
+            <p class="govuk-body">Projects must start in March 2024 for up to 36 months.</p>
+
+            <p class="govuk-body">Applications are invited by NERC on behalf of UK Research and Innovation (UKRI) and in partnership with Defra.</p>
+
+
+
+            <div class="govuk-accordion ukri-accordion" data-module="govuk-accordion" id="accordion-default"><div class="govuk-accordion__controls"></div>
+
+                <div class="govuk-accordion__section">
+                    <div class="govuk-accordion__section-header">
+                        <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading">
+                            <button type="button" id="accordion-default-heading-1" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" aria-expanded="false">
+                                Who can apply
+                            </button><span class="govuk-accordion__icon" aria-hidden="true"></span></h2>
+                    </div>
+                    <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                        <p>UKRI has introduced new role types for funding opportunities being run on the new UKRI Funding Service. For full details, visit <a href="/apply-for-funding/before-you-apply/check-if-you-are-eligible-for-research-and-innovation-funding/eligibility-as-an-individual/">Eligibility as an individual</a>.</p>
+                        <p>Before applying for funding, check the following:</p>
+                        <ul>
+                            <li><a href="/councils/nerc/guidance-for-applicants/check-if-you-are-eligible-for-funding/">NERC eligibility guidance for applicants</a></li>
+                            <li><a href="/apply-for-funding/before-you-apply/check-if-you-are-eligible-for-research-and-innovation-funding/eligibility-as-an-organisation/">eligibility of your organisation</a></li>
+                            <li><a href="/publications/nerc-remit-enquiry-form/">check your project is in our remit</a>, if you are unsure whether your proposed research falls within the remit of NERC</li>
+                        </ul>
+                        <h3>Who is eligible to apply</h3>
+                        <ul>
+                            <li>this funding opportunity is open to all organisations eligible for UKRI funding, including some <a href="/apply-for-funding/before-you-apply/check-if-you-are-eligible-for-research-and-innovation-funding/eligible-public-sector-research-establishments/">public sector research establishments (PSREs)</a>. This funding opportunity is in partnership with Defra, and where Defra Group organisations are eligible PSREs, they can apply for funding through this opportunity</li>
+                        </ul>
+                        <h3>Who is not eligible to apply</h3>
+                        <p>You may be involved in no more than two applications submitted to this funding opportunity. Only one of these can be as project lead.</p>
+                        <h3>International applicants</h3>
+                        <p>As this is a capital funding opportunity, the agreements with the International Institute for Applied Systems Analysis (IIASA) and Norway do not apply.</p>
+                        <p>You should include all international collaborators (or UK partners not based at approved organisations) as project partners. This includes organisations from the business or financial sectors.</p>
+                        <p>Project partners fund their own involvement. We will only fund minor incidental expenses, such as some travel costs, if needed for project partners.</p>
+                        <h3>Equality, diversity and inclusion</h3>
+                        <p>We are committed to achieving equality of opportunity for all funding applicants. We encourage applications from a diverse range of researchers.</p>
+                        <p>We support people to work in a way that suits their personal circumstances. This includes:</p>
+                        <ul>
+                            <li>career breaks</li>
+                            <li>support for people with caring responsibilities</li>
+                            <li>flexible working</li>
+                            <li>alternative working patterns</li>
+                        </ul>
+                        <p>Find out more about <a href="/what-we-do/supporting-healthy-research-and-innovation-culture/equality-diversity-and-inclusion/">equality, diversity and inclusion at UKRI</a> and <a href="/publications/nerc-diversity-and-inclusion-action-plan-2022-2025/">NERC’s diversity and inclusion action plan</a>.</p>
+                    </div>
+                </div>
+
+                <div class="govuk-accordion__section">
+                    <div class="govuk-accordion__section-header">
+                        <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading">
+
+                            <button type="button" id="accordion-default-heading-2" aria-controls="accordion-default-content-2" class="govuk-accordion__section-button" aria-expanded="false">
+                                What we're looking for
+                            </button><span class="govuk-accordion__icon" aria-hidden="true"></span></h2>
+                    </div>
+                    <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+
+                        <h3>Scope</h3>
+                        <p>Applications are invited by the Natural Environment Research Council (NERC) on behalf of UKRI and in partnership with the Department for Environment, Food and Rural Affairs (Defra), as part of the Innovation in Environmental Monitoring (IEM) programme. Consortia are invited to apply for capital funding for projects accelerating the development of innovative approaches toward environmental monitoring at a sensor or systems-based level.</p>
+                        <h3>Background</h3>
+                        <p>Monitoring networks are integral to environmental research, and to effective environmental management, ensuring compliance with the increasingly ambitious legal obligations of statutory authorities. The growing ambition to finance natural capital also creates a clear market opportunity for innovations in sensing technologies which offer the potential to further improve our understanding of the environment, including what can be measured, how often, and where. In parallel, as data flows steadily increase in size and distributed networks increase in complexity, there is also a need to complement the development and deployment of sensors, with systems-based approaches to maximise value from the data generated. These twin approaches have the potential to improve operational efficiency, reduce carbon emissions, optimise the management of data flows, minimise computing requirements and support the agile deployment of mobile sensing systems and capabilities.</p>
+                        <h3>Innovation in Environmental Monitoring Programme</h3>
+                        <p>Defra and UKRI are investing up to £12 million across three years for research and innovation projects to develop enhanced monitoring capabilities in areas of joint strategic interest across all areas of the data lifecycle, from data collection, processing, analysis, and visualisation.</p>
+                        <p>This integrated programme spans multiple technology readiness levels (TRLs), through sensor development and testing, to allow robust and effective deployment of sensing systems in the real world to address environmental challenges. It includes explicit connectivity to industry and the growing UK environmental monitoring sector, ensuring that new sensing capabilities are developed in partnership between the public and private sectors and commercialisation is accelerated.</p>
+                        <p>The objectives of this programme are to:</p>
+                        <ul>
+                            <li>support the development of new sensing systems and monitoring capabilities that will either improve existing approaches or introduce new ones, including improving the sustainability and connectivity of data collection, analysis and reporting</li>
+                            <li>support the testing of these products (including ‘ground-truthing’ with existing monitoring regimes) and verifying their accuracy and reliability, thus improving their chances of being successfully deployed at scale in the public and private sectors</li>
+                            <li>deliver new and strengthened partnerships and collaborations between the public sector, academia and private sector, helping to connect across disciplines, and stimulate innovative approaches</li>
+                            <li>develop an understanding of the capabilities and principles required for the effective development and real-world deployment of environmental monitoring systems for broader impact and use</li>
+                        </ul>
+                        <p>The programme is made up of two elements: this NERC-led funding opportunity supporting research-led activity, and an Innovate UK-led funding opportunity (to be launched in late 2023 or early 2024) supporting business-led activity.</p>
+                        <p>UKRI and Defra intend to bring together the grant holders from both funding opportunities to develop a broad UK community in innovative environmental sensing and monitoring. Successful applicants are expected to engage with community building activities such as collaborative workshops, and we expect that successful applicants will be committed to working as part of the national landscape of IEM investments.</p>
+                        <p>The current research and environmental regulation landscape offers an ideal testing ground for the further development and refinement of innovation-led approaches toward environmental sensing. Consortia will be encouraged to work closely with delivery bodies, existing monitoring networks or businesses, in order to demonstrate the value of their product. For field or lab-based technologies, testing could include on-site testing in an operational environment. For data systems, testing must demonstrate how monitoring data can be more efficiently processed, analysed or visualised.</p>
+                        <p>Defra aims to improve on how Defra Group currently monitors key environmental issues and indicators, which will:</p>
+                        <ul>
+                            <li>enable environmental monitoring organisations to deliver better insights, through smarter use of physical inspections and remote monitoring, and automated data analysis</li>
+                            <li>reduce the cost of monitoring while maintaining or increasing insight</li>
+                            <li>encourage investment in nature markets, by helping to ensure that the outcomes from nature investment schemes are trusted</li>
+                        </ul>
+                        <h3>Desired outcomes for this funding opportunity</h3>
+                        <p>It is expected that applications to this funding opportunity will focus on the development of new sensing and monitoring systems which can be applied widely in the real world by those with responsibility for environmental management such as governments, industry or non-governmental organisations. They could also include activities that explore and measure the benefits of new innovative approaches. Applications should have UK relevance, though wider applicability in other geographical regions is welcome.</p>
+                        <p>‘Sensing systems and capabilities’ can include:</p>
+                        <ul>
+                            <li>observation systems, in-situ sensors or samplers, sensor or sampler carrying platforms</li>
+                            <li>data processing, analysis, modelling or visualisation systems</li>
+                            <li>post-acquisition sample or data processing or analysis and reporting</li>
+                        </ul>
+                        <p>Desired outcomes of new sensing systems and capabilities could include:</p>
+                        <ul>
+                            <li>improving the temporal and spatial resolution of monitoring regimes or data or both, or increasing the range of environmental variables monitored. This could include the multi-scale coordination of data collection from sensor networks</li>
+                            <li>ensuring that existing long-term datasets can be combined and enriched with new or better data</li>
+                            <li>improving the quality of data sets:
+                                <ul>
+                                    <li>intelligent consideration of metadata to enable aggregation and disaggregation at ease</li>
+                                    <li>suitable to use and train artificial intelligence (AI), for example to classify outputs of remote sensing images</li>
+                                </ul>
+                            </li>
+                            <li>optimising how sensors and systems are used together for improved resolution of environmental variables. It is anticipated that effective sensing systems produce analysis ready data (ARD) and interoperable data, which can be combined with a myriad of other sources in order to provide a robust and multi-faceted systems base for end-users. Examples could include the use of edge computing for local data processing, or AI techniques to denoise data streams and support more effective wireless data transfer</li>
+                            <li>developing lower cost sensors and sensor networks which maintain accuracy and precision. Desirable features would include: ease of use and maintenance, low energy-demand or self-powered, ruggedisation and miniaturisation. They could be more precise, accurate, sustainable, or offer wider coverage than existing approaches</li>
+                            <li>making better use of citizen science and non-statutory datasets:
+                                <ul>
+                                    <li>increasing the confidence in citizen science data</li>
+                                    <li>improving data interoperability between citizen science and monitoring networks</li>
+                                </ul>
+                            </li>
+                            <li>enhancing data accessibility for both private and public end users by reducing fragmentation and duplication and integrating it with existing data streams and accessible platforms</li>
+                        </ul>
+                        <p>Bidding consortia will be expected to:</p>
+                        <ul>
+                            <li>demonstrate an understanding of UK monitoring capability needs in one or more of the four challenge areas, and set a clear plan to address these needs through the development of sensing systems and capabilities</li>
+                            <li>provide an explanation of which part(s) of the end-to-end monitoring system they will be focusing on and why (for example, data collection, processing, analysis or visualisation)</li>
+                            <li>be collaborative and multi-disciplinary across the environmental science, environment-focused informatics and wider data science communities</li>
+                            <li>work in partnership with real world users of sensing systems and capabilities, within Defra Group or the UK private sector or both. You should clearly set out how the proposed approach will address the needs of these real-world users responsible for environmental monitoring</li>
+                            <li>work and meaningfully interact with the Innovate-UK (IUK)-led element of the programme in order to deliver overarching programme objectives and share lessons learned</li>
+                            <li>articulate what is innovative about the project and the anticipated sensing and monitoring capability advances which will be delivered, clearly setting out how technological maturity will change between the start and end of the project</li>
+                            <li>set out measurable key performance indicators (KPIs) that will be used to determine the delivery of outputs and outcomes</li>
+                            <li>articulate how appropriate data will be shared with Defra and UKRI in a usable format. Any sensitivities in sharing data can be highlighted</li>
+                            <li>provide a list of any operational requirements such as permits and permissions, and evidence that these have been obtained</li>
+                        </ul>
+                        <p>Any new approaches should incorporate from the outset principles that are used by organisations across Defra Group, who need to ensure that the environmental monitoring data they use is collected in ways that enable responsible evidence-led decision making. This includes ensuring methodologies are repeatable (and could be standardised in the future), robust data assurance processes can be developed, and that data generated meet FAIR standards.</p>
+                        <p>We note that the work may include citizen science or other approaches, and there will be a need to interface with the NERC Environmental Data Service or other appropriate data infrastructure.</p>
+                        <h3>Challenge areas</h3>
+                        <p>We welcome applications on one or more of the four terrestrial monitoring challenge areas:</p>
+                        <ul>
+                            <li>biodiversity and natural capital</li>
+                            <li>soil health (including measuring soil carbon sequestration)</li>
+                            <li>freshwater or estuarine water quality (not marine)</li>
+                            <li>monitoring greenhouse gas (GHG) emissions</li>
+                        </ul>
+                        <p>More detail on the suggested scope of these four challenge areas is set out below. These are areas of interest developed across Defra policy teams to illustrate the scope of this funding opportunity. They are not intended to be exhaustive or exclusive. You may choose to address one, multiple or none of the areas of interest below. If proposing a different area of interest, you must provide a strong rationale.</p>
+                        <h4>Areas of interest associated with identified challenges:</h4>
+                        <h5>Biodiversity</h5>
+                        <ul>
+                            <li>the collection of balanced biodiversity data on the short and medium-term changes to species and habitats that can indicate a trend following interventions that aim to improve biodiversity (for example, Environmental Management System, Biodiversity Net Gain)</li>
+                            <li>making use of data to improve our ability to measure habitat connectivity and species mobility at a landscape and national scale</li>
+                            <li>the development of new approaches to verify biodiversity credits</li>
+                        </ul>
+                        <h5>Soil Carbon and Soil Health<br>
+                            (This includes organic and peat soils.)</h5>
+                        <ul>
+                            <li>providing information on the flux or sequestration or both, of carbon in soils in a timely and suitably scaled manner, for both policy audiences and carbon markets. This could include new metrics or indicators as well as data acquisition</li>
+                            <li>new approaches toward the measurement of the biological, chemical and physical properties of soil and the integration of individual data flows to better understand soil interactions and properties</li>
+                            <li>improving on current approaches or methodologies for assessing soil health and biodiversity for use in both policy making and carbon markets</li>
+                        </ul>
+                        <h5>Water Quality<br>
+                            (This applies to fresh and estuarine water bodies, but not marine environments.)</h5>
+                        <ul>
+                            <li>delivering low-cost, remote, real-time measurement of key parameters in association with water quality and quantity,whilst managing the precision of field-based sensors and maintenance and calibration requirements</li>
+                            <li>combining sensor networks and citizen science outputs to monitor multiple elements of water quality at once and optimise current monitoring regimes</li>
+                            <li>improving the current monitoring of chemical nutrients and organic pollution in water (for example, with reference to industry discharges, wastewater treatment facilities and combined sewer outfalls)</li>
+                        </ul>
+                        <h5>Greenhouse Gases (GHG)</h5>
+                        <ul>
+                            <li>improving GHG monitoring from landfill, wastewater treatment, estuarine and freshwater bodies across a range of site types, conditions, and seasons</li>
+                            <li>the development of new approaches that could be deployed to monitor ozone-depleting substances and fluorinated gases, with the aim of improving current global coverage</li>
+                            <li>innovative approaches toward increasing the frequency by which we monitor, compile and quality-assess agricultural emissions. Either through cost-effective direct assessment approaches (for example, tall tower approaches) or through low-cost alternatives to direct monitoring using activity data for the agriculture sector (for example, fertiliser use, livestock numbers)</li>
+                        </ul>
+                        <h3>Duration</h3>
+                        <p>The maximum duration of this award is 36 months.</p>
+                        <p>Projects must start by 1 March 2024.</p>
+                        <h3>Funding available</h3>
+                        <p>The FEC of your funded project can be between £450,000 and £750,000. It is expected that activities are primarily focussed on the development of sensing systems for use in real world environments. As a result of this focus on sensing systems and capabilities, development costs are expected to be primarily capitalisable.</p>
+                        <h4>Capital costs</h4>
+                        <p>We will fund 100% of the cost for sensing system development, including labour costs directly associated to the creation, production, preparation, and also testing, benchmarking and verification of the proposed sensing system or capabilities, so that it is capable of operating in the manner intended by management. A single total capital cost should be listed under the ‘equipment’ heading. The breakdown of those costs should be included in the ‘Resources and cost justification’ section.</p>
+                        <h4>Resource costs</h4>
+                        <p>We will fund 80% of the FEC for resource costs not directly related to the creation, production, preparation and testing of the proposed sensing system or capabilities, such as attending meetings at NERC head office, collaborative workshops (including between consortia funded by the NERC-led and IUK components of the IEM programme), the development of policy-focussed reports, and any commercialisation processes. Resource costs should make up a maximum of 20% of the overall budget. Resource costs should be added under the relevant ‘directly incurred’ and ‘directly allocated’ headings, for example, directly incurred ‘travel and subsistence’.</p>
+                        <p>Further information is available on <a href="https://www.discover.ukri.org/ukri-infrastructure/index.html">existing infrastructure</a>.</p>
+                        <p>Further guidance is available on <a href="/councils/nerc/guidance-for-applicants/types-of-funding-we-offer/capital-funding/">capital funding</a>.</p>
+                        <h3>What we will not fund</h3>
+                        <p>We will not fund:</p>
+                        <ul>
+                            <li>requests for resource including staffing costs related to operation and maintenance of the asset or user training after the creation of the asset</li>
+                            <li>single-user or single-project equipment</li>
+                            <li>development of new sensing systems and capabilities that are unlikely to generate a productive asset</li>
+                            <li>applications that have also been submitted to other award schemes during the same time frame (including all UKRI grant schemes)</li>
+                            <li>applications requesting investment in digital or e-infrastructures, such as data and computing systems (see the&nbsp;<a href="/what-we-offer/browse-our-areas-of-investment-and-support/digital-environment/">digital environment</a> and <a href="/councils/nerc/facilities-and-resources/">national capability</a> funding streams for further information on funding such infrastructure)</li>
+                            <li>associated studentship costs</li>
+                            <li>pure research, original and planned investigation undertaken with the prospect of gaining new scientific or technical knowledge and understanding</li>
+                            <li>management overheads, unless staff members are performing technical development or solely purposed on the project</li>
+                            <li>incidental costs such as project office support</li>
+                            <li>costs that only restore or maintain future economic benefit that was expected from the original asset</li>
+                        </ul>
+                        <h3>Services and facilities</h3>
+                        <p>You can apply to use a facility or resource in your funding application.</p>
+                        <p>You should discuss your application with the facility or service before the opportunity’s closing date to:</p>
+                        <ul>
+                            <li>discuss the proposed work in detail</li>
+                            <li>receive confirmation that they can provide the services required within the timeframe of the funding</li>
+                        </ul>
+                        <p>The facility will provide a technical assessment that includes the calculated cost of providing the service. NERC services and facilities must be costed within the limits of the funding.</p>
+                        <p>You should not submit the technical assessment with the application, but you must confirm you have received it.</p>
+                        <p>For more information, see the <a href="/councils/nerc/guidance-for-applicants/handbooks-guidance-and-forms/">NERC research grants and fellowships handbook</a>.</p>
+                        <p>Read the full list of <a href="/councils/nerc/facilities-and-resources/find-a-nerc-facility-or-resource/">NERC facilities that require a technical assessment</a>.</p>
+                        <p>High performance computing (HPC) and the large research facilities at Harwell have their own policies for access and costing.</p>
+                        <h3>Supporting skills and talent</h3>
+                        <p>We encourage you to follow the principles of the <a href="https://researcherdevelopmentconcordat.ac.uk/">Concordat to Support the Career Development of Researchers</a> and the <a href="https://www.techniciancommitment.org.uk/">Technician Commitment</a>.</p>
+                        <h3>International collaboration</h3>
+                        <p>If your application includes international project partners or collaborators, visit <a href="/about-us/policies-standards-and-data/good-research-resource-hub/trusted-research-and-innovation/">UKRI’s trusted research and innovation</a> for more information on effective international collaboration.</p>
+                        <p>Find out about <a href="/what-we-offer/international-funding/getting-funding-for-international-collaboration/">getting funding for international collaboration</a>.</p>
+                        <h3>Data management</h3>
+                        <p>You must adhere to&nbsp;<a href="/manage-your-award/publishing-your-research-findings/making-your-research-publications-open-access/">UKRI open research policy</a>&nbsp;and&nbsp;<a href="/about-us/nerc/our-policies-and-standards/nerc-data-policy/">NERC data policy</a> and complete the ‘Data management and sharing’ question.</p>
+                        <p>For details of data centres, see the&nbsp;<a href="/councils/nerc/facilities-and-resources/find-a-nerc-facility-or-resource/">NERC Environmental Data Service</a>.</p>
+                        <p>We will pay the data centre directly on behalf of the programme for archival and curation services, but you should ensure that you request sufficient resource to cover preparation of data for archiving by the research team. Additional services from the data centres, such as database development or a specialist in project data management during your project, will need to be discussed with the relevant data centre prior to submission, costs for additional services will need to be included in the grant application.</p>
+                        <h3>Responsible research</h3>
+                        <p>Through our funding processes, we seek to make a positive contribution to society and the environment. This is not just through research outputs and outcomes but through the way in which research is conducted and facilities managed.</p>
+                        <p>All NERC grant holders are to adopt responsible research practices as set out in the <a href="/about-us/nerc/our-policies-and-standards/nerc-as-a-responsible-business/">NERC responsible business statement</a>.</p>
+                        <p>Responsible research is defined as reducing harm or enhancing benefit on the environment and society through effective management of research activities and facilities. Specifically, this covers:</p>
+                        <ul>
+                            <li>the natural environment</li>
+                            <li>the local community</li>
+                            <li>equality, diversity and inclusion</li>
+                        </ul>
+                        <p>You should consider the responsible research context of your project, not the host institution as a whole. You should take action to enhance your responsible research approach where practical and reasonable.</p>
+                        <h3>Research disruption due to COVID-19</h3>
+                        <p>We recognise that the COVID-19 pandemic has caused major interruptions and disruptions across our communities. We are committed to ensuring that individual applicants and their wider team, including partners and networks, are not penalised for any disruption to their career, such as:</p>
+                        <ul>
+                            <li>breaks and delays</li>
+                            <li>disruptive working patterns and conditions</li>
+                            <li>the loss of ongoing work</li>
+                            <li>role changes that may have been caused by the pandemic</li>
+                        </ul>
+                        <p>Reviewers and panel members will be advised to consider the unequal impacts that COVID-19 related disruption might have had on the capability to deliver and career development of those individuals included in the application. They will be asked to consider the capability of the applicant and their wider team to deliver the research they are proposing.</p>
+                        <p>Where disruptions have occurred, you can highlight this within your application if you wish, but there is no requirement to detail the specific circumstances that caused the disruption.</p>
+                    </div>
+                </div>
+
+                <div class="govuk-accordion__section">
+                    <div class="govuk-accordion__section-header">
+                        <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading">
+
+                            <button type="button" id="accordion-default-heading-3" aria-controls="accordion-default-content-3" class="govuk-accordion__section-button" aria-expanded="false">
+                                How to apply
+                            </button><span class="govuk-accordion__icon" aria-hidden="true"></span></h2>
+                    </div>
+                    <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+                        <p>We are running this funding opportunity on the new UKRI Funding Service. You cannot apply on the Joint Electronic Submissions (Je-S) system.</p>
+                        <p>The project lead is responsible for completing the application process on the Funding Service, but we expect all team members and project partners to contribute to the application.</p>
+                        <p>Only the lead research organisation can submit an application to UKRI.</p>
+                        <p>Watch our <a href="https://www.youtube.com/watch?v=i7f6TNz8mN8">recording on how to apply for an opportunity in the Funding Service on YouTube</a>.</p>
+                        <p>To apply</p>
+                        <p>Select ‘Start application’ near the beginning of this Funding finder page.</p>
+                        <ol>
+                            <li>Confirm you are the project lead.</li>
+                            <li>Sign in or create a Funding Service account. To create an account, select your organisation, verify your email address, and set a password. If your organisation is not listed, email <a href="mailto:support@funding-service.ukri.org">support@funding-service.ukri.org</a></li>
+                            <li>Answer questions directly in the text boxes. You can save your answers and come back to complete them or work offline and return to copy and paste your answers. If we need you to upload a document, follow the upload instructions in the Funding Service. All questions and assessment criteria are listed in the How to apply section on this Funding finder page.</li>
+                            <li>Allow enough time to check your application in ‘read-only’ view before sending to your research office.</li>
+                            <li>Send the completed application to your research office for checking. They will return it to you if it needs editing.</li>
+                            <li>Your research office will submit the completed and checked application to us.</li>
+                        </ol>
+                        <p>Watch our <a href="/apply-for-funding/improving-your-funding-experience/about-simpler-and-better-funding/">research office webinars about the new Funding Service</a>.</p>
+                        <h3>Deadline</h3>
+                        <p>We must receive your application by 7 November 2023 at 4:00pm UK time.</p>
+                        <p>You will not be able to apply after this time. Make sure you are aware of and follow any internal institutional deadlines.</p>
+                        <h3>Personal data</h3>
+                        <p>NERC, as part of UKRI, will need to collect some personal information to manage your funding service account and the registration of your funding applications.</p>
+                        <p>We will handle personal data in line with UK data protection legislation and manage it securely. For more information, including how to exercise your rights, read our<a href="/about-us/privacy-notice/"> privacy notice</a>.</p>
+                        <p>NERC, as part of UKRI, will need to share the application and any personal information that it contains with Defra so that they can participate in the assessment process. For more information on how Defra uses personal information, visit <a href="https://www.gov.uk/government/publications/defras-social-research-privacy-notice/defras-social-research-privacy-notice">Defra’s research privacy notice</a>.</p>
+                        <h3>Publication of outcomes</h3>
+                        <p>NERC, as part of UKRI, will publish the outcomes of this funding opportunity on <a href="/what-we-offer/what-we-have-funded/nerc/">What NERC has funded</a>.</p>
+                        <p>If your application is successful, we will publish some personal information on the<a href="https://gtr.ukri.org/"> UKRI Gateway to Research</a>.</p>
+                        <h4>Summary</h4>
+                        <p>Word count:&nbsp;550</p>
+                        <p>In plain English, provide a summary that we can use to identify the most suitable experts to assess your application.</p>
+                        <p>We may make this summary publicly available on external-facing websites, so make it suitable for a variety of readers, for example:</p>
+                        <ul>
+                            <li>opinion-formers</li>
+                            <li>policymakers</li>
+                            <li>the public</li>
+                            <li>the wider research community</li>
+                        </ul>
+                        <h5>Guidance for writing a summary</h5>
+                        <p>Clearly describe your proposed work in terms of:</p>
+                        <ul>
+                            <li>context</li>
+                            <li>the challenge the project addresses</li>
+                            <li>aims and objectives</li>
+                            <li>potential applications and benefits</li>
+                        </ul>
+                        <h4>Core team</h4>
+                        <p>List the key members of your team and assign them roles from the following:</p>
+                        <ul>
+                            <li>project lead (PL)</li>
+                            <li>project co-lead (UK) (PcL)</li>
+                            <li>researcher co-lead (RcL)</li>
+                            <li>specialist</li>
+                            <li>grant manager</li>
+                            <li>professional enabling staff</li>
+                            <li>research and innovation associate</li>
+                            <li>technician</li>
+                            <li>visiting researcher</li>
+                        </ul>
+                        <p>Only list one individual as project lead.</p>
+                        <p>Find out more about <a href="/apply-for-funding/before-you-apply/check-if-you-are-eligible-for-research-and-innovation-funding/eligibility-as-an-individual/#contents-list">UKRI’s new grant roles</a>.</p>
+                        <h3>Core questions</h3>
+                        <h4>Purpose</h4>
+                        <p>Word count: 500</p>
+                        <p>Why is the proposed sensing systems or capabilities needed?</p>
+                        <h5>What the assessors are looking for in your response</h5>
+                        <p>Explain how the proposed sensing systems or capabilities:</p>
+                        <ul>
+                            <li>are timely, given current trends and context</li>
+                            <li>will deliver new and enhanced monitoring capabilities, which meet the strategic aims and priorities of UKRI or Defra</li>
+                            <li>will address the needs of users of environmental monitoring technologies</li>
+                        </ul>
+                        <h4>Vision and approach</h4>
+                        <p>Word count: 10</p>
+                        <p>Vision</p>
+                        <p>What are you hoping to achieve with the proposed sensing systems or capabilities?</p>
+                        <h5>What the assessors are looking for in your response</h5>
+                        <p>For the Vision, explain how your proposed work will:</p>
+                        <ul>
+                            <li>meet the strategic aims of the funder or government</li>
+                            <li>enhance and complement the existing landscape</li>
+                        </ul>
+                        <p>Within the Vision section we also expect you to:</p>
+                        <ul>
+                            <li>explain how your proposed work will be collaborative (and multi-disciplinary) and impact world-leading research, society, the economy or the environment</li>
+                            <li>support the development of or improve upon existing innovative technologies and systems, designed to address one or more of the four key environmental monitoring challenges</li>
+                            <li>lead to the development and testing of environmental sensing systems and capabilities in appropriate real-world environments or testbeds, that can be used by those with responsibility for environmental management such as governments, industry or NGOs</li>
+                            <li>address the needs of users of environmental monitoring across the public and private sectors, including supporting the delivery of high quality and important research (applications must have UK relevance, although wider applicability in other geographical regions is welcome)</li>
+                            <li>connect to and stimulate innovation, and have a clear pathway to further development, to commercialisation or to deployment of the developed monitoring technologies, in partnership with public and private sectors</li>
+                            <li>will create a new, or build upon an existing capability within the UK’s environmental monitoring landscape</li>
+                        </ul>
+                        <p>Approach</p>
+                        <p>What are your plans to manage the creation and testing of proposed sensing systems or capabilities?</p>
+                        <h5>What the assessors are looking for in your response</h5>
+                        <p>For the Approach, we expect you to show how your approach includes:</p>
+                        <ul>
+                            <li>a credible management plan including strategic and operational matters (proportionate to the scale and complexity of the activity)</li>
+                            <li>details of governance (proportionate to the scale and complexity of the activity); will an external advisory group be needed</li>
+                            <li>identification of risks and appropriate mitigation</li>
+                            <li>a description of the working environment</li>
+                            <li>plans for sustainability and legacy beyond the end of the funding period; these could include securing additional funding, development or expansion after the initial period of funding, describing how the asset can be broadly used by other end-users</li>
+                        </ul>
+                        <p>Within the Approach section we also expect you to:</p>
+                        <ul>
+                            <li>outline how the sensor systems or capability will be developed and tested in the real world to address key challenges</li>
+                            <li>describe how you will engage with and work in partnership with end-users to co-design and co-deliver the development and testing of the proposed sensing systems or capabilities</li>
+                            <li>provide an explanation of which part(s) of the end-to-end monitoring system you will be focusing on and why (for example, data collection, processing, analysis or visualisation)</li>
+                            <li>include plans for further development of the innovation and how the sensing system or capabilities will be made useable, and will address the needs of other users beyond the period of initial investment</li>
+                            <li>identification and mitigation of possible cybersecurity risks</li>
+                            <li>provide measurable key performance indicators (KPIs) that will be used to determine the delivery of outputs and outcomes</li>
+                            <li>include a list of any operational requirements such as permits and permissions, and evidence that these have been obtained</li>
+                            <li>outline how potentially negative environmental outcomes of proposed sensor systems or capabilities will be mitigated</li>
+                        </ul>
+                        <h5>Upload guidance</h5>
+                        <p>Create a document that includes your responses to all criteria. The document should not be more than six sides of A4, single line spacing in 11-point Arial (or equivalent sans serif font) with margins of at least 2cm. You may include images, graphs, tables.</p>
+                        <p>For the file name, use the unique Funding Service number the system gives you when you create an application, followed by the words ‘Vision and Approach’.</p>
+                        <p>Save this document as a single PDF file, no bigger than 8MB. Unless specifically requested, please do not include any personal data within the attachment.</p>
+                        <p>If the attachment does not meet these requirements, the application will be rejected.</p>
+                        <p>The Funding Service will provide document upload details when you apply.</p>
+                        <h4>Applicant and team capability to deliver</h4>
+                        <p>Word count: 1,500</p>
+                        <p>Why are you the right individual or team to procure and manage the proposed sensing systems or capabilities?</p>
+                        <h5>What the assessors are looking for in your response</h5>
+                        <p>Evidence of how you, and if relevant your team, have:</p>
+                        <ul>
+                            <li>the relevant experience (appropriate to career stage)</li>
+                            <li>the right balance of skills and expertise</li>
+                            <li>the appropriate leadership and management skills and your approach to develop others</li>
+                            <li>contributed to developing a positive research environment and wider community</li>
+                        </ul>
+                        <p>The word count for this section is 1,500 words, 1,000 words to be used for R4RI modules and, if necessary, a further 500 words for Additions.</p>
+                        <p>Use the Résumé for Research and Innovation (R4RI) format to showcase the range of relevant skills you and, if relevant, your team (project and project co-leads, researchers, technicians, specialists, partners and so on) have and how this will help deliver the proposed work. You can include individuals’ specific achievements but only choose past contributions that best evidence their ability to deliver this work.</p>
+                        <p>Complete this section using the R4RI module headings listed. Use each heading once and include a response for the whole team, see the <a href="/apply-for-funding/before-you-apply/resume-for-research-and-innovation-r4ri-guidance/">UKRI guidance on R4RI</a>. You should consider how to balance your answer, and emphasise where appropriate the key skills each team member brings:</p>
+                        <ul>
+                            <li>contributions to the generation of new ideas, tools, methodologies, or knowledge</li>
+                            <li>the development of others and maintenance of effective working relationships</li>
+                            <li>contributions to the wider research and innovation community</li>
+                            <li>contributions to broader research or innovation users and audiences and towards wider societal benefit</li>
+                        </ul>
+                        <h5>Additions</h5>
+                        <p>Provide any further details relevant to your application. This section is optional and can be up to 500 words. You should not use it to describe additional skills, experiences, or outputs, but you can use it to describe any factors that provide context for the rest of your R4RI (for example, details of career breaks if you wish to disclose them).</p>
+                        <p>Complete this as a narrative. Do not format it like a CV.</p>
+                        <p>UKRI has introduced new role types for funding opportunities being run on the Funding Service.</p>
+                        <p>For full details, see <a href="/apply-for-funding/before-you-apply/check-if-you-are-eligible-for-research-and-innovation-funding/eligibility-as-an-individual/#contents-list">Eligibility as an individual</a>.</p>
+                        <h4>Data management and sharing</h4>
+                        <p>Word count: 500</p>
+                        <p>How will you manage and share data collected or acquired through the proposed sensing systems or capabilities?</p>
+                        <h5>What the assessors are looking for in your response</h5>
+                        <p>Provide an outline data management plan which should clearly detail how you will comply with our published <a href="/about-us/nerc/our-policies-and-standards/nerc-data-policy/">Data Sharing Policy</a>, which includes detailed guidance notes.</p>
+                        <p>Indicate:</p>
+                        <ul>
+                            <li>which NERC data centre is required to archive the data</li>
+                            <li>whether the total volume of data is likely to be larger than 1TB</li>
+                            <li>any other detail on how you will comply with NERC data policy</li>
+                            <li>requirements of the proposed sensing system or capability on current digital research infrastructure (including data and compute)</li>
+                            <li>how data accessibility for both private and public end users will be enhanced</li>
+                        </ul>
+                        <h4>Ethics and responsible research and innovation (RRI)</h4>
+                        <p>Word count: 1,000</p>
+                        <p>What are the ethical or RRI implications and issues relating to the proposed work? If you do not think that the proposed work raises any ethical or RRI issues, explain why.</p>
+                        <h5>What the assessors are looking for in your response</h5>
+                        <p>Demonstrate that you have identified and evaluated:</p>
+                        <ul>
+                            <li>the relevant ethical or responsible research and innovation considerations</li>
+                            <li>how you will manage these considerations</li>
+                        </ul>
+                        <p>If you are collecting or using data, identify:</p>
+                        <ul>
+                            <li>any legal and ethical considerations of collecting, releasing or storing the data including consent, confidentiality, anonymisation, security and other ethical considerations and, in particular, strategies to not preclude further re-use of data</li>
+                            <li>formal information standards with which your study will comply</li>
+                            <li>consideration for preventing environmental harm and enhancing environmental benefit in line with <a href="/publications/nerc-responsible-business-statement/">NERC’s responsible business statement</a></li>
+                        </ul>
+                        <h4>Project partners</h4>
+                        <p>Word count: 1,000</p>
+                        <p>Provide details about any project partners’ contributions.</p>
+                        <h5>What the assessors are looking for in your response</h5>
+                        <p>If you do have project partners, <a href="https://ukri-tfs-prod-assets.s3.eu-west-2.amazonaws.com/Project-partner-contributions-template.docx">download and complete the project partner contributions template (DOCX, 52KB)</a> then copy and paste the table within it into the text box.</p>
+                        <p>Ensure you have obtained prior agreement from project partners that, should you be offered funding, they will support your project as indicated in the template.</p>
+                        <p>A project partner is a collaborating organisation that is contributing to the application and will have an integral role in the proposed research. Project partners cannot normally receive funding directly from the grant. Two exceptions to this are:</p>
+                        <ul>
+                            <li>where a project partner is providing services or equipment that will go through a formal procurement process audited by the host research organisation</li>
+                            <li>the project partner can receive small amounts of funding from the grant, such as for travel and subsistence to attend project meetings. These will need to be requested and fully justified in the application</li>
+                        </ul>
+                        <p>If you do not have any project partners, simply add ‘N/A’ into the text box, mark this section as complete and move to the next section.</p>
+                        <h4>Facilities</h4>
+                        <p>Word count: 250</p>
+                        <p>Does your proposed research require the support and use of a facility?</p>
+                        <h5>What the assessors are looking for in your response</h5>
+                        <p>If you will need to use a facility, follow your proposed facility’s normal access request procedures. Ensure you have prior agreement so that if you are offered funding, they will support the use of their facility on your project.</p>
+                        <p>For each requested facility you will need to provide the:</p>
+                        <ul>
+                            <li>name of facility, copied and pasted from the <a href="https://ukri-tfs-prod-assets.s3.eu-west-2.amazonaws.com/Facility+Information+for+TFS.docx">facility information list (DOCX, 35KB)</a></li>
+                            <li>proposed usage or costs, or costs per unit where indicated on the facility information list</li>
+                            <li>confirmation you have their agreement where required</li>
+                        </ul>
+                        <p>If you have to attach a facility form (for example, high performance computing (HPC) services), then upload it as a PDF. If you need to upload multiple forms, then combine them into a single PDF.</p>
+                        <p>If you will not need to use a facility, you will be able to indicate this in the Funding Service.</p>
+                        <h5>Upload guidance</h5>
+                        <p>Upload a single PDF containing facility forms ensuring it is no larger than 8MB, if applicable.</p>
+                        <p>For&nbsp;the file name, use the unique&nbsp;UKRI Funding Service&nbsp;number the system gives to your proposal&nbsp;when you create an application, immediately followed&nbsp;by the words ‘facility forms’. Then use the ‘Upload’ button.</p>
+                        <p>Unless specifically requested, please do not include any personal data within the attachment.</p>
+                        <p>Once you have uploaded, mark this section as complete and move to the next one.</p>
+                        <h4>References</h4>
+                        <p>Word count: 1,000</p>
+                        <p>List the references you have used to support your application.</p>
+                        <h5>What the assessors are looking for in your response</h5>
+                        <p>Include all references in this section, not in the rest of the application questions.</p>
+                        <p>You should not include any other information in this section.</p>
+                        <p>We advise you not to include hyperlinks, as assessors are not obliged to access the information they lead to or consider it in their assessment of your application.</p>
+                        <p>If linking to web resources, to maintain the information’s integrity, include persistent identifiers (such as digital object identifiers) where possible.</p>
+                        <p>You must not include links to web resources to extend your application.</p>
+                        <h4>Resources and cost justification</h4>
+                        <p>Word count: 1,000</p>
+                        <p>What will you need to procure and manage the proposed sensing systems or capabilities and how much will it cost?</p>
+                        <h5>What the assessors are looking for in your response</h5>
+                        <p>A single total capital cost should be listed under the ‘equipment’ heading. The breakdown of those costs should be included here. Resource costs should make up a maximum of 20% of the overall budget. Resource costs should be added under the relevant ‘directly incurred’ and ‘directly allocated’ headings, for example, directly incurred ‘travel and subsistence’.</p>
+                        <p>Justify the application’s more costly resources, in particular:</p>
+                        <ul>
+                            <li>project staff</li>
+                            <li>significant travel for field work or collaboration (but not regular travel between collaborating organisations or to conferences)</li>
+                            <li>any equipment that will cost more than £10,000</li>
+                            <li>any consumables beyond typical requirements, or that are required in exceptional quantities</li>
+                            <li>all facilities and infrastructure costs</li>
+                        </ul>
+                        <p>Assessors are not looking for detailed costs or a line-by-line breakdown of all project resources. Overall, they want to be assured that:</p>
+                        <ul>
+                            <li>all resources are comprehensive, appropriate, and justified</li>
+                            <li>the project will make optimal use of resources to achieve the intended outcomes</li>
+                            <li>maximise potential outcomes and impacts</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="govuk-accordion__section">
+                    <div class="govuk-accordion__section-header">
+                        <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading">
+
+                            <button type="button" id="accordion-default-heading-4" aria-controls="accordion-default-content-4" class="govuk-accordion__section-button" aria-expanded="false">
+                                Assessment and next steps
+                            </button><span class="govuk-accordion__icon" aria-hidden="true"></span></h2>
+                    </div>
+                    <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+                        <h3>Assessment process</h3>
+                        <p>We will assess your application using the following process.</p>
+                        <h4>Panel</h4>
+                        <p>Eligible applications will be assessed by an independent panel of experts against the criteria to assess the quality of your application and rank it alongside other applications, after which the panel will make a funding recommendation.</p>
+                        <p>When making the final funding decisions, NERC and Defra will consider the recommendations of the panel, along with the overall funding opportunity requirements and the available budget. We reserve the right to take a portfolio approach, for example to allow us to fund a variety of projects across the challenge areas. NERC and Defra will jointly make the final funding decision.</p>
+                        <h4>Timescale</h4>
+                        <p>We aim to complete the assessment process within two months of receiving your application.</p>
+                        <h4>Feedback</h4>
+                        <p>If your application was discussed by a panel, we will give feedback with the outcome of your application.</p>
+                        <h3>Principles of assessment</h3>
+                        <p>We support the San Francisco <a href="https://sfdora.org/read/">declaration on research assessment (DORA)</a> and recognise the relationship between research assessment and research integrity.</p>
+                        <p>Find out about <a href="/publications/ukri-principles-of-assessment-and-decision-making/">the UKRI Principles of Assessment and Decision Making</a>.</p>
+                        <p>We reserve the right to modify the assessment process as needed.</p>
+                        <h3>Sharing data with co-funders</h3>
+                        <p>We will need to share the application (including any personal information that it contains) with Defra so that they can participate in the assessment process.</p>
+                        <p>For more information on how Defra uses personal information, visit <a href="https://www.gov.uk/government/publications/defras-social-research-privacy-notice/defras-social-research-privacy-notice">Defra’s research privacy notice</a>.</p>
+                        <h3>Assessment criteria</h3>
+                        <p>The criteria against which your application will be assessed are:</p>
+                        <ul>
+                            <li>purpose</li>
+                            <li>vision</li>
+                            <li>approach</li>
+                            <li>applicant and team capability to deliver</li>
+                            <li>ethics and responsible research and innovation (RRI)</li>
+                            <li>data management and sharing</li>
+                        </ul>
+                        <p>Resources and cost justification are not core assessment criterion but will be considered by the panel.</p>
+                        <p>Find details of assessment questions and criteria under the ‘Application questions’ heading in the ‘How to apply’ section.</p>
+                    </div>
+                </div>
+
+                <div class="govuk-accordion__section">
+                    <div class="govuk-accordion__section-header">
+                        <h2 class="govuk-accordion__section-heading ukri-accordion__section-heading">
+                            <button type="button" id="accordion-default-heading-1" aria-controls="accordion-default-content-1" class="govuk-accordion__section-button" aria-expanded="false">
+                                Additional info
+                            </button><span class="govuk-accordion__icon" aria-hidden="true"></span></h2>
+                    </div>
+                    <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+
+                        <h3>Background</h3>
+                        <p>The Innovation in Environmental Monitoring (IEM) programme is managed and overseen by a programme board, which will be advised by a stakeholder group. You will be required to work closely with both the NERC Digital Environment, Infrastructure and Data (DEID) team and the Defra Innovation Strategy team. You will be expected to attend a minimum of two in-person meetings, one at the project’s midway point and one at the end of their funding period. It is anticipated these meetings will be in NERC head office, Swindon and you should include costs to attend these meetings in your application.</p>
+                        <h3>Programme reporting</h3>
+                        <p>If you are successful in getting funding, you will need to report your research outcomes through a service called Researchfish. This is required annually and continues for up to five years after funding ends. <a href="/manage-your-award/reporting-your-projects-outcomes/">Find out about UKRI reporting requirements</a>. Additionally, biannual reporting to NERC will be expected.</p>
+                        <h3>Webinar for potential applicants</h3>
+                        <p>We will hold a webinar on 30 August 2023 at 11:00am to midday. This will provide more information about the funding opportunity and a chance to ask questions. A recording of the event will be provided to all who register. <a href="https://forms.office.com/pages/responsepage.aspx?id=juC3i6TajkqSfvyjjbBLfl8Jlega3gdMmQIB8L-UfJNUM0RTSUJHRUFKSFE5MElOWjVPTjBXMzlIMS4u">Please register for the webinar.</a></p>
+                        <h3>IUK-led funding opportunity</h3>
+                        <p>A further Innovation in Environmental Monitoring programme announcement of opportunity will be published in late 2023 or early 2024. This will be led by IUK on behalf of UKRI.</p>
+                        <p>The objectives of this competition will be to:</p>
+                        <ul>
+                            <li>support the development of new sensing systems and monitoring capabilities that will improve on existing approaches or introduce new ones, including improving the sustainability and connectivity of data collection and analysis and reporting.</li>
+                            <li>Support the testing of these products (including ‘ground-truthing’ with existing monitoring regimes) and verifying their accuracy and reliability, thus improving their chances of&nbsp;being successfully deployed at scale in the public and private sectors.</li>
+                            <li>deliver new and strengthened partnerships and collaborations between the public sector, academia and private sector, helping to connect across disciplines, and stimulate innovative approaches.</li>
+                        </ul>
+                        <h3>Key Defra links (GOV.UK)</h3>
+                        <p><a href="https://www.gov.uk/government/publications/25-year-environment-plan">25 Year Environment Plan (25YEP)</a></p>
+                        <p>A major report which plans to improve the environment within a generation. Defra has <a href="https://www.gov.uk/government/publications/25-year-environment-plan-progress-reports">published reports on progress</a> since 25YEP. The <a href="https://www.gov.uk/government/publications/environmental-improvement-plan">Environmental Improvement Plan (EIP)</a> 2023 for England is the first revision of the 25YEP. It builds on the 25YEP vision, setting out how Defra will work with landowners, communities and businesses to deliver interim targets to measure progress. See details of the environmental change that relates to the 10 goals in the 25 Year Environment Plan in the <a href="https://oifdata.defra.gov.uk/">Outcome Indicator Framework</a>.</p>
+                        <h3>Relevant Defra projects</h3>
+                        <p><a href="/opportunity/land-use-for-net-zero-hub-lunz-hub/">Land use for net zero – Hub (LUNZ-Hub). </a></p>
+                        <p>Transforming land use for net zero, nature and people. A coordination and translation hub. This funding opportunity is co-funded by UKRI, Department for the Environment, Food and Rural Affairs (on behalf of England and Wales) and Department for Energy Security and Net Zero. It has been co-designed with Department of Agriculture, Environment and Rural Affairs, Welsh Government and Scottish Government. The aim is to mobilise and support research to work in partnership with government and industry to tackle net zero through action in the UK land sectors. It will fund research that feeds directly into policy and decision-making in three interlinked themes: soil health, agricultural systems, land use change.</p>
+                        <p><a href="https://www.gov.uk/government/publications/natural-capital-and-ecosystem-assessment-programme/natural-capital-and-ecosystem-assessment-programme">Natural Capital and Ecosystem Assessment Programme</a>.</p>
+                        <p>Natural Capital and Ecosystem Assessment (NCEA) is a science innovation and transformation programme, which spans across land and water environments. It has been set up to collect data on the extent, condition and change over time of England’s ecosystems and natural capital, and the benefits to society. This will underpin the immense value of managing natural capital, transform the way we make decisions and policy and ensure we invest in environmental reforms that achieve maximum benefit. It will give insights on the pressures our ecosystems face, covering air quality, biodiversity, carbon storage, habitats, natural flood defences and resilience.</p>
+                        <p><a href="https://farminginnovation.ukri.org/">The Farming Innovation Programme</a></p>
+                        <p>The Farming Innovation Programme is part of Defra’s investment in innovation, research and development. Defra is partnering with UKRI to fund projects that benefit farmers, growers and foresters in England. The programme’s aims are to help farmers, growers and foresters increase productivity, sustainability and resilience, reduce the environmental impact of agriculture and horticulture, apply agricultural research to provide real benefits for farmers, growers and foresters and use science to develop solutions for the practical challenges in agriculture and horticulture.</p>
+                        <h3>Our commitment to the principles of the Modern Slavery Act 2015</h3>
+                        <p>Modern slavery is a crime and a violation of fundamental human rights. It takes various forms which deprive a person of their liberty in order to exploit them for personal or commercial gain, such as:</p>
+                        <ul>
+                            <li>slavery</li>
+                            <li>servitude</li>
+                            <li>human trafficking</li>
+                            <li>forced and compulsory labour</li>
+                        </ul>
+                        <p>We are committed to the principles of the Modern Slavery Act 2015, and the abolition of modern slavery and human trafficking.</p>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='is-4 _is-offset-1') %}
+
+            {#<div class="rel-box rel-box--external">
+                <h2 class="govuk-heading-s">Eligibility</h2>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li><a href="#" class="govuk-link">AHRC international scheme workshop for applicants</a> </li>
+                    <li><a href="#" class="govuk-link">Training and support for researchers</a> </li>
+                </ul>
+            </div>#}
+
+            <div class="rel-box rel-box--external">
+                <ul class="govuk-list govuk-list--bullet">
+                    <li><a href="#" class="govuk-link">Print this page</a> </li>
+                    <li><a href="#" class="govuk-link">Download as PDF</a> </li>
+                </ul>
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}

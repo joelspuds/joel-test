@@ -1,0 +1,203 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/editv2/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/editv2/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+
+{% set pageTitle = 'Application' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Rosaria Linguinni' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+
+
+{% set pageTitle = 'Application ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/editv3/applications', text:'Back to all applications'}] %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Application', caption='APP420: ' + prototypeData.applicationTitle2) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST', name='form') %}
+
+        <section class="section" id="mainContent">
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-full', customID='mainCntent') %}
+                    <div class="govuk-tabs" data-module="govuk-tabs">
+                        <ul class="govuk-tabs__list">
+                            <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                                <a class="govuk-tabs__tab" href="#">Write application</a>
+                            </li>
+                            <li class="govuk-tabs__list-item">
+                                <a class="govuk-tabs__tab" href="{#/prototypes/editv2/read-application#}#">Read application</a>
+                            </li>
+                        </ul>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='is-7', extraClass='u-space-t20') %}
+
+                    <div class="application-items">
+                        {% set detailsIsComplete = true %}
+                        {% set caseForSupportIsComplete = true %}
+
+                        <div class="application-item {% if prototypeData.detailsIsComplete2 %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">{{ components.link(text='1. Details and summary', url='/prototypes/editv3/details-and-summary2')}}</div>
+                                <div class="application-item__right">
+
+                                    {% if prototypeData.detailsIsComplete2 %}
+                                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+                                    {% else %}
+                                        <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="application-item application-item--incomplete application-item--skinny ">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">
+                                    {{ components.link(text='2. Case for support', url='#')}}
+                                </div>
+                                <div class="application-item__right">
+                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="application-item application-item--incomplete application-item--skinny ">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">{{ components.link(text='3. Team', url='#')}}</div>
+                                <div class="application-item__right">
+                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="application-item application-item--incomplete application-item--skinny ">
+                            <div class="application-item__contents govuk-clearfix">
+                                <div class="application-item__left">{{ components.link(text='4. Resources and costs', url='#')}}</div>
+                                <div class="application-item__right">
+                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="application-controls govuk-clearfix">
+                        <p class="govuk-body">{#{{ prototypeData.submitText }}#}
+                            You can send the application to your research office for checking and they can then submit it to UKRI.
+                        </p>
+                        <button type="submit" class="govuk-button application-controls__submit govuk-!-display-inline" name="submitButton" value="startShare">Send to UKRI</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;{#<button type="submit" class="govuk-button govuk-button--secondary application-controls__submit govuk-!-display-inline" name="submitButton"  value="stopShare">Return to applicant</button>#}
+
+                    </div>
+
+                {%- endcall %}
+
+                {% call components.bulmaColumnAny(size='is-4 is-offset-1') %}
+
+                     {% if prototypeData.detailsIsComplete2 %}
+                        {% set progressPercentage = 25 %}
+                        {% set reverseProgressPercentage = 75 %}
+                      {% else %}
+                          {% set progressPercentage = 0 %}
+                          {% set reverseProgressPercentage = 100 %}
+                    {% endif %}
+
+                   {# {% if prototypeData.resourcesAndCostsIsComplete %}
+                        {% set progressPercentage = 100 %}
+                        {% set reverseProgressPercentage = 0 %}
+                    {% endif %}
+                {% elseif prototypeData.resourcesAndCostsIsComplete %}
+                    {% set progressPercentage = 75 %}
+                    {% set reverseProgressPercentage = 25 %}
+                {% else %}
+                    {% set progressPercentage = 50 %}
+                    {% set reverseProgressPercentage = 50 %}
+                {% endif %}#}{#
+                    {% if prototypeData.detailsMarkAsComplete %}
+                        {% set progressPercentage = 100 %}
+                        {% set reverseProgressPercentage = 0 %}
+                    {% else %}
+                        {% set progressPercentage = 0 %}
+                        {% set reverseProgressPercentage = 100 %}
+                    {% endif %}#}
+
+
+                    <div class="progress-meter">
+                        <div class="progress-meter__text progress-meter__text--back" role="progress-bar" aria-valuenow="0%"><span class="govuk-visually-hidden">Your application is</span>
+                            {{ progressPercentage }}% complete</div>
+                    <div class="progress-meter__clipper" aria-hidden="true" style="clip-path: inset(0% {{ progressPercentage }}% 0% 0%); -webkit-clip-path: inset(0% {{ reverseProgressPercentage }}% 0% 0%)">
+                        <div class="progress-meter__text progress-meter__text--front">{{ progressPercentage }}% complete</div>
+                    </div>
+
+
+                    </div>
+                    <div class="application-data">
+                        <dl class="application-data__list">
+                            <dt class="application-data__key">Opportunity:</dt>
+                            <dd class="application-data__value"><a href="/prototypes/editv3/opportunity" class="govuk-link" target="_blank">APP420: {{ prototypeData.oppTitle2 }}</a></dd>
+                            <dt class="application-data__key">Application reference:</dt>
+                            <dd class="application-data__value">APP989</dd>
+
+                            <dt class="application-data__key">Applicant:</dt>
+                            <dd class="application-data__value">Rosaria Linguinni</dd>
+                            <dt class="application-data__key">Application status:</dt>
+                            <dd class="application-data__value"><strong class="govuk-tag govuk-tag--blue">In progress</strong></dd>
+
+                            <dt class="application-data__key">Application deadline:</dt>
+                            <dd class="application-data__value">31 Oct 2023, 4:00pm</dd>
+                            <dt class="application-data__key">Funder:</dt>
+                            <dd class="application-data__value">BBSRC</dd>
+                        </dl>
+                    </div>
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+
+        </section>
+
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script type="text/javascript" src="/javascripts/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        var selectEl = document.querySelector('#organisation');
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: true,
+            defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+            minLength: 1,
+            selectElement: selectEl
+        });
+    </script>
+{% endblock %}
+
+

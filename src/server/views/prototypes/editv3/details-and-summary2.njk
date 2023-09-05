@@ -1,0 +1,348 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/editv2/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/editv2/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+
+{% set pageTitle = 'Details and summary' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Rosaria Linguinni' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+
+
+{% set pageTitle = 'Details and summary ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/editv3/application2', text:'Back to all application'}] %}
+
+{#{% if prototypeData.applicationTitle2COPY != null %}
+    {% set useThisTitle = prototypeData.applicationTitle2COPY %}
+{% else %}
+    {% set useThisTitle = prototypeData.applicationTitle2 %}
+{% endif %}
+
+{% if prototypeData.summary2COPY != null %}
+    {% set useThisSummary = prototypeData.summary2COPY %}
+{% else %}
+    {% set useThisSummary = prototypeData.summary2 %}
+{% endif %}#}
+
+
+
+
+{% block content %}
+
+    {% if cannotSaveDetails2 %}
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+
+            <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Changes have not been saved</h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                    <p class="govuk-notification-banner__heading">A more recent version of this section has been saved.</p>
+                    <p class="govuk-body">Your changes have been preserved below but <strong>Renata Minchin</strong> has made a more recent change. Either contact them or <a href="/prototypes/editv3/details-and-summary2?reloadDetails2=true" class="govuk-link">refresh the page to include the new changes</a>.</p>
+                </div>
+            </div>
+        {%- endcall %}
+    {%- endcall %}
+
+    {% endif %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Details and summary', caption='APP420: ' + prototypeData.applicationTitle2) }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST', name='form') %}
+
+        <section class="section" id="mainContent">
+
+
+            <style>
+                .tox-statusbar__wordcount, .tox-statusbar__branding { display: none!important}
+            </style>
+
+
+            {% call components.form(action='#', method='POST',name='submitForm') %}
+
+                {% call components.bulmaRow() %}
+
+                    {% call components.bulmaColumnAny(size='is-8') %}
+
+                        {% call components.formGroup() %}
+
+                            <div class="govuk-form-group ">
+                                <label class="govuk-label govuk-label--s  govuk-!-font-weight-bold " for="projectName">Application name
+                                    <span class="govuk-hint">Make this the title of your research proposal.</span>
+                                </label>
+                                <input class="govuk-input " id="projectName" type="text" name="projectName" value="{{ prototypeData.title2ToUse }}">
+                            </div>
+
+                        {%- endcall %}
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+                {% call components.bulmaRow() %}
+
+                    {% call components.bulmaColumnAny(size='is-8') %}
+
+                        <div class="govuk-form-group ">
+                            <label class="govuk-label govuk-label--s  govuk-!-font-weight-bold " for="projectSummary">Summary
+                                <span class="govuk-hint">Provide a brief synopsis of the research programme your proposing to conduct over a 2-year period. You have 500 words.</span>
+                            </label>
+                            <details class="govuk-details" data-module="govuk-details" role="group">
+                                <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                    <span class="govuk-details__summary-text">Guidance for writing a summary</span>
+                                </summary>
+                                <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                    <p class="govuk-body">{{ prototypeData.detailsGuidance }}</p>
+                                </div>
+                            </details>
+                            <textarea class="govuk-textarea govuk-js-character-count" name="projectSummary" id="projectSummary" rows="18">{{ prototypeData.summary2ToUse }}</textarea>
+                            <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 250 words remaining</span></p>
+                        </div>
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+                {% call components.bulmaRow() %}
+
+                    {% call components.bulmaColumnAny(size='is-8') %}
+
+                        {% call components.formGroup() %}
+                            <div class="application-item">
+                                <div class="application-item__contents application-item__contents--mac">
+                                    <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                        <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                            <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                        </legend>
+                                        <div class="govuk-checkboxes">
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if prototypeData.detailsIsComplete1 %} checked{% endif %} >
+                                                <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        {%- endcall %}
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+                {% call components.bulmaRow() %}
+
+                    {% call components.bulmaColumnAny(size='is-8') %}
+
+                        {% call components.formGroup() %}
+                            <div class="application-controls govuk-clearfix">
+                                {#{% if prototypeData.detailsEditMode == 'locked' %}
+                                <a href="/prototypes/editv2/application-overview/" class="govuk-link">Return to application overview</a>
+                            {% else %}
+                                #}{#{{ components.button(text='Save and return', extraClass="application-controls__submit")}}#}{#
+                                <input class="govuk-button application-controls__submit" type="submit" value="Save and return" {% if prototypeData.detailsEditMode == 'locked' %} disabled {% endif %}>
+                                <a class="govuk-link" href="/prototypes/editv2/application-overview#}{#?detailsEditMode=locked#}{#">Return to Application overview</a>
+                            {% endif %}#}
+
+                                <input class="govuk-button application-controls__submit" type="submit" value="Save and return" {% if prototypeData.detailsEditMode == 'locked' %} disabled {% endif %}>
+                                <a class="govuk-link" href="/prototypes/editv3/application2">Return to Application overview</a>
+
+                                {#<br><br><a href="/prototypes/change-request/create-type" class="govuk-link application-controls__cancel">Cancel and return to create award change request</a>#}
+                            </div>
+                        {%- endcall %}
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+                {% call components.bulmaRow(extraClass='u-space-t45') %}
+
+                    {% call components.bulmaColumnAny(size='is-8') %}
+
+
+                        {{ components.captionHeading(text='Edit history', tag='h2', size='s') }}
+
+
+                        <div class="application-items u-space-b45">
+
+                                <h3 class="govuk-heading-xs u-space-b10">Most recent change</h3>
+                            {% if prototypeData.details2RecentChange %}
+                                <div class="application-item  application-item--skinny">
+                                    <div class="application-item__contents govuk-clearfix">
+                                        <div class="application-item__left">
+                                            <h3 class="govuk-heading-xs">Text change</h3>
+                                            <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Renata Minchin<span></span></p>
+
+                                        </div>
+                                        <div class="application-item__right u-align-right">
+                                            <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="application-item  application-item--skinny">
+                                    <div class="application-item__contents govuk-clearfix">
+                                        <div class="application-item__left">
+                                            <h3 class="govuk-heading-xs">Text change</h3>
+                                            <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Tenkin Fisher<span></span></p>
+
+                                        </div>
+                                        <div class="application-item__right u-align-right">
+                                            <span class="meta">4 September 2023, 11.03am</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <a href="#" id="openOlderChanges" class="govuk-link govuk-!-display-block u-space-b10">Show older changes</a>
+                            {% if not prototypeData.details2RecentChange %}
+                                <div class="application-item  application-item--skinny application-item--older govuk-visually-hidden">
+                                    <div class="application-item__contents govuk-clearfix">
+                                        <div class="application-item__left">
+                                            <h3 class="govuk-heading-xs">Text change</h3>
+                                            <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Tenkin Fisher <span></span></p>
+
+                                        </div>
+                                        <div class="application-item__right u-align-right">
+                                            <span class="meta">4 September 2023, 11.03am</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                <div class="application-item  application-item--skinny application-item--older govuk-visually-hidden">
+                                    <div class="application-item__contents govuk-clearfix">
+                                        <div class="application-item__left">
+                                            <h3 class="govuk-heading-xs">Text change</h3>
+                                            <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Renata Minchin<span></span></p>
+
+                                        </div>
+                                        <div class="application-item__right u-align-right">
+                                            <span class="meta">4 September 2023, 9.45am</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="application-item  application-item--skinny application-item--older govuk-visually-hidden">
+                                    <div class="application-item__contents govuk-clearfix">
+                                        <div class="application-item__left">
+                                            <h3 class="govuk-heading-xs">Text change</h3>
+                                            <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Rosaria Linguinni <span></span></p>
+
+                                        </div>
+                                        <div class="application-item__right u-align-right">
+                                            <span class="meta">3 September 2022, 10.48am</span>
+                                        </div>
+                                    </div>
+                                </div>
+                          </div>
+
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+
+        </section>
+
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        const counteroutputFoot = document.getElementById('wordCount');
+        let words = 0;
+        const limit = 500;
+        let tinyMCEWordCount;
+
+        tinymce.init({
+            selector: '#projectSummary',
+            height: 500,
+            plugins: [
+                'advlist autolink lists link image preview anchor',
+                'media table paste  wordcount'
+            ],
+            setup: function(editor) {
+
+                editor.on('keyup', function(e) {
+                    tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                    console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                    words = tinyMCEWordCount;
+                    let remainder = limit - words;
+                    if (words < limit) {
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    } else {
+                        let overCount = words - limit;
+                        counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+                    }
+                });
+
+                editor.on('init', function(e) {
+                    setTimeout(function(){
+                        tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                        console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                        words = tinyMCEWordCount;
+                        let remainder = limit - words;
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    }, 500);
+                });
+            },
+            toolbar: 'formatselect | bold italic | bullist numlist | align | indent outdent | link | table |',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ],
+            menubar: false,
+        });
+
+    </script>
+    <script>
+        // show older changes
+        // openOlderChanges
+
+        Zepto(function($){
+            /*if (!document.cookie.match('cookieBannerDismissed')) {
+                $('#global-cookie-message').removeClass('cookie-hidden');
+            }
+            let date = new Date();
+            let daysValidFor = 30;
+            date.setTime(date.getTime() + (daysValidFor*24*60*60*1000));
+            let expires = 'expires='+ date.toUTCString();*/
+            /*$('#dismissCookieBanner').on('click', function(event) {
+                $('#global-cookie-message').hide().addClass('cookie-hidden');
+                document.cookie = 'cookieBannerDismissed=true;' + expires + '; path=/';
+            });*/
+            $('#openOlderChanges').on('click', function(event) {
+                event.preventDefault();
+                // event.stopPropagation();
+                $(this).addClass('govuk-visually-hidden');
+                $('.application-item--older').removeClass('govuk-visually-hidden');
+
+            });
+        })
+
+    </script>
+{% endblock %}
+
+
