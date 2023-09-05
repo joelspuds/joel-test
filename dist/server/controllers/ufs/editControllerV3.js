@@ -1,4 +1,38 @@
-import { megaApplications1200v2Reversed } from './test_applications';
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.editv3IndexGet = editv3IndexGet;
+exports.editv3IndexPost = editv3IndexPost;
+exports.editv3OpportunityGet = editv3OpportunityGet;
+exports.editv3OpportunityPost = editv3OpportunityPost;
+exports.editv3OrganisationGet = editv3OrganisationGet;
+exports.editv3OrganisationPost = editv3OrganisationPost;
+exports.editv3RoleGet = editv3RoleGet;
+exports.editv3RolePost = editv3RolePost;
+exports.editv3GroupGet = editv3GroupGet;
+exports.editv3GroupPost = editv3GroupPost;
+exports.editv3TitleGet = editv3TitleGet;
+exports.editv3TitlePost = editv3TitlePost;
+exports.editv3ApplicationGet = editv3ApplicationGet;
+exports.editv3ApplicationPost = editv3ApplicationPost;
+exports.editv3DetailsGet = editv3DetailsGet;
+exports.editv3DetailsPost = editv3DetailsPost;
+exports.editv3Application2Get = editv3Application2Get;
+exports.editv3Application2Post = editv3Application2Post;
+exports.editv3Details2Get = editv3Details2Get;
+exports.editv3Details2Post = editv3Details2Post;
+exports.editv3ApplicationsGet = editv3ApplicationsGet;
+exports.editv3ApplicationsPost = editv3ApplicationsPost;
+exports.editv3HomeGet = editv3HomeGet;
+exports.editv3HomePost = editv3HomePost;
+exports.editv3ManageUsersGet = editv3ManageUsersGet;
+exports.editv3ManageUsersPost = editv3ManageUsersPost;
+exports.editv3ResourcesGet = editv3ResourcesGet;
+exports.editv3ResourcesPost = editv3ResourcesPost;
+
+var _test_applications = require('./test_applications');
 
 let generalData = require('./data');
 let genericFunctions = require('./generic');
@@ -13,21 +47,13 @@ let prototypeData = {
   applicationTitle: '',
   applicant1: '',
   summary1: '',
-  summary2:
-    '<p class="govuk-body">Trypanosoma brucei, the causative agent of African trypanosomiasis (&ldquo;sleeping sickness&rdquo;), causes more than 50,000 deaths annually. Related trypanosomatid pathogens, including <em>Trypanosoma cruzi </em>(the causative agent of Chagas&rsquo; disease) and numerous <em>Leishmania </em>species (which cause a diverse spectrum of visceral, mucocutaneous, and cutaneous disease), cause even more morbidity and mortality worldwide. Each of these parasites undergoes a complex developmental cycle, alternating between mammalian and insect hosts, as well as proliferating and non-proliferating stages. Exactly how trypanosomatid gene expression gives rise to the different phenotypes at each stage is currently not well understood, but the relative contribution of gene-specific transcriptional control is low.</p>\r\n' +
-    '<p class="govuk-body"<strong> [TO ADD REFERENCE]</strong> Differences in post-transcriptional mRNA processing and stability undoubtedly play major roles but the poor correlation between mRNA and protein abundance during parasite development indicates that translational and/or post-translational controls are also important. </p>\r\n' +
-    '<p class="govuk-body"This project seeks to globally and quantitatively assess the rate at which each mRNA is actively translated at any particular time by applying a recently-described technology that couples the ability to isolate the specific &ldquo;footprints&rdquo; of mRNAs that are occupied by ribosomes (an indicator of translation) with the depth and breadth of next generation sequencing. </p>\r\n' +
-    '<p class="govuk-body"Aim 1 will establish the ribosome protection technology in <em>T. brucei</em>, using readily cultured non-pathogenic insect stage forms. It will optimize conditions for nuclease treatment to preserve mRNA fragments protected by ribosomes and for the generation of unbiased libraries from the RNA samples for next generation sequencing. It will also include maturation of the bioinformatics pipeline to analyze resulting sequence data. </p>\r\n' +
-    '<p class="govuk-body"Aim 2 will expand into the pathogenic, mammalian stages of the parasite, and identify genes that are regulated at the level of translation during <em>T. brucei </em>development in infective as compared to non-infective forms. The proposed work will provide an important new tool for studying trypanosomatid gene expression, yielding a comprehensive view of the role of translational control in <em>T. brucei </em>and clues to it mechanisms, as well as new information on the extent of translation of individual gene products, such as potential drug targets. </p>\r\n' +
-    '<p class="govuk-body"In addition, it should resolve the current debate over the function of the numerous recently identified RNAs that contain only short open-reading frames, and has the potential to identify non-canonical protein-coding open-reading frames, thus significantly enhancing the ongoing genome annotation.</p>',
+  summary2: '<p class="govuk-body">Trypanosoma brucei, the causative agent of African trypanosomiasis (&ldquo;sleeping sickness&rdquo;), causes more than 50,000 deaths annually. Related trypanosomatid pathogens, including <em>Trypanosoma cruzi </em>(the causative agent of Chagas&rsquo; disease) and numerous <em>Leishmania </em>species (which cause a diverse spectrum of visceral, mucocutaneous, and cutaneous disease), cause even more morbidity and mortality worldwide. Each of these parasites undergoes a complex developmental cycle, alternating between mammalian and insect hosts, as well as proliferating and non-proliferating stages. Exactly how trypanosomatid gene expression gives rise to the different phenotypes at each stage is currently not well understood, but the relative contribution of gene-specific transcriptional control is low.</p>\r\n' + '<p class="govuk-body"<strong> [TO ADD REFERENCE]</strong> Differences in post-transcriptional mRNA processing and stability undoubtedly play major roles but the poor correlation between mRNA and protein abundance during parasite development indicates that translational and/or post-translational controls are also important. </p>\r\n' + '<p class="govuk-body"This project seeks to globally and quantitatively assess the rate at which each mRNA is actively translated at any particular time by applying a recently-described technology that couples the ability to isolate the specific &ldquo;footprints&rdquo; of mRNAs that are occupied by ribosomes (an indicator of translation) with the depth and breadth of next generation sequencing. </p>\r\n' + '<p class="govuk-body"Aim 1 will establish the ribosome protection technology in <em>T. brucei</em>, using readily cultured non-pathogenic insect stage forms. It will optimize conditions for nuclease treatment to preserve mRNA fragments protected by ribosomes and for the generation of unbiased libraries from the RNA samples for next generation sequencing. It will also include maturation of the bioinformatics pipeline to analyze resulting sequence data. </p>\r\n' + '<p class="govuk-body"Aim 2 will expand into the pathogenic, mammalian stages of the parasite, and identify genes that are regulated at the level of translation during <em>T. brucei </em>development in infective as compared to non-infective forms. The proposed work will provide an important new tool for studying trypanosomatid gene expression, yielding a comprehensive view of the role of translational control in <em>T. brucei </em>and clues to it mechanisms, as well as new information on the extent of translation of individual gene products, such as potential drug targets. </p>\r\n' + '<p class="govuk-body"In addition, it should resolve the current debate over the function of the numerous recently identified RNAs that contain only short open-reading frames, and has the potential to identify non-canonical protein-coding open-reading frames, thus significantly enhancing the ongoing genome annotation.</p>',
   detailsMarkAsComplete: false,
   oppTitle2: 'OPP147: African sleeping sickness - pathways to treatment',
   applicationTitle2: 'Ribosome profiling of Trypanosoma brucei',
   detailsMarkAsComplete2: true,
-  submitText:
-    'The applicant has marked this as 100% complete and sent it to your Research Office to be checked. If revisions need to be made, it must be returned to the applicant for editing. Otherwise, it can be submitted to UKRI for assessment.',
-  detailsGuidance:
-    'Summarise your project giving details of how you intend to conduct your research, and how this is relevant to the original Opportunity brief. This summary should provide a sound overview allowing assessors and reviewers to understand your intended approach. You can give fuller details in subsequent sections.',
+  submitText: 'The applicant has marked this as 100% complete and sent it to your Research Office to be checked. If revisions need to be made, it must be returned to the applicant for editing. Otherwise, it can be submitted to UKRI for assessment.',
+  detailsGuidance: 'Summarise your project giving details of how you intend to conduct your research, and how this is relevant to the original Opportunity brief. This summary should provide a sound overview allowing assessors and reviewers to understand your intended approach. You can give fuller details in subsequent sections.'
 };
 
 /* **************
@@ -35,7 +61,7 @@ let prototypeData = {
     Index
 
 *************** */
-export function editv3IndexGet(req, res) {
+function editv3IndexGet(req, res) {
   let viewData;
 
   let clearSession = req.param('clearSession');
@@ -62,12 +88,12 @@ export function editv3IndexGet(req, res) {
   }
 
   viewData = {
-    prototypeData,
+    prototypeData
   };
   return res.render('prototypes/editv3/index', viewData);
 }
 
-export function editv3IndexPost(req, res) {
+function editv3IndexPost(req, res) {
   const {} = req.body;
 
   return res.redirect('/prototypes/editv3/index');
@@ -77,16 +103,16 @@ export function editv3IndexPost(req, res) {
     Opportunity / start
 
 *************** */
-export function editv3OpportunityGet(req, res) {
+function editv3OpportunityGet(req, res) {
   let viewData;
 
   viewData = {
-    prototypeData,
+    prototypeData
   };
   return res.render('prototypes/editv3/opportunity', viewData);
 }
 
-export function editv3OpportunityPost(req, res) {
+function editv3OpportunityPost(req, res) {
   const {} = req.body;
 
   return res.redirect('/prototypes/editv3/opportunity');
@@ -97,7 +123,7 @@ export function editv3OpportunityPost(req, res) {
     Organisation
 
 *************** */
-export function editv3OrganisationGet(req, res) {
+function editv3OrganisationGet(req, res) {
   let viewData;
 
   const allOrgs = generalData.allOrgs2;
@@ -107,12 +133,12 @@ export function editv3OrganisationGet(req, res) {
 
   viewData = {
     allOrgs,
-    prototypeData,
+    prototypeData
   };
   return res.render('prototypes/editv3/organisation', viewData);
 }
 
-export function editv3OrganisationPost(req, res) {
+function editv3OrganisationPost(req, res) {
   const { organisation } = req.body;
 
   prototypeData.organisation = organisation;
@@ -125,16 +151,16 @@ export function editv3OrganisationPost(req, res) {
     Role
 
 *************** */
-export function editv3RoleGet(req, res) {
+function editv3RoleGet(req, res) {
   let viewData;
 
   viewData = {
-    prototypeData,
+    prototypeData
   };
   return res.render('prototypes/editv3/role', viewData);
 }
 
-export function editv3RolePost(req, res) {
+function editv3RolePost(req, res) {
   const { role } = req.body;
 
   prototypeData.role = role;
@@ -147,16 +173,16 @@ export function editv3RolePost(req, res) {
     Groups
 
 *************** */
-export function editv3GroupGet(req, res) {
+function editv3GroupGet(req, res) {
   let viewData;
 
   viewData = {
-    prototypeData,
+    prototypeData
   };
   return res.render('prototypes/editv3/group', viewData);
 }
 
-export function editv3GroupPost(req, res) {
+function editv3GroupPost(req, res) {
   const { groups } = req.body;
 
   prototypeData.groups = groups;
@@ -169,16 +195,16 @@ export function editv3GroupPost(req, res) {
     Title of application
 
 *************** */
-export function editv3TitleGet(req, res) {
+function editv3TitleGet(req, res) {
   let viewData;
 
   viewData = {
-    prototypeData,
+    prototypeData
   };
   return res.render('prototypes/editv3/application-name', viewData);
 }
 
-export function editv3TitlePost(req, res) {
+function editv3TitlePost(req, res) {
   const { title } = req.body;
 
   prototypeData.title = title;
@@ -191,16 +217,16 @@ export function editv3TitlePost(req, res) {
     Application NEW ONE
 
 *************** */
-export function editv3ApplicationGet(req, res) {
+function editv3ApplicationGet(req, res) {
   let viewData;
 
   viewData = {
-    prototypeData,
+    prototypeData
   };
   return res.render('prototypes/editv3/application', viewData);
 }
 
-export function editv3ApplicationPost(req, res) {
+function editv3ApplicationPost(req, res) {
   const { title } = req.body;
 
   prototypeData.title = title;
@@ -213,16 +239,16 @@ export function editv3ApplicationPost(req, res) {
     Application NEW ONE DETAILS
 
 *************** */
-export function editv3DetailsGet(req, res) {
+function editv3DetailsGet(req, res) {
   let viewData;
 
   viewData = {
-    prototypeData,
+    prototypeData
   };
   return res.render('prototypes/editv3/details-and-summary', viewData);
 }
 
-export function editv3DetailsPost(req, res) {
+function editv3DetailsPost(req, res) {
   const { projectName, isComplete, projectSummary } = req.body;
 
   prototypeData.title = projectName;
@@ -242,16 +268,16 @@ export function editv3DetailsPost(req, res) {
     Application Existing TWO
 
 *************** */
-export function editv3Application2Get(req, res) {
+function editv3Application2Get(req, res) {
   let viewData;
 
   viewData = {
-    prototypeData,
+    prototypeData
   };
   return res.render('prototypes/editv3/application2', viewData);
 }
 
-export function editv3Application2Post(req, res) {
+function editv3Application2Post(req, res) {
   const { title } = req.body;
 
   prototypeData.title = title;
@@ -264,7 +290,7 @@ export function editv3Application2Post(req, res) {
     Application Existing TWO DETAILS
 
 *************** */
-export function editv3Details2Get(req, res) {
+function editv3Details2Get(req, res) {
   let viewData;
 
   console.log(prototypeData);
@@ -295,13 +321,13 @@ export function editv3Details2Get(req, res) {
 
   viewData = {
     prototypeData,
-    cannotSaveDetails2,
+    cannotSaveDetails2
   };
 
   return res.render('prototypes/editv3/details-and-summary2', viewData);
 }
 
-export function editv3Details2Post(req, res) {
+function editv3Details2Post(req, res) {
   const { projectName, isComplete, projectSummary } = req.body;
 
   prototypeData.applicationTitle2COPY = projectName;
@@ -325,16 +351,16 @@ export function editv3Details2Post(req, res) {
     Applications LIST
 
 *************** */
-export function editv3ApplicationsGet(req, res) {
+function editv3ApplicationsGet(req, res) {
   let viewData;
 
   viewData = {
-    prototypeData,
+    prototypeData
   };
   return res.render('prototypes/editv3/applications', viewData);
 }
 
-export function editv3ApplicationsPost(req, res) {
+function editv3ApplicationsPost(req, res) {
   const { title } = req.body;
 
   prototypeData.title = title;
@@ -347,14 +373,14 @@ export function editv3ApplicationsPost(req, res) {
     Home
 
 *************** */
-export function editv3HomeGet(req, res) {
+function editv3HomeGet(req, res) {
   let viewData;
 
   viewData = {};
   return res.render('prototypes/editv3/home', viewData);
 }
 
-export function editv3HomePost(req, res) {
+function editv3HomePost(req, res) {
   const {} = req.body;
 
   return res.redirect('/prototypes/editv3/home');
@@ -365,7 +391,7 @@ export function editv3HomePost(req, res) {
     Manage users
 
 *************** */
-export function editv3ManageUsersGet(req, res) {
+function editv3ManageUsersGet(req, res) {
   let viewData;
 
   let genericPeople = generalData.genericPeople;
@@ -384,13 +410,13 @@ export function editv3ManageUsersGet(req, res) {
 
   viewData = {
     prototypeData,
-    genericPeople,
+    genericPeople
   };
 
   return res.render('prototypes/editv3/manage-users', viewData);
 }
 
-export function editv3ManageUsersPost(req, res) {
+function editv3ManageUsersPost(req, res) {
   const {} = req.body;
 
   let formStuff = req.body;
@@ -420,14 +446,14 @@ export function editv3ManageUsersPost(req, res) {
     Resources and costs
 
 *************** */
-export function editv3ResourcesGet(req, res) {
+function editv3ResourcesGet(req, res) {
   let viewData;
 
   viewData = {};
   return res.render('prototypes/editv3/resources-and-costs', viewData);
 }
 
-export function editv3ResourcesPost(req, res) {
+function editv3ResourcesPost(req, res) {
   const {} = req.body;
 
   return res.redirect('/prototypes/editv3/resources-and-costs');

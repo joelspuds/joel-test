@@ -1,0 +1,250 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/editv2/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/editv2/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+
+{% set pageTitle = 'Resources and costs' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Rosaria Linguinni' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+
+
+{% set pageTitle = 'Resources and costs' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/editv3/application2', text:'Back to application overview'}] %}
+
+{% block content %}
+
+    {% if cannotSaveDetails2 %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Changes have not been saved</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <p class="govuk-notification-banner__heading">A more recent version of this section has been saved.</p>
+                        <p class="govuk-body">Your changes have been preserved below but <strong>Renata Minchin</strong> has made a more recent change. Either contact them or <a href="/prototypes/editv3/details-and-summary2?reloadDetails2=true" class="govuk-link">refresh the page to include the new changes</a>.</p>
+                    </div>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+    {% endif %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            {{ components.captionHeading(text='Resources and costs', caption='APP420: ' + prototypeData.applicationTitle2) }}
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST', name='form') %}
+
+        <section class="section" id="mainContent">
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
+                    <p class="govuk-body govuk-!-font-size-24">All costs that contribute to the full economic cost (fEC) of the application should be included for each cost category.</p>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
+                    {{ components.captionHeading(text='Resources and cost summary', tag='h2', size='m') }}
+                    <p class="govuk-body">This is a breakdown of your resources and cost and sources of funding.</p>
+                {%- endcall %}
+            {%- endcall %}
+            {% call components.bulmaRow(extraClass='u-space-b45') %}
+                {% call components.bulmaColumnAny(size='is-full') %}
+                    <div class="big-numbers">
+
+                        <div class="big-numbers__biggy">
+                            <div class="big-numbers__title">
+                                Total full economic costs (fEC)
+                            </div>
+                            <div class="big-numbers__number">
+                                £1,450,00
+                            </div>
+                        </div>
+                        <div class="big-numbers__biggy">
+                            <div class="big-numbers__title">
+                                Contribution from applying organisations
+                            </div>
+                            <div class="big-numbers__number">
+                                £290,000
+                            </div>
+                        </div>
+                        <div class="big-numbers__biggy">
+                            <div class="big-numbers__title">
+                                Funding applied for
+                            </div>
+                            <div class="big-numbers__number">
+                                £1,160,000
+                            </div>
+                        </div>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
+                    {{ components.captionHeading(text='Provide resources and costs for the application organisation(s) ', tag='h2', size='m') }}
+                    <p class="govuk-body">This is a breakdown of your resources and cost and sources of funding.</p>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='') %}
+
+                    <div class="application-items u-space-b30">
+
+                    <div class="application-item application-item--complete application-item--skinny">
+                        <div class="application-item__contents govuk-clearfix">
+                            <div class="application-item__left">
+                                <a href="/prototypes/team-resources-costs/organisation-costs?orgsArrayIndex=0" class="govuk-link  ">University of Wales</a>
+                                <span class="{#govuk-tag govuk-tag--blue#} badge badge--info badge--smaller">LEAD</span>
+                            </div>
+                            <div class="application-item__right">
+                                <span class="application-item__control">£1,450,000</span>
+                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
+
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='', extraClass='') %}
+                    {{ components.captionHeading(text='Justification of resources and cost', tag='h2', size='m') }}
+
+                    {#{{ components.textarea(options=selectOptions, label='Enter your case for support', labelBold=true, name='htmlTest', id='tinyMCEInput', hint='What will you need to deliver your proposed work and how much it will cost?', group=true, rows='8', size='', value=exampleHTML, extraClass='', visuallyHidden=true) }}#}
+                    <div class="form-group u-space-b45 ">
+                        <label class="govuk-label form-label form-label-bold " for="tinyMCEInput">What will you need to deliver your proposed work and how much it will cost?</label>
+                        <details class="govuk-details u-space-y20" data-module="govuk-details" role="group">
+                            <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                <span class="govuk-details__summary-text">What the assessors are looking for in your response</span>
+                            </summary>
+                            <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                <p class="govuk-body">A degree of estimation is expected for some costs, such as consumables and travel, but carefully work out other costs, like staff and equipment.</p>
+
+                                <p class="govuk-body">We recommend that you work with your Research Office for this part of your application, as they will be familiar with the process. At least make sure you leave enough time for them to review this section before submission.</p>
+
+                                <p class="govuk-body">For detailed information, refer to our <a href="#">Full Economic Costing Guide (opens in a new window)</a>.</p>
+
+                                <ul class="govuk-list govuk-list--bullet">
+                                    <li><strong>Directly Incurred costs</strong> arise as a direct consequence of your project taking place. They must be actual, auditable and supported by invoices.</li>
+                                    <li><strong>Directly Allocated costs</strong> are incurred whether or not the project takes place and are estimated at project level. For example, Technician time and Estates costs.</li>
+                                    <li><strong>Indirect costs</strong> represent the costs of central and distributed services shared by other activities that are not project-specific. For example, Human Resources and IT.</li>
+                                    <li><strong>Exceptions</strong> can include Travel and subsistence, equipment, biological costs, charge-out facilities and postgraduate students.</li>
+                                    </li>
+                                </ul>
+                            </div>
+                        </details>
+                        <textarea class="govuk-textarea form-control " name="justification" id="tinyMCEInput" rows="8">{{ allData.justification }}</textarea>
+                        <p class="u-space-t20">
+                            <span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite"></span>
+                        </p>
+                    </div>
+
+                {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow() %}
+                {% call components.bulmaColumnAny(size='is-three-quarters', customID='', extraClass='_u-space-t40') %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-item">
+                            <div class="application-item__contents application-item__contents--mac">
+                                <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                    <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                        <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                    </legend>
+                                    <div class="govuk-checkboxes">
+                                        <div class="govuk-checkboxes__item">
+                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if allData.resourcesAndCostsIsComplete %} checked {% endif %}>
+                                            <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    {%- endcall %}
+
+                    {% call components.formGroup() %}
+                        <div class="application-controls govuk-clearfix">
+
+                            <input class="govuk-button application-controls__submit" type="submit" value="Save and return" {% if prototypeData.detailsEditMode == 'locked' %} disabled {% endif %}>
+                            <a class="govuk-link" href="/prototypes/editv3/application2">Return to Application overview</a>
+
+                        </div>
+                    {%- endcall %}
+
+                {%- endcall %}
+            {%- endcall %}
+
+
+        </section>
+
+
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        let wordy, count, newCount, overCount;
+        let limit = 400;
+        let countOutput = document.getElementById('wordCount');
+        countOutput.innerHTML = 'You have ' +  limit + ' words remaining';
+
+        tinymce.init({
+            selector: 'textarea',
+            height: 400,
+            menubar: false,
+            plugins: [
+                'lists charmap anchor',
+                'paste code wordcount '
+            ],
+            toolbar: 'formatselect | bold italic | numlist bullist |',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ],
+            setup: function(editor) {
+                editor.on('keyup', function(e) {
+                    wordy = editor.plugins.wordcount;
+                    count = parseInt(wordy.body.getWordCount());
+                    newCount = limit - count;
+                    // overCount =  limit + count;
+                    overCount =  count - limit;
+                    if (newCount < 0) {
+                        countOutput.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>'
+                    } else {
+                        countOutput.innerHTML = 'You have ' +  newCount + ' words remaining'
+                    }
+                }).on('load');
+            }
+        });
+    </script>
+{% endblock %}
+
+

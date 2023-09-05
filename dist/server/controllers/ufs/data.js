@@ -1166,3 +1166,92 @@ let panelistPeople = [{
 }];
 
 const panelists = exports.panelists = panelistPeople;
+
+let genericPeopleList = [{
+  firstName: 'Clare',
+  lastName: 'Bess',
+  roGroup: 'Science and engineering',
+  organisation: 'University of Wales'
+}, {
+  firstName: 'Dan',
+  lastName: 'Keegan',
+  roGroup: 'Science and engineering',
+  organisation: 'University of Wales'
+}, {
+  firstName: 'Renata',
+  lastName: 'Minchin',
+  roGroup: 'Science and engineering',
+  organisation: 'University of Wales'
+}, {
+  firstName: 'Donna',
+  lastName: 'Winter',
+  roGroup: 'Arts and Humanities',
+  organisation: 'University of Wales'
+}, {
+  firstName: 'Martha',
+  lastName: 'Bell',
+  roGroup: 'Mathematics',
+  organisation: 'University of Wales'
+}, {
+  firstName: 'Griselda',
+  lastName: 'Feelgood',
+  roGroup: 'Languages',
+  organisation: 'University of Wales'
+}, {
+  firstName: 'Bernadette',
+  lastName: 'Starr',
+  roGroup: 'Law, politics, philosophy and economics',
+  organisation: 'University of Wales'
+}, {
+  firstName: 'Roger',
+  lastName: 'Less',
+  roGroup: 'Law, politics, philosophy and economics',
+  organisation: 'University of Wales'
+}, {
+  firstName: 'Fernando',
+  lastName: 'Escalope',
+  roGroup: 'Medicine',
+  organisation: 'University of Wales'
+}, {
+  firstName: 'Florence',
+  lastName: 'Badenoch',
+  roGroup: 'Medicine',
+  organisation: 'University of Wales'
+}, {
+  firstName: 'Percival',
+  lastName: 'Summers',
+  roGroup: 'Medicine',
+  organisation: 'University of Wales'
+}, {
+  firstName: 'Bernice',
+  lastName: 'Stallone',
+  roGroup: 'Science and engineering',
+  organisation: 'University of Wales'
+}, {
+  firstName: 'Humphrey',
+  lastName: 'Cushion',
+  roGroup: 'Mathematics',
+  organisation: 'University of Wales'
+}, {
+  firstName: 'David',
+  lastName: 'Trousers',
+  roGroup: 'Languages',
+  organisation: 'University of Wales'
+}, {
+  firstName: 'Ronaldino',
+  lastName: 'Escobar',
+  roGroup: 'None',
+  organisation: 'University of Wales'
+}, {
+  firstName: 'Dennis',
+  lastName: 'Ng',
+  roGroup: 'None',
+  organisation: 'University of Wales'
+}, {
+  firstName: 'Robert',
+  lastName: 'Ho',
+  roGroup: 'None',
+  organisation: 'University of Wales'
+}];
+
+const genericPeople = exports.genericPeople = genericPeopleList;

@@ -1028,6 +1028,12 @@ router.post('/prototypes/editv3/application2', demosController.editv3Application
 router.get('/prototypes/editv3/details-and-summary2', demosController.editv3Details2Get);
 router.post('/prototypes/editv3/details-and-summary2', demosController.editv3Details2Post);
 
+router.get('/prototypes/editv3/manage-users', demosController.editv3ManageUsersGet);
+router.post('/prototypes/editv3/manage-users', demosController.editv3ManageUsersPost);
+
+router.get('/prototypes/editv3/resources-and-costs', demosController.editv3ResourcesGet);
+router.post('/prototypes/editv3/resources-and-costs', demosController.editv3ResourcesPost);
+
 /*router.get('/prototypes/editv3/applications', demosController.editv3ApplicationsGet);
 router.post('/prototypes/editv3/applications', demosController.editv3ApplicationsPost);
 router.get('/prototypes/editv3/application-overview', demosController.editv3ApplicationOverviewGet);

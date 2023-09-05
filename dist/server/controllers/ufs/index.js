@@ -460,6 +460,18 @@ Object.keys(_editControllerV).forEach(function (key) {
   });
 });
 
+var _editControllerV2 = require('./editControllerV3');
+
+Object.keys(_editControllerV2).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _editControllerV2[key];
+    }
+  });
+});
+
 var _classificationsController = require('./classificationsController');
 
 Object.keys(_classificationsController).forEach(function (key) {

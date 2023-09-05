@@ -49,6 +49,7 @@
                                 <a class="govuk-tabs__tab" href="{#/prototypes/editv2/read-application#}#">Read application</a>
                             </li>
                         </ul>
+                        <a href="/prototypes/editv3/manage-users?whichApplication=2" class="govuk-!-display-inline-block govuk-link u-float-right tabs-cta u-space-t10">Manage who can edit this application</a>
                     </div>
                 {%- endcall %}
             {%- endcall %}
@@ -96,7 +97,7 @@
                         </div>
                         <div class="application-item application-item--incomplete application-item--skinny ">
                             <div class="application-item__contents govuk-clearfix">
-                                <div class="application-item__left">{{ components.link(text='4. Resources and costs', url='#')}}</div>
+                                <div class="application-item__left">{{ components.link(text='4. Resources and costs', url='/prototypes/editv3/resources-and-costs')}}</div>
                                 <div class="application-item__right">
                                     <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
                                 </div>

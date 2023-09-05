@@ -1010,6 +1010,71 @@ router.post('/prototypes/editv2/details-and-summary-3', demosController.editv2De
 
 /* *************************************************************** *
 
+    Edit stuff VERSION 3  THREE THREE
+
+ * *************************************************************** */
+router.get('/prototypes/editv3', demosController.editv3IndexGet);
+router.post('/prototypes/editv3', demosController.editv3IndexPost);
+router.get('/prototypes/editv3/opportunity', demosController.editv3OpportunityGet);
+router.post('/prototypes/editv3/opportunity', demosController.editv3OpportunityPost);
+router.get('/prototypes/editv3/home', demosController.editv3HomeGet);
+router.post('/prototypes/editv3/home', demosController.editv3HomePost);
+
+router.get('/prototypes/editv3/organisation', demosController.editv3OrganisationGet);
+router.post('/prototypes/editv3/organisation', demosController.editv3OrganisationPost);
+router.get('/prototypes/editv3/role', demosController.editv3RoleGet);
+router.post('/prototypes/editv3/role', demosController.editv3RolePost);
+router.get('/prototypes/editv3/group', demosController.editv3GroupGet);
+router.post('/prototypes/editv3/group', demosController.editv3GroupPost);
+router.get('/prototypes/editv3/application-name', demosController.editv3TitleGet);
+router.post('/prototypes/editv3/application-name', demosController.editv3TitlePost);
+router.get('/prototypes/editv3/application', demosController.editv3ApplicationGet);
+router.post('/prototypes/editv3/application', demosController.editv3ApplicationPost);
+
+router.get('/prototypes/editv3/applications', demosController.editv3ApplicationsGet);
+router.post('/prototypes/editv3/applications', demosController.editv3ApplicationsPost);
+
+router.get('/prototypes/editv3/details-and-summary', demosController.editv3DetailsGet);
+router.post('/prototypes/editv3/details-and-summary', demosController.editv3DetailsPost);
+
+router.get('/prototypes/editv3/application2', demosController.editv3Application2Get);
+router.post('/prototypes/editv3/application2', demosController.editv3Application2Post);
+router.get('/prototypes/editv3/details-and-summary2', demosController.editv3Details2Get);
+router.post('/prototypes/editv3/details-and-summary2', demosController.editv3Details2Post);
+
+router.get('/prototypes/editv3/manage-users', demosController.editv3ManageUsersGet);
+router.post('/prototypes/editv3/manage-users', demosController.editv3ManageUsersPost);
+
+router.get('/prototypes/editv3/resources-and-costs', demosController.editv3ResourcesGet);
+router.post('/prototypes/editv3/resources-and-costs', demosController.editv3ResourcesPost);
+
+/*router.get('/prototypes/editv3/applications', demosController.editv3ApplicationsGet);
+router.post('/prototypes/editv3/applications', demosController.editv3ApplicationsPost);
+router.get('/prototypes/editv3/application-overview', demosController.editv3ApplicationOverviewGet);
+router.post('/prototypes/editv3/application-overview', demosController.editv3ApplicationOverviewPost);
+
+router.get('/prototypes/editv3/application-overview-2', demosController.editv3ApplicationOverview2Get);
+router.post('/prototypes/editv3/application-overview-2', demosController.editv3ApplicationOverview2Post);
+router.get('/prototypes/editv3/application-overview-2-confirm', demosController.editv3ApplicationOverview2ConfirmGet);
+router.get('/prototypes/editv3/application-overview-2-submitted', demosController.editv3ApplicationOverview2SubmittedGet);
+//
+
+router.get('/prototypes/editv3/details-and-summary', demosController.editv3DetailsGet);
+router.post('/prototypes/editv3/details-and-summary', demosController.editv3DetailsPost);
+
+router.get('/prototypes/editv3/case-for-support', demosController.editv3CaseGet);
+router.post('/prototypes/editv3/case-for-support', demosController.editv3CasePost);
+router.get('/prototypes/editv3/details-and-summary-2', demosController.editv3Details2Get);
+router.get('/prototypes/editv3/team-2', demosController.editv3Team2Get);
+router.get('/prototypes/editv3/resources-2', demosController.editv3Resources2Get);
+
+router.get('/prototypes/editv3/application-overview-3', demosController.editv3ApplicationOverview3Get);
+router.post('/prototypes/editv3/application-overview-3', demosController.editv3ApplicationOverview3Post);
+router.get('/prototypes/editv3/details-and-summary-3', demosController.editv3Details3Get);
+router.post('/prototypes/editv3/details-and-summary-3', demosController.editv3Details3Post);*/
+
+/* *************************************************************** *
+
     Classifications stuff
 
  * *************************************************************** */

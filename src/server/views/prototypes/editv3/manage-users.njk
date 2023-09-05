@@ -1,0 +1,221 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/editv2/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/editv2/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+
+{% set pageTitle = 'Manage users' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Rosaria Linguinni' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+
+
+{% set pageTitle = 'Manage who can edit this application' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:prototypeData.redirctFromManageUsers, text:'Back to application overview'}] %}
+
+{#{% if prototypeData.applicationTitle2COPY != null %}
+    {% set useThisTitle = prototypeData.applicationTitle2COPY %}
+{% else %}
+    {% set useThisTitle = prototypeData.applicationTitle2 %}
+{% endif %}
+
+{% if prototypeData.summary2COPY != null %}
+    {% set useThisSummary = prototypeData.summary2COPY %}
+{% else %}
+    {% set useThisSummary = prototypeData.summary2 %}
+{% endif %}#}
+
+
+
+
+{% block content %}
+
+    {% if cannotSaveDetails2 %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Changes have not been saved</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <p class="govuk-notification-banner__heading">A more recent version of this section has been saved.</p>
+                        <p class="govuk-body">Your changes have been preserved below but <strong>Renata Minchin</strong> has made a more recent change. Either contact them or <a href="/prototypes/editv3/details-and-summary2?reloadDetails2=true" class="govuk-link">refresh the page to include the new changes</a>.</p>
+                    </div>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+    {% endif %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            {% if prototypeData.whichAppForManageUsers == 'two' %}
+                {{ components.captionHeading(text='Manage who can edit this application', caption='APP420: ' + prototypeData.applicationTitle2) }}
+            {% else %}
+                {{ components.captionHeading(text='Manage who can edit this application', caption='APP989: ' + prototypeData.title) }}
+            {% endif %}
+
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST', name='form') %}
+
+        <section class="section" id="mainContent">
+
+            {% call components.form(action='#', method='POST',name='submitForm') %}
+
+                {% call components.bulmaRow() %}
+
+                    {% call components.bulmaColumnAny(size='is-8') %}
+
+                        <p class="govuk-body">People in your organisation's research office are automatically added to your application. You can remove them below.</p>
+
+                       <details class="govuk-details" data-module="govuk-details" role="group">
+                        <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                            <span class="govuk-details__summary-text">Guidance for adding editors to your application</span>
+                        </summary>
+                        <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                            <p class="govuk-body">...</p>
+                        </div>
+                        </details>
+                    {%- endcall %}
+
+                {%- endcall %}
+
+
+
+                {% call components.bulmaRow() %}
+
+                    {% call components.bulmaColumnAny(size='is-8') %}
+
+                        <style>
+                            .govuk-checkboxes--small {
+                                min-height:30px!important;
+                                padding-left: 0!important;
+                            }
+                            .govuk-checkboxes__input {
+                                width: 34px!important;
+                                height: 34px!important;
+                            }
+                        </style>
+
+                        <p class="govuk-body">This application is in the <strong>Science and engineering</strong> group. <a href="#" class="govuk-link" id="removeNonGroupUsers" data-group="Science and engineering">Only show people in this group</a>.</p>
+
+                        <div class="responsive-table">
+
+                            <table class="govuk-table responsive-table__table govuk-table--busy" id="applicationsTable">
+                                <thead>
+                                <tr class="govuk-table__header">
+                                    <th class="govuk-table__header"><span class="govuk-visually-hidden">Select item for action</span> </th>
+                                    <th class="govuk-table__header">Name</th>
+                                    <th class="govuk-table__header">Email</th>
+                                    <th class="govuk-table__header govuk-table__header--numeric">Group</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {% for person in genericPeople %}
+
+                                   {# {{ prototypeData.allowedEditors|length }}#}
+
+                                    {% if prototypeData.allowedEditors|length > 0 %}
+                                        {% for editor in prototypeData.allowedEditors %}
+                                            {#{{ person.firstName + ' ' + person.lastName }}#}
+                                            {% if editor == person.firstName + ' ' + person.lastName %}
+                                                {% set isChecked = 'checked' %}
+                                            {% else %}
+                                                {% set isChecked = '' %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        {% set isChecked = 'checked' %}
+                                    {% endif %}
+                                        <tr class="appItem">
+                                            <td class="govuk-table__cell" data-group="{{ person.roGroup }}" style="padding-top:0px;">
+                                                <div class="govuk-checkboxes__item govuk-checkboxes--small">
+                                                    <input type="checkbox" class="govuk-checkboxes__input" id="item_{{ loop.index }}" name="editors_{{ loop.index }}" value="{{ person.firstName }} {{ person.lastName }}" {{ isChecked}} data-group="{{ person.roGroup }}">
+                                                    <label class="govuk-label govuk-checkboxes__label " for="item_{{ loop.index }}"><span class="govuk-visually-hidden">Select</span></label>
+                                                </div>
+                                            </td>
+                                            <td class="govuk-table__cell appName" >
+                                                <span>{{ person.firstName }} {{ person.lastName }}</span>
+                                            </td>
+                                            <td class="govuk-table__cell">
+                                                <span style="text-transform: lowercase;">{{ person.firstName }}.{{ person.lastName }}@wales.ac.uk</span>
+                                            </td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric">{{ person.roGroup }}</td>
+
+                                        </tr>
+
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+                {% call components.bulmaRow() %}
+
+                    {% call components.bulmaColumnAny(size='is-8') %}
+
+                        {% call components.formGroup() %}
+                            <div class="application-controls govuk-clearfix">
+
+                                <input type="hidden" value="{{ prototypeData.whichAppForManageUsers }}" name="whichApplicationManageUsers">
+                                <input class="govuk-button application-controls__submit" type="submit" value="Save and return" {% if prototypeData.detailsEditMode == 'locked' %} disabled {% endif %}>
+                                <a class="govuk-link" href="{{ prototypeData.redirctFromManageUsers }}">Return to Application overview</a>
+
+                            </div>
+                        {%- endcall %}
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+
+            {%- endcall %}
+
+
+        </section>
+
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        // show older changes
+        // openOlderChanges
+
+        Zepto(function($){
+            $('#removeNonGroupUsers').on('click', function(event) {
+                event.preventDefault();
+                $('input[type="checkbox"]').prop('checked', false);
+                $('input[data-group="Science and engineering"]').prop('checked', true);
+            });
+        })
+
+    </script>
+{% endblock %}
+
+

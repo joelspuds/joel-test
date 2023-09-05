@@ -23,7 +23,7 @@
 
 
 {% set pageTitle = 'Details and summary ' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/editv3/application', text:'Back to all application'}] %}
+{% set backLinkContents =  [{url:'/prototypes/editv3/application', text:'Back to application overview'}] %}
 
 
 {% block content %}
@@ -165,6 +165,10 @@
                                 </div>
                                 <a href="#" id="openOlderChanges" class="govuk-link govuk-!-display-block u-space-b10">Show older changes</a>
                                 <div class="application-item  application-item--skinny application-item--older govuk-visually-hidden">
+                                    <p class="govuk-body govuk-!-font-size-16 meta u-space-t10 u-space-b10">There are no other changes to display.</p>
+                                </div>
+
+                                {#<div class="application-item  application-item--skinny application-item--older govuk-visually-hidden">
                                     <div class="application-item__contents govuk-clearfix">
                                         <div class="application-item__left">
                                             <h3 class="govuk-heading-xs">Text change</h3>
@@ -199,7 +203,7 @@
                                             <span class="meta">4 June 2022, 10.48am</span>
                                         </div>
                                     </div>
-                                </div>
+                                </div>#}
 
                             {% else %}
                                 <p class="govuk-body meta">No changes have been made to this section yet.</p>
