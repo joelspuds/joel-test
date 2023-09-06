@@ -1048,6 +1048,9 @@ router.post('/prototypes/editv3/manage-users', demosController.editv3ManageUsers
 router.get('/prototypes/editv3/resources-and-costs', demosController.editv3ResourcesGet);
 router.post('/prototypes/editv3/resources-and-costs', demosController.editv3ResourcesPost);
 
+router.get('/prototypes/editv3/edit-log', demosController.editv3EditLogGet);
+router.get('/prototypes/editv3/edit-log2', demosController.editv3EditLog2Get);
+
 /*router.get('/prototypes/editv3/applications', demosController.editv3ApplicationsGet);
 router.post('/prototypes/editv3/applications', demosController.editv3ApplicationsPost);
 router.get('/prototypes/editv3/application-overview', demosController.editv3ApplicationOverviewGet);
