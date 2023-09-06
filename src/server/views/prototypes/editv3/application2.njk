@@ -1,9 +1,9 @@
 {% set showExternalNav = true %}
-{% set activeNavItem = 'home' %}
+{% set activeNavItem = 'applications' %}
 {% set navArea = 'home' %}
-{% set homeLink = '/prototypes/editv2/home' %}
+{% set homeLink = '/prototypes/editv3/home' %}
 {% set awardsLink = '#' %}
-{% set applicationsLink = '/prototypes/editv2/applications' %}
+{% set applicationsLink = '/prototypes/editv3/applications' %}
 {% set awardsLink = '#' %}
 {% set reviewsLink = '#' %}
 {% set hideAccountLinks = true %}
@@ -15,7 +15,7 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set allData = allData if allData %}
-{% set userName = allData.userName if allData.userName else 'Rosaria Linguinni' %}
+{% set userName = allData.userName if allData.userName else 'Rosaria Lingham' %}
 {% set prototypeData = prototypeData if prototypeData %}
 
 {% set isAdminUser = false %}
@@ -49,7 +49,7 @@
                                 <a class="govuk-tabs__tab" href="{#/prototypes/editv2/read-application#}#">Read application</a>
                             </li>
                         </ul>
-                        <a href="/prototypes/editv3/manage-users?whichApplication=2" class="govuk-!-display-inline-block govuk-link u-float-right tabs-cta u-space-t10">Manage who can edit this application</a>
+                        <a href="#{#/prototypes/editv3/manage-users?whichApplication=2#}" class="govuk-!-display-inline-block govuk-link u-float-right tabs-cta u-space-t10">Manage who can edit this application</a>
                     </div>
                 {%- endcall %}
             {%- endcall %}
@@ -62,12 +62,12 @@
                         {% set detailsIsComplete = true %}
                         {% set caseForSupportIsComplete = true %}
 
-                        <div class="application-item {% if prototypeData.detailsIsComplete2 %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
+                        <div class="application-item {% if prototypeData.detailsMarkAsComplete2 %}application-item--complete{% else %}application-item--incomplete{% endif %} application-item--skinny ">
                             <div class="application-item__contents govuk-clearfix">
                                 <div class="application-item__left">{{ components.link(text='1. Details and summary', url='/prototypes/editv3/details-and-summary2')}}</div>
                                 <div class="application-item__right">
 
-                                    {% if prototypeData.detailsIsComplete2 %}
+                                    {% if prototypeData.detailsMarkAsComplete2 %}
                                         <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
                                     {% else %}
                                         <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
@@ -95,11 +95,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="application-item application-item--incomplete application-item--skinny ">
+                        <div class="application-item application-item--complete application-item--skinny ">
                             <div class="application-item__contents govuk-clearfix">
                                 <div class="application-item__left">{{ components.link(text='4. Resources and costs', url='/prototypes/editv3/resources-and-costs')}}</div>
                                 <div class="application-item__right">
-                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Incomplete</span>
+                                    <span class="application-item__status"><span class="govuk-visually-hidden">This section is </span> Complete</span>
                                 </div>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
                             <dd class="application-data__value">APP989</dd>
 
                             <dt class="application-data__key">Applicant:</dt>
-                            <dd class="application-data__value">Rosaria Linguinni</dd>
+                            <dd class="application-data__value">Rosaria Lingham</dd>
                             <dt class="application-data__key">Application status:</dt>
                             <dd class="application-data__value"><strong class="govuk-tag govuk-tag--blue">In progress</strong></dd>
 
@@ -172,6 +172,11 @@
                             <dd class="application-data__value">31 Oct 2023, 4:00pm</dd>
                             <dt class="application-data__key">Funder:</dt>
                             <dd class="application-data__value">BBSRC</dd>
+                            <dt class="application-data__key">Group:</dt>
+                            <dd class="application-data__value">Science and engineering</dd>
+                            <dt class="application-data__key">Edit log:</dt>
+                            <dd class="application-data__value"><a href="/prototypes/editv3/edit-log2" class="govuk-link">View edit log</a></dd>
+
                         </dl>
                     </div>
 

@@ -1,9 +1,9 @@
 {% set showExternalNav = true %}
-{% set activeNavItem = 'home' %}
+{% set activeNavItem = 'applications' %}
 {% set navArea = 'home' %}
-{% set homeLink = '/prototypes/editv2/home' %}
+{% set homeLink = '/prototypes/editv3/home' %}
 {% set awardsLink = '#' %}
-{% set applicationsLink = '/prototypes/editv2/applications' %}
+{% set applicationsLink = '/prototypes/editv3/applications' %}
 {% set awardsLink = '#' %}
 {% set reviewsLink = '#' %}
 {% set hideAccountLinks = true %}
@@ -15,7 +15,7 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set allData = allData if allData %}
-{% set userName = allData.userName if allData.userName else 'Rosaria Linguinni' %}
+{% set userName = allData.userName if allData.userName else 'Rosaria Lingham' %}
 {% set prototypeData = prototypeData if prototypeData %}
 
 {% set isAdminUser = false %}
@@ -27,18 +27,20 @@
 
 {% block content %}
 
-    {% if cannotSaveDetails2 %}
+    {% if resourcesAndCostsNoSave %}
         {% call components.bulmaRow() %}
             {% call components.bulmaColumnAny(size='is-full') %}
 
                 <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
                     <div class="govuk-notification-banner__header">
-                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Changes have not been saved</h2>
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Unable to save changes</h2>
                     </div>
                     <div class="govuk-notification-banner__content">
-                        <p class="govuk-notification-banner__heading">A more recent version of this section has been saved.</p>
-                        <p class="govuk-body">Your changes have been preserved below but <strong>Renata Minchin</strong> has made a more recent change. Either contact them or <a href="/prototypes/editv3/details-and-summary2?reloadDetails2=true" class="govuk-link">refresh the page to include the new changes</a>.</p>
+                        <p class="govuk-body"> <strong>Tenkin Fisher</strong> saved a newer version of this section while you were working on it. </p>
+                        <p class="govuk-body">You'll need to copy your changes to a document, then refresh your browser and add them back in.</p>
+
                     </div>
+                </div>
                 </div>
             {%- endcall %}
         {%- endcall %}
@@ -115,7 +117,7 @@
                     <div class="application-item application-item--complete application-item--skinny">
                         <div class="application-item__contents govuk-clearfix">
                             <div class="application-item__left">
-                                <a href="/prototypes/team-resources-costs/organisation-costs?orgsArrayIndex=0" class="govuk-link  ">University of Wales</a>
+                                <a href="#{#/prototypes/team-resources-costs/organisation-costs?orgsArrayIndex=0#}" class="govuk-link  ">University of Wales</a>
                                 <span class="{#govuk-tag govuk-tag--blue#} badge badge--info badge--smaller">LEAD</span>
                             </div>
                             <div class="application-item__right">
@@ -156,7 +158,7 @@
                                 </ul>
                             </div>
                         </details>
-                        <textarea class="govuk-textarea form-control " name="justification" id="tinyMCEInput" rows="8">{{ allData.justification }}</textarea>
+                        <textarea class="govuk-textarea form-control " name="justification" id="tinyMCEInput" rows="8">{{ prototypeData.resourcesAndCostJustification }}</textarea>
                         <p class="u-space-t20">
                             <span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite"></span>
                         </p>
@@ -177,7 +179,7 @@
                                     </legend>
                                     <div class="govuk-checkboxes">
                                         <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if allData.resourcesAndCostsIsComplete %} checked {% endif %}>
+                                            <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if prototypeData.resourcesAndCostsIsComplete %} checked {% endif %}>
                                             <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
                                         </div>
                                     </div>
@@ -196,6 +198,116 @@
                     {%- endcall %}
 
                 {%- endcall %}
+            {%- endcall %}
+
+            {% call components.bulmaRow(extraClass='u-space-t45') %}
+
+                {% call components.bulmaColumnAny(size='is-8') %}
+
+
+                    {{ components.captionHeading(text='Edit history', tag='h2', size='s') }}
+
+
+                    <div class="application-items u-space-b45">
+
+                        <h3 class="govuk-heading-xs u-space-b10">Most recent change</h3>
+                        {% if prototypeData.resourcesAndCostsNoSave %}
+                            <div class="application-item  application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs: changes saved by</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
+
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" id="openOlderChanges" class="govuk-link govuk-!-display-block u-space-b10">Show older changes</a>
+
+                            <div class="application-item  application-item--skinny application-item--older govuk-visually-hidden">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs: changes saved by</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
+
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">4 September 2023, 11.03am</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="application-item  application-item--skinny application-item--older govuk-visually-hidden">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs: changes saved by</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Renata Minchin</p>
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">4 September 2023, 9.45am</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="application-item  application-item--skinny application-item--older govuk-visually-hidden">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs: changes saved by</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
+
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">3 September 2022, 10.48am</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="application-item  application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs: changes saved by</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">4 September 2023, 11.03am</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" id="openOlderChanges" class="govuk-link govuk-!-display-block u-space-b10">Show older changes</a>
+
+
+                            <div class="application-item  application-item--skinny application-item--older govuk-visually-hidden">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs: changes saved by</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Renata Minchin</p>
+
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">4 September 2023, 9.45am</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="application-item  application-item--skinny application-item--older govuk-visually-hidden">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs: changes saved by</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
+
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">3 September 2022, 10.48am</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+
+                    </div>
+
+
+                {%- endcall %}
+
             {%- endcall %}
 
 
@@ -244,6 +356,20 @@
                 }).on('load');
             }
         });
+    </script>
+    <script>
+        // show older changes
+        // openOlderChanges
+
+        Zepto(function($){
+            $('#openOlderChanges').on('click', function(event) {
+                event.preventDefault();
+                $(this).addClass('govuk-visually-hidden');
+                $('.application-item--older').removeClass('govuk-visually-hidden');
+
+            });
+        })
+
     </script>
 {% endblock %}
 

@@ -1,0 +1,206 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/editv3/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/editv3/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+
+{% set pageTitle = 'Edit log' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Rosaria Lingham' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+
+
+{% set pageTitle = 'Edit log' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/editv3/application2', text:'Back to application overview'}] %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-full') %}
+            {{ components.captionHeading(text='Edit log', caption='APP989: ' + prototypeData.title) }}
+       {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST', name='form') %}
+
+        <section class="section" id="mainContent">
+
+            {% call components.form(action='#', method='POST',name='submitForm') %}
+
+                {% call components.bulmaRow() %}
+
+                    {% call components.bulmaColumnAny(size='is-9') %}
+
+                        <p class="govuk-body">Most recent edits are at the top of the list.</p>
+
+                        <div class="application-items u-space-b45">
+
+                            <div class="application-item  application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Details and summary: changes saved by</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Renata Minchin</p>
+
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="application-item  application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Details and summary: changes saved by</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">6 September 2012, 4.28pm</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="application-item  application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs > University of Wales costs: changes saved by</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">By Tenkin Fisher</p>
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">4 September 2023, 11.03am</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="application-item  application-item--skinny application-item--older">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs > University of Wales costs: changes saved by</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">By Tenkin Fisher</p>
+
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">4 September 2023, 9.45am</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="application-item  application-item--skinny application-item--older">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs > University of Wales costs: changes saved by</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">By Tenkin Fisher</p>
+
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">3 September 2022, 10.48am</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="application-item  application-item--skinny application-item--older">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs > University of Wales costs: changes saved by</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">By Tenkin Fisher</p>
+
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">3 September 2022, 9.37am</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="application-item  application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Details and summary: changes saved by</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">3 September 2012, 8.41am</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="application-item  application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Case for support: changes saved by</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">3 September 2012, 7.12am</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="application-item  application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Case for support: changes saved by</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">2 September 2012, 7.58pm</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+
+            {%- endcall %}
+
+
+        </section>
+
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+
+

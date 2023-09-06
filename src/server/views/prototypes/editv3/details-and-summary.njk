@@ -1,9 +1,9 @@
 {% set showExternalNav = true %}
-{% set activeNavItem = 'home' %}
+{% set activeNavItem = 'applications' %}
 {% set navArea = 'home' %}
-{% set homeLink = '/prototypes/editv2/home' %}
+{% set homeLink = '/prototypes/editv3/home' %}
 {% set awardsLink = '#' %}
-{% set applicationsLink = '/prototypes/editv2/applications' %}
+{% set applicationsLink = '/prototypes/editv3/applications' %}
 {% set awardsLink = '#' %}
 {% set reviewsLink = '#' %}
 {% set hideAccountLinks = true %}
@@ -15,7 +15,7 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set allData = allData if allData %}
-{% set userName = allData.userName if allData.userName else 'Rosaria Linguinni' %}
+{% set userName = allData.userName if allData.userName else 'Rosaria Lingham' %}
 {% set prototypeData = prototypeData if prototypeData %}
 
 {% set isAdminUser = false %}
@@ -149,13 +149,13 @@
 
 
                         <div class="application-items u-space-b45">
-                            {% if prototypeData.detailsJustBeenUpdated == null %}
+                            {% if prototypeData.detailsJustBeenUpdated == true %}
                                 <h3 class="govuk-heading-xs u-space-b10">Most recent change</h3>
                                 <div class="application-item  application-item--skinny">
                                     <div class="application-item__contents govuk-clearfix">
                                         <div class="application-item__left">
-                                            <h3 class="govuk-heading-xs">Text change</h3>
-                                            <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Rosaria Linguinni<span></span></p>
+                                            <span class="govuk-!-display-block govuk-!-font-size-16" >Details and summary: changes saved by</span>
+                                            <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
 
                                         </div>
                                         <div class="application-item__right u-align-right">
@@ -168,50 +168,11 @@
                                     <p class="govuk-body govuk-!-font-size-16 meta u-space-t10 u-space-b10">There are no other changes to display.</p>
                                 </div>
 
-                                {#<div class="application-item  application-item--skinny application-item--older govuk-visually-hidden">
-                                    <div class="application-item__contents govuk-clearfix">
-                                        <div class="application-item__left">
-                                            <h3 class="govuk-heading-xs">Text change</h3>
-                                            <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Manolo Bauer <span></span></p>
-
-                                        </div>
-                                        <div class="application-item__right u-align-right">
-                                            <span class="meta">6 June 2022, 11.03am</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="application-item  application-item--skinny application-item--older govuk-visually-hidden">
-                                    <div class="application-item__contents govuk-clearfix">
-                                        <div class="application-item__left">
-                                            <h3 class="govuk-heading-xs">Text change</h3>
-                                            <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Manolo Bauer <span></span></p>
-
-                                        </div>
-                                        <div class="application-item__right u-align-right">
-                                            <span class="meta">6 June 2022, 9.45am</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="application-item  application-item--skinny application-item--older govuk-visually-hidden">
-                                    <div class="application-item__contents govuk-clearfix">
-                                        <div class="application-item__left">
-                                            <h3 class="govuk-heading-xs">Text change</h3>
-                                            <p class="govuk-body u-space-b0 govuk-!-font-size-16">By Manolo Bauer <span></span></p>
-
-                                        </div>
-                                        <div class="application-item__right u-align-right">
-                                            <span class="meta">4 June 2022, 10.48am</span>
-                                        </div>
-                                    </div>
-                                </div>#}
-
                             {% else %}
                                 <p class="govuk-body meta">No changes have been made to this section yet.</p>
                             {% endif %}
 
-
                         </div>
-
 
                     {%- endcall %}
 

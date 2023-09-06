@@ -1,9 +1,9 @@
 {% set showExternalNav = true %}
-{% set activeNavItem = 'home' %}
+{% set activeNavItem = 'applications' %}
 {% set navArea = 'home' %}
-{% set homeLink = '/prototypes/editv2/home' %}
+{% set homeLink = '/prototypes/editv3/home' %}
 {% set awardsLink = '#' %}
-{% set applicationsLink = '/prototypes/editv2/applications' %}
+{% set applicationsLink = '/prototypes/editv3/applications' %}
 {% set awardsLink = '#' %}
 {% set reviewsLink = '#' %}
 {% set hideAccountLinks = true %}
@@ -15,7 +15,7 @@
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set allData = allData if allData %}
-{% set userName = allData.userName if allData.userName else 'Rosaria Linguinni' %}
+{% set userName = allData.userName if allData.userName else 'Rosaria Lingham' %}
 {% set prototypeData = prototypeData if prototypeData %}
 
 {% set isAdminUser = false %}
@@ -164,7 +164,7 @@
                             <dd class="application-data__value">APP989</dd>
 
                             <dt class="application-data__key">Applicant:</dt>
-                            <dd class="application-data__value">Rosaria Linguinni</dd>
+                            <dd class="application-data__value">Rosaria Lingham</dd>
                             <dt class="application-data__key">Application status:</dt>
                             <dd class="application-data__value"><strong class="govuk-tag govuk-tag--blue">In progress</strong></dd>
 
@@ -172,6 +172,15 @@
                             <dd class="application-data__value">31 Oct 2023, 4:00pm</dd>
                             <dt class="application-data__key">Funder:</dt>
                             <dd class="application-data__value">BBSRC</dd>
+                            <dt class="application-data__key">Group:</dt>
+                            <dd class="application-data__value">{{ prototypeData.groups }}</dd>
+                            <dt class="application-data__key">Edit log:</dt>
+                            {% if prototypeData.detailsJustBeenUpdated == true %}
+                                <dd class="application-data__value"><a href="/prototypes/editv3/edit-log" class="govuk-link">View edit log</a></dd>
+                            {% else %}
+                                <dd class="application-data__value meta govuk-!-font-size-16">There are no edits to show</dd>
+                            {% endif %}
+
                         </dl>
                     </div>
 

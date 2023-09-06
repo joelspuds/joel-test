@@ -13,6 +13,7 @@
 
 
 <header class="new-header {% if navType == 'admin' %} new-header--admin {% else %} new-header--external {% endif %}" role="banner">
+    <!-- bulma-ufs-header-menus-internal-only.njk -->
     <div class="container new-header__top">
         <div class="columns">
             <div class="column {#column-one-quarter#}">
@@ -32,7 +33,7 @@
 
                         {% if applicationsLink %}
                             <li class="new-header__nav-item">
-                                <a href="{{ appicationsLink }}" class="new-header__nav-link {% if activeNavItem == 'applications' %} new-header__nav-link--active {% endif %}">Applications</a>
+                                <a href="{{ applicationsLink }}" class="new-header__nav-link {% if activeNavItem == 'applications' %} new-header__nav-link--active {% endif %}">Applications</a>
                             </li>
                         {% endif %}
 

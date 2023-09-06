@@ -1,37 +1,53 @@
 {% set showExternalNav = true %}
 {% set activeNavItem = 'home' %}
 {% set navArea = 'home' %}
-{% set homeLink = '/prototypes/editv2/home' %}
+{% set homeLink = '/prototypes/editv3/home' %}
 {% set awardsLink = '#' %}
-{% set applicationsLink = '/prototypes/editv2/applications' %}
+{% set applicationsLink = '/prototypes/editv3/applications' %}
 {% set awardsLink = '#' %}
 {% set reviewsLink = '#' %}
 {% set hideAccountLinks = true %}
 {% set altProfilePagelink = '#' %}
 {% set hideUserMenu = false %}
 
-{% set pageTitle = 'Select your role' %}
-
 {% extends 'layouts/bulma-ufs.layout.njk' %}
 
 {% set allData = allData if allData %}
-{% set userName = allData.userName if allData.userName else 'Rosaria Linguinni' %}
+{% set userName = allData.userName if allData.userName else 'Rosaria Lingham' %}
 {% set prototypeData = prototypeData if prototypeData %}
 
 {% set isAdminUser = false %}
 {% set loggedOut = false %}
 
 
-{% set pageTitle = 'Home ' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/editv3/organisation', text:'Back to organisation'}] %}
+{% set pageTitle = 'Are you leading the project? ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/editv3/opportunity', text:'Back to Opportunity'}] %}
 
 
 {% block content %}
 
+    {% if confirmationError %}
+        {% call components.bulmaRow() %}
+            {% call components.bulmaColumnAny(size='is-full') %}
+
+                <div class="govuk-notification-banner govuk-notification-banner--danger" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">There is a problem</h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                        <p class="govuk-body">Select the check box to confirm you understand the implications of continuing.</p>
+
+                    </div>
+                </div>
+            {%- endcall %}
+        {%- endcall %}
+
+    {% endif %}
+
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {#{{ components.captionHeading(text='Select your role', caption=prototypeData.oppTitle) }}#}
-            {{ components.captionHeading(text='Your project role and your research office', caption=prototypeData.oppTitle) }}
+
+            {{ components.captionHeading(text='Confirm you\'ll be leading this project if your application is successful', caption='OPP147: Innovation in environmental monitoring') }}
         {%- endcall %}
     {%- endcall %}
 
@@ -39,95 +55,36 @@
 
         {% call components.bulmaRow() %}
 
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column is-8 ', customID='mainContent') %}
 
-                <p class="govuk-body govuk-!-font-size-24">You will be the Project Lead on this application because you are creating it.</p>
+                <p class="govuk-body">We strongly advise that you only start this application if you'll be the project lead (or the fellow, if you're applying for a fellowship).</p>
 
-                <p class="govuk-body">By default, all research office users within your organisation will be able to access and edit this application. You can change this later if you wish to limit this access.</p>
+                <p class="govuk-body govuk-inset-text">If you're just curious about the application questions, or any guidance for completing them, you can find this information on the funding Opportunity's page in the <a href="/prototypes/editv3/opportunity" class="govuk-link">UKRI Funding Finder</a>.</p>
 
-                <p class="govuk-body">You can also add people from outside your organisation who can help you complete the application.</p>
+                <div class="govuk-form-group {% if confirmationError %} govuk-form-group--error{% endif %}">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            <h2 class="govuk-fieldset__heading">
+                                Confirmation
+                            </h2>
+                        </legend>
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="confirmation" name="confirmation" type="checkbox" value="confirmation">
+                                <label class="govuk-label govuk-checkboxes__label" for="confirmation">
+                                    I confirm I understand that:
+                                </label>
 
-
-                {#<div class="govuk-form-group">
-                    <fieldset class="govuk-fieldset" aria-describedby="roles-hint">
-                        <legend class="govuk-visually-hidden">Select new user's role </legend>
-                        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
-
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="roles1" name="roles" type="radio" value="Project lead" {% if orgs2SessionData.roles == 'Project lead' %} checked {% endif %}>
-                                    <label class="govuk-label govuk-radios__label" for="roles1" >Project lead</label>
-                                </div>
-
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="roles2" name="roles" type="radio" value="Co-lead" {% if orgs2SessionData.roles == 'Co-lead' %} checked {% endif %}>
-                                    <label class="govuk-label govuk-radios__label" for="roles2">Co-lead</label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="roles3" name="roles" type="radio" value="Fellow" {% if orgs2SessionData.roles == 'Fellow' %} checked {% endif %}>
-                                    <label class="govuk-label govuk-radios__label" for="roles3">Fellow</label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="roles4" name="roles" type="radio" value="Team Grant Manager" {% if orgs2SessionData.roles == '●	Team Grant Manager' %} checked {% endif %}>
-                                    <label class="govuk-label govuk-radios__label" for="roles4">Team Grant Manager</label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="roles5" name="roles" type="radio" value="Technician" {% if orgs2SessionData.roles == 'Team R&amp;I Associate' %} checked {% endif %}>
-                                    <label class="govuk-label govuk-radios__label" for="roles5">Team R&amp;I Associate</label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="roles6" name="roles" type="radio" value="Visiting Researcher" {% if orgs2SessionData.roles == 'Visiting Researcher' %} checked {% endif %}>
-                                    <label class="govuk-label govuk-radios__label" for="roles6">Visiting Researcher</label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="roles7" name="roles" type="radio" value="Specialist Team Technology/Skills Associate" {% if orgs2SessionData.roles == 'Specialist Team Technology/Skills Associate' %} checked {% endif %}>
-                                    <label class="govuk-label govuk-radios__label" for="roles7">Specialist Team Technology/Skills Associate</label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="roles8" name="roles" type="radio" value="Technician" {% if orgs2SessionData.roles == 'Technician' %} checked {% endif %}>
-                                    <label class="govuk-label govuk-radios__label" for="roles8">Technician</label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="roles9" name="roles" type="radio" value="Student" {% if orgs2SessionData.roles == 'Student' %} checked {% endif %}>
-                                    <label class="govuk-label govuk-radios__label" for="roles9">Student</label>
-                                </div>
-
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="roles10" name="roles" type="radio" value="Team Project Partner" {% if orgs2SessionData.roles == 'Team Project Partner' %} checked {% endif %} data-aria-controls="_conditional-1">
-                                    <label class="govuk-label govuk-radios__label" for="roles10">Team Project Partner</label>
-                                </div>
-                                #}{#<div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-1">
-                                <ul class="govuk-list govuk-list--bullet meta">
-                                    <li>A named individual</li>
-                                    <li>An organisation</li>
+                                <ul class="govuk-list govuk-list--bullet u-space-t10 u-space-x20">
+                                    <li>only myself and members of my research office (if I have one) will be able to edit the application</li>
+                                    <li>my research office, if I have one, will be the only research office that can submit the application the UKRI</li>
                                 </ul>
-                            </div>#}{#
-
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="roles11" name="roles" type="radio" value="Project Subcontractor" {% if orgs2SessionData.roles == 'Project Subcontractor' %} checked {% endif %} data-aria-controls="_conditional-2">
-                                    <label class="govuk-label govuk-radios__label" for="roles11">Project Subcontractor</label>
-                                </div>
-                                #}{#<div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-2">
-                                <ul class="govuk-list govuk-list--bullet meta">
-                                    <li>A named individual</li>
-                                    <li>An organisation</li>
-                                </ul>
-                            </div>#}{#
-
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="roles12" name="roles" type="radio" value="Other" {% if orgs2SessionData.roles == 'Other' %} checked {% endif %} data-aria-controls="conditional-3">
-                                    <label class="govuk-label govuk-radios__label" for="roles12">Other</label>
-                                </div>
-                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-3">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label" for="otherRole">Enter their role</label>
-                                        <input class="govuk-input govuk-!-width-one-third" id="otherRole" name="otherRole" type="text" spellcheck="false" value="{{ orgs2SessionData.otherRole }}">
-                                    </div>
-                                </div>
-
+                            </div>
 
                         </div>
                     </fieldset>
-                </div>#}
+                </div>
+
 
 
             {%- endcall %}
@@ -139,7 +96,7 @@
             {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen') %}
 
                 {% call components.formGroup() %}
-                    {{ components.button(text='Continue', extraClass="application-controls__submit")}}
+                    {{ components.button(text='Confirm and continue', extraClass="application-controls__submit")}}
                 {%- endcall %}
 
             {%- endcall %}

@@ -282,3 +282,13 @@ details {
   }
 
 }
+
+
+.govuk-notification-banner__content {
+  @include desktop {
+    max-width: 900px;
+  }
+  @include widescreen {
+    max-width: 900px;
+  }
+}

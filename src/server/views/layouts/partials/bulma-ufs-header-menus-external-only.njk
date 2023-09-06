@@ -1,4 +1,4 @@
-{#{% set applicationsLink = applicationsLink if applicationsLink '/prototypes/external-users/applications' %}#}
+{#{% set ApplicationsLink = ApplicationsLink if ApplicationsLink '/prototypes/external-users/Applications' %}#}
 
 {#{% set accountSettingsLink = '/prototypes/edi/home'  %}#}
 {% set accountSettingsLink = altProfilePagelink if altProfilePagelink else '/prototypes/edi/home' %}
@@ -11,6 +11,7 @@
 {#{% set accountSettingsLink = accountSettingsLink if accountSettingsLink else 'Dr. Jane Doeington-Longname' %}#}
 
 <header class="new-header {% if navType == 'admin' %} new-header--admin {% else %} new-header--external {% endif %}" role="banner">
+    <!-- bulma-ufs-header-menus-external-only.njk -->
     <div class="container new-header__top">
         <div class="columns">
             <div class="column {#column-one-quarter#}">
@@ -29,8 +30,8 @@
                             <a href="{{ homeLink }}" class="new-header__nav-link {% if activeNavItem == 'home' %} new-header__nav-link--active {% endif %}">Home</a>
                         </li>
                         <li class="new-header__nav-item">
-                            {#<a href="/prototypes/external-users/applications" class="new-header__nav-link {% if activeNavItem == 'applications' %} new-header__nav-link--active {% endif %}">Applications</a>#}
-                            <a href="{{ applicationsLink }}" class="new-header__nav-link {% if activeNavItem == 'applications' %} new-header__nav-link--active {% endif %}">Applications</a>
+                            {#<a href="/prototypes/external-users/Applications" class="new-header__nav-link {% if activeNavItem == 'Applications' %} new-header__nav-link--active {% endif %}">Applications</a>#}
+                            <a href="{{ ApplicationsLink }}" class="new-header__nav-link {% if activeNavItem == 'Applications' %} new-header__nav-link--active {% endif %}">Applications test</a>
                         </li>
 
                         <li class="new-header__nav-item">
