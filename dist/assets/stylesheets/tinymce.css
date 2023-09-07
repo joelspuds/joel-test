@@ -52,11 +52,13 @@ body {
 }
 .mce-content-body {
     font-family: 'Roboto', sans-serif!important;
-    font-size: 16px;
+    /*font-size: 16px;*/
     color: #000;
     font-weight: 400;
     /*padding: 0 25px 25px*/
-    padding: 0 12px 12px
+    padding: 0 12px 12px;
+    font-size:19px!important;
+    line-height: 24px;
 }
 .mce-content-body * {
     background-position: initial
