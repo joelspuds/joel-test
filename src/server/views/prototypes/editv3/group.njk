@@ -23,14 +23,14 @@
 
 
 {% set pageTitle = 'Home ' + GLOBAL_TAG_TITLE_SUFFIX %}
-{% set backLinkContents =  [{url:'/prototypes/editv3/role', text:'Back to role'}] %}
+{% set backLinkContents =  [{url:'/prototypes/editv3/role', text:'Back to confirmation'}] %}
 
 
 {% block content %}
 
     {% call components.bulmaRow() %}
         {% call components.bulmaColumnAny(size='is-two-thirds') %}
-            {{ components.captionHeading(text='Select your group', caption=prototypeData.oppTitle) }}
+            {{ components.captionHeading(text='Which staff group needs to know about your application?', caption=prototypeData.oppTitle) }}
         {%- endcall %}
     {%- endcall %}
 
@@ -38,9 +38,11 @@
 
         {% call components.bulmaRow() %}
 
-            {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen', customID='mainContent') %}
+            {% call components.bulmaColumnAny(size='column is-9', customID='mainContent') %}
 
-                <p class="govuk-body">You can select a suitable group for your application. These groups are defined by your research office. </p>
+                <p class="govuk-body">This will alert the right people at your organisation, so they can help you prepare and submit your application.</p>
+
+                <p class="govuk-body">Even if you get the group slightly wrong, the staff in that group can reassign your application to the right one.</p>
 
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset">
@@ -105,7 +107,7 @@
             {% call components.bulmaColumnAny(size='column  is-full is-9-desktop is-9-widescreen') %}
 
                 {% call components.formGroup() %}
-                    {{ components.button(text='Continue', extraClass="application-controls__submit")}}
+                    {{ components.button(text='Save and continue', extraClass="application-controls__submit")}}
                 {%- endcall %}
 
             {%- endcall %}

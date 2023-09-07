@@ -10,7 +10,8 @@
     box-sizing: border-box;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    font-weight: 400
+    font-weight: 400;
+
 }
 :focus {
     outline: 0
