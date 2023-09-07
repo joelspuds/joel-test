@@ -34,11 +34,10 @@
        {%- endcall %}
     {%- endcall %}
 
-    {% call components.form(action='#', method='POST', name='form') %}
+
 
         <section class="section" id="mainContent">
 
-            {% call components.form(action='#', method='POST',name='submitForm') %}
 
                 {% call components.bulmaRow() %}
 
@@ -46,12 +45,12 @@
 
                         <p class="govuk-body">Most recent edits are at the top of the list.</p>
 
-                        <div class="application-items u-space-b45">
+                       {# <div class="application-items u-space-b45">
 
                             <div class="application-item  application-item--skinny">
                                 <div class="application-item__contents govuk-clearfix">
                                     <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Details and summary</span>
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" ><a href="#" class="govuk-link">Details and summary</a></span>
                                         <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Renata Minchin</p>
 
                                     </div>
@@ -64,7 +63,7 @@
                             <div class="application-item  application-item--skinny">
                                 <div class="application-item__contents govuk-clearfix">
                                     <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Details and summary</span>
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" ><a href="#" class="govuk-link">Details and summary</a></span>
                                         <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
                                     </div>
                                     <div class="application-item__right u-align-right">
@@ -76,7 +75,7 @@
                             <div class="application-item  application-item--skinny">
                                 <div class="application-item__contents govuk-clearfix">
                                     <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs > University of Wales costs</span>
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs > <a href="#" class="govuk-link">University of Wales costs</a></span>
                                         <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
                                     </div>
                                     <div class="application-item__right u-align-right">
@@ -87,7 +86,7 @@
                             <div class="application-item  application-item--skinny application-item--older">
                                 <div class="application-item__contents govuk-clearfix">
                                     <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs > University of Wales costs</span>
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs > <a href="#" class="govuk-link">University of Wales costs</a></span>
                                         <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
 
                                     </div>
@@ -99,7 +98,7 @@
                             <div class="application-item  application-item--skinny application-item--older">
                                 <div class="application-item__contents govuk-clearfix">
                                     <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs > University of Wales costs</span>
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs > <a href="#" class="govuk-link">University of Wales costs</a></span>
                                         <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
 
                                     </div>
@@ -111,7 +110,7 @@
                             <div class="application-item  application-item--skinny application-item--older">
                                 <div class="application-item__contents govuk-clearfix">
                                     <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs > University of Wales costs</span>
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs > <a href="#" class="govuk-link">University of Wales costs</a></span>
                                         <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
 
                                     </div>
@@ -124,7 +123,7 @@
                             <div class="application-item  application-item--skinny">
                                 <div class="application-item__contents govuk-clearfix">
                                     <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Details and summary</span>
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" ><a href="#" class="govuk-link">Details and summary</a></span>
                                         <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
                                     </div>
                                     <div class="application-item__right u-align-right">
@@ -136,7 +135,7 @@
                             <div class="application-item  application-item--skinny">
                                 <div class="application-item__contents govuk-clearfix">
                                     <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Case for support</span>
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" ><a href="#" class="govuk-link">Case for support</a></span>
                                         <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
                                     </div>
                                     <div class="application-item__right u-align-right">
@@ -148,7 +147,119 @@
                             <div class="application-item  application-item--skinny">
                                 <div class="application-item__contents govuk-clearfix">
                                     <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Case for support</span>
+                                        <span class="govuk-!-display-block govuk-!-font-size-16" ><a href="#" class="govuk-link">Case for support</a></span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">2 September 2012, 7.58pm</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>#}
+                        <div class="application-items u-space-b45">
+
+                            <div class="application-item  application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16">Details and summary</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Renata Minchin</p>
+
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">7 September 2023 , 7:48 am</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="application-item  application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16">Details and summary</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">6 September 2012, 4.28pm</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="application-item  application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16">Resources and costs &gt; University of Wales costs</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">4 September 2023, 11.03am</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="application-item  application-item--skinny application-item--older">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16">Resources and costs &gt; University of Wales costs</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
+
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">4 September 2023, 9.45am</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="application-item  application-item--skinny application-item--older">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16">Resources and costs &gt; University of Wales costs</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
+
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">3 September 2022, 10.48am</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="application-item  application-item--skinny application-item--older">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16">Resources and costs &gt; University of Wales costs</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
+
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">3 September 2022, 9.37am</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="application-item  application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16">Details and summary</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">3 September 2012, 8.41am</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="application-item  application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16">Case for support</span>
+                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
+                                    </div>
+                                    <div class="application-item__right u-align-right">
+                                        <span class="meta">3 September 2012, 7.12am</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="application-item  application-item--skinny">
+                                <div class="application-item__contents govuk-clearfix">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block govuk-!-font-size-16">Case for support</span>
                                         <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
                                     </div>
                                     <div class="application-item__right u-align-right">
@@ -159,42 +270,12 @@
 
                         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     {%- endcall %}
-
                 {%- endcall %}
 
 
-            {%- endcall %}
+                    </section>
 
-
-        </section>
-
-
-    {%- endcall %} {# end form #}
 
     {% include '../../layouts/partials/user-contact.njk' %}
 
@@ -202,5 +283,4 @@
 {% block bodyScripts %}
 
 {% endblock %}
-
 
