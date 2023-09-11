@@ -73,6 +73,45 @@
                             </ul>
                         </div>
 
+                        <style>
+                            .showHideText {
+                                position:absolute;
+                                font-weight: normal;
+                                /*right: 28px;
+                                top:8px;*/
+                                right: 8px;
+                                top:8px;
+                                font-size:16px;
+                            }
+                            .filter__title--noArrow {
+                                position: relative;
+                            }
+
+                            .filter__title--noArrow:focus {
+                                background-color: #ffdd00;
+                            }
+
+                            .filter__title--noArrow:after {
+                                content:''!important;
+                            }
+                        </style>
+
+                        <div class="filter filter-toggle ">
+                            <button class="filter__title filter__title--noArrow" type="button" onclick="toggleVisibility2(this, 'toggleCouncilsList2', 'js-hidden')" aria-expanded="false">Filter by council<span class="showHideText"><span id="showText">Show</span><span id="hideText" class=" govuk-visually-hidden">Hide</span> <span class="govuk-visually-hidden"> filters for funding councils</span></span></button>
+                            {#<h2 class="filter__title" tabindex="0" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')">Filter by council</h2>#}
+                            <span class="filter__toggle"></span>
+                            <ul class="filter__list u-clearfix js-hidden" id="toggleCouncilsList2">
+                                {% for item in allCouncils %}
+                                    <li class="filter__item filter__item--small govuk-clearfix">
+                                        <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                            <input class="govuk-checkboxes__input " id="filterCouncils_{{ item.index }}" type="checkbox" name="filterCouncils_{{ item.index }}" value="{{ item.name }}">
+                                            <label for="filterCouncils_{{ item.index }}" class="govuk-checkboxes__label u-display-ib">{{ item.value }}</label>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
 
                     </div>
                 {%- endcall %}
@@ -80,6 +119,10 @@
                 {% call components.bulmaColumnAny(size='column is-8') %}
 
                     <p class="govuk-body"> 👈 Over there!</p>
+
+                    <ul>
+                        <li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li><li>Lots of stuff</li>
+                    </ul>
 
                 {%- endcall %}
 
@@ -106,8 +149,34 @@
         }
         // return false;
       }
-      function hasClass(target, className) {
-        return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+
+
+      function toggleVisibility2(_this, id, className) {
+          // event.preventDefault();
+          let toggleSwitch = _this;
+          let toggleItem = document.getElementById(id);
+          let showText = document.getElementById('showText');
+          let hideText = document.getElementById('hideText');
+          if (hasClass(toggleItem, className)) {
+              toggleSwitch.classList.add('filter__title--closed');
+              toggleItem.classList.remove(className);
+              toggleSwitch.setAttribute('aria-expanded', true);
+              showText.classList.add('govuk-visually-hidden');
+              hideText.classList.remove('govuk-visually-hidden');
+          }
+          else  {
+              toggleSwitch.classList.remove('filter__title--closed');
+              toggleItem.classList.add(className);
+              toggleSwitch.setAttribute('aria-expanded', false);
+              showText.classList.remove('govuk-visually-hidden');
+              hideText.classList.add('govuk-visually-hidden');
+          }
+          // return false;
       }
+
+      function hasClass(target, className) {
+          return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+      }
+
     </script>
 {% endblock %}
