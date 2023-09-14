@@ -321,7 +321,13 @@ function classificationsAddGet(req, res) {
 }
 
 function classificationsAddPost(req, res) {
-  const { searchQuery, tagSearch, saveAndReturn, weightings } = req.body;
+  const { searchQuery, tagSearch, saveAndReturn, weightings,
+    classificationTag0, classificationPercent0,
+    classificationTag1, classificationPercent1,
+    classificationTag2, classificationPercent2,
+    classificationTag3, classificationPercent3,
+    classificationTag4, classificationPercent4
+  } = req.body;
   // console.log(req.body);
   // console.log(allTheCats);
   console.log('searchQuery = ' + searchQuery);
@@ -336,10 +342,11 @@ function classificationsAddPost(req, res) {
     //console.log(`${key} ${value}`);
 
     if (key.includes('classification')) {
-      classificationSavedTags.push({
+      /*classificationSavedTags.push({
         tag: value,
-        value: ''
-      });
+        value: '',
+      });*/
+      //classificationSavedTags.tag =
     }
     if (key.includes('routing')) {
       routingSavedTags.push(value);
@@ -349,6 +356,32 @@ function classificationsAddPost(req, res) {
     }
     if (key.includes('reporting')) {
       reportingSavedTags.push(value);
+    }
+
+    // classificationTag0
+    // classificationPercent0
+    if (classificationTag0) {
+      classificationSavedTags.push({
+        tag: classificationTag0,
+        value: classificationPercent0
+      });
+      // classificationSavedTags[0].value.push();
+    }
+    if (classificationTag1) {
+      classificationSavedTags[1].tag = classificationTag1;
+      classificationSavedTags[1].value = classificationPercent1;
+    }
+    if (classificationTag2) {
+      classificationSavedTags[2].tag = classificationTag2;
+      classificationSavedTags[2].value = classificationPercent2;
+    }
+    if (classificationTag3) {
+      classificationSavedTags[3].tag = classificationTag3;
+      classificationSavedTags[3].value = classificationPercent3;
+    }
+    if (classificationTag4) {
+      classificationSavedTags[4].tag = classificationTag4;
+      classificationSavedTags[4].value = classificationPercent4;
     }
 
     //console.log('key = ' + key);
@@ -404,7 +437,22 @@ function classificationsWeightingsGet(req, res) {
 }
 
 function classificationsWeightingsPost(req, res) {
-  const {} = req.body;
+  const { weighting_1, weighting_2, weighting_3, weighting_4, weighting_5 } = req.body;
+  console.log(prototypeData.classificationSavedTags);
+  console.log(weighting_1 + ' ' + weighting_2 + ' ' + weighting_3 + ' ' + weighting_4 + ' ' + weighting_5);
+  // eval(thisArray + "Items").splice(thisIndex,1);
+  for (let i = 0; i < 5; i++) {
+    if (eval('weighting_' + parseInt(i + 1)) !== null || eval('weighting_' + parseInt(i + 1)) !== '' || eval('weighting_' + parseInt(i + 1)) !== undefined) {
+      prototypeData.classificationSavedTags[i].value = eval('weighting_' + parseInt(i + 1));
+      console.log(prototypeData.classificationSavedTags[i].tag + ' ' + prototypeData.classificationSavedTags[i].value);
+    }
+  }
+
+  /*if(weighting_1 !== null || weighting_1 !== '' || weighting_1 !== undefined) {
+    prototypeData.classificationSavedTags[0].value = weighting_1;
+  }*/
+
+  console.log(prototypeData.classificationSavedTags);
 
   return res.redirect('/prototypes/classifications/research-tags');
 }

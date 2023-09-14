@@ -61,7 +61,7 @@
                                             {{ classifications.tag }}
                                         </td>
                                         <td class="govuk-table__cell govuk-table__cell--numeric">
-                                            <label for="weighting_{{ loop.index }}" class="govuk-visually-hidden">Percentage weighting value for {{ classifications }}</label>
+                                            <label for="weighting_{{ loop.index }}" class="govuk-visually-hidden">Percentage weighting value for {{ classifications.tag }}</label>
                                             <input type="text" class="govuk-input govuk-input--width-4" id="weighting_{{ loop.index }}" name="weighting_{{ loop.index }}" value="{{ classifications.value }}">
                                         </td>
                                     </tr>

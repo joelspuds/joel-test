@@ -7,7 +7,8 @@
         {% if totalItems < itemsPerPage %}
             <div class="pager__summary">Showing {{ totalItems }} items</div>
         {% else %}
-            <div class="pager__summary">Showing {{ (currentPage * 10)-9 }} –  {{ currentPage * 10 }} of {{ totalItems }} items</div>
+            {#<div class="pager__summary">Showing {{ (currentPage * 10)-9 }} – {{ currentPage * totalItems }} of {{ totalItems }} items</div>#}
+            <div class="pager__summary">Showing {{ (currentPage * 10)-9 }} – {{ itemsPerPage }} of {{ totalItems }} items</div>
         {% endif %}
 
         {% if totalItems > itemsPerPage %}

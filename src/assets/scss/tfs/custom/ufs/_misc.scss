@@ -292,3 +292,49 @@ details {
     max-width: 900px;
   }
 }
+
+
+.application-items--log {
+
+
+
+  .application-item__contents {
+    padding-right:0!important;
+  }
+
+  .application-item__left {
+    padding-right: 0!important;
+  }
+
+  .application-item__left,
+  .application-item__right,
+  .govuk-details__summary-text {
+    @include govuk-font($size: 16);
+  }
+}
+
+.govuk-details--logs {
+  width: 100%;
+  max-width: 100%!important;
+
+  #detailsHide {
+    display:none;
+  }
+
+  &[open] {
+    #detailsShow {
+      display:none;
+    }
+    #detailsHide {
+      display:inline!important;
+    }
+  }
+}
+
+.govuk-details--logs .govuk-details__text {
+  border: none;
+  padding-left: 0;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+}

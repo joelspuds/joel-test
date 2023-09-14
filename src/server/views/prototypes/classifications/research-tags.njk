@@ -129,7 +129,7 @@
                                                 <span class="govuk-!-display-block meta">(Classification)</span>
                                             </td>
                                             <td class="govuk-table__cell govuk-table__cell--numeric">
-                                                <a href="#" class="govuk-link tagShifter" data-type="classification" data-value="{{ classifications.a }} {{ classifications.s }} {{ classifications.t }}">Add <span class="govuk-visually-hidden">this item to my list of research areas</span></a>
+                                                <a href="#" class="govuk-link tagShifterClassifications" data-type="classification" data-value="{{ classifications.a }} {{ classifications.s }} {{ classifications.t }}">Add <span class="govuk-visually-hidden">this item to my list of research areas</span></a>
                                             </td>
                                         {% else %}
                                             <td class="govuk-table__cell">
@@ -137,7 +137,7 @@
                                                 <span class="govuk-!-display-block meta">(Classification)</span>
                                             </td>
                                             <td class="govuk-table__cell govuk-table__cell--numeric">
-                                                <a href="#" class="govuk-link tagShifter" data-type="classification" data-value="{{ classifications.a }} {{ classifications.s }} {{ classifications.t }}">Add <span class="govuk-visually-hidden">this item to my list of research areas</span></a>
+                                                <a href="#" class="govuk-link tagShifterClassifications" data-type="classification" data-value="{{ classifications.a }} {{ classifications.s }} {{ classifications.t }}">Add <span class="govuk-visually-hidden">this item to my list of research areas</span></a>
                                             </td>
                                         {% endif %}
 
@@ -329,11 +329,15 @@
             {% if prototypeData.classificationSavedTags|length > 1 %}
                 {% set tempString = '' %}
                 {% for item in prototypeData.classificationSavedTags %}
-                    {% set tempString = tempString + '"' + item.tag + '",' %}
+                    console.log('{{ item.tag }}' + ' ' + '{{ item.value }}');
+                    {#{% set tempString = tempString + '"' + item.tag + '",' %}#}
+                    {% set tempString = tempString + '{tag: "' + item.tag + '", value: "' + item.value + '"},' %}
                 {% endfor %}
                 {% set tempString = '[' + tempString + ']' %}
                 classificationItems = {{ tempString }}
-                displayArrays('classification');
+                    console.log('{{ tempString }}');
+                // displayArrays('classification');
+                displayClassificationArray();
             {% endif %}
 
             let routingItems = [];
@@ -370,7 +374,7 @@
             {% endif %}
 
             function displayArrays(arrayInQuestion) {
-                //console.log('arrayInQuestion = ' + arrayInQuestion);
+                console.log('arrayInQuestion = ' + arrayInQuestion);
                 $('#noTagsMessage').addClass('govuk-visually-hidden');
                 $('#tagsExist').removeClass('govuk-visually-hidden');
                 let tempHTMLString = '';
@@ -382,6 +386,26 @@
                 $('ol[data-container=' + arrayInQuestion + ']').html(tempHTMLString).removeClass('govuk-visually-hidden');
             };
 
+
+            // ******************
+            function displayClassificationArray() {
+                console.log(classificationItems);
+                $('#noTagsMessage').addClass('govuk-visually-hidden');
+                $('#tagsExist').removeClass('govuk-visually-hidden');
+                let tempHTMLString = '';
+                for(let i = 0; i < classificationItems.length; i++) {
+                    tempHTMLString += '<li class="ra-items">'+
+                        '<input type="hidden" class="tags-input" id="classificationTagHidden' + i + '" name="classificationTag' + i + '" value="' + classificationItems[i].tag + '">' +
+                        '<input type="hidden" class="tags-input" id="classificationPercentHidden' + i + '" name="classificationPercent' + i + '" value="' + classificationItems[i].value + '">' +
+                        '<span id="classificationVisible' + i + '" class="">' + classificationItems[i].tag + '('+ classificationItems[i].value +'%)</span>'+
+                        ' <a class="govuk-link itemRemover" href="#" data-item="' + classificationItems[i].tag + '" data-array="classification" data-index="'+i+'">Remove<span> item from this list</span></a></li>';
+
+                };
+                console.log('tempHTMLString = ' + tempHTMLString);
+                $('ol[data-container=classification]').html(tempHTMLString).removeClass('govuk-visually-hidden');
+            };
+
+
             $('body').on('click', '.itemRemover', function(e) {
                 console.log('bah!');
                 e.preventDefault();
@@ -390,7 +414,12 @@
                 console.log('thisArray = ' + thisArray + ', thisIndex = ' + thisIndex);
                 // let thisValue = $(this).attr('data-item');
                 eval(thisArray + "Items").splice(thisIndex,1);
-                displayArrays(thisArray);
+                if(thisArray === 'classification') {
+                    displayClassificationArray();
+                } else {
+                    displayArrays(thisArray);
+                }
+
             });
 
             $('.tagShifter').each(function(index){
@@ -414,18 +443,37 @@
                     }
 
                     displayArrays(thisType);
-
-                    console.log(classificationItems);
-                    console.log(routingItems);
-                    console.log(qualifierItems);
-                    console.log(reportingItems);
+                    // console.log(routingItems);
+                    // console.log(qualifierItems);
+                    // console.log(reportingItems);
                 });
             });
 
 
+            $('.tagShifterClassifications').each(function(index){
+                $(this).on('click', function(e){
+                    e.preventDefault();
+                    let thisValue = $(this).attr('data-value');
 
+                    if(classificationItems.includes(thisValue)) {
+                        console.log('already exists in array');
+                    } else {
+                        if(classificationItems.length < 5) {
+                            // eval(thisType + "Items").push(thisValue);
+                            classificationItems.push({
+                                tag: thisValue,
+                                value: ''
+                            })
 
+                        } else {
+                            console.log('This array is full');
+                        }
+                    }
+                    displayClassificationArray();
 
+                    console.log(classificationItems);
+                });
+            });
 
             $('.typeSelecta').each(function(index){
                 $(this).on('click', function(e){

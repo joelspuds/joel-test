@@ -1,0 +1,272 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'applications' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/editv3/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/editv3/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = true %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = false %}
+
+{% set pageTitle = 'Details and summary' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Rosaria Lingham' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{% set loggedOut = false %}
+
+
+{% set pageTitle = 'Details and summary ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Details and summary', caption='APP420: Ribosome profiling of Trypanosoma brucei') }}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.form(action='#', method='POST', name='form') %}
+
+        <section class="section" id="mainContent">
+
+
+            <style>
+                .tox-statusbar__wordcount, .tox-statusbar__branding { display: none!important}
+            </style>
+
+
+            {% call components.form(action='#', method='POST',name='submitForm') %}
+
+                {% call components.bulmaRow() %}
+
+                    {% call components.bulmaColumnAny(size='is-8') %}
+
+                        {% call components.formGroup() %}
+
+                            <div class="govuk-form-group ">
+                                <label class="govuk-label govuk-label--s  govuk-!-font-weight-bold " for="projectName">Application name
+                                    <span class="govuk-hint">Make this the title of your research proposal.</span>
+                                </label>
+                                <input class="govuk-input " id="projectName" type="text" name="projectName" value="Ribosome profiling of Trypanosoma brucei">
+                            </div>
+
+                        {%- endcall %}
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+                {% call components.bulmaRow() %}
+
+                    {% call components.bulmaColumnAny(size='is-8') %}
+
+                        <div class="govuk-form-group ">
+                            <label class="govuk-label govuk-label--s  govuk-!-font-weight-bold " for="projectSummary">Summary
+                                <span class="govuk-hint">Provide a brief synopsis of the research programme you're proposing to conduct over a 2-year period. You have 500 words.</span>
+                            </label>
+                            <details class="govuk-details" data-module="govuk-details" role="group">
+                                <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                    <span class="govuk-details__summary-text">Guidance for writing a summary</span>
+                                </summary>
+                                <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                    <p class="govuk-body">{{ prototypeData.detailsGuidance }}</p>
+                                </div>
+                            </details>
+                            <textarea class="govuk-textarea govuk-js-character-count" name="projectSummary" id="projectSummary" rows="18">Iure deserunt ullam enim debitis consequatur et et. Illo non amet rerum qui aliquid. Saepe inventore dolores molestias.<br><br>
+
+Qui cupiditate dolores necessitatibus maiores nisi. Et in eum qui quasi debitis veniam vel. Aut voluptatibus voluptatem commodi nihil voluptas. Asperiores in ut corporis fuga inventore sunt dicta aliquid. Voluptas ipsum autem velit cum.<br><br>
+
+Sunt voluptatem voluptas voluptate aut commodi tenetur nobis. Corrupti quia magnam ex a est. Neque sint explicabo voluptates. Totam omnis ducimus doloremque veniam non id vero dolor. Corrupti voluptate dolore quo.<br><br>
+
+Reprehenderit ut laborum totam ullam. Delectus repellat alias consequatur. Incidunt maiores beatae ea. Rerum nihil quas enim. Perferendis et dolores animi ab. Et nobis nesciunt quis. Dolor enim ut iusto et expedita dolore reprehenderit. Est laborum ullam enim qui veritatis vitae molestiae. Voluptate aspernatur fugit perferendis blanditiis consequatur.</textarea>
+                            <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 250 words remaining</span></p>
+                        </div>
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+                {% call components.bulmaRow() %}
+
+                    {% call components.bulmaColumnAny(size='is-8') %}
+
+                        {% call components.formGroup() %}
+                            <div class="application-item">
+                                <div class="application-item__contents application-item__contents--mac">
+                                    <fieldset class="govuk-fieldset" aria-describedby="markAsComplete">
+                                        <legend class="govuk-fieldset__legend govuk-visually-hidden">
+                                            <h3 class="govuk-fieldset__heading" id="">Mark as complete</h3>
+                                        </legend>
+                                        <div class="govuk-checkboxes">
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input" id="markAsComplete" name="isComplete" type="checkbox" {% if prototypeData.detailsIsComplete1 %} checked{% endif %} >
+                                                <label class="govuk-label govuk-checkboxes__label" for="markAsComplete">Mark as complete</label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        {%- endcall %}
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+                {% call components.bulmaRow() %}
+
+                    {% call components.bulmaColumnAny(size='is-8') %}
+
+                        {% call components.formGroup() %}
+                            <div class="application-controls govuk-clearfix">
+
+                                <input class="govuk-button application-controls__submit" type="submit" value="Save and return" {% if prototypeData.detailsEditMode == 'locked' %} disabled {% endif %}>
+                                <a class="govuk-link" href="#">Return to Application overview</a>
+                            </div>
+                        {%- endcall %}
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+                {% call components.bulmaRow(extraClass='u-space-t45') %}
+
+                    {% call components.bulmaColumnAny(size='is-8') %}
+
+
+                        {{ components.captionHeading(text='Edit log', tag='h2', size='s') }}
+
+
+                        <div class="application-items application-items--log u-space-b45">
+
+                            <h3 class="govuk-heading-s u-space-b10">Section last updated</h3>
+                            <div class="application-item application-item--skinny u-space-b20">
+                                <div class="application-item__contents govuk-clearfix ">
+                                    <div class="application-item__left">
+                                        <span class="govuk-!-display-block u-space-b5"><strong>Rosaria Lingham</strong></span>
+                                        <span class="meta">Details and summary updated</span>
+                                    </div>
+                                    <div class="application-item__right u-align-right ">
+                                        <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <details class="govuk-details govuk-details--logs" data-module="govuk-details" role="group">
+                                <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                    <span class="govuk-details__summary-text"><span id="detailsShow">Show</span> <span id="detailsHide" class="{#govuk-visually-hidden#}" >Hide</span>  all section updates (0)</span>
+                                </summary>
+                                <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                    <div class="application-item application-item--skinny">
+                                        <div class="application-item__contents govuk-clearfix ">
+                                            <div class="application-item__left">
+                                                <span class="govuk-!-display-block meta ">There are no other edits to display.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </details>
+
+                        </div>
+
+                    {%- endcall %}
+
+                {%- endcall %}
+
+            {%- endcall %}
+
+
+        </section>
+
+
+    {%- endcall %} {# end form #}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+    <script src="https://cdn.tiny.cloud/1/phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        const counteroutputFoot = document.getElementById('wordCount');
+        let words = 0;
+        const limit = 500;
+        let tinyMCEWordCount;
+
+        tinymce.init({
+            selector: '#projectSummary',
+            height: 500,
+            plugins: [
+                'advlist autolink lists link image preview anchor',
+                'media table paste  wordcount'
+            ],
+            setup: function(editor) {
+
+                editor.on('keyup', function(e) {
+                    tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                    console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                    words = tinyMCEWordCount;
+                    let remainder = limit - words;
+                    if (words < limit) {
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    } else {
+                        let overCount = words - limit;
+                        counteroutputFoot.innerHTML = '<span style="font-weight:700;color:red">You have ' +  overCount + ' words too many</span>';
+                    }
+                });
+
+                editor.on('init', function(e) {
+                    setTimeout(function(){
+                        tinyMCEWordCount = parseInt(document.getElementsByClassName('tox-statusbar__wordcount')[0].innerHTML.split([' ']));
+                        console.log('tinyMCEWordCount = ' + tinyMCEWordCount);
+                        words = tinyMCEWordCount;
+                        let remainder = limit - words;
+                        counteroutputFoot.innerHTML = 'You have ' + remainder + ' words remaining';
+                    }, 500);
+                });
+            },
+            toolbar: 'formatselect | bold italic | bullist numlist | align | indent outdent | link | table |',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+                '/stylesheets/tinymce.css'
+            ],
+            menubar: false,
+        });
+
+    </script>
+    <script>
+        // show older changes
+        // openOlderChanges
+
+        Zepto(function($){
+            /*if (!document.cookie.match('cookieBannerDismissed')) {
+                $('#global-cookie-message').removeClass('cookie-hidden');
+            }
+            let date = new Date();
+            let daysValidFor = 30;
+            date.setTime(date.getTime() + (daysValidFor*24*60*60*1000));
+            let expires = 'expires='+ date.toUTCString();*/
+            /*$('#dismissCookieBanner').on('click', function(event) {
+                $('#global-cookie-message').hide().addClass('cookie-hidden');
+                document.cookie = 'cookieBannerDismissed=true;' + expires + '; path=/';
+            });*/
+            $('#openOlderChanges').on('click', function(event) {
+                event.preventDefault();
+                // event.stopPropagation();
+                $(this).addClass('govuk-visually-hidden');
+                $('.application-item--older').removeClass('govuk-visually-hidden');
+
+            });
+        })
+
+    </script>
+{% endblock %}
+
+
