@@ -145,34 +145,45 @@
                     {% call components.bulmaColumnAny(size='is-8') %}
 
 
-                        {{ components.captionHeading(text='Edit history', tag='h2', size='s') }}
+                                {{ components.captionHeading(text='Section last updated', tag='h2', size='m') }}
 
 
-                        <div class="application-items u-space-b45">
-                            {% if prototypeData.detailsJustBeenUpdated == true %}
-                                <h3 class="govuk-heading-xs u-space-b10">Most recent change</h3>
-                                <div class="application-item  application-item--skinny">
-                                    <div class="application-item__contents govuk-clearfix">
-                                        <div class="application-item__left">
-                                            <span class="govuk-!-display-block govuk-!-font-size-16" >Details and summary</span>
-                                            <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
+                                {% if prototypeData.detailsJustBeenUpdated == true %}
 
+                                    <div class="application-items application-items--log u-space-b45">
+                                        <div class="application-item application-item--skinny ">
+                                            <div class="application-item__one-col">
+                                                <span class="govuk-!-display-block u-space-b5"><strong>Rosaria Lingham</strong> on <span class="">15 September 2023 at 10:11 am</span></span>
+                                                <span class="meta">Details and summary updated</span>
+                                            </div>
                                         </div>
-                                        <div class="application-item__right u-align-right">
-                                            <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span>
+
+                                        <details class="govuk-details govuk-details--logs" data-module="govuk-details" role="group">
+                                            <summary class="govuk-details__summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+                                                <span class="govuk-details__summary-text"><span id="detailsShow">Show</span> <span id="detailsHide" class="{#govuk-visually-hidden#}" >Hide</span>  all section updates (0)</span>
+                                            </summary>
+                                            <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+                                                <div class="application-item application-item--skinny">
+                                                    <div class="application-item__one-col">
+
+                                                        <span class="meta">No more updates to this section.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </details>
+
+                                    </div>
+                                {% else %}
+
+                                <div class="application-items application-items--log u-space-b45">
+                                    <div class="application-item application-item--skinny u-space-b20">
+                                        <div class="application-item__one-col">
+                                            <span class="meta">No updates to this section.</span>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#" id="openOlderChanges" class="govuk-link govuk-!-display-block u-space-b10">Show older changes</a>
-                                <div class="application-item  application-item--skinny application-item--older govuk-visually-hidden">
-                                    <p class="govuk-body govuk-!-font-size-16 meta u-space-t10 u-space-b10">There are no other changes to display.</p>
-                                </div>
 
-                            {% else %}
-                                <p class="govuk-body meta">No changes have been made to this section yet.</p>
-                            {% endif %}
-
-                        </div>
+                                {% endif %}
 
                     {%- endcall %}
 

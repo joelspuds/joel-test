@@ -43,228 +43,76 @@
 
                     {% call components.bulmaColumnAny(size='is-9') %}
 
-                        <p class="govuk-body">Most recent edits are at the top of the list.</p>
+                        <div class="application-items application-items--log u-space-b45">
 
-                        {# <div class="application-items u-space-b45">
+                            <div class="application-item application-item--skinny ">
+                            <div class="application-item__one-col">
+                                <span class="govuk-!-display-block u-space-b5"><strong>Rosaria Lingham</strong> on <span class="">15 September 2023 at 4:11 pm</span></span>
+                                <span class="meta">Resources and costs updated</span>
+                            </div>
+                        </div>
 
-                            <div class="application-item  application-item--skinny">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" ><a href="#" class="govuk-link">Details and summary</a></span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Renata Minchin</p>
 
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span>
-                                    </div>
+                            <div class="application-item application-item--skinny ">
+                                <div class="application-item__one-col">
+                                    <span class="govuk-!-display-block u-space-b5"><strong>{{ 'firstAndLast' | giveMeAName }}</strong> on <span class="">15 September 2023 at 10:11 am</span></span>
+                                    <span class="meta">Details and summary updated</span>
                                 </div>
                             </div>
 
-                            <div class="application-item  application-item--skinny">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" ><a href="#" class="govuk-link">Details and summary</a></span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">6 September 2012, 4.28pm</span>
-                                    </div>
+                            <div class="application-item application-item--skinny ">
+                                <div class="application-item__one-col">
+                                    <span class="govuk-!-display-block u-space-b5"><strong>{{ 'firstAndLast' | giveMeAName }}</strong> on <span class="">13 September 2023 at 4:24 pm</span></span>
+                                    <span class="meta">Core team marked as complete</span>
                                 </div>
                             </div>
 
-                            <div class="application-item  application-item--skinny">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs > <a href="#" class="govuk-link">University of Wales costs</a></span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">4 September 2023, 11.03am</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="application-item  application-item--skinny application-item--older">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs > <a href="#" class="govuk-link">University of Wales costs</a></span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
-
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">4 September 2023, 9.45am</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="application-item  application-item--skinny application-item--older">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs > <a href="#" class="govuk-link">University of Wales costs</a></span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
-
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">3 September 2022, 10.48am</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="application-item  application-item--skinny application-item--older">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" >Resources and costs > <a href="#" class="govuk-link">University of Wales costs</a></span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
-
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">3 September 2022, 9.37am</span>
-                                    </div>
+                            <div class="application-item application-item--skinny ">
+                                <div class="application-item__one-col">
+                                    <span class="govuk-!-display-block u-space-b5"><strong>{{ 'firstAndLast' | giveMeAName }}</strong> on <span class="">13 September 2023 at 4:08 pm</span></span>
+                                    <span class="meta">Core team member added, {{ 'firstAndLast' | giveMeAName }}</span>
                                 </div>
                             </div>
 
-                            <div class="application-item  application-item--skinny">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" ><a href="#" class="govuk-link">Details and summary</a></span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">3 September 2012, 8.41am</span>
-                                    </div>
+                            <div class="application-item application-item--skinny ">
+                                <div class="application-item__one-col">
+                                    <span class="govuk-!-display-block u-space-b5"><strong>{{ 'firstAndLast' | giveMeAName }}</strong> on <span class="">13 September 2023 at 4:01 pm</span></span>
+                                    <span class="meta">Resources and costs page updated</span>
                                 </div>
                             </div>
 
-                            <div class="application-item  application-item--skinny">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" ><a href="#" class="govuk-link">Case for support</a></span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">3 September 2012, 7.12am</span>
-                                    </div>
+                            <div class="application-item application-item--skinny ">
+                                <div class="application-item__one-col">
+                                    <span class="govuk-!-display-block u-space-b5"><strong>{{ 'firstAndLast' | giveMeAName }}</strong> on <span class="">13 September 2023 at 3:54 pm</span></span>
+                                    <span class="meta">Organisation resources and costs page updated, University of Wales</span>
                                 </div>
                             </div>
 
-                            <div class="application-item  application-item--skinny">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16" ><a href="#" class="govuk-link">Case for support</a></span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">2 September 2012, 7.58pm</span>
-                                    </div>
+                            <div class="application-item application-item--skinny ">
+                                <div class="application-item__one-col">
+                                    <span class="govuk-!-display-block u-space-b5"><strong>{{ 'firstAndLast' | giveMeAName }}</strong> on <span class="">13 September 2023 at 2:14 pm</span></span>
+                                    <span class="meta">Details and summary marked as incomplete</span>
                                 </div>
                             </div>
 
-                        </div>#}
-                        <div class="application-items u-space-b45">
-
-                            <div class="application-item  application-item--skinny">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16">Details and summary</span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Renata Minchin</p>
-
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">7 September 2023 , 7:48 am</span>
-                                    </div>
+                            <div class="application-item application-item--skinny ">
+                                <div class="application-item__one-col">
+                                    <span class="govuk-!-display-block u-space-b5"><strong>{{ 'firstAndLast' | giveMeAName }}</strong> on <span class="">13 September 2023 at 1:48 pm</span></span>
+                                    <span class="meta">Details and summary marked as complete</span>
                                 </div>
                             </div>
 
-                            <div class="application-item  application-item--skinny">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16">Details and summary</span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">6 September 2023, 4.28pm</span>
-                                    </div>
+                            <div class="application-item application-item--skinny ">
+                                <div class="application-item__one-col">
+                                    <span class="govuk-!-display-block u-space-b5"><strong>{{ 'firstAndLast' | giveMeAName }}</strong> on <span class="">13 September 2023 at 12:32 pm</span></span>
+                                    <span class="meta">Project partner added, {{ 'firstAndLast' | giveMeAName }}</span>
                                 </div>
                             </div>
 
-                            <div class="application-item  application-item--skinny">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16">Resources and costs &gt; University of Wales costs</span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">4 September 2023, 11.03am</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="application-item  application-item--skinny application-item--older">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16">Resources and costs &gt; University of Wales costs</span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
-
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">4 September 2023, 9.45am</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="application-item  application-item--skinny application-item--older">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16">Resources and costs &gt; University of Wales costs</span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
-
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">3 September 2022, 10.48am</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="application-item  application-item--skinny application-item--older">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16">Resources and costs &gt; University of Wales costs</span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Tenkin Fisher</p>
-
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">3 September 2022, 9.37am</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="application-item  application-item--skinny">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16">Details and summary</span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">3 September 2023, 8.41am</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="application-item  application-item--skinny">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16">Case for support</span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">3 September 2023, 7.12am</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="application-item  application-item--skinny">
-                                <div class="application-item__contents govuk-clearfix">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block govuk-!-font-size-16">Case for support</span>
-                                        <p class="govuk-body u-space-b0 govuk-!-font-size-16 govuk-!-font-weight-bold">Rosaria Lingham</p>
-                                    </div>
-                                    <div class="application-item__right u-align-right">
-                                        <span class="meta">2 September 2023, 7.58pm</span>
-                                    </div>
+                            <div class="application-item application-item--skinny ">
+                                <div class="application-item__one-col">
+                                    <span class="govuk-!-display-block u-space-b5"><strong>{{ 'firstAndLast' | giveMeAName }}</strong> on <span class="">13 September 2023 at 12:15 pm</span></span>
+                                    <span class="meta">Project partner removed, Big Science Ltd</span>
                                 </div>
                             </div>
 
