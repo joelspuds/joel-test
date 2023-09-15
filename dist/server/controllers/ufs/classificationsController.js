@@ -321,12 +321,21 @@ function classificationsAddGet(req, res) {
 }
 
 function classificationsAddPost(req, res) {
-  const { searchQuery, tagSearch, saveAndReturn, weightings,
-    classificationTag0, classificationPercent0,
-    classificationTag1, classificationPercent1,
-    classificationTag2, classificationPercent2,
-    classificationTag3, classificationPercent3,
-    classificationTag4, classificationPercent4
+  const {
+    searchQuery,
+    tagSearch,
+    saveAndReturn,
+    weightings,
+    classificationTag0,
+    classificationPercent0,
+    classificationTag1,
+    classificationPercent1,
+    classificationTag2,
+    classificationPercent2,
+    classificationTag3,
+    classificationPercent3,
+    classificationTag4,
+    classificationPercent4
   } = req.body;
   // console.log(req.body);
   // console.log(allTheCats);

@@ -295,19 +295,29 @@ details {
 
 
 .application-items--log {
+  width: 100%;
+  max-width: 600px!important;
 
+  .application-item.application-item--skinny:last-of-type {
+    border-bottom: none!important;
+  }
+
+  .application-item.application-item--skinny {
+    border-bottom: none!important;
+    border-color: govuk-colour("light-grey");
+  }
 
 
   .application-item__contents {
     padding-right:0!important;
   }
 
-  .application-item__left {
-    padding-right: 0!important;
+  .application-item__one-col {
+    padding: 10px 0;
+    // border-bottom: 1px solid govuk-colour("light-grey");
   }
 
-  .application-item__left,
-  .application-item__right,
+  .application-item__one-col,
   .govuk-details__summary-text {
     @include govuk-font($size: 16);
   }
@@ -315,7 +325,7 @@ details {
 
 .govuk-details--logs {
   width: 100%;
-  max-width: 100%!important;
+  max-width: 600px!important;
 
   #detailsHide {
     display:none;

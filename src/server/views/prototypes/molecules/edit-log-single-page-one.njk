@@ -142,21 +142,13 @@ Reprehenderit ut laborum totam ullam. Delectus repellat alias consequatur. Incid
                     {% call components.bulmaColumnAny(size='is-8') %}
 
 
-                        {{ components.captionHeading(text='Edit log', tag='h2', size='s') }}
-
+                        {{ components.captionHeading(text='Section last updated', tag='h2', size='m') }}
 
                         <div class="application-items application-items--log u-space-b45">
-
-                            <h3 class="govuk-heading-s u-space-b10">Section last updated</h3>
-                            <div class="application-item application-item--skinny u-space-b20">
-                                <div class="application-item__contents govuk-clearfix ">
-                                    <div class="application-item__left">
-                                        <span class="govuk-!-display-block u-space-b5"><strong>Rosaria Lingham</strong></span>
-                                        <span class="meta">Details and summary updated</span>
-                                    </div>
-                                    <div class="application-item__right u-align-right ">
-                                        <span class="meta">{{ 'dataAndTime' | dateAndTime() }}</span>
-                                    </div>
+                            <div class="application-item application-item--skinny ">
+                                <div class="application-item__one-col">
+                                    <span class="govuk-!-display-block u-space-b5"><strong>Rosaria Lingham</strong> on <span class="">15 September 2023 at 10:11 am</span></span>
+                                    <span class="meta">Details and summary updated</span>
                                 </div>
                             </div>
 
@@ -166,10 +158,9 @@ Reprehenderit ut laborum totam ullam. Delectus repellat alias consequatur. Incid
                                 </summary>
                                 <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
                                     <div class="application-item application-item--skinny">
-                                        <div class="application-item__contents govuk-clearfix ">
-                                            <div class="application-item__left">
-                                                <span class="govuk-!-display-block meta ">There are no other edits to display.</span>
-                                            </div>
+                                        <div class="application-item__one-col">
+
+                                            <span class="meta">There are no other edits to display.</span>
                                         </div>
                                     </div>
                                 </div>
