@@ -307,14 +307,12 @@ details {
     border-color: govuk-colour("light-grey");
   }
 
-
   .application-item__contents {
     padding-right:0!important;
   }
 
   .application-item__one-col {
     padding: 10px 0;
-    // border-bottom: 1px solid govuk-colour("light-grey");
   }
 
   .application-item__one-col,
@@ -339,8 +337,17 @@ details {
       display:inline!important;
     }
   }
+
+  .govuk-details__text {
+    border: none;
+    padding-left: 0;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
 }
 
+/*
 .govuk-details--logs .govuk-details__text {
   border: none;
   padding-left: 0;
@@ -348,3 +355,4 @@ details {
   max-width: 100%;
   min-width: 100%;
 }
+*/
