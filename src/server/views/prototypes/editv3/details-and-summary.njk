@@ -85,6 +85,8 @@
                             <p class="govuk-body u-space-t20"><span id="wordCount" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 250 words remaining</span></p>
                         </div>
 
+                        <strong class="govuk-tag govuk-tag--tiny govuk-tag--red">Incomplete</strong>
+
                     {%- endcall %}
 
                 {%- endcall %}
@@ -92,6 +94,9 @@
                 {% call components.bulmaRow() %}
 
                     {% call components.bulmaColumnAny(size='is-8') %}
+
+
+
 
                         {% call components.formGroup() %}
                             <div class="application-item">

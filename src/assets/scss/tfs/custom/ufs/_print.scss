@@ -68,4 +68,171 @@
   details .govuk-details__text {
     display: block !important;
   }
+
+  .application-data, .application-data * {
+    font-size: 12pt;
+  }
+  .govuk-heading-l {
+    font-size: 16pt;
+  }
+
+  .govuk-heading-m {
+    font-size: 14pt;
+  }
+
+  .govuk-heading-s, .govuk-heading-xs {
+    font-size: 12pt;
+  }
+
+  div.serif {
+    font-size: 10pt;
+    line-height: 14pt!important;
+    }
+
+  div.govuk-body {
+    font-size: 10pt;
+    line-height: 16pt!important;
+  }
+
+  .govuk-list {
+    font-size: 12pt;
+    line-height: 1;
+    color: #000;
+  }
+
+  .govuk-table {
+    font-size: 12pt;
+    line-height: 1;
+    color: #000;
+  }
+
+
+}
+
+
+/*
+
+  Below added September 2023
+  file:///Users/joels/Desktop/APP102265_%20Harnessing%20solar%20energy%20to%20its%20full%20potential%20-%20UKRI%20Funding%20Service.html
+
+*/
+
+@media print {
+  html, body {
+    background-color: #fff;
+  }
+
+  a[href]:after {
+    content: none !important;
+  }
+
+  img[src]:after {
+    content: none !important;
+  }
+
+  body * {
+    color: #000!important;
+  }
+
+  main {
+    padding: 0 2em;
+  }
+
+  .column {
+    width: 100%!important;
+    clear: both;
+  }
+
+  .column {
+    /*width: 100%!important;
+    clear: both;*/
+  }
+
+  .column,
+  .columns,
+  .columns div[class*='is-'] {
+    display: block!important;
+    flex: none!important;
+    width: 100%!important;
+  }
+
+  #global-cookie-message,
+  header,
+  .new-header,
+  .app-phase-banner__wrapper,
+  .govuk-back-link,
+  .govuk-tabs__list,
+  .alerts,
+  .sticky-nav,
+  .govuk-heading_additional-link,
+  a[href="#main-content"],
+  footer,
+  .govuk-footer,
+  .ufs-footer{
+    display: none!important;
+  }
+
+  .print-show,
+  .govuk-tabs__panel--hidden {
+    display: block!important;
+  }
+
+  .print-hide {
+    display: none!important;
+  }
+
+  details .govuk-details__text {
+    display: block !important;
+  }
+
+  .application-data, .application-data * {
+    font-size: 12pt!important;
+  }
+
+  h1.govuk-heading-xl {
+    font-size: 16pt!important;
+  }
+
+  .govuk-caption-xl {
+    font-size: 14pt!important;
+  }
+
+  .section-break.section-break--hardcore, .section-break, .section-break--hardcore {
+    margin:10pt 0;
+  }
+
+  h2.govuk-heading-l, .govuk-heading-l  {
+    font-size: 16pt!important;
+  }
+
+  h2.govuk-heading-m, .govuk-heading-m {
+    font-size: 14pt !important;
+  }
+
+  h3.govuk-heading-s, .govuk-heading-s, h3.govuk-heading-xs, .govuk-heading-xs {
+    font-size: 12pt!important;
+  }
+
+  div.serif,
+  .serif,
+  div.govuk-body,
+  .govuk-body,
+  * .serif * .govuk-body,
+  * .serif * .govuk-list,
+  * .serif .govuk-body {
+    font-size: 10pt!important;
+    line-height: 14pt!important;
+  }
+
+  .govuk-list {
+    font-size: 10pt!important;;
+    line-height: 1!important;;
+    color: #000;
+  }
+
+  .govuk-table {
+    font-size: 12pt!important;;
+    line-height: 1;
+    color: #000;
+  }
 }

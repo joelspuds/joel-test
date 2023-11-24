@@ -4,6 +4,7 @@
 {#{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}#}
 {% set isAdminUser = false %}
 
+
 {% block content %}
 
     {% call components.bulmaRow() %}
@@ -24,9 +25,182 @@
 
                 <p class="govuk-body govuk-!-font-size-24">When you gaze into the abyss, the abyss also gazes into you.</p>
 
+
+
+
+
             {%- endcall %}
 
         {%- endcall %}
+
+        {% call components.bulmaRow() %}
+
+            {% call components.bulmaColumnAny(size='column is-full') %}
+
+                <table class="govuk-table responsive-table__table">
+                    <colgroup>
+                        <col width="16%">
+                        <col width="16%">
+                        <col width="20%">
+                        <col width="undefined%">
+                        <col width="undefined%">
+                        <col width="undefined%">
+                    </colgroup>
+                    <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th class="govuk-table__header" scope="col">Name</th>
+                        <th class="govuk-table__header" scope="col">Role</th>
+                        <th class="govuk-table__header" scope="col">Organisation</th>
+                        <th class="govuk-table__header govuk-table__header--numeric" scope="col">Time spent on project (%)</th>
+                        <th class="govuk-table__header govuk-table__header--numeric" scope="col">Total hours charged over duration of project</th>
+                        <th class="govuk-table__header" scope="col">
+                            <div class="govuk-visually-hidden">
+                                Action
+                            </div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="/post-decision/awards/230/setup/team-members/709/edit">Pauline Boyle</a>
+                        </td>
+                        <td class="govuk-table__cell">Principal Investigator</td>
+                        <td class="govuk-table__cell">University of Glasgow</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">25</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">100</td>
+                        <td aria-label="Action" class="govuk-table__cell">
+                            <a class="govuk-link" href="/post-decision/awards/230/setup/team-members/709/remove">Remove</a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="/post-decision/awards/230/setup/team-members/708/edit">thomas davy</a>
+                        </td>
+                        <td class="govuk-table__cell">Principal Investigator</td>
+                        <td class="govuk-table__cell">ZORG</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">100</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">1000</td>
+                        <td aria-label="Action" class="govuk-table__cell">
+                            <a class="govuk-link" href="/post-decision/awards/230/setup/team-members/708/remove">Remove</a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="/post-decision/awards/230/setup/team-members/699/edit">Zulu Thunder</a>
+                        </td>
+                        <td class="govuk-table__cell">Principal Investigator</td>
+                        <td class="govuk-table__cell">Babraham Institute</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">23</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">45</td>
+                        <td aria-label="Action" class="govuk-table__cell">
+                            <a class="govuk-link" href="/post-decision/awards/230/setup/team-members/699/remove">Remove</a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell " style="border-bottom:0">
+                            <a class="govuk-link" href="/post-decision/awards/230/setup/team-members/695/edit">Dave Nelson</a>
+                        </td>
+                        <td class="govuk-table__cell" style="border-bottom:0">Principal Investigator</td>
+                        <td class="govuk-table__cell" style="border-bottom:0">Bath Spa University</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom:0">50</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric" style="border-bottom:0">0</td>
+                        <td aria-label="Action" class="govuk-table__cell" style="border-bottom:0">
+                            <a class="govuk-link" href="/post-decision/awards/230/setup/team-members/695/remove">Remove</a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row " >
+                        <td class="govuk-table__cell "  colspan="6" style="padding-top:0"><span class="red-text govuk-!-font-size-16">You must complete the total hours charged</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+                <table class="govuk-table responsive-table__table">
+                    <colgroup>
+                        <col width="16%">
+                        <col width="16%">
+                        <col width="20%">
+                        <col width="undefined%">
+                        <col width="undefined%">
+                        <col width="undefined%">
+                    </colgroup>
+                    <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th class="govuk-table__header" scope="col">Name</th>
+                        <th class="govuk-table__header" scope="col">Role</th>
+                        <th class="govuk-table__header" scope="col">Organisation</th>
+                        <th class="govuk-table__header govuk-table__header--numeric" scope="col">Time spent on project (%)</th>
+                        <th class="govuk-table__header govuk-table__header--numeric" scope="col">Total hours charged over duration of project</th>
+                        <th class="govuk-table__header" scope="col">
+                            <div class="govuk-visually-hidden">
+                                Action
+                            </div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="/post-decision/awards/230/setup/team-members/709/edit">Pauline Boyle</a>
+                        </td>
+                        <td class="govuk-table__cell">Principal Investigator</td>
+                        <td class="govuk-table__cell">University of Glasgow</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">25</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">100</td>
+                        <td aria-label="Action" class="govuk-table__cell">
+                            <a class="govuk-link" href="/post-decision/awards/230/setup/team-members/709/remove">Remove</a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="/post-decision/awards/230/setup/team-members/708/edit">thomas davy</a>
+                        </td>
+                        <td class="govuk-table__cell">Principal Investigator</td>
+                        <td class="govuk-table__cell">ZORG</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">100</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">1000</td>
+                        <td aria-label="Action" class="govuk-table__cell">
+                            <a class="govuk-link" href="/post-decision/awards/230/setup/team-members/708/remove">Remove</a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="/post-decision/awards/230/setup/team-members/699/edit">Zulu Thunder</a>
+                        </td>
+                        <td class="govuk-table__cell">Principal Investigator</td>
+                        <td class="govuk-table__cell">Babraham Institute</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">23</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">45</td>
+                        <td aria-label="Action" class="govuk-table__cell">
+                            <a class="govuk-link" href="/post-decision/awards/230/setup/team-members/699/remove">Remove</a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row govuk-table--error-row">
+                        <td class="govuk-table__cell " style="/*border-bottom:0*/">
+                            <a class="govuk-link" href="/post-decision/awards/230/setup/team-members/695/edit">Dave Nelson</a>
+                        </td>
+                        <td class="govuk-table__cell" style="/*border-bottom:0*/">Principal Investigator</td>
+                        <td class="govuk-table__cell" style="/*border-bottom:0*/">Bath Spa University</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric" style="/*border-bottom:0*/">50</td>
+                        <td class="govuk-table__cell govuk-table__cell--numeric" style="/*border-bottom:0*/"><span class="error-message error-text">Incomplete</span></td>
+                        <td aria-label="Action" class="govuk-table__cell" style="/*border-bottom:0*/">
+                            <a class="govuk-link" href="/post-decision/awards/230/setup/team-members/695/remove">Remove</a>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+
     </section>
 
     {% include '../../layouts/partials/user-contact.njk' %}
