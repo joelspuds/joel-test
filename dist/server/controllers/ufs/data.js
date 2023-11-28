@@ -1290,3 +1290,11 @@ let genericPeopleList = [{
 }];
 
 const genericPeople = exports.genericPeople = genericPeopleList;
+
+let awardStatusesList = ['Active', 'Announced', 'Awaiting completion', 'Awaiting offer response', 'Finished', 'Suspended', 'UKRI Preparing Award', 'Waiting for UKRI Authorisation'];
+
+const awardStatuses = exports.awardStatuses = awardStatusesList;
+
+let awardTaskList = ['', '', 'FES Overdue', 'FES Recieved', 'Fes Due', '', '', ''];
+
+const awardTasks = exports.awardTasks = awardTaskList;

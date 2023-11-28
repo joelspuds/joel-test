@@ -355,6 +355,7 @@ router.get('/prototypes/molecules/colours', demosController.colourPaletteGet);
 router.get('/prototypes/molecules/awards-list', demosController.demoAwardsListGet);
 router.get('/prototypes/molecules/awards-list-ro', demosController.demoAwardsListROGet);
 router.get('/prototypes/molecules/expert-review-applications', demosController.demoExpertReviewApplicationsGet);
+router.get('/prototypes/molecules/admin-tables', demosController.megaAdminTablesGet);
 // organisations mother load
 /*router.get('/prototypes/molecules/organisations-motherload-search', demosController.motherloadSearchGet);
 router.post('/prototypes/molecules/organisations-motherload-search', demosController.motherloadSearchPost);

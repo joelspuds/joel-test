@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.autoPingGet = autoPingGet;
 exports.autoPingPost = autoPingPost;
 exports.megaDataGet = megaDataGet;
+exports.megaAdminTablesGet = megaAdminTablesGet;
 exports.rteSimpleGet = rteSimpleGet;
 exports.rteSimplePost = rteSimplePost;
 exports.rteSimpleTestGet = rteSimpleTestGet;
@@ -23,6 +24,7 @@ exports.demoAwardsListROGet = demoAwardsListROGet;
 exports.demoExpertReviewApplicationsGet = demoExpertReviewApplicationsGet;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
+let applicationsData = require('./realApplications');
 // import sanitizeHtml from '../../../../no';
 const sanitizeHTML = require('../../../../node_modules/sanitize-html');
 
@@ -75,6 +77,35 @@ function megaDataGet(req, res) {
   };
 
   return res.render('prototypes/molecules/mega-data', viewData);
+}
+
+// ************************************************************************
+//
+//       MEGA admin tables
+//
+// ************************************************************************
+const megaApplications1200v2 = require('./realApplications1200_v2');
+function megaAdminTablesGet(req, res) {
+  let viewData;
+
+  // const allOrgs = generalData.allOrgs2;
+  // const megaData = generalData.megaData;
+
+  // const megaData = applicationsData.megaApplications;
+  // const megaData = generalData.megaDataAwards;
+
+  const allCouncils = generalData.allCouncils;
+  const megaData = megaApplications1200v2.megaApplications1200v2;
+  const awardStatuses = generalData.awardStatuses;
+  const awardTasks = generalData.awardTasks;
+  viewData = {
+    megaData,
+    allCouncils,
+    awardStatuses,
+    awardTasks
+  };
+
+  return res.render('prototypes/molecules/admin-tables', viewData);
 }
 
 // ************************************************************************

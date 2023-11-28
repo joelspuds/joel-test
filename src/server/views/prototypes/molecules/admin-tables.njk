@@ -1,0 +1,210 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = '_admin' %}
+{% set pageTitle = 'Awards' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set isAdminUser = true %}
+{% set navType = 'admin' %}
+{% set loggedOut = false %}
+
+{% set activeNavItem = 'Awards' %}
+{% set navArea = 'personal' %}
+{#{% set applicationsLink = '#' %}#}
+{% set opportunitiesLink = '#' %}
+{% set awardsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set megaData = megaData if megaData %}
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {#{{ components.captionHeading(text='Awards', caption='Example layouts') }}#}
+            {{ components.captionHeading(text='Awards') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            <form action="#" method="POST" role="search" name="searchForm" style="position:relative;">
+                <div class="search">
+                    <div class="govuk-form-group govuk-form-group--search">
+                        <label class="govuk-label" for="search">Search awards</label>
+                        <span class="govuk-hint">Enter award reference, name, holder, organisation or opportunity reference or name</span>
+                        <input class="govuk-input govuk-input--width-20 search__input" id="search" name="searchQuery" type="text" placeholder="{#Search all awards#}">
+                        <button type="submit" name="applicationSearch" class="search__submit" value="search">Search</button>
+                    </div>
+                </div>
+            </form>
+
+            <p class="govuk-body u-space-t0 u-space-b0">Showing <strong>40</strong> of <strong>138</strong> awards filtered by "<strong>[Funder]</strong>"</p>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+
+    {##}
+
+    {#<section class="section">#}
+
+        <div class="container is-fluid">
+
+            <div class="columns">
+
+                {% call components.bulmaColumnAny(size='is-2', role='complementary') %}
+                    <div class="govuk-related-items govuk-related-items--flush">
+                        <div class="filter filter-toggle __filter-toggle--shut">
+                            <button class="filter__title" type="button" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')" aria-expanded="false">Filter by funder</button>
+                            {#<h2 class="filter__title" tabindex="0" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')">Filter by council</h2>#}
+                            {#<h2 class="filter__title">Filter by council</h2>#}
+                            {#<span class="filter__toggle"></span>#}
+                            <ul class="filter__list u-clearfix " id="toggleCouncilsList">
+                                {% for item in allCouncils %}
+                                    <li class="filter__item filter__item--extra-small govuk-clearfix">
+                                        <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                            <input class="govuk-checkboxes__input " id="filterCouncils_{{ item.index }}" type="checkbox" name="filterCouncils_{{ item.index }}" value="{{ item.name }}">
+                                            <label for="filterCouncils_{{ item.index }}" class="govuk-checkboxes__label u-display-ib">{{ item.value }}</label>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="filter filter-toggle filter-toggle--shut">
+                            <button class="filter__title filter__title--closed" type="button" onclick="toggleVisibility(this, 'toggleStatusList', 'js-hidden')" aria-expanded="false">Filter by status</button>
+
+                            <ul class="filter__list u-clearfix js-hidden " id="toggleStatusList">
+                                {% for item in awardStatuses %}
+                                    <li class="filter__item filter__item--small govuk-clearfix">
+                                        <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                            <input class="govuk-checkboxes__input " id="filterAwardStatuses_{{ loop.index }}" type="checkbox" name="filterAwardStatuses_{{ loop.index }}" value="{{ item }}">
+                                            <label for="filterAwardStatuses_{{ loop.index }}" class="govuk-checkboxes__label u-display-ib">{{ item }}</label>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+
+
+
+                        <div class="_js-hidden">
+                            {% call components.formGroup() %}
+                                <button class="govuk-button" name="submitFilters" value="submitFilters">Apply filters</button>
+                                {#{{ components.button(text='Apply filters', extraClass='', name='submitFilters', value='apply', id='submitFilters')}}#}
+                                <br>
+                                <button class="govuk-button--link govuk-!-font-size-16n" name="clearFilters" value="clearFilters" id="clearFilterButton">Clear filters</button>
+                                {#{{ components.button(text='Clear all filters', extraClass='govuk-button--link govuk-!-font-size-16', name='clearFilters', value='clear', id='clearFilters')}}#}
+                            {%- endcall %}
+                        </div>
+                    </div>
+                {%- endcall %}
+
+                {% call components.bulmaColumnAny(size='is-10', customID='mainContent', role='main') %}
+
+                    <div class="responsive-table" id="mainContent">
+
+                        <style>
+                            .govuk-tag--void {
+                                background-color: #f1f1f1!important;
+                                color: slategrey;
+                            }
+                            .post-hellip {
+                                display: none;
+                            }
+
+                            /*mark > .post-hellip {
+                                display:inline!important;
+                            }*/
+                            mark {
+                                background: #fd0!important;
+                                color: black!important;
+                            }
+                        </style>
+
+                        <table class="govuk-table mega-table responsive-table__table">
+                            <thead>
+                            <tr class="govuk-table__header">
+                                <th class="govuk-table__header">Award reference and name</th>
+                                <th class="govuk-table__header">Award holder</th>
+                                <th class="govuk-table__header">Organisation</th>
+                                <th class="govuk-table__header">Funder</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Earliest<br> start date</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">End date</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Award<br>status</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Task</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for item in megaData %}
+                                {% if loop.index < 40 %}
+                                <tr class="">
+                                    <td class="govuk-table__cell"><a href="#" class="govuk-link">UKRI{{ item.randomID }} {#{{ item.name }}#} {{ item.title | shortenSentence}}</a></td>
+                                    <td class="govuk-table__cell mega-table__cell--fixed">{#{{ item.name }}#}{{ 'firstAndLast' | giveMeAName }}</td>
+                                    <td class="govuk-table__cell">{{ item.orgName }}</td>
+                                    <td class="govuk-table__cell">{{ item.funder }}</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">{{ item.deadlineDay }} {{ item.deadlineMonth | showMonth() }} 2023</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">{{ item.deadlineDay }} {{ item.deadlineMonth | showMonth() }} 2025</td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">
+                                        {% set randomNumber = range(1, 8) | random  %}
+                                        {{ awardStatuses[randomNumber] }}
+                                    </td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric">
+                                        {% set randomNumber2 = range(1, 8) | random  %}
+                                        {% if awardTasks[randomNumber].length > 2 %}
+                                            <strong class="govuk-tag govuk-tag--grey govuk-tag--tiny">{{ awardTasks[randomNumber] }}</strong>
+                                        {% else %}
+                                            &nbsp;
+                                        {% endif %}
+
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {%- endcall %}
+
+            </div>
+
+        </div>
+
+   {# </section>#}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+    <script>
+        function toggleVisibility(_this, id, className) {
+            // event.preventDefault();
+            let toggleSwitch = _this;
+            let toggleItem = document.getElementById(id);
+            if (hasClass(toggleItem, className)) {
+                toggleSwitch.classList.add('filter__title--closed');
+                toggleItem.classList.remove(className);
+                toggleSwitch.setAttribute('aria-expanded', true);
+            }
+            else  {
+                toggleSwitch.classList.remove('filter__title--closed');
+                toggleItem.classList.add(className);
+                toggleSwitch.setAttribute('aria-expanded', false);
+            }
+            // return false;
+        }
+        function hasClass(target, className) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
+    </script>
+{% endblock %}
