@@ -226,5 +226,12 @@
         function hasClass(target, className) {
             return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
         }
+
+        $('.hellip').on('click', function(e) {
+            e.preventDefault();
+            $(this).next().css('display', 'inline');
+            $(this).css('display', 'none');
+            // console.log('clicked');
+        })
     </script>
 {% endblock %}

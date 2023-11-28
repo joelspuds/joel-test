@@ -1,7 +1,7 @@
 'use strict';
 
 const sentenceLength = exports.sentenceLength = string => {
-  let tempNumber = 60;
+  let tempNumber = 20;
   let doneString = '';
 
   if (string.length > tempNumber) {
