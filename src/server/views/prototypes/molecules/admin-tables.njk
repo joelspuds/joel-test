@@ -17,37 +17,55 @@
 
 {% block content %}
 
+    <div class="container is-fluid">
+        <div class="columns">
+            {% call components.bulmaColumnAny(size='is-half') %}
+                {{ components.captionHeading(text='Awards') }}
+            {%- endcall %}
+        </div>
+    </div>
+
+    <div class="container is-fluid">
+        <div class="columns">
+            {% call components.bulmaColumnAny(size='is-half') %}
+                <form action="#" method="POST" role="search" name="searchForm" style="position:relative;">
+                    <div class="search">
+                        <div class="govuk-form-group govuk-form-group--search">
+                            <label class="govuk-label" for="search">Search awards</label>
+                            <span class="govuk-hint">Enter award reference, name, holder, organisation or opportunity reference or name</span>
+                            <input class="govuk-input govuk-input--width-20 search__input" id="search" name="searchQuery" type="text" placeholder="{#Search all awards#}">
+                            <button type="submit" name="applicationSearch" class="search__submit" value="search">Search</button>
+                        </div>
+                    </div>
+                </form>
+            {%- endcall %}
+        </div>
+    </div>
+
+
+{#
     {% call components.bulmaRow() %}
 
         {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
 
-            {#{{ components.captionHeading(text='Awards', caption='Example layouts') }}#}
+            #}{#{{ components.captionHeading(text='Awards', caption='Example layouts') }}#}{#
             {{ components.captionHeading(text='Awards') }}
 
         {%- endcall %}
 
-    {%- endcall %}
+    {%- endcall %}#}
 
-    {% call components.bulmaRow() %}
+    {#{% call components.bulmaRow() %}
 
         {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
 
-            <form action="#" method="POST" role="search" name="searchForm" style="position:relative;">
-                <div class="search">
-                    <div class="govuk-form-group govuk-form-group--search">
-                        <label class="govuk-label" for="search">Search awards</label>
-                        <span class="govuk-hint">Enter award reference, name, holder, organisation or opportunity reference or name</span>
-                        <input class="govuk-input govuk-input--width-20 search__input" id="search" name="searchQuery" type="text" placeholder="{#Search all awards#}">
-                        <button type="submit" name="applicationSearch" class="search__submit" value="search">Search</button>
-                    </div>
-                </div>
-            </form>
 
-            <p class="govuk-body u-space-t0 u-space-b0">Showing <strong>40</strong> of <strong>138</strong> awards filtered by "<strong>[Funder]</strong>"</p>
+
+
 
         {%- endcall %}
 
-    {%- endcall %}
+    {%- endcall %}#}
 
 
 
@@ -109,6 +127,8 @@
                 {%- endcall %}
 
                 {% call components.bulmaColumnAny(size='is-10', customID='mainContent', role='main') %}
+
+                    <p class="govuk-body u-space-t0 u-space-b0">Showing <strong>40</strong> of <strong>138</strong> awards filtered by "<strong>[Funder]</strong>"</p>
 
                     <div class="responsive-table" id="mainContent">
 
