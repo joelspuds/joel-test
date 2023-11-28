@@ -101,7 +101,7 @@
 
                             <ul class="filter__list u-clearfix js-hidden " id="toggleStatusList">
                                 {% for item in awardStatuses %}
-                                    <li class="filter__item filter__item--small govuk-clearfix">
+                                    <li class="filter__item filter__item--extra-small govuk-clearfix">
                                         <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
                                             <input class="govuk-checkboxes__input " id="filterAwardStatuses_{{ loop.index }}" type="checkbox" name="filterAwardStatuses_{{ loop.index }}" value="{{ item }}">
                                             <label for="filterAwardStatuses_{{ loop.index }}" class="govuk-checkboxes__label u-display-ib">{{ item }}</label>
