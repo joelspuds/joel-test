@@ -40,18 +40,6 @@ Object.keys(_uploadStuff).forEach(function (key) {
   });
 });
 
-var _jwt = require('./jwt');
-
-Object.keys(_jwt).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _jwt[key];
-    }
-  });
-});
-
 var _embeddedPDF = require('./embeddedPDF');
 
 Object.keys(_embeddedPDF).forEach(function (key) {

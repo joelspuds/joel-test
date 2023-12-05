@@ -1,10 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.JWTGet = JWTGet;
-exports.JWTPost = JWTPost;
+/*
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 //
@@ -15,12 +9,12 @@ const apiKey = 'phk3goz7y02jvj65em0m21azcq1qr7abduimch9isoe4jkor';
 const payload = {
   sub: 'joelTest',
   name: 'Joel Test',
-  exp: Math.floor(Date.now() / 1000) + 60 * 10
+  exp: Math.floor(Date.now() / 1000) + 60 * 10,
 };
 const privateKey = fs.readFileSync(privateKeyFile).toString();
 const token = jwt.sign(payload, privateKey, { algorithm: 'RS256' });
 
-function JWTGet(req, res) {
+export function JWTGet(req, res) {
   let viewData;
   viewData = {};
 
@@ -29,7 +23,7 @@ function JWTGet(req, res) {
   return res.render('prototypes/jwt/index', viewData);
 }
 
-function JWTPost(req, res) {
+export function JWTPost(req, res) {
   try {
     res.json({ token });
   } catch (e) {
@@ -38,3 +32,5 @@ function JWTPost(req, res) {
     console.error(e.message);
   }
 }
+*/
+"use strict";

@@ -71,8 +71,8 @@ router.get('/prototypes/uploadStuff', demosController.uploadStuffGet);
 router.post('/prototypes/uploadStuff', demosController.uploadStuffPost);
 
 // JWT
-router.get('/prototypes/jwt', demosController.JWTGet);
-router.post('/prototypes/jwt', demosController.JWTPost);
+// router.get('/prototypes/jwt', demosController.JWTGet);
+// router.post('/prototypes/jwt', demosController.JWTPost);
 
 // Embedded PDF
 router.get('/prototypes/example-journey/embedded-pdf', demosController.embeddedPDFGet);

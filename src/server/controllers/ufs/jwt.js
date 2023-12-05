@@ -1,3 +1,4 @@
+/*
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 //
@@ -31,3 +32,4 @@ export function JWTPost(req, res) {
     console.error(e.message);
   }
 }
+*/
