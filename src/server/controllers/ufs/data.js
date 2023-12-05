@@ -5403,3 +5403,28 @@ export const awardStatuses = awardStatusesList;
 let awardTaskList = ['', '', 'FES Overdue', 'FES Recieved', 'Fes Due', '', '', ''];
 
 export const awardTasks = awardTaskList;
+
+let randomCatsList = [
+  'Managed landscapes',
+  'Biodiversity',
+  'Traffic Assignment',
+  'Road Transport Operations',
+  'Automotive Manufacturing',
+  'Manufacturing Quality Control ',
+  'Silicon Micromachinery',
+  'Static Random Access Memory',
+  'Seismic waves',
+  'Antiferromagnetic materials',
+  'Carbon nanotubes',
+  'The World Bank',
+  'Ground Characteristics',
+  'Contaminated clay',
+  'Food appearance',
+  'Nutrients',
+  'Imitation',
+  'Social cognition',
+  'Attention',
+  'Cognitive Psychology',
+];
+
+export const randomCats = randomCatsList;

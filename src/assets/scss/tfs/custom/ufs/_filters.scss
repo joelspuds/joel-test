@@ -117,7 +117,6 @@ $filterPadding: 5px;
 
       .govuk-checkboxes__label {
         @include govuk-font($size: 16);
-        // background-color: whitesmoke!important;
         padding: 4px 15px 5px 1px;
 
         &:before {

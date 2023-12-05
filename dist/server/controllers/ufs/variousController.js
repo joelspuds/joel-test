@@ -22,6 +22,7 @@ exports.colourPaletteGet = colourPaletteGet;
 exports.demoAwardsListGet = demoAwardsListGet;
 exports.demoAwardsListROGet = demoAwardsListROGet;
 exports.demoExpertReviewApplicationsGet = demoExpertReviewApplicationsGet;
+exports.filtersAndClassificationsGet = filtersAndClassificationsGet;
 let generalData = require('./data');
 let genericFunctions = require('./generic');
 let applicationsData = require('./realApplications');
@@ -469,3 +470,34 @@ function demoExpertReviewApplicationsGet(req, res) {
 
   return res.render('prototypes/molecules/expert-review-applications', viewData);
 }
+
+/*
+*
+*     Filters and classifications demo for Charlotte
+*
+*/
+function filtersAndClassificationsGet(req, res) {
+  let viewData;
+
+  const massiveCatsListFlat = require('./massiveCatsList_flat');
+  let flatCatsList = massiveCatsListFlat.flatMassiveCatsList;
+
+  const allCouncils = generalData.allCouncils;
+  const megaData = megaApplications1200v2.megaApplications1200v2;
+  const awardStatuses = generalData.awardStatuses;
+  const awardTasks = generalData.awardTasks;
+  const randomCats = generalData.randomCats;
+
+  viewData = {
+    megaData,
+    allCouncils,
+    awardStatuses,
+    awardTasks,
+    flatCatsList,
+    randomCats
+  };
+
+  return res.render('prototypes/molecules/enhanced-filters-and-classifications', viewData);
+}
+
+//

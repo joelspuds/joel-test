@@ -1,0 +1,306 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = 'admin' %}
+{% set pageTitle = 'Filters and sorting' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set allCouncils = allCouncils %}
+{% set isAdminUser = true %}
+{% set megaData = megaData if megaData %}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
+
+            {{ components.captionHeading(text='Applications', caption='OPP147: African sleeping sickness - pathways to treatment') }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+        <section class="section" id="mainContent">
+
+            {% call components.bulmaRow() %}
+
+                {% call components.bulmaColumnAny(size='column is-3') %}
+                    <div class="govuk-related-items govuk-related-items--flush">
+
+                        <form action="#" method="POST" role="search" name="searchForm" style="position:relative;" class="u-space-t10">
+                            <div class="search">
+                                <div class="govuk-form-group govuk-form-group--search">
+                                    <label class="govuk-label govuk-label--s" for="search">Keyword search</label>
+                                    <span class="govuk-hint">Application, organisation, funder or tag</span>
+
+                                    <details class="govuk-details u-space-b10 govuk-!-font-size-16" data-module="govuk-details" role="group">
+                                        <summary class="govuk-details__summary" role="button" aria-controls="details-content-3" aria-expanded="false">
+                                            <span class="govuk-details__summary-text">Restrict search</span>
+                                        </summary>
+                                        <div class="govuk-details__text" id="details-content-3" aria-hidden="true">
+                                            <p class="govuk-body govuk-!-font-size-16 u-space-b5">Search only the following fields</p>
+                                            <div class="filter" style="border:0!important">
+                                            <ul class="filter__list u-clearfix" id="toggleRestrictSearch" style="font-size:16px!important">
+
+                                                <li class="filter__item filter__item--extra-small govuk-clearfix">
+                                                    <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                                        <input class="govuk-checkboxes__input " id="restrictSearch_1" type="checkbox" name="restrictSearch_1" value="Active">
+                                                        <label for="restrictSearch_1" class="govuk-checkboxes__label u-display-ib govuk-!-font-size-16">Application reference</label>
+                                                    </div>
+                                                </li>
+                                                <li class="filter__item filter__item--extra-small govuk-clearfix">
+                                                    <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                                        <input class="govuk-checkboxes__input " id="restrictSearch_2" type="checkbox" name="restrictSearch_2" value="Active">
+                                                        <label for="restrictSearch_2" class="govuk-checkboxes__label u-display-ib govuk-!-font-size-16">Application name</label>
+                                                    </div>
+                                                </li>
+                                                <li class="filter__item filter__item--extra-small govuk-clearfix">
+                                                    <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                                        <input class="govuk-checkboxes__input " id="restrictSearch_3" type="checkbox" name="restrictSearch_3" value="Active">
+                                                        <label for="restrictSearch_3" class="govuk-checkboxes__label u-display-ib govuk-!-font-size-16">Organisation</label>
+                                                    </div>
+                                                </li>
+                                                <li class="filter__item filter__item--extra-small govuk-clearfix">
+                                                    <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                                        <input class="govuk-checkboxes__input " id="restrictSearch_4" type="checkbox" name="restrictSearch_4" value="Active">
+                                                        <label for="restrictSearch_4" class="govuk-checkboxes__label u-display-ib govuk-!-font-size-16">Tags</label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            </div>
+
+                                        </div>
+                                    </details>
+                                    <input class="govuk-input govuk-input--width-10 search__input" id="search" name="searchQuery" type="text" placeholder="" value="{{ allData.searchQuery }}">
+                                    <button type="submit" name="applicationSearch" class="search__submit" value="search">Search</button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                        {#<div class="filter">
+                            <h2 class="filter__title">Filter by status</h2>
+                            <span class="filter__toggle"></span>
+                            <ul class="filter__list u-clearfix">
+                                <li class="filter__item filter__item--small">
+                                    <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                        <input class="govuk-checkboxes__input" id="filterDraft" type="checkbox" name="filterDraft" value="draft">
+                                        <label for="filterDraft" class="govuk-checkboxes__label u-display-ib">Draft</label>
+                                    </div>
+                                </li>
+                                <li class="filter__item filter__item--small">
+                                    <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                        <input class="govuk-checkboxes__input" id="filterReady" type="checkbox" name="filterReady" value="ready">
+                                        <label for="filterReady" class="govuk-checkboxes__label u-display-ib">Ready to open</label>
+                                    </div>
+                                </li>
+                                <li class="filter__item filter__item--small">
+                                    <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                        <input class="govuk-checkboxes__input" id="filterOpen" type="checkbox" name="filterOpen" value="open">
+                                        <label for="filterOpen" class="govuk-checkboxes__label u-display-ib">Open</label>
+                                    </div>
+                                </li>
+                                <li class="filter__item filter__item--small">
+                                    <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                        <input class="govuk-checkboxes__input" id="filterPrePanel" type="checkbox" name="prePanel" value="prePanel">
+                                        <label for="filterPrePanel" class="govuk-checkboxes__label u-display-ib">Pre-panel</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>#}
+
+                        <div class="filter filter-toggle filter-toggle--shut">
+                            <button class="filter__title filter__title--closed" type="button" onclick="toggleVisibility(this, 'toggleStatusList', 'js-hidden')" aria-expanded="false">Filter by status</button>
+
+                            <ul class="filter__list u-clearfix js-hidden " id="toggleStatusList">
+                                {% for item in awardStatuses %}
+                                    <li class="filter__item filter__item--extra-small govuk-clearfix">
+                                        <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                            <input class="govuk-checkboxes__input " id="filterAwardStatuses_{{ loop.index }}" type="checkbox" name="filterAwardStatuses_{{ loop.index }}" value="{{ item }}">
+                                            <label for="filterAwardStatuses_{{ loop.index }}" class="govuk-checkboxes__label u-display-ib">{{ item }}</label>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+
+
+                        <div class="filter filter-toggle ">
+                            <button class="filter__title" type="button" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')" aria-expanded="false">Filter by council</button>
+                            {#<h2 class="filter__title" tabindex="0" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')">Filter by council</h2>#}
+                            <span class="filter__toggle"></span>
+                            <ul class="filter__list u-clearfix js-hidden" id="toggleCouncilsList">
+                                {% for item in allCouncils %}
+                                    <li class="filter__item filter__item--extra-small govuk-clearfix">
+                                        <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                            <input class="govuk-checkboxes__input " id="filterCouncils_{{ item.index }}" type="checkbox" name="filterCouncils_{{ item.index }}" value="{{ item.name }}">
+                                            <label for="filterCouncils_{{ item.index }}" class="govuk-checkboxes__label u-display-ib">{{ item.value }}</label>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <style>
+                            .showHideText {
+                                position:absolute;
+                                font-weight: normal;
+                                /*right: 28px;
+                                top:8px;*/
+                                right: 8px;
+                                top:8px;
+                                font-size:16px;
+                            }
+                            .filter__title--noArrow {
+                                position: relative;
+                            }
+
+                            .filter__title--noArrow:focus {
+                                background-color: #ffdd00;
+                            }
+
+                            .filter__title--noArrow:after {
+                                content:''!important;
+                            }
+                        </style>
+
+                        {#<div class="filter filter-toggle ">
+                            <button class="filter__title filter__title--noArrow" type="button" onclick="toggleVisibility2(this, 'toggleCouncilsList2', 'js-hidden')" aria-expanded="false">Filter by council<span class="showHideText"><span id="showText">Show</span><span id="hideText" class=" govuk-visually-hidden">Hide</span> <span class="govuk-visually-hidden"> filters for funding councils</span></span></button>
+                            #}{#<h2 class="filter__title" tabindex="0" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')">Filter by council</h2>#}{#
+                            <span class="filter__toggle"></span>
+                            <ul class="filter__list u-clearfix js-hidden" id="toggleCouncilsList2">
+                                {% for item in allCouncils %}
+                                    <li class="filter__item filter__item--small govuk-clearfix">
+                                        <div class="govuk-checkboxes__item govuk-checkboxes--small multiple-choice filter__switch">
+                                            <input class="govuk-checkboxes__input " id="filterCouncils_{{ item.index }}" type="checkbox" name="filterCouncils_{{ item.index }}" value="{{ item.name }}">
+                                            <label for="filterCouncils_{{ item.index }}" class="govuk-checkboxes__label u-display-ib">{{ item.value }}</label>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>#}
+
+
+                    </div>
+                {%- endcall %}
+
+                {% call components.bulmaColumnAny(size='column is-9') %}
+
+                    <div class="responsive-table" id="mainContent">
+
+                        <style>
+                            .govuk-tag--void {
+                                background-color: #f1f1f1!important;
+                                color: slategrey;
+                            }
+                            .post-hellip {
+                                display: none;
+                            }
+
+                            /*mark > .post-hellip {
+                                display:inline!important;
+                            }*/
+                            mark {
+                                background: #fd0!important;
+                                color: black!important;
+                            }
+                            .lozenge {
+                                background-color: whitesmoke;
+                                border-radius: 4px;
+                                display:inline-block;
+                                font-size:14px;
+                                padding:2px 4px;
+                                margin-top:1px;
+                            }
+                        </style>
+
+                        <table class="govuk-table mega-table responsive-table__table">
+                            <thead>
+                            <tr class="govuk-table__header">
+                                <th class="govuk-table__header">Application</th>
+                                <th class="govuk-table__header">Organisation</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Duration<br>(months)</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Percentage<br>complete (%)</th>
+                                <th class="govuk-table__header govuk-table__header--numeric">Application<br>status</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for item in megaData %}
+                                {% if loop.index < 40 %}
+                                    <tr class="">
+                                        <td class="govuk-table__cell">
+                                            <a href="#" class="govuk-link">UKRI{{ item.randomID }} {#{{ item.name }}#} {{ item.title | shortenSentence}}</a>
+                                            <span class="govuk-!-display-block u-space-t5">
+                                                {% set randomNumber2 = range(1, 20) | random  %}
+                                                {% set randomNumber4 = range(1, 20) | random  %}
+                                            <span class="lozenge">{{ randomCats[randomNumber2]}}</span>
+                                            <span class="lozenge">{{ randomCats[randomNumber4]}}</span>
+
+
+                                                {#<span class="lozenge">Managed landscapes</span>#}
+                                            </span>
+
+                                        </td>
+                                        <td class="govuk-table__cell">{{ item.orgName }}</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                            {% set randomNumber1 = range(12, 48) | random  %}
+                                            {{ randomNumber1 }}
+                                        </td>
+
+                                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                            {% set randomNumber = range(25, 80) | random  %}
+                                            {{ randomNumber }}
+                                        </td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                                            <strong class="govuk-tag govuk-tag--grey govuk-tag--tiny">{{ item.status}}</strong>
+
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+                {%- endcall %}
+
+            {%- endcall %}
+        </section>
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+    <script>
+        function toggleVisibility(_this, id, className) {
+            // event.preventDefault();
+            let toggleSwitch = _this;
+            let toggleItem = document.getElementById(id);
+            if (hasClass(toggleItem, className)) {
+                toggleSwitch.classList.add('filter__title--closed');
+                toggleItem.classList.remove(className);
+                toggleSwitch.setAttribute('aria-expanded', true);
+            }
+            else  {
+                toggleSwitch.classList.remove('filter__title--closed');
+                toggleItem.classList.add(className);
+                toggleSwitch.setAttribute('aria-expanded', false);
+            }
+            // return false;
+        }
+        function hasClass(target, className) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
+
+        $('.hellip').on('click', function(e) {
+            e.preventDefault();
+            $(this).next().css('display', 'inline');
+            $(this).css('display', 'none');
+            // console.log('clicked');
+        })
+    </script>
+{% endblock %}

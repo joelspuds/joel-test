@@ -43,34 +43,6 @@
     </div>
 
 
-{#
-    {% call components.bulmaRow() %}
-
-        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
-
-            #}{#{{ components.captionHeading(text='Awards', caption='Example layouts') }}#}{#
-            {{ components.captionHeading(text='Awards') }}
-
-        {%- endcall %}
-
-    {%- endcall %}#}
-
-    {#{% call components.bulmaRow() %}
-
-        {% call components.bulmaColumnAny(size='column is-full is-9-desktop is-9-widescreen') %}
-
-
-
-
-
-        {%- endcall %}
-
-    {%- endcall %}#}
-
-
-
-    {##}
-
     {#<section class="section">#}
 
         <div class="container is-fluid">
@@ -114,15 +86,15 @@
 
 
 
-                        <div class="_js-hidden">
+                       {# <div class="_js-hidden">
                             {% call components.formGroup() %}
                                 <button class="govuk-button" name="submitFilters" value="submitFilters">Apply filters</button>
-                                {#{{ components.button(text='Apply filters', extraClass='', name='submitFilters', value='apply', id='submitFilters')}}#}
+                                #}{#{{ components.button(text='Apply filters', extraClass='', name='submitFilters', value='apply', id='submitFilters')}}#}{#
                                 <br>
                                 <button class="govuk-button--link govuk-!-font-size-16n" name="clearFilters" value="clearFilters" id="clearFilterButton">Clear filters</button>
-                                {#{{ components.button(text='Clear all filters', extraClass='govuk-button--link govuk-!-font-size-16', name='clearFilters', value='clear', id='clearFilters')}}#}
+                                #}{#{{ components.button(text='Clear all filters', extraClass='govuk-button--link govuk-!-font-size-16', name='clearFilters', value='clear', id='clearFilters')}}#}{#
                             {%- endcall %}
-                        </div>
+                        </div>#}
                     </div>
                 {%- endcall %}
 

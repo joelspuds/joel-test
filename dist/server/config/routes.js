@@ -376,6 +376,7 @@ router.get('/prototypes/molecules/awards-list', demosController.demoAwardsListGe
 router.get('/prototypes/molecules/awards-list-ro', demosController.demoAwardsListROGet);
 router.get('/prototypes/molecules/expert-review-applications', demosController.demoExpertReviewApplicationsGet);
 router.get('/prototypes/molecules/admin-tables', demosController.megaAdminTablesGet);
+router.get('/prototypes/molecules/enhanced-filters-and-classifications', demosController.filtersAndClassificationsGet);
 // organisations mother load
 /*router.get('/prototypes/molecules/organisations-motherload-search', demosController.motherloadSearchGet);
 router.post('/prototypes/molecules/organisations-motherload-search', demosController.motherloadSearchPost);
