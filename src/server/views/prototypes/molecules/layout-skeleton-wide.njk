@@ -1,0 +1,107 @@
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+{% set navType = '_admin' %}
+{% set pageTitle = 'Full-width layout' + GLOBAL_TAG_TITLE_SUFFIX %}
+{% set backLinkContents =  [{url:'/prototypes/molecules', text:'Back to molecules'}] %}
+{% set isAdminUser = true %}
+{% set navType = 'admin' %}
+{% set loggedOut = false %}
+
+{% set activeNavItem = 'Full-width layout' %}
+{% set navArea = 'personal' %}
+{#{% set applicationsLink = '#' %}#}
+{% set opportunitiesLink = '#' %}
+{% set awardsLink = '#' %}
+{% set homeLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set megaData = megaData if megaData %}
+
+{% block content %}
+
+    <div class="container is-fluid">
+        <div class="columns">
+            {% call components.bulmaColumnAny(size='is-half') %}
+                {{ components.captionHeading(text='Full-width layout') }}
+            {%- endcall %}
+        </div>
+    </div>
+
+    <div class="container is-fluid u-space-b45" style="background-color: whitesmoke" id="mainContent" role='main'>
+        <div class="columns">
+            {% call components.bulmaColumnAny(size='is-2', role='complementary') %}
+                <p class="govuk-body" style="background-color:#e5e4e2">Side col <span class="is-family-monospace">is-2</span></p>
+            {%- endcall %}
+            {% call components.bulmaColumnAny(size='is-10') %}
+                <p class="govuk-body" style="background-color:lightgrey">Main col <span class="is-family-monospace">is-10</span></p>
+            {%- endcall %}
+        </div>
+    </div>
+
+    <div class="container is-fluid u-space-b45" style="background-color: whitesmoke">
+        <div class="columns">
+            {% call components.bulmaColumnAny(size='is-3', role='complementary') %}
+                <p class="govuk-body" style="background-color:#e5e4e2">Side col <span class="is-family-monospace">is-3</span></p>
+            {%- endcall %}
+            {% call components.bulmaColumnAny(size='is-9') %}
+                <p class="govuk-body" style="background-color:lightgrey">Main col <span class="is-family-monospace">is-9</span></p>
+            {%- endcall %}
+        </div>
+    </div>
+
+    <div class="container is-fluid u-space-b45" style="background-color: whitesmoke">
+        <div class="columns">
+            {% call components.bulmaColumnAny(size='is-4', role='complementary') %}
+                <p class="govuk-body" style="background-color:#e5e4e2">Side col <span class="is-family-monospace">is-4</span></p>
+            {%- endcall %}
+            {% call components.bulmaColumnAny(size='is-8') %}
+                <p class="govuk-body" style="background-color:lightgrey">Main col <span class="is-family-monospace">is-8</span></p>
+            {%- endcall %}
+        </div>
+    </div>
+
+    <div class="container is-fluid u-space-b45" style="background-color: whitesmoke">
+        <div class="columns">
+            {% call components.bulmaColumnAny(size='is-8', customID='', role='main') %}
+                <p class="govuk-body" style="background-color:lightgrey">Main col <span class="is-family-monospace">is-8</span></p>
+            {%- endcall %}
+            {% call components.bulmaColumnAny(size='is-4') %}
+                <p class="govuk-body" style="background-color:#e5e4e2">Side col <span class="is-family-monospace">is-4</span></p>
+            {%- endcall %}
+        </div>
+    </div>
+
+    <div class="container is-fluid u-space-b45" style="background-color: whitesmoke">
+        <div class="columns">
+            {% call components.bulmaColumnAny(size='is-3') %}
+                <p class="govuk-body" style="background-color:#e5e4e2">Side col <span class="is-family-monospace">is-3</span></p>
+            {%- endcall %}
+            {% call components.bulmaColumnAny(size='is-6', customID='', role='main') %}
+                <p class="govuk-body" style="background-color:lightgrey">Main col <span class="is-family-monospace">is-6</span></p>
+            {%- endcall %}
+            {% call components.bulmaColumnAny(size='is-3') %}
+                <p class="govuk-body" style="background-color:#e5e4e2">Side col <span class="is-family-monospace">is-3</span></p>
+            {%- endcall %}
+        </div>
+    </div>
+
+    <div class="container is-fluid u-space-b45" style="background-color: whitesmoke">
+        <div class="columns">
+            {% call components.bulmaColumnAny(size='is-2') %}
+                <p class="govuk-body" style="background-color:#e5e4e2">Side col <span class="is-family-monospace">is-2</span></p>
+            {%- endcall %}
+            {% call components.bulmaColumnAny(size='is-8', customID='', role='main') %}
+                <p class="govuk-body" style="background-color:lightgrey">Main col <span class="is-family-monospace">is-8</span></p>
+            {%- endcall %}
+            {% call components.bulmaColumnAny(size='is-2') %}
+                <p class="govuk-body" style="background-color:#e5e4e2">Side col <span class="is-family-monospace">is-2</span></p>
+            {%- endcall %}
+        </div>
+    </div>
+
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+
+{% block bodyScripts %}
+
+{% endblock %}
