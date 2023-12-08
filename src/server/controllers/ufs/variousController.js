@@ -84,6 +84,30 @@ export function megaAdminTablesGet(req, res) {
   return res.render('prototypes/molecules/admin-tables', viewData);
 }
 
+//
+// ************************************************************************
+//
+//       MEGA admin tables WIDER FILTERS megaAdminTablesWiderFiltersGet
+//
+// ************************************************************************
+
+export function megaAdminTablesWiderFiltersGet(req, res) {
+  let viewData;
+
+  const allCouncils = generalData.allCouncils;
+  const megaData = megaApplications1200v2.megaApplications1200v2;
+  const awardStatuses = generalData.awardStatuses;
+  const awardTasks = generalData.awardTasks;
+  viewData = {
+    megaData,
+    allCouncils,
+    awardStatuses,
+    awardTasks,
+  };
+
+  return res.render('prototypes/molecules/admin-tables-wider-filters', viewData);
+}
+
 // ************************************************************************
 //
 //       RTE simple

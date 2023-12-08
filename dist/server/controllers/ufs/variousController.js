@@ -7,6 +7,7 @@ exports.autoPingGet = autoPingGet;
 exports.autoPingPost = autoPingPost;
 exports.megaDataGet = megaDataGet;
 exports.megaAdminTablesGet = megaAdminTablesGet;
+exports.megaAdminTablesWiderFiltersGet = megaAdminTablesWiderFiltersGet;
 exports.rteSimpleGet = rteSimpleGet;
 exports.rteSimplePost = rteSimplePost;
 exports.rteSimpleTestGet = rteSimpleTestGet;
@@ -107,6 +108,30 @@ function megaAdminTablesGet(req, res) {
   };
 
   return res.render('prototypes/molecules/admin-tables', viewData);
+}
+
+//
+// ************************************************************************
+//
+//       MEGA admin tables WIDER FILTERS megaAdminTablesWiderFiltersGet
+//
+// ************************************************************************
+
+function megaAdminTablesWiderFiltersGet(req, res) {
+  let viewData;
+
+  const allCouncils = generalData.allCouncils;
+  const megaData = megaApplications1200v2.megaApplications1200v2;
+  const awardStatuses = generalData.awardStatuses;
+  const awardTasks = generalData.awardTasks;
+  viewData = {
+    megaData,
+    allCouncils,
+    awardStatuses,
+    awardTasks
+  };
+
+  return res.render('prototypes/molecules/admin-tables-wider-filters', viewData);
 }
 
 // ************************************************************************

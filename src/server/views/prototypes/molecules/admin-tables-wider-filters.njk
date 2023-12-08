@@ -49,9 +49,9 @@
 
             <div class="columns">
 
-                {% call components.bulmaColumnAny(size='is-2', role='complementary') %}
+                {% call components.bulmaColumnAny(size='is-full', role='complementary') %}
                     <div class="govuk-related-items govuk-related-items--flush">
-                        <div class="filter filter-toggle __filter-toggle--shut">
+                        <div class="filter filter--wider filter-toggle __filter-toggle--shut">
                             <button class="filter__title" type="button" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')" aria-expanded="false">Filter by funder</button>
                             {#<h2 class="filter__title" tabindex="0" onclick="toggleVisibility(this, 'toggleCouncilsList', 'js-hidden')">Filter by council</h2>#}
                             {#<h2 class="filter__title">Filter by council</h2>#}
@@ -68,7 +68,7 @@
                             </ul>
                         </div>
 
-                        <div class="filter filter-toggle filter-toggle--shut">
+                        <div class="filter filter--wider filter-toggle filter-toggle--shut">
                             <button class="filter__title filter__title--closed" type="button" onclick="toggleVisibility(this, 'toggleStatusList', 'js-hidden')" aria-expanded="false">Filter by status</button>
 
                             <ul class="filter__list u-clearfix js-hidden " id="toggleStatusList">
@@ -108,7 +108,14 @@
                     </div>
                 {%- endcall %}
 
-                {% call components.bulmaColumnAny(size='is-10', customID='mainContent', role='main') %}
+            </div>
+        </div>
+
+    <div class="container is-fluid">
+
+        <div class="columns">
+
+                {% call components.bulmaColumnAny(size='is-full', customID='mainContent', role='main') %}
 
                     <p class="govuk-body u-space-t0 u-space-b0">Showing <strong>40</strong> of <strong>138</strong> awards filtered by "<strong>[Funder]</strong>"</p>
 
