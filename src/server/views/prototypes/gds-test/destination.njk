@@ -1,0 +1,91 @@
+{% extends 'layouts/default-gds.layout.njk' %}
+
+{% set pageTitle = "Enter your preferred destination - " + allDataConst.serviceName %}
+
+{% set hideLayoutPhaseBanner = true %}
+{% set hideTopLevelNav = true %}
+{% set  serviceName = 'Space travel service' %}
+{% set  serviceURL = '/prototypes/gds-test/start' %}
+{% set backLinkContents =  [{url:'/prototypes/gds-test/address', text:'Back to address'}] %}
+
+{% block content %}
+    {% call components.form(action='#', method='POST',name='form') %}
+
+        {% call components.gridRow() %}
+
+            {% call components.columnFull() %}
+
+                {{ components.captionHeading(text="What is your preferred destination?", caption=allDataConst.serviceName) }}
+
+                <details class="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          Guidance on selecting your preferred destination destination
+                        </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        <p class="govuk-body">
+                            Select your preferred destination for evacuation. Every effort will be made to keep designated groups and families together, although this might not always be possible.</p>
+                        <p class="govuk-body">
+                            In the event of family members or designated travelling companions being assigned their non-preferred destination, you can <a href="#" class="govuk-link">contact a travel advisor</a> to appeal the decision.</p>
+                    </div>
+                </details>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.gridRow() %}
+
+            {% call components.columnTwoThirds() %}
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-visually-hidden">Select your preferred destination</legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="moon" name="destination" type="radio" value="Moon" {% if appData.destination == "Moon" %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="moon">
+                                    Moon
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="mars" name="destination" type="radio" value="Mars" {% if appData.destination == "Mars" %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="mars">
+                                    Mars
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.gridRow() %}
+
+            {% call components.columnTwoThirds() %}
+
+                <div class="govuk-form-group">
+                    <button type="submit" class="govuk-button" data-module="govuk-button">
+                        Save and continue
+                    </button>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.gridRow() %}
+
+            {% call components.columnFull() %}
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+    {%- endcall %}
+
+{% endblock %}
+

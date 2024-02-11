@@ -1,1 +1,1 @@
-export const SENDGRID_API_KEY='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';
+export const SENDGRID_API_KEY='';

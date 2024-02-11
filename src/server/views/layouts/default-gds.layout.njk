@@ -1,0 +1,13 @@
+{% extends './base-gds.layout.njk' %}
+
+{% block bodyContentWrapper %}
+{% include './partials/phase-banner.njk' %}
+<main id="mainContent" class="govuk-main-wrapper {{ mainContainerClass if mainContainerClass }}">
+
+  {% include './partials/breadcrumbs.njk' %}
+
+  {#{% filter prismFullpage %}#}
+    {% block content %}{% endblock %}
+  {#{% endfilter %}#}
+</main>
+{% endblock %}

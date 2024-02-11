@@ -1,0 +1,120 @@
+{% extends 'layouts/default-gds.layout.njk' %}
+
+{% set pageTitle = "Enter your full name - " + allDataConst.serviceName %}
+
+{% set hideLayoutPhaseBanner = true %}
+{% set hideTopLevelNav = true %}
+{% set  serviceName = 'Space travel service' %}
+{% set  serviceURL = '/prototypes/gds-test/start' %}
+
+{% set backLinkContents =  [{url:'/prototypes/gds-test/start', text:'Back to start'}] %}
+
+
+{% block content %}
+
+    {% if appData.nameError %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnFull() %}
+
+            <div class="govuk-error-summary" data-module="govuk-error-summary">
+                <div role="alert">
+                    <h2 class="govuk-error-summary__title">
+                        There is a problem
+                    </h2>
+                    <div class="govuk-error-summary__body">
+                        <ul class="govuk-list govuk-error-summary__list">
+                            {% if appData.firstNameError %}
+                            <li>
+                                <a href="#firstName">Enter your first name</a>
+                            </li>
+                            {% endif %}
+                            {% if appData.lastNameError %}
+                            <li>
+                                <a href="#lastName">Enter your last name</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% endif %}
+
+
+
+    {% call components.form(action='#', method='POST',name='form') %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnFull() %}
+
+            {{ components.captionHeading(text="What is your name?", caption=allDataConst.serviceName) }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnHalf() %}
+
+            <div class="govuk-form-group {% if appData.firstNameError %} govuk-form-group--error {% endif %}">
+                <label class="govuk-label" for="firstName">
+                    First name
+                </label>
+                {% if appData.firstNameError %}
+                    <p id="" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> You must enter your first name
+                    </p>
+                {% endif %}
+                <input class="govuk-input {% if appData.firstNameError %} govuk-input--error {% endif %}" id="firstName" name="firstName" type="text" value="{{ appData.firstName }}">
+            </div>
+
+            <div class="govuk-form-group {% if appData.lastNameError %} govuk-form-group--error {% endif %}">
+                <label class="govuk-label" for="lastName">
+                    Last name
+                </label>
+                {% if appData.lastNameError %}
+                    <p id="" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> You must enter your last name
+                    </p>
+                {% endif %}
+                <input class="govuk-input {% if appData.lastNameError %} govuk-input--error {% endif %}" id="lastName" name="lastName" type="text" value="{{ appData.lastName }}">
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnHalf() %}
+
+            <div class="govuk-form-group">
+                <button type="submit" class="govuk-button" data-module="govuk-button">
+                    Save and continue
+                </button>
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnFull() %}
+
+
+        {%- endcall %}
+
+    {%- endcall %}
+    {%- endcall %}
+
+{% endblock %}

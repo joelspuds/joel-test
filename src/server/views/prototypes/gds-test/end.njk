@@ -1,0 +1,49 @@
+{% extends 'layouts/default-gds.layout.njk' %}
+
+{% set pageTitle = "Completed application - " + allDataConst.serviceName %}
+
+{% set hideLayoutPhaseBanner = true %}
+{% set hideTopLevelNav = true %}
+{% set  serviceName = 'Space travel service' %}
+{% set  serviceURL = '/prototypes/gds-test/start' %}
+
+{% block content %}
+    {% call components.form(action='#', method='POST',name='form') %}
+
+
+        {% call components.gridRow() %}
+
+            {% call components.columnFull() %}
+
+                <div class="govuk-panel govuk-panel--confirmation">
+                    <h1 class="govuk-panel__title">
+                        Application complete
+                    </h1>
+                    <div class="govuk-panel__body">
+                        Your reference number<br><strong style="color:white">HDJ2123F</strong>
+                    </div>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+
+        {% call components.gridRow() %}
+
+            {% call components.columnTwoThirds() %}
+
+                <h2 class="govuk-heading-m">What happens next?</h2>
+
+                <p class="govuk-body">You will be notified by email about the outcome of your application. It can take up to two weeks from the date of application to receive a response. If you do not hear from us within that time, please phone the helpdesk.</p>
+
+                <p class="govuk-body">Space travel service helpdesk: <a href="tel:01234567890">01234 567890</a> </p>
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+{% endblock %}

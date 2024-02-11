@@ -45,3 +45,4 @@ export * from './editController';
 export * from './editControllerV2';
 export * from './editControllerV3';
 export * from './classificationsController';
+export * from './gdsTestcontroller';

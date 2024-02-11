@@ -1,0 +1,90 @@
+{% set showExternalNav = true %}
+{% set activeNavItem = 'home' %}
+{% set navArea = 'home' %}
+{% set homeLink = '/prototypes/team-resources-costs/home' %}
+{% set awardsLink = '#' %}
+{% set applicationsLink = '/prototypes/team-resources-costs/applications' %}
+{% set awardsLink = '#' %}
+{% set reviewsLink = '#' %}
+{% set hideAccountLinks = 'true' %}
+{% set altProfilePagelink = '#' %}
+{% set hideUserMenu = true %}
+
+{% set pageTitle = 'Home' %}
+
+{% extends 'layouts/bulma-ufs.layout.njk' %}
+
+{% set allData = allData if allData %}
+{% set userName = allData.userName if allData.userName else 'Dr. Sheila Banner' %}
+{% set prototypeData = prototypeData if prototypeData %}
+
+{% set isAdminUser = false %}
+{%  set loggedOut = false %}
+
+{% set pageTitle = 'Home ' + GLOBAL_TAG_TITLE_SUFFIX %}
+{#{% set backLinkContents =  [{url:'#', text:'Back to reviews'}] %}#}
+
+
+{% block content %}
+
+    {% call components.bulmaRow() %}
+        {% call components.bulmaColumnAny(size='is-two-thirds') %}
+            {{ components.captionHeading(text='Home', caption='University of Wales') }}
+            {#<p>allData.userName = {{ allData.userName }}</p>#}
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow() %}
+
+        {% call components.bulmaColumnAny(size='column is-3') %}
+            <div class="tfs-tile3">
+                <a href="/prototypes/team-resources-costs/applications" class="tfs-tile3__mega-link">
+                    <span class="tfs-tile3__heading">Applications</span>
+                    <span class="tfs-tile3__number">3</span>
+                    <span class="tfs-tile3__progress">View and manage your <br>organisation's applications</span>
+                    {#<span class="tfs-tile3__progress">In progress</span>#}
+                </a>
+            </div>
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='column is-3') %}
+            <div class="tfs-tile3">
+                <a href="#" class="tfs-tile3__mega-link">
+                    <span class="tfs-tile3__heading">Awards</span>
+                    <span class="tfs-tile3__number">13</span>
+                    <span class="tfs-tile3__progress">View and manage your <br>organisation's awards</span>
+                </a>
+            </div>
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='u-space-t30') %}
+        {% call components.bulmaColumnAny(size='column is-9') %}
+            <hr class="has-background-grey-light">
+        {%- endcall %}
+    {%- endcall %}
+
+    {% call components.bulmaRow(extraClass='u-space-t20') %}
+
+        {% call components.bulmaColumnAny(size='column is-3') %}
+            <a href="#" class="govuk-link govuk-!-font-weight-bold govuk-!-font-size-19">Manage University of Wales</a>
+            <br>
+            <p class="govuk-body u-space-y10">Manage users and permissions for your organisations.</p>
+        {%- endcall %}
+
+        {% call components.bulmaColumnAny(size='column is-3') %}
+            <a href="#" class="govuk-link govuk-!-font-weight-bold govuk-!-font-size-19">Account settings</a>
+            <br>
+            <p class="govuk-body u-space-y10">View your personal details and manage your Equality, Diversity and Inclusion (EDI) profile.</p>
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% include '../../layouts/partials/user-contact.njk' %}
+
+{% endblock %}
+{% block bodyScripts %}
+
+{% endblock %}
+

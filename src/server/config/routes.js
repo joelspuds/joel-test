@@ -388,6 +388,26 @@ router.post('/prototypes/awards/create', demosController.createAwardPost);
 
 /* *************************************************************** *
 
+  GDS test
+
+* *************************************************************** */
+router.get('/prototypes/gds-test', demosController.gdsTestIndexGet);
+router.post('/prototypes/gds-test', demosController.gdsTestIndexPost);
+router.get('/prototypes/gds-test/start', demosController.gdsTestStartGet);
+router.post('/prototypes/gds-test/start', demosController.gdsTestStartPost);
+router.get('/prototypes/gds-test/name', demosController.gdsTestNameGet);
+router.post('/prototypes/gds-test/name', demosController.gdsTestNamePost);
+router.get('/prototypes/gds-test/address', demosController.gdsTestAddressGet);
+router.post('/prototypes/gds-test/address', demosController.gdsTestAddressPost);
+router.get('/prototypes/gds-test/destination', demosController.gdsTestDestinationGet);
+router.post('/prototypes/gds-test/destination', demosController.gdsTestDestinationPost);
+router.get('/prototypes/gds-test/confirm', demosController.gdsTestConfirmGet);
+router.post('/prototypes/gds-test/confirm', demosController.gdsTestConfirmPost);
+router.get('/prototypes/gds-test/end', demosController.gdsTestEndGet);
+router.post('/prototypes/gds-test/end', demosController.gdsTestEndPost);
+
+/* *************************************************************** *
+
   MMO stuff
 
 * *************************************************************** */

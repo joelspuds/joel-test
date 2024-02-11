@@ -74,12 +74,33 @@ $filterPadding: 5px;
     @include mobile {
       display:inline-block;
       margin-right:5px;
-      // background-color: #00A787;
-
-      .govuk-checkboxes__label {
-
-      }
+      background-color: lime!important;;
     }
+
+    @include touch {
+      display:inline-block;
+      margin-right:5px;
+      background-color: orange;
+    }
+
+    @include tablet {
+      display:inline-block;
+      margin-right:5px;
+      background-color: #0076c9;
+    }
+
+    @include desktop {
+      display:inline-block;
+      margin-right:5px;
+      background-color: pink;
+    }
+
+    /*@include tablet {
+      display:inline-block;
+      margin-right:5px;
+      margin-bottom:5px;
+      background-color: orange;
+    }*/
   }
 
   @include e('switch') {

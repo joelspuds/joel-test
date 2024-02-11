@@ -1,0 +1,93 @@
+{% extends 'layouts/default-gds.layout.njk' %}
+
+{% set pageTitle = "Enter your address - " + allDataConst.serviceName %}
+
+{% set hideLayoutPhaseBanner = true %}
+{% set hideTopLevelNav = true %}
+{% set  serviceName = 'Space travel service' %}
+{% set  serviceURL = '/prototypes/gds-test/start' %}
+{% set backLinkContents =  [{url:'/prototypes/gds-test/name', text:'Back to name'}] %}
+
+
+{% block content %}
+    {% call components.form(action='#', method='POST',name='form') %}
+
+        {% call components.gridRow() %}
+
+            {% call components.columnFull() %}
+
+                {{ components.captionHeading(text="What is your address?", caption=allDataConst.serviceName) }}
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.gridRow() %}
+
+            {% call components.columnTwoThirds() %}
+
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-visually-hidden">
+                       Enter address
+                    </legend>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="address-line-1">
+                            Address line 1
+                        </label>
+                        <input class="govuk-input" id="address-line-1" name="addressLine1" type="text" autocomplete="address-line1" value="{{ appData.addressLine1 }}">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="address-line-2">
+                            Address line 2 (optional)
+                        </label>
+                        <input class="govuk-input" id="address-line-2" name="addressLine2" type="text" autocomplete="address-line2" value="{{ appData.addressLine2 }}">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="address-town">
+                            Town or city
+                        </label>
+                        <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="addressTown" type="text" autocomplete="address-level2" value="{{ appData.addressTown }}">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="address-county">
+                            County (optional)
+                        </label>
+                        <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="addressCounty" type="text" value="{{ appData.addressCounty }}">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="address-postcode">
+                            Postcode
+                        </label>
+                        <input class="govuk-input govuk-input--width-10" id="address-postcode" name="addressPostcode" type="text" autocomplete="postal-code" value="{{ appData.addressPostcode }}">
+                    </div>
+                </fieldset>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.gridRow() %}
+
+            {% call components.columnTwoThirds() %}
+
+                <div class="govuk-form-group">
+                    <button type="submit" class="govuk-button" data-module="govuk-button">
+                        Save and continue
+                    </button>
+                </div>
+
+            {%- endcall %}
+
+        {%- endcall %}
+
+        {% call components.gridRow() %}
+
+            {% call components.columnFull() %}
+
+
+            {%- endcall %}
+
+        {%- endcall %}
+    {%- endcall %}
+
+{% endblock %}

@@ -471,3 +471,15 @@ Object.keys(_classificationsController).forEach(function (key) {
     }
   });
 });
+
+var _gdsTestcontroller = require('./gdsTestcontroller');
+
+Object.keys(_gdsTestcontroller).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _gdsTestcontroller[key];
+    }
+  });
+});

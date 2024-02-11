@@ -1,0 +1,88 @@
+{% extends 'layouts/default-gds.layout.njk' %}
+
+{% set pageTitle = "Confirm your details - " + allDataConst.serviceName %}
+
+{% set hideLayoutPhaseBanner = true %}
+{% set hideTopLevelNav = true %}
+{% set  serviceName = 'Space travel service' %}
+{% set  serviceURL = '/prototypes/gds-test/start' %}
+
+{% block content %}
+    {% call components.form(action='#', method='POST',name='form') %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnFull() %}
+
+            {{ components.captionHeading(text="Confirm your details", caption=allDataConst.serviceName) }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnTwoThirds() %}
+
+            {#<h2 class="govuk-heading-m">Personal details</h2>#}
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Name</dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ appData.firstName }} {{ appData.lastName }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="/prototypes/gds-test/name">Change<span class="govuk-visually-hidden"> name</span></a>
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Address
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {% if appData.addressLine1 %} {{ appData.addressLine1 }}<br> {% endif %}
+                        {% if appData.addressLine2 %} {{ appData.addressLine2 }}<br> {% endif %}
+                        {% if appData.addressTown %} {{ appData.addressTown }}<br> {% endif %}
+                        {% if appData.addressCounty %} {{ appData.addressCounty }}<br> {% endif %}
+                        {% if appData.addressPostcode %} {{ appData.addressPostcode }}<br> {% endif %}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="/prototypes/gds-test/address">Change<span class="govuk-visually-hidden"> address</span></a>
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Preferred destination
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        <p class="govuk-body">{{ appData.destination }}</p>
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="/prototypes/gds-test/destination">Change<span class="govuk-visually-hidden"> destination</span></a>
+                    </dd>
+                </div>
+            </dl>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnTwoThirds() %}
+
+            <h2 class="govuk-heading-m">Now send your application</h2>
+            <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+            <div class="govuk-form-group">
+                <button type="submit" class="govuk-button" data-module="govuk-button">
+                    Complete your space travel application
+                </button>
+            </div>
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {%- endcall %} {# end form #}
+
+{% endblock %}

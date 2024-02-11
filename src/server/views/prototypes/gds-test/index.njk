@@ -1,0 +1,54 @@
+{% extends 'layouts/default-gds.layout.njk' %}
+
+{% set pageTitle = allDataConst.serviceName %}
+
+{% set hideLayoutPhaseBanner = true %}
+{% set hideTopLevelNav = true %}
+{% set  serviceName = 'Space travel service' %}
+{% set  serviceURL = '/prototypes/gds-test/start' %}
+
+{% block content %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnFull() %}
+
+            {{ components.captionHeading(text=serviceName) }}
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+
+    {% call components.gridRow() %}
+
+        {% call components.columnHalf() %}
+
+            <p class="govuk-body">Prototype for Jamie at Mercator to see if I can cut the mustard with my prototyping skills.</p>
+
+            <p class="govuk-body"><a href="/prototypes/gds-test/start" class="govuk-link">Go to the start page</a> </p>
+
+
+            {#<p class="govuk-body govuk-!-font-size-16">(<a href="/prototypes/gds-test/index?clearSession=true" class="govuk-link">Clear saved data</a>)</p>#}
+
+
+        {%- endcall %}
+
+        {% call components.columnHalf() %}
+
+
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.gridRow() %}
+
+        {% call components.columnFull() %}
+
+
+        {%- endcall %}
+
+    {%- endcall %}
+
+{% endblock %}
