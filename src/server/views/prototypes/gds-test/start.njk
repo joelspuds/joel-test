@@ -28,31 +28,22 @@
 
             <p class="govuk-body">Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. </p>
 
-            <p class="govuk-body"><a href="/prototypes/gds-test/name" class="govuk-button govuk-button--start">Start now</a> </p>
+            <p class="govuk-body">
 
-            {#{{ components.heading(text='Work in progress', tag='h3', size='medium') }}
+            <a href="/prototypes/gds-test/name" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+                Start now
+                <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+                </svg>
+            </a>
 
-            {{ components.alerts(text='Some of these may be updated with the new GDS partials!', type='warning') }}
-
-            {{ components.list(items=listItemsWIP, type='bullet')}}#}
-
-        {%- endcall %}
-
-        {% call components.columnHalf() %}
-
+            </p>
 
 
         {%- endcall %}
 
     {%- endcall %}
 
-    {% call components.gridRow() %}
 
-        {% call components.columnFull() %}
-
-
-        {%- endcall %}
-
-    {%- endcall %}
 
 {% endblock %}
